@@ -1,0 +1,13 @@
+@import "datatables.net-dt";
+@import "datatables.net-buttons-dt";
+@import "datatables.net-select-dt";
+@import "lightbox2/dist/css/lightbox.min.css";
+@import "sweetalert2/dist/sweetalert2.min.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
+@import "./core.css";
+@import "./frontend.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
