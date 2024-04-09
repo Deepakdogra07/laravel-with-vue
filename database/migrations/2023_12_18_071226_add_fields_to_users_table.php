@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('gender')->nullable();
             $table->text('interests')->nullable();
-            $table->string('referralcode')->nullable();
         });
     }
 
@@ -27,7 +26,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['dob', 'address', 'phone', 'gender', 'interests', 'referralcode']);
+            $table->dropColumn(['dob', 'address', 'phone', 'gender', 'interests']);
         });
     }
 };
