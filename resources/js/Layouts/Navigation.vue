@@ -16,16 +16,6 @@
                        <span class="text-white">Dashboard</span>
                     </NavLink>
                 </li>
-
-                <!-- <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
-                    <NavLink class="text-white" :href="route('news.index')" :active="route().current('dashboard')">
-                        <template #icon>
-                            <i class="fas fa-newspaper"></i>
-                        </template>
-                       <span class="text-white">News</span>
-                    </NavLink>
-                </li> -->
-
                 <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
                     <NavLink class="text-white" :href="route('testimonial.index')" :active="route().current('dashboard')">
                         <template #icon>
@@ -36,35 +26,7 @@
                 </li>
 
 
-                <!-- <li class="relative px-6 py-3">
-                    <button @click="showingTwoLevelMenu_1 = !showingTwoLevelMenu_1"
-                        class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
-                        aria-haspopup="true">
-                        <span class="inline-flex items-center">
-                            <i class="fa-solid fa-users"></i>
-                            <span class="ml-4">Users</span>
-                        </span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </button>
-                    <ul v-if="$page.props.auth.user.user_type == 1" v-show="showingTwoLevelMenu_1"
-                        class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
-                        aria-label="submenu">
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-black-800">
-                            <NavLink :href="route('agents')" :active="route().current('agents')">Agents</NavLink>
-                        </li>
-                    </ul>
-                    <ul v-show="showingTwoLevelMenu_1"
-                        class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
-                        aria-label="submenu">
-                        <li class="px-2 py-1 transition-colors duration-150 hover:text-black-800">
-                            <NavLink :href="route('customers')" :active="route().current('customers')">
-                                Customers
-                            </NavLink>
-                        </li>
-                    </ul>
-                </li> -->
-
-
+              
 
 
                 <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
@@ -79,7 +41,7 @@
 
                 <li class="relative px-2 py-3" v-if="$page.props.auth.user.user_type == 1">
                     <NavLink :href="route('listing')" :active="route().current('listing')">
-                        <i class="fa-solid fa-user-plus"></i> <span class="ml-4">Agents</span>
+                        <i class="fa-solid fa-user-plus"></i> <span class="ml-4">Businesses</span>
                     </NavLink>
                 </li>
 

@@ -107,7 +107,7 @@ class AgentController extends Controller
         //     ->groupBy('users.id', 'users.name')
         //     ->get();
 
-        $agents = User::where('user_type', '=', '2')
+        $business = User::where('user_type', '=', '2')
             ->where('users.is_deleted', 0)
             ->orderBy('users.id', 'desc')
             ->leftJoin('loans', 'loans.assigned_to', '=', 'users.id')
@@ -117,12 +117,7 @@ class AgentController extends Controller
 
 
 
-
-
-
-        // dd($agents->toarray());
-
-        return Inertia::render('Agents/Listing', ['agents' => $agents]);
+        return Inertia::render('Agents/Listing', ['agents' => $business]);
     }
     public function agentBasedLeads(Request $request)
     {

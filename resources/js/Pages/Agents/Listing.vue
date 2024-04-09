@@ -71,11 +71,11 @@ const deleteAgent = async (id) => {
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Manage Agents</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Manage Business</h2>
             <div class="button-container">
-            <Link :href="route('agents.add-agent')">
-            <button class="btn btn-success">Add Agent</button>
-            </Link>
+            <!-- <Link :href="route('agents.add-agent')">
+            <button class="btn btn-success">Add Business</button>
+            </Link> -->
         </div>
         </template>
 
@@ -87,9 +87,9 @@ const deleteAgent = async (id) => {
                             <thead>
                                 <tr>
                                     <th class="d-none">ID</th>
-                                    <th>Agent Name</th>
+                                    <th>Business Name</th>
                                     <th>Email</th>
-                                    <th>Total Loan's Count</th>
+                                    <th>Total Jobs Posted</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -104,17 +104,12 @@ const deleteAgent = async (id) => {
                                         {{ agent.status == 1 ? 'Active' : 'Inactive' }}
                                     </td>
                                     <td>
-                                        <Link :href="route('agent.basedLeads', { id: agent.id })">
-                                        <button class="btn btn-success btn-sm">
-                                            Agent assigned Loan
-                                        </button>
-                                        </Link>
-                                        &nbsp;
-                                        <button class="btn btn-info btn-sm" @click="viewAgent(agent.id)">Agent Details</button>
+                                        <!-- &nbsp;
+                                        <button class="btn btn-info btn-sm" @click="viewAgent(agent.id)">Business Details</button>
                                         &nbsp;
                                         <button class="btn btn-primary btn-sm" @click="editAgent(agent.id)">Edit</button>
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deleteAgent(agent.id)">Delete</button>
+                                        <button class="btn btn-danger btn-sm" @click="deleteAgent(agent.id)">Delete</button> -->
                                     </td>
                                 </tr>
                             </tbody>
