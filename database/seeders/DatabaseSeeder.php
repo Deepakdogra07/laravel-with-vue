@@ -14,16 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            StatusSeeder::class,
-        ]);
+        
         \App\Models\User::factory()->create([
             'name' => 'superAdmin',
             'email' => 'superadmin@yopmail.com',
             'user_type' => 1,
             'status' => 1,
             'password' => Hash::make('password'),
-            'referralcode' => Str::random(8),
         ]);
     }
 }

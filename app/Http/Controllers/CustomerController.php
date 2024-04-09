@@ -49,7 +49,6 @@ class CustomerController extends Controller
                 'password' => Hash::make($textpassword),
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'referralcode' => $referralCode,
                 'status' => $request->status,
             ]);
 
@@ -83,7 +82,6 @@ class CustomerController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $request->id,
             'phone' => 'required|numeric|digits:11',
-            // 'address' => 'required',
         ]);
 
         User::where('id', $request->id)->update([
