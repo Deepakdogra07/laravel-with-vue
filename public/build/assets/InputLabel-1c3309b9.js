@@ -1,1 +1,0 @@
-import{o as e,c as t,t as o,s as l}from"./app-bd1de732.js";const n={class:"block text-gray-600"},c={key:0},r={key:1},u={__name:"InputLabel",props:["value"],setup(s){return(a,_)=>(e(),t("label",n,[s.value?(e(),t("span",c,o(s.value),1)):(e(),t("span",r,[l(a.$slots,"default")]))]))}};export{u as _};

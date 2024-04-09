@@ -17,14 +17,14 @@
                     </NavLink>
                 </li>
 
-                <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+                <!-- <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
                     <NavLink class="text-white" :href="route('news.index')" :active="route().current('dashboard')">
                         <template #icon>
                             <i class="fas fa-newspaper"></i>
                         </template>
                        <span class="text-white">News</span>
                     </NavLink>
-                </li>
+                </li> -->
 
                 <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
                     <NavLink class="text-white" :href="route('testimonial.index')" :active="route().current('dashboard')">

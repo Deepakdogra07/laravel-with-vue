@@ -110,7 +110,7 @@ const showMenu = () => {
                     <li :class="{ 'active-sidetab': route().current() == 'logout' }">
                         <i class="bi bi-box-arrow-left"></i>
                         <Link :class="{ 'active-sidetab': route().current() == 'logout' }" :href="route('logout')"
-                            method="post">Sair</Link>
+                            method="post">Logout</Link>
                     </li>
                 </ul>
             </div>
@@ -126,20 +126,14 @@ const showMenu = () => {
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link" :class="{ 'active-tab': route().current() == 'about.us' }"
-                                href="/aboutus">Sobre nós
-                            </Link>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link" :class="{ 'active-tab': route().current() == 'faq' }" href="/faq">
-                            Perguntas
-                            frequentes
+                                href="/aboutus">About us
                             </Link>
                         </li>
 
                         <li class="nav-item">
                             <Link href="/contactus" :class="{ 'active-tab': route().current() == 'contactus' }"
                                 class="nav-link">
-                            Contate-nos</Link>
+                            Contact Us</Link>
                         </li>
 
 
@@ -168,11 +162,11 @@ const showMenu = () => {
 
                                 <template v-else>
                                     <Link :href="route('login')" class="nav-link login-anchor">
-                                    Conecte-se
+                                    Login
                                     </Link>
 
                                     <Link :href="route('register')" class="nav-link ms-3 reg-link">
-                                    Registro
+                                    Register
                                     </Link>
 
 

@@ -35,17 +35,11 @@ onMounted(() => {
 
 </script>
 <template>
-  <div class="chat-section">
-    <a :href="'https://wa.me/' + phoneNumber" target="_blank" class="whatsapp-button">
-                                 <i class="fab fa-whatsapp d-flex"></i>
-                            </a>
-  </div>
      <div class="footer-section">
         <div class="container">
           <div class="row footer-row">
             <div class="col-12">
               <div class="footer-logo">
-                <!-- <img src="/images/Logo-footer.png" alt="dinheiro-agora"> -->
                 <Link href="/"><img src="/images/Logo-footer.png" alt="dinheiro-agora"></Link>
               </div>
             </div>
@@ -55,19 +49,16 @@ onMounted(() => {
                    <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'home'}" href="/">Home</Link>
                 </li>
                 <li>
-                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'about.us'}" href="/aboutus">Sobre nós</Link>
-                </li>
-                <li class="nav-item">
-                    <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'faq'}" href="/faq">Perguntas frequentes</Link>
+                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'about.us'}" href="/aboutus">About Us</Link>
                 </li>
                 <li>
-                      <Link class="nav-link"  :class="{'active-footer-tab' : route().current() == 'privacy.policy'}" href="/privacy-policy">Política de Privacidade</Link>
+                      <Link class="nav-link"  :class="{'active-footer-tab' : route().current() == 'privacy.policy'}" href="/privacy-policy">Privacy Policy</Link>
                 </li>
                 <li>
-                      <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'term.condition'}" href="/term-condition">Termos e Condições</Link>
+                      <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'term.condition'}" href="/term-condition">Terms and Conditions</Link>
                 </li>
                 <li>
-                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'contactus'}" href="/contactus">Contate-nos</Link>
+                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'contactus'}" href="/contactus">Contact Us</Link>
                 </li>
               </ul>
             </div>

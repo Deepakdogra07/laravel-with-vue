@@ -1,32 +1,30 @@
 <template>
        <Header class="login-wrapper" />
-       <Head title="Esqueceu sua senha" />
+       <Head title="Forgot Password" />
       <div class="login-bg-wrapper">
         <div class="container h-100">
             <div class="row align-items-center h-100">
                 <div class="col-md-8 col-lg-6">
                     <div class="w-full">
-                        <h1 class="mb-4 text-blue">Esqueceu sua senha</h1>
+                        <h1 class="mb-4 text-blue">Forgot Password</h1>
                         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                             Enviamos por e-mail seu link de redefinição de senha.
                         </div>
 
                          <h4 class="mb-4 font-semibold text-gray-700 text-blue">
-                          Esqueceu sua senha? Sem problemas. Basta nos informar seu endereço de e-mail e enviaremos um e-mail para você com uma redefinição de senha
-             link que permitirá que você escolha um novo.
+                          Forgot Password? No problem.Enter your email to get reset password link.
           </h4>
             <form @submit.prevent="submit">
             <div>
               <!-- <InputLabel class="text-blue" for="email" value="Email"/> -->
               <span class="label label-default">Email<span style="color:red"> *</span></span>
-              <TextInput id="email" type="text"  placeholder="Digite o e-mail" class="block w-full mt-1" v-model="form.email" autofocus autocomplete="username" />
-              <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
-              <p style="color:red" v-if="form.errors.email">Não conseguimos encontrar um usuário com esse endereço de e-mail.</p>
+              <TextInput id="email" type="text"  placeholder="Enter e-mail" class="block w-full mt-1" v-model="form.email" autofocus autocomplete="username" />
+              <p style="color:red" v-if="form.errors.email">We couldn't find a user with that email address.</p>
             </div>
 
             <div class="flex items-center justify-start mt-4">
               <PrimaryButton class="login-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Redefinir senha
+                Send Email 
               </PrimaryButton>
             </div>
           </form>

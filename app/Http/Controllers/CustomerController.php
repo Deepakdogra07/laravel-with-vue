@@ -37,8 +37,7 @@ class CustomerController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
             'password' => ['required', 'confirmed', 'min:4'],
-            'phone' => 'required|numeric|digits:11',
-            // 'address' => 'required',
+            'phone' => 'required|numeric|min:7',
             'password_confirmation' => 'required',
         ]);
         $referralCode = Str::random(10);
@@ -53,11 +52,9 @@ class CustomerController extends Controller
                 'phone' => $request->phone,
                 'referralcode' => $referralCode,
                 'status' => $request->status,
-                // 'email_verified_at' => Carbon::now(),z
             ]);
 
         $user->sendEmailVerificationNotification();
-        // Auth::login($user);
 
 
 
@@ -65,16 +62,12 @@ class CustomerController extends Controller
         $email = $user->email;
         $password = $textpassword;
         $creator = Auth::user()->name;
-        // $user->sendEmailVerificationNotification();
         Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
-        // dd($textpassword);
     }
 
     public function view(Request $request, $id)
     {
-        // dd($id);
         $id = intval($id);
-        // dd($id);
         $customer = User::where('id', $id)->where('is_deleted', 0)->first();
         // dd($customer);
         return Inertia::render('Customers/ViewCustomer', ['customer' => $customer]);

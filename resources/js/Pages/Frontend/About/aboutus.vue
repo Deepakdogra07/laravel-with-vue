@@ -6,10 +6,10 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 </script>
 <template>
     <Header class="login-wrapper" />
-    <Head title="Sobre nós" />
+    <Head title="About Us" />
     <div class="about-us-bg-wrapper">
         <div class="container">
-            <h1 class="mb-4 text-blue text-center">Sobre nós</h1>
+            <h1 class="mb-4 text-blue text-center">About Us</h1>
             <div
                 v-if="status"
                 class="mb-4 text-sm font-medium text-green-600">A
@@ -32,7 +32,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
                     </div>
                     <div class="col-lg-5 col-md-6 mt-5 text-right">
                         <h2 style="color: white">
-                            Bem-vindo à Dinheiro Agora! 
+                            About Us
                         </h2>
                         <h3 class="text-end mb-3" style="color: #2CBCDD">
                             Somos uma plataforma online dedicada a simplificar o processo de obtenção de empréstimos através do seu cartão de crédito.

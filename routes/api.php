@@ -16,13 +16,13 @@ use App\Http\Controllers\RDStationController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-Route::post('/services/auth/dialog', [LeadController::class, 'access_token_by_code']);
-// Route::post('/services/auth/token', [LeadController::class, 'token']);
-Route::post('/services/auth/verify', [LeadController::class, 'access_token_by_refresh_token']);
-Route::post('/post/leads', [LeadController::class, 'post_leads']);
-Route::post('/update/leads', [LeadController::class, 'update_leads']);
+// Route::post('/services/auth/dialog', [LeadController::class, 'access_token_by_code']);
+// // Route::post('/services/auth/token', [LeadController::class, 'token']);
+// Route::post('/services/auth/verify', [LeadController::class, 'access_token_by_refresh_token']);
+// Route::post('/post/leads', [LeadController::class, 'post_leads']);
+// Route::post('/update/leads', [LeadController::class, 'update_leads']);
 
