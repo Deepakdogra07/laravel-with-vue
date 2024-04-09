@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Loan;
+
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Leads;
@@ -19,59 +19,63 @@ class AgentController extends Controller
     public function index()
     {
         $authUser = Auth::user();
-        $agents = User::where('user_type', '=', '2')->where('is_deleted', 0)->orderBy('id', 'desc')->get();
-        return Inertia::render('Agents/Index', ['agents' => $agents,'authUser'=>$authUser]);
+        if ($authUser->user_type == 1) {
+        $customers = User::where('user_type', '=', '3')->where('is_deleted', 0)->get();
+        }elseif($authUser->user_type == 2){
+            $customers = User::where('user_type', '=', '3')->where('is_deleted', 0)->get();
+        }
+
+        return Inertia::render('Customers/Index', ['customers' => $customers,'authUser'=>$authUser]);
     }
     public function show()
     {
-        return Inertia::render('Agents/AddAgent');
+        return Inertia::render('Customers/AddCustomer');
     }
     public function add(Request $request)
     {
-        // dd("Hello ! ");
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => ['required', 'confirmed','min:4'],
-            'phone'=>'required|numeric|digits:11',
-            // 'address'=>'required',
-            'password_confirmation'=> 'required',
+            'password' => ['required', 'confirmed', 'min:4'],
+            'phone' => 'required|numeric|min:7',
+            'password_confirmation' => 'required',
         ]);
         $referralCode = Str::random(10);
-        $users = User::create([
-            'user_type' => $request->user_type,
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'address'=> $request->address,
-            'phone'=> $request->phone,
-            'referralcode' => $referralCode,
-            'status' => $request->status,
-        ]);
+        $textpassword = $request->password;
+        $user = User::create(
+            [
+                'user_type' => $request->user_type,
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($textpassword),
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'referralcode' => $referralCode,
+                'status' => $request->status,
+            ]);
 
-        $users->sendEmailVerificationNotification();
-        // Auth::login($users);
+        $user->sendEmailVerificationNotification();
 
-        $username = $users->name;
-        $email = $users->email;
-        $password = $request->password;
+
+
+        $username = $user->name;
+        $email = $user->email;
+        $password = $textpassword;
         $creator = Auth::user()->name;
-        // dd($password);
-        // $apassword = $request->password;
-
         Mail::to($email)->send(new RegisteredAgent($username, $email, $password, $creator));
     }
 
-    public function view(Request $request)
+    public function view(Request $request, $id)
     {
-        $agent = User::where('id', $request->id)->where('is_deleted', 0)->first();
-        return Inertia::render('Agents/ViewAgent', ['agent' => $agent]);
+        $id = intval($id);
+        $customer = User::where('id', $id)->where('is_deleted', 0)->first();
+        // dd($customer);
+        return Inertia::render('Customers/ViewCustomer', ['customer' => $customer]);
     }
-
     public function edit(Request $request)
     {
-        $agent = User::where('id', $request->id)->where('is_deleted', 0)->first();
-        return Inertia::render('Agents/EditAgent', ['agent' => $agent]);
+        $customer = User::where('id', $request->id)->where('is_deleted', 0)->first();
+        return Inertia::render('Customers/EditCustomer', ['customer' => $customer]);
     }
 
     public function update(Request $request)
@@ -79,8 +83,8 @@ class AgentController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $request->id,
-            'phone'=>'required|numeric|digits:11',
-            // 'address'=>'required',
+            'phone' => 'required|numeric|digits:11',
+            // 'address' => 'required',
         ]);
 
         User::where('id', $request->id)->update([
@@ -94,57 +98,7 @@ class AgentController extends Controller
 
     public function delete(Request $request)
     {
-        $agents = User::find($request->id);
-        $agents->update(['is_deleted' => 1]);
-    }
-    public function listing()
-    {
-        // $agents = User::where('user_type', '=', '2')
-        //     ->where('users.is_deleted', 0)
-        //     ->orderBy('users.id', 'desc')
-        //     ->leftJoin('loans', 'loans.assigned_to', '=', 'users.id')
-        //     ->select('users.*', DB::raw('GROUP_CONCAT(loans.applicant_name) as lead_name'))
-        //     ->groupBy('users.id', 'users.name')
-        //     ->get();
-
-        $business = User::where('user_type', '=', '2')
-            ->where('users.is_deleted', 0)
-            ->orderBy('users.id', 'desc')
-            ->leftJoin('loans', 'loans.assigned_to', '=', 'users.id')
-            ->select('users.*', DB::raw('GROUP_CONCAT(loans.applicant_name) as lead_name'), DB::raw('COUNT(loans.assigned_to) as loan_count'))
-            ->groupBy('users.id', 'users.name')
-            ->get();
-
-
-
-        return Inertia::render('Agents/Listing', ['agents' => $business]);
-    }
-    public function agentBasedLeads(Request $request)
-    {
-        // dd($request->id);
-        // $leads = Loan::where('loans.assigned_to', $request->id)
-        // ->leftJoin('status','status.value','loans.status')
-        // ->where('loans.is_deleted', 0)
-        // ->select('loans.*','status.name as status')
-        // ->orderBy('loans.id','desc')
-        // ->get();
-
-
-        $leads = Loan::where('assigned_to',$request->id)->where('is_deleted',0)->get();
-        // dd($leads);
-
-
-    ;
-        return Inertia::render('Agents/AgentBasedLead', ['leads' => $leads]);
-    }
-    public function cancelAgent(Request $request, $id)
-    {
-        //    dd($id);
-        // $leads = Leads::where('id', $id)
-        //     ->update(['agent_id' => 0]);
-
-        $leads = Loan::where('id', $id)
-        ->update(['assigned_to' => 0]);
-        return redirect()->back();
+        $customers = User::find($request->id);
+        $customers->update(['is_deleted' => 1]);
     }
 }

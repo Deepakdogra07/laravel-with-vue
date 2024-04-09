@@ -40,7 +40,7 @@
 
 
                 <li class="relative px-2 py-3" v-if="$page.props.auth.user.user_type == 1">
-                    <NavLink :href="route('listing')" :active="route().current('listing')">
+                    <NavLink :href="route('business-listing')" :active="route().current('business-listing')">
                         <i class="fa-solid fa-user-plus"></i> <span class="ml-4">Businesses</span>
                     </NavLink>
                 </li>

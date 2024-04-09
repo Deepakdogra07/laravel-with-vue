@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Loan;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
@@ -102,47 +101,5 @@ class CustomerController extends Controller
         $customers->update(['is_deleted' => 1]);
     }
 
-    public function storeAssignAgent(Request $request, $customerId)
-    {
-        // dd($request->toArray());
-
-        // array:2 [▼ // app/Http/Controllers/CustomerController.php:113
-        //     "agent" => 9
-        //     "loanId" => 7
-        // ]
-
-        $useremail = User::where('id',$request->agent)->first()->email;
-
-
-        $loanId = Loan::where('id',$request->loanId)->first()->user_id;
-        $loanAmount = Loan::where('id',$request->loanId)->first()->loan_amount;
-        $loansuser = User::where('id',$loanId)->first();
-
-
-        $mailData = [
-            'loansuser' => $loansuser,
-            'loanAmount' => $loanAmount,
-        ];
-
-        Mail::to($useremail)->send(new AssignedAgentMAil($mailData));
-
-
-        Loan::where('id',$request->loanId)->update([
-            'assigned_to'=>$request->agent,
-        ]);
-
-        return redirect()->route('loan.index');
-
-
-        // return Inertia::location(route('loan.index'))->with('success', 'Agent assigned successfully');
-
-        // try {
-        //     $user = User::where('id', $customerId)->update([
-        //         'agent_id' => $request->agent,
-        //     ]);
-        //     return Inertia::location(route('customers'))->with('success', 'Agent assigned successfully');
-        // } catch (\Exception $e) {
-        //     return Inertia::location(route('customers'));
-        // }
-    }
+    
 }

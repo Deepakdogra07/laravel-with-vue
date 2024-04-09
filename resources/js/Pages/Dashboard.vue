@@ -90,7 +90,7 @@ const getStatusColor = (status) => {
                         </div>
 
                         <div v-if="props.authData.user_type == 1" class="col-lg-3 col-md-6 col-xl-3 mb-3">
-                            <Link :href="route('agents')">
+                            <Link :href="route('business-listing')">
                             <div class="card bg-success text-white mb-3 card-flex py-2">
                                 <div class="card-header">
                                     <h4>Total Business</h4>

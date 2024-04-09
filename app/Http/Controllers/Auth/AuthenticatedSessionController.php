@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Loan;
 use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -59,40 +58,6 @@ class AuthenticatedSessionController extends Controller
 
 
 
-        if($userExists == true){
-            $user = User::where('email', $request->email)->first();
-            $loans = Loan::where('user_id', $user->id)->get();
-
-            if (Session::has('discountcode')) {
-                $discountCode = Session::get('discountcode');
-
-                $discountedLoans = $loans->filter(function ($loan) use ($discountCode) {
-                    return $loan->discount_code === $discountCode;
-                });
-
-                if (!$discountedLoans->isEmpty()) {
-                    Session::put('discountcode', '');
-                }
-            }
-         }
-
-
-    if($userExists == true){
-        $users = User::where('email', $request->email)->first();
-        $loans = Loan::where('user_id', $users->id)->get();
-
-        if (Session::has('refralcode')) {
-            $refralCode = Session::get('refralcode');
-
-            $discountedLoanss = $loans->filter(function ($loan) use ($refralCode) {
-                return $loan->referralLink ===  $refralCode;
-            });
-
-            if (!$discountedLoanss->isEmpty()) {
-                Session::put('refralcode', '');
-            }
-    }
-}
         $request->authenticate();
         $request->session()->regenerate();
 

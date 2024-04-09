@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Loan;
-use App\Models\News;
-use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;

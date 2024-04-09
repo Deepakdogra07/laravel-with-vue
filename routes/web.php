@@ -41,10 +41,10 @@ Route::get('/term-condition', function () {
 
 
 
-Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Route::get('/about', fn() => Inertia::render('About'))->name('about');
-Route::middleware(['admin', 'auth','check_user_status'])->group(function () {
+Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/admin', function () {
         return Inertia::render('Admin');
     });
@@ -52,18 +52,13 @@ Route::middleware(['admin', 'auth','check_user_status'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-       Route::resource('testimonial', TestimonialsController::class);
-       Route::post('testimonial/updated/{id}',[TestimonialsController::class,'update'])->name('testimonial.updated');
+    Route::resource('testimonial', TestimonialsController::class);
+    Route::post('testimonial/updated/{id}', [TestimonialsController::class, 'update'])->name('testimonial.updated');
+
+    // GET EMPLOYERS LISTING 
+    Route::get('/business-listing', [AgentController::class, 'index'])->name('business-listing');
 
 
-
-
-
-
-    Route::get('/agents', [AgentController::class, 'index'])->name('agents');
-    Route::get('/listing', [AgentController::class, 'listing'])->name('listing'); 
-
-   
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/add-customer', [CustomerController::class, 'show'])->name('customers.add-customer');
     Route::post('/customers/add-customer', [CustomerController::class, 'add']);
@@ -72,7 +67,7 @@ Route::middleware(['admin', 'auth','check_user_status'])->group(function () {
     Route::put('/customers/update-customer/{id}', [CustomerController::class, 'update'])->name('customers.update-customer');
     Route::get('/customers/delete-customer/{id}', [CustomerController::class, 'delete'])->name('customers.delete-customer');
 
-   
+
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
@@ -83,25 +78,25 @@ Route::middleware(['admin', 'auth','check_user_status'])->group(function () {
     // Route::get('/pages/details', [PagesController::class, 'details'])->name('pages.add-details');
     // Route::post('/pages/details', [PagesController::class, 'detailSave'])->name('pages.details-save');
 
-   
+
 });
 
 
 Route::get('/dashboard', [DashboardController::class, 'dashboardData'])
-    ->middleware(['auth', 'verified', 'admin'])
+    ->middleware(['auth'])
     ->name('dashboard');
 
-    
-    Route::get('/faq', function () {
-        return Inertia::render('Frontend/Faqs/index');
-    })->name('faq');
-    Route::get('/testimonials',function(){
-        return Inertia::render('Testimonial/alltestimonials');
-    });
-    
+
+Route::get('/faq', function () {
+    return Inertia::render('Frontend/Faqs/index');
+})->name('faq');
+Route::get('/testimonials', function () {
+    return Inertia::render('Testimonial/alltestimonials');
+});
+
 require __DIR__ . '/auth.php';
 
-Route::get('/layouts',function(){
+Route::get('/layouts', function () {
     return inertia('Frontend/Layouts/sidebar');
 });
 
