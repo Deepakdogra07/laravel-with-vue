@@ -1,6 +1,6 @@
 <script setup>
-import Header from '../Frontend/header.vue'
-import Footer from '../Frontend/footer.vue'
+import Header from '../Frontend/Header.vue'
+import Footer from '../Frontend/Footer.vue'
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';

@@ -100,8 +100,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import Header from '../Frontend/header.vue'
-import Footer from '../Frontend/footer.vue'
+import Header from '../Frontend/Header.vue'
+import Footer from '../Frontend/Footer.vue'
 import '@/../../resources/css/frontend.css';
 
 const form = useForm({

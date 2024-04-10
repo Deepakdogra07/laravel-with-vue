@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        return view('welcome');
+        return Inertia::render('Welcome');
     }
 
     
