@@ -34,6 +34,8 @@ Route::get('/aboutus', function () {
 
 
 
+
+
 Route::get('/term-condition', function () {
     return Inertia::render('Frontend/PrivacyPolicy/term-condition');
 })->name('term.condition');

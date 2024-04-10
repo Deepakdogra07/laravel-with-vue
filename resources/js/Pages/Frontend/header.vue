@@ -64,6 +64,7 @@ const showMenu = () => {
 <template>
 
 <div class="main-header">
+    
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
       <Link class="navbar-brand" href="/"><img src="/images/web-logo.png" alt=""></Link>

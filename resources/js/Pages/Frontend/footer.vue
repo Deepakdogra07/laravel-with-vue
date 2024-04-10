@@ -39,6 +39,7 @@ onMounted(() => {
   <div class="main-footer">
     <div class="container">
       <div class="footer-grid">
+        
         <div class="footer-section footer-one">
           <Link><img src="/images/web-logo.png" alt=""></Link>
           <p class="white-text mt-3">We are an Job search and immigration services firm specializing in the digital
