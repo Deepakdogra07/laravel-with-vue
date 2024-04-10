@@ -9,7 +9,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestimonialsController;
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,11 +34,15 @@ Route::get('/aboutus', function () {
 
 
 
+
+
 Route::get('/term-condition', function () {
     return Inertia::render('Frontend/PrivacyPolicy/term-condition');
 })->name('term.condition');
 
-
+// Route::get('/', function () {
+//     return Inertia::render('Welcome');
+// })->name('home');
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-import Footer from "../../Frontend/footer.vue";
+import Footer from "../../Frontend/Footer.vue";
 
 defineProps({
     mustVerifyEmail: {

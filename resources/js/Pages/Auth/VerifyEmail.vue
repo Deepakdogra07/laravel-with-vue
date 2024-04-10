@@ -40,8 +40,8 @@ import { computed } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import Header from '../Frontend/header.vue'
-import Footer from '../Frontend/footer.vue'
+import Header from '../Frontend/Header.vue'
+import Footer from '../Frontend/Footer.vue'
 
 
 const props = defineProps({

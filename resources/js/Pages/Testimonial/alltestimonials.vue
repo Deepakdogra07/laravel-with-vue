@@ -1,6 +1,6 @@
 <script setup>
-import Header from "../Frontend/header.vue"
-import Footer from "../Frontend/footer.vue";
+import Header from "../Frontend/Header.vue"
+import Footer from "../Frontend/Footer.vue";
 import "../../../css/frontend.css";
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import CustomPagination from '@/Components/CustomPagination.vue';

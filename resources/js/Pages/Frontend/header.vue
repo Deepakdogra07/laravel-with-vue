@@ -62,7 +62,43 @@ const showMenu = () => {
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg top-main-nav">
+
+<div class="main-header">
+    
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <Link class="navbar-brand" href="/"><img src="/images/web-logo.png" alt=""></Link>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-center" id="navbarNav">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item">
+            <Link class="nav-link" aria-current="page" href="#">Home</Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" href="#">For Individuals</Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" href="#">For Businesses</Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" href="#">Our Testimonials</Link>
+          </li>
+          <li class="nav-item">
+            <Link class="nav-link" href="#">About Us</Link>
+          </li>
+        
+        </ul>
+      </div>
+      <div>
+        <Link class="main-btn">Login</Link>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <!-- <nav class="navbar navbar-expand-lg top-main-nav">
         <div class="container">
             <Link href="/" class="navbar-brand main-logo">
             <img src="/images/instant-loan-logo.png" alt="dinheiro-agora">
@@ -76,9 +112,9 @@ const showMenu = () => {
 
             <div class="dropdown dropdown-mobile-view">
                 <div class="d-flex align-items-center gap-1">
-                    <a @click="showMenu" class="sidebar-mobile-btn dropdown-toggle" href="#">
+                    <Link @click="showMenu" class="sidebar-mobile-btn dropdown-toggle" href="#">
                         <p>{{ nameFirstLetter }}</p>
-                    </a>
+                    </Link>
                     <i class="bi bi-chevron-down d-flex"></i>
                 </div>
             </div>
@@ -177,7 +213,7 @@ const showMenu = () => {
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
 </template>
 
 <style scoped>
