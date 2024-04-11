@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EditHomePageController;
 use App\Http\Controllers\TestimonialsController;
 
 /*
@@ -67,7 +68,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::put('/customers/update-customer/{id}', [CustomerController::class, 'update'])->name('customers.update-customer');
     Route::get('/customers/delete-customer/{id}', [CustomerController::class, 'delete'])->name('customers.delete-customer');
 
-
+    Route::get('/edit-home-page', [EditHomePageController::class, 'index'])->name('edit-home-page');
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
