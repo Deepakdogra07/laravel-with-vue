@@ -4,7 +4,7 @@
         <div class="py-4 text-black-500 main-links-nav">
 
             <Link class="main-heading-logo ml-6 font-bold" :href="route('dashboard')">
-            Unstopable
+            Unstoppable
             </Link>
 
             <ul class="mt-6 pl-0">
@@ -14,6 +14,14 @@
                             <i class="fa-solid fa-house"></i>
                         </template>
                        <span class="text-white">Dashboard</span>
+                    </NavLink>
+                </li>
+                <li class="relative px-6 py-3">
+                    <NavLink class="text-white" :href="route('edit-home-page')" :active="route().current('edit-home-page')">
+                        <template #icon>
+                            <i class="fa-solid fa-house"></i>
+                        </template>
+                       <span class="text-white">Edit Home page</span>
                     </NavLink>
                 </li>
                 <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
