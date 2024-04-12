@@ -57,7 +57,6 @@ const deleteCustomer = async (id) => {
                 title: 'Success',
                 text: 'Customer Deleted Successfully',
             });
-            // router.visit(route('customers'));
             location.reload();
         } else {
             Swal.fire({

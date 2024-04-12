@@ -69,6 +69,11 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/customers/delete-customer/{id}', [CustomerController::class, 'delete'])->name('customers.delete-customer');
 
     Route::get('/edit-home-page', [EditHomePageController::class, 'index'])->name('edit-home-page');
+    Route::get('/home-page/create', [EditHomePageController::class, 'create'])->name('home-page.create');
+    Route::post('/home-page/store', [EditHomePageController::class, 'store'])->name('home-page.store');
+    Route::get('/home-page/delete/{id}', [EditHomePageController::class, 'delete'])->name('home-page.delete');
+    Route::get('/home-page/edit/{id}', [EditHomePageController::class, 'edit'])->name('home-page.edit');
+    Route::post('/home-page/update', [EditHomePageController::class, 'update'])->name('home-page.update');
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
