@@ -7,7 +7,8 @@ import { onMounted } from 'vue';
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
-    speed: 300,
+    autoplay: true,
+    speed: 2,
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
@@ -28,7 +29,14 @@ onMounted(() => {
 </script>
 <template>  
   <Header />
-    <div class="banner-section">
+    <div class="banner-section relative">
+      <div class="banner-content">
+        <h1 class="">We Are Unstoppable</h1>
+        <p class="text-center my-4">Specializing in borderless working opporuntiies for skilled worker accross the globe for individuals, families and business, we provide exceptional workflow solutions that sllows you to almost borderless immigrate from your home country to the country to the country you would like to live and work in.</p>
+        <div class="text-center">
+          <Link class="main-btn">Contact Us</Link>
+        </div>
+      </div>
       <div id="home_banner">
         <div class="web-banner banner-one">
 
@@ -41,7 +49,9 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
+    <div class="unstoppable-middle">
+      <img src="/images/unstoppable-bw.png" alt="">
+    </div>
   <Footer />
 </template>
 
@@ -70,9 +80,11 @@ onMounted(() => {
 .banner-two{
     background-image: url(/images/web-banner2.png);
 }
+
 .banner-three{
     background-image: url(/images/web-banner3.png);
 }
+
 .banner-section .slick-dots{
   display: flex;
   justify-content: center;
@@ -114,4 +126,5 @@ onMounted(() => {
     border: 2px solid #FFFFFF;
     background-color: #1A9882;
 }
+
 </style>

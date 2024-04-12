@@ -13,7 +13,12 @@
 body {
     font-family: "Open Sans", sans-serif;
 }
-
+h1{
+    font-size: 45px;
+}
+p{
+    font-family: 400 !important;
+}
 h1,
 h2,
 h3 {
@@ -46,7 +51,7 @@ h2{
     z-index: 999;
 }
 
-.main-header a{
+.main-header ul li a{
     color: #fff;
 }
 /* footer */
@@ -64,7 +69,7 @@ h2{
     align-items: center;
     background-color:#E9E9EA ;
     border-radius: 50%;
-    color: #07080B;
+    color: #070707;
     cursor: pointer;
     transition: .3s;
 }
@@ -110,7 +115,28 @@ h2{
 .listing-gap{
     margin-top: 40px;
 }
-
+.banner-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 70%;
+}
+.banner-content h1, .banner-content p{
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+}
+.unstoppable-middle{
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.unstoppable-middle img{
+    width: 500px;
+}
 
 @media (max-width: 992px){
     .footer-grid{
@@ -123,5 +149,11 @@ h2{
     .footer-grid{
         grid-template-columns: 100%;
         gap: 15px;
+    }
+    .banner-content{
+        width: 90%;
+    }
+    .banner-content p {
+        line-height: 20px;
     }
 }
