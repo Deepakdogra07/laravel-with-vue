@@ -93,7 +93,6 @@ class TestimonialsController extends Controller
            $testimonialUpdate = Testimonial::find($id);
            if($testimonialUpdate){
                 $testimonialUpdate->name = $request->name;
-                // $testimonialUpdate->rating = $request->rating;
                 $testimonialUpdate->content = $request->content;
                 $testimonialUpdate->update();
            }

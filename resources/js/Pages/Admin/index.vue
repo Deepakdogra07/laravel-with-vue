@@ -1,52 +1,74 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
-defineProps({
+const props = defineProps({
     sliders: {
         type: Array
+    },
+    msg:{
+        type:String
     }
 });
-const editSlider= async(id) =>{
-    router.get(`/home-page/edit/${id}`);
-};
-const deleteSlider = async (id) => {
-    const { value: confirmed } = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You want to Delete Customer Record?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, delete it!'
-    });
+onMounted( ()=>{
+    console.log(props.msg,'props.msg');
+    if(props.msg != null){
+        toast(props.msg, {
+        autoClose: 3000,
+        theme: 'dark',
+      });
+    }
 
-    try {
-        if (confirmed) {
-            router.get(`/home-page/delete/${id}`);
+})
+
+    // Edit Slider
+    const editSlider= async(id) =>{
+        router.get(`/home-page/edit/${id}`);
+    };
+    // View Slider
+    const viewSlider = async(id)=>{
+        router.get(`/home-page/${id}`)
+    };
+    // Delete Slider
+    const deleteSlider = async (id) => {
+        const { value: confirmed } = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'You want to Delete Customer Record?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        });
+
+        try {
+            if (confirmed) {
+                router.get(`/home-page/delete/${id}`);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Customer Deleted Successfully',
+                });
+                // location.reload();
+            } else {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Canceled',
+                    text: 'Deletion canceled.',
+                });
+            }
+        } catch (error) {
             Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Customer Deleted Successfully',
-            });
-            // location.reload();
-        } else {
-            Swal.fire({
-                icon: 'info',
-                title: 'Canceled',
-                text: 'Deletion canceled.',
+                icon: 'error',
+                title: 'Error',
+                text: 'Error Deleting Customer. Please try again.',
             });
         }
-    } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error Deleting Customer. Please try again.',
-        });
-    }
-};
+    };
 function getImageUrl(imageName) {
       return `/storage/slider/${imageName}`;
     }
@@ -55,7 +77,7 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Home Page</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Slider</h2>
             <div class="button-container">
                 <Link :href="route('home-page.create')">
                 <button class="btn btn-info">Add Slider</button>
@@ -88,7 +110,7 @@ function getImageUrl(imageName) {
                                         <img :src="getImageUrl(slider.slider_image)" alt="" srcset="" style="width:100px">
                                         </td>
                                     <td>
-                                        <button class="btn btn-info btn-sm" >View</button>
+                                        <button class="btn btn-info btn-sm"  @click="viewSlider(slider.id)" >View</button>
                                         &nbsp;
                                         <button class="btn btn-primary btn-sm" @click="editSlider(slider.id)"
                                            ><i class="bi bi-pencil-square" ></i>  Edit</button>
