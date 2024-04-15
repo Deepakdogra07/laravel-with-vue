@@ -1,9 +1,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import {reactive, watch, watchPostEffect } from 'vue';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 
 const props = defineProps({
@@ -11,37 +11,45 @@ const props = defineProps({
       type: Object
     }
 });
+// watchPostEffect(()=>{
+//   console.log(props.errors)
+//   if(props.errors.message){
+//     toast(props.errors.message, {
+//         autoClose: 3000,
+//         theme: 'dark',
+//       });
+//   }
+// })
+// watch(props.errors,(old_value,new_value) => {
+//   console.log(old_value,new_value)
+//   if(old_value?.message != new_value?.message && (new_value?.message.length > 0)){
+//     toast(new_value?.message, {
+//         autoClose: 3000,
+//         theme: 'dark',
+//       });
+    
+//   }
+// })
+
 const form = reactive({
-  sliderName: null,
-  sliderHeading: null,
-  sliderDescription: null,
-  sliderImage: null,
+  slider_name: '',
+  slider_heading: '',
+  slider_description: '',
+  slider_image: '',
 
 })
 function submitForm() {
-  const isValidForm = validateForm();
-  if(!isValidForm){
-        return ;
-    }
     const formData = new FormData();
-    formData.append('sliderName', form.sliderName);
-    formData.append('sliderHeading', form.sliderHeading);
-    formData.append('sliderDescription', form.sliderDescription);
-    formData.append('sliderImage', form.sliderImage);
-    // Post
+    formData.append('slider_name', form.slider_name);
+    formData.append('slider_heading', form.slider_heading);
+    formData.append('slider_description', form.slider_description);
+    formData.append('slider_image', form.slider_image);
+    // Post data 
     router.post('/home-page/store', formData)
   }
   function handleFileInput(event){
-    form.sliderImage = event.target.files[0]; 
-    }
-    function validateForm() {
-      let isValid = true;
-
-      if (!form.sliderName ||!form.sliderHeading || !form.sliderDescription || !form.sliderImage ) {
-        isValid = false;
-      }
-      return isValid;
-    }
+    form.slider_image = event.target.files[0]; 
+  }
 
 </script>
 
@@ -61,23 +69,23 @@ function submitForm() {
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
                             <label for="sliderName" class="block text-gray-700 text-sm font-bold mb-2">Slider Name</label>
-                            <input type="text" id="sliderName" v-model="form.sliderName" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                             <span v-if="!form.sliderName" class="error-message">Slider Name is required</span> 
+                            <input type="text" id="sliderName" v-model="form.slider_name" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                             <span v-if="props.errors.slider_name" class="error-message">{{ props.errors.slider_name }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
-                            <input type="text" id="sliderHeading" v-model="form.sliderHeading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                             <span v-if="!form.sliderHeading" class="error-message">Slider Heading is required</span> 
+                            <input type="text" id="sliderHeading" v-model="form.slider_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                             <span v-if="props.errors.slider_heading" class="error-message">{{ props.errors.slider_heading }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words)</label>
-                            <textarea id="sliderDescription" v-model="form.sliderDescription" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
-                             <span v-if="!form.sliderDescription" class="error-message">Slider Description is required</span> 
+                            <textarea id="sliderDescription" v-model="form.slider_description" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
+                             <span v-if="props.errors.slider_description" class="error-message">{{ props.errors.slider_description }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
                             <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                             <span v-if="!form.sliderImage" class="error-message">Slider Image is required</span> 
+                             <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>

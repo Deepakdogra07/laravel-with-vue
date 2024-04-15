@@ -34,7 +34,7 @@ h2{
 .main-btn{
     background-color: #fff;
     border-radius: 8px;
-    color: #070707;
+    color: #070707 !important;
     padding: 8px 20px;
 }
 

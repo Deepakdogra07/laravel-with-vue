@@ -4,6 +4,12 @@ import Header from '../Pages/Frontend/Header.vue';
 import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
+const props = defineProps({
+    sliders: {
+        type: Object
+    },
+});
+
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
@@ -28,17 +34,13 @@ onMounted(() => {
 </script>
 <template>  
   <Header />
+       
     <div class="banner-section">
       <div id="home_banner">
-        <div class="web-banner banner-one">
-
-        </div>
-        <div class="web-banner banner-two">
-
-        </div>
-        <div class="web-banner banner-three">
-
-        </div>
+        <div v-for="(slider) in sliders" :key="slider.id" class="web-banner">
+          <h3>{{slider.slider_heading}}</h3>
+          <img :src="`/storage/slider/${slider.slider_image}`">
+        </div>  
       </div>
     </div>
 
@@ -64,15 +66,6 @@ onMounted(() => {
     position: relative;
 }
 
-.banner-one{
-    background-image: url(/images/web-banner.png);
-}
-.banner-two{
-    background-image: url(/images/web-banner2.png);
-}
-.banner-three{
-    background-image: url(/images/web-banner3.png);
-}
 .banner-section .slick-dots{
   display: flex;
   justify-content: center;
