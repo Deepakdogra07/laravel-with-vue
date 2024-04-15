@@ -27,6 +27,18 @@ const slickFn = () => {
     //       </svg>`;
     // }
   });
+
+  $('#welcome_slider').slick({
+    arrows: false,
+    autoplay: true,
+    speed: 2,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    dots: true,
+  });
+
+
 }
 onMounted(() => {
   slickFn();
@@ -38,6 +50,7 @@ onMounted(() => {
        
     <div class="banner-section">
       <div id="home_banner">
+
         <div v-for="(slider) in sliders" :key="slider.id" class="web-banner">
           <div class="banner-content">
           <h1>{{slider.slider_heading}}</h1>
@@ -74,7 +87,7 @@ onMounted(() => {
 }
 
 
-.banner-section .slick-dots{
+.slick-dots{
   display: flex;
   justify-content: center;
   padding-left: 0;
