@@ -13,7 +13,8 @@ const props = defineProps({
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
-    speed: 300,
+    autoplay: true,
+    speed: 2,
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
@@ -66,6 +67,7 @@ onMounted(() => {
     position: relative;
 }
 
+
 .banner-section .slick-dots{
   display: flex;
   justify-content: center;
@@ -107,4 +109,5 @@ onMounted(() => {
     border: 2px solid #FFFFFF;
     background-color: #1A9882;
 }
+
 </style>
