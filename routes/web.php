@@ -39,10 +39,6 @@ Route::get('/term-condition', function () {
     return Inertia::render('Frontend/PrivacyPolicy/term-condition');
 })->name('term.condition');
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome');
-// })->name('home');
-
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -61,7 +57,6 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     // GET EMPLOYERS LISTING 
     Route::get('/business-listing', [AgentController::class, 'index'])->name('business-listing');
 
-
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/add-customer', [CustomerController::class, 'show'])->name('customers.add-customer');
     Route::post('/customers/add-customer', [CustomerController::class, 'add']);
@@ -76,6 +71,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/home-page/delete/{id}', [EditHomePageController::class, 'delete'])->name('home-page.delete');
     Route::get('/home-page/edit/{id}', [EditHomePageController::class, 'edit'])->name('home-page.edit');
     Route::post('/home-page/update', [EditHomePageController::class, 'update'])->name('home-page.update');
+    Route::get('/home-page/{id}', [EditHomePageController::class, 'show'])->name('home-page.show');
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');

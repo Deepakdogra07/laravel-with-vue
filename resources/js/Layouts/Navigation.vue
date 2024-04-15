@@ -21,7 +21,7 @@
                         <template #icon>
                             <i class="fa-solid fa-house"></i>
                         </template>
-                       <span class="text-white">Edit Home page</span>
+                       <span class="text-white">Edit Slider</span>
                     </NavLink>
                 </li>
                 <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">

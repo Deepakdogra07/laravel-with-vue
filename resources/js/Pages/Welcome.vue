@@ -4,6 +4,12 @@ import Header from '../Pages/Frontend/Header.vue';
 import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
+const props = defineProps({
+    sliders: {
+        type: Object
+    },
+});
+
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
@@ -29,29 +35,16 @@ onMounted(() => {
 </script>
 <template>  
   <Header />
-    <div class="banner-section relative">
-      <div class="banner-content">
-        <h1 class="">We Are Unstoppable</h1>
-        <p class="text-center my-4">Specializing in borderless working opporuntiies for skilled worker accross the globe for individuals, families and business, we provide exceptional workflow solutions that sllows you to almost borderless immigrate from your home country to the country to the country you would like to live and work in.</p>
-        <div class="text-center">
-          <Link class="main-btn">Contact Us</Link>
-        </div>
-      </div>
+       
+    <div class="banner-section">
       <div id="home_banner">
-        <div class="web-banner banner-one">
-
-        </div>
-        <div class="web-banner banner-two">
-
-        </div>
-        <div class="web-banner banner-three">
-
-        </div>
+        <div v-for="(slider) in sliders" :key="slider.id" class="web-banner">
+          <h3>{{slider.slider_heading}}</h3>
+          <img :src="`/storage/slider/${slider.slider_image}`">
+        </div>  
       </div>
     </div>
-    <div class="unstoppable-middle">
-      <img src="/images/unstoppable-bw.png" alt="">
-    </div>
+
   <Footer />
 </template>
 
@@ -74,16 +67,6 @@ onMounted(() => {
     position: relative;
 }
 
-.banner-one{
-    background-image: url(/images/web-banner.png);
-}
-.banner-two{
-    background-image: url(/images/web-banner2.png);
-}
-
-.banner-three{
-    background-image: url(/images/web-banner3.png);
-}
 
 .banner-section .slick-dots{
   display: flex;
