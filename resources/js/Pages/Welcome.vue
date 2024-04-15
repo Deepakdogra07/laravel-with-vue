@@ -21,6 +21,18 @@ const slickFn = () => {
     //       </svg>`;
     // }
   });
+
+  $('#welcome_slider').slick({
+    arrows: false,
+    autoplay: true,
+    speed: 2,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    dots: true,
+  });
+
+
 }
 onMounted(() => {
   slickFn();
@@ -39,7 +51,6 @@ onMounted(() => {
       </div>
       <div id="home_banner">
         <div class="web-banner banner-one">
-
         </div>
         <div class="web-banner banner-two">
 
@@ -51,6 +62,27 @@ onMounted(() => {
     </div>
     <div class="unstoppable-middle">
       <img src="/images/unstoppable-bw.png" alt="">
+    </div>
+    <div class="welcome-section container-fluid">
+      <div class="welcome-content mb-4">
+        <h2 class="mb-3">Welcome to UNSTOPPABLE</h2>
+        <p>We are an job search and immigration services firm specializing in the digital processing of job searches and related immigration services for skilled workers. Our aim is to fully digitize the job search and immigration process in every country in the world. for skilled workers. UNSTOPPABLE best describe the two founders but also the vision for the firm to make everything possible our clients aim for.</p>
+      </div>
+      <div id="welcome_slider" class="welcome-slider row">
+        <div class="col-md-4 col-1">
+asfvasvfas
+        </div>
+        <div class=" col-md-4 col-1">
+ascvascv
+        </div>
+        <div class="col-md-4 col-1">
+asca
+        </div>
+      </div>
+    </div>
+
+    <div class="countries-section">
+        
     </div>
   <Footer />
 </template>
@@ -85,7 +117,7 @@ onMounted(() => {
     background-image: url(/images/web-banner3.png);
 }
 
-.banner-section .slick-dots{
+.slick-dots{
   display: flex;
   justify-content: center;
   padding-left: 0;

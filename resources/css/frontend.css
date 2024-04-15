@@ -14,8 +14,9 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 h1{
-    font-size: 45px;
+    font-size: 45px !important;
 }
+
 p{
     font-family: 400 !important;
 }
@@ -136,6 +137,21 @@ h2{
 }
 .unstoppable-middle img{
     width: 500px;
+}
+
+.welcome-content{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+.welcome-content h2{
+    font-weight: 700;
+    font-size: 30px !important;
+    color: #000;
+}
+
+.welcome-slider{
+    display: flex;
 }
 
 @media (max-width: 992px){
