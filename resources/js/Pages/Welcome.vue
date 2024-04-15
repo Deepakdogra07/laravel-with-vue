@@ -39,10 +39,16 @@ onMounted(() => {
     <div class="banner-section">
       <div id="home_banner">
         <div v-for="(slider) in sliders" :key="slider.id" class="web-banner">
-          <h3>{{slider.slider_heading}}</h3>
+          <div class="banner-content">
+          <h1>{{slider.slider_heading}}</h1>
+          <p>{{slider.slider_description}}</p>
+          </div>
           <img :src="`/storage/slider/${slider.slider_image}`">
         </div>  
       </div>
+    </div>
+    <div class="unstoppable-middle">
+      <img src="/images/unstoppable-bw.png" alt="">
     </div>
 
   <Footer />
