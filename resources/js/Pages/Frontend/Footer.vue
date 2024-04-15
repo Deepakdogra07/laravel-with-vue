@@ -51,10 +51,10 @@ onMounted(() => {
               <Link class="social-icons"><i class="fa-brands fa-facebook-f"></i></Link>
             </li>
             <li>
-              <Link class="social-icons"><i class="fa-brands fa-square-instagram"></i></Link>
+              <Link class="social-icons"><i class="bi bi-instagram d-flex"></i></Link>
             </li>
             <li>
-              <Link class="social-icons"><i class="fa-brands fa-linkedin"></i></Link>
+              <Link class="social-icons"><i class="fa-brands fa-linkedin-in"></i></Link>
             </li>
             <li>
               <Link class="social-icons"><i class="fa-brands fa-x-twitter"></i></Link>
@@ -93,14 +93,14 @@ onMounted(() => {
           <h2 class="text-white relative">Our Office</h2>
           <ul class="pl-0 listing-gap">
             <li class="mb-3">
-              <Link href=""><i class="bi bi-telephone pr-2"></i> +1300 779 462</Link>
+              <Link href=""><i class="bi bi-telephone-fill"></i> +1300 779 462</Link>
             </li>
             <li class="mb-3">
               <Link class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
               Info@dizonassociates.com.au</Link>
             </li>
             <li class="mb-3">
-              <Link class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
+              <Link class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
                 Level 5 12 clarke St, Sunshine Victoria, Australia 3020 (enter via vicroads building) </Link>
             </li>
           </ul>
@@ -114,6 +114,11 @@ onMounted(() => {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="bottom-footer">
+    <div class="container">
+      <p class="text-center mb-0">Copyright © 2024 Dizon & Associates Pty Ltd |Terms & Conditions</p> 
     </div>
   </div>
 
