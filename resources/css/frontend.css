@@ -152,11 +152,13 @@ h2{
     line-height: 30px;
 }
 .unstoppable-spaces-top{
-    padding-top: 50px;
+    padding-top: 50px ;
 }
-
+.unstoppable-spaces-bottom-twice{
+    margin-top: 100px;
+}
 .unstoppable-spaces-bottom{
-    padding-bottom: 50px;
+    padding-bottom: 50px ;
 }
 
 .unstoppable-middle{
@@ -295,6 +297,7 @@ h2{
     height: 300px;
 }
 .image_for_Card img{
+    width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -343,11 +346,51 @@ h2{
     object-position: center;
     border-radius: 10px;
 }
+
+.unstopable-log {
+    width: 70%;
+    margin: 0px auto;
+}
+.welcome-section .slick-track{
+    display: flex !important;
+    gap: 20px !important;
+}
+.login-section-mob{
+    display: none;
+}
+.login-section-desk{
+    display: block;
+}
 @media (max-width: 992px){
     .footer-grid{
         grid-template-columns: 50% 50%;
         gap: 15px;
     }
+    .login-section-mob{
+        display: block;
+    }
+    .login-section-desk{
+        display: none;
+    }
+    .main-header .navbar-collapse{
+        padding: 20px;
+        background-color: #0ca78c;
+        border-radius: 10px;
+    }
+    .main-header .navbar-toggler{
+        border: none;
+    }
+    .main-header .navbar-toggler:focus{
+        box-shadow: none;
+    }
+    .main-header .navbar-toggler i::before{
+        font-size: 30px;
+        color: #fff;
+    }
+    .unstoppable-spaces-top {
+        padding-top: 20px;
+    }
+    
 }
 
 @media (max-width: 576px){
@@ -370,10 +413,11 @@ h2{
     .video-background{
         padding: 20px;
     }
-}
-
-
-
-.unstopable-log{
-    text-align: center;
+    .unstopable-log {
+        width: 100%;
+        margin: 20px auto;
+    }
+    .content-left::before, .content-right::before, .country-content .left-img, .country-content .right-img{
+        border-radius: 0;
+    }
 }

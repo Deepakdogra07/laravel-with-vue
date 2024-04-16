@@ -69,7 +69,7 @@ const showMenu = () => {
     <div class="container">
       <Link class="navbar-brand" href="/"><img src="/images/web-logo.png" alt=""></Link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span><i class="bi bi-list"></i></span>
       </button>
       <div class="collapse navbar-collapse justify-center" id="navbarNav">
         <ul class="navbar-nav gap-3">
@@ -88,10 +88,12 @@ const showMenu = () => {
           <li class="nav-item">
             <Link class="nav-link" href="#">About Us</Link>
           </li>
-        
+          <li class="nav-item login-section-mob">
+            <Link class="main-btn" :href="route('login')">Login</Link>
+          </li>
         </ul>
       </div>
-      <div>
+      <div class="login-section-desk">
         <Link class="main-btn" :href="route('login')">Login</Link>
       </div>
     </div>

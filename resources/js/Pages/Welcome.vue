@@ -5,12 +5,12 @@ import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
 const props = defineProps({
-    sliders: {
-        type: Object
-    },
-    logo:{
-      type: Object
-    }
+  sliders: {
+    type: Object
+  },
+  logo: {
+    type: Object
+  }
 });
 
 const slickFn = () => {
@@ -22,13 +22,6 @@ const slickFn = () => {
     slidesToScroll: 1,
     infinite: true,
     dots: true,
-    // dotsClass: 'slick-dots custom-dots',
-    // dotsClass: 'slick-dots d-flex justify-content-center gap-3 pl-0',
-    // customPaging: function (slider, i) {
-    //   return `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="12" viewBox="0 0 230 10" fill="none">
-
-    //       </svg>`;
-    // }
   });
 
   $('#welcome_slider_').slick({
@@ -78,18 +71,20 @@ onMounted(() => {
         <img :src="`/storage/slider/${slider.slider_image}`">
       </div>
     </div>
-    <div class="uns">
-    <div class="unstoppable-middle">
-      <img :src="`/storage/logo/${logo.logo_image}`" alt="">
-    </div>
-    <div class="unstopable-log">
-      <h1>{{logo.logo_heading}}</h1>
-      <h3>{{logo.logo_description}}</h3>
-    </div>
+    <div class="unstoppable-spaces-top">
+      <div class="unstoppable-middle">
+        <img :src="`/storage/logo/${logo.logo_image}`" alt="">
+      </div>
+      <div class="unstopable-log unstoppable-spaces-top ">
+        <div class="container text-center">
+          <h1>{{ logo.logo_heading }}</h1>
+          <p>{{ logo.logo_description }}</p>
+        </div>
+      </div>
     </div>
 
-    <div class=" container-fluid px-0 mt-4">
-      <div id="welcome_slider_">
+    <div class=" container-fluid px-0 mt-4 ">
+      <div id="welcome_slider_" class="welcome-section">
         <div class="image_for_Card ">
           <img src="/images/web-banner.png" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
@@ -116,7 +111,7 @@ onMounted(() => {
             </div>
             <p class="mb-0">Health & Public Services</p>
           </div>
-        </div> 
+        </div>
         <div class="image_for_Card ">
           <img src="/images/web-banner2.png" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
@@ -134,7 +129,7 @@ onMounted(() => {
     <!-- </div> -->
   </div>
 
-  <div class="unstoppable-spaces-top countries-section">
+  <div class="unstoppable-spaces-bottom-twice countries-section">
     <div class="welcome-content">
       <h2>Most Interesting Countries With Job Opportunities</h2>
     </div>
@@ -209,9 +204,9 @@ onMounted(() => {
 }
 
 .welcome-section .slick-dots {
-  list-style: none;
-  text-align: center;
-  margin-top: 30px;
+  /* list-style: none; */
+  /* text-align: center; */
+  bottom: -60px;
 }
 
 .slick-dots li {
@@ -240,11 +235,21 @@ onMounted(() => {
   border: 2px solid #FFFFFF !important;
   background-color: #1A9882 !important;
 }
+.welcome-section .slick-dots {
+  align-items: center;
+}
+.welcome-section .slick-dots li.slick-active button {
+  width: 20px !important;
+  height: 20px !important;
+}
+
 .welcome-section .slick-slider {
-  padding: 0  ; /* Adjust the padding as needed */
+  padding: 0;
+  /* Adjust the padding as needed */
 }
 
 .welcome-section .slick-slider .slick-slide {
-  margin: 0 10px; /* Adjust the margin between slides */
+  margin: 0 10px;
+  /* Adjust the margin between slides */
 }
 </style>
