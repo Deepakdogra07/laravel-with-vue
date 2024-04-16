@@ -77,11 +77,11 @@ const submit = () => {
                             <div class="d-flex align-items-center justify-content-between mt-4">
                                 <label class="flex items-center">
                                     <Checkbox name="remember" v-model:checked="form.remember" />
-                                    <span class="ml-2 text-blue cursor-pointer">Remember Me</span>
+                                    <span class="ml-2 cursor-pointer">Remember Me</span>
                                 </label>
                                 <Link v-if="canResetPassword" :href="route('password.request')"
-                                    class="text-blue  hover:text-gray-900">
-                                    Forgot Password
+                                    class="text-lightgreen  hover:text-gray-900">
+                                    Forgot Password?
                                 </Link>
                             </div>
 
