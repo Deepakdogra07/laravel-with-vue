@@ -44,14 +44,17 @@ h2{
     padding: 8px 20px;
 }
 
-.main-header{
+/* .main-header{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999;
+} */
+.main-header .navbar{
+    background-color: #01796F !important;
+    padding: 15px 0;
 }
-
 .main-header ul li a{
     color: #fff;
 }
@@ -151,7 +154,7 @@ h2{
     color: #fff;
     line-height: 30px;
 }
-.unstoppable-spaces-top{
+.unstoppable-spaces-top, .unstoppable-spaces-top-special{
     padding-top: 50px ;
 }
 .unstoppable-spaces-bottom-twice{
@@ -361,6 +364,38 @@ h2{
 .login-section-desk{
     display: block;
 }
+/* Login pages css start */
+.login-bg-wrapper{
+    padding: 50px 0;
+}
+.text-label{
+    color: #4A4C56;
+    font-weight: 600;
+    /* margin-bottom: 12px; */
+}
+.form-control{
+    border: 1px solid #D2D2D5;
+    background-color: #FBFBFB;
+    padding: 14px 10px;
+    border-radius: 8px;
+}
+.form-control:focus{
+    box-shadow: none;
+    outline: 0px;
+}
+.form-control::placeholder{
+    color: #A5A5AB;
+}
+.forms-btn {
+    padding: 12px 15px !important; 
+    border-radius: 8px;
+    background-color: #01796F;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Login pages css end */
 @media (max-width: 992px){
     .footer-grid{
         grid-template-columns: 50% 50%;
@@ -389,6 +424,9 @@ h2{
     }
     .unstoppable-spaces-top {
         padding-top: 20px;
+    }
+    .unstoppable-spaces-top-special{
+        padding: 40px 0;
     }
     
 }
@@ -419,5 +457,8 @@ h2{
     }
     .content-left::before, .content-right::before, .country-content .left-img, .country-content .right-img{
         border-radius: 0;
+    }
+    .listing-gap{
+        margin-top: 25px;
     }
 }

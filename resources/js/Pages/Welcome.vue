@@ -152,7 +152,7 @@ onMounted(() => {
     </div>
   </div>
 
-  <div class="unstoppable-spaces-top unstoppable-spaces-bottom video-section">
+  <div class="unstoppable-spaces-top-special unstoppable-spaces-bottom video-section">
     <div class="container">
       <div class="video-background">
         <h2 class="mb-3">How Does It Work</h2>
@@ -170,13 +170,19 @@ onMounted(() => {
 
 <style>
 .main-header .navbar {
-  border-bottom: 1px solid #A5A5AB;
+  border-bottom: 1px solid #A5A5AB !important;
   background-color: #1D1F2C1A !important;
 }
-
+.main-header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
 .web-banner {
   width: 100%;
-  height: 500px;
+  height: 600px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
