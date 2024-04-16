@@ -5,9 +5,12 @@ import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
 const props = defineProps({
-  sliders: {
-    type: Object
-  },
+    sliders: {
+        type: Object
+    },
+    logo:{
+      type: Object
+    }
 });
 
 const slickFn = () => {
@@ -75,20 +78,14 @@ onMounted(() => {
         <img :src="`/storage/slider/${slider.slider_image}`">
       </div>
     </div>
-  </div>
-
-  <div class="unstoppable-spaces-top unstoppable-middle">
-    <img src="/images/unstoppable-bw.png" alt="">
-  </div>
-
-  <div class="unstoppable-spaces-top welcome-section">
-    <!-- <div class="container-fluid"> -->
-    <div class="welcome-content">
-      <h2>Welcome to UNSTOPPABLE</h2>
-      <p>We are an job search and immigration services firm specializing in the digital processing of job searches and
-        related immigration services for skilled workers. Our aim is to fully digitize the job search and immigration
-        process in every country in the world. for skilled workers. UNSTOPPABLE best describe the two founders but also
-        the vision for the firm to make everything possible our clients aim for.</p>
+    <div class="uns">
+    <div class="unstoppable-middle">
+      <img :src="`/storage/logo/${logo.logo_image}`" alt="">
+    </div>
+    <div class="unstopable-log">
+      <h1>{{logo.logo_heading}}</h1>
+      <h3>{{logo.logo_description}}</h3>
+    </div>
     </div>
 
     <div class=" container-fluid px-0 mt-4">
