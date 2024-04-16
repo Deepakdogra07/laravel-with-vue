@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditHomePageController;
@@ -73,6 +74,16 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::post('/home-page/update', [EditHomePageController::class, 'update'])->name('home-page.update');
     Route::get('/home-page/{id}', [EditHomePageController::class, 'show'])->name('home-page.show');
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
+
+    Route::get('/edit-logo', [EditHomePageController::class, 'logo_index'])->name('edit-logo');
+    Route::get('/edit-logo/create', [EditHomePageController::class, 'logo_create'])->name('edit-logo.create');
+    Route::post('/edit-logo/store', [EditHomePageController::class, 'logo_store'])->name('edit-logo.store');
+    Route::get('/edit-logo/edit/{id}', [EditHomePageController::class, 'logo_edit'])->name('edit-logo.edit');
+    Route::post('/edit-logo/update', [EditHomePageController::class, 'logo_update'])->name('edit-logo.update');
+    Route::get('/edit-logo/delete/{id}', [EditHomePageController::class, 'logo_delete'])->name('edit-logo.delete');
+    // Route::resource('/test-123',EditHomePageController::class);
+    Route::resource('category',CategoriesController::class);
+
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
     // Route::put('/pages/update/{id}', [PagesController::class, 'updatePages'])->name('pages.update-pages');

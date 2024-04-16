@@ -8,6 +8,9 @@ const props = defineProps({
     sliders: {
         type: Object
     },
+    logo:{
+      type: Object
+    }
 });
 
 const slickFn = () => {
@@ -47,8 +50,14 @@ onMounted(() => {
         </div>  
       </div>
     </div>
+    <div class="uns">
     <div class="unstoppable-middle">
-      <img src="/images/unstoppable-bw.png" alt="">
+      <img :src="`/storage/logo/${logo.logo_image}`" alt="">
+    </div>
+    <div class="unstopable-log">
+      <h1>{{logo.logo_heading}}</h1>
+      <h3>{{logo.logo_description}}</h3>
+    </div>
     </div>
 
   <Footer />

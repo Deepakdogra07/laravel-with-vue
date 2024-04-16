@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 
 const props = defineProps({
     slider: {

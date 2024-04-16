@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\Logo;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -81,5 +82,63 @@ class EditHomePageController extends Controller
         $slider = Slider::findOrFail($id);
         $slider->forceDelete();
         return to_route('edit-home-page',['status'=>true , 'message' => 'Data Deleted successfully!']);
+    }
+
+    public function logo_index(Request $request){
+        $logos = Logo::all();
+        if($request->has('status')){
+            $msg = $request->has('message') ? $request->message : null;
+        return Inertia::render('Admin/Logo/Index',compact("logos","msg"));
+        }
+        return Inertia::render('Admin/Logo/Index',compact("logos"));
+    }
+    public function logo_create(){
+        return Inertia::render('Admin/Logo/Create');
+    }
+    public function logo_store(Request $request){
+        $validator = Validator::make($request->all(),[
+            'logo_image' => 'required|image',
+            'logo_heading' => 'required',
+            'logo_description' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator->errors());
+        }
+        $logo = new Logo();
+        $logo->logo_heading = $request->logo_heading;
+        $logo->logo_description = $request->logo_description;
+        if ($request->hasFile('logo_image')) {
+            $image = $request->file('logo_image');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+            $logo->logo_image = $name;
+        }
+        $logo->save();
+        return to_route('edit-logo',['status'=>true , 'message' => 'Data Updated successfully!']);
+    }
+    public function logo_edit($id){
+        $logo = Logo::where('id',$id)->first();
+        // dd($logo);
+        return Inertia::render('Admin/Logo/Edit',["logo"=>$logo]);
+    }
+    public function logo_update(Request $request){
+        $logo = Logo::findOrFail($request->id);
+
+        if ($request->hasFile('logoImage') && ($logo->logo_image != $request->logoImage)) {
+            $image = $request->file('logoImage');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+            $logo->logo_image = $name;
+        }
+        $logo->logo_heading = $request->logo_heading;
+        $logo->logo_description = $request->logo_description;
+        $logo->update();
+        return to_route('edit-logo',['status'=>true , 'message' => 'Data Updated successfully!']);
+    }
+    public function logo_delete($id){
+        $logo = Logo::findOrFail($id);
+        $logo->forceDelete();
+        return to_route('edit-logo',['status'=>true , 'message' => 'Data Deleted successfully!']);
     }
 }

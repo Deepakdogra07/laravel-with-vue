@@ -8,7 +8,7 @@ import 'vue-toastify/index.css';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/index.js';
 import DataTablesLib from 'datatables.net';
 import DataTable from 'datatables.net-vue3';
 import Buttons from 'datatables.net-buttons/js/dataTables.buttons.min.js';
