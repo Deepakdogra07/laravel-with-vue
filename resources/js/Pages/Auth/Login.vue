@@ -41,7 +41,7 @@ const submit = () => {
     <Head title="Log in" />
     <div class="login-bg-wrapper">
         <div class="container h-100">
-            <div class="row align-items-center h-100">
+            <div class="row align-items-center justify-center h-100">
                 <div class="col-md-8 col-lg-6">
                     <div class="w-full">
                         <h1 class="mb-4 text-blue">Login</h1>
@@ -51,8 +51,8 @@ const submit = () => {
                         <form @submit.prevent="submit">
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                                <span class="label label-default">E-mail<span style="color:red"> *</span></span>
-                                <TextInput id="email" type="email" placeholder="Enter e-mail" class="block w-full mt-1"
+                                <span class="label text-label">E-mail<span style="color:red"> *</span></span>
+                                <TextInput id="email" type="email" placeholder="Enter e-mail" class="form-control mt-2"
                                     v-model="form.email" autofocus autocomplete="username" />
                                 <p style="color: red;" v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
                                     Your account is inactive. Please contact the administrator.
@@ -63,13 +63,13 @@ const submit = () => {
                             </div>
                             
                             <div class="mt-4">
-                                <span class="label label-default">Password<span style="color:red"> *</span></span>
+                                <span class="label text-label">Password<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="password" :type="passwordFieldType" placeholder="Enter Password"
-                                        class="block w-full mt-1" v-model="form.password" autocomplete="current-password" />
-                                    <span @click="togglePasswordVisibility">
+                                        class="form-control mt-2" v-model="form.password" autocomplete="current-password" />
+                                    <!-- <span @click="togglePasswordVisibility">
                                         <i :class="eyeIconClass"></i>
-                                    </span>
+                                    </span> -->
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.password" />
                             </div>
@@ -85,10 +85,10 @@ const submit = () => {
                                 </Link>
                             </div>
 
-                            <div class="flex items-center mt-4">
-                                <PrimaryButton class="login-btn" :class="{ 'opacity-25': form.processing }"
+                            <div class="flex items-center mt-4 login-btn-main">
+                                <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
                                     :disabled="form.processing">
-                                    Login
+                                    Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>
                         </form>
