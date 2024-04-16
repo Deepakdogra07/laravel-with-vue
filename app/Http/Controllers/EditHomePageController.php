@@ -123,10 +123,11 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Logo/Edit',["logo"=>$logo]);
     }
     public function logo_update(Request $request){
+
         $logo = Logo::findOrFail($request->id);
 
-        if ($request->hasFile('logoImage') && ($logo->logo_image != $request->logoImage)) {
-            $image = $request->file('logoImage');
+        if ($request->hasFile('logo_image') && ($logo->logo_image != $request->logo_image)) {
+            $image = $request->file('logo_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
             $logo->logo_image = $name;
