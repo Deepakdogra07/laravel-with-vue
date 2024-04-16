@@ -1,28 +1,31 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import {reactive, watch, watchPostEffect } from 'vue';
-import { toast } from 'vue3-toastify';
-import 'vue3-toastify/dist/index.css';
-
+import { reactive } from 'vue';
+import Swal from 'sweetalert2';
 
 const props = defineProps({
+    category:{
+        type : Object
+    },
     errors: {
       type: Object
     }
 });
 
 const form = reactive({
-  category_heading: '',
-  category_image: '',
-
+    id:props.category.id,
+    category_heading: props.category.category_heading,
+    category_image: props.category.category_image,
 })
+
 function submitForm() {
     const formData = new FormData();
+     formData.append('id', form.id);
     formData.append('category_heading', form.category_heading);
     formData.append('category_image', form.category_image);
     // Post data 
-    router.post(route('category.store'), formData)
+    router.post(route('edit-category.update'), formData)
   }
   function handleFileInput(event){
     form.category_image = event.target.files[0]; 
@@ -33,7 +36,7 @@ function submitForm() {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Add Category</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Update Category</h2>
             <div class="button-container">
             </div>
             
@@ -45,10 +48,12 @@ function submitForm() {
                     <div class="container">
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
+                            <input type="hidden" id="categoryId" v-model="category.id">
                             <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category Heading</label>
                             <input type="text" id="categoryHeading" v-model="form.category_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading }}</span> 
                         </div>
+                       
                         <div class="mb-4">
                             <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
                             <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">

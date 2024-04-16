@@ -25,19 +25,20 @@ onMounted( ()=>{
 
 })
 
-    // Edit logo
-    const editlogo= async(id) =>{
-        // router.get(`/edit-logo/edit/${id}`);
+    // Edit category
+    const editcategory= async(id) =>{
+        router.get(route('category.edit',id));
     };
-    // View logo
-    const viewlogo = async(id)=>{
-        // router.get(`/home-page/${id}`)
-    };
-    // Delete logo
-    const deletelogo = async (id) => {
+    // View category
+    // const viewcategory = async(id)=>{
+    //     router.get(route('category.edit',id));
+    // };
+    // Delete category
+    const deletecategory = async (id) => {
+        // router.get(route('category.destroy',id));
         const { value: confirmed } = await Swal.fire({
             title: 'Are you sure?',
-            text: 'You want to Delete Logo Record?',
+            text: 'You want to Delete Category Record?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -47,13 +48,13 @@ onMounted( ()=>{
 
         try {
             if (confirmed) {
-                router.get(`/edit-logo/delete/${id}`);
+                router.delete(route('category.destroy',id));
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
                     text: 'Logo Deleted Successfully',
                 });
-                // location.reload();
+                location.reload();
             } else {
                 Swal.fire({
                     icon: 'info',
@@ -65,12 +66,12 @@ onMounted( ()=>{
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Error Deleting Logo. Please try again.',
+                text: 'Error Deleting Category. Please try again.',
             });
         }
     };
 function getImageUrl(imageName) {
-      return `/storage/logo/${imageName}`;
+      return `/storage/categories/${imageName}`;
     }
 </script>
 
@@ -89,35 +90,33 @@ function getImageUrl(imageName) {
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900">
-                        <!-- <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                        <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th >ID</th>
-                                    <th>Logo Heading</th>
-                                    <th>Logo Description</th>
-                                    <th>Logo Image</th>
+                                    <th>Category Heading</th>
+                                    <th>Category Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="logo in logos" :key="logo.id">
-                                    <td >{{ logo.id }}</td>
-                                    <td>{{ logo.logo_heading }}</td>
-                                    <td>{{ logo.logo_description }}</td>
+                                <tr v-for="category in categories" :key="category.id">
+                                    <td >{{ category.id }}</td>
+                                    <td>{{ category.category_heading }}</td>
                                     <td>
-                                        <img :src="getImageUrl(logo.logo_image)" alt="" srcset="" style="width:100px">
+                                        <img :src="getImageUrl(category.category_image)" alt="" srcset="" style="width:100px">
                                         </td>
                                     <td>
                                         &nbsp;
-                                        <button class="btn btn-primary btn-sm" @click="editlogo(logo.id)"
+                                        <button class="btn btn-primary btn-sm" @click="editcategory(category.id)"
                                            ><i class="bi bi-pencil-square" ></i>  Edit</button>
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deletelogo(logo.id)"
+                                        <button class="btn btn-danger btn-sm" @click="deletecategory(category.id)"
                                             >Delete</button>
                                    </td> 
                                 </tr>
                             </tbody>
-                        </DataTable> -->
+                        </DataTable>
                     </div>
                 </div>
             </div>
