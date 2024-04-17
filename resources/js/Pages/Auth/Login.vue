@@ -1,6 +1,7 @@
 <script setup>
 import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
+import SubHeading from '../Frontend/SubHeading.vue'
 import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -36,9 +37,9 @@ const submit = () => {
 };
 </script>
 <template>
-    <Header class="login-wrapper" />
-
     <Head title="Log in" />
+    <Header class="login-wrapper" />
+    <SubHeading />
     <div class="login-bg-wrapper">
         <div class="container h-100">
             <div class="row align-items-center justify-center h-100">
@@ -54,19 +55,22 @@ const submit = () => {
                                 <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                                 <TextInput id="email" type="email" placeholder="Enter e-mail" class="form-control mt-2"
                                     v-model="form.email" autofocus autocomplete="username" />
-                                <p style="color: red;" v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
+                                <p style="color: red;"
+                                    v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
                                     Your account is inactive. Please contact the administrator.
                                 </p>
-                                <p style="color: red;" v-if="form.errors.email == 'These credentials do not match our records.'">
+                                <p style="color: red;"
+                                    v-if="form.errors.email == 'These credentials do not match our records.'">
                                     These credentials do not match our records.
                                 </p>
                             </div>
-                            
+
                             <div class="mt-4">
                                 <span class="label text-label">Password<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="password" :type="passwordFieldType" placeholder="Enter Password"
-                                        class="form-control mt-2" v-model="form.password" autocomplete="current-password" />
+                                        class="form-control mt-2" v-model="form.password"
+                                        autocomplete="current-password" />
                                     <!-- <span @click="togglePasswordVisibility">
                                         <i :class="eyeIconClass"></i>
                                     </span> -->
@@ -76,12 +80,12 @@ const submit = () => {
 
                             <div class="d-flex align-items-center justify-content-between mt-4">
                                 <label class="flex items-center">
-                                    <Checkbox name="remember" v-model:checked="form.remember" />
-                                    <span class="ml-2 cursor-pointer">Remember Me</span>
+                                    <Checkbox class="remember-me-check" name="remember" v-model:checked="form.remember" />
+                                    <span class="ml-2 cursor-pointer remember-me">Remember Me</span>
                                 </label>
                                 <Link v-if="canResetPassword" :href="route('password.request')"
                                     class="text-lightgreen  hover:text-gray-900">
-                                    Forgot Password?
+                                Forgot Password?
                                 </Link>
                             </div>
 

@@ -1,51 +1,54 @@
 <template>
-   <Header class="login-wrapper" />
-    <Head title="Redefinir senha"/>
-     <div class="login-bg-wrapper">
-        <div class="container h-100">
-            <div class="row align-items-center h-100">
-                <div class="col-md-8 col-lg-6">
-                    <div class="w-full">
-                        <h1 class="mb-4 text-blue"> Redefinir senha</h1>
-                        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-                            {{ status }}
-                        </div>
-        <form @submit.prevent="submit">
-            <div>
-              <!-- <InputLabel for="email" value="Email" class="text-blue"/> -->
-              <span class="label label-default">E-mail<span style="color:red"> *</span></span>
-              <TextInput id="email" type="email"  placeholder="Digite o e-mail" class="mt-1 block w-full" v-model="form.email"  autofocus autocomplete="username"/>
-              <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+  <Header class="login-wrapper" />
 
-            <div class="mt-4">
-              <!-- <InputLabel for="password" value="Password" class="text-blue"/> -->
-              <span class="label label-default">Senha<span style="color:red"> *</span></span>
-              <TextInput id="password" type="password"  placeholder="Digite a senha" class="mt-1 block w-full" v-model="form.password"  autocomplete="new-password"/>
-              <InputError class="mt-2" :message="form.errors.password" />
+  <Head title="Redefinir senha" />
+  <div class="login-bg-wrapper">
+    <div class="container h-100">
+      <div class="row align-items-center justify-center h-100">
+        <div class="col-md-8 col-lg-6">
+          <div class="w-full">
+            <h1 class="mb-4 text-blue"> Reset Password</h1>
+            <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+              {{ status }}
             </div>
+            <form @submit.prevent="submit">
+              <!-- <div>
+                <span class="label text-label">E-mail<span style="color:red"> *</span></span>
+                <TextInput id="email" type="email" placeholder="Digite o e-mail" class="form-control mt-2"
+                  v-model="form.email" autofocus autocomplete="username" />
+                <InputError class="mt-2" :message="form.errors.email" />
+              </div> -->
 
-            <div class="mt-4">
-              <!-- <InputLabel for="password_confirmation" value="Confirm Password" class="text-blue"/> -->
-              <span class="label label-default">Confirme sua senha<span style="color:red"> *</span></span>
-              <TextInput id="password_confirmation" type="password"  placeholder="Digite Confirmar Senha" class="mt-1 block w-full" v-model="form.password_confirmation"  autocomplete="new-password"/>
-              <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
+              <div class="mt-4">
+                <!-- <InputLabel for="password" value="Password" class="text-blue"/> -->
+                <span class="label text-label">New password</span>
+                <TextInput id="password" type="password" placeholder="Enter new password" class="form-control mt-2"
+                  v-model="form.password" autocomplete="new-password" />
+                <InputError class="mt-2" :message="form.errors.password" />
+              </div>
+
+              <div class="mt-4">
+                <!-- <InputLabel for="password_confirmation" value="Confirm Password" class="text-blue"/> -->
+                <span class="label text-label">Confirm Password</span>
+                <TextInput id="password_confirmation" type="password" placeholder="Confirm new password"
+                  class="form-control mt-2" v-model="form.password_confirmation" autocomplete="new-password" />
+                <InputError class="mt-2" :message="form.errors.password_confirmation" />
+              </div>
 
 
 
-            <div class="flex items-center justify-start mt-4">
-              <PrimaryButton class="login-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Redefinir senha
-              </PrimaryButton>
-            </div>
-          </form>
-                    </div>
-                </div>
-            </div>
+              <div class="flex items-center justify-start mt-4 login-btn-main">
+                <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                  Reset Password <span><i class="bi bi-arrow-right"></i></span>
+                </PrimaryButton>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-     <Footer />
+  </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -78,7 +81,8 @@ const submit = () => {
 };
 </script>
 <style scoped>
-    .text-dark-blue {
-    color: #00008b; /* Dark blue color */
+.text-dark-blue {
+  color: #00008b;
+  /* Dark blue color */
 }
 </style>

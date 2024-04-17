@@ -174,13 +174,15 @@ onMounted(() => {
   border-bottom: 1px solid #A5A5AB !important;
   background-color: #1D1F2C1A !important;
 }
-.main-header{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
+
+.main-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
+
 .web-banner {
   width: 100%;
   height: 600px;
@@ -236,9 +238,11 @@ onMounted(() => {
   border: 2px solid #FFFFFF !important;
   background-color: #1A9882 !important;
 }
+
 .welcome-section .slick-dots {
   align-items: center;
 }
+
 .welcome-section .slick-dots li.slick-active button {
   width: 20px !important;
   height: 20px !important;
@@ -246,22 +250,21 @@ onMounted(() => {
 
 .welcome-section .slick-slider {
   padding: 0;
-  /* Adjust the padding as needed */
 }
 
 .welcome-section .slick-slider .slick-slide {
   margin: 0 10px;
-  /* Adjust the margin between slides */
 }
 
 .welcome-section .slick-list {
-  margin-left: -15px; /* Adjust to match the negative margin of .slick-slide */
-  margin-right: -15px;
+  margin-left: -25px;
+  /* Adjust to match the negative margin of .slick-slide */
+  margin-right: -10px;
   overflow: hidden;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
-.welcome-section  .slick-dots {
+.welcome-section .slick-dots {
   position: relative;
   margin-top: 50px;
 }
@@ -269,15 +272,15 @@ onMounted(() => {
 .container-fluid.px-0 {
   padding-left: 0;
   padding-right: 0;
-  overflow: hidden; 
+  overflow: hidden;
   overflow-x: hidden;
 }
 
-.welcome-section  .slick-slide {
+.welcome-section .slick-slide {
   margin-right: 15px;
 }
 
-.welcome-section  .slick-track {
+.welcome-section .slick-track {
   margin-left: 15px;
 }
 </style>
