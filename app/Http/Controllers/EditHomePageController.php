@@ -107,7 +107,7 @@ class EditHomePageController extends Controller
             'video_heading' => 'required',
             'video_subheading' => 'required',
             'video_description' => 'required',
-            'video' => 'required',
+            // 'video' => 'required',
         ]);
 
         if($validator->fails()){
