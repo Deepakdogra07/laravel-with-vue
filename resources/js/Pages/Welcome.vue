@@ -26,7 +26,7 @@ const slickFn = () => {
 
   $('#welcome_slider_').slick({
     arrows: false,
-    centerMode: true,
+    // centerMode: true,
     autoplay: true,
     speed: 2,
     slidesToShow: 3,
@@ -129,24 +129,25 @@ onMounted(() => {
     <!-- </div> -->
   </div>
 
-  <div class="unstoppable-spaces-bottom-twice countries-section">
+  <div class="unstoppable-spaces-top countries-section">
     <div class="welcome-content">
       <h2>Most Interesting Countries With Job Opportunities</h2>
     </div>
-
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
-      <div class="country-content content-left relative">
-        <img class="left-img" src="/images/australia.jpg" alt="">
-        <div class="country-names">
-          <h3>Australia</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+    <div class="container-fluid px-0">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
+        <div class="country-content content-left relative">
+          <img class="left-img" src="/images/australia.jpg" alt="">
+          <div class="country-names">
+            <h3>Australia</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
-      </div>
-      <div class="country-content content-right relative">
-        <img class="right-img" src="/images/new-zealand.jpg" alt="">
-        <div class="country-names">
-          <h3>New Zealand</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+        <div class="country-content content-right relative">
+          <img class="right-img" src="/images/new-zealand.jpg" alt="">
+          <div class="country-names">
+            <h3>New Zealand</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
       </div>
     </div>
@@ -209,12 +210,6 @@ onMounted(() => {
   transform: translateX(-50%);
 }
 
-.welcome-section .slick-dots {
-  /* list-style: none; */
-  /* text-align: center; */
-  bottom: -60px;
-}
-
 .slick-dots li {
   display: inline-block;
   margin: 0 5px;
@@ -257,5 +252,32 @@ onMounted(() => {
 .welcome-section .slick-slider .slick-slide {
   margin: 0 10px;
   /* Adjust the margin between slides */
+}
+
+.welcome-section .slick-list {
+  margin-left: -15px; /* Adjust to match the negative margin of .slick-slide */
+  margin-right: -15px;
+  overflow: hidden;
+  overflow-x: hidden; 
+}
+
+.welcome-section  .slick-dots {
+  position: relative;
+  margin-top: 50px;
+}
+
+.container-fluid.px-0 {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden; 
+  overflow-x: hidden;
+}
+
+.welcome-section  .slick-slide {
+  margin-right: 15px;
+}
+
+.welcome-section  .slick-track {
+  margin-left: 15px;
 }
 </style>

@@ -13,6 +13,9 @@
 body {
     font-family: "Open Sans", sans-serif !important;
 }
+.container-fluid{
+    max-width: 1920px !important;
+}
 h1{
     font-size: 45px !important;
 }
@@ -354,10 +357,10 @@ h2{
     width: 70%;
     margin: 0px auto;
 }
-.welcome-section .slick-track{
+/* .welcome-section .slick-track{
     display: flex !important;
     gap: 20px !important;
-}
+} */
 .login-section-mob{
     display: none;
 }
@@ -433,7 +436,12 @@ h2{
     .unstoppable-spaces-top-special{
         padding: 40px 0;
     }
-    
+    .unstoppable-spaces-bottom-twice{
+        margin-top: 20px;
+    }
+    .welcome-section .slick-dots{
+        margin-top: 30px !important;
+    }
 }
 
 @media (max-width: 576px){
