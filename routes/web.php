@@ -11,7 +11,7 @@ use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditHomePageController;
 use App\Http\Controllers\TestimonialsController;
- 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +73,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/home-page/edit/{id}', [EditHomePageController::class, 'edit'])->name('home-page.edit');
     Route::post('/home-page/update', [EditHomePageController::class, 'update'])->name('home-page.update');
     Route::get('/home-page/{id}', [EditHomePageController::class, 'show'])->name('home-page.show');
+
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
 
     Route::get('/edit-logo', [EditHomePageController::class, 'logo_index'])->name('edit-logo');
@@ -82,7 +83,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::post('/edit-logo/update', [EditHomePageController::class, 'logo_update'])->name('edit-logo.update');
     Route::get('/edit-logo/delete/{id}', [EditHomePageController::class, 'logo_delete'])->name('edit-logo.delete');
     // Route::resource('/test-123',EditHomePageController::class);
-    Route::resource('category',CategoriesController::class);
+    Route::resource('category', CategoriesController::class);
 
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
@@ -95,6 +96,14 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
 
 
 });
+
+Route::get('/job-listing', function () {
+    return inertia('Frontend/JobSection/JobListing');
+})->name("job.listing");
+
+Route::get('/view-job', function () {
+    return inertia('Frontend/JobSection/ViewJobs');
+})->name("view.job");
 
 
 Route::get('/dashboard', [DashboardController::class, 'dashboardData'])
@@ -114,5 +123,3 @@ require __DIR__ . '/auth.php';
 Route::get('/layouts', function () {
     return inertia('Frontend/Layouts/sidebar');
 });
-
-
