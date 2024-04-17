@@ -5,14 +5,16 @@ import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
 const props = defineProps({
-  sliders: {
-    type: Object
-  },
-  logo: {
-    type: Object
-  }
+    sliders: {
+        type: Object
+    },
+    logo:{
+      type: Object
+    },
+    categories:{
+      type: Object
+    }
 });
-
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
@@ -83,47 +85,19 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class=" container-fluid px-0 mt-4 ">
-      <div id="welcome_slider_" class="welcome-section">
-        <div class="image_for_Card ">
-          <img src="/images/web-banner.png" alt="">
+    <div class=" container-fluid px-0 mt-4">
+      <div id="welcome_slider_">
+
+        <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
+          <img :src="`storage/categories/`+category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
             <div class="slider-profile-img">
-              <img src="/images/profile1.jpg" alt="">
+              <img :src="`storage/categories/`+category.category_image"  alt="">
             </div>
-            <p class="mb-0">Engineering</p>
+            <p class="mb-0">{{category.category_heading}}</p>
           </div>
         </div>
-        <div class="image_for_Card ">
-          <img src="/images/australia.jpg" alt="">
-          <div class="slider-profile-name d-flex gap-3 align-items-center">
-            <div class="slider-profile-img">
-              <img src="/images/profile1.jpg" alt="">
-            </div>
-            <p class="mb-0">Hospitality worker</p>
-          </div>
-        </div>
-        <div class="image_for_Card ">
-          <img src="/images/web-banner3.png" alt="">
-          <div class="slider-profile-name d-flex gap-3 align-items-center">
-            <div class="slider-profile-img">
-              <img src="/images/profile1.jpg" alt="">
-            </div>
-            <p class="mb-0">Health & Public Services</p>
-          </div>
-        </div>
-        <div class="image_for_Card ">
-          <img src="/images/web-banner2.png" alt="">
-          <div class="slider-profile-name d-flex gap-3 align-items-center">
-            <div class="slider-profile-img">
-              <img src="/images/profile1.jpg" alt="">
-            </div>
-            <p class="mb-0">Health & Public Services</p>
-          </div>
-        </div>
-        <div class="image_for_Card">
-          <img src="/images/web-banner3.png" alt="">
-        </div>
+        
       </div>
     </div>
     <!-- </div> -->

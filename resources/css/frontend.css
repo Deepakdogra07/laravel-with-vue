@@ -615,3 +615,14 @@ h2 {
         justify-content: space-between;
     }
 }
+
+.unstopable-log{
+    text-align: center;
+}
+
+
+.table-responsive {
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+  

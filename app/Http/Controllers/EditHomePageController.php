@@ -16,13 +16,13 @@ class EditHomePageController extends Controller
         $sliders = Slider::get();
         if($request->has('status')){
             $msg = $request->has('message') ? $request->message : null;
-        return Inertia::render('Admin/index',compact("sliders","msg"));
+        return Inertia::render('Admin/Slider/index',compact("sliders","msg"));
         }
-        return Inertia::render('Admin/index',compact("sliders"));
+        return Inertia::render('Admin/Slider/index',compact("sliders"));
     }
 
     public function create(){
-        return Inertia::render('Admin/create');
+        return Inertia::render('Admin/Slider/create');
     }
     public function store(Request $request){
         
@@ -57,7 +57,7 @@ class EditHomePageController extends Controller
     }
     public function edit($id){
         $slider = Slider::where('id',$id)->first();
-        return Inertia::render('Admin/edit',compact("slider"));
+        return Inertia::render('Admin/Slider/edit',compact("slider"));
     }
     public function update(Request $request){
         $slider = Slider::findOrFail($request->id);
@@ -76,7 +76,7 @@ class EditHomePageController extends Controller
     }
     public function show($id){
         $slider = Slider::findOrFail($id);
-        return Inertia::render('Admin/show',compact("slider"));
+        return Inertia::render('Admin/Slider/show',compact("slider"));
     }
     public function delete($id){
         $slider = Slider::findOrFail($id);
@@ -100,6 +100,14 @@ class EditHomePageController extends Controller
             'logo_image' => 'required|image',
             'logo_heading' => 'required',
             'logo_description' => 'required',
+            'country_1_name' => 'required',
+            'country_1_image' => 'required|image',
+            'country_2_name' => 'required',
+            'country_2_image' => 'required|image',
+            'video_heading' => 'required',
+            'video_subheading' => 'required',
+            'video_description' => 'required',
+            'video' => 'required',
         ]);
 
         if($validator->fails()){
@@ -113,6 +121,24 @@ class EditHomePageController extends Controller
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
             $logo->logo_image = $name;
+        }
+        if ($request->hasFile('country_1_image')) {
+            $image = $request->file('country_1_image');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+            $logo->country_1_image = $name;
+        }
+        $logo->country_1_name = $request->country_1_name;
+        $logo->country_2_name = $request->country_2_name;
+        $logo->video_heading = $request->video_heading;
+        $logo->video_subheading = $request->video_subheading;
+        $logo->video_description = $request->video_description;
+        $logo->video_introduction = $request->video;
+        if ($request->hasFile('country_2_image')) {
+            $image = $request->file('country_2_image');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+            $logo->country_2_image = $name;
         }
         $logo->save();
         return to_route('edit-logo',['status'=>true , 'message' => 'Data Updated successfully!']);
@@ -141,5 +167,8 @@ class EditHomePageController extends Controller
         $logo = Logo::findOrFail($id);
         $logo->forceDelete();
         return to_route('edit-logo',['status'=>true , 'message' => 'Data Deleted successfully!']);
+    }
+    public function other_data(){
+        return to_route('edit-logo');
     }
 }

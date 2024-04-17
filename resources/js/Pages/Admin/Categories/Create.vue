@@ -15,17 +15,24 @@ const props = defineProps({
 const form = reactive({
   category_heading: '',
   category_image: '',
+  category_thumb:'',
+  status:''
 
 })
 function submitForm() {
     const formData = new FormData();
     formData.append('category_heading', form.category_heading);
     formData.append('category_image', form.category_image);
+    formData.append('thumbnail', form.category_thumb);
+    formData.append('status', form.status);
     // Post data 
     router.post(route('category.store'), formData)
   }
   function handleFileInput(event){
     form.category_image = event.target.files[0]; 
+  }
+  function handleFileInput1(event){
+    form.category_thumb = event.target.files[0]; 
   }
 
 </script>
@@ -53,6 +60,16 @@ function submitForm() {
                             <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
                             <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image }}</span> 
+                        </div>
+                        <div class="mb-4">
+                            <label for="category_thumb" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
+                            <input type="file" id="category_thumb" @change="handleFileInput1" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                             <span v-if="props.errors.thumbnail" class="error-message">{{ props.errors.thumbnail }}</span> 
+                        </div>
+                        <div class="mb-4">
+                              <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
+                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2">
+                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>

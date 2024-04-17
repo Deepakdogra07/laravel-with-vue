@@ -74,10 +74,11 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Logo</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Other Data</h2>
             <div class="button-container">
-                <Link :href="route('edit-logo.create')">
-                <button class="btn btn-info">Add Logo</button>
+
+                <Link v-if="logos.length==0" :href="route('edit-logo.create')">
+                <button class="btn btn-info">Add All Data</button>
                 </Link>
             </div>
             
@@ -86,7 +87,7 @@ function getImageUrl(imageName) {
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900">
-                        <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                        <table class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th >ID</th>
@@ -97,8 +98,8 @@ function getImageUrl(imageName) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="logo in logos" :key="logo.id">
-                                    <td >{{ logo.id }}</td>
+                                <tr v-for="(logo,index) in logos" :key="logo.id">
+                                    <td >{{ index+1 }}</td>
                                     <td>{{ logo.logo_heading }}</td>
                                     <td>{{ logo.logo_description }}</td>
                                     <td>
@@ -107,14 +108,14 @@ function getImageUrl(imageName) {
                                     <td>
                                         &nbsp;
                                         <button class="btn btn-primary btn-sm" @click="editlogo(logo.id)"
-                                           ><i class="bi bi-pencil-square" ></i>  Edit</button>
+                                           ><i class="fas fa-edit" ></i></button>
                                         &nbsp;
                                         <button class="btn btn-danger btn-sm" @click="deletelogo(logo.id)"
-                                            >Delete</button>
+                                            ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>
                             </tbody>
-                        </DataTable>
+                        </table>
                     </div>
                 </div>
             </div>

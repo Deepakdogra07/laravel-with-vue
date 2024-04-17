@@ -94,25 +94,33 @@ function getImageUrl(imageName) {
                             <thead>
                                 <tr>
                                     <th >ID</th>
+                                    <th >Thumbnail</th>
                                     <th>Category Heading</th>
                                     <th>Category Image</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="category in categories" :key="category.id">
-                                    <td >{{ category.id }}</td>
+                                <tr v-for="(category,index) in categories" :key="category.id">
+                                    <td >{{ index+1 }}</td>
+                                    <td >
+                                         <img :src="`storage/categories/thumbnail/`+(category.thumbnail)" alt="" srcset="" style="width:100px">
+                                    </td>
                                     <td>{{ category.category_heading }}</td>
                                     <td>
                                         <img :src="getImageUrl(category.category_image)" alt="" srcset="" style="width:100px">
                                         </td>
+                                    <td :style="{ color: (category.status == 0) ? 'red' : 'green' }">
+                                        {{ (category.status == 0) ?"Inactive" : "Active" }}
+                                    </td>
                                     <td>
                                         &nbsp;
                                         <button class="btn btn-primary btn-sm" @click="editcategory(category.id)"
-                                           ><i class="bi bi-pencil-square" ></i>  Edit</button>
+                                           ><i class="fas fa-edit" ></i></button>
                                         &nbsp;
                                         <button class="btn btn-danger btn-sm" @click="deletecategory(category.id)"
-                                            >Delete</button>
+                                            ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>
                             </tbody>

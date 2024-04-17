@@ -22,6 +22,7 @@ class CategoriesController extends Controller
       $validator = Validator::make($request->all(),[
          'category_image' => 'required|image',
          'category_heading' => 'required',
+         'thumbnail' => 'required|image',
      ]);
      if ($validator->fails()) {
          return redirect()->back()->withErrors($validator)->withInput();
@@ -34,6 +35,13 @@ class CategoriesController extends Controller
       Storage::disk('public')->put('categories/'.$name, file_get_contents($image));
       $category->category_image = $name;
    }
+   if ($request->hasFile('thumbnail')) {
+      $image = $request->file('thumbnail');
+      $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+      Storage::disk('public')->put('categories/thumbnail/'.$name, file_get_contents($image));
+      $category->thumbnail = $name;
+   }
+   $category->status = ($request->status == "true") ? 1 :0;
    $category->save();
    return to_route('category.index',['status'=>true , 'message' => 'Data Added successfully!']);
 
@@ -42,8 +50,33 @@ class CategoriesController extends Controller
     $category = Category::where('id',$id)->first();
     return Inertia::render('Admin/Categories/Edit',compact("category"));
    }
-   public function update(Request $request){
-    
+   public function update(Request $request,$id){
+    $validator = Validator::make($request->all(),[
+      'category_image' => 'required',
+      'category_heading' => 'required',
+      'thumbnail' => 'required',
+    ]);
+   if ($validator->fails()) {
+         return redirect()->back()->withErrors($validator)->withInput();
+   }
+   $category = Category::findOrFail($id);
+   if($request->thumbnail != $category->thumbnail){
+         $image = $request->file('thumbnail');
+         $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+         Storage::disk('public')->put('categories/thumbnail/'.$name, file_get_contents($image));
+         $category->thumbnail = $name;
+   }
+   if($request->category_image != $category->category_image){
+         $image = $request->file('category_image');
+         $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+         Storage::disk('public')->put('categories/'.$name, file_get_contents($image));
+         $category->category_image = $name;
+   }
+   $category->category_heading = $request->category_heading;
+   $category->status = ($request->status == "true") ? 1 : 0;
+   $category->save();
+   return to_route('category.index',['status'=>true , 'message' => 'Data Updated successfully!']);
+
    }
    public function destroy($id){
      

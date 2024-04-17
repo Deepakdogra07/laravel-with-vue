@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
+
 const props = defineProps({
     sliders: {
         type: Array
@@ -22,8 +23,13 @@ onMounted( ()=>{
         theme: 'dark',
       });
     }
-
 })
+const options = {
+    searching: false,
+    lengthChange: false, 
+    paging: false ,
+    sorting:false
+};
 
     // Edit Slider
     const editSlider= async(id) =>{
@@ -69,17 +75,18 @@ onMounted( ()=>{
             });
         }
     };
+    
 function getImageUrl(imageName) {
       return `/storage/slider/${imageName}`;
     }
+    
 </script>
-
 <template>
     <AuthenticatedLayout>
         <template #header>
                 <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Slider</h2>
             <div class="button-container">
-                <Link :href="route('home-page.create')">
+                <Link v-if="sliders.length<5" :href="route('home-page.create')">
                 <button class="btn btn-info">Add Slider</button>
                 </Link>
             </div>
@@ -88,39 +95,39 @@ function getImageUrl(imageName) {
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900">
-                        <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                    <div class="p-6 text-black-900 table-responsive ">
+                       <DataTable class="display" :options="options" style="border:2px black ;width:100% overflow:hidden">
                             <thead>
                                 <tr>
                                     <th >ID</th>
                                     <th>Slider Name</th>
                                     <th>Slider Heading</th>
-                                    <th>Slider Description</th>
+                                    <th style="width:200px !important;" >Slider Description</th>
                                     <th>Slider Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="slider in sliders" :key="slider.id">
-                                    <td >{{ slider.id }}</td>
+                                <tr v-for="(slider, index) in sliders" :key="slider.id">
+                                    <td >{{ index+1 }}</td>
                                     <td>{{ slider.slider_name }}</td>
                                     <td>{{ slider.slider_heading }}</td>
-                                    <td>{{ slider.slider_description }}</td>
+                                    <td style="width:200px !important;">{{ slider.slider_description }}</td>
                                     <td>
                                         <img :src="getImageUrl(slider.slider_image)" alt="" srcset="" style="width:100px">
                                         </td>
                                     <td>
-                                        <button class="btn btn-info btn-sm"  @click="viewSlider(slider.id)" >View</button>
-                                        &nbsp;
+                                        <!-- <button class="btn btn-info btn-sm"  @click="viewSlider(slider.id)" >View</button> -->
+                                        <!-- &nbsp; -->
                                         <button class="btn btn-primary btn-sm" @click="editSlider(slider.id)"
-                                           ><i class="bi bi-pencil-square" ></i>  Edit</button>
+                                           ><i class="fas fa-edit" ></i>  </button>
                                         &nbsp;
                                         <button class="btn btn-danger btn-sm" @click="deleteSlider(slider.id)"
-                                            >Delete</button>
+                                            ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>
                             </tbody>
-                        </DataTable>
+                       </DataTable>
                     </div>
                 </div>
             </div>
