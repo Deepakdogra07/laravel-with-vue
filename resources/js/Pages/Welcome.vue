@@ -107,21 +107,20 @@ onMounted(() => {
     <div class="welcome-content">
       <h2>Most Interesting Countries With Job Opportunities</h2>
     </div>
-    <div class="container-fluid px-0">
-      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
-        <div class="country-content content-left relative">
-          <img class="left-img" src="/images/australia.jpg" alt="">
-          <div class="country-names">
-            <h3>Australia</h3>
-            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
-          </div>
+
+    <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
+      <div class="country-content content-left relative">
+        <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
+        <div class="country-names">
+          <h3>{{ logo.country_1_name }}</h3>
+          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
         </div>
-        <div class="country-content content-right relative">
-          <img class="right-img" src="/images/new-zealand.jpg" alt="">
-          <div class="country-names">
-            <h3>New Zealand</h3>
-            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
-          </div>
+      </div>
+      <div class="country-content content-right relative">
+        <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
+        <div class="country-names">
+          <h3>{{ logo.country_2_name }}</h3>
+          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
         </div>
       </div>
     </div>
