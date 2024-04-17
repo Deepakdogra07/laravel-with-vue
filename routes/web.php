@@ -11,7 +11,7 @@ use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditHomePageController;
 use App\Http\Controllers\TestimonialsController;
-
+    
 /*
 |--------------------------------------------------------------------------
 | Web Routes
