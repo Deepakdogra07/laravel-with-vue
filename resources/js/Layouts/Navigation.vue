@@ -48,19 +48,7 @@
                 <template #icon>
                   <i class="fa-solid fa-slider"></i>
                 </template>
-                <span class="text-white">Edit Slider</span>
-              </NavLink>
-            </li>
-            <li class="relative px-6 py-3">
-              <NavLink
-                class="text-white"
-                :href="route('edit-logo')"
-                :active="route().current('edit-logo')"
-              >
-                <template #icon>
-                  <i class="fa-solid fa-slider"></i>
-                </template>
-                <span class="text-white">Edit logo/Heading</span>
+                <span class="text-white">Slider</span>
               </NavLink>
             </li>
              <li class="relative px-6 py-3">
@@ -72,7 +60,19 @@
                 <template #icon>
                   <i class="fa-solid fa-slider"></i>
                 </template>
-                <span class="text-white">Edit Categories</span>
+                <span class="text-white">Categories</span>
+              </NavLink>
+            </li>
+             <li class="relative px-6 py-3">
+              <NavLink
+                class="text-white"
+                :href="route('other_data')"
+                :active="route().current('other_data')"
+              >
+                <template #icon>
+                  <i class="fa-solid fa-slider"></i>
+                </template>
+                <span class="text-white">Other Data</span>
               </NavLink>
             </li>
             <!-- Add more <li> elements for additional submenu items -->

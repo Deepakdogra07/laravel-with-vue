@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('category_heading')->nullable();
             $table->string('category_image')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->string('status')->default(0)->comment('0=inactive,1=active');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories_');
+        Schema::dropIfExists('categories');
     }
 };

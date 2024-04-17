@@ -17,19 +17,24 @@ const form = reactive({
     id:props.category.id,
     category_heading: props.category.category_heading,
     category_image: props.category.category_image,
+    thumbnail: props.category.thumbnail,
+    status: props.category.status,
 })
 
 function submitForm() {
-    const formData = new FormData();
-     formData.append('id', form.id);
-    formData.append('category_heading', form.category_heading);
-    formData.append('category_image', form.category_image);
     // Post data 
-    router.post(route('edit-category.update'), formData)
+    router.put(route('category.update',form.id), form)
   }
-  function handleFileInput(event){
-    form.category_image = event.target.files[0]; 
-  }
+ 
+  function updateThumbnailName(type,event) {
+      if(type =="heading"){
+        form.category_heading = event.target.value;
+      }else if(type == 'image'){
+        form.category_image = event.target.files[0];
+      }else if(type == 'thumbnailimage'){
+        form.thumbnail = event.target.files[0];
+      }
+    }
 
 </script>
 
@@ -50,14 +55,29 @@ function submitForm() {
                         <div class="mb-4">
                             <input type="hidden" id="categoryId" v-model="category.id">
                             <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category Heading</label>
-                            <input type="text" id="categoryHeading" v-model="form.category_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="categoryHeading" v-model="form.category_heading"  @input="updateThumbnailName('heading',$event)"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading }}</span> 
                         </div>
                        
                         <div class="mb-4">
-                            <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
-                            <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                             <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image }}</span> 
+       
+                             <img :src="'/storage/categories/' + form.category_image" alt="" style="height:100px">
+                              <label for="category_image" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                {{ form.category_image ? 'Change File' : 'Upload File' }}
+                              </label>
+                              <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*" class="hidden">
+                        </div>
+                        <div class="mb-4">
+                             <img :src="'/storage/categories/thumbnail/' + form.thumbnail" alt="" style="height:100px">
+                              <label for="thumbnail" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                {{ form.thumbnail ? 'Change File' : 'Upload File' }}
+                              </label>
+                              <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)" accept="image/*" class="hidden">
+                        </div>
+                        <div class="mb-4">
+                              <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
+                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2" v-if="(category.status == 1) ?'checked' : 'unchecked'">
+                              <label for="status" class="text-gray-700 text-sm font-bold mb-2" >Status</label>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>

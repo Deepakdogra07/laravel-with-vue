@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Testimonial;
 use App\Models\Slider;
 use App\Models\Logo;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -16,7 +17,8 @@ class HomeController extends Controller
     {
         $sliders = Slider::all();
         $logo = Logo::first();
-        return Inertia::render('Welcome',compact('sliders',"logo"));
+        $categories = Category::get();
+        return Inertia::render('Welcome',compact('sliders',"logo","categories"));
     }
     
 }
