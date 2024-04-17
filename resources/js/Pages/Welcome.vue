@@ -129,13 +129,13 @@ onMounted(() => {
   <div class="unstoppable-spaces-top-special unstoppable-spaces-bottom video-section">
     <div class="container">
       <div class="video-background">
-        <h2 class="mb-3">How Does It Work</h2>
-        <p class="text-center">Watch our video on how the journey is done in our app and get inspired</p>
+        <h2 class="mb-3">{{ logo.video_heading }}</h2>
+        <p class="text-center">{{ logo.video_subheading }}</p>
         <div class="video-play">
           <video src="/images/new-video.mp4"></video>
           <a href=""><i class="bi bi-play-circle-fill play-btn"></i></a>
         </div>
-        <p class="text-center">log your profile now and apply in your country of choise</p>
+        <p class="text-center">{{ logo.video_description }}</p>
       </div>
     </div>
   </div>
