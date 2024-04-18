@@ -82,7 +82,7 @@ const showMenu = () => {
               <Link class="nav-link" aria-current="page" href="#">Home</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="#">For Individuals</Link>
+              <Link class="nav-link" href="/job-listing">For Individuals</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" href="#">For Businesses</Link>
