@@ -114,6 +114,7 @@ Route::get('/dashboard', [DashboardController::class, 'dashboardData'])
 Route::get('/faq', function () {
     return Inertia::render('Frontend/Faqs/index');
 })->name('faq');
+
 Route::get('/testimonials', function () {
     return Inertia::render('Testimonial/alltestimonials');
 });
