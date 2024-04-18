@@ -23,7 +23,7 @@ const form = reactive({
 
 function submitForm() {
     // Post data 
-    router.put(route('category.update',form.id), form)
+    router.put(route('category.update',form.id), form);
   }
  
   function updateThumbnailName(type,event) {

@@ -13,6 +13,9 @@ const props = defineProps({
     },
     categories:{
       type: Object
+    },
+    footer_data:{
+      type: Object
     }
 });
 const slickFn = () => {
@@ -58,7 +61,7 @@ onMounted(() => {
 
 </script>
 <template>
-  <Header />
+  <Header :logo_image="footer_data.logo_image"/>
 
   <div class="banner-section">
     <div id="home_banner">
@@ -86,8 +89,13 @@ onMounted(() => {
     </div>
 
     <div class=" container-fluid px-0 mt-4">
+        <div class="unstopable-log unstoppable-spaces-top ">
+          <div class="container text-center">
+            <h1>{{ logo.category_heading }}</h1>
+            <p>{{ logo.category_subheading }}</p>
+          </div>
+        </div>
       <div id="welcome_slider_">
-
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
           <img :src="`storage/categories/`+category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
@@ -105,7 +113,7 @@ onMounted(() => {
 
   <div class="unstoppable-spaces-top countries-section">
     <div class="welcome-content">
-      <h2>Most Interesting Countries With Job Opportunities</h2>
+      <h2>{{ logo.country_description }}</h2>
     </div>
 
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
@@ -132,14 +140,17 @@ onMounted(() => {
         <h2 class="mb-3">{{ logo.video_heading }}</h2>
         <p class="text-center">{{ logo.video_subheading }}</p>
         <div class="video-play">
-          <video src="/images/new-video.mp4"></video>
-          <a href=""><i class="bi bi-play-circle-fill play-btn"></i></a>
+          <video controls autoplay>
+          <source :src="'/storage/videos/' + logo.video_introduction" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+          <!-- <a href=""><i class="bi bi-play-circle-fill play-btn"></i></a> -->
         </div>
         <p class="text-center">{{ logo.video_description }}</p>
       </div>
     </div>
   </div>
-  <Footer />
+  <Footer  :footer_data="footer_data" />
 </template>
 
 <style>

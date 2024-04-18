@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditHomePageController;
+use App\Http\Controllers\FooterDataController;
 use App\Http\Controllers\TestimonialsController;
     
 /*
@@ -85,6 +86,8 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/edit-logo/delete/{id}', [EditHomePageController::class, 'logo_delete'])->name('edit-logo.delete');
     // Route::resource('/test-123',EditHomePageController::class);
     Route::resource('category',CategoriesController::class);
+    Route::post('/update-links/update',[FooterDataController::class,'update'])->name('update-link-update');
+    Route::resource('update-links',FooterDataController::class);
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
     // Route::put('/pages/update/{id}', [PagesController::class, 'updatePages'])->name('pages.update-pages');

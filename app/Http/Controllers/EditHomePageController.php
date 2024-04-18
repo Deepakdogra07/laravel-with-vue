@@ -97,9 +97,9 @@ class EditHomePageController extends Controller
     }
     public function logo_store(Request $request){
         $validator = Validator::make($request->all(),[
-            'logo_image' => 'required|image',
-            'logo_heading' => 'required',
-            'logo_description' => 'required',
+            'image_image' => 'required|image',
+            'image_heading' => 'required',
+            'image_description' => 'required',
             'country_1_name' => 'required',
             'country_1_image' => 'required|image',
             'country_2_name' => 'required',
@@ -107,20 +107,29 @@ class EditHomePageController extends Controller
             'video_heading' => 'required',
             'video_subheading' => 'required',
             'video_description' => 'required',
-            // 'video' => 'required',
+            'video' => 'required|file|mimes:mp4|max:50000',
+            'country_description'=>'required',
+            'category_heading'=>'required',
+            'category_subheading'=>'required',
         ]);
 
         if($validator->fails()){
             return back()->withErrors($validator->errors());
         }
         $logo = new Logo();
-        $logo->logo_heading = $request->logo_heading;
-        $logo->logo_description = $request->logo_description;
-        if ($request->hasFile('logo_image')) {
-            $image = $request->file('logo_image');
+        $logo->logo_heading = $request->image_heading;
+        $logo->logo_description = $request->image_description;
+        if ($request->hasFile('image_image')) {
+            $image = $request->file('image_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
             $logo->logo_image = $name;
+        }
+        if ($request->hasFile('video')) {
+            $image = $request->file('video');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('videos/'.$name, file_get_contents($image));
+            $logo->video_introduction = $name;
         }
         if ($request->hasFile('country_1_image')) {
             $image = $request->file('country_1_image');
@@ -128,12 +137,14 @@ class EditHomePageController extends Controller
             Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
             $logo->country_1_image = $name;
         }
+        $logo->country_description = $request->country_description;
+        $logo->category_heading = $request->category_heading;
+        $logo->category_subheading = $request->category_subheading;
         $logo->country_1_name = $request->country_1_name;
         $logo->country_2_name = $request->country_2_name;
         $logo->video_heading = $request->video_heading;
         $logo->video_subheading = $request->video_subheading;
         $logo->video_description = $request->video_description;
-        $logo->video_introduction = $request->video;
         if ($request->hasFile('country_2_image')) {
             $image = $request->file('country_2_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -145,22 +156,74 @@ class EditHomePageController extends Controller
     }
     public function logo_edit($id){
         $logo = Logo::where('id',$id)->first();
-        // dd($logo);
         return Inertia::render('Admin/Logo/Edit',["logo"=>$logo]);
     }
     public function logo_update(Request $request){
+        $validator = Validator::make($request->all(),[
+            'image_heading' => 'required',
+            'image_description' => 'required',
+            'country_1_name' => 'required',
+            'country_2_name' => 'required',
+            'video_heading' => 'required',
+            'video_subheading' => 'required',
+            'video_description' => 'required',
+            'country_description'=>'required',
+            'category_heading'=>'required',
+            'category_subheading'=>'required',
 
-        $logo = Logo::findOrFail($request->id);
+        ]);
 
-        if ($request->hasFile('logo_image') && ($logo->logo_image != $request->logo_image)) {
-            $image = $request->file('logo_image');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
-            $logo->logo_image = $name;
+        if($validator->fails()){
+            return back()->withErrors($validator->errors());
         }
-        $logo->logo_heading = $request->logo_heading;
-        $logo->logo_description = $request->logo_description;
-        $logo->update();
+        try{
+            $logo = Logo::findOrFail($request->id);
+            $logo->logo_heading = $request->image_heading;
+            $logo->logo_description = $request->image_description;
+            if($logo->logo_image != $request->image_image){
+                if ($request->hasFile('image_image')) {
+                    $image = $request->file('image_image');
+                    $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                    Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+                    $logo->logo_image = $name;
+            }
+            }
+            if($logo->video_introduction != $request->video){
+                    if ($request->hasFile('video')) {
+                        $image = $request->file('video');
+                        $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                        Storage::disk('public')->put('videos/'.$name, file_get_contents($image));
+                        $logo->video_introduction = $name;
+                    }
+                }
+            if($logo->country_1_image != $request->country_1_image){
+                if ($request->hasFile('country_1_image')) {
+                    $image = $request->file('country_1_image');
+                    $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                    Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+                    $logo->country_1_image = $name;
+                }
+            }
+            $logo->country_description = $request->country_description;
+            $logo->category_heading = $request->category_heading;
+            $logo->category_subheading = $request->category_subheading;
+            $logo->country_1_name = $request->country_1_name;
+            $logo->country_2_name = $request->country_2_name;
+            $logo->video_heading = $request->video_heading;
+            $logo->video_subheading = $request->video_subheading;
+            $logo->video_description = $request->video_description;
+            if($logo->country_2_image != $request->country_2_image){
+                if ($request->hasFile('country_2_image')) {
+                    $image = $request->file('country_2_image');
+                    $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                    Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
+                    $logo->country_2_image = $name;
+                }
+            }
+            $logo->update();
+        }catch(\Exception $e){
+            return back()->withErrors($e->getMessage());
+        }
         return to_route('edit-logo',['status'=>true , 'message' => 'Data Updated successfully!']);
     }
     public function logo_delete($id){

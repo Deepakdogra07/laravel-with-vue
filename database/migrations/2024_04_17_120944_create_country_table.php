@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('logos', function (Blueprint $table) {
+            $table->string('country_description')->nullable();
             $table->string('country_1_name')->nullable();
             $table->string('country_1_image')->nullable();
             $table->string('country_2_name')->nullable();
@@ -20,6 +21,8 @@ return new class extends Migration
             $table->string('video_subheading')->nullable();
             $table->string('video_description')->nullable();
             $table->string('video_introduction')->nullable();
+            $table->string('category_heading')->nullable();
+            $table->string('category_subheading')->nullable();
         });
     }
 
@@ -29,6 +32,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('logos', function (Blueprint $table) {
+            $table->dropColumn('country_description');
             $table->dropColumn('country_1_name');
             $table->dropColumn('country_1_image');
             $table->dropColumn('country_2_name');
@@ -37,6 +41,8 @@ return new class extends Migration
             $table->dropColumn('video_subheading');
             $table->dropColumn('video_description');
             $table->dropColumn('video_introduction');
+            $table->dropColumn('category_heading');
+            $table->dropColumn('category_subheading');
         });
     
     }

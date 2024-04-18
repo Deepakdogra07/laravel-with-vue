@@ -18,20 +18,12 @@ const fetchData = async () => {
   }
 };
 
+const props=defineProps({
+  footer_data : {
+    type:Object
+  }
+})
 
-const phoneNumber = ref('987654321');
-
-onMounted(() => {
-  fetchData();
-
-  axios.get('/get-whatsapp')
-    .then(response => {
-      phoneNumber.value = response.data.whatsappNumber;
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-    });
-});
 
 </script>
 <template>
@@ -41,23 +33,20 @@ onMounted(() => {
       <div class="footer-grid">
         
         <div class="footer-section footer-one">
-          <Link><img src="/images/web-logo.png" alt=""></Link>
-          <p class="white-text mt-3">We are an Job search and immigration services firm specializing in the digital
-            processing of job searches and related immigration services, Our aim is to fully digital the job search and
-            immigration process in every country in the world, for individuals, families businesses, Let us be part of
-            your individuals journey</p>
+          <Link><img :src="`storage/logos/${props.footer_data.logo_image}`" class="h-[100px]" alt=""></Link>
+          <p class="white-text mt-3">{{ props.footer_data.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
             <li>
-              <Link class="social-icons"><i class="fa-brands fa-facebook-f"></i></Link>
+              <a :href="props.footer_data.facebook_url" target="_blank" class="social-icons"><i class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li>
-              <Link class="social-icons"><i class="bi bi-instagram d-flex"></i></Link>
+              <a :href="props.footer_data.instagram_url" target="_blank"  class="social-icons"><i class="bi bi-instagram d-flex"></i></a>
             </li>
             <li>
-              <Link class="social-icons"><i class="fa-brands fa-linkedin-in"></i></Link>
+              <a :href="props.footer_data.linkedin_url" target="_blank"  class="social-icons"><i class="fa-brands fa-linkedin-in"></i></a>
             </li>
             <li>
-              <Link class="social-icons"><i class="fa-brands fa-x-twitter"></i></Link>
+              <a  :href="props.footer_data.twitter_url" target="_blank"  class="social-icons"><i class="fa-brands fa-x-twitter"></i></a>
             </li>
           </ul>
         </div>
@@ -93,15 +82,15 @@ onMounted(() => {
           <h2 class="text-white relative">Our Office</h2>
           <ul class="pl-0 listing-gap">
             <li class="mb-3">
-              <Link href=""><i class="bi bi-telephone-fill"></i> +1300 779 462</Link>
+              <a :href="`tel:${props.footer_data.office_phone}`" ><i class="bi bi-telephone-fill pr-2"></i> {{ props.footer_data.office_phone }}</a>
             </li>
             <li class="mb-3">
-              <Link class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
-              Info@dizonassociates.com.au</Link>
+              <a :href="`mailto:${props.footer_data.office_email}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
+               {{ props.footer_data.office_email }} </a>
             </li>
             <li class="mb-3">
-              <Link class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
-                Level 5 12 clarke St, Sunshine Victoria, Australia 3020 (enter via vicroads building) </Link>
+              <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
+               {{ props.footer_data.office_address }}</a>
             </li>
           </ul>
         </div>
@@ -109,8 +98,13 @@ onMounted(() => {
         <div class="footer-section footer-four">
           <h2 class="text-white relative">Registration</h2>
           <div class="d-flex gap-2 listing-gap">
-            <img src="/images/MembershipLogo.png" alt="">
-            <img src="/images/NewZealandLic.png" alt="">
+            <div class="row">
+                <div v-for="(image, index) in JSON.parse(props.footer_data.certificate_images)"
+                    :key="index" class="col-md-6 mb-2">
+                    <img :src="'/storage/certificates/' + image" alt=""
+                        style="height:150px;">
+                </div>
+            </div>
           </div>
         </div>
       </div>

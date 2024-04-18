@@ -1,12 +1,12 @@
 <template>
  <div class="container-fluid">
    <div class="row ">
-     <div class="col-lg-3 col-md-5 px-0">
+     <div class="col-lg-3 col-md-4 px-0">
        <Navigation />
        <NavigationMobile />
      </div>
 
-     <div class="col-lg-9 col-md-7 px-0">
+     <div class="col-lg-9 col-md-8 px-0">
        <TopMenu />
 
        <main class="">
