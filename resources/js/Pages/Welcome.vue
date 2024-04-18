@@ -80,7 +80,7 @@ onMounted(() => {
       <div class="unstoppable-middle">
         <img :src="`/storage/logo/${logo.logo_image}`" alt="">
       </div>
-      <div class="unstopable-log unstoppable-spaces-top ">
+      <div class="unstopable-log">
         <div class="container text-center">
           <h1>{{ logo.logo_heading }}</h1>
           <p>{{ logo.logo_description }}</p>
@@ -95,7 +95,7 @@ onMounted(() => {
             <p>{{ logo.category_subheading }}</p>
           </div>
         </div>
-      <div id="welcome_slider_">
+      <div id="welcome_slider_" class="welcome-slider">
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
           <img :src="`storage/categories/`+category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
@@ -115,20 +115,21 @@ onMounted(() => {
     <div class="welcome-content">
       <h2>{{ logo.country_description }}</h2>
     </div>
-
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
-      <div class="country-content content-left relative">
-        <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
-        <div class="country-names">
-          <h3>{{ logo.country_1_name }}</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+    <div class="container-fluid">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
+        <div class="country-content content-left relative">
+          <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
+          <div class="country-names">
+            <h3>{{ logo.country_1_name }}</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
-      </div>
-      <div class="country-content content-right relative">
-        <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
-        <div class="country-names">
-          <h3>{{ logo.country_2_name }}</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+        <div class="country-content content-right relative">
+          <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
+          <div class="country-names">
+            <h3>{{ logo.country_2_name }}</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
       </div>
     </div>
