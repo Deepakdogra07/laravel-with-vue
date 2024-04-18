@@ -115,7 +115,7 @@ onMounted(() => {
     <div class="welcome-content">
       <h2>{{ logo.country_description }}</h2>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid px-0">
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
         <div class="country-content content-left relative">
           <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
