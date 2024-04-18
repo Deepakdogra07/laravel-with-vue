@@ -153,7 +153,7 @@ onMounted(() => {
   <Footer  :footer_data="footer_data" />
 </template>
 
-<style>
+<style scoped>
 .main-header .navbar {
   border-bottom: 1px solid #A5A5AB !important;
   background-color: #1D1F2C1A !important;
