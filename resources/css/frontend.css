@@ -59,7 +59,7 @@ h2 {
     z-index: 999;
 } */
 .main-header .navbar {
-    background-color: #01796f !important;
+    background-color: #01796f;
     padding: 15px 0;
 }
 .main-header ul li a {
