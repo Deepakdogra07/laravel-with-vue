@@ -77,7 +77,7 @@ const testimonialedit = (id)=>{
                               <tr>
                                   <th class="d-none">ID</th>
                                   <th>Name</th>
-                                  <!-- <th>Rating</th> -->
+                                  <th>Image</th>
                                   <th>Content</th>
                                   <th>Actions</th>
                               </tr>
@@ -86,7 +86,7 @@ const testimonialedit = (id)=>{
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
                                   <td class="d-none">{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
-                                  <!-- <td>{{ testimonialRecord.rating }}</td> -->
+                                  <td><img :src="`storage/testimonials/${testimonialRecord.image_link}`" alt="" srcset=""></td>
                                   <td>{{ testimonialRecord.content }}</td>
                                 <td>
                                   <div class="d-flex gap-2">

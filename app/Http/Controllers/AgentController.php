@@ -40,7 +40,6 @@ class AgentController extends Controller
             'phone' => 'required|numeric|min:7',
             'password_confirmation' => 'required',
         ]);
-        $referralCode = Str::random(10);
         $textpassword = $request->password;
         $user = User::create(
             [
@@ -50,7 +49,6 @@ class AgentController extends Controller
                 'password' => Hash::make($textpassword),
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'referralcode' => $referralCode,
                 'status' => $request->status,
             ]);
 

@@ -14,9 +14,10 @@
 
                         <form @submit.prevent="submit">
                             <div>
+                                <TextInput name="type" value="business" type="hidden"/>
                                 <!-- <InputLabel class="text-blue" for="name" value="Name" /> -->
-                                <span class="label text-label">Nome<span style="color:red"> *</span></span>
-                                <TextInput id="name" type="text" placeholder="Insira o nome" class="form-control mt-2"
+                                <span class="label text-label">Name<span style="color:red"> *</span></span>
+                                <TextInput id="name" type="text" placeholder="Enter nome" class="form-control mt-2"
                                     v-model="form.name" autofocus autocomplete="name" />
                                 <InputError class="mt-2" :message="form.errors.name" />
                             </div>
@@ -24,14 +25,14 @@
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">E-mail<span style="color:red"> *</span></span>
-                                <TextInput id="email" type="text" placeholder="Digite o e-mail"
+                                <TextInput id="email" type="text" placeholder="Enter e-mail"
                                     class="form-control mt-2" v-model="form.email" autocomplete="username" />
                                 <InputError class="mt-2" :message="form.errors.email" />
                             </div>
 
                             <div class="mt-4">
-                                <span class="label text-label">Senha<span style="color:red"> *</span></span>
-                                <TextInput id="password" type="password" placeholder="Digite a senha"
+                                <span class="label text-label">Password<span style="color:red"> *</span></span>
+                                <TextInput id="password" type="password" placeholder="Enter Password"
                                     class="form-control mt-2" v-model="form.password" autocomplete="new-password" />
                                 <InputError class="mt-2" :message="form.errors.password" />
 
@@ -40,18 +41,18 @@
 
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="password_confirmation" value="Confirm Password" /> -->
-                                <span class="label text-label">Confirme sua senha<span style="color:red">
+                                <span class="label text-label">Confirm Password<span style="color:red">
                                         *</span></span>
                                 <TextInput id="password_confirmation" type="password"
-                                    placeholder="Digite Confirmar Senha" class="form-control mt-2"
+                                    placeholder="Confirm Password" class="form-control mt-2"
                                     v-model="form.password_confirmation" autocomplete="new-password" />
                                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
                             </div>
 
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="phone" value="Phone" /> -->
-                                <span class="label text-label">Telefone<span style="color:red"> *</span></span>
-                                <TextInput id="phone" type="text" placeholder="Digite o número de telefone"
+                                <span class="label text-label">Telephone<span style="color:red"> *</span></span>
+                                <TextInput id="phone" type="text" placeholder="Enter phone"
                                     class="form-control mt-2" v-model="form.phone" autocomplete="phone" />
                                 <InputError class="mt-2" :message="form.errors.phone" />
                             </div>

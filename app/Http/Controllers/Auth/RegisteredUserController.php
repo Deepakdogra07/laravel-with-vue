@@ -32,56 +32,53 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $validatedData = $request->validate([
 
-            'name' => 'required|string|max:255|alpha',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:' . User::class,
 
             // 'password' => ['required', 'confirmed', 'min:6', 'max:8'],
             'password' => ['required', 'confirmed', 'min:4'],
             // 'address' => 'required',
-            'phone' => 'required|digits:11',
+            'phone' => 'required|digits:10',
             'checkbox' => 'accepted',
         ], [
-            'name.alpha' => 'O campo do nome deve conter apenas letras.',
             'checkbox.accepted' => 'Você deve concordar com os Termos de Uso e a Política de Privacidade.',
-            'name.required' => 'Este campo é obrigatório.',
-            'name.string' => 'O nome deve ser uma string.',
-            'name.max' => 'O nome não deve exceder 255 caracteres.',
-            'password.regex'=>'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um dígito e um caractere especial.',
-            'email.required' => 'Este campo é obrigatório.',
-            'email.string' => 'O e-mail deve ser uma string.',
-            'email.lowercase' => 'O e-mail deve estar em letras minúsculas.',
-            'email.email' => 'Por favor insira um endereço de e-mail válido.',
-            'email.max' => 'O e-mail não deve exceder 255 caracteres.',
-            'email.unique' => 'O endereço de e-mail já está em uso.',
+            'name.required' => 'Name is required.',
+            'name.string' => 'Name should only in alphabets.',
+            'name.max' => 'Name should not exceeds 255 characters.',
+            'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one digit and one special character.',
+            'email.required' => 'This field is required.',
+            'email.string' => 'The email must be a string.',
+            'email.lowercase' => 'The email must be in lowercase letters.',
+            'email.email' => 'Please enter a valid email address.            ',
+            'email.max' => 'Email must not exceed 255 characters.',
+            'email.unique' => 'The email address is already in use.',
 
-            'password.required' => 'Este campo é obrigatório.',
-            'password.confirmed' => 'A confirmação da senha não corresponde.',
-            'password.min' => 'A senha deve ter pelo menos 4 caracteres.',
-            'password.max' => 'A senha não deve exceder 8 caracteres.',
+            'password.required' => 'The password is required.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password.min' => 'Password must be at least 4 characters long.',
+            'password.max' => 'Password must not exceed 8 characters.',
 
-            'dob.required' => 'Este campo é obrigatório.',
+            'dob.required' => 'This field is required.',
 
-            'address.required' => 'Este campo é obrigatório.',
+            'address.required' => 'This field is required.',
 
-            'phone.required' => 'Este campo é obrigatório.',
-            'phone.digits' => 'O número de telefone deve ter exatamente 11 dígitos.',
+            'phone.required' => 'This field is required.',
+            'phone.digits' => 'The phone number must be exactly 10 digits long.',
 
-            'gender.required' => 'Este campo é obrigatório.',
+            'gender.required' => 'This field is required.',
 
-            'interests.required' => 'Este campo é obrigatório.',
+            'interests.required' => 'This field is required.',
         ]);
 
-        $referralCode = Str::random(10);
         $textpassword = $request->password;
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($textpassword),
-            // 'address' => $request->address,
             'phone' => $request->phone,
-            'referralcode' => $referralCode,
             'user_type' => "3",
             'status' => 1,
         ]);

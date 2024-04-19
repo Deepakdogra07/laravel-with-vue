@@ -53,10 +53,10 @@ function copyReferralCode() {
            <div class="d-flex justify-between w-100">
             <h3>Profile</h3>
 
-                <div v-if="auth_type == 1">
+                <!-- <div v-if="auth_type == 1">
                     <button @click="copyReferralCode" class="copy-code">
                 <i class="fa-solid fa-copy"></i> &nbsp;Copy discount code</button>
-                </div>
+                </div> -->
 
                 <!-- <div v-if="auth_type == 2">
                     <button @click="copyReferralCode" class="copy-code">

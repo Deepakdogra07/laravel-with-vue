@@ -46,9 +46,7 @@ class TestimonialsController extends Controller
         if($validate->fails()){
             return back()->withErrors($validate->errors())->withInput();
         }
-        // dd($request->all());
-            
-// dd($request->all());
+        
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
             $testimonial->content = $request->content;
@@ -93,11 +91,9 @@ class TestimonialsController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            // 'rating' => 'required|numeric|gt:0|lt:6',
             'content' => 'required',
         ],[
-            'name.required' => 'Title is must.',
-            'rating.required' => 'Link is must.',
+            'name.required' => 'Name is must.',
             'content.required' => 'Content is must.',
         ]);
 
@@ -109,8 +105,20 @@ class TestimonialsController extends Controller
            if($testimonialUpdate){
                 $testimonialUpdate->name = $request->name;
                 $testimonialUpdate->content = $request->content;
-                $testimonialUpdate->update();
-           }
+                
+            if ($request->hasFile('image') && $testimonialUpdate->image_link != $request->image ) {
+                $image = $request->file('image');
+                $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
+                $testimonialUpdate->image_link = $name;
+                }
+            if ($request->hasFile('video')) {
+                $image = $request->file('video');
+                $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
+                $testimonialUpdate->video_link = $name;
+            }
+        }
 
            return to_route('testimonial.index');
     }

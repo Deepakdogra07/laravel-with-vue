@@ -16,6 +16,8 @@ const form = useForm({
   name: props.editTestimonial ? props.editTestimonial.name || '' : '',
 //   rating: props.editTestimonial ? props.editTestimonial.rating || '' : '',
   content: props.editTestimonial ? props.editTestimonial.content || '' : '',
+  image: props.editTestimonial?.image_link,
+  video: props.editTestimonial?.video_link,
 });
 
 
@@ -31,6 +33,11 @@ const update = () => {
       },
     });
 };
+function update_all_data(type,event) {
+  if(type == 'image'){
+        form.image = event.target.files[0];
+      }
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -58,6 +65,19 @@ const update = () => {
                               <label for="content">Content<span class="text-danger">*</span></label>
                                  <textarea id="content" v-model="form.content" placeholder="Enter Content" class="block w-full mt-1"></textarea>
                                 <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
+                        </div>
+                        <div class="mt-4 col-md-6">
+                          <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
+                                <img :src="'/storage/testimonials/' + form.image" alt="" style="height:250px">
+                                <label for="logoImage" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    {{ form.image ? 'Change File' : 'Upload File' }}
+                                </label>
+                              <input type="file" id="logoImage" @change="update_all_data('image',$event)" accept="image/*" class="hidden">
+                        </div>
+                        <div class="mt-4 col-md-6">
+                              <label for="name">Video</label>
+                              <input  type="file"  accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
+                              <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
                         </div>
 
                         <div class="mt-4 col-md-12">
