@@ -21,9 +21,12 @@ const togglePasswordVisibility = () => {
     showPassword.value = !showPassword.value;
 };
 
-defineProps({
+const props = defineProps({
     canResetPassword: Boolean,
     status: String,
+    footer_data :{
+        type:Object
+    }
 });
 const form = useForm({
     email: '',
@@ -31,14 +34,13 @@ const form = useForm({
     remember: false
 });
 const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
+    console.log('herererer',route('login.post'))
+    form.post(route('login.post'));
 };
 </script>
 <template>
     <Head title="Log in" />
-    <Header class="login-wrapper" />
+    <Header class="login-wrapper" :logo_image="props.footer_data.logo_image"/>
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="container h-100">
@@ -47,14 +49,14 @@ const submit = () => {
                     <div class="w-full">
                         <h1 class="mb-4 text-blue">Login</h1>
                         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-                            <h3>status</h3>
+                            <h3>Status</h3>
                         </div>
                         <form @submit.prevent="submit">
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                                 <TextInput id="email" type="email" placeholder="Enter e-mail" class="form-control mt-2"
-                                    v-model="form.email" autofocus autocomplete="username" />
+                                    v-model="form.email" autofocus/>
                                 <p style="color: red;"
                                     v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
                                     Your account is inactive. Please contact the administrator.
@@ -69,8 +71,7 @@ const submit = () => {
                                 <span class="label text-label">Password<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="password" :type="passwordFieldType" placeholder="Enter Password"
-                                        class="form-control mt-2" v-model="form.password"
-                                        autocomplete="current-password" />
+                                        class="form-control mt-2" v-model="form.password"/>
                                     <!-- <span @click="togglePasswordVisibility">
                                         <i :class="eyeIconClass"></i>
                                     </span> -->
@@ -88,7 +89,6 @@ const submit = () => {
                                 Forgot Password?
                                 </Link>
                             </div>
-
                             <div class="flex items-center mt-4 login-btn-main">
                                 <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
                                     :disabled="form.processing">
@@ -101,5 +101,5 @@ const submit = () => {
             </div>
         </div>
     </div>
-    <Footer />
+    <Footer :footer_data="props.footer_data"/>
 </template>

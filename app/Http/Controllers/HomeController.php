@@ -20,6 +20,9 @@ class HomeController extends Controller
         $logo = Logo::first();
         $categories = Category::get();
         $footer_data = FooterData::first();
+        if(!$footer_data){
+            return redirect()->route('login');
+        }
         return Inertia::render('Welcome',compact('sliders',"logo","categories","footer_data"));
     }
     

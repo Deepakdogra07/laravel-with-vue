@@ -20,7 +20,8 @@ const fetchData = async () => {
 
 const props=defineProps({
   footer_data : {
-    type:Object
+    type: Object,
+    default: null
   }
 })
 
@@ -33,20 +34,20 @@ const props=defineProps({
       <div class="footer-grid">
         
         <div class="footer-section footer-one">
-          <Link><img :src="`storage/logos/${props.footer_data.logo_image}`" class="h-[100px]" alt=""></Link>
-          <p class="white-text mt-3">{{ props.footer_data.logo_description }}</p>
+          <Link><img :src="`storage/logos/${props?.footer_data?.logo_image}`" class="h-[100px]" alt=""></Link>
+          <p class="white-text mt-3">{{ props?.footer_data?.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
             <li>
-              <a :href="props.footer_data.facebook_url" target="_blank" class="social-icons"><i class="fa-brands fa-facebook-f"></i></a>
+              <a :href="props?.footer_data?.facebook_url" target="_blank" class="social-icons"><i class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li>
-              <a :href="props.footer_data.instagram_url" target="_blank"  class="social-icons"><i class="bi bi-instagram d-flex"></i></a>
+              <a :href="props?.footer_data?.instagram_url" target="_blank"  class="social-icons"><i class="bi bi-instagram d-flex"></i></a>
             </li>
             <li>
-              <a :href="props.footer_data.linkedin_url" target="_blank"  class="social-icons"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a :href="props?.footer_data?.linkedin_url" target="_blank"  class="social-icons"><i class="fa-brands fa-linkedin-in"></i></a>
             </li>
             <li>
-              <a  :href="props.footer_data.twitter_url" target="_blank"  class="social-icons"><i class="fa-brands fa-x-twitter"></i></a>
+              <a  :href="props?.footer_data?.twitter_url" target="_blank"  class="social-icons"><i class="fa-brands fa-x-twitter"></i></a>
             </li>
           </ul>
         </div>
@@ -82,15 +83,15 @@ const props=defineProps({
           <h2 class="text-white relative">Our Office</h2>
           <ul class="pl-0 listing-gap">
             <li class="mb-3">
-              <a :href="`tel:${props.footer_data.office_phone}`" ><i class="bi bi-telephone-fill pr-2"></i> {{ props.footer_data.office_phone }}</a>
+              <a :href="`tel:${props?.footer_data?.office_phone}`" ><i class="bi bi-telephone-fill pr-2"></i> {{ props?.footer_data?.office_phone }}</a>
             </li>
             <li class="mb-3">
-              <a :href="`mailto:${props.footer_data.office_email}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
-               {{ props.footer_data.office_email }} </a>
+              <a :href="`mailto:${props?.footer_data?.office_email}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
+               {{ props?.footer_data?.office_email }} </a>
             </li>
             <li class="mb-3">
               <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
-               {{ props.footer_data.office_address }}</a>
+               {{ props?.footer_data?.office_address }}</a>
             </li>
           </ul>
         </div>

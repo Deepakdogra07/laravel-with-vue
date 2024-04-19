@@ -232,6 +232,7 @@ class EditHomePageController extends Controller
         return to_route('edit-logo',['status'=>true , 'message' => 'Data Deleted successfully!']);
     }
     public function other_data(){
-        return to_route('edit-logo');
+        $logos = Logo::pluck('id')->first();
+        return to_route(route("/home-page/edit/".$logos));
     }
 }

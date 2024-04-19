@@ -37,20 +37,20 @@ class ContactusController extends Controller
         ];
 
         $messages = [
-            'name.required' => 'Este campo é obrigatório.',
+            'name.required' => 'Name field is required',
             'name.string' => 'Name must be type of string',
             'name.max' => 'Name Must Be maximum 255 digit',
 
-            'email.required' => 'Este campo é obrigatório.',
+            'email.required' => 'Email field is required',
             'email.email' => 'E-mail Deve ser o tipo de e-mail.',
             'email.max' => 'O nome deve ter no máximo 255 dígitos.',
 
-            'phone.required' => 'Este campo é obrigatório.',
+            'phone.required' => 'Phone field is required',
             'phone.regex' => 'O número de telefone deve ser numérico e pode ter no máximo 11 dígitos.',
 
             'phone.max' => 'O número de telefone não deve exceder 11 caracteres.',
 
-            'message.required' => 'Este campo é obrigatório.',
+            'message.required' => 'Message field is required',
         ];
 
         $validatedData = $request->validate($rules, $messages);

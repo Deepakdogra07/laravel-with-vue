@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\FooterData;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticatedSessionController extends Controller
@@ -22,10 +23,12 @@ class AuthenticatedSessionController extends Controller
      * Display the login view.
      */
     public function create(Request $request): Response
-    {
+    {    
+      $footer_data = FooterData::first();
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
+            'footer_data'=>$footer_data,
         ]);
     }
 
@@ -34,7 +37,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $CheckActive = User::where('email', $request->email)->first()->status ?? 0;
+        $CheckActive = User::where('email', $request->email)->first()->status ?? 0; 
 
 
         $userExists = User::where('email', $request->email)->exists();

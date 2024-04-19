@@ -95,7 +95,7 @@ onMounted(() => {
             <p>{{ logo.category_subheading }}</p>
           </div>
         </div>
-      <div id="welcome_slider_">
+      <div id="welcome_slider_" class="welcome-section"> 
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
           <img :src="`storage/categories/`+category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialsController extends Controller
 {
@@ -23,6 +24,7 @@ class TestimonialsController extends Controller
      */
     public function create()
     {
+        
         return Inertia::render('Testimonial/create');
     }
 
@@ -33,23 +35,37 @@ class TestimonialsController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            // 'rating' => 'required|numeric|gt:0|lt:6',
+            'image' => 'required',
             'content' => 'required',
+            'video'=>'required',
         ],[
             'name.required' => 'Title is must.',
-            'rating.required' => 'Link is must.',
+            'image.required' => 'Image is must.',
             'content.required' => 'Content is must.',
         ]);
+        dd($request->all());
 
             if($validate->fails()){
             return back()->withErrors($validate->errors())->withInput();
             }
-
-            Testimonial::create([
-                'name'=>$request->name ?? "",
-                // 'rating'=>$request->rating ?? "",
-                'content'=>$request->content ?? "",
-            ]);
+            
+// dd($request->all());
+            $testimonial = new Testimonial();
+            $testimonial->name = $request->name;
+            $testimonial->content = $request->content;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
+                $testimonial->image_link = $name;
+            }
+            if ($request->hasFile('video')) {
+                $image = $request->file('video');
+                $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+                Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
+                $testimonial->video_link = $name;
+            }
+            $testimonial->save();
 
             return to_route('testimonial.index');
     }

@@ -9,8 +9,9 @@ import 'vue3-toastify/dist/index.css';
 
 const form = reactive({
   name: null,
-  rating: null,
   content: null,
+  image:null,
+  video:null,
 });
 
 defineProps({
@@ -28,6 +29,18 @@ function submit() {
     },
   });
 }
+function handleVideoInput(event){
+      const file = event.target.files[0];
+      const maxSize = 50 * 1024 * 1024; 
+      if (file.size > maxSize) {
+        alert('File size exceeds the limit (50 MB)');
+        return;
+      }
+      form.video = file;
+  }
+function Inputimage(event){
+  form.image = event.target.files[0];
+}
 
 </script>
 <template>
@@ -44,18 +57,21 @@ function submit() {
                               <label for="name">Name<span class="text-danger">*</span></label>
                               <input id="name" v-model="form.name" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
                               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
+                        </div>  
+                        <div class="mt-4 col-md-6">
+                          <label for="content">Content<span class="text-danger">*</span></label>
+                          <textarea id="content" v-model="form.content" placeholder="Enter Content" class="block w-full mt-1 form-control"></textarea>
+                          <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
                         </div>
-
-                          <!-- <div class="mt-4 col-md-6">
-                              <label for="rating">Rating<span class="text-danger">*</span></label>
-                               <input type="number" min="1" max="5" id="content" v-model="form.rating" placeholder="Enter Rating" class="block w-full mt-1 form-control" autocomplete="rating"/>
-                               <div v-if="errors.rating" class="text-danger">{{ errors.rating }}</div>
-                        </div> -->
-
-                         <div class="mt-4 col-md-6">
-                              <label for="content">Content<span class="text-danger">*</span></label>
-                                 <textarea id="content" v-model="form.content" placeholder="Enter Content" class="block w-full mt-1 form-control"></textarea>
-                                <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
+                        <div class="mt-4 col-md-6">
+                              <label for="name">Image<span class="text-danger">*</span></label>
+                              <input type="file" required accept="image/*" @change="Inputimage($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
+                              <div v-if="errors.image" class="text-danger">{{ errors.image }}</div>
+                        </div>
+                        <div class="mt-4 col-md-6">
+                              <label for="name">Video<span class="text-danger">*</span></label>
+                              <input  type="file"  required accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
+                              <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
                         </div>
                         <br/>
 
