@@ -33,10 +33,12 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'image' => 'required',
             'content' => 'required',
+            'description' =>"required",
         ],[
             'name.required' => 'Title is must.',
             'image.required' => 'Image is must.',
@@ -50,6 +52,7 @@ class TestimonialsController extends Controller
             $testimonial = new Testimonial();
             $testimonial->name = $request->name;
             $testimonial->content = $request->content;
+            $testimonial->description = $request->description;
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();

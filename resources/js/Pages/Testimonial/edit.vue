@@ -18,6 +18,7 @@ const form = useForm({
   content: props.editTestimonial ? props.editTestimonial.content || '' : '',
   image: props.editTestimonial?.image_link,
   video: props.editTestimonial?.video_link,
+  description: props.editTestimonial?.description,
 });
 
 
@@ -60,6 +61,11 @@ function update_all_data(type,event) {
                                <input id="rating" v-model="form.rating" placeholder="Enter Rating" class="block w-full mt-1" autocomplete="rating"/>
                                <div v-if="errors.rating" class="text-danger">{{ errors.rating }}</div>
                         </div> -->
+                        <div class="mt-4 col-md-6">
+                              <label for="description">Description<span class="text-danger">*</span></label>
+                                 <textarea id="description" v-model="form.description" placeholder="Enter description" class="block w-full mt-1"></textarea>
+                                <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
+                        </div>
 
                          <div class="mt-4 col-md-6">
                               <label for="content">Content<span class="text-danger">*</span></label>
@@ -75,9 +81,12 @@ function update_all_data(type,event) {
                               <input type="file" id="logoImage" @change="update_all_data('image',$event)" accept="image/*" class="hidden">
                         </div>
                         <div class="mt-4 col-md-6">
-                              <label for="name">Video</label>
-                              <input  type="file"  accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
-                              <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
+                          <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
+                                <video :src="'/storage/testimonials/' + form.video" alt="" style="height:250px"></video>
+                                <label for="logoImage" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    {{ form.video ? 'Change File' : 'Upload File' }}
+                                </label>
+                              <input type="file" id="logoImage" @change="update_all_data('video',$event)" accept="image/*" class="hidden">
                         </div>
 
                         <div class="mt-4 col-md-12">

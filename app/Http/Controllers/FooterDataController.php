@@ -15,8 +15,8 @@ class FooterDataController extends Controller
      */
     public function index()
     {
-       $links = FooterData::all();
-       return Inertia::render('Admin/Footerdata/Index',compact('links'));
+       $links = FooterData::pluck('id')->first();
+       return redirect()->route('update-links.edit',$links);
     }
 
     /**

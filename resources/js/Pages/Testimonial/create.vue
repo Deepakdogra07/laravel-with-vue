@@ -12,6 +12,7 @@ const form = reactive({
   content: null,
   image:null,
   video:null,
+  description:null
 });
 
 defineProps({
@@ -59,9 +60,9 @@ function Inputimage(event){
                               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
                         </div>  
                         <div class="mt-4 col-md-6">
-                          <label for="content">Content<span class="text-danger">*</span></label>
-                          <textarea id="content" v-model="form.content" placeholder="Enter Content" class="block w-full mt-1 form-control"></textarea>
-                          <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
+                          <label for="description">Description<span class="text-danger">*</span></label>
+                          <textarea id="description" v-model="form.description" placeholder="Enter description" class="block w-full mt-1 form-control"></textarea>
+                          <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
                         </div>
                         <div class="mt-4 col-md-6">
                               <label for="name">Image<span class="text-danger">*</span></label>
@@ -72,6 +73,11 @@ function Inputimage(event){
                               <label for="name">Video</label>
                               <input  type="file"  accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
                               <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
+                        </div>
+                        <div class="mt-4 col-md-6">
+                          <label for="content">Content<span class="text-danger">*</span></label>
+                          <textarea id="content" v-model="form.content" placeholder="Enter Content" class="block w-full mt-1 form-control"></textarea>
+                          <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
                         </div>
                         <br/>
 
