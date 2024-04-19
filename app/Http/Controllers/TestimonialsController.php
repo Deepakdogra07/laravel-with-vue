@@ -37,17 +37,16 @@ class TestimonialsController extends Controller
             'name' => 'required',
             'image' => 'required',
             'content' => 'required',
-            'video'=>'required',
         ],[
             'name.required' => 'Title is must.',
             'image.required' => 'Image is must.',
             'content.required' => 'Content is must.',
         ]);
-        dd($request->all());
-
-            if($validate->fails()){
+        
+        if($validate->fails()){
             return back()->withErrors($validate->errors())->withInput();
-            }
+        }
+        // dd($request->all());
             
 // dd($request->all());
             $testimonial = new Testimonial();

@@ -233,6 +233,6 @@ class EditHomePageController extends Controller
     }
     public function other_data(){
         $logos = Logo::pluck('id')->first();
-        return to_route(route("/home-page/edit/".$logos));
+        return redirect()->route('edit-logo.edit', ['id' => 9]);
     }
 }

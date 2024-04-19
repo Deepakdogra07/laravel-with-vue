@@ -80,10 +80,10 @@ onMounted(() => {
       <div class="unstoppable-middle">
         <img :src="`/storage/logo/${logo.logo_image}`" alt="">
       </div>
-      <div class="unstopable-log unstoppable-spaces-top ">
+      <div class="unstopable-log mt-2">
         <div class="container text-center">
-          <h1>{{ logo.logo_heading }}</h1>
-          <p>{{ logo.logo_description }}</p>
+          <h2 class="middle-logo-heading">{{ logo.logo_heading }}</h2>
+          <p class="middle-logo-para">{{ logo.logo_description }}</p>
         </div>
       </div>
     </div>
@@ -115,20 +115,21 @@ onMounted(() => {
     <div class="welcome-content">
       <h2>{{ logo.country_description }}</h2>
     </div>
-
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
-      <div class="country-content content-left relative">
-        <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
-        <div class="country-names">
-          <h3>{{ logo.country_1_name }}</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+    <div class="container-fluid px-0">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
+        <div class="country-content content-left relative">
+          <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
+          <div class="country-names">
+            <h3>{{ logo.country_1_name }}</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
-      </div>
-      <div class="country-content content-right relative">
-        <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
-        <div class="country-names">
-          <h3>{{ logo.country_2_name }}</h3>
-          <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+        <div class="country-content content-right relative">
+          <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
+          <div class="country-names">
+            <h3>{{ logo.country_2_name }}</h3>
+            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+          </div>
         </div>
       </div>
     </div>
@@ -153,7 +154,7 @@ onMounted(() => {
   <Footer  :footer_data="footer_data" />
 </template>
 
-<style>
+<style scoped>
 .main-header .navbar {
   border-bottom: 1px solid #A5A5AB !important;
   background-color: #1D1F2C1A !important;
@@ -242,7 +243,6 @@ onMounted(() => {
 
 .welcome-section .slick-list {
   margin-left: -25px;
-  /* Adjust to match the negative margin of .slick-slide */
   margin-right: -10px;
   overflow: hidden;
   overflow-x: hidden;
@@ -264,7 +264,8 @@ onMounted(() => {
   margin-right: 15px;
 }
 
+
 .welcome-section .slick-track {
-  margin-left: 15px;
+  margin-right: 15px;
 }
 </style>

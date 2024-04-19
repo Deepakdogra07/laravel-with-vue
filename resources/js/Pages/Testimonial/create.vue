@@ -51,7 +51,7 @@ function Inputimage(event){
 
           <div class="flex items-center justify-center">
             <div class="w-full px-2">
-                <form @submit.prevent="submit">
+                <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row">
                         <div class="mt-4 col-md-6">
                               <label for="name">Name<span class="text-danger">*</span></label>
@@ -69,8 +69,8 @@ function Inputimage(event){
                               <div v-if="errors.image" class="text-danger">{{ errors.image }}</div>
                         </div>
                         <div class="mt-4 col-md-6">
-                              <label for="name">Video<span class="text-danger">*</span></label>
-                              <input  type="file"  required accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
+                              <label for="name">Video</label>
+                              <input  type="file"  accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name" class="block w-full mt-1 form-control" autocomplete="name"/>
                               <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
                         </div>
                         <br/>

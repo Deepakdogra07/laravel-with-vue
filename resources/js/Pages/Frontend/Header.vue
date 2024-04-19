@@ -60,16 +60,13 @@ const showMenu = () => {
   }
 };
 
-
-
-
 </script>
 
 <template>
 
   <div class="main-header">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg" :class="{'!bg-[#1D1F2C1A] border-home' : route().current('home')}">
       <div class="container">
         <Link class="navbar-brand" href="/"><img :src="`storage/logos/${props?.logo_image}`" class="h-[100px]" alt=""></Link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -109,6 +106,12 @@ const showMenu = () => {
 </template>
 
 <style scoped>
+.border-home {
+  border-bottom: 1px solid #A5A5AB !important;
+}
+.navbar {
+  background-color: #01796f;
+}
 @media (max-width: 992px) {
   .aside-section {
     position: absolute;
