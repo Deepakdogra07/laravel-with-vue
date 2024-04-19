@@ -80,10 +80,10 @@ onMounted(() => {
       <div class="unstoppable-middle">
         <img :src="`/storage/logo/${logo.logo_image}`" alt="">
       </div>
-      <div class="unstopable-log">
+      <div class="unstopable-log mt-2">
         <div class="container text-center">
-          <h1>{{ logo.logo_heading }}</h1>
-          <p>{{ logo.logo_description }}</p>
+          <h2 class="middle-logo-heading">{{ logo.logo_heading }}</h2>
+          <p class="middle-logo-para">{{ logo.logo_description }}</p>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@ onMounted(() => {
             <p>{{ logo.category_subheading }}</p>
           </div>
         </div>
-      <div id="welcome_slider_" class="welcome-slider">
+      <div id="welcome_slider_" class="welcome-section">
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
           <img :src="`storage/categories/`+category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
@@ -243,7 +243,6 @@ onMounted(() => {
 
 .welcome-section .slick-list {
   margin-left: -25px;
-  /* Adjust to match the negative margin of .slick-slide */
   margin-right: -10px;
   overflow: hidden;
   overflow-x: hidden;
@@ -265,7 +264,8 @@ onMounted(() => {
   margin-right: 15px;
 }
 
+
 .welcome-section .slick-track {
-  margin-left: 15px;
+  margin-right: 15px;
 }
 </style>
