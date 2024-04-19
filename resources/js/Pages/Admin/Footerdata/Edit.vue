@@ -1,12 +1,15 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive, watch, watchPostEffect } from 'vue';
+import { onMounted, ref, reactive, watch } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 
 const props = defineProps({
+    message: {
+        type: String
+    },
     link: {
         type: Object
     },
@@ -14,6 +17,19 @@ const props = defineProps({
         type: Object
     }
 });
+
+watch(props, (newVal, oldVal) => {
+  if (newVal.message != null) {
+    toast(newVal.message, {
+      autoClose: 3000,
+      theme: 'dark',
+    });
+  }
+});
+
+
+const updatedLogo = ref('');
+const updatedCertificate = ref([]);
 
 const form = reactive({
     id:props.link.id,
@@ -37,10 +53,16 @@ function submitForm() {
 function update_data(type,event) {
       if(type =="logo_image"){
         form.logo_image = event.target.files[0];
+        updatedLogo.value = URL.createObjectURL(event.target.files[0])
+        console.log(updatedLogo.value);
       }else if(type == 'certificate_images'){
         form.certificate_images =[];
         const files = Array.from(event.target.files);
         form.certificate_images.push(...files);
+        for(const file of files){
+            updatedCertificate.value.push(URL.createObjectURL(file))
+        }
+
         form.certificate_images_status = true;
       }
     }
@@ -67,7 +89,10 @@ function update_data(type,event) {
                                     <div class="mb-4">
                                         <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Logo
                                             Image</label>
-                                        <img :src="'/storage/logos/' + form.logo_image" alt="" style="height:150px;">
+                                        <img :src="props.link.logo_image == form.logo_image ? '/storage/logos/' + form.logo_image : updatedLogo" alt="" style="height:150px; height: 150px;
+    background-color: #ccc;
+    padding: 20px;
+    margin-bottom: 10px;">
                                         <label for="logoImage"
                                             class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                             {{ form.logo_image ? 'Change File' : 'Upload File' }}
@@ -164,9 +189,9 @@ function update_data(type,event) {
                                             class="block text-gray-700 text-sm font-bold mb-2">Logo
                                             Image</label>
                                         <div class="row">
-                                            <div v-for="(image, index) in form.certificate_images"
+                                            <div v-for="(image, index) in form.certificate_images_status ? updatedCertificate : form.certificate_images"
                                                 :key="index" class="col-md-4">
-                                                <img :src="'/storage/certificates/' + image" alt=""
+                                                <img :src="form.certificate_images_status ? image : `/storage/certificates/${image}`" alt=""
                                                     style="height:150px;">
                                             </div>
                                         </div>

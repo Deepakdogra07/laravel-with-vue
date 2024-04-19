@@ -159,6 +159,7 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Logo/Edit',["logo"=>$logo]);
     }
     public function logo_update(Request $request){
+        // dd($request->all());
         $validator = Validator::make($request->all(),[
             'image_heading' => 'required',
             'image_description' => 'required',
@@ -169,7 +170,7 @@ class EditHomePageController extends Controller
             'video_description' => 'required',
             'country_description'=>'required',
             'category_heading'=>'required',
-            'category_subheading'=>'required',
+            'category_subheading'=>'required|string|max:1000',
 
         ]);
 

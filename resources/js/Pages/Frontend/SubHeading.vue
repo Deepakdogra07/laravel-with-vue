@@ -7,6 +7,7 @@ import { Link } from '@inertiajs/vue3';
         <div class="container">
             <h2 class="mb-0" v-if="route().current('login') || route().current('password.request')">Welcome to Login</h2>
             <h2 class="mb-0" v-if="route().current('job.listing') || route().current('view.job')">List of Jobs</h2>
+            <h2 class="mb-0" v-if="route().current('testimonial.main')">Testimonial</h2>
         </div>
     </div>
     <div class="form-navigation" v-if="route().current('login') || route().current('password.request')">
