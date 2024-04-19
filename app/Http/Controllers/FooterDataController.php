@@ -13,9 +13,13 @@ class FooterDataController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index(Request $request)
+    {   
+       
        $links = FooterData::pluck('id')->first();
+        if($request->message){
+            return redirect()->route('update-links.edit',[$links, 'message' => $request->message]);
+        }
        return redirect()->route('update-links.edit',$links);
     }
 
@@ -90,10 +94,11 @@ class FooterDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
+    public function edit($id, Request $request)
+    {   
+        $message = $request->message ?? null;
         $link = FooterData::where('id',$id)->first();
-        return Inertia::render('Admin/Footerdata/Edit',compact("link"));
+        return Inertia::render('Admin/Footerdata/Edit',compact("link", "message"));
     }
 
     /**
@@ -143,7 +148,7 @@ class FooterDataController extends Controller
             $data->certificate_images = json_encode($certificates);
         }
         $data->update();
-        return to_route('update-links.index',['status'=>true , 'message' => 'Data Updated successfully!']);
+        return to_route('update-links.index',['status'=>true , 'message' => 'Data Updated Successfully!']);
     }
 
     /**

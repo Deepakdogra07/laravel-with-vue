@@ -34,7 +34,8 @@ const form = reactive({
 
 function submitForm() {
    
-    router.post(route('edit-logo.update',form.id), form)
+    router.post(route('edit-logo.update'), form)
+    console.log('errors : ',props.errors)
   }
   function handleFileInput(event){
     form.logo_image = event.target.files[0]; 

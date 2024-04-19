@@ -121,7 +121,7 @@ Route::get('/faq', function () {
 
 Route::get('/testimonials', function () {
     return Inertia::render('Testimonial/alltestimonials');
-});
+})->name('testimonial.main');
 
 require __DIR__ . '/auth.php';
 
