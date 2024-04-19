@@ -5,18 +5,18 @@ import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
 
 const props = defineProps({
-    sliders: {
-        type: Object
-    },
-    logo:{
-      type: Object
-    },
-    categories:{
-      type: Object
-    },
-    footer_data:{
-      type: Object
-    }
+  sliders: {
+    type: Object
+  },
+  logo: {
+    type: Object
+  },
+  categories: {
+    type: Object
+  },
+  footer_data: {
+    type: Object
+  }
 });
 const slickFn = () => {
   $('#home_banner').slick({
@@ -61,7 +61,7 @@ onMounted(() => {
 
 </script>
 <template>
-  <Header :logo_image="footer_data.logo_image"/>
+  <Header :logo_image="footer_data.logo_image" />
 
   <div class="banner-section">
     <div id="home_banner">
@@ -88,27 +88,28 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class=" container-fluid px-0 mt-4">
-        <div class="unstopable-log unstoppable-spaces-top ">
-          <div class="container text-center">
-            <h1>{{ logo.category_heading }}</h1>
-            <p>{{ logo.category_subheading }}</p>
-          </div>
-        </div>
-      <div id="welcome_slider_" class="welcome-section"> 
-        <div class="image_for_Card " v-for="(category) in categories" :key="category.id" >
-          <img :src="`storage/categories/`+category.category_image" alt="">
-          <div class="slider-profile-name d-flex gap-3 align-items-center">
-            <div class="slider-profile-img">
-              <img :src="`storage/categories/`+category.category_image"  alt="">
-            </div>
-            <p class="mb-0">{{category.category_heading}}</p>
-          </div>
-        </div>
-        
+
+    <div class="unstopable-log unstoppable-spaces-top ">
+      <div class="container text-center">
+        <h1>{{ logo.category_heading }}</h1>
+        <p>{{ logo.category_subheading }}</p>
       </div>
     </div>
-    <!-- </div> -->
+    <div class=" container-fluid px-0 mt-4">
+      <div id="welcome_slider_" class="welcome-section">
+        <div class="image_for_Card " v-for="(category) in categories" :key="category.id">
+          <img :src="`storage/categories/` + category.category_image" alt="">
+          <div class="slider-profile-name d-flex gap-3 align-items-center">
+            <div class="slider-profile-img">
+              <img :src="`storage/categories/` + category.category_image" alt="">
+            </div>
+            <p class="mb-0">{{ category.category_heading }}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <!-- </div> -->
   </div>
 
   <div class="unstoppable-spaces-top countries-section">
@@ -118,14 +119,14 @@ onMounted(() => {
     <div class="container-fluid px-0">
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
         <div class="country-content content-left relative">
-          <img class="left-img" :src="`storage/logo/`+logo.country_1_image" alt="">
+          <img class="left-img" :src="`storage/logo/` + logo.country_1_image" alt="">
           <div class="country-names">
             <h3>{{ logo.country_1_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
-          <img class="right-img" :src="`storage/logo/`+logo.country_2_image"  alt="">
+          <img class="right-img" :src="`storage/logo/` + logo.country_2_image" alt="">
           <div class="country-names">
             <h3>{{ logo.country_2_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
@@ -142,8 +143,8 @@ onMounted(() => {
         <p class="text-center">{{ logo.video_subheading }}</p>
         <div class="video-play">
           <video controls autoplay>
-          <source :src="'/storage/videos/' + logo.video_introduction" type="video/mp4">
-          Your browser does not support the video tag.
+            <source :src="'/storage/videos/' + logo.video_introduction" type="video/mp4">
+            Your browser does not support the video tag.
           </video>
           <!-- <a href=""><i class="bi bi-play-circle-fill play-btn"></i></a> -->
         </div>
@@ -151,7 +152,7 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <Footer  :footer_data="footer_data" />
+  <Footer :footer_data="footer_data" />
 </template>
 
 <style scoped>
@@ -180,92 +181,8 @@ onMounted(() => {
   position: relative;
 }
 
-
-.slick-dots {
-  display: flex;
-  justify-content: center;
-  padding-left: 0;
-  gap: 20px;
-}
-
-.banner-section .slick-dots {
-  list-style: none;
-  text-align: center;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.slick-dots li {
-  display: inline-block;
-  margin: 0 5px;
-}
-
-.slick-dots li button {
-  display: block;
-  width: 15px;
-  height: 15px;
-  padding: 0;
-  border: none !important;
-  border-radius: 50%;
-  background-color: #999 !important;
-  cursor: pointer;
-  font-size: 0;
-}
-
-.slick-dots li button {
-  border: 2px solid #1A9882 !important;
-  background-color: #D2D2D5 !important;
-}
-
-.slick-dots li.slick-active button {
-  border: 2px solid #FFFFFF !important;
-  background-color: #1A9882 !important;
-}
-
-.welcome-section .slick-dots {
-  align-items: center;
-}
-
-.welcome-section .slick-dots li.slick-active button {
-  width: 20px !important;
-  height: 20px !important;
-}
-
-.welcome-section .slick-slider {
-  padding: 0;
-}
-
-.welcome-section .slick-slider .slick-slide {
-  margin: 0 10px;
-}
-
-.welcome-section .slick-list {
-  margin-left: -25px;
-  margin-right: -10px;
-  overflow: hidden;
-  overflow-x: hidden;
-}
-
-.welcome-section .slick-dots {
-  position: relative;
-  margin-top: 50px;
-}
-
-.container-fluid.px-0 {
-  padding-left: 0;
-  padding-right: 0;
-  overflow: hidden;
-  overflow-x: hidden;
-}
-
-.welcome-section .slick-slide {
-  margin-right: 15px;
-}
-
-
+/* 
 .welcome-section .slick-track {
-  margin-right: 15px;
-}
+  margin-right: -15px;
+} */
 </style>

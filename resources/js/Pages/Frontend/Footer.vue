@@ -34,7 +34,9 @@ const props=defineProps({
       <div class="footer-grid">
         
         <div class="footer-section footer-one">
-          <Link><img :src="`storage/logos/${props?.footer_data?.logo_image}`" class="h-[100px]" alt=""></Link>
+          <div class="footer-logo-sec">
+            <Link ><img :src="`storage/logos/${props?.footer_data?.logo_image}`" alt=""></Link>
+          </div>
           <p class="white-text mt-3">{{ props?.footer_data?.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
             <li>
@@ -101,9 +103,8 @@ const props=defineProps({
           <div class="d-flex gap-2 listing-gap">
             <div class="row">
                 <div v-for="(image, index) in JSON.parse(props.footer_data.certificate_images)"
-                    :key="index" class="col-md-6 mb-2">
-                    <img :src="'/storage/certificates/' + image" alt=""
-                        style="height:150px;">
+                    :key="index" class="col-md-6 col-6 mb-2">
+                    <img class="certificate-img" :src="'/storage/certificates/' + image" alt="">
                 </div>
             </div>
           </div>

@@ -68,7 +68,7 @@ const showMenu = () => {
 
     <nav class="navbar navbar-expand-lg" :class="{'!bg-[#1D1F2C1A] border-home' : route().current('home')}">
       <div class="container">
-        <Link class="navbar-brand" href="/"><img :src="`storage/logos/${props?.logo_image}`" class="h-[100px]" alt=""></Link>
+        <Link class="navbar-brand" href="/"><img :src="`storage/logos/${props?.logo_image}`" alt=""></Link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="bi bi-list"></i></span>
