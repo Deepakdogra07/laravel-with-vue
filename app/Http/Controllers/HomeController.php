@@ -25,5 +25,8 @@ class HomeController extends Controller
         }
         return Inertia::render('Welcome',compact('sliders',"logo","categories","footer_data"));
     }
+    public function business_dash(){
+        return Inertia::render('Business/Welcome');
+    }
     
 }

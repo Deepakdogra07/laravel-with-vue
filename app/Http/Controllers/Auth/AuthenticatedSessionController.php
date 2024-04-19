@@ -67,7 +67,7 @@ class AuthenticatedSessionController extends Controller
         $user = Auth::user();
 
         if ($user->user_type == '3') {
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended(route('business-dash'));
         } else {
             return redirect()->route('dashboard');
         }

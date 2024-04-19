@@ -76,7 +76,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/home-page/{id}', [EditHomePageController::class, 'show'])->name('home-page.show');
 
     // Route::get('/pages', [PagesController::class, 'pages'])->name('pages');
-
+    Route::get('/business-dash', [HomeController::class, 'business_dash'])->name('business-dash');
     Route::get('/other_data', [EditHomePageController::class, 'other_data'])->name('other_data');
     Route::get('/edit-logo', [EditHomePageController::class, 'logo_index'])->name('edit-logo');
     Route::get('/edit-logo/create', [EditHomePageController::class, 'logo_create'])->name('edit-logo.create');
