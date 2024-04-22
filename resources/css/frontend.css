@@ -64,7 +64,10 @@ h2 {
 }
 .main-header .navbar-brand,
 .footer-logo-sec {
-	width: 150px;
+	width: 180px;
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover{
+	color:#0ca78c;
 }
 .main-header .navbar-brand img,
 .footer-logo-sec img {
@@ -396,20 +399,21 @@ h2 {
 .text-label {
 	color: #4a4c56;
 	font-weight: 600;
+	font-size: 18px;
 	/* margin-bottom: 12px; */
 }
-.form-control {
+.form-control, .form-select {
 	border: 1px solid #d2d2d5;
 	background-color: #fbfbfb;
 	padding: 14px 10px;
 	border-radius: 8px;
 }
-.form-control:focus {
+.form-control:focus, .form-select:focus {
 	box-shadow: none;
 	outline: 0px;
 	border-color: #d2d2d5;
 }
-.form-control::placeholder {
+.form-control::placeholder, .form-select::placeholder {
 	color: #a5a5ab;
 }
 .forms-btn,
@@ -716,7 +720,107 @@ h2 {
 	color: #01796f;
 	padding-right: 3px;
 }
+.testimonial-content p{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+}
 /* Testimonials css end */
+
+/* popup design css start */
+.popover-section {
+    padding: 30px 45px;
+    background-color: #fff;
+    border-radius: 0px;
+    position: relative;
+}
+.popover-section h2{
+	color: #000;
+	font-size: 26px !important;
+}
+.popover-section p{
+	color: #4A4C56;
+}
+.custom-popover .modal-dialog {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    width: 55% !important;
+    max-width: unset !important;
+}
+.popover-section .popup-cross {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.popover-section .bi-x::before {
+    color: #000;
+    font-size: 26px;
+    cursor: pointer !important;
+}
+.popup-quote-img img{
+	width: 100px; 
+}
+.popup-profile-name p{
+		color: #01796F ;
+		font-weight: 600 ;
+}
+.popup-video-section{
+	width: 100%;
+	height: 250px;
+	position: relative;
+}
+.popup-video-section video{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top;
+}
+.popup-video-section::before{
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #00000028;
+}
+.popup-video-section span{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 35px;
+}
+/* popup design css end */
+
+/* Contact Us page css start */
+	.contactus-sidebar{
+		background-color: #01796F;
+		padding: 40px 30px;
+		border-radius: 10px;
+		height: 100%;
+	}
+	.contactus-sidebar a{
+		color: #fff !important;
+	}
+	.contactUs-section h2{
+		font-size: 30px !important;
+	}
+	.getIn-touch{
+		font-weight: 700 !important;
+		color: #000;
+	}
+	
+/* Contact Us page css end */
+
+@media (min-width: 1024px){
+	.main-contact-form{
+		padding-left: 50px;
+	}
+}
 @media (max-width: 992px) {
 	.footer-grid {
 		grid-template-columns: 50% 50%;
@@ -854,6 +958,9 @@ h2 {
         bottom: 40px;   
         left: -9px;
     }
+	.main-contact-form{
+		margin-top: 30px !important;
+	}
 }
 
 .unstopable-log {

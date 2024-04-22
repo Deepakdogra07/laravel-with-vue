@@ -1,29 +1,10 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import { ref, onMounted } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
 import axios from 'axios';
 
-const facebookUrl = ref('');
-const instagramUrl = ref('');
-const twitterUrl = ref('');
-
-const fetchData = async () => {
-  try {
-    const response = await axios.get('/get/footer/data');
-    facebookUrl.value = response.data.facebookurl,
-      instagramUrl.value = response.data.instagramurl,
-      twitterUrl.value = response.data.twitterurl;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
-};
-
-const props=defineProps({
-  footer_data : {
-    type: Object,
-    default: null
-  }
-})
+const page = usePage()
+const footer = computed(() => page.props.site_data)
 
 
 </script>
@@ -35,21 +16,21 @@ const props=defineProps({
         
         <div class="footer-section footer-one">
           <div class="footer-logo-sec">
-            <Link ><img :src="`storage/logos/${props?.footer_data?.logo_image}`" alt=""></Link>
+            <Link ><img :src="'storage/logos/'+ footer.logo_image" alt=""></Link>
           </div>
-          <p class="white-text mt-3">{{ props?.footer_data?.logo_description }}</p>
+          <p class="white-text mt-3">{{ footer.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
             <li>
-              <a :href="props?.footer_data?.facebook_url" target="_blank" class="social-icons"><i class="fa-brands fa-facebook-f"></i></a>
+              <a :href="footer.facebook_url" target="_blank" class="social-icons"><i class="fa-brands fa-facebook-f"></i></a>
             </li>
             <li>
-              <a :href="props?.footer_data?.instagram_url" target="_blank"  class="social-icons"><i class="bi bi-instagram d-flex"></i></a>
+              <a :href="footer.instagram_url" target="_blank"  class="social-icons"><i class="bi bi-instagram d-flex"></i></a>
             </li>
             <li>
-              <a :href="props?.footer_data?.linkedin_url" target="_blank"  class="social-icons"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a :href="footer.linkedin_url" target="_blank"  class="social-icons"><i class="fa-brands fa-linkedin-in"></i></a>
             </li>
             <li>
-              <a  :href="props?.footer_data?.twitter_url" target="_blank"  class="social-icons"><i class="fa-brands fa-x-twitter"></i></a>
+              <a  :href="footer.twitter_url" target="_blank"  class="social-icons"><i class="fa-brands fa-x-twitter"></i></a>
             </li>
           </ul>
         </div>
@@ -85,15 +66,15 @@ const props=defineProps({
           <h2 class="text-white relative">Our Office</h2>
           <ul class="pl-0 listing-gap">
             <li class="mb-3">
-              <a :href="`tel:${props?.footer_data?.office_phone}`" ><i class="bi bi-telephone-fill pr-2"></i> {{ props?.footer_data?.office_phone }}</a>
+              <a :href="`tel:${footer.office_phone}`" ><i class="bi bi-telephone-fill pr-2"></i> {{ footer.office_phone }}</a>
             </li>
             <li class="mb-3">
-              <a :href="`mailto:${props?.footer_data?.office_email}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
-               {{ props?.footer_data?.office_email }} </a>
+              <a :href="`mailto:${footer.office_email}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="fa-solid fa-envelope pr-2"></i>
+               {{ footer.office_email }} </a>
             </li>
             <li class="mb-3">
               <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
-               {{ props?.footer_data?.office_address }}</a>
+               {{ footer.office_address }}</a>
             </li>
           </ul>
         </div>
@@ -102,7 +83,7 @@ const props=defineProps({
           <h2 class="text-white relative">Registration</h2>
           <div class="d-flex gap-2 listing-gap">
             <div class="row">
-                <div v-for="(image, index) in JSON.parse(props.footer_data.certificate_images)"
+                <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
                     :key="index" class="col-md-6 col-6 mb-2">
                     <img class="certificate-img" :src="'/storage/certificates/' + image" alt="">
                 </div>
