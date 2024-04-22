@@ -1,26 +1,19 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
-import { ref, onMounted } from "vue";
+import { usePage } from '@inertiajs/vue3'
+import { ref, onMounted, computed } from "vue";
 import axios from 'axios';
 
+const page = usePage()
+const site_data = computed(() => page.props.site_data)
 
 const nameFirstLetter = ref('');
 
 
-// onMounted(async () => {
-//   try {
-//     const response = await axios.get('/login');
-//     nameFirstLetter.value = response.data;
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//   }
-// });
-
-const props=defineProps({
-  logo_image : {
-    type:String
+const props = defineProps({
+  logo_image: {
+    type: String
   }
 })
 
@@ -65,10 +58,9 @@ const showMenu = () => {
 <template>
 
   <div class="main-header">
-
-    <nav class="navbar navbar-expand-lg" :class="{'!bg-[#1D1F2C1A] border-home' : route().current('home')}">
+    <nav class="navbar navbar-expand-lg" :class="{ '!bg-[#1D1F2C1A] border-home': route().current('home') }">
       <div class="container">
-        <Link class="navbar-brand" href="/"><img :src="`storage/logos/${props?.logo_image}`" alt=""></Link>
+        <Link class="navbar-brand" href="/"><img :src="`storage/logos/${site_data.logo_image}`" alt=""></Link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="bi bi-list"></i></span>
@@ -76,7 +68,7 @@ const showMenu = () => {
         <div class="collapse navbar-collapse justify-center" id="navbarNav">
           <ul class="navbar-nav gap-3">
             <li class="nav-item">
-              <Link class="nav-link" aria-current="page" href="#">Home</Link>
+              <Link class="nav-link" aria-current="page" href="/">Home</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" href="/job-listing">For Individuals</Link>
@@ -85,7 +77,7 @@ const showMenu = () => {
               <Link class="nav-link" href="#">For Businesses</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="#">Our Testimonials</Link>
+              <Link class="nav-link" href="/testimonials">Our Testimonials</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" href="#">About Us</Link>
@@ -103,15 +95,18 @@ const showMenu = () => {
   </div>
 
 
+
 </template>
 
 <style scoped>
 .border-home {
   border-bottom: 1px solid #A5A5AB !important;
 }
+
 .navbar {
   background-color: #01796f;
 }
+
 @media (max-width: 992px) {
   .aside-section {
     position: absolute;

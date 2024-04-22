@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\FooterData;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -32,7 +33,8 @@ class HandleInertiaRequests extends Middleware
      * @return array
      */
     public function share(Request $request)
-    {
+    {   
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
@@ -42,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                     'success' => $request->session()->get('success'),
                 ];
             },
+            'site_data' =>  FooterData::first(),
             'showingMobileMenu' => false,
         ]);
     }
