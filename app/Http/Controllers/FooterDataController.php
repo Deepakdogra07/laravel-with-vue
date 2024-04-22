@@ -16,10 +16,6 @@ class FooterDataController extends Controller
     public function index(Request $request)
     {   
         $links = FooterData::pluck('id')->first();
-       if($request->json()){
-        $data = FooterData::first();
-        return response()->json(['data' => $data]);
-       }
         if($request->message){
             return redirect()->route('update-links.edit',[$links, 'message' => $request->message]);
         }
