@@ -871,6 +871,12 @@ h2 {
         left: -1px;
 
     }
+	.popover-section{
+		padding: 20px;
+	}
+	.custom-popover .modal-dialog{
+		width: 95% !important;
+	}
 }
 
 @media (max-width: 576px) {
@@ -960,6 +966,21 @@ h2 {
     }
 	.main-contact-form{
 		margin-top: 30px !important;
+	}
+	.popover-section{
+		padding: 20px;
+	}
+	.custom-popover .modal-dialog{
+		width: 95% !important;
+	}
+	.popup-quote-img img {
+		width: 70px;
+	}
+	.testimonial-content{
+		padding: 10px 20px 40px 20px;
+	}
+	.modal.fade .modal-dialog {
+		transform: translate(-52%, -50px) !important;
 	}
 }
 
