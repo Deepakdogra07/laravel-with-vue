@@ -87,7 +87,11 @@ const testimonialedit = (id)=>{
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
                                   <td class="d-none">{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
-                                  <td><img :src="`storage/testimonials/${testimonialRecord.image_link}`" alt="" srcset=""></td>
+                                  <td>
+                                    <div class="image_sections_testimonial">
+                                      <img :src="`storage/testimonials/${testimonialRecord.image_link}`">
+                                    </div>
+                                  </td>
                                   <td>{{ testimonialRecord.content }}</td>
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}

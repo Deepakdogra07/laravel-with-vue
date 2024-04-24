@@ -16,7 +16,7 @@ const footer = computed(() => page.props.site_data)
         
         <div class="footer-section footer-one">
           <div class="footer-logo-sec">
-            <Link ><img :src="'storage/logos/'+ footer.logo_image" alt=""></Link>
+            <Link ><img :src="'/storage/logos/'+ footer.logo_image" alt=""></Link>
           </div>
           <p class="white-text mt-3">{{ footer.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
@@ -45,7 +45,10 @@ const footer = computed(() => page.props.site_data)
               <Link>About Us</Link>
             </li>
             <li class="mb-3">
-              <Link>Our Testimonials</Link>
+              <Link href="/testimonials">Our Testimonials</Link>
+            </li>
+            <li class="mb-3">
+              <Link href="/contact-us">Contact us</Link>
             </li>
           </ul>
         </div>
@@ -54,10 +57,10 @@ const footer = computed(() => page.props.site_data)
           <h2 class="text-white relative">Business Segments</h2>
           <ul class="pl-0 listing-gap">
             <li class="mb-3">
-              <Link href="">For Individuals</Link>
+              <Link href="/job-listing">For Individuals</Link>
             </li>
             <li class="mb-3">
-              <Link>For Businesses</Link>
+              <Link href="">For Businesses</Link>
             </li>
           </ul>
         </div>
