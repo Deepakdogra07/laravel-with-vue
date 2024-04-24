@@ -137,7 +137,7 @@ class TestimonialsController extends Controller
         return to_route('testimonial.index');
     }
     public function show_testimonials(){
-        $testimonials = Testimonial::all();
+        $testimonials = Testimonial::where('status',1)->get();
         return Inertia::render('Testimonial/alltestimonials',compact('testimonials'));
     }
 }

@@ -225,7 +225,9 @@ class EditHomePageController extends Controller
         }catch(\Exception $e){
             return back()->withErrors($e->getMessage());
         }
-        return to_route('edit-logo',['status'=>true , 'message' => 'Data Updated successfully!']);
+        $logo = Logo::where('id',$request->id)->first();
+        return to_route('edit-logo.edit', ['id' => $logo->id])
+        ->with(['status' => true, 'message' => 'Data Updated successfully!']);
     }
     public function logo_delete($id){
         $logo = Logo::findOrFail($id);

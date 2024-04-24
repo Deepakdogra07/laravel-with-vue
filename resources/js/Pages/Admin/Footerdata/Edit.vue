@@ -94,7 +94,7 @@ function update_data(type,event) {
     padding: 20px;
     margin-bottom: 10px;">
                                         <label for="logoImage"
-                                            class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                            class=" file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                             {{ form.logo_image ? 'Change File' : 'Upload File' }}
                                         </label>
                                         <input type="file" id="logoImage"
@@ -186,8 +186,8 @@ function update_data(type,event) {
                                     <h2>Certificates Upload</h2>
                                     <div class="mb-4">
                                         <label for="certificate_imagez"
-                                            class="block text-gray-700 text-sm font-bold mb-2">Logo
-                                            Image</label>
+                                            class="block text-gray-700 text-sm font-bold mb-2">Certificate
+                                            Images</label>
                                         <div class="row">
                                             <div v-for="(image, index) in form.certificate_images_status ? updatedCertificate : form.certificate_images"
                                                 :key="index" class="col-md-4">
@@ -196,7 +196,7 @@ function update_data(type,event) {
                                             </div>
                                         </div>
                                         <label for="certificate_images"
-                                            class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                            class=" file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                             {{ form.certificate_images ? 'Change File' : 'Upload File' }}
                                         </label>
                                         <input type="file" id="certificate_images"
@@ -231,4 +231,7 @@ function update_data(type,event) {
     padding: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+.file_cursor{
+    cursor: pointer;
+  }
 </style>

@@ -45,12 +45,12 @@ class NewPasswordController extends Controller
             'email' => 'required|email',
             'password' => ['required', 'confirmed','min:4'],
         ], [
-            'token.required' => 'O campo token é obrigatório.',
-            'email.required' => 'O campo e-mail é obrigatório.',
-            'email.email' => 'Por favor insira um endereço de e-mail válido.',
-            'password.required' => 'O campo de senha é necessária.',
-            'password.confirmed' => 'A confirmação da senha não corresponde.',
-            'password.min' => 'Uma senha deve ter pelo menos 4 dígitos',
+            'token.required' => 'The token field is mandatory.',
+            'email.required' => 'The email field is mandatory.',
+            'email.email' => 'Please enter a valid email address.',
+            'password.required' => 'The password field is required.',
+            'password.confirmed' => 'Password confirmation does not match.',
+            'password.min' => 'A password must have at least 4 digits',
         ]);
 
 

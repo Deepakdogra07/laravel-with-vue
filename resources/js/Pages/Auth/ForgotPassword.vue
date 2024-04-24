@@ -10,7 +10,7 @@
           <div class="w-full">
             <h1 class="mb-4 text-blue">Forgot Password</h1>
             <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-              Enviamos por e-mail seu link de redefinição de senha.
+              We will email you your password reset link.
             </div>
 
             <!-- <h4 class="mb-4 font-semibold text-gray-700 text-blue">

@@ -70,7 +70,7 @@ onMounted(() => {
           <h1 class="mb-4">{{ slider.slider_heading }}</h1>
           <p>{{ slider.slider_description }}</p>
           <div class="text-center mt-4">
-            <Link class="main-btn" :href="route('login')">Contact Us</Link>
+            <Link class="main-btn" :href="route('contact.us')">Contact Us</Link>
           </div>
         </div>
         <img :src="`/storage/slider/${slider.slider_image}`">
@@ -101,7 +101,7 @@ onMounted(() => {
           <img :src="`storage/categories/` + category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
             <div class="slider-profile-img">
-              <img :src="`storage/categories/` + category.category_image" alt="">
+              <img :src="`storage/categories/thumbnail/${category.thumbnail}` " alt="">
             </div>
             <p class="mb-0">{{ category.category_heading }}</p>
           </div>

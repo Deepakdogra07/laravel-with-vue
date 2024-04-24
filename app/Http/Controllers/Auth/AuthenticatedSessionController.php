@@ -24,29 +24,29 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request): Response
     {    
-      $footer_data = FooterData::first();
+        $footer_data = FooterData::first();
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             'footer_data'=>$footer_data,
         ]);
     }
-
+    
     /**
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        
        
         $CheckActive = User::where('email', $request->email)->first()->status ?? 0; 
 
 
         $userExists = User::where('email', $request->email)->exists();
 
-        $rules = [];
+        $rules = [ ];
 
         // Add your validation rules here if needed
-
        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {

@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { onMounted,reactive } from 'vue';
 import Swal from 'sweetalert2';
 
 console.log(route('edit-logo.store'),'12121212121');
@@ -11,8 +11,20 @@ const props = defineProps({
     },
     errors: {
       type: Object
+    },
+    msg:{
+        type:String
     }
 });
+onMounted( ()=>{
+    if(props.msg != null){
+        toast(props.msg, {
+        autoClose: 3000,
+        theme: 'dark',
+      });
+    }
+
+})
 
 const form = reactive({
     id:props.logo.id,
@@ -111,7 +123,7 @@ function submitForm() {
                             <div class="mb-4">
                                 <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
                                 <img :src="'/storage/logo/' + form.image_image" alt="" style="height:250px">
-                                <label for="logoImage" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <label for="logoImage" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                     {{ form.image_image ? 'Change File' : 'Upload File' }}
                                 </label>
                               <input type="file" id="logoImage" @change="update_all_data('image_image',$event)" accept="image/*" class="hidden">
@@ -148,7 +160,7 @@ function submitForm() {
                               <div class="mb-4">
                                     <label for="country_1_image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
                                     <img :src="'/storage/logo/' + form.country_1_image" alt="" style="height:250px">
-                                    <label for="country_1_image" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    <label for="country_1_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                         {{ form.country_1_image ? 'Change File' : 'Upload File' }}
                                     </label>
                                     <input type="file" id="country_1_image" @change="update_all_data('country_1_image',$event)" accept="image/*" class="hidden">
@@ -163,9 +175,9 @@ function submitForm() {
                                   <span v-if="props.errors.country_2_name" class="error-message">{{ props.errors.country_2_name }}</span> 
                               </div>
                               <div class="mb-4">
-                                  <label for="country_2_image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
+                                  <label for="country_2_image" class=" block text-gray-700 text-sm font-bold mb-2">Image</label>
                                     <img :src="'/storage/logo/' + form.country_2_image" alt="" style="height:250px">
-                                    <label for="country_2_image" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    <label for="country_2_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                         {{ form.country_2_image ? 'Change File' : 'Upload File' }}
                                     </label>
                                     <input type="file" id="country_2_image" @change="update_all_data('country_2_image',$event)" accept="image/*" class="hidden">
@@ -191,12 +203,12 @@ function submitForm() {
                                 <span v-if="props.errors.video_description" class="error-message">{{ props.errors.video_description }}</span> 
                             </div>
                             <div class="mb-4">
-                                 <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video </label>
+                                 <label for="video" class=" block text-gray-700 text-sm font-bold mb-2">Video </label>
                                 <video controls style="height: 250px;">
                                     <source :src="'/storage/videos/' + form.video" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                                <label for="video" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <label for="video" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                     {{ form.video ? 'Change File' : 'Upload File' }}
                                 </label>
                                 <input type="file" id="video" @change="update_all_data('video',$event)" accept="video/*" class="hidden">
@@ -224,5 +236,7 @@ function submitForm() {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
   
-  
+  .file_cursor{
+    cursor: pointer;
+  }
 </style>

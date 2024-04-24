@@ -49,13 +49,13 @@ const submit = () => {
                     <div class="w-full">
                         <h1 class="mb-4 text-blue">Login</h1>
                         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-                            <h3>Status</h3>
+                            <h3>Please Enter Your email and password for login</h3>
                         </div>
                         <form @submit.prevent="submit">
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">E-mail<span style="color:red"> *</span></span>
-                                <TextInput id="email" type="email" placeholder="Enter e-mail" class="form-control mt-2"
+                                <TextInput id="email" type="email" placeholder="Enter your e-mail" class="form-control mt-2"
                                     v-model="form.email" autofocus/>
                                 <p style="color: red;"
                                     v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
@@ -69,12 +69,12 @@ const submit = () => {
 
                             <div class="mt-4">
                                 <span class="label text-label">Password<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
-                                    <TextInput id="password" :type="passwordFieldType" placeholder="Enter Password"
+                                <div class="eye-icon-div relative">
+                                    <TextInput id="password" :type="passwordFieldType" placeholder="Enter your Password"
                                         class="form-control mt-2" v-model="form.password"/>
-                                    <!-- <span @click="togglePasswordVisibility">
+                                    <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" @click="togglePasswordVisibility">
                                         <i :class="eyeIconClass"></i>
-                                    </span> -->
+                                    </span>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.password" />
                             </div>

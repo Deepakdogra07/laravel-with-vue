@@ -69,17 +69,17 @@ function submitForm() {
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
                             <label for="sliderName" class="block text-gray-700 text-sm font-bold mb-2">Slider Name</label>
-                            <input type="text" id="sliderName" v-model="form.slider_name" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="sliderName"placeholder="Enter Slider Name" v-model="form.slider_name" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.slider_name" class="error-message">{{ props.errors.slider_name }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
-                            <input type="text" id="sliderHeading" v-model="form.slider_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="sliderHeading"placeholder="Enter Slider Heading" v-model="form.slider_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.slider_heading" class="error-message">{{ props.errors.slider_heading }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words)</label>
-                            <textarea id="sliderDescription" v-model="form.slider_description" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
+                            <textarea id="sliderDescription"placeholder="Enter Slider Description" v-model="form.slider_description" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
                              <span v-if="props.errors.slider_description" class="error-message">{{ props.errors.slider_description }}</span> 
                         </div>
                         <div class="mb-4">

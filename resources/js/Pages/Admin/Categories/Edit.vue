@@ -64,16 +64,17 @@ function submitForm() {
                         </div>
                        
                         <div class="mb-4">
-       
+                          <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
                              <img :src="'/storage/categories/' + form.category_image" alt="" style="height:100px">
-                              <label for="category_image" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                              <label for="category_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                 {{ form.category_image ? 'Change File' : 'Upload File' }}
                               </label>
                               <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*" class="hidden">
                         </div>
                         <div class="mb-4">
-                             <img :src="'/storage/categories/thumbnail/' + form.thumbnail" alt="" style="height:100px">
-                              <label for="thumbnail" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                          <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
+                             <img :src="'/storage/categories/thumbnail/' + form.thumbnail" alt="" style="height:100px;margin-top:10px;">
+                              <label for="thumbnail" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full file_cursor">
                                 {{ form.thumbnail ? 'Change File' : 'Upload File' }}
                               </label>
                               <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)" accept="image/*" class="hidden">
@@ -95,6 +96,9 @@ function submitForm() {
 <style scoped>
   .error-message{
     color:red;
+  }
+  .file_cursor{
+    cursor: pointer;
   }
   
 </style>

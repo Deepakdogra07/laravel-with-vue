@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'phone' => 'required|digits:10',
             'checkbox' => 'accepted',
         ], [
-            'checkbox.accepted' => 'Você deve concordar com os Termos de Uso e a Política de Privacidade.',
+            'checkbox.accepted' => 'You must agree to the Terms of Use and Privacy Policy.',
             'name.required' => 'Name is required.',
             'name.string' => 'Name should only in alphabets.',
             'name.max' => 'Name should not exceeds 255 characters.',

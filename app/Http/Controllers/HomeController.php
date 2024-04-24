@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $sliders = Slider::all();
         $logo = Logo::first();
-        $categories = Category::get();
+        $categories = Category::where('status',1)->get();
         $footer_data = FooterData::first();
         if(!$footer_data){
             return redirect()->route('login');

@@ -57,7 +57,7 @@ const options = {
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'Customer Deleted Successfully',
+                    text: 'Slider Deleted Successfully',
                 });
                 // location.reload();
             } else {
@@ -71,7 +71,7 @@ const options = {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Error Deleting Customer. Please try again.',
+                text: 'Error Deleting Slider. Please try again.',
             });
         }
     };
