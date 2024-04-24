@@ -80,7 +80,7 @@ const showMenu = () => {
               <Link class="nav-link" href="/testimonials">Our Testimonials</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="#">About Us</Link>
+              <Link class="nav-link" href="/about-us">About Us</Link>
             </li>
             <li class="nav-item login-section-mob">
               <Link class="main-btn" :href="route('login')">Login</Link>
