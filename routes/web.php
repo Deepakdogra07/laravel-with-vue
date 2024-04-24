@@ -112,7 +112,6 @@ Route::get('/dashboard', [DashboardController::class, 'dashboardData'])
     ->middleware(['auth'])
     ->name('dashboard');
 
-
 Route::get('/faq', function () {
     return Inertia::render('Frontend/Faqs/index');
 })->name('faq');
@@ -125,7 +124,6 @@ Route::get('/layouts', function () {
     return inertia('Frontend/Layouts/sidebar');
 });
 
-
 Route::get('/about-us', function () {
     return Inertia('About/AboutUs');
 })->name('about.us');
@@ -133,3 +131,7 @@ Route::get('/about-us', function () {
 Route::get('/contact-us', function () {
     return inertia('Frontend/Contactus/ContactUs');
 })->name('contact.us');
+
+Route::get('/job-application', function () {
+    return inertia('JobForm/JobApplication');
+})->name('job.application');
