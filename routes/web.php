@@ -31,9 +31,6 @@ Route::get('/privacy-policy', function () {
 Route::get('/contactus', [ContactusController::class, 'create'])->name('contactus');
 Route::post('/contactus', [ContactusController::class, 'store']);
 
-Route::get('/aboutus', function () {
-    return Inertia::render('Frontend/About/aboutus');
-})->name('about.us');
 
 
 
@@ -129,6 +126,11 @@ require __DIR__ . '/auth.php';
 Route::get('/layouts', function () {
     return inertia('Frontend/Layouts/sidebar');
 });
+
+
+Route::get('/about-us', function () {
+    return Inertia('About/AboutUs');
+})->name('about.us');
 
 Route::get('/contact-us', function () {
     return inertia('Frontend/Contactus/ContactUs');

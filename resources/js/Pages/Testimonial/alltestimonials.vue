@@ -50,7 +50,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
         </div>
     </div>
 
-    <Head title="About us" />
+    <Head title="Testimonials" />
     <Header class="login-wrapper" />
     <SubHeading />
     <div class="login-bg-wrapper">
