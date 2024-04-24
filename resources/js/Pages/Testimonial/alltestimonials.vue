@@ -9,6 +9,46 @@ import CustomPagination from '@/Components/CustomPagination.vue';
 
 </script>
 <template>
+    <div class="modal fade custom-popover testimonial-popup" id="newAdvertModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="popover-section popover-section-diff modal-content">
+                <Link class="popup-cross" data-bs-dismiss="modal">
+                <i class="bi bi-x"></i>
+                </Link>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2 popup-quote-img">
+                            <img src="/images/quotes.png" alt="">
+                        </div>
+                        <div class="col-md-10">
+                            <h2 class="mb-3">Lorem Ipsum is simply dummy text of the printing 
+                            </h2>
+                            <div class="d-flex align-items-center gap-2 mb-2 popup-profile-name">
+                                <p><span><i class="bi bi-person-square"></i></span></p>
+                                <p>Simran</p>
+                            </div>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley of type and scrambled it to make a type specimen book.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy
+                                text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                                it to make a type specimen book.</p>
+                        </div>
+                        <div class="col-12">
+                            <div class="popup-video-section">
+                                <video src="/images/video.mp4"></video>
+                                <span class="bi bi-play-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <Head title="About us" />
     <Header class="login-wrapper" />
@@ -45,37 +85,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                                 <Link data-bs-toggle="modal" data-bs-target="#newAdvertModal"
                                     class="testimonial-video-btn"><span><i class="bi bi-play-circle"></i> </span>
                                 Video5463.mp4</Link>
-                                <div class="modal fade custom-popover" id="newAdvertModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="popover-section popover-section-diff">
-                                            <Link class="popup-cross" data-bs-dismiss="modal">
-                                            <i class="bi bi-x"></i>
-                                            </Link>
-                                            <div class="row">
-                                                <div class="col-md-2 popup-quote-img">
-                                                    <img src="/images/quotes.png" alt="">
-                                                </div>
-                                                <div class="col-md-10">
-                                                    <h2 class="mb-3">Lorem Ipsum is simply dummy text of the printing 
-                                                    </h2>
-                                                    <div class="d-flex align-items-center gap-2 mb-2 popup-profile-name">
-                                                        <p><span><i class="bi bi-person-square"></i></span></p>
-                                                        <p>Simran</p>
-                                                    </div>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="popup-video-section">
-                                                        <video src="/images/video.mp4"></video>
-                                                        <span class="bi bi-play-circle"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
