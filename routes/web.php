@@ -120,9 +120,7 @@ Route::get('/faq', function () {
     return Inertia::render('Frontend/Faqs/index');
 })->name('faq');
 
-Route::get('/testimonials', function () {
-    return Inertia::render('Testimonial/alltestimonials');
-})->name('testimonial.main');
+Route::get('/testimonials',[TestimonialsController::class,"show_testimonials"])->name('testimonial.main');
 
 require __DIR__ . '/auth.php';
 

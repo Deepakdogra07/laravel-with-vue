@@ -14,11 +14,11 @@ const props = defineProps({
 
 const form = useForm({
   name: props.editTestimonial ? props.editTestimonial.name || '' : '',
-//   rating: props.editTestimonial ? props.editTestimonial.rating || '' : '',
   content: props.editTestimonial ? props.editTestimonial.content || '' : '',
   image: props.editTestimonial?.image_link,
   video: props.editTestimonial?.video_link,
   description: props.editTestimonial?.description,
+  status:props.editTestimonial?.status
 });
 
 
@@ -81,12 +81,16 @@ function update_all_data(type,event) {
                               <input type="file" id="logoImage" @change="update_all_data('image',$event)" accept="image/*" class="hidden">
                         </div>
                         <div class="mt-4 col-md-6">
-                          <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-                                <video :src="'/storage/testimonials/' + form.video" alt="" style="height:250px"></video>
-                                <label for="logoImage" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                          <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
+                                <video :src="'/storage/testimonials/' + form.video" alt="" ></video>
+                                <label for="video" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                     {{ form.video ? 'Change File' : 'Upload File' }}
                                 </label>
-                              <input type="file" id="logoImage" @change="update_all_data('video',$event)" accept="image/*" class="hidden">
+                              <input type="file" id="video" @change="update_all_data('video',$event)" accept="video/*" class="hidden">
+                        </div>
+                        <div class="mt-5 col-md-6">
+                              <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0" name="status" class="mr-2">
+                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
                         </div>
 
                         <div class="mt-4 col-md-12">

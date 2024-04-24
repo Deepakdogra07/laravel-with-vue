@@ -25,6 +25,7 @@ function submitForm() {
     // Post data 
     router.put(route('category.update',form.id), form);
   }
+  
  
   function updateThumbnailName(type,event) {
       if(type =="heading"){
@@ -34,6 +35,9 @@ function submitForm() {
       }else if(type == 'thumbnailimage'){
         form.thumbnail = event.target.files[0];
       }
+    }
+    function updateStatus(event){
+      console.log(event)
     }
 
 </script>
@@ -75,8 +79,8 @@ function submitForm() {
                               <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)" accept="image/*" class="hidden">
                         </div>
                         <div class="mb-4">
-                              <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
-                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2" v-if="(category.status == 1) ?'checked' : 'unchecked'">
+                              <input type="checkbox" id="status" v-model="form.status"  :true-value="1"
+                                :false-value="0" name="status" class="mr-2" >
                               <label for="status" class="text-gray-700 text-sm font-bold mb-2" >Status</label>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>

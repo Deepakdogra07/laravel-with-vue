@@ -30,7 +30,7 @@ const testimonialDelete = async (id) => {
       Swal.fire({
         icon: 'success',
         title: 'Success',
-        text: 'News Deleted Successfully',
+        text: 'Testimonial Deleted Successfully',
       });
         setTimeout(() => {
           window.location.reload();
@@ -47,7 +47,7 @@ const testimonialDelete = async (id) => {
     Swal.fire({
       icon: 'error',
       title: 'Error',
-      text: 'Error Deleting Customer. Please try again.',
+      text: 'Error Deleting testimonial. Please try again.',
     });
   }
 };
@@ -79,6 +79,7 @@ const testimonialedit = (id)=>{
                                   <th>Name</th>
                                   <th>Image</th>
                                   <th>Content</th>
+                                  <th>Status</th>
                                   <th>Actions</th>
                               </tr>
                           </thead>
@@ -88,12 +89,15 @@ const testimonialedit = (id)=>{
                                   <td>{{ testimonialRecord.name }}</td>
                                   <td><img :src="`storage/testimonials/${testimonialRecord.image_link}`" alt="" srcset=""></td>
                                   <td>{{ testimonialRecord.content }}</td>
-                                <td>
-                                  <div class="d-flex gap-2">
-                                    <button type="button" class="btn btn-primary" @click="testimonialedit(testimonialRecord.id)">Edit</button>
-                                    <button type="button" class="btn btn-danger" @click="testimonialDelete(testimonialRecord.id)">Delete</button>
-                                  </div>
-                                </td>
+                                  <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
+                                    {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
+                                  </td>
+                                  <td>
+                                    <div class="d-flex gap-2">
+                                      <button type="button" class="btn btn-primary" @click="testimonialedit(testimonialRecord.id)"><i class="fas fa-edit"></i></button>
+                                      <button type="button" class="btn btn-danger" @click="testimonialDelete(testimonialRecord.id)"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                  </td>
                               </tr>
                           </tbody>
                       </DataTable>

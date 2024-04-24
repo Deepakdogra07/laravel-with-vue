@@ -33,14 +33,13 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'image' => 'required',
             'content' => 'required',
             'description' =>"required",
         ],[
-            'name.required' => 'Title is must.',
+            'name.required' => 'Name is must.',
             'image.required' => 'Image is must.',
             'content.required' => 'Content is must.',
         ]);
@@ -53,6 +52,7 @@ class TestimonialsController extends Controller
             $testimonial->name = $request->name;
             $testimonial->content = $request->content;
             $testimonial->description = $request->description;
+            $testimonial->status = ($request->status =="1") ? 1 :0;
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -108,7 +108,7 @@ class TestimonialsController extends Controller
            if($testimonialUpdate){
                 $testimonialUpdate->name = $request->name;
                 $testimonialUpdate->content = $request->content;
-                
+                $testimonialUpdate->status = ($request->status =="1") ? 1 :0;
             if ($request->hasFile('image') && $testimonialUpdate->image_link != $request->image ) {
                 $image = $request->file('image');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -121,6 +121,8 @@ class TestimonialsController extends Controller
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
                 $testimonialUpdate->video_link = $name;
             }
+            $testimonialUpdate->update();
+           
         }
 
            return to_route('testimonial.index');
@@ -133,5 +135,9 @@ class TestimonialsController extends Controller
     {
         Testimonial::where('id',$id)->delete();
         return to_route('testimonial.index');
+    }
+    public function show_testimonials(){
+        $testimonials = Testimonial::all();
+        return Inertia::render('Testimonial/alltestimonials',compact('testimonials'));
     }
 }

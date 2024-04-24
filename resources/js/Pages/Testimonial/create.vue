@@ -12,7 +12,8 @@ const form = reactive({
   content: null,
   image:null,
   video:null,
-  description:null
+  description:null,
+  status: null
 });
 
 defineProps({
@@ -80,7 +81,10 @@ function Inputimage(event){
                           <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
                         </div>
                         <br/>
-
+                        <div class="mt-5 col-md-6">
+                              <input type="checkbox" id="status" v-model="form.status"  name="status" class="mr-2">
+                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
+                        </div>
                         <div class="mt-4 col-md-12">
                                <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
