@@ -1109,3 +1109,13 @@ h2 {
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 }
+.image_sections_testimonial{
+	width:250px;
+	height:100px;
+}
+.image_sections_testimonial img{ 
+	width:100%;
+	object-fit: cover;
+	object-position: center;
+	height:100%;
+}

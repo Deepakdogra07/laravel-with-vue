@@ -7,9 +7,16 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import CustomPagination from '@/Components/CustomPagination.vue';
 
 
+const props = defineProps({
+    testimonials: Array
+});
+console.log(props.testimonials);
+
+
+
 </script>
 <template>
-    <div class="modal fade custom-popover testimonial-popup" id="newAdvertModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div v-for="testimonial in props.testimonials" :key="testimonial.id" class="modal fade custom-popover testimonial-popup" :id="`newAdvertModal-${testimonial?.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="popover-section popover-section-diff modal-content">
@@ -20,28 +27,21 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                     <div class="row">
                         <div class="col-md-2 popup-quote-img">
                             <img src="/images/quotes.png" alt="">
+                            <!-- <img :src="`/storage/testimonials/${testimonial?.image_link}`" alt=""> -->
                         </div>
                         <div class="col-md-10">
-                            <h2 class="mb-3">Lorem Ipsum is simply dummy text of the printing 
+                            <h2 class="mb-3">{{ testimonial?.description }}
                             </h2>
                             <div class="d-flex align-items-center gap-2 mb-2 popup-profile-name">
                                 <p><span><i class="bi bi-person-square"></i></span></p>
-                                <p>Simran</p>
+                                <p>{{ testimonial?.name }}</p>
                             </div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book.</p>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy
-                                text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                                dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                                it to make a type specimen book.</p>
+                            <p>{{ testimonial?.content }}</p>
                         </div>
                         <div class="col-12">
                             <div class="popup-video-section">
-                                <video src="/images/video.mp4"></video>
-                                <span class="bi bi-play-circle"></span>
+                                <video :src="`/storage/testimonials/${testimonial?.video_link}`" controls></video>
+                                <!-- <span class="bi bi-play-circle"></span> -->
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
         </div>
     </div>
 
-    <Head title="Testimonials" />
+    <Head title="Our Testimonials" />
     <Header class="login-wrapper" />
     <SubHeading />
     <div class="login-bg-wrapper">
@@ -67,25 +67,21 @@ import CustomPagination from '@/Components/CustomPagination.vue';
             <div class="testimonial-section">
                 <div class="container">
                     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
-                        <div class="testimonial">
+                        <div class="testimonial" v-for="testimonial in props.testimonials" :key="testimonial.id">
                             <div class="testimonial-content">
                                 <div class="text-end mb-2">
                                     <i class="fa-solid fa-quote-right"></i>
                                 </div>
-                                <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                                    1500s, when an unknown printer took a galley of type and scrambled it to make a type
-                                    specimen book.</p>
+                                <p class="text-center">{{ testimonial?.description }}</p>
                             </div>
                             <div class="testimonial-bg">
                                 <div class="d-flex align-items-center gap-2 mb-2 popup-person">
                                     <p>- <span> <i class="bi bi-person-square pl-2"></i></span></p>
-                                    <p>Simran</p>
+                                    <p>{{ testimonial?.name }}</p>
                                 </div>
-                                <Link data-bs-toggle="modal" data-bs-target="#newAdvertModal"
+                                <button data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
                                     class="testimonial-video-btn"><span><i class="bi bi-play-circle"></i> </span>
-                                Video5463.mp4</Link>
-
+                                    {{ testimonial?.video_link }}</button>
                             </div>
                         </div>
                     </div>

@@ -87,10 +87,8 @@ const footer = computed(() => page.props.site_data)
           <div class="d-flex gap-2 listing-gap">
             <div class="row">
                 <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
-                    :key="index" class="col-md-6 col-6 mb-2">
-                    <div class="certificate-img-section">
-                      <img class="certificate-img" :src="'/storage/certificates/' + image" alt="">
-                    </div>
+                    :key="index" class="col-md-6  mb-2">
+                    <img class="certificate-img" :src="'/storage/certificates/' + image" alt="">
                 </div>
             </div>
           </div>
@@ -104,56 +102,4 @@ const footer = computed(() => page.props.site_data)
     </div>
   </div>
 
-  <!-- <div class="footer-section">
-        <div class="container">
-          <div class="row footer-row">
-            <div class="col-12">
-              <div class="footer-logo">
-                <Link href="/"><img src="/images/Logo-footer.png" alt="dinheiro-agora"></Link>
-              </div>
-            </div>
-            <div class="col-12">
-              <ul class="d-flex justify-around mb-0">
-                <li>
-                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'home'}" href="/">Home</Link>
-                </li>
-                <li>
-                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'about.us'}" href="/aboutus">About Us</Link>
-                </li>
-                <li>
-                      <Link class="nav-link"  :class="{'active-footer-tab' : route().current() == 'privacy.policy'}" href="/privacy-policy">Privacy Policy</Link>
-                </li>
-                <li>
-                      <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'term.condition'}" href="/term-condition">Terms and Conditions</Link>
-                </li>
-                <li>
-                   <Link class="nav-link" :class="{'active-footer-tab' : route().current() == 'contactus'}" href="/contactus">Contact Us</Link>
-                </li>
-              </ul>
-            </div>
-            <div class="col-12">
-              <div class="social-icons">
-                <ul class="d-flex justify-center">
-                  <li>
-                    <a :href="facebookUrl" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                  </li>
-                  <li>
-                    <a :href="instagramUrl" target="_blank"> <i class="fa-brands fa-instagram"></i></a>
-                  </li>
-                  <li>
-                    <a :href="twitterUrl" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright-section">
-        <div class="copyright text-center">
-          <p>HLV SERVIÇOS ADMINISTRATIVOS LTDA</p>
-          <p>CNPJ 53.588.824/0001-90</p>
-          <p class="mb-0"> direito autoral 	&#169; 2024  Dinheiro agora | Todos os direitos reservados</p>
-        </div>
-      </div> -->
 </template>
