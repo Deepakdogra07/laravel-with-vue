@@ -46,9 +46,16 @@ h2 {
 
 .main-btn {
 	background-color: #fff;
+	border: 1px solid #fff;
 	border-radius: 8px;
 	color: #070707 !important;
 	padding: 8px 20px;
+	transition: 0.3s;
+}
+.main-btn:hover {
+	background-color: transparent;
+	color: #fff !important;
+	transition: 0.3s;
 }
 
 /* .main-header{
@@ -86,7 +93,7 @@ h2 {
 	border-bottom: 1px solid #e9e9ea80;
 }
 
-.footer-section li a:hover{
+.footer-two li a:hover, .footer-three li a:hover, .footer-four li a:hover{
 	text-decoration: underline !important;
 }
 
@@ -901,8 +908,15 @@ h2 {
 	.popover-section{
 		padding: 20px;
 	}
-		.custom-popover .modal-dialog{
+	.custom-popover .modal-dialog{
 		width: 95% !important;
+	}
+	.testimonial-popup .popover-section{
+        padding: 10px 24px 10px 10px;
+	}
+	.popover-section .popup-cross {
+		top: 1px;
+		right: 1px;
 	}
 }
 
@@ -1001,7 +1015,8 @@ h2 {
 		width: 95% !important;
 	}
 	.popup-quote-img img {
-		width: 70px;
+		width: 50px;
+		margin-bottom: 10px;
 	}
 	.testimonial-content{
 		padding: 10px 20px 40px 20px;
@@ -1012,6 +1027,7 @@ h2 {
 	.custom-popover .modal-dialog{
 		top: 20%;
 	}
+	
 }
 
 .unstopable-log {
