@@ -4,7 +4,7 @@
     <div class="login-bg-wrapper">
         <div class="container h-100">
             <div class="row align-items-center h-100">
-                <div class="col-md-8 col-lg-6">
+                <div class="col-md-9 col-lg-7">
                     <div class="w-full">
                         <h1 class="mb-4 text-blue">verificação de e-mail</h1>
                         <div v-if="status" class="mb-4 text font-medium text-green-600">
