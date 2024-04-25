@@ -69,7 +69,7 @@ function submitForm() {
                               <label for="category_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                 {{ form.category_image ? 'Change File' : 'Upload File' }}
                               </label>
-                              <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*" class="hidden">
+                              <input type="file"  id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*" class="hidden">
                         </div>
                         <div class="mb-4">
                           <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>

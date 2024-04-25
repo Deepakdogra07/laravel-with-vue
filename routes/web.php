@@ -28,8 +28,8 @@ Route::get('/privacy-policy', function () {
     return Inertia::render('Frontend/PrivacyPolicy/privacy-policy');
 })->name('privacy.policy');
 
-Route::get('/contactus', [ContactusController::class, 'create'])->name('contactus');
-Route::post('/contactus', [ContactusController::class, 'store']);
+Route::get('/contactus', [ContactusController::class, 'index'])->name('contactus.listing');
+Route::post('/contactus', [ContactusController::class, 'store'])->name('contact_us.store');
 
 
 

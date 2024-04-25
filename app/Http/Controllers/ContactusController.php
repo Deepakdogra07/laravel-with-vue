@@ -18,6 +18,8 @@ class ContactusController extends Controller
 {
     public function index()
     {
+        $data = Contactus::latest()->get();
+        return Inertia::render('Admin/Enquiries',compact('data'));
 
     }
 
@@ -30,56 +32,47 @@ class ContactusController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|regex:/^[0-9]{11}$/',
-            'message' => 'required|string',
+            'user_name' => 'required|string|max:255',
+            'user_email' => 'required|email|max:255',
+            'user_mobile' => 'required|min:8|max:15',
+            'user_message' => 'required|string',
         ];
 
-        // $messages = [
-        //     'name.required' => 'Name field is required',
-        //     'name.string' => 'Name must be type of string',
-        //     'name.max' => 'Name Must Be maximum 255 digit',
+        $messages = [
+            'user_name.required' => 'Name field is required',
+            'user_name.string' => 'Name must be type of string',
+            'user_name.max' => 'Name Must Be maximum 255 digit',
 
-        //     'email.required' => 'Email field is required',
-        //     'email.email' => 'E-mail Deve ser o tipo de e-mail.',
-        //     'email.max' => 'O nome deve ter no máximo 255 dígitos.',
+            'user_email.required' => 'Email field is required',
+            'user_email.email' => 'E-mail Deve ser o tipo de e-mail.',
+            'user_email.max' => 'O nome deve ter no máximo 255 dígitos.',
 
-        //     'phone.required' => 'Phone field is required',
-        //     'phone.regex' => 'O número de telefone deve ser numérico e pode ter no máximo 11 dígitos.',
+            'user_mobile.required' => 'Mobile Number field is required',
+            'user_mobile.min' => 'Mobile Number should be not less than 8 digits. ',
+            'user_mobile.max' => 'Mobile Number should be not more than 15 digits. ',
 
-        //     'phone.max' => 'O número de telefone não deve exceder 11 caracteres.',
+            'user_message.required' => 'Message field is required',
+        ];
 
-        //     'message.required' => 'Message field is required',
-        // ];
-
-        // $validatedData = $request->validate($rules, $messages);
+        $validatedData = $request->validate($rules, $messages);
 
         $mailData = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'message' => $request->message,
+            'name' => $request->user_name,
+            'email' => $request->user_email,
+            'phone' => $request->user_mobile,
+            'message' => $request->user_message,
         ];
 
-        $contactDetails = DB::table('contacts_details')->where('id',1)->get();
-        if($contactDetails->isNotEmpty()){
-            $superadmin = DB::table('contacts_details')->where('id',1)->first()->email;
-        }else{
-          $superadmin = User::where('user_type',1)->first()->email;
-        }
+          $superadmin = User::where('user_type',1)->pluck("email")->first();
+        
 
-        Mail::to($request->email)->send(new ContactusMail($mailData));
-
-        Mail::to($superadmin)->send(new ContactusMail($mailData));
-
+        Mail::to([$request->user_email,$superadmin])->send(new ContactusMail($mailData));
 
         Contactus::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'position'=>$request->position ?? '',
-            'message'=>$request->message,
+            'user_name'=>$request->user_name,
+            'user_email'=>$request->user_email,
+            'user_mobile'=>$request->user_mobile,
+            'user_message'=>$request->user_message,
         ]);
 
         return Redirect::to('/');
