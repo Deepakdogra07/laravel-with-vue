@@ -40,7 +40,7 @@ const submit = () => {
 </script>
 <template>
     <Head title="Log in" />
-    <Header class="login-wrapper" :logo_image="props.footer_data.logo_image"/>
+    <Header class="login-wrapper" :logo_image="props?.footer_data?.logo_image"/>
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="container h-100">
@@ -99,5 +99,5 @@ const submit = () => {
             </div>
         </div>
     </div>
-    <Footer :footer_data="props.footer_data"/>
+    <Footer :footer_data="props?.footer_data"/>
 </template>
