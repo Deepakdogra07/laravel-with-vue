@@ -121,6 +121,18 @@
             <span class="ml-4">Businesses</span>
           </NavLink>
         </li>
+        <li
+          class="relative px-2 py-3"
+          v-if="$page.props.auth.user.user_type == 1"
+        >
+          <NavLink
+            :href="route('contactus.listing')"
+            :active="route().current('contactus.listing')"
+          >
+            <i class="fa-solid fa-user-plus"></i>
+            <span class="ml-4">Enquiries</span>
+          </NavLink>
+        </li>
 
    
         <li
@@ -149,7 +161,7 @@
                             </NavLink>
                         </li>
                     
-                    </ul>
+          </ul>
         </li>
       </ul>
     </div>

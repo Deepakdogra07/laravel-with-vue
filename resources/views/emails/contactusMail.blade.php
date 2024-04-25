@@ -13,18 +13,16 @@
                 src="{{config('app.url')}}images/instant-loan-logo.png" alt="" style="width: 150px;"></span>
     </h2>
     <div style="padding: 20px;">
-        <h2 style="color: #053249;">Contate-nos Informações</h2>
-        <p><strong>Nome:</strong> {{ $mailData['name'] }}</p>
+        <h2 style="color: #053249;">Contact us Information</h2>
+        <p><strong>Name:</strong> {{ $mailData['name'] }}</p>
         <p><strong>E-mail:</strong> {{ $mailData['email'] }}</p>
-        <p><strong>Telefone:</strong> {{ $mailData['phone'] }}</p>
-        <p><strong>Mensagem:</strong> {{ $mailData['message'] }}</p>
-        <p>Quer entrar em contato.</p>
+        <p><strong>Mobile Number:</strong> {{ $mailData['phone'] }}</p>
+        <p><strong>Message:</strong> {{ $mailData['message'] }}</p>
 
         <!-- Your custom message -->
-        <h3 style="color: #2CBCDD;">Obrigado por entrar em contato. Entraremos em contato com você o mais breve possível.</h3>
+        <h3 style="color: #2CBCDD;">Thank you for contacting us. We will surely email/phone you immediately.</h3>
     </div>
     <div style="background-color: blanchedalmond; padding: 10px 20px; display: flex; justify-content: center;">
-        <h4>direito autoral &#169; Dinheiroagora</h4>
      </div>
 </body>
 

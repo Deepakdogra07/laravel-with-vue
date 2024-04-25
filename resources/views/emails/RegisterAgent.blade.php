@@ -23,7 +23,7 @@
         </div>
       </div>
       <div style="background-color: blanchedalmond; padding: 10px 20px; display: flex; justify-content: center;">
-        <h4>direito autoral &#169; Dinheiroagora</h4>
+        {{-- <h4>direito autoral &#169; Dinheiroagora</h4> --}}
      </div>
 </body>
 

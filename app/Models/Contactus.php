@@ -10,7 +10,7 @@ class Contactus extends Model
     use HasFactory;
     protected $guarded = [];
 
-    protected $table = 'contactuses';
+    protected $table = 'contactus';
 
 
 }
