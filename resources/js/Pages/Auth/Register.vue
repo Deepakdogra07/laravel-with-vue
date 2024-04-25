@@ -192,7 +192,7 @@ function select_country(event){
                     </PrimaryButton>
                     <Link :href="route('login')"
                         class=" register-cancel text-sm ml-4 text-gray-900 hover:text-gray-900">
-                    Cancelar
+                    Cancel
                     </Link>
                 </div>
             </form>

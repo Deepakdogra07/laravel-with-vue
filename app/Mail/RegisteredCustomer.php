@@ -31,7 +31,7 @@ class RegisteredCustomer extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Bem-vindo ao Dinheiro Agora',
+            subject: 'Welcome to  Dizon & Associates',
         );
     }
 
