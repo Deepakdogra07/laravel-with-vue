@@ -18,6 +18,7 @@ import 'datatables.net-buttons/js/buttons.print.min.js';
 // import 'datatables.net-buttons/css/buttons.dataTables.min.css';
 import Toast from 'vue-toastify';
 import Toggle from '@vueform/toggle';
+import * as countryStateCity from 'country-state-city';
 window.$ = window.jQuery = jQuery;
 
 DataTable.use(DataTablesLib);

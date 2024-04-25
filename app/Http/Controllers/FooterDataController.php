@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Rules\MaxWords;
 
 class FooterDataController extends Controller
 {
@@ -37,7 +38,7 @@ class FooterDataController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'logo_image' => 'required|image',
-            'logo_description' => 'required',
+            'logo_description' => ['required',new MaxWords(100)],
             'facebook_url' => 'required',
             'instagram_url' => 'required',
             'linkedin_url' => 'required',
@@ -107,7 +108,7 @@ class FooterDataController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'logo_image' => 'required',
-            'logo_description' => 'required',
+            'logo_description' => ['required',new MaxWords(100)],
             'facebook_url' => 'required',
             'instagram_url' => 'required',
             'linkedin_url' => 'required',

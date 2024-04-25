@@ -34,7 +34,7 @@ const form = useForm({
     remember: false
 });
 const submit = () => {
-    console.log('herererer',route('login.post'))
+    
     form.post(route('login.post'));
 };
 </script>
@@ -55,15 +55,12 @@ const submit = () => {
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">E-mail<span style="color:red"> *</span></span>
-                                <TextInput id="email" type="email" placeholder="Enter your e-mail" class="form-control mt-2"
+                                <TextInput id="email" type="text" placeholder="Enter your e-mail" class="form-control mt-2"
                                     v-model="form.email" autofocus/>
+                                    <InputError class="mt-2" :message="form.errors.email" />
                                 <p style="color: red;"
                                     v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
                                     Your account is inactive. Please contact the administrator.
-                                </p>
-                                <p style="color: red;"
-                                    v-if="form.errors.email == 'These credentials do not match our records.'">
-                                    These credentials do not match our records.
                                 </p>
                             </div>
 

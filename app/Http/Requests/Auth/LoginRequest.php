@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required', 
+            'email' => 'required|email', 
             'password' => 'required',
         ];
     }
@@ -36,6 +36,7 @@ class LoginRequest extends FormRequest
         
         return [
             'email.required' => 'Email is required.',
+            'email.email' => 'Email must be valid.',
             'password.required' => 'Password is required.',
         ];
     }
@@ -55,9 +56,11 @@ class LoginRequest extends FormRequest
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
+        }else{
+
+            // RateLimiter::clear($this->throttleKey());
         }
 
-        RateLimiter::clear($this->throttleKey());
     }
 
     /**
