@@ -68,19 +68,19 @@ const showMenu = () => {
         <div class="collapse navbar-collapse justify-center" id="navbarNav">
           <ul class="navbar-nav gap-3">
             <li class="nav-item">
-              <Link class="nav-link" aria-current="page" href="/">Home</Link>
+              <Link class="nav-link" :class="{ 'active-nav': route().current() == 'home' }" aria-current="page" href="/">Home</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="/job-listing">For Individuals</Link>
+              <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">For Individuals</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="#">For Businesses</Link>
+              <Link class="nav-link"  href="#">For Businesses</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="/testimonials">Our Testimonials</Link>
+              <Link class="nav-link" :class="{ 'active-nav': route().current() == 'testimonial.main' }" href="/testimonials">Our Testimonials</Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="/about-us">About Us</Link>
+              <Link class="nav-link" :class="{ 'active-nav': route().current() == 'about.us' }" href="/about-us">About Us</Link>
             </li>
             <li class="nav-item login-section-mob">
               <Link class="main-btn" :href="route('login')">Login</Link>
