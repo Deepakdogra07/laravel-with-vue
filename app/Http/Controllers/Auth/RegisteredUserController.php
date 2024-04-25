@@ -85,6 +85,7 @@ class RegisteredUserController extends Controller
         $business->company_pin = $request->company_pin; 
         $business->contact_department = $request->test; 
         $business->company_vat = $request->company_vat; 
+        $business->user_id = $user->id;
         $business->save();
         if ($user->user_type == '2') {
             $user->sendEmailVerificationNotification();
