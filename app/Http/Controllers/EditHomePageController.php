@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Logo;
 use Illuminate\Support\Facades\Storage;
+use App\Rules\MaxWords;
+
 
 
 class EditHomePageController extends Controller
@@ -30,7 +32,7 @@ class EditHomePageController extends Controller
             'slider_image' => 'required|image',
             'slider_name' => 'required',
             'slider_heading' => 'required',
-            'slider_description' => 'required',
+            'slider_description' => ['required',new MaxWords(100)],
         ]);
 
         if($validator->fails()){
@@ -60,6 +62,14 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Slider/edit',compact("slider"));
     }
     public function update(Request $request){
+        $validator = Validator::make($request->all(),[
+            'slider_name' => 'required',
+            'slider_heading' => 'required',
+            'slider_description' => ['required',new MaxWords(100)],
+        ]);
+        if($validator->fails()){
+            return back()->withErrors($validator->errors());
+        }
         $slider = Slider::findOrFail($request->id);
 
         if ($request->hasFile('sliderImage') && ($slider->slider_image != $request->sliderImage)) {
@@ -99,7 +109,7 @@ class EditHomePageController extends Controller
         $validator = Validator::make($request->all(),[
             'image_image' => 'required|image',
             'image_heading' => 'required',
-            'image_description' => 'required',
+            'image_description' =>['required',new MaxWords(100)],
             'country_1_name' => 'required',
             'country_1_image' => 'required|image',
             'country_2_name' => 'required',
@@ -162,7 +172,7 @@ class EditHomePageController extends Controller
         // dd($request->all());
         $validator = Validator::make($request->all(),[
             'image_heading' => 'required',
-            'image_description' => 'required',
+            'image_description' => ['required',new MaxWords(100)],
             'country_1_name' => 'required',
             'country_2_name' => 'required',
             'video_heading' => 'required',

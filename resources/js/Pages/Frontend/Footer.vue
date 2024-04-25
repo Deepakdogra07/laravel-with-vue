@@ -76,7 +76,7 @@ const footer = computed(() => page.props.site_data)
                {{ footer.office_email }} </a>
             </li>
             <li class="mb-3">
-              <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
+              <a target="_blank" :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(footer.office_address)}`" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i class="bi bi-geo-alt-fill"></i>
                {{ footer.office_address }}</a>
             </li>
           </ul>

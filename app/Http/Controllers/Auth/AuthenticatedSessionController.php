@@ -37,8 +37,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        
-       
         $CheckActive = User::where('email', $request->email)->first()->status ?? 0; 
 
 
@@ -66,7 +64,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
         
         $user = Auth::user();
-        if ($user->user_type == '3') {
+        if ($user->user_type == '2') {
             return redirect()->route('business-dash');
         } else {
             return redirect()->route('dashboard');

@@ -17,10 +17,17 @@ import { Link } from '@inertiajs/vue3';
         <div class="container">
             <ul class="nav nav-underline gap-5">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" :href="route('login')">Login</a>
+                    <a class="nav-link" 
+                        :class="{ 'active': route().current('login') || route().current('password.request') }" 
+                        aria-current="page" 
+                        :href="route('login')"
+                    >Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :href="route('register')">Create account</a>
+                    <a class="nav-link"  
+                        :class="{ 'active': route().current('register') }"  
+                        :href="route('register')"
+                    >Create account</a>
                 </li>
             </ul>
         </div>

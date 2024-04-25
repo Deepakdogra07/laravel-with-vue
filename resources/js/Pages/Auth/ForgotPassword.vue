@@ -13,9 +13,6 @@
               We will email you your password reset link.
             </div>
 
-            <!-- <h4 class="mb-4 font-semibold text-gray-700 text-blue">
-                          Forgot Password? No problem.Enter your email to get reset password link.
-          </h4> -->
             <form @submit.prevent="submit">
               <div>
                 <!-- <InputLabel class="text-blue" for="email" value="Email"/> -->
