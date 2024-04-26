@@ -167,7 +167,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	object-position: top;
+	object-position: center;
 }
 .web-banner::before {
 	content: "";
@@ -490,7 +490,7 @@ h2 {
 }
 
 .form-navigation .nav-underline .nav-link.active {
-	border-bottom-color: #22caad !important;
+	border-bottom: 3px solid #22caad !important;
 	color: #fff;
 }
 
