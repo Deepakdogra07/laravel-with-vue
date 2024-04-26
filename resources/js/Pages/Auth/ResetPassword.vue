@@ -1,7 +1,7 @@
 <template>
+  <Head title="Reset Password" />
   <Header class="login-wrapper" />
-
-  <Head title="Redefinir senha" />
+  <SubHeading />
   <div class="login-bg-wrapper">
     <div class="container h-100">
       <div class="row align-items-center justify-center h-100">
@@ -22,16 +22,26 @@
               <div class="mt-4">
                 <!-- <InputLabel for="password" value="Password" class="text-blue"/> -->
                 <span class="label text-label">New password</span>
-                <TextInput id="password" type="password" placeholder="Enter new password" class="form-control mt-2"
-                  v-model="form.password" autocomplete="new-password" />
-                <InputError class="mt-2" :message="form.errors.password" />
-              </div>
+                <div class="relative">
+                  <TextInput id="password" :type="passwordFieldType" placeholder="Enter new password" class="form-control mt-2"
+                    v-model="form.password" autocomplete="new-password" />
+                    <span class="absolute top-[50%] right-[20px] translate-y-[-50%] cursor-pointer" @click="togglePasswordVisibility">
+                                          <i :class="eyeIconClass"></i>
+                                      </span>
+                </div>
+                  <InputError class="mt-2" :message="form.errors.password" />
+                </div>
 
               <div class="mt-4">
                 <!-- <InputLabel for="password_confirmation" value="Confirm Password" class="text-blue"/> -->
                 <span class="label text-label">Confirm Password</span>
-                <TextInput id="password_confirmation" type="password" placeholder="Confirm new password"
-                  class="form-control mt-2" v-model="form.password_confirmation" autocomplete="new-password" />
+                <div class="relative">
+                  <TextInput id="password_confirmation" :type="passwordFieldType1" placeholder="Confirm new password"
+                    class="form-control mt-2" v-model="form.password_confirmation" autocomplete="new-password" />
+                    <span class="absolute top-[50%] right-[20px] translate-y-[-50%] cursor-pointer" @click="togglePasswordVisibility1">
+                                          <i :class="eyeIconClass1"></i>
+                                      </span>
+                </div>
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
               </div>
 
@@ -61,12 +71,26 @@ import { Head, useForm } from '@inertiajs/vue3';
 import '@/../../resources/css/frontend.css';
 import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
+import SubHeading from '../Frontend/SubHeading.vue';
+import { computed,ref } from 'vue';
+
+const showPassword = ref(false),
+showPassword1 = ref(false);
 
 const props = defineProps({
   email: String,
   token: String,
 });
-
+const togglePasswordVisibility = () => {
+    showPassword.value = !showPassword.value;
+};
+const togglePasswordVisibility1 = () => {
+    showPassword1.value = !showPassword1.value;
+};
+const passwordFieldType = computed(() => showPassword.value ? 'text' : 'password');
+const passwordFieldType1 = computed(() => showPassword1.value ? 'text' : 'password');
+const eyeIconClass = computed(() => showPassword.value ? 'bi bi-eye' : 'bi bi-eye-slash'),
+eyeIconClass1 = computed(() => showPassword1.value ? 'bi bi-eye' : 'bi bi-eye-slash');
 const form = useForm({
   token: props.token,
   email: props.email,

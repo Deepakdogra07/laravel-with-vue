@@ -17,9 +17,10 @@
               <div>
                 <!-- <InputLabel class="text-blue" for="email" value="Email"/> -->
                 <span class="label text-label">Email<span style="color:red"> *</span></span>
-                <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
+                <TextInput id="email" type="text" placeholder="Enter your e-mail" class="form-control mt-2"
                   v-model="form.email" autofocus autocomplete="username" />
-                <p style="color:red" v-if="form.errors.email">We couldn't find a user with that email address.</p>
+                  <InputError class="mt-2" :message="form.errors.email" />
+                <!-- <p style="color:red" v-if="form.errors.email">We couldn't find a user with that email address.</p> -->
               </div>
 
               <div class="flex items-center justify-start mt-4 login-btn-main">

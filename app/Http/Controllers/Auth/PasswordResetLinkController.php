@@ -36,8 +36,8 @@ class PasswordResetLinkController extends Controller
         $request->validate([
             'email' => 'required|email',
         ], [
-            'email.required' => 'O campo e-mail é obrigatório.',
-            'email.email' => 'Por favor insira um endereço de e-mail válido.',
+            'email.required' => 'Email is required.',
+            'email.email' => 'Please enter a valid email address.',
         ]);
 
 
