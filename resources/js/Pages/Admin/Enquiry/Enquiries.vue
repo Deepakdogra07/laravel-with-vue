@@ -14,53 +14,11 @@ const props = defineProps({
         type:String
     }
 });
-onMounted( ()=>{
-    console.log(props.msg,'props.msg');
-    if(props.msg != null){
-        toast(props.msg, {
-        autoClose: 3000,
-        theme: 'dark',
-      });
-    }
 
-})
 
-    // Delete category
-    const deletecategory = async (id) => {
-        // router.get(route('category.destroy',id));
-        const { value: confirmed } = await Swal.fire({
-            title: 'Are you sure?',
-            text: 'You want to Delete Category Record?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
-        });
-
-        try {
-            if (confirmed) {
-                router.delete(route('category.destroy',id));
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Logo Deleted Successfully',
-                });
-                location.reload();
-            } else {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Canceled',
-                    text: 'Deletion canceled.',
-                });
-            }
-        } catch (error) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error Deleting Category. Please try again.',
-            });
-        }
+    // Delete enquiry
+    const viewenquiry = async (id) => {
+        router.get(route('contactus.view',id));
     };
 
 </script>
@@ -68,8 +26,8 @@ onMounted( ()=>{
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">View/Delete Enquiries</h2>
-            
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">View Enquiries</h2>
+                
         </template>
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
@@ -82,7 +40,6 @@ onMounted( ()=>{
                                     <th >Name</th>
                                     <th>Email</th>
                                     <th>Mobile Number</th>
-                                    <th>Message</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -96,14 +53,12 @@ onMounted( ()=>{
                                     <td>
                                         {{ enquiry?.user_mobile }}
                                     </td>
-                                    <td>
-                                        {{ enquiry?.user_message }}
-                                    </td>
+                                   
                                     <td>
                                         
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deletecategory(enquiry.id)"
-                                            ><i class="fas fa-trash" ></i></button>
+                                        <button class="btn btn-info btn-sm" @click="viewenquiry(enquiry.id)"
+                                            ><i class="fas fa-eye" ></i></button>
                                    </td> 
                                 </tr>
                             </tbody>

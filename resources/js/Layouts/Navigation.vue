@@ -21,7 +21,7 @@
             <span class="text-white">Dashboard</span>
           </NavLink>
         </li>
-        <li class="relative px-6 py-3">
+        <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
           <button
             @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2"
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
@@ -108,7 +108,6 @@
             <span class="text-white">Customers</span>
           </NavLink>
         </li>
-
         <li
           class="relative px-2 py-3"
           v-if="$page.props.auth.user.user_type == 1"
@@ -119,6 +118,18 @@
           >
             <i class="fa-solid fa-user-plus"></i>
             <span class="ml-4">Businesses</span>
+          </NavLink>
+        </li>
+        <li
+          class="relative px-2 py-3"
+          v-if="$page.props.auth.user.user_type == 1"
+        >
+          <NavLink
+            :href="route('jobs.index')"
+            :active="route().current('jobs.index')"
+          >
+            <i class="fa-solid fa-tasks"></i>
+            <span class="ml-4">Jobs</span>
           </NavLink>
         </li>
         <li

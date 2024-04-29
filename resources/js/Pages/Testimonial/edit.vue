@@ -38,6 +38,9 @@ function update_all_data(type,event) {
   if(type == 'image'){
         form.image = event.target.files[0];
       }
+      if(type=='video'){
+        form.video = event.target.files[0];
+      }
 }
 </script>
 <template>
@@ -82,15 +85,18 @@ function update_all_data(type,event) {
                         </div>
                         <div class="mt-4 col-md-6">
                           <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
-                                <video :src="'/storage/testimonials/' + form.video" alt="" ></video>
+                                <video :src="'/storage/testimonials/' + form.video" alt="" controls></video>
                                 <label for="video" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                     {{ form.video ? 'Change File' : 'Upload File' }}
                                 </label>
                               <input type="file" id="video" @change="update_all_data('video',$event)" accept="video/*" class="hidden">
                         </div>
                         <div class="mt-5 col-md-6">
-                              <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0" name="status" class="mr-2">
-                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
+                          <div class="mb-4 form-check form-switch" >
+                              <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
+                              <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0" name="status" class="mr-2 form-check-input">
+                              <label for="status" class="form-check-label text-gray-700 text-sm font-bold mb-2">Status</label>
+                          </div>
                         </div>
 
                         <div class="mt-4 col-md-12">
