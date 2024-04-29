@@ -9,9 +9,6 @@ import 'vue3-toastify/dist/index.css';
 const props = defineProps({
     jobs: {
         type: Array
-    },
-    msg:{
-        type:String
     }
 });
 onMounted( ()=>{
@@ -24,7 +21,41 @@ onMounted( ()=>{
     }
 
 })
+const deletejob = async (id) => {
+        const { value: confirmed } = await Swal.fire({
+            title: 'Are you sure?',
+            text: 'You want to Delete Job Record?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        });
 
+        try {
+            if (confirmed) {
+                router.delete(route('jobs.destroy',id));
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Job Deleted Successfully',
+                });
+                location.reload();
+            } else {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Canceled',
+                    text: 'Deletion canceled.',
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error Deleting Job. Please try again.',
+            });
+        }
+    };
    
 
 </script>
@@ -47,9 +78,9 @@ onMounted( ()=>{
                             <thead>
                                 <tr>
                                     <th >ID</th>
-                                    <th >Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile Number</th>
+                                    <th >Job Title</th>
+                                    <th>Positions</th>
+                                    <th>Industry</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -57,16 +88,21 @@ onMounted( ()=>{
                                 <tr v-for="(job,index) in jobs" :key="job.id">
                                     <td >{{ index+1 }}</td>
                                     <td>
-                                            {{ job?.user_name }}
+                                            {{ job?.job_title }}
                                     </td>
-                                    <td> {{ job?.user_email }}</td>
+                                    <td> {{ job?.positions }}</td>
                                     <td>
-                                        {{ job?.user_mobile }}
+                                        {{ job?.industry?.name }}
                                     </td>
                                    
                                     <td>
-                                        
-                                        
+                                        <Link  :href="route('jobs.edit',job.id)"
+                                                class="btn btn-primary btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </Link>
+                                            &nbsp;
+                                            <button class="btn btn-danger btn-sm" @click="deletejob(job.id)"
+                                            ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>
                             </tbody>

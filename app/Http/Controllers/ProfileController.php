@@ -22,7 +22,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        $discountCode = User::where('id',Auth::user()->id)->first()->referralcode;
+        $discountCode = User::where('id',Auth::user()->id)->first();
         $auth_type = Auth::user()->user_type;
         // dd($auth_type);
         // dd($discountCode);
@@ -73,7 +73,7 @@ class ProfileController extends Controller
 
     public function editProfile(Request $request)
     {
-        $acountDetails = Withdraw::where('user_id',Auth::user()->id)->first();
+        $acountDetails = null;
         $userData = User::where('id',$request->user()->id)->first();
         // dd($userData->toArray());
         return Inertia::render('Frontend/Profile/Edit',['userData'=> $userData,'acountDetails'=>$acountDetails]);
@@ -185,7 +185,7 @@ class ProfileController extends Controller
                 $user->phonenumber = '';
                 $user->through_email = '';
                 $user->randomkey = '';
-                $request->pixtype = '';
+                
             }
 
             // $user->bankcode = $request->bankcode ?? "";

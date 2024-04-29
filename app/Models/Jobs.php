@@ -9,4 +9,25 @@ class Jobs extends Model
 {
     use HasFactory;
     protected $table = "jobs";
+    protected $fillable = ['job_title','position_type','seniority','discipline','work_experience','skills','remote_work','industry','segment','positions','pin_code','state','pay_range','job_start_date','application_link'];
+
+    public function position(){
+        return $this->hasOne(Position::class,'id','position_type');
+    }
+    public function work_experience(){
+        return $this->hasOne(Workexperience::class,'id','work_experience');
+    }
+    public function industry(){
+        return $this->hasOne(Industries::class,'id','industry');
+    }
+    public function discipline(){
+        return $this->hasOne(Discipline::class,'id','industry');
+    }
+    public function seniority(){
+        return $this->hasOne(Seniorities::class,'id','industry');
+    }
+    public function skills(){
+        return $this->hasMany(Skills::class,'id',json_decode('skills'));
+    }
+    
 }
