@@ -30,34 +30,35 @@ const props = defineProps({
   disciplines:{
     type:Array
   },
+  job:{
+    type:Object
+  }
  
 });
 
 
 const form = useForm({
-  job_title: null,
-  position_type: null,
-  seniority:null,
-  discipline:null,
-  work_experience:null,
-  skills: null,
-  remote_work: null,
-  industry: null,
-  segment: null,
-  positions: null,
-  pin_code: null,
-  state: null,
-  pay_range: null,
-  job_start_date: null,
-  application_link: null,
+    id:props.job.id,
+  job_title: props.job.job_title,
+  position_type: props.job.position_type,
+  seniority:props.job.seniority,
+  discipline:props.job.discipline,
+  work_experience:props.job.work_experience,
+  skills: props.job.skills,
+  remote_work: props.job.remote_work,
+  industry: props.job.industry,
+  segment: props.job.segment,
+  positions: props.job.positions,
+  pin_code: props.job.pin_code,
+  state: props.job.state,
+  pay_range: props.job.pay_range,
+  job_start_date: props.job.job_start_date,
+  application_link: props.job.application_link,
 });
-
-
 const submit = () => {
-    form.post(route('jobs.store'), form);
+    form.put(route('jobs.update',form.id));
 };
 const states = countryStateCity.State.getStatesOfCountry('IN');
-console.log(countryStateCity.State,states);
 </script>
 <template>
     <AuthenticatedLayout>
@@ -78,7 +79,7 @@ console.log(countryStateCity.State,states);
                             <label for="postition_type">Position Type<span class="text-danger">*</span></label>
                             <select class="form-select mb-3 "  aria-label="Default select example" v-model="form.position_type" >
                                 <option selected :value="null" >Select Type</option>
-                                <option v-for="(position, index) in positions" :key="index" :value="position.id">{{ position.name }}</option>
+                                <option v-for="(position, index) in positions" :key="index" :value="position.id"  :selected ="form.position_type == position.id">{{ position.name }}</option>
                             </select>
                             <InputError class="mt-2" :message="form.errors.position_type" />
                         </div>   
@@ -86,7 +87,7 @@ console.log(countryStateCity.State,states);
                             <label for="Seniority">Seniority<span class="text-danger">*</span></label>
                             <select class="form-select mb-3 "  aria-label="Default select example" v-model="form.seniority" >
                                 <option selected :value="null" >Select Seniority</option>
-                                <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{ position.experience }}</option>
+                                <option v-for="(position, index) in work_experience" :key="index" :value="position.id" :selected ="form.seniority.id == position.id">{{ position.experience }}</option>
                             </select>
                             <InputError class="mt-2" :message="form.errors.seniority" />
                         </div>   
@@ -94,7 +95,7 @@ console.log(countryStateCity.State,states);
                             <label for="discipline">Discipline<span class="text-danger">*</span></label>
                             <select class="form-select mb-3 "  aria-label="Default select example" v-model="form.discipline" >
                                 <option selected :value="null" >Select Type</option>
-                                <option v-for="(position, index) in disciplines" :key="index" :value="position.id">{{ position.name }}</option>
+                                <option v-for="(position, index) in disciplines" :key="index" :value="position.id" :selected ="form.discipline == position.id">{{ position.name }}</option>
                             </select>
                             <InputError class="mt-2" :message="form.errors.discipline" />
                         </div>   
@@ -110,7 +111,7 @@ console.log(countryStateCity.State,states);
                             <label for="skills">Skills<span class="text-danger">*</span></label>
                             <select class="form-select mb-3 " :multiple="true" aria-label="Default select example" v-model="form.skills" >
                                 <option selected :value="null" >Select Type</option>
-                                <option v-for="(position, index) in skills" :key="index" :value="position.id">{{ position.name }}</option>
+                                <option v-for="(position, index) in skills" :key="index" :value="position.id" :selected="form.skills[0] == position.id">{{ position.name }}</option>
                             </select>
                             <InputError class="mt-2" :message="form.errors.skills" />
                         </div>   
@@ -147,7 +148,7 @@ console.log(countryStateCity.State,states);
                           <label for="industry">Industry<span class="text-danger">*</span></label>
                           <select class="form-select mb-3" aria-label="Default select example" v-model="form.industry">
                             <option selected :value="null" >Select Industry</option>
-                            <option v-for="(position, index) in industries" :key="index" :value="position.id">{{ position.name }}</option>
+                            <option v-for="(position, index) in industries" :key="index" :value="position.id" :selected="form.industry == position.id">{{ position.name }}</option>
                           </select>
                           <InputError class="mt-2" :message="form.errors.industry" />
                         </div>  

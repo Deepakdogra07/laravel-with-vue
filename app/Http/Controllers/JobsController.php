@@ -10,27 +10,94 @@ use App\Models\Discipline;
 use App\Models\Seniorities;
 use App\Models\Workexperience;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
 class JobsController extends Controller
 {
    public function index(){
-        $jobs = Jobs::all();
+        $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills')->get();
         return Inertia::render('Admin/Jobs/Index',compact('jobs'));
    }
    public function create(){
-    return Inertia::render('Admin/Jobs/Create');
+      $positions= Position::all();
+      $skills= Skills::all();
+      $industries=Industries::all();
+      $disciplines= Discipline::all();
+      $seniorities= Seniorities::all();
+      $work_experience= Workexperience::all();
+    return Inertia::render('Admin/Jobs/Create',compact('positions','skills','industries','disciplines','seniorities','work_experience'));
    }
-   public function store(){
-    
+   public function store(Request $request){
+      $validate = Validator::make($request->all(), [
+            "job_title" => 'required',
+            "position_type" => 'required',
+            "seniority" => 'required',
+            "discipline" => 'required',
+            "work_experience" => 'required',
+            "skills" => 'required',
+            "industry" => 'required',
+            "positions" => 'required',
+            "pin_code" => 'required',
+            // "city" => 'required',
+            "state" => 'required',
+            "pay_range" => 'required',
+            "job_start_date" => 'required',
+            // "application_link" => 'required',
+         ]);
+      if($validate->fails()){
+         return back()->withErrors($validate->errors())->withInput();
+      }
+      $skills = json_encode($request->skills);
+      $job = new Jobs();
+      $job->fill($request->all());
+      $job->skills =$skills;
+      $job->user_id = auth()->user()->id; 
+      $job->save();
+      return to_route('jobs.index');
    }
    public function edit($id){
-    
+      $positions= Position::all();
+      $skills= Skills::all();
+      $industries=Industries::all();
+      $disciplines= Discipline::all();
+      $seniorities= Seniorities::all();
+      $work_experience= Workexperience::all();
+      $job = Jobs::where('id',$id)->first();
+      $job->skills = json_decode($job->skills);
+      return Inertia::render('Admin/Jobs/Edit',compact('positions','skills','industries','disciplines','seniorities','work_experience','job'));
    }
    public function update($id,Request $request){
-    
+    $validate = Validator::make($request->all(), [
+            "job_title" => 'required',
+            "position_type" => 'required',
+            "seniority" => 'required',
+            "discipline" => 'required',
+            "work_experience" => 'required',
+            "skills" => 'required',
+            "industry" => 'required',
+            "positions" => 'required',
+            "pin_code" => 'required',
+            // "city" => 'required',
+            "state" => 'required',
+            "pay_range" => 'required',
+            "job_start_date" => 'required',
+            // "application_link" => 'required',
+         ]);
+      if($validate->fails()){
+         return back()->withErrors($validate->errors())->withInput();
+      }
+      $skills = json_encode($request->skills);
+      $job = Jobs::findOrFail($id);
+      $job->fill($request->all());
+      $job->skills =$skills;
+      $job->user_id = auth()->user()->id; 
+      $job->update();
+      return to_route('jobs.index');
    }
    public function destroy($id){
-    
+      $job = Jobs::findOrFail($id);
+      $job->forceDelete();
+      return to_route('jobs.index');
    }
 }

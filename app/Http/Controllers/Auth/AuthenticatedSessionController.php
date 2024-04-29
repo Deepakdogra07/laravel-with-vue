@@ -37,10 +37,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $CheckActive = User::where('email', $request->email)->first()->status ?? 0; 
+        $userExists = User::where('email', $request->email)->orwhere('name',$request->email)->exists();
 
 
-        $userExists = User::where('email', $request->email)->exists();
+        $CheckActive = User::where('email', $request->email)->orwhere('name',$request->email)->first()->status ?? 0; 
+
 
         $rules = [ ];
 
@@ -58,9 +59,9 @@ class AuthenticatedSessionController extends Controller
         }
 
 
-
-
+        // dd($request->authenticate());
         $request->authenticate();
+        // dd('here',$userExists);
         $request->session()->regenerate();
         
         $user = Auth::user();
