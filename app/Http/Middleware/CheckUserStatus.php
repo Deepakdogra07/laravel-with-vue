@@ -23,6 +23,8 @@ class CheckUserStatus
                 return redirect()->route('login')->with('status', 'Your account has been deactivated.');
             }
         }
+        
+        
 
         return $next($request);
     }

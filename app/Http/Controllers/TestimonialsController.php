@@ -99,7 +99,6 @@ class TestimonialsController extends Controller
             'name.required' => 'Name is must.',
             'content.required' => 'Content is must.',
         ]);
-
             if($validate->fails()){
             return back()->withErrors($validate->errors())->withInput();
             }

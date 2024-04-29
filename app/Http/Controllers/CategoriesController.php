@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 {
       public function index()
       {
-            $categories = Category::all();
+            $categories = Category::latest()->get();
             return Inertia::render('Admin/Categories/Index', compact('categories'));
       }
       public function create()

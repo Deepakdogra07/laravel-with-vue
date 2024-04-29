@@ -30,7 +30,7 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
-    user_name:'',
+    name:'',
     checkbox: false,
 });
 const submit = () => {
@@ -62,7 +62,7 @@ function select_country(event){
                             <TextInput type="text" v-model="form.company_address" placeholder="Enter company address" class="form-control mt-2 mb-3" />
                             <InputError class="mt-2" :message="form.errors.company_address" />
                             <select class="form-select mb-3" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
-                                <option selected :value="null">Select Country</option>
+                                <option selected :value="null" >Select Country</option>
                                 <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
                             </select>
                             <InputError class="mt-2" :message="form.errors.company_country" />
@@ -110,8 +110,7 @@ function select_country(event){
                         </div>
                         <div class="mt-4">
                             <TextInput  v-model="form.type" type="hidden" />
-                            <span class="label text-label">Company VAT (if applicable)<span style="color:red">
-                                    *</span></span>
+                            <span class="label text-label">Company VAT (if applicable)</span>
                             <TextInput id="name" type="text" placeholder="Enter company VAT" class="form-control mt-2"
                                 v-model="form.company_vat" autofocus autocomplete="name" />
                             <InputError class="mt-2" :message="form.errors.company_vat" />
@@ -123,8 +122,8 @@ function select_country(event){
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">User name<span style="color:red"> *</span></span>
                             <TextInput type="text" placeholder="Enter user name" class="form-control mt-2"
-                                v-model="form.user_name" autocomplete="username" />
-                            <InputError class="mt-2" :message="form.errors.user_name" />
+                                v-model="form.name" autocomplete="username" />
+                            <InputError class="mt-2" :message="form.errors.name" />
                         </div>
                         <div class="mt-4">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->

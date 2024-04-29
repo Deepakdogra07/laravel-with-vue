@@ -52,7 +52,6 @@ const showMenu = () => {
     }, 1000 / framesPerSecond);
   }
 };
-
 </script>
 
 <template>
@@ -88,7 +87,14 @@ const showMenu = () => {
           </ul>
         </div>
         <div class="login-section-desk">
-          <Link class="main-btn" :href="route('login')">Login</Link>
+          <!-- <dropdown-link class="w-full text-left" :href="route('logout')" method="post" as="button">
+                        Log out
+                    </dropdown-link> -->
+          <Link class="main-btn" :href="route('login')">
+            <!-- <p v-if=""></p>
+            <p v-if=""></p> -->
+            Login
+          </Link>
         </div>
       </div>
     </nav>

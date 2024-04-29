@@ -66,10 +66,10 @@ function submitForm() {
                             <input type="file" id="category_thumb" @change="handleFileInput1" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.thumbnail" class="error-message">{{ props.errors.thumbnail }}</span> 
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 form-check form-switch" >
                               <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
-                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2">
-                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
+                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2 form-check-input">
+                              <label for="status" class="form-check-label text-gray-700 text-sm font-bold mb-2">Status</label>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>

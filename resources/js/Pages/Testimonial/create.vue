@@ -82,9 +82,13 @@ function Inputimage(event){
                         </div>
                         <br/>
                         <div class="mt-5 col-md-6">
-                              <input type="checkbox" id="status" v-model="form.status"  name="status" class="mr-2">
-                              <label for="status" class="text-gray-700 text-sm font-bold mb-2">Status</label>
+                          <div class="mb-4 form-check form-switch" >
+                              <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
+                              <input type="checkbox" id="status" v-model="form.status" name="status" class="mr-2 form-check-input">
+                              <label for="status" class="form-check-label text-gray-700 text-sm font-bold mb-2">Status</label>
+                          </div>
                         </div>
+                        
                         <div class="mt-4 col-md-12">
                                <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

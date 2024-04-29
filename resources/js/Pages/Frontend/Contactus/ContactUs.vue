@@ -10,6 +10,7 @@ import { Link, router,useForm } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 
 
+
 const form = useForm({
     user_name : '',
     user_email : '',
@@ -54,7 +55,7 @@ function submitForm(){
                         <form @submit.prevent="submitForm">
                             <div class="mt-4">
                                 <span class="label text-label">Name<span style="color:red"> *</span></span>
-                                <TextInput type="text" name="user_name" v-model="form.user_name" placeholder="Enter your password" class="form-control mt-2" />
+                                <TextInput type="text" name="user_name" v-model="form.user_name" placeholder="Enter your name" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_name" />
                             </div>
                             <div class="mt-4">
@@ -74,7 +75,7 @@ function submitForm(){
                                     <InputError class="mt-2" :message="form.errors.user_message" />
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn">
+                                <PrimaryButton class="forms-btn" :disabled='isDisabled'>
                                     Submit <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>
