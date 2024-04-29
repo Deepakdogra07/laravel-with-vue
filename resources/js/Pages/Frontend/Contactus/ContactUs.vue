@@ -75,7 +75,7 @@ function submitForm(){
                                     <InputError class="mt-2" :message="form.errors.user_message" />
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" :disabled='isDisabled'>
+                                <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                     Submit <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>

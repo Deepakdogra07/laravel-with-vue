@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+
 
 class ContactusController extends Controller
 {
@@ -39,19 +41,19 @@ class ContactusController extends Controller
         ];
 
         $messages = [
-            'user_name.required' => 'Name field is required',
+            'user_name.required' => 'Name is required',
             'user_name.string' => 'Name must be type of string',
             'user_name.max' => 'Name Must Be maximum 255 digit',
 
-            'user_email.required' => 'Email field is required',
-            'user_email.email' => 'Email must be in valid format.',
+            'user_email.required' => 'Email is required',
+            'user_email.email' => 'Please enter a valid email address.',
             'user_email.max' => 'Email must be less than 255 digits.',
 
-            'user_mobile.required' => 'Mobile Number field is required',
+            'user_mobile.required' => 'Mobile Number is required',
             'user_mobile.min' => 'Mobile Number should be not less than 8 digits. ',
             'user_mobile.max' => 'Mobile Number should be not more than 15 digits. ',
 
-            'user_message.required' => 'Message field is required',
+            'user_message.required' => 'Message is required',
         ];
 
         $validatedData = $request->validate($rules, $messages);
@@ -74,7 +76,6 @@ class ContactusController extends Controller
             'user_mobile'=>$request->user_mobile,
             'user_message'=>$request->user_message,
         ]);
-
         return Redirect::to('/');
     }
     public function view($id){
