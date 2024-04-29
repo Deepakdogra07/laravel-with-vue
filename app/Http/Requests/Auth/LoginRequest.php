@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
@@ -52,11 +53,16 @@ class LoginRequest extends FormRequest
         $this->ensureIsNotRateLimited();
         $email = $this->only('email')['email'];
         $password = $this->only('password')['password'];
+        $remember = $this->boolean('remember');
         if(strpos($email, '@') !== false) {
             $attempt = Auth::attempt(['email' => $email, 'password' => $password], $this->boolean('remember'));
         } else {
             $attempt = Auth::attempt(['name' => $email, 'password' => $password], $this->boolean('remember'));
         } 
+        if ($remember) {
+            Cookie::queue('remember_email', $email, 30 * 24 * 60);
+            Cookie::queue('remember_password', $password, 30 * 24 * 60);
+        }
         if (!$attempt) {
             RateLimiter::hit($this->throttleKey());
 
