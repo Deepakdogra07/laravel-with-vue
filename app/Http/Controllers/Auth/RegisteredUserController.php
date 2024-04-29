@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'company_address' => 'required',
             'company_country' => 'required',
             'company_state' => 'required',
-            'company_pin' => 'required',
+            'company_pin' => 'required|max:6|min:6',
             'contact_number' => 'required|max:15',
             'company_name' => 'required',
             'contact_department' => 'required',
@@ -54,6 +54,8 @@ class RegisteredUserController extends Controller
             'company_country.required'=>"Country is required.",
             'company_state.required'=>"State is required.",
             'company_pin.required'=>"PIN is required.",
+            'company_pin.max'=>"PIN should be 6 digits.",
+            'company_pin.min'=>"PIN should be 6 digits.",
             'company_name.required'=>"Company Name is required.",
             'mobile_number.required'=>"Mobile Number is required.",
             'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one digit and one special character.',
@@ -63,6 +65,9 @@ class RegisteredUserController extends Controller
             'email.email' => 'Please enter a valid email address.            ',
             'email.max' => 'Email must not exceed 255 characters.',
             'email.unique' => 'The email address is already in use.',
+
+            'contact_department.required' => "Contact department  is required.",
+            'contact_number.required' => "Contact Number  is required.",
 
             'name.required'=>"The user name is required",
             'name.unique'=>"The user name already taken. Please select other username.",

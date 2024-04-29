@@ -14,6 +14,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\FooterData;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticatedSessionController extends Controller
@@ -25,10 +26,12 @@ class AuthenticatedSessionController extends Controller
     public function create(Request $request): Response
     {    
         $footer_data = FooterData::first();
+        $cookies = Cookie::get();
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             'footer_data'=>$footer_data,
+            'cookies' =>$cookies
         ]);
     }
     
@@ -41,7 +44,6 @@ class AuthenticatedSessionController extends Controller
 
 
         $CheckActive = User::where('email', $request->email)->orwhere('name',$request->email)->first()->status ?? 0; 
-
 
         $rules = [ ];
 
@@ -58,10 +60,8 @@ class AuthenticatedSessionController extends Controller
              return redirect()->back()->withErrors($validator)->withInput();
         }
 
-
-        // dd($request->authenticate());
         $request->authenticate();
-        // dd('here',$userExists);
+        
         $request->session()->regenerate();
         
         $user = Auth::user();

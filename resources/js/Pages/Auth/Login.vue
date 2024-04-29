@@ -10,7 +10,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import '@/../../resources/css/frontend.css';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+
 
 const showPassword = ref(false);
 
@@ -26,13 +27,18 @@ const props = defineProps({
     status: String,
     footer_data :{
         type:Object
+    },
+    cookies:{
+        type:Object
     }
 });
+
 const form = useForm({
-    email: '',
-    password: '',
-    remember: false
+    email: props.cookies.remember_email ?? '',
+    password: props.cookies.remember_password ??'',
+    remember: false,
 });
+
 const submit = () => {
     
     form.post(route('login.post'));
