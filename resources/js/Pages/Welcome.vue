@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/vue3';
 import Header from '../Pages/Frontend/Header.vue';
 import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
+import { useToast } from 'vue-toastify';
 
 const props = defineProps({
   sliders: {
@@ -18,6 +19,8 @@ const props = defineProps({
     type: Object
   }
 });
+
+
 const slickFn = () => {
   $('#home_banner').slick({
     arrows: false,
