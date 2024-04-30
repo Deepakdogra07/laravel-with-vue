@@ -50,7 +50,7 @@ function select_country(event){
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="container h-100">
-            <h1 class="mb-4 text-blue">Personal & Company Details</h1>
+            <h2 class="mb-4 login-texts">Personal & Company Details</h2>
             <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                 {{ status }}
             </div>
@@ -117,8 +117,8 @@ function select_country(event){
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
-                        <h1 class="my-4 text-blue">Login Details</h1>
-                        <div class="mt-4">
+                        <h2 class="mt-4 login-texts">Login Details</h2>
+                        <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">User name<span style="color:red"> *</span></span>
                             <TextInput type="text" placeholder="Enter user name" class="form-control mt-2"

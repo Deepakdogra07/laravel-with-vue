@@ -29,7 +29,7 @@ const slickFn = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     infinite: true,
-    dots: true,
+    dots: $('.web-banner').length > 1,
   });
 
   $('#welcome_slider_').slick({
@@ -40,7 +40,7 @@ const slickFn = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     infinite: true,
-    dots: true,
+    dots: $('.image_for_Card').length > 3,
     responsive: [
       {
         breakpoint: 991,
@@ -94,7 +94,7 @@ onMounted(() => {
 
     <div class="unstopable-log unstoppable-spaces-top ">
       <div class="container text-center">
-        <h1>{{ logo.category_heading }}</h1>
+        <h1 class="dark-theme-color">{{ logo.category_heading }}</h1>
         <p>{{ logo.category_subheading }}</p>
       </div>
     </div>
@@ -117,7 +117,7 @@ onMounted(() => {
 
   <div class="unstoppable-spaces-top countries-section">
     <div class="welcome-content">
-      <h2>{{ logo.country_description }}</h2>
+      <h2 class="dark-theme-color">{{ logo.country_description }}</h2>
     </div>
     <div class="container-fluid px-0">
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
@@ -142,7 +142,7 @@ onMounted(() => {
   <div class="unstoppable-spaces-top-special unstoppable-spaces-bottom video-section">
     <div class="container">
       <div class="video-background">
-        <h2 class="mb-3">{{ logo.video_heading }}</h2>
+        <h2 class="mb-3 dark-theme-color">{{ logo.video_heading }}</h2>
         <p class="text-center">{{ logo.video_subheading }}</p>
         <div class="video-play">
           <video controls autoplay>

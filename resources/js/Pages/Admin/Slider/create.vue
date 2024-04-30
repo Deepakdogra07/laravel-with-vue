@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import {reactive, watch, watchPostEffect } from 'vue';
+import {reactive, ref, watch, watchPostEffect } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
@@ -47,8 +47,16 @@ function submitForm() {
     // Post data 
     router.post('/home-page/store', formData)
   }
-  function handleFileInput(event){
-    form.slider_image = event.target.files[0]; 
+  // function handleFileInput(event){
+  //   form.slider_image = event.target.files[0]; 
+  // }
+
+ const url = ref('');
+
+  
+  function handleFileInput(event) {
+    form.category_image = event.target.files[0];
+    url.value = URL.createObjectURL(form.category_image) ;
   }
 
 </script>
@@ -69,23 +77,24 @@ function submitForm() {
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
                             <label for="sliderName" class="block text-gray-700 text-sm font-bold mb-2">Slider Name</label>
-                            <input type="text" id="sliderName"placeholder="Enter Slider Name" v-model="form.slider_name" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="sliderName"placeholder="Enter Slider Name" v-model="form.slider_name" class="form-control mt-2 mb-3">
                              <span v-if="props.errors.slider_name" class="error-message">{{ props.errors.slider_name }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
-                            <input type="text" id="sliderHeading"placeholder="Enter Slider Heading" v-model="form.slider_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="sliderHeading"placeholder="Enter Slider Heading" v-model="form.slider_heading"  class="form-control mt-2 mb-3">
                              <span v-if="props.errors.slider_heading" class="error-message">{{ props.errors.slider_heading }}</span> 
                         </div>
                         <div class="mb-4">
                             <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words)</label>
-                            <textarea id="sliderDescription"placeholder="Enter Slider Description" v-model="form.slider_description" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
+                            <textarea id="sliderDescription"placeholder="Enter Slider Description" v-model="form.slider_description" class="form-control mt-2 mb-3"></textarea>
                              <span v-if="props.errors.slider_description" class="error-message">{{ props.errors.slider_description }}</span> 
                         </div>
                         <div class="mb-4">
-                            <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
-                            <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                             <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
+                          <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
+                          <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="form-control">
+                          <img v-bind:src="url" alt="" class="mt-2">
+                          <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>
@@ -99,6 +108,10 @@ function submitForm() {
 <style scoped>
   .error-message{
     color:red;
+  }
+
+  img{
+    width: 100px;
   }
   
 </style>

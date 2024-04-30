@@ -120,7 +120,7 @@ function submitForm() {
                             <div class="mb-4">
                                 <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
                                 <img :src="'/storage/logo/' + form.image_image" alt="" style="height:250px">
-                                <label for="logoImage" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <label for="logoImage" class="form-control mt-2 cursor-pointer">
                                     {{ form.image_image ? 'Change File' : 'Upload File' }}
                                 </label>
                               <input type="file" id="logoImage" @change="update_all_data('image_image',$event)" accept="image/*" class="hidden">
@@ -157,7 +157,7 @@ function submitForm() {
                               <div class="mb-4">
                                     <label for="country_1_image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
                                     <img :src="'/storage/logo/' + form.country_1_image" alt="" style="height:250px">
-                                    <label for="country_1_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    <label for="country_1_image" class="form-control mt-2 cursor-pointer">
                                         {{ form.country_1_image ? 'Change File' : 'Upload File' }}
                                     </label>
                                     <input type="file" id="country_1_image" @change="update_all_data('country_1_image',$event)" accept="image/*" class="hidden">
@@ -174,7 +174,7 @@ function submitForm() {
                               <div class="mb-4">
                                   <label for="country_2_image" class=" block text-gray-700 text-sm font-bold mb-2">Image</label>
                                     <img :src="'/storage/logo/' + form.country_2_image" alt="" style="height:250px">
-                                    <label for="country_2_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                    <label for="country_2_image" class="form-control mt-2 cursor-pointer">
                                         {{ form.country_2_image ? 'Change File' : 'Upload File' }}
                                     </label>
                                     <input type="file" id="country_2_image" @change="update_all_data('country_2_image',$event)" accept="image/*" class="hidden">
@@ -205,14 +205,14 @@ function submitForm() {
                                     <source :src="'/storage/videos/' + form.video" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                                <label for="video" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <label for="video" class="form-control mt-2 cursor-pointer">
                                     {{ form.video ? 'Change File' : 'Upload File' }}
                                 </label>
                                 <input type="file" id="video" @change="update_all_data('video',$event)" accept="video/*" class="hidden">
                                 <span v-if="props.errors.video" class="error-message">{{ props.errors.video }}</span>
                             </div>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>
                     </div>
                     </div>
