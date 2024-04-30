@@ -54,7 +54,11 @@ class JobsController extends Controller
       if($validate->fails()){
          return back()->withErrors($validate->errors())->withInput();
       }
-      $skills = json_encode($request->skills);
+      $skills = [];
+      foreach($request->skills as $skill){
+         $skills[] = $skill['id'];
+      }
+      $skills = json_encode($skills);
       $job = new Jobs();
       $job->fill($request->all());
       $job->skills =$skills;
@@ -93,7 +97,11 @@ class JobsController extends Controller
       if($validate->fails()){
          return back()->withErrors($validate->errors())->withInput();
       }
-      $skills = json_encode($request->skills);
+      $skills = [];
+      foreach($request->skills as $skill){
+         $skills[] = $skill['id'];
+      }
+      $skills = json_encode($skills);
       $job = Jobs::findOrFail($id);
       $job->fill($request->all());
       $job->skills =$skills;
