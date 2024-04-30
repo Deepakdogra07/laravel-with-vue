@@ -36,7 +36,7 @@ const props = defineProps({
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'Logo Deleted Successfully',
+                    text: 'Category Deleted Successfully',
                 });
                 location.reload();
             } else {

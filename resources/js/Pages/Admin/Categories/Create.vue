@@ -43,7 +43,7 @@ function submitForm() {
 
 function handleFileInput(event) {
   form.category_image = event.target.files[0];
-  rul1.value = URL.createObjectURL(form.category_image) ;
+  rul1.value = URL.createObjectURL(form.category_image);
 }
 function handleFileInput1(event) {
   form.category_thumb = event.target.files[0];  

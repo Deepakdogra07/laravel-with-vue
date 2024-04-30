@@ -78,7 +78,7 @@ function submitForm() {
 
                 <div class="mb-4">
                   <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
-                  <img :src="image_" alt="" style="height:100px">
+                  <img :src="category_image" alt="" style="height:100px">
                   <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}
                   </label>
