@@ -55,7 +55,7 @@ function submitForm() {
                             <h2>Logo Section</h2>
                             <div class="mb-4">
                                 <label for="logo_image" class="block text-gray-700 text-sm font-bold mb-2"> Logo Upload</label>
-                                <input type="file" id="logo_image" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <input type="file" id="logo_image" @change="handleFileInput" accept="image/*" class="form-control mt-2 cursor-pointer">
                                 <span v-if="props.errors.logo_image" class="error-message">{{ props.errors.logo_image }}</span> 
                             </div>
                             <div class="mb-4">
@@ -109,11 +109,11 @@ function submitForm() {
                             <h2>Certificates Upload</h2>
                             <div class="mb-4">
                                 <label for="certificate_images" class="block text-gray-700 text-sm font-bold mb-2">Upload Images <span class="error-message">(max 4 images) </span></label>
-                                <input type="file" id="certificate_images" @change="handleFileInput1" multiple class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <input type="file" id="certificate_images" @change="handleFileInput1" multiple class="form-control mt-2 cursor-pointer ">
                                 <span v-if="props.errors.certificate_images" class="error-message">{{ props.errors.certificate_images }}</span> 
                             </div>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>
                     </div>
                     </div>

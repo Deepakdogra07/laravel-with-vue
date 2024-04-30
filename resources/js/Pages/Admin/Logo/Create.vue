@@ -89,12 +89,12 @@ function handleVideoInput(event){
                             <h2>Image Section</h2>
                             <div class="mb-4">
                                 <label for="logoHeading" class="block text-gray-700 text-sm font-bold mb-2">Image Heading</label>
-                                <input type="text" id="logoHeading" v-model="form.image_heading"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                                <input type="text" id="logoHeading" v-model="form.image_heading"  class="form-control mt-2 cursor-pointer">
                                 <span v-if="props.errors.image_heading" class="error-message">{{ props.errors.image_heading }}</span> 
                             </div>
                             <div class="mb-4">
                                 <label for="logoDescription" class="block text-gray-700 text-sm font-bold mb-2">Image Description (less than 100 words)</label>
-                                <textarea id="logoDescription" v-model="form.image_description" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
+                                <textarea id="logoDescription" v-model="form.image_description" class="form-control mt-2"></textarea>
                                 <span v-if="props.errors.image_description" class="error-message">{{ props.errors.image_description }}</span> 
                             </div>
                             <div class="mb-4">
