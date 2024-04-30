@@ -6,7 +6,7 @@
         <img src="{{config('app.url')}}images/instant-loan-logo.png" alt="" style="width: 150px; margin: 0 auto;">
     </div>
     <div style="padding: 30px 20px; background-color: #f7f7f7;">
-        <p style="font-size: 16px; color: #000;">Click the button below to verify your email address..</p>
+        <p style="font-size: 16px; color: #000;">Click the button below to reset your password..</p>
         <div style="text-align: center; margin: 30px 0;">
             <a  href="{{ $actionUrl }}" style="text-decoration:none; padding: 11px 20px; color: #fff; background-color: #000D37; border-radius: 10px;">Reset Password</a>
         </div>

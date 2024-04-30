@@ -11,60 +11,60 @@ const props = defineProps({
         type: Array
     }
 });
-onMounted( ()=>{
-    console.log(props.msg,'props.msg');
-    if(props.msg != null){
+onMounted(() => {
+    console.log(props.msg, 'props.msg');
+    if (props.msg != null) {
         toast(props.msg, {
-        autoClose: 3000,
-        theme: 'dark',
-      });
+            autoClose: 3000,
+            theme: 'dark',
+        });
     }
 
 })
 const deletejob = async (id) => {
-        const { value: confirmed } = await Swal.fire({
-            title: 'Are you sure?',
-            text: 'You want to Delete Job Record?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
-        });
+    const { value: confirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'You want to Delete Job Record?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+    });
 
-        try {
-            if (confirmed) {
-                router.delete(route('jobs.destroy',id));
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Job Deleted Successfully',
-                });
-                location.reload();
-            } else {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Canceled',
-                    text: 'Deletion canceled.',
-                });
-            }
-        } catch (error) {
+    try {
+        if (confirmed) {
+            router.delete(route('jobs.destroy', id));
             Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error Deleting Job. Please try again.',
+                icon: 'success',
+                title: 'Success',
+                text: 'Job Deleted Successfully',
+            });
+            location.reload();
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'Canceled',
+                text: 'Deletion canceled.',
             });
         }
-    };
-   
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error Deleting Job. Please try again.',
+        });
+    }
+};
+
 
 </script>
 
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Jobs</h2>
-                <div class="button-container">
+            <h2 class="font-semibold text-xl text-black-800 leading-tight">Jobs</h2>
+            <div class="button-container">
                 <Link :href="route('jobs.create')">
                 <button class="btn btn-info">Add Job</button>
                 </Link>
@@ -77,33 +77,36 @@ const deletejob = async (id) => {
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
-                                    <th >ID</th>
-                                    <th >Job Title</th>
+                                    <th>ID</th>
+                                    <th>Job Title</th>
                                     <th>Positions</th>
                                     <th>Industry</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(job,index) in jobs" :key="job.id">
-                                    <td >{{ index+1 }}</td>
+                                <tr v-for="(job, index) in jobs" :key="job.id">
+                                    <td>{{ index + 1 }}</td>
                                     <td>
-                                            {{ job?.job_title }}
+                                        {{ job?.job_title }}
                                     </td>
                                     <td> {{ job?.positions }}</td>
                                     <td>
                                         {{ job?.industry?.name }}
                                     </td>
-                                   
+
                                     <td>
-                                        <Link  :href="route('jobs.edit',job.id)"
-                                                class="btn btn-primary btn-sm">
-                                                <i class="fas fa-edit"></i>
-                                            </Link>
-                                            &nbsp;
-                                            <button class="btn btn-danger btn-sm" @click="deletejob(job.id)"
-                                            ><i class="fas fa-trash" ></i></button>
-                                   </td> 
+                                        <Link :href="route('jobs.show', job.id)" class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                        </Link>
+                                        &nbsp;
+                                        <Link :href="route('jobs.edit', job.id)" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                        </Link>
+                                        &nbsp;
+                                        <button class="btn btn-danger btn-sm" @click="deletejob(job.id)"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </DataTable>
@@ -114,6 +117,4 @@ const deletejob = async (id) => {
     </AuthenticatedLayout>
 </template>
 
-<style scoped>
-  
-</style>
+<style scoped></style>
