@@ -6,6 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import NumberInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm,router } from '@inertiajs/vue3';
+import { toast } from 'vue3-toastify';
 import '@/../../resources/css/frontend.css';
 import * as countryStateCity from 'country-state-city';
 import { ref } from 'vue';
@@ -54,7 +55,16 @@ const form = useForm({
 
 
 const submit = () => {
-    form.post(route('jobs.store'), form);
+    form.post(route('jobs.store'),
+    {
+      onSuccess: () => {
+        toast("Job Created Successfully!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
 };
 const states = countryStateCity.State.getStatesOfCountry('IN');
 console.log(countryStateCity.State,states);

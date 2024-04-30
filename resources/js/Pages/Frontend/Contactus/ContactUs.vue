@@ -6,8 +6,8 @@ import SubHeading from '@/Pages/Frontend/SubHeading.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import "../../../../css/frontend.css";
-import { Link, router,useForm } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import { toast } from 'vue3-toastify';
 
 
 
@@ -19,7 +19,17 @@ const form = useForm({
 });
 
 function submitForm(){
-    form.post(route('contact_us.store'));
+    form.post(route('contact_us.store'),
+    {
+      onSuccess: () => {
+        toast("Form is submitted!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
+
  }
 </script>
 <template>

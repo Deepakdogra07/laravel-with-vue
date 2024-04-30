@@ -9,6 +9,7 @@ import { Head, Link, useForm,router } from '@inertiajs/vue3';
 import '@/../../resources/css/frontend.css';
 import * as countryStateCity from 'country-state-city';
 import { ref } from 'vue';
+import { toast } from 'vue3-toastify';
 
 
 const props = defineProps({
@@ -56,7 +57,15 @@ const form = useForm({
   application_link: props.job.application_link,
 });
 const submit = () => {
-    form.put(route('jobs.update',form.id));
+    form.put(route('jobs.update',form.id), {
+      onSuccess: () => {
+        toast("Job Updated Successfully!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
 };
 const states = countryStateCity.State.getStatesOfCountry('IN');
 </script>

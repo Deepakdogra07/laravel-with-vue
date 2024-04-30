@@ -46,7 +46,6 @@ const form = reactive({
     certificate_images_status :false
 })
 function submitForm() {
-    console.log(form,'123')
     router.post(route('update-link-update'), form);
 }
 
