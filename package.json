@@ -38,7 +38,7 @@
         "lightbox2": "^2.11.4",
         "summernote": "^0.8.20",
         "sweetalert2": "^11.10.2",
-        "vue-router": "^4.2.5",
+        "vue-multiselect": "^3.0.0",
         "vue-slick-carousel": "^1.0.6",
         "vue-toastify": "^2.0.0-alpha.2",
         "vue3-loading-overlay": "^0.0.0",

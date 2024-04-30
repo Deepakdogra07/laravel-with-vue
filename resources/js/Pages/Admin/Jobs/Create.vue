@@ -8,8 +8,9 @@ import NumberInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm,router } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import '@/../../resources/css/frontend.css';
+import '@/../../resources/css/multiselect.css';
 import * as countryStateCity from 'country-state-city';
-import { ref } from 'vue';
+import Multiselect from 'vue-multiselect';
 
 
 const props = defineProps({
@@ -123,12 +124,9 @@ console.log(countryStateCity.State, states);
             </div>
             <div class="mt-4 col-md-6">
               <label for="skills">Skills<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " :multiple="true" aria-label="Default select example"
-                v-model="form.skills">
-                <option selected :value="null">Select Type</option>
-                <option v-for="(position, index) in skills" :key="index" :value="position.id">{{ position.name }}
-                </option>
-              </select>
+                <multiselect v-model="form.skills" :options="props.skills" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                 :preserve-search="true" placeholder="Select Skills" label="name" track-by="name">
+              </multiselect>
               <InputError class="mt-2" :message="form.errors.skills" />
             </div>
             <!-- <div class="mt-4 col-md-6">
@@ -231,4 +229,3 @@ console.log(countryStateCity.State, states);
 
   </AuthenticatedLayout>
 </template>
-<style></style>
