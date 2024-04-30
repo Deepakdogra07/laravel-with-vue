@@ -1,10 +1,12 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive, watch, watchPostEffect } from 'vue';
+import { reactive, ref, watch, watchPostEffect } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
+const url = ref(''),
+rul1 = ref('');
 
 const props = defineProps({
   errors: {
@@ -28,11 +30,14 @@ function submitForm() {
   // Post data 
   router.post(route('category.store'), formData)
 }
+
 function handleFileInput(event) {
   form.category_image = event.target.files[0];
+  rul1.value = URL.createObjectURL(form.category_image) ;
 }
 function handleFileInput1(event) {
-  form.category_thumb = event.target.files[0];
+  form.category_thumb = event.target.files[0];  
+   url.value = URL.createObjectURL(form.category_thumb) ;
 }
 
 </script>
@@ -62,13 +67,15 @@ function handleFileInput1(event) {
                 <div class="mb-4">
                   <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
                   <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="form-control">
+                  <img v-bind:src="rul1" alt="" class="mt-2">
                   <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image
                     }}</span>
                 </div>
                 <div class="mb-4">
                   <label for="category_thumb" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
                   <input type="file" id="category_thumb" @change="handleFileInput1" accept="image/*"
-                    class="form-control">
+                  class="form-control">
+                  <img v-bind:src="url" alt="" class="mt-2">
                   <span v-if="props.errors.thumbnail" class="error-message">{{ props.errors.thumbnail }}</span>
                 </div>
                   <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
@@ -94,5 +101,8 @@ function handleFileInput1(event) {
 <style scoped>
 .error-message {
   color: red;
+}
+img{
+  width: 100px;
 }
 </style>
