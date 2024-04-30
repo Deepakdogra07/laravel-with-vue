@@ -10,29 +10,13 @@ const props = defineProps({
     categories: {
         type: Array
     },
-    msg:{
-        type:String
-    }
 });
-onMounted( ()=>{
-    console.log(props.msg,'props.msg');
-    if(props.msg != null){
-        toast(props.msg, {
-        autoClose: 3000,
-        theme: 'dark',
-      });
-    }
-
-})
 
     // Edit category
     const editcategory= async(id) =>{
         router.get(route('category.edit',id));
     };
-    // View category
-    // const viewcategory = async(id)=>{
-    //     router.get(route('category.edit',id));
-    // };
+    
     // Delete category
     const deletecategory = async (id) => {
         // router.get(route('category.destroy',id));
@@ -52,7 +36,7 @@ onMounted( ()=>{
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'Logo Deleted Successfully',
+                    text: 'Category Deleted Successfully',
                 });
                 location.reload();
             } else {

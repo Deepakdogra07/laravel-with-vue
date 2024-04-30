@@ -8,6 +8,8 @@ import 'vue3-toastify/dist/index.css';
 const url = ref(''),
 rul1 = ref('');
 
+
+
 const props = defineProps({
   errors: {
     type: Object
@@ -28,12 +30,20 @@ function submitForm() {
   formData.append('thumbnail', form.category_thumb);
   formData.append('status', form.status);
   // Post data 
-  router.post(route('category.store'), formData)
+  router.post(route('category.store'), formData,{
+      onSuccess: () => {
+        toast("Categories Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
 }
 
 function handleFileInput(event) {
   form.category_image = event.target.files[0];
-  rul1.value = URL.createObjectURL(form.category_image) ;
+  rul1.value = URL.createObjectURL(form.category_image);
 }
 function handleFileInput1(event) {
   form.category_thumb = event.target.files[0];  

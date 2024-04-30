@@ -49,10 +49,10 @@ class NewPasswordController extends Controller
             'token.required' => 'The token field is mandatory.',
             'email.required' => 'The email field is mandatory.',
             'email.email' => 'Please enter a valid email address.',
-            'password.required' => 'The password field is required.',
+            'password.required' => 'New password is required.',
             'password.confirmed' => 'Password confirmation does not match.',
             'password.min' => 'A password must have at least 4 digits',
-            'password_confirmation.required'=>'The confirm password field is required.',
+            'password_confirmation.required'=>'Confirm password is required.',
         ]);
 
 

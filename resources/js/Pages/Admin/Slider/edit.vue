@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
 
 const props = defineProps({
@@ -22,6 +22,7 @@ const form = reactive({
   sliderImage: props.slider.slider_image,
 
 })
+const slider_ = ref('/storage/slider/' + props.slider.slider_image);
 function submitForm() {
    
     const formData = new FormData();
@@ -31,7 +32,15 @@ function submitForm() {
     formData.append('sliderDescription', form.sliderDescription);
     formData.append('sliderImage', form.sliderImage);
     // Post
-    router.post('/home-page/update', formData)
+    router.post('/home-page/update', formData,{
+      onSuccess: () => {
+        toast("Slider Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
   }
 
     
@@ -44,6 +53,8 @@ function submitForm() {
         form.sliderHeading = event.target.value;
       }else if(type == 'image'){
         form.sliderImage = event.target.files[0];
+        slider_.value = URL.createObjectURL(form.sliderImage);
+
       }
 
     }
@@ -82,7 +93,7 @@ function submitForm() {
                         </div>
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
-                            <img :src="'/storage/slider/' + slider.slider_image" alt="" style="height:250px">
+                            <img :src="slider_" alt="" style="height:250px">
                               <label for="sliderImage" class="form-control mt-2 cursor-pointer">
                                 {{ slider.slider_image ? 'Change File' : 'Upload File' }}
                               </label>

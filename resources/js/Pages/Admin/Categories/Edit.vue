@@ -1,8 +1,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { router, Link } from '@inertiajs/vue3';
-import { reactive,ref } from 'vue';
+import { router, Link, useForm } from '@inertiajs/vue3';
+import { reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 
 const props = defineProps({
   category: {
@@ -13,36 +14,41 @@ const props = defineProps({
   }
 });
 
-const form = reactive({
-  id: props.category.id,
+const form = useForm({
+  id:props.category.id,
   category_heading: props.category.category_heading,
   category_image: props.category.category_image,
   thumbnail: props.category.thumbnail,
   status: props.category.status,
-});
-const image_ = ref('/storage/categories/' + form.category_image),
-thumbnail = ref('/storage/categories/thumbnail/' + form.thumbnail);
+})
+const category_image = ref('/storage/categories/' + form.category_image),
+thumbnail= ref('/storage/categories/thumbnail/' + form.thumbnail);
 
 function submitForm() {
-  // Post data 
-  router.put(route('category.update', form.id), form);
-}
-
-
-function updateThumbnailName(type, event) {
-  if (type == 'image') {
-    const Image__  = event.target.files[0];
-    form.category_image = event.target.files[0];
-    image_.value = URL.createObjectURL(Image__);
-  } else if (type == 'thumbnailimage') {
-    const Thumbnail_  = event.target.files[0];
-    form.thumbnail  = event.target.files[0];
-    thumbnail.value = URL.createObjectURL(Thumbnail_);
+    // Post data 
+    form.post(route('category.updated',form.id),{
+      onSuccess: () => {
+        toast("Categories Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
   }
-}
-function updateStatus(event) {
-  console.log(event)
-}
+  
+ 
+  function updateThumbnailName(type,event) {
+       if(type == 'image'){
+        form.category_image = event.target.files[0];
+        var category= event.target.files[0];
+        category_image.value = URL.createObjectURL(category);
+      }else if(type == 'thumbnailimage'){
+        form.thumbnail = event.target.files[0];
+        var thumb  = event.target.files[0];
+        thumbnail.value = URL.createObjectURL(thumb);
+      }
+    }
 
 </script>
 
@@ -72,7 +78,7 @@ function updateStatus(event) {
 
                 <div class="mb-4">
                   <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
-                  <img :src="image_" alt="" style="height:100px">
+                  <img :src="category_image" alt="" style="height:100px">
                   <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}
                   </label>

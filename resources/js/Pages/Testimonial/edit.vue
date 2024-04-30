@@ -3,7 +3,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 import { reactive } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { useToast } from 'vue-toastify';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 

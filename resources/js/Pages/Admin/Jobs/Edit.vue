@@ -11,6 +11,8 @@ import * as countryStateCity from 'country-state-city';
 import { onMounted, ref } from 'vue';
 import Multiselect from 'vue-multiselect';
 import '@/../../resources/css/multiselect.css';
+import { ref } from 'vue';
+import { toast } from 'vue3-toastify';
 
 const props = defineProps({
   seniorities: {
@@ -66,7 +68,15 @@ onMounted( () => {
   });
 })
 const submit = () => {
-  form.put(route('jobs.update', form.id));
+    form.put(route('jobs.update',form.id), {
+      onSuccess: () => {
+        toast("Job Updated Successfully!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
 };
 const states = countryStateCity.State.getStatesOfCountry('IN');
 </script>

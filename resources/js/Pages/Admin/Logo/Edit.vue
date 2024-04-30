@@ -1,30 +1,19 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { onMounted,reactive } from 'vue';
+import { onMounted,reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 
-console.log(route('edit-logo.store'),'12121212121');
 const props = defineProps({
     logo:{
         type : Object
     },
     errors: {
       type: Object
-    },
-    msg:{
-        type:String
     }
 });
-onMounted( ()=>{
-    if(props.msg != null){
-        toast(props.msg, {
-        autoClose: 3000,
-        theme: 'dark',
-      });
-    }
 
-})
 
 const form = reactive({
     id:props.logo.id,
@@ -43,11 +32,21 @@ const form = reactive({
     category_subheading:props.logo.category_subheading,
     country_description:props.logo.country_description,
 })
-
+const country_1_image = ref('/storage/logo/' + form.country_1_image),
+country_2_image = ref('/storage/logo/' + form.country_2_image),
+logo_image = ref('/storage/logo/' + form.image_image);
 function submitForm() {
    
-    router.post(route('edit-logo.update'), form)
-    console.log('errors : ',props.errors)
+    router.post(route('edit-logo.update'), form,{
+    onSuccess: () => {
+        toast("Data Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
+   
   }
   function handleFileInput(event){
     form.logo_image = event.target.files[0]; 
@@ -58,6 +57,7 @@ function submitForm() {
         form.image_heading = event.target.value;
       }else if(type == 'image_image'){
         form.image_image = event.target.files[0];
+        logo_image.value = URL.createObjectURL(form.image_image); 
       }else if(type == 'image_description'){
         form.image_description = event.target.value;
       }else if(type =="category_heading"){
@@ -76,8 +76,10 @@ function submitForm() {
         form.video_description = event.target.value;
       }else if(type =="country_1_image"){
         form.country_1_image = event.target.files[0];
-      }else if(type =="country_2_image"){
+        country_1_image.value = URL.createObjectURL(form.country_1_image);
+      }else if(type =="country_2_image"){        
         form.country_2_image = event.target.files[0];
+        country_2_image.value = URL.createObjectURL(form.country_2_image);
       }else if(type =="video_subheading"){
         form.video_subheading = event.target.value;
       }else if(type =="video"){
@@ -122,7 +124,7 @@ function submitForm() {
                             </div>
                             <div class="mb-4">
                                 <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-                                <img :src="'/storage/logo/' + form.image_image" alt="" style="height:250px">
+                                <img :src="logo_image" alt="" style="height:250px">
                                 <label for="logoImage" class="form-control mt-2 cursor-pointer">
                                     {{ form.image_image ? 'Change File' : 'Upload File' }}
                                 </label>
@@ -159,7 +161,7 @@ function submitForm() {
                               </div>
                               <div class="mb-4">
                                     <label for="country_1_image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-                                    <img :src="'/storage/logo/' + form.country_1_image" alt="" style="height:250px">
+                                    <img :src="country_1_image" alt="" style="height:250px">
                                     <label for="country_1_image" class="form-control mt-2 cursor-pointer">
                                         {{ form.country_1_image ? 'Change File' : 'Upload File' }}
                                     </label>
@@ -176,7 +178,7 @@ function submitForm() {
                               </div>
                               <div class="mb-4">
                                   <label for="country_2_image" class=" block text-gray-700 text-sm font-bold mb-2">Image</label>
-                                    <img :src="'/storage/logo/' + form.country_2_image" alt="" style="height:250px">
+                                    <img :src="country_2_image" alt="" style="height:250px">
                                     <label for="country_2_image" class="form-control mt-2 cursor-pointer">
                                         {{ form.country_2_image ? 'Change File' : 'Upload File' }}
                                     </label>
