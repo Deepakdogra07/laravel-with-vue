@@ -73,6 +73,7 @@ import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
 import SubHeading from '../Frontend/SubHeading.vue';
 import { computed,ref } from 'vue';
+import { toast } from 'vue3-toastify';
 
 const showPassword = ref(false),
 showPassword1 = ref(false);
@@ -99,7 +100,14 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(route('password.store'), {
+  form.post(route('password.store') ,{
+    onSuccess: () => {
+        toast("Password Reset Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
     onFinish: () => form.reset('password', 'password_confirmation'),
   });
 };

@@ -62,14 +62,14 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Slider/edit',compact("slider"));
     }
     public function update(Request $request){
-        $validator = Validator::make($request->all(),[
-            'slider_name' => 'required',
-            'slider_heading' => 'required',
-            'slider_description' => ['required',new MaxWords(100)],
-        ]);
-        if($validator->fails()){
-            return back()->withErrors($validator->errors());
-        }
+        // $validator = Validator::make($request->all(),[
+        //     'slider_name' => 'required',
+        //     'slider_heading' => 'required',
+        //     'slider_description' => ['required',new MaxWords(100)],
+        // ]);
+        // if($validator->fails()){
+        //     return back()->withErrors($validator->errors());
+        // }
         $slider = Slider::findOrFail($request->id);
 
         if ($request->hasFile('sliderImage') && ($slider->slider_image != $request->sliderImage)) {
