@@ -97,7 +97,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr v-for="(customer, index) in applied_customers" :key="customer.id">
+                                                    <tr v-if="applied_customers.length > 0"  v-for="(customer, index) in applied_customers" :key="customer.id">
                                                         <td>{{ index + 1 }}</td>
                                                         <td>
                                                             {{ customer.customers?.first_name }} {{ customer.customers.last_name }}
