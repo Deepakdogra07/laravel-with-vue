@@ -1,12 +1,17 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import Header from '../Frontend/Header.vue';
+import Header from '../Frontend/LoggedInHeader.vue';
 import Footer from '../Frontend/Footer.vue';
+
+
+
 const props = defineProps({
   footer_data: {
     type: Object
   }
 });
+
+
 </script>
 
 <template>

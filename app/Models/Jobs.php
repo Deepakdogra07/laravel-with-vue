@@ -29,5 +29,8 @@ class Jobs extends Model
     public function skills(){
         return $this->hasMany(Skills::class,'id',json_decode('skills'));
     }
+    public function createdby(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
     
 }

@@ -68,8 +68,8 @@ class RegisteredUserController extends Controller
 
             'contact_department.required' => "Contact department  is required.",
             'contact_number.required' => "Contact Number  is required.",
-            'contact_number.min' => "Contact Number  should be more than 8 digits.",
-            'contact_number.max' => "Contact Number  should be less than 15 digits..",
+            // 'contact_number.min' => "Contact Number  should be more than 8 digits.",
+            // 'contact_number.max' => "Contact Number  should be less than 15 digits..",
 
             'name.required'=>"The user name is required",
             'name.unique'=>"The user name already taken. Please select other username.",

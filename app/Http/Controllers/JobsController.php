@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
+use App\Models\JobsWithCustomers;
+use App\Models\Customer;
+use App\Models\CustomerDocuments;
+use App\Models\CustomerPassports;
+use App\Models\CustomerTraining;
+use App\Models\VideoIntro;
 use App\Models\Position;
 use App\Models\Skills;
 use App\Models\Industries;
@@ -99,5 +105,12 @@ class JobsController extends Controller
       $job = Jobs::findOrFail($id);
       $job->forceDelete();
       return to_route('jobs.index');
+   }
+   public function show($id){
+      $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills','createdby')->where('id',$id)->first();
+
+      $applied_customers = JobsWithCustomers::where('job_id',$id)->with('customers')->get();
+      
+      return Inertia::render('Admin/Jobs/Show',compact('jobs','applied_customers'));
    }
 }

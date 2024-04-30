@@ -76,7 +76,7 @@ class ContactusController extends Controller
             'user_mobile'=>$request->user_mobile,
             'user_message'=>$request->user_message,
         ]);
-        return Redirect::to('/');
+        return to_route('home');
     }
     public function view($id){
         $enquiry = Contactus::where('id',$id)->first();

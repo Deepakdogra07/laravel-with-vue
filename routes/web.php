@@ -102,9 +102,9 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
 
 });
 
-// Route::get('/job-listing', function () {
-//     return inertia('Frontend/JobSection/JobListing');
-// })->name("job.listing");
+Route::get('/job-listing', function () {
+    return inertia('Frontend/JobSection/JobListing');
+})->name("job.listing");
 
 Route::get('/view-job', function () {
     return inertia('Frontend/JobSection/ViewJobs');
