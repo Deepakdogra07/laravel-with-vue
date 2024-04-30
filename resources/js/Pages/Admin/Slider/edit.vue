@@ -83,10 +83,10 @@ function submitForm() {
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
                             <img :src="'/storage/slider/' + slider.slider_image" alt="" style="height:250px">
-                              <label for="sliderImage" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                              <label for="sliderImage" class="form-control mt-2 cursor-pointer">
                                 {{ slider.slider_image ? 'Change File' : 'Upload File' }}
                               </label>
-                              <input type="file" id="sliderImage" @change="updateSliderName('image', $event)" accept="image/*" class="hidden">
+                              <input type="file" id="sliderImage" @change="updateSliderName('image', $event)" accept="image/*" class="form-control !hidden mt-2">
                             <span v-if="!form.sliderImage" class="error-message">Slider Image is required</span>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>

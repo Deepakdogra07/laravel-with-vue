@@ -84,7 +84,7 @@ function submitForm() {
                         </div>
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
-                            <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="form-control">
                              <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
