@@ -57,14 +57,14 @@ class CategoriesController extends Controller
       public function update(Request $request, $id)
       {
             // dd($request->all());
-            $validator = Validator::make($request->all(), [
-                  'category_image' => 'required',
-                  'category_heading' => 'required',
-                  'thumbnail' => 'required',
-            ]);
-            if ($validator->fails()) {
-                  return redirect()->back()->withErrors($validator)->withInput();
-            }
+            // $validator = Validator::make($request->all(), [
+            //       'category_image' => 'required',
+            //       'category_heading' => 'required',
+            //       'thumbnail' => 'required',
+            // ]);
+            // if ($validator->fails()) {
+            //       return redirect()->back()->withErrors($validator)->withInput();
+            // }
             $category = Category::findOrFail($id);
             if ($request->thumbnail != $category->thumbnail) {
                   $image = $request->file('thumbnail');

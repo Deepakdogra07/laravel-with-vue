@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { useToast } from 'vue-toastify';
 import { toast } from 'vue3-toastify';
@@ -44,6 +44,20 @@ function Inputimage(event) {
   form.image = event.target.files[0];
 }
 
+const url = ref(''),
+newVideo = ref('');
+
+
+function handleFileInput1(event) {
+    form.category_image = event.target.files[0];
+    url.value = URL.createObjectURL(form.category_image) ;
+};
+function handleVideoInput2(event) {
+    form.category_image = event.target.files[0];
+    newVideo.value = URL.createObjectURL(form.category_image) ;
+}
+
+
 </script>
 <template>
   <AuthenticatedLayout>
@@ -69,14 +83,16 @@ function Inputimage(event) {
             </div>
             <div class="mt-4 col-md-6">
               <label for="name">Image<span class="text-danger">*</span></label>
-              <input type="file" required accept="image/*" @change="Inputimage($event)" placeholder="Enter Name"
+              <input @change="handleFileInput1" type="file" required accept="image/*"  placeholder="Enter Name"
                 class="block w-full mt-1 form-control" autocomplete="name" />
+                <img v-bind:src='url' alt="" class="mt-2">
               <div v-if="errors.image" class="text-danger">{{ errors.image }}</div>
             </div>
             <div class="mt-4 col-md-6">
               <label for="name">Video</label>
-              <input type="file" accept="video/*" @change="handleVideoInput($event)" placeholder="Enter Name"
+              <input type="file" accept="video/*" @change="handleVideoInput2" placeholder="Enter Name"
                 class="block w-full mt-1 form-control" autocomplete="name" />
+                <video :src='newVideo' class="mt-2"></video>
               <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
             </div>
             <div class="mt-4 col-md-6">
@@ -114,4 +130,11 @@ function Inputimage(event) {
 
   </AuthenticatedLayout>
 </template>
-<style></style>
+<style scoped>
+  img{
+    width: 100px;
+  }
+  video{
+    width: 200px;
+  }
+</style>
