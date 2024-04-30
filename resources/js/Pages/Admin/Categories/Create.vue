@@ -6,6 +6,8 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 
+
+
 const props = defineProps({
     errors: {
       type: Object
@@ -26,7 +28,15 @@ function submitForm() {
     formData.append('thumbnail', form.category_thumb);
     formData.append('status', form.status);
     // Post data 
-    router.post(route('category.store'), formData)
+    router.post(route('category.store'), formData,{
+      onSuccess: () => {
+        toast("Categories Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
   }
   function handleFileInput(event){
     form.category_image = event.target.files[0]; 

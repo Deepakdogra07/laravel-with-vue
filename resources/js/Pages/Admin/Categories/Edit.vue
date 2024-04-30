@@ -1,8 +1,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { router, Link } from '@inertiajs/vue3';
-import { reactive } from 'vue';
+import { router, Link, useForm } from '@inertiajs/vue3';
+import { reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 
 const props = defineProps({
     category:{
@@ -13,31 +14,40 @@ const props = defineProps({
     }
 });
 
-const form = reactive({
-    id:props.category.id,
-    category_heading: props.category.category_heading,
-    category_image: props.category.category_image,
-    thumbnail: props.category.thumbnail,
-    status: props.category.status,
+const form = useForm({
+  id:props.category.id,
+  category_heading: props.category.category_heading,
+  category_image: props.category.category_image,
+  thumbnail: props.category.thumbnail,
+  status: props.category.status,
 })
+const category_image = ref('/storage/categories/' + form.category_image),
+thumbnail= ref('/storage/categories/thumbnail/' + form.thumbnail);
 
 function submitForm() {
     // Post data 
-    router.put(route('category.update',form.id), form);
+    form.post(route('category.updated',form.id),{
+      onSuccess: () => {
+        toast("Categories Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
   }
   
  
   function updateThumbnailName(type,event) {
-      if(type =="heading"){
-        form.category_heading = event.target.value;
-      }else if(type == 'image'){
+       if(type == 'image'){
         form.category_image = event.target.files[0];
+        var category= event.target.files[0];
+        category_image.value = URL.createObjectURL(category);
       }else if(type == 'thumbnailimage'){
         form.thumbnail = event.target.files[0];
+        var thumb  = event.target.files[0];
+        thumbnail.value = URL.createObjectURL(thumb);
       }
-    }
-    function updateStatus(event){
-      console.log(event)
     }
 
 </script>
@@ -59,13 +69,13 @@ function submitForm() {
                         <div class="mb-4">
                             <input type="hidden" id="categoryId" v-model="category.id">
                             <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category Heading</label>
-                            <input type="text" id="categoryHeading" v-model="form.category_heading"  @input="updateThumbnailName('heading',$event)"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                            <input type="text" id="categoryHeading" v-model="form.category_heading"   class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                              <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading }}</span> 
                         </div>
                        
                         <div class="mb-4">
                           <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
-                             <img :src="'/storage/categories/' + form.category_image" alt="" style="height:100px">
+                             <img :src="category_image" alt="" style="height:100px">
                               <label for="category_image" class="file_cursor bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                                 {{ form.category_image ? 'Change File' : 'Upload File' }}
                               </label>
@@ -73,7 +83,7 @@ function submitForm() {
                         </div>
                         <div class="mb-4">
                           <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
-                             <img :src="'/storage/categories/thumbnail/' + form.thumbnail" alt="" style="height:100px;margin-top:10px;">
+                             <img :src="thumbnail" alt="" style="height:100px;margin-top:10px;">
                               <label for="thumbnail" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full file_cursor">
                                 {{ form.thumbnail ? 'Change File' : 'Upload File' }}
                               </label>

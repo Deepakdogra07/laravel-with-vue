@@ -54,9 +54,9 @@ const submit = () => {
                 <div class="col-md-9 col-lg-7">
                     <div class="w-full">
                         <h1 class="mb-4 text-blue">Login</h1>
-                        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+                        <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                             <h3>Please Enter Your email and password for login</h3>
-                        </div>
+                        </div> -->
                         <form @submit.prevent="submit">
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->

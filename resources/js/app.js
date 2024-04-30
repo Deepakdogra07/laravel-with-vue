@@ -15,8 +15,9 @@ import Buttons from 'datatables.net-buttons/js/dataTables.buttons.min.js';
 import 'datatables.net-select';
 import 'datatables.net-buttons/js/buttons.html5.min.js';
 import 'datatables.net-buttons/js/buttons.print.min.js';
+import 'vue3-toastify/dist/index.css';
 // import 'datatables.net-buttons/css/buttons.dataTables.min.css';
-import Toast from 'vue-toastify';
+// import Toast from 'vue3-toastify';
 import Toggle from '@vueform/toggle';
 import * as countryStateCity from 'country-state-city';
 window.$ = window.jQuery = jQuery;
@@ -33,15 +34,15 @@ createInertiaApp({
         app.use(ZiggyVue, Ziggy);
         app.component('DataTable', DataTable);
         app.component('Toggle', Toggle);
-        app.use(Toast,{
-            autoClose: 200,
-            position:"top-right",
-            canTimeout:true,
-            errorDuration:200,
-            successDuration:200,
-            alertInfoDuration:200,
-            duration:500,
-        });
+        // app.use(Toast,{
+        //     autoClose: 200,
+        //     position:"top-right",
+        //     canTimeout:true,
+        //     errorDuration:200,
+        //     successDuration:200,
+        //     alertInfoDuration:200,
+        //     duration:500,
+        // });
         app.mount(el);
     },
     progress: {

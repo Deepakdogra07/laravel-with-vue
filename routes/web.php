@@ -87,6 +87,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::get('/edit-logo/delete/{id}', [EditHomePageController::class, 'logo_delete'])->name('edit-logo.delete');
     // Route::resource('/test-123',EditHomePageController::class);
     Route::resource('category',CategoriesController::class);
+    Route::post('category/updated/{id}', [CategoriesController::class, 'update'])->name('category.updated');
     Route::post('/update-links/update',[FooterDataController::class,'update'])->name('update-link-update');
     Route::resource('update-links',FooterDataController::class);
     Route::resource('jobs',JobsController::class);

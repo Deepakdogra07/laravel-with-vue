@@ -45,9 +45,10 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import '@/../../resources/css/frontend.css';
-import Header from '../Frontend/Header.vue'
-import Footer from '../Frontend/Footer.vue'
-import SubHeading from '../Frontend/SubHeading.vue'
+import Header from '../Frontend/Header.vue';
+import Footer from '../Frontend/Footer.vue';
+import SubHeading from '../Frontend/SubHeading.vue';
+import { toast } from 'vue3-toastify';
 
 defineProps({
   status: String,
@@ -58,6 +59,15 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(route('password.email'));
+  form.post(route('password.email'),{
+    onSuccess: () => {
+      console.log('hereeererere');
+        toast("Email Sent Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
 };
 </script>

@@ -3,28 +3,17 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
 import { onMounted,reactive } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 
-console.log(route('edit-logo.store'),'12121212121');
 const props = defineProps({
     logo:{
         type : Object
     },
     errors: {
       type: Object
-    },
-    msg:{
-        type:String
     }
 });
-onMounted( ()=>{
-    if(props.msg != null){
-        toast(props.msg, {
-        autoClose: 3000,
-        theme: 'dark',
-      });
-    }
 
-})
 
 const form = reactive({
     id:props.logo.id,
@@ -46,8 +35,16 @@ const form = reactive({
 
 function submitForm() {
    
-    router.post(route('edit-logo.update'), form)
-    console.log('errors : ',props.errors)
+    router.post(route('edit-logo.update'), form,{
+    onSuccess: () => {
+        toast("Data Updated Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
+   
   }
   function handleFileInput(event){
     form.logo_image = event.target.files[0]; 
