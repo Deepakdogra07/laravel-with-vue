@@ -11,7 +11,6 @@ import * as countryStateCity from 'country-state-city';
 import { onMounted, ref } from 'vue';
 import Multiselect from 'vue-multiselect';
 import '@/../../resources/css/multiselect.css';
-import { ref } from 'vue';
 import { toast } from 'vue3-toastify';
 
 const props = defineProps({
