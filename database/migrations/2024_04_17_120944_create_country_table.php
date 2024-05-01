@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('logos', function (Blueprint $table) {
+        Schema::table('home_page', function (Blueprint $table) {
             $table->string('country_description')->nullable();
             $table->string('country_1_name')->nullable();
             $table->string('country_1_image')->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('logos', function (Blueprint $table) {
+        Schema::table('home_page', function (Blueprint $table) {
             $table->dropColumn('country_description');
             $table->dropColumn('country_1_name');
             $table->dropColumn('country_1_image');

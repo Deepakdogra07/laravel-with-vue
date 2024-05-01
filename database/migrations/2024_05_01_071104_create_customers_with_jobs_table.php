@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers_with_jobs', function (Blueprint $table) {
+        Schema::create('customers_employments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('job_id')->nullable();
             $table->bigInteger('customer_id')->nullable();
+            $table->string('employer_statement')->nullable();
+            $table->string('financial_evidence')->nullable();
+            $table->string('evidence_self_employment')->nullable();
+            $table->string('formal_training_evidence')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers_with_jobs');
+        Schema::dropIfExists('customers_employments');
     }
 };

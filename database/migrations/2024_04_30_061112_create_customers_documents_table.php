@@ -12,11 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers_documents', function (Blueprint $table) {
-            $table->id();
-            $table->string('customer_id')->nullable();
-            $table->string('employer_statement')->nullable();
-            $table->string('financial_evidence')->nullable();
-            $table->string('evidence_self_employment')->nullable();
+            $table->id(); 
+            $table->bigInteger('job_id')->nullable();
+            $table->bigInteger('customer_id')->nullable();
             $table->string('employment_evidence')->nullable();
             $table->string('licences')->nullable();
             $table->string('kitchen_area')->nullable();
