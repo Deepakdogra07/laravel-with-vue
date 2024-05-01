@@ -11,6 +11,7 @@ const props = defineProps({
         type: Array
     }
 });
+console.log(props.jobs,'1234567890-');
 onMounted(() => {
     console.log(props.msg, 'props.msg');
     if (props.msg != null) {
@@ -90,7 +91,7 @@ const deletejob = async (id) => {
                                     <td>
                                         {{ job?.job_title }}
                                     </td>
-                                    <td> {{ job?.positions }}</td>
+                                    <td> {{ job?.position?.name }}</td>
                                     <td>
                                         {{ job?.industry?.name }}
                                     </td>
