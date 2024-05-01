@@ -52,7 +52,6 @@ class EditHomePageController extends Controller
         $slider->slider_description = $request->slider_description;
         $slider->save();
         return to_route('edit-home-page',['status'=>true , 'message' => 'Data Added successfully!']);
-        // return Inertia::location(route('edit-home-page'))->with(['status', 'message' => 'Data added successfully']);
     }
     public function edit($id){
         $slider = Slider::where('id',$id)->first();
@@ -242,6 +241,9 @@ class EditHomePageController extends Controller
     }
     public function other_data(){
         $logos = Logo::pluck('id')->first();
+        if(!$logos){
+            return redirect()->route('edit-logo.create');
+        }
         return redirect()->route('edit-logo.edit', ['id' => $logos]);
     }
 }

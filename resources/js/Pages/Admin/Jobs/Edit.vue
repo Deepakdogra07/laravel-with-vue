@@ -48,7 +48,7 @@ const form = useForm({
   discipline_id: props.job.discipline_id,
   work_experience_id: props.job.work_experience_id,
   skills_id: [],
-  remote_work: props.job.remote_work,
+  remote_work: (props.job.remote_work == 1) ? true : false,
   industry_id: props.job.industry_id,
   segment: props.job.segment,
   positions: props.job.positions,
@@ -163,9 +163,12 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               <InputError class="mt-2" :message="form.errors.pin_code" />
             </div>
             <div class="mt-4 col-md-6">
-              <div class="form-check form-switch">
-                <input class="form-check-input" v-model="form.remote_work" type="checkbox" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Remote Work</label>
+              <div class="configure-switch d-flex align-items-center gap-3">
+                <div class="d-flex">
+                  <input type="checkbox" v-model="form.remote_work"  id="flexSwitchCheckDefault" />
+                  <label for="flexSwitchCheckDefault"></label>
+                </div>
+                <p class="mb-0 semibold">Remote Work</p>
               </div>
               <InputError class="mt-2" :message="form.errors.remote_work" />
             </div>
@@ -204,16 +207,18 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               <InputError class="mt-2" :message="form.errors.job_start_date" />
             </div>
             <div class="mt-4 col-md-6">
-              <div class="form-check form-switch">
-                <input class="form-check-input" v-model="form.application_link" type="checkbox"
-                  id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Apply Link</label>
+              <div class="configure-switch d-flex align-items-center gap-3">
+                <div class="d-flex">
+                  <input type="checkbox" v-model="form.application_link" :checked="form.application_link == 1" id="flexSwitchCheckDefaultApply" />
+                  <label for="flexSwitchCheckDefaultApply"></label>
+                </div>
+                <p class="mb-0 semibold">Apply Link</p>
               </div>
               <InputError class="mt-2" :message="form.errors.application_link" />
-            </div>
+              </div>
 
             <div class="mt-4 col-md-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" :disabled="form.processing" >Submit</button>
             </div>
             <div></div><br>
           </div>
