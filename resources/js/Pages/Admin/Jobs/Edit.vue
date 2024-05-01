@@ -61,7 +61,7 @@ const form = useForm({
 
 onMounted( () => {
   props.skills.forEach(element => {
-    if(props.job.skills.includes(element.id)){
+    if(props.job.skills_id.includes(element.id)){
       form.skills_id.push(element);
     }
   });
@@ -133,7 +133,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="skills">Skills<span class="text-danger">*</span></label>
-              <multiselect v-model="form.skills_id" :options="props.skills_id" :multiple="true" :close-on-select="false"
+              <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true" :close-on-select="false"
                 :clear-on-select="false" :preserve-search="true" placeholder="Select Skills" label="name"
                 track-by="name">
               </multiselect>

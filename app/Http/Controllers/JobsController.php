@@ -75,7 +75,9 @@ class JobsController extends Controller
       $seniorities= Seniorities::all();
       $work_experience= Workexperience::all();
       $job = Jobs::where('id',$id)->first();
-      $job->skills = json_decode($job->skills);
+      $job->skills_id = json_decode($job->skills_id);
+
+
       return Inertia::render('Admin/Jobs/Edit',compact('positions','skills','industries','disciplines','seniorities','work_experience','job'));
    }
    public function update($id,Request $request){
@@ -105,7 +107,7 @@ class JobsController extends Controller
       $skills = json_encode($skills);
       $job = Jobs::findOrFail($id);
       $job->fill($request->all());
-      $job->skills =$skills;
+      $job->skills_id =$skills;
       $job->user_id = auth()->user()->id; 
       $job->update();
       return to_route('jobs.index');
