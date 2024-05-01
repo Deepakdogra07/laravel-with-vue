@@ -16,7 +16,7 @@ const footer = computed(() => page.props.site_data)
         
         <div class="footer-section footer-one">
           <div class="footer-logo-sec">
-            <Link ><img :src="'/storage/logos/'+ footer?.logo_image" alt=""></Link>
+            <Link ><img :src="footer?.logo_image" alt=""></Link>
           </div>
           <p class="white-text mt-3">{{ footer.logo_description }}</p>
           <ul class="social-icons-footer d-flex align-items-center gap-3 pl-0 ">
@@ -88,7 +88,7 @@ const footer = computed(() => page.props.site_data)
             <div class="row">
                 <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
                     :key="index" class="col-md-6  mb-2">
-                    <img class="certificate-img" :src="'/storage/certificates/' + image" alt="">
+                    <img class="certificate-img" :src="image" alt="">
                 </div>
             </div>
           </div>

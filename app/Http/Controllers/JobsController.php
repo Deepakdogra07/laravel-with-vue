@@ -128,4 +128,9 @@ class JobsController extends Controller
       
       return Inertia::render('Admin/Jobs/Show',compact('jobs','applied_customers'));
    }
+
+   public function job_listing(){
+      $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills')->get();
+      return Inertia::render('Frontend/JobSection/JobListing',compact('jobs'));
+   }
 }

@@ -2,7 +2,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link, useForm } from '@inertiajs/vue3';
 import { reactive, ref } from 'vue';
-import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 
 const props = defineProps({

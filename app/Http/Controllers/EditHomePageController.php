@@ -191,7 +191,7 @@ class EditHomePageController extends Controller
                     $image = $request->file('image_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                     Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
-                    $logo->logo_image = $name;
+                    $logo->logo_image = '/storage/logo/'. $name;
             }
             }
             if($logo->video_introduction != $request->video){
@@ -199,7 +199,7 @@ class EditHomePageController extends Controller
                         $image = $request->file('video');
                         $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                         Storage::disk('public')->put('videos/'.$name, file_get_contents($image));
-                        $logo->video_introduction = $name;
+                        $logo->video_introduction ='/storage/videos/'. $name;
                     }
                 }
             if($logo->country_1_image != $request->country_1_image){
@@ -207,7 +207,7 @@ class EditHomePageController extends Controller
                     $image = $request->file('country_1_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                     Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
-                    $logo->country_1_image = $name;
+                    $logo->country_1_image = '/storage/logo/'.$name;
                 }
             }
             $logo->country_description = $request->country_description;
@@ -223,7 +223,7 @@ class EditHomePageController extends Controller
                     $image = $request->file('country_2_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                     Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
-                    $logo->country_2_image = $name;
+                    $logo->country_2_image = '/storage/logo/'. $name;
                 }
             }
             $logo->update();

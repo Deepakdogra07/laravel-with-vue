@@ -130,7 +130,7 @@ class FooterDataController extends Controller
             $image = $request->file('logo_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logos/'.$name, file_get_contents($image));
-            $data->logo_image = $name;
+            $data->logo_image =  '/storage/logos/'. $name;
         }
         $data->logo_description = $request->logo_description;
         $data->facebook_url = $request->facebook_url;
@@ -146,7 +146,7 @@ class FooterDataController extends Controller
                 $image = $img;
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('certificates/'.$name, file_get_contents($image));
-                $certificates[$key]=$name; 
+                $certificates[$key]= '/storage/certificates/' .$name; 
             }
             $data->certificate_images = json_encode($certificates);
         }
