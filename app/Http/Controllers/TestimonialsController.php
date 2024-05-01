@@ -33,6 +33,7 @@ class TestimonialsController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'image' => 'required',

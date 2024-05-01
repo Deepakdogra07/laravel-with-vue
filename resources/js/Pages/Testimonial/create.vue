@@ -49,12 +49,12 @@ newVideo = ref('');
 
 
 function handleFileInput1(event) {
-    form.category_image = event.target.files[0];
-    url.value = URL.createObjectURL(form.category_image) ;
+    form.image = event.target.files[0];
+    url.value = URL.createObjectURL(form.image) ;
 };
 function handleVideoInput2(event) {
-    form.category_image = event.target.files[0];
-    newVideo.value = URL.createObjectURL(form.category_image) ;
+    form.video = event.target.files[0];
+    newVideo.value = URL.createObjectURL(form.video) ;
 }
 
 
