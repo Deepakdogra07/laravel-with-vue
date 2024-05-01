@@ -85,11 +85,11 @@ function update_data(type, event) {
                         <div class="mb-4">
                             <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Logo
                                 Image</label>
-                            <img :src="props.link.logo_image == form.logo_image ? '/storage/logos/' + form.logo_image : updatedLogo"
+                            <img :src="props.link.logo_image == form.logo_image ? form.logo_image : updatedLogo"
                                 alt="" style="height:150px; height: 150px;
-background-color: #ccc;
-padding: 20px;
-margin-bottom: 10px;">
+                                    background-color: #ccc;
+                                    padding: 20px;
+                                    margin-bottom: 10px;">
                             <label for="logoImage"
                                 class=" file_cursor form-control mt-2 cursor-pointer">
                                 {{ form.logo_image ? 'Change File' : 'Upload File' }}
@@ -186,7 +186,7 @@ margin-bottom: 10px;">
                             <div class="row">
                                 <div v-for="(image, index) in form.certificate_images_status ? updatedCertificate : form.certificate_images"
                                     :key="index" class="col-md-4">
-                                    <img :src="form.certificate_images_status ? image : `/storage/certificates/${image}`"
+                                    <img :src="form.certificate_images_status ? image : `${image}`"
                                         alt="" style="height:150px;">
                                 </div>
                             </div>

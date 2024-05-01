@@ -122,14 +122,14 @@ onMounted(() => {
     <div class="container-fluid px-0">
       <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
         <div class="country-content content-left relative">
-          <img class="left-img" :src="`storage/logo/` + logo.country_1_image" alt="">
+          <img class="left-img" :src="logo.country_1_image" alt="">
           <div class="country-names">
             <h3>{{ logo.country_1_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
-          <img class="right-img" :src="`storage/logo/` + logo.country_2_image" alt="">
+          <img class="right-img" :src="logo.country_2_image" alt="">
           <div class="country-names">
             <h3>{{ logo.country_2_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
@@ -146,7 +146,7 @@ onMounted(() => {
         <p class="text-center">{{ logo.video_subheading }}</p>
         <div class="video-play">
           <video controls autoplay>
-            <source :src="'/storage/videos/' + logo.video_introduction" type="video/mp4">
+            <source :src="logo.video_introduction" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <!-- <a href=""><i class="bi bi-play-circle-fill play-btn"></i></a> -->

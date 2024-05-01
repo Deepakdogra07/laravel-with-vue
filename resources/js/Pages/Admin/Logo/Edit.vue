@@ -32,9 +32,9 @@ const form = reactive({
     category_subheading:props.logo.category_subheading,
     country_description:props.logo.country_description,
 })
-const country_1_image = ref('/storage/logo/' + form.country_1_image),
-country_2_image = ref('/storage/logo/' + form.country_2_image),
-logo_image = ref('/storage/logo/' + form.image_image);
+const country_1_image = ref(form.country_1_image),
+country_2_image = ref(form.country_2_image),
+logo_image = ref(form.image_image);
 function submitForm() {
    
     router.post(route('edit-logo.update'), form,{
@@ -207,7 +207,7 @@ function submitForm() {
                             <div class="mb-4">
                                  <label for="video" class=" block text-gray-700 text-sm font-bold mb-2">Video </label>
                                 <video controls style="height: 250px;">
-                                    <source :src="'/storage/videos/' + form.video" type="video/mp4">
+                                    <source :src="form.video" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                                 <label for="video" class="form-control mt-2 cursor-pointer">
