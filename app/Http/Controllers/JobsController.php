@@ -35,14 +35,15 @@ class JobsController extends Controller
     return Inertia::render('Admin/Jobs/Create',compact('positions','skills','industries','disciplines','seniorities','work_experience'));
    }
    public function store(Request $request){
+  
       $validate = Validator::make($request->all(), [
             "job_title" => 'required',
-            "position_type" => 'required',
-            "seniority" => 'required',
-            "discipline" => 'required',
-            "work_experience" => 'required',
-            "skills" => 'required',
-            "industry" => 'required',
+            "position_id" => 'required',
+            "seniority_id" => 'required',
+            "discipline_id" => 'required',
+            "work_experience_id" => 'required',
+            "skills_id" => 'required',
+            "industry_id" => 'required',
             "positions" => 'required',
             "pin_code" => 'required',
             // "city" => 'required',
@@ -55,13 +56,13 @@ class JobsController extends Controller
          return back()->withErrors($validate->errors())->withInput();
       }
       $skills = [];
-      foreach($request->skills as $skill){
+      foreach($request->skills_id as $skill){
          $skills[] = $skill['id'];
       }
       $skills = json_encode($skills);
       $job = new Jobs();
-      $job->fill($request->all());
-      $job->skills =$skills;
+      $job->fill($request->except('skills_id'));
+      $job->skills_id =$skills;
       $job->user_id = auth()->user()->id; 
       $job->save();
       return to_route('jobs.index');
@@ -79,26 +80,26 @@ class JobsController extends Controller
    }
    public function update($id,Request $request){
     $validate = Validator::make($request->all(), [
-            "job_title" => 'required',
-            "position_type" => 'required',
-            "seniority" => 'required',
-            "discipline" => 'required',
-            "work_experience" => 'required',
-            "skills" => 'required',
-            "industry" => 'required',
-            "positions" => 'required',
-            "pin_code" => 'required',
-            // "city" => 'required',
-            "state" => 'required',
-            "pay_range" => 'required',
-            "job_start_date" => 'required',
-            // "application_link" => 'required',
+               "job_title" => 'required',
+               "position_id" => 'required',
+               "seniority_id" => 'required',
+               "discipline_id" => 'required',
+               "work_experience_id" => 'required',
+               "skills_id" => 'required',
+               "industry_id" => 'required',
+               "positions" => 'required',
+               "pin_code" => 'required',
+               // "city" => 'required',
+               "state" => 'required',
+               "pay_range" => 'required',
+               "job_start_date" => 'required',
+               // "application_link" => 'required',
          ]);
       if($validate->fails()){
          return back()->withErrors($validate->errors())->withInput();
       }
       $skills = [];
-      foreach($request->skills as $skill){
+      foreach($request->skills_id as $skill){
          $skills[] = $skill['id'];
       }
       $skills = json_encode($skills);

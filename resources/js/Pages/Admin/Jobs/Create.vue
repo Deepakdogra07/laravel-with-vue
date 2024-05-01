@@ -38,13 +38,13 @@ const props = defineProps({
 
 const form = useForm({
   job_title: null,
-  position_type: null,
-  seniority: null,
-  discipline: null,
-  work_experience: null,
-  skills: null,
+  position_id: null,
+  seniority_id: null,
+  discipline_id: null,
+  work_experience_id: null,
+  skills_id: null,
   remote_work: null,
-  industry: null,
+  industry_id: null,
   segment: null,
   positions: null,
   pin_code: null,
@@ -87,46 +87,46 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="postition_type">Position Type<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.position_type">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.position_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in positions" :key="index" :value="position.id">{{ position.name }}
                 </option>
               </select>
-              <InputError class="mt-2" :message="form.errors.position_type" />
+              <InputError class="mt-2" :message="form.errors.position_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="Seniority">Seniority<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.seniority">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.seniority_id">
                 <option selected :value="null">Select Seniority</option>
                 <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
                   position.experience }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.seniority" />
+              <InputError class="mt-2" :message="form.errors.seniority_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="discipline">Discipline<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.discipline">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.discipline_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in disciplines" :key="index" :value="position.id">{{ position.name }}
                 </option>
               </select>
-              <InputError class="mt-2" :message="form.errors.discipline" />
+              <InputError class="mt-2" :message="form.errors.discipline_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="work_exp">Work Experience<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
                   position.experience }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.work_experience" />
+              <InputError class="mt-2" :message="form.errors.work_experience_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="skills">Skills<span class="text-danger">*</span></label>
-                <multiselect v-model="form.skills" :options="props.skills" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true" :close-on-select="false" :clear-on-select="false"
                  :preserve-search="true" placeholder="Select Skills" label="name" track-by="name">
               </multiselect>
-              <InputError class="mt-2" :message="form.errors.skills" />
+              <InputError class="mt-2" :message="form.errors.skills_id" />
             </div>
             <!-- <div class="mt-4 col-md-6">
                             <label for="Work Experience">Work Experience<span class="text-danger">*</span></label>
@@ -167,12 +167,12 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="industry">Industry<span class="text-danger">*</span></label>
-              <select class="form-select mb-3" aria-label="Default select example" v-model="form.industry">
+              <select class="form-select mb-3" aria-label="Default select example" v-model="form.industry_id">
                 <option selected :value="null">Select Industry</option>
                 <option v-for="(position, index) in industries" :key="index" :value="position.id">{{ position.name }}
                 </option>
               </select>
-              <InputError class="mt-2" :message="form.errors.industry" />
+              <InputError class="mt-2" :message="form.errors.industry_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="positions">Positions<span class="text-danger">*</span></label>

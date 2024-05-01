@@ -9,7 +9,7 @@ class Jobs extends Model
 {
     use HasFactory;
     protected $table = "jobs";
-    protected $fillable = ['job_title','position_type','seniority','discipline','work_experience','skills','remote_work','industry','segment','positions','pin_code','state','pay_range','job_start_date','application_link'];
+    protected $fillable = ['job_title','position_id','seniority_id','discipline_id','work_experience_id','skills_id','remote_work','industry_id','segment','positions','pin_code','state','pay_range','job_start_date','application_link'];
 
     public function position(){
         return $this->hasOne(Position::class,'id','position_type');
