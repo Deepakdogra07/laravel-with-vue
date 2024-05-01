@@ -21,7 +21,7 @@ const form = reactive({
   sliderImage: props.slider.slider_image,
 
 })
-const slider_ = ref('/storage/slider/' + props.slider.slider_image);
+const slider_ = ref(props.slider.slider_image);
 function submitForm() {
    
     const formData = new FormData();

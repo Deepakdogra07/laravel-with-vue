@@ -43,5 +43,18 @@ class DummyDataEntry extends Seeder
             'country_2_image' =>'/images/new-zealand.jpg',
             'video_introduction' =>'/images/new-video.mp4',
         ]);
+        \App\Models\Slider::insert([
+            'slider_heading' =>'Slider Heading',
+            'slider_description' =>'Lorem ipsum is placeholder text commonly used in the graphic and visual mockups.',
+            'slider_image' =>'/images/web-banner.png',
+       ]);
+       \App\Models\Category::insert([
+        'category_heading' =>'Category Heading',
+        'thumbnail' =>'/images/profile1.jpg',
+        'category_image' =>'/images/web-banner.png',
+        'status'=>1
+    ]);
+
+
     }
 }
