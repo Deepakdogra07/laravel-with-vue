@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('issuing_authority')->nullable();
             $table->string('date_of_expiry')->nullable();
             $table->string('more_passport')->default(0)->comment('0=no,1=yes');
+            $table->string('passport_id')->nullable();
             $table->string('visa_available')->default(0)->comment('0=no,1=yes');
             $table->timestamps();
         });

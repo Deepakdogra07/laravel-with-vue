@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('martial_status')->nullable();
             $table->string('gender')->nullable();
             $table->string('migrate_country')->nullable();
+            $table->string('customer_image')->nullable();
             $table->timestamps();
         });
     }
