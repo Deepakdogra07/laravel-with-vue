@@ -43,13 +43,13 @@ const props = defineProps({
 const form = useForm({
   id: props.job.id,
   job_title: props.job.job_title,
-  position_type: props.job.position_type,
-  seniority: props.job.seniority,
-  discipline: props.job.discipline,
-  work_experience: props.job.work_experience,
-  skills: [],
+  position_id: props.job.position_id,
+  seniority_id: props.job.seniority_id,
+  discipline_id: props.job.discipline_id,
+  work_experience_id: props.job.work_experience_id,
+  skills_id: [],
   remote_work: props.job.remote_work,
-  industry: props.job.industry,
+  industry_id: props.job.industry_id,
   segment: props.job.segment,
   positions: props.job.positions,
   pin_code: props.job.pin_code,
@@ -62,7 +62,7 @@ const form = useForm({
 onMounted( () => {
   props.skills.forEach(element => {
     if(props.job.skills.includes(element.id)){
-      form.skills.push(element);
+      form.skills_id.push(element);
     }
   });
 })
@@ -97,47 +97,47 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="postition_type">Position Type<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.position_type">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.position_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in positions" :key="index" :value="position.id"
-                  :selected="form.position_type == position.id">{{ position.name }}</option>
+                  :selected="form.position_id == position.id">{{ position.name }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.position_type" />
+              <InputError class="mt-2" :message="form.errors.position_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="Seniority">Seniority<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.seniority">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.seniority_id">
                 <option selected :value="null">Select Seniority</option>
                 <option v-for="(position, index) in work_experience" :key="index" :value="position.id"
-                  :selected="form.seniority.id == position.id">{{ position.experience }}</option>
+                  :selected="form.seniority_id.id == position.id">{{ position.experience }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.seniority" />
+              <InputError class="mt-2" :message="form.errors.seniority_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="discipline">Discipline<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.discipline">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.discipline_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in disciplines" :key="index" :value="position.id"
-                  :selected="form.discipline == position.id">{{ position.name }}</option>
+                  :selected="form.discipline_id == position.id">{{ position.name }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.discipline" />
+              <InputError class="mt-2" :message="form.errors.discipline_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="work_exp">Work Experience<span class="text-danger">*</span></label>
-              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience">
+              <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience_id">
                 <option selected :value="null">Select Type</option>
                 <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
                   position.experience }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.work_experience" />
+              <InputError class="mt-2" :message="form.errors.work_experience_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="skills">Skills<span class="text-danger">*</span></label>
-              <multiselect v-model="form.skills" :options="props.skills" :multiple="true" :close-on-select="false"
+              <multiselect v-model="form.skills_id" :options="props.skills_id" :multiple="true" :close-on-select="false"
                 :clear-on-select="false" :preserve-search="true" placeholder="Select Skills" label="name"
                 track-by="name">
               </multiselect>
-              <InputError class="mt-2" :message="form.errors.skills" />
+              <InputError class="mt-2" :message="form.errors.skills_id" />
             </div>
             <!-- <div class="mt-4 col-md-6">
                             <label for="Work Experience">Work Experience<span class="text-danger">*</span></label>
@@ -171,12 +171,12 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="industry">Industry<span class="text-danger">*</span></label>
-              <select class="form-select mb-3" aria-label="Default select example" v-model="form.industry">
+              <select class="form-select mb-3" aria-label="Default select example" v-model="form.industry_id">
                 <option selected :value="null">Select Industry</option>
                 <option v-for="(position, index) in industries" :key="index" :value="position.id"
-                  :selected="form.industry == position.id">{{ position.name }}</option>
+                  :selected="form.industry_id == position.id">{{ position.name }}</option>
               </select>
-              <InputError class="mt-2" :message="form.errors.industry" />
+              <InputError class="mt-2" :message="form.errors.industry_id" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="positions">Positions<span class="text-danger">*</span></label>
