@@ -27,10 +27,8 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Slider/create');
     }
     public function store(Request $request){
-        
         $validator = Validator::make($request->all(),[
             'slider_image' => 'required|image',
-            'slider_name' => 'required',
             'slider_heading' => 'required',
             'slider_description' => ['required',new MaxWords(100)],
         ]);
@@ -50,7 +48,6 @@ class EditHomePageController extends Controller
             Storage::disk('public')->put('slider/'.$name, file_get_contents($image));
             $slider->slider_image = $name;
         }
-        $slider->slider_name = $request->slider_name;
         $slider->slider_heading = $request->slider_heading;
         $slider->slider_description = $request->slider_description;
         $slider->save();
@@ -78,7 +75,6 @@ class EditHomePageController extends Controller
             Storage::disk('public')->put('slider/'.$name, file_get_contents($image));
             $slider->slider_image = $name;
         }
-        $slider->slider_name = $request->sliderName;
         $slider->slider_heading = $request->sliderHeading;
         $slider->slider_description = $request->sliderDescription;
         $slider->update();

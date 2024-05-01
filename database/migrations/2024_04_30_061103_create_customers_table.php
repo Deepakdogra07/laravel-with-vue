@@ -18,12 +18,18 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('confirm_email')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->string('country')->nullable();
+            $table->string('country_of_birth')->nullable();
             $table->string('city_of_birth')->nullable();
             $table->string('martial_status')->nullable();
             $table->string('gender')->nullable();
             $table->string('migrate_country')->nullable();
             $table->string('customer_image')->nullable();
+            $table->string('passport_image')->nullable();
+            $table->string('passport_number')->nullable();
+            $table->string('issuing_authority')->nullable();
+            $table->string('date_of_expiry')->nullable();
+            $table->tinyInteger('citizen_of_more_than_one_country')->default(0)->comment('0=no,1=yes');
+            $table->tinyInteger('visa_available')->default(0)->comment('0=no,1=yes');
             $table->timestamps();
         });
     }

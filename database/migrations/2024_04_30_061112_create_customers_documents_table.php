@@ -16,13 +16,17 @@ return new class extends Migration
             $table->string('customer_id')->nullable();
             $table->string('employer_statement')->nullable();
             $table->string('financial_evidence')->nullable();
-            $table->string('self_employment')->nullable();
-            $table->string('formal_training_evidence_id')->nullable();
+            $table->string('evidence_self_employment')->nullable();
             $table->string('employment_evidence')->nullable();
             $table->string('licences')->nullable();
-            $table->string('resume')->nullable();          
-            $table->string('supporting_employment_evidence')->nullable();          
-            $table->string('supporting_employment_licenses')->nullable();          
+            $table->string('kitchen_area')->nullable();
+            $table->string('ingredients')->nullable();
+            $table->string('cooking_tech')->nullable();
+            $table->string('dish')->nullable();
+            $table->string('clean_up')->nullable();
+            $table->string('evidence_image')->nullable();
+            $table->string('resume')->nullable();   
+            $table->tinyInteger('is_australia')->default(0)->comments('0=no,1=yes');        
             $table->timestamps();
         });
     }

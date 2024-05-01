@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'superadmin@yopmail.com',
             'user_type' => 1,
             'status' => 1,
-            'password' => Hash::make('password'),
+            'password' => Hash::make('123456'),
         ]);
+        $this->call(Adding_job_description::class);
     }
 }
