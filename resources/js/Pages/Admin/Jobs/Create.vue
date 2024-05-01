@@ -43,7 +43,7 @@ const form = useForm({
   discipline_id: null,
   work_experience_id: null,
   skills_id: null,
-  remote_work: null,
+  remote_work: false,
   industry_id: null,
   segment: null,
   positions: null,
@@ -51,7 +51,7 @@ const form = useForm({
   state: null,
   pay_range: null,
   job_start_date: null,
-  application_link: null,
+  application_link: false,
 });
 
 
@@ -159,10 +159,6 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                 </div>
                 <p class="mb-0 semibold">Remote Work</p>
               </div>
-              <!-- <div class="form-check form-switch">
-                              <input class="form-check-input" v-model="form.remote_work" type="checkbox" id="flexSwitchCheckDefault">
-                              <label class="form-check-label" for="flexSwitchCheckDefault">Remote Work</label>
-                            </div> -->
               <InputError class="mt-2" :message="form.errors.remote_work" />
             </div>
             <div class="mt-4 col-md-6">
@@ -200,7 +196,6 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               <InputError class="mt-2" :message="form.errors.job_start_date" />
             </div>
             <div class="mt-4 col-md-6">
-
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">
                   <input type="checkbox" v-model="form.application_link" id="flexSwitchCheckDefaultApply" />
@@ -208,17 +203,11 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                 </div>
                 <p class="mb-0 semibold">Apply Link</p>
               </div>
-
-              <!-- <div class="form-check form-switch">
-                <input class="form-check-input" v-model="form.application_link" type="checkbox"
-                  id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Apply Link</label>
-              </div> -->
               <InputError class="mt-2" :message="form.errors.application_link" />
             </div>
 
             <div class="mt-4 col-md-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" :disabled="form.processing">Submit</button>
             </div>
             <div></div><br>
           </div>

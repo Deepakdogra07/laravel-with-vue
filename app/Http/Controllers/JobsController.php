@@ -63,6 +63,8 @@ class JobsController extends Controller
       $job = new Jobs();
       $job->fill($request->except('skills_id'));
       $job->skills_id =$skills;
+      $job->remote_work = ($request->remote_work == true) ? 1 :0;
+      $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
       $job->save();
       return to_route('jobs.index');
@@ -108,6 +110,8 @@ class JobsController extends Controller
       $job = Jobs::findOrFail($id);
       $job->fill($request->all());
       $job->skills_id =$skills;
+      $job->remote_work =($request->remote_work == true) ? 1 :0;
+      $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
       $job->update();
       return to_route('jobs.index');
