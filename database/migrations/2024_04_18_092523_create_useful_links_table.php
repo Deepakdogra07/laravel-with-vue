@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('other_datas', function (Blueprint $table) {
+        Schema::create('header_footer', function (Blueprint $table) {
             $table->id();
             $table->string('logo_image')->nullable();
             $table->text('logo_description')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('other_datas');
+        Schema::dropIfExists('header_footer');
     }
 };

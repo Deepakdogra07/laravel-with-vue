@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FooterData extends Model
 {
     use HasFactory;
-    protected $table ="other_datas";
+    protected $table ="header_footer";
 }
