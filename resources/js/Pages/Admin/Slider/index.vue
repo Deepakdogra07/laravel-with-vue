@@ -100,7 +100,6 @@ function getImageUrl(imageName) {
                             <thead>
                                 <tr>
                                     <th >ID</th>
-                                    <th>Slider Name</th>
                                     <th>Slider Heading</th>
                                     <th style="width:200px !important;" >Slider Description</th>
                                     <th>Slider Image</th>
@@ -110,7 +109,6 @@ function getImageUrl(imageName) {
                             <tbody>
                                 <tr v-for="(slider, index) in sliders" :key="slider.id">
                                     <td >{{ index+1 }}</td>
-                                    <td>{{ slider.slider_name }}</td>
                                     <td>{{ slider.slider_heading }}</td>
                                     <td style="width:200px !important;">{{ slider.slider_description }}</td>
                                     <td>

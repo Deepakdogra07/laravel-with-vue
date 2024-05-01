@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('slider_images', function (Blueprint $table) {
             $table->id();
-            $table->string('slider_name');
             $table->text('slider_heading');
             $table->text('slider_description');
             $table->string('slider_image');

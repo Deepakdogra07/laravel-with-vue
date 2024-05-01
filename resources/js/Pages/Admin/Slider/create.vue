@@ -32,7 +32,6 @@ const props = defineProps({
 // })
 
 const form = reactive({
-  slider_name: '',
   slider_heading: '',
   slider_description: '',
   slider_image: '',
@@ -40,23 +39,20 @@ const form = reactive({
 })
 function submitForm() {
     const formData = new FormData();
-    formData.append('slider_name', form.slider_name);
     formData.append('slider_heading', form.slider_heading);
     formData.append('slider_description', form.slider_description);
     formData.append('slider_image', form.slider_image);
     // Post data 
     router.post('/home-page/store', formData)
   }
-  // function handleFileInput(event){
-  //   form.slider_image = event.target.files[0]; 
-  // }
+ 
 
  const url = ref('');
 
   
   function handleFileInput(event) {
-    form.category_image = event.target.files[0];
-    url.value = URL.createObjectURL(form.category_image) ;
+    form.slider_image = event.target.files[0];
+    url.value = URL.createObjectURL(form.slider_image) ;
   }
 
 </script>
@@ -76,11 +72,6 @@ function submitForm() {
                     <div class="container">
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
-                            <label for="sliderName" class="block text-gray-700 text-sm font-bold mb-2">Slider Name</label>
-                            <input type="text" id="sliderName"placeholder="Enter Slider Name" v-model="form.slider_name" class="form-control mt-2 mb-3">
-                             <span v-if="props.errors.slider_name" class="error-message">{{ props.errors.slider_name }}</span> 
-                        </div>
-                        <div class="mb-4">
                             <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
                             <input type="text" id="sliderHeading"placeholder="Enter Slider Heading" v-model="form.slider_heading"  class="form-control mt-2 mb-3">
                              <span v-if="props.errors.slider_heading" class="error-message">{{ props.errors.slider_heading }}</span> 
@@ -92,7 +83,7 @@ function submitForm() {
                         </div>
                         <div class="mb-4">
                           <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
-                          <input type="file" id="sliderImage" @change="handleFileInput" accept="image/*" class="form-control">
+                          <input type="file" id="sliderImage" @change="handleFileInput($event)" accept="image/*" class="form-control">
                           <img v-bind:src="url" alt="" class="mt-2">
                           <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
                         </div>

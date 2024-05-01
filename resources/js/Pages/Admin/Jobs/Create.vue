@@ -67,7 +67,6 @@ const submit = () => {
     });
 };
 const states = countryStateCity.State.getStatesOfCountry('IN');
-console.log(countryStateCity.State, states);
 </script>
 <template>
   <AuthenticatedLayout>

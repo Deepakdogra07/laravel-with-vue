@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs_with_customers', function (Blueprint $table) {
+        Schema::create('customers_with_jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('job_id')->nullable();
-            $table->string('customer_id')->nullable();
+            $table->bigInteger('job_id')->nullable();
+            $table->bigInteger('customer_id')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs_with_customers');
+        Schema::dropIfExists('customers_with_jobs');
     }
 };

@@ -16,7 +16,6 @@ const props = defineProps({
 
 const form = reactive({
   id: props.slider.id,
-  sliderName: props.slider.slider_name,
   sliderHeading: props.slider.slider_heading,
   sliderDescription: props.slider.slider_description,
   sliderImage: props.slider.slider_image,
@@ -27,7 +26,6 @@ function submitForm() {
    
     const formData = new FormData();
     formData.append('id', form.id);
-    formData.append('sliderName', form.sliderName);
     formData.append('sliderHeading', form.sliderHeading);
     formData.append('sliderDescription', form.sliderDescription);
     formData.append('sliderImage', form.sliderImage);
@@ -75,13 +73,8 @@ function submitForm() {
                     <div class="p-6 text-black-900">
                     <div class="container">
                         <form @submit.prevent="submitForm">
-                        <div class="mb-4">
-                          <input type="hidden" id="sliderId" v-model="slider.id">
-                            <label for="sliderName" class="block text-gray-700 text-sm font-bold mb-2">Slider Name</label>
-                            <input type="text" id="sliderName" v-model="slider.slider_name" @input="updateSliderName('name',$event)" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                            <span v-if="!form.sliderName" class="error-message">Slider Name is required</span>
-                        </div>
-                        <div class="mb-4">
+                          <div class="mb-4">
+                            <input type="hidden" id="sliderId" v-model="slider.id">
                             <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
                             <input type="text" id="sliderHeading" v-model="slider.slider_heading" @input="updateSliderName('heading',$event)"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                             <span v-if="!form.sliderHeading" class="error-message">Slider Heading is required</span>

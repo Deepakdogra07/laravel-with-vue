@@ -100,7 +100,7 @@ function submitForm() {
 
                   <div class="configure-switch d-flex align-items-center gap-3">
                     <div class="d-flex">
-                      <input type="checkbox" v-model="form.application_link" id="flexSwitchCheckDefaultApply" :true-value="1" :false-value="0"
+                      <input type="checkbox" v-model="form.status" id="flexSwitchCheckDefaultApply" :true-value="1" :false-value="0"
                     name="status"/>
                       <label for="flexSwitchCheckDefaultApply"></label>
                     </div>
