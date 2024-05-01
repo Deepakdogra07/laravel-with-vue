@@ -77,7 +77,7 @@ const options = {
     };
     
 function getImageUrl(imageName) {
-      return `/storage/slider/${imageName}`;
+      return `${imageName}`;
     }
     
 </script>

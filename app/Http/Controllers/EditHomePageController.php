@@ -46,7 +46,7 @@ class EditHomePageController extends Controller
             $image = $request->file('slider_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('slider/'.$name, file_get_contents($image));
-            $slider->slider_image = $name;
+            $slider->slider_image = '/storage/slider/' .$name;
         }
         $slider->slider_heading = $request->slider_heading;
         $slider->slider_description = $request->slider_description;
@@ -72,7 +72,7 @@ class EditHomePageController extends Controller
             $image = $request->file('sliderImage');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('slider/'.$name, file_get_contents($image));
-            $slider->slider_image = $name;
+            $slider->slider_image = '/storage/slider/' .$name;
         }
         $slider->slider_heading = $request->sliderHeading;
         $slider->slider_description = $request->sliderDescription;

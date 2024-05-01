@@ -55,7 +55,7 @@ const props = defineProps({
         }
     };
 function getImageUrl(imageName) {
-      return `/storage/categories/${imageName}`;
+      return `${imageName}`;
     }
 </script>
 

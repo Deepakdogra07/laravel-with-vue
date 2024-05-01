@@ -36,13 +36,13 @@ class CategoriesController extends Controller
                   $image = $request->file('category_image');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/' . $name, file_get_contents($image));
-                  $category->category_image = $name;
+                  $category->category_image ='/storage/categories/'. $name;
             }
             if ($request->hasFile('thumbnail')) {
                   $image = $request->file('thumbnail');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/thumbnail/' . $name, file_get_contents($image));
-                  $category->thumbnail = $name;
+                  $category->thumbnail = '/storage/categories/thumbnail/'. $name;
             }
             $category->status = ($request->status == "true") ? 1 : 0;
             $category->save();
@@ -69,13 +69,13 @@ class CategoriesController extends Controller
                   $image = $request->file('thumbnail');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/thumbnail/' . $name, file_get_contents($image));
-                  $category->thumbnail = $name;
+                  $category->thumbnail = '/storage/categories/thumbnail/'.$name;
             }
             if ($request->category_image != $category->category_image) {
                   $image = $request->file('category_image');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/' . $name, file_get_contents($image));
-                  $category->category_image = $name;
+                  $category->category_image = '/storage/categories/'.$name;
             }
             $category->category_heading = $request->category_heading;
             $category->status = ($request->status == "1") ? 1 : 0;

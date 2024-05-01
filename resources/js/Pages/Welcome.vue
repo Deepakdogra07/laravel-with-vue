@@ -76,7 +76,7 @@ onMounted(() => {
             <Link class="main-btn" :href="route('contact.us')">Contact Us</Link>
           </div>
         </div>
-        <img :src="`/storage/slider/${slider.slider_image}`">
+        <img :src="`${slider.slider_image}`">
       </div>
     </div>
     <div class="unstoppable-spaces-top">
@@ -101,10 +101,10 @@ onMounted(() => {
     <div class=" container-fluid px-0 mt-4">
       <div id="welcome_slider_" class="welcome-section">
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id">
-          <img :src="`storage/categories/` + category.category_image" alt="">
+          <img :src=" category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
             <div class="slider-profile-img">
-              <img :src="`storage/categories/thumbnail/${category.thumbnail}` " alt="">
+              <img :src="`${category.thumbnail}` " alt="">
             </div>
             <p class="mb-0">{{ category.category_heading }}</p>
           </div>

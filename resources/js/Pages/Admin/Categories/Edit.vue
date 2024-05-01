@@ -20,8 +20,8 @@ const form = useForm({
   thumbnail: props.category.thumbnail,
   status: props.category.status,
 })
-const category_image = ref('/storage/categories/' + form.category_image),
-thumbnail= ref('/storage/categories/thumbnail/' + form.thumbnail);
+const category_image = ref(form.category_image),
+thumbnail= ref(form.thumbnail);
 
 function submitForm() {
     // Post data 
