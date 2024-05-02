@@ -14,7 +14,7 @@ const form = useForm({
   email: '',
   password: '',
   isChecked: false,
-  status: '',
+  status: null,
   password_confirmation: '',
   phone: '',
   address: '',
@@ -23,7 +23,6 @@ const form = useForm({
 
 const submit = () => {
   const toast = useToast();
-  form.status = form.isChecked === 'on' ? '1' : '0';
   form.post(route('customers.add-customer'), {
     onSuccess: () => {
       router.visit(route('customers'));
@@ -93,7 +92,7 @@ const submit = () => {
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">
-                  <input type="checkbox" id="status" v-model="form.isChecked" name="status" />
+                  <input type="checkbox" id="status" v-model="form.status" name="status" />
                   <label for="status"></label>
                 </div>
                 <p class="mb-0 semibold">Status</p>
