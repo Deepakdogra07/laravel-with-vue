@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\RegisteredCustomer;
+use App\Mail\VerifyUser;
 use App\Models\User;
 use App\Models\BusinessModal;
 use App\Providers\RouteServiceProvider;
@@ -81,10 +82,10 @@ class RegisteredUserController extends Controller
             
 
         ]);
-
+// dd($request->all());
         $textpassword = $request->password;
         $user = User::create([
-            'name' => $request->company_name,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($textpassword),
             'phone' => $request->mobile_number,
@@ -103,13 +104,14 @@ class RegisteredUserController extends Controller
         $business->user_id = $user->id;
         $business->save();
         if ($user->user_type == '2') {
-            $user->sendEmailVerificationNotification();
+            // $user->sendEmailVerificationNotification();
             $username = $user->name;
             $email = $user->email;
             $password = $textpassword;
             $creator = $user->name;
             Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
             Auth::login($user);
+            Mail::to($email)->send(new VerifyUser($user->id , $username, $email, $password, $creator));
             return redirect(route('business-dash'));
         }
     }

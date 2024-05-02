@@ -64,10 +64,10 @@ const submit = () => {
                                 <TextInput id="email" type="text" placeholder="Enter your e-mail" class="form-control mt-2"
                                     v-model="form.email" autofocus/>
                                     <InputError class="mt-2" :message="form.errors.email" />
-                                <p style="color: red;"
+                                <!-- <p style="color: red;"
                                     v-if="form.errors.email == 'Your account is inactive. Please contact the admin.'">
                                     Your account is inactive. Please contact the administrator.
-                                </p>
+                                </p> -->
                             </div>
 
                             <div class="mt-4">

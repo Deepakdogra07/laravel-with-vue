@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'superAdmin',
             'email' => 'superadmin@yopmail.com',
+            'email_verified_at'=>'2024-03-25',
             'user_type' => 1,
             'status' => 1,
             'password' => Hash::make('123456'),

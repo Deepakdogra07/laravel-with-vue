@@ -31,7 +31,7 @@ class RegisteredCustomer extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to  Dizon & Associates',
+            subject: 'Welcome to  Unstoppable Job',
         );
     }
 
@@ -40,7 +40,6 @@ class RegisteredCustomer extends Mailable
      */
     public function content(): Content
     {
-    //    dd( $this->username);
         return new Content(
             view: 'emails.RegisterCustomer',
             with: ['username' => $this->username, 'email' => $this->email,'password'=>$this->password,'creator'=>$this->creator],
