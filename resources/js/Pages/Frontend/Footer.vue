@@ -86,7 +86,7 @@ const footer = computed(() => page.props.site_data)
           <h2 class="text-white relative">Registration</h2>
             <div class="row mt-5">
                 <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
-                    :key="index" class="col-6  mb-2">
+                    :key="index" class="col-md-6 col-4  mb-2">
                     <img class="certificate-img" :src="image" alt="">
                 </div>
             </div>
