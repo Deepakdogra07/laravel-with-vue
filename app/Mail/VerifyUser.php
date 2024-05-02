@@ -3,25 +3,28 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class LoanReApply extends Mailable
+class VerifyUser extends Mailable
 {
     use Queueable, SerializesModels;
-    public $username, $email,$creator;
-
+    private $user_id , $username, $email, $password, $creator;
     /**
      * Create a new message instance.
      */
-    public function __construct($username, $email,$creator)
+    public function __construct($user_id ,$username,$email,$password,$creator)
     {
         $this->username = $username;
+        $this->user_id = $user_id;
         $this->email = $email;
+        $this->password = $password;
         $this->creator = $creator;
+// dd($username,$email,$password,$creator);
     }
 
     /**
@@ -30,7 +33,7 @@ class LoanReApply extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Loan Re Apply',
+            subject: 'Welcome to  Unstoppable Job',
         );
     }
 
@@ -39,9 +42,11 @@ class LoanReApply extends Mailable
      */
     public function content(): Content
     {
+        // dd(Auth::user());
+        $url = url('/verify-email/'.$this->user_id);
         return new Content(
-            view: 'emails.ReApply',
-            with: ['username' => $this->username, 'email' => $this->email,'creator'=>$this->creator],
+            view: 'emails.VerifyEmail',
+            with: ['username' => $this->username, 'email' => $this->email, 'actionUrl'=>$url],
         );
     }
 

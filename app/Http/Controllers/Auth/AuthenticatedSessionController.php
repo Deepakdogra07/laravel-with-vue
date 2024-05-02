@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Mail\VerifyUser;
+use App\Models\FooterData;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\FooterData;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticatedSessionController extends Controller
@@ -42,9 +44,8 @@ class AuthenticatedSessionController extends Controller
     {
         $userExists = User::where('email', $request->email)->orwhere('name',$request->email)->exists();
 
-
         $CheckActive = User::where('email', $request->email)->orwhere('name',$request->email)->first()->status ?? 0; 
-
+        $Checkverified = User::where('email', $request->email)->orwhere('name',$request->email)->first()->email_verified_at ?? 0;
         $rules = [ ];
 
         // Add your validation rules here if needed
@@ -53,10 +54,14 @@ class AuthenticatedSessionController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        if($CheckActive == 0 && $userExists){
-            // email
+        if($CheckActive == 0 && $userExists ){
             $validator->errors()->add('email', "Your account is inactive. Please contact the admin.");
+             return redirect()->back()->withErrors($validator)->withInput();
+        }
+        if(!$Checkverified){
+            $user = User::where('email', $request->email)->orwhere('name',$request->email)->first();
+            Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'test'));
+            $validator->errors()->add('email', "We sent you verification Email.Please verify your email for login.");
              return redirect()->back()->withErrors($validator)->withInput();
         }
 
