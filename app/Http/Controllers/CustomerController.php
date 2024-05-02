@@ -32,8 +32,9 @@ class CustomerController extends Controller
     }
     public function add(Request $request)
     {
+        
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => ['required', 'confirmed', 'min:4'],
             'phone' => 'required|numeric|min:7',
@@ -49,7 +50,7 @@ class CustomerController extends Controller
                 'password' => Hash::make($textpassword),
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'status' => $request->status,
+                'status' => ($request->status == true) ? 1 :0,
             ]);
 
         $user->sendEmailVerificationNotification();
@@ -67,7 +68,7 @@ class CustomerController extends Controller
     {
         $id = intval($id);
         $customer = User::where('id', $id)->where('is_deleted', 0)->first();
-        // dd($customer);
+       
         return Inertia::render('Customers/ViewCustomer', ['customer' => $customer]);
     }
     public function edit(Request $request)
@@ -89,7 +90,7 @@ class CustomerController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'status' => $request->status,
+            'status' => ($request->status == true) ? 1 :0,
         ]);
     }
 
