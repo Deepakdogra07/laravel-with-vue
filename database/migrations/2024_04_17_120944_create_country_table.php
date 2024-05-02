@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('video_description')->nullable();
             $table->string('video_introduction')->nullable();
             $table->string('category_heading')->nullable();
-            $table->string('category_subheading')->nullable();
+            $table->text('category_subheading')->nullable();
         });
     }
 

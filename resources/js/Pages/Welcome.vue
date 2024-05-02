@@ -81,7 +81,7 @@ onMounted(() => {
     </div>
     <div class="unstoppable-spaces-top">
       <div class="unstoppable-middle">
-        <img :src="`${logo.logo_image}`" alt="">
+        <img :src="`${logo.logo_image}`" alt="" 
       </div>
       <div class="unstopable-log mt-2">
         <div class="container text-center">

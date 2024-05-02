@@ -14,6 +14,7 @@ use App\Models\Industries;
 use App\Models\Discipline;
 use App\Models\Seniorities;
 use App\Models\Workexperience;
+use Illuminate\Contracts\Queue\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
@@ -128,7 +129,7 @@ class JobsController extends Controller
    public function show($id){
       $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills','createdby')->where('id',$id)->first();
 
-      $applied_customers = Jobs::where('id',$id)->with('customers')->get();
+      $applied_customers = Customer::where('id',$id)->with('jobs')->get();
       
       return Inertia::render('Admin/Jobs/Show',compact('jobs','applied_customers'));
    }
@@ -136,5 +137,10 @@ class JobsController extends Controller
    public function job_listing(){
       $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills')->get();
       return Inertia::render('Frontend/JobSection/JobListing',compact('jobs'));
+   }
+
+   public function view_job($id){
+      $job = Jobs::with('position','work_experience','discipline','industry','seniority','skills')->where('id',$id)->first();
+      return Inertia::render('Frontend/JobSection/ViewJobs',compact('job'));
    }
 }

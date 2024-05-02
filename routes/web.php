@@ -105,9 +105,7 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
 
 Route::get('/job-listing', [JobsController::class,'job_listing'])->name("job.listing");
 
-Route::get('/view-job', function () {
-    return inertia('Frontend/JobSection/ViewJobs');
-})->name("view.job");
+Route::get('/view-job/{id}',[JobsController::class,'view_job'] )->name("view.job");
 
 
 Route::get('/dashboard', [DashboardController::class, 'dashboardData'])

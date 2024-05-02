@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('jobs', function (Blueprint $table) {
            $table->longText('job_description')->after('job_title')->nullable();
+           $table->string('job_image')->after('job_description')->nullable();
+           $table->string('job_country')->after('state')->nullable();
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('jobs', function (Blueprint $table) {
             $table->dropColumn('job_description');
+            $table->dropColumn('job_image');
+            $table->dropColumn('job_country');
         });
     }
 };
