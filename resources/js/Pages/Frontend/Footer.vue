@@ -42,7 +42,7 @@ const footer = computed(() => page.props.site_data)
               <Link href="/">Home</Link>
             </li>
             <li class="mb-3">
-              <Link>About Us</Link>
+              <Link href="/about-us" >About Us</Link>
             </li>
             <li class="mb-3">
               <Link href="/testimonials">Our Testimonials</Link>
