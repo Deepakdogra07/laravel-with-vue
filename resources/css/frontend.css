@@ -232,7 +232,7 @@ h2 {
 	margin: 0 auto;
 	text-align: center;
 }
-.welcome-content h2 {
+.welcome-content h2, .category-section h2{
 	font-weight: 700;
 	font-size: 30px !important;
 	color: #000;
@@ -1034,6 +1034,10 @@ input[type="file"]{
     right: 4px;
 }
 
+.countries-section-margin{
+	margin-top: 16px;
+}
+
 @media (min-width: 1024px) {
 	.main-contact-form {
 		padding-left: 50px;
@@ -1101,6 +1105,12 @@ input[type="file"]{
 		top: 1px;
 		right: 1px;
 	}
+	.countries-section-margin{
+		margin-top: 10px;
+	}
+	.unstoppable-spaces-top.countries-section{
+		padding-top: 35px;
+	}
 }
 
 @media (max-width: 576px) {
@@ -1135,7 +1145,7 @@ input[type="file"]{
 	}
 	.unstopable-log {
 		width: 100%;
-		margin: 20px auto;
+		margin: 0px auto;
 	}
 	.content-left::before,
 	.content-right::before,
@@ -1224,9 +1234,13 @@ input[type="file"]{
 	.about-us-cards p{
 		-webkit-line-clamp: 5;
 	}
+	.dark-theme-color{
+		font-weight: 700 !important;
+	}
 	.web-banner img {
 		object-position: center !important;
 	}
+	
 }
 
 .unstopable-log {
