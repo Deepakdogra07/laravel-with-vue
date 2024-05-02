@@ -92,9 +92,9 @@ onMounted(() => {
     </div>
 
 
-    <div class="unstopable-log unstoppable-spaces-top ">
+    <div class="unstopable-log unstoppable-spaces-top category-section">
       <div class="container text-center">
-        <h1 class="dark-theme-color">{{ logo.category_heading }}</h1>
+        <h2 class="dark-theme-color">{{ logo.category_heading }}</h2>
         <p>{{ logo.category_subheading }}</p>
       </div>
     </div>
@@ -120,7 +120,7 @@ onMounted(() => {
       <h2 class="dark-theme-color">{{ logo.country_description }}</h2>
     </div>
     <div class="container-fluid px-0">
-      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 mt-4">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 countries-section-margin">
         <div class="country-content content-left relative">
           <img class="left-img" :src="logo.country_1_image" alt="">
           <div class="country-names">
@@ -175,13 +175,6 @@ onMounted(() => {
 .web-banner {
   width: 100%;
   height: 600px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 /* 

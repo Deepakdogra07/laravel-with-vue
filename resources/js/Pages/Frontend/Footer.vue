@@ -42,7 +42,7 @@ const footer = computed(() => page.props.site_data)
               <Link href="/">Home</Link>
             </li>
             <li class="mb-3">
-              <Link>About Us</Link>
+              <Link href="/about-us" >About Us</Link>
             </li>
             <li class="mb-3">
               <Link href="/testimonials">Our Testimonials</Link>
@@ -84,14 +84,12 @@ const footer = computed(() => page.props.site_data)
 
         <div class="footer-section footer-four">
           <h2 class="text-white relative">Registration</h2>
-          <div class="d-flex gap-2 listing-gap">
-            <div class="row">
+            <div class="row mt-5">
                 <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
-                    :key="index" class="col-md-6  mb-2">
+                    :key="index" class="col-md-6 col-4  mb-2">
                     <img class="certificate-img" :src="image" alt="">
                 </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
