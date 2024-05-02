@@ -175,13 +175,6 @@ onMounted(() => {
 .web-banner {
   width: 100%;
   height: 600px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
 }
 
 /* 
