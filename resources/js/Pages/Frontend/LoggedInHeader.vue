@@ -47,21 +47,21 @@ const props = defineProps({
             </li>
         </ul>
         </div>
-        <div class="login-section-desk">                 
+        <div class="login-section-desk ">                 
             <dropdown>
                 <template #trigger>
-                    <button @click="dropdownOpen = ! dropdownOpen" class="btn btn-success">
+                    <button @click="dropdownOpen = ! dropdownOpen" class="main-btn">
                         {{ $page.props.auth.user.name }}
-                        <i class="fa-solid fa-caret-down"></i>
+                        <i class="fa-solid fa-caret-down pl-2" style="font-size: 17px;"></i>
                     </button>
                 </template>
 
                 <template #content>
-                    <dropdown-link :href="route('profile.edit')" >
+                    <dropdown-link :href="route('profile.edit')" class="text-black">
                         Profile
                     </dropdown-link>
 
-                    <dropdown-link class="w-full text-left" :href="route('logout')" method="post" as="button">
+                    <dropdown-link class="w-full text-black" :href="route('logout')" method="post" as="button">
                         Log out
                     </dropdown-link>
                 </template>
