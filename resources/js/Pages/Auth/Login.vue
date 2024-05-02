@@ -11,6 +11,7 @@ import TextInput from '@/Components/TextInput.vue';
 import '@/../../resources/css/frontend.css';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { ref, computed, onMounted } from 'vue';
+import { toast } from 'vue3-toastify';
 
 
 const showPassword = ref(false);
@@ -30,8 +31,17 @@ const props = defineProps({
     },
     cookies:{
         type:Object
+    },
+    msg : {
+        type:String
     }
 });
+if(props.msg){
+    toast(props.msg, {
+            autoClose: 3000,
+            theme: 'dark',
+        });
+}
 
 const form = useForm({
     email: props.cookies.remember_email ?? '',
