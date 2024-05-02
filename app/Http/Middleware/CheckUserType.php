@@ -19,6 +19,8 @@ class CheckUserType
             $user_type = auth()->user()->user_type;
             if($user_type == 2){
                 return redirect()->route('business-dash');
+            }if($user_type == 3){
+                return redirect()->route('customer-dash');
             }elseif($user_type == 1){
                 return $next($request);
             }

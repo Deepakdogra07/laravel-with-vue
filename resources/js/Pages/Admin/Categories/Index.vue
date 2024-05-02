@@ -19,7 +19,6 @@ const props = defineProps({
     
     // Delete category
     const deletecategory = async (id) => {
-        // router.get(route('category.destroy',id));
         const { value: confirmed } = await Swal.fire({
             title: 'Are you sure?',
             text: 'You want to Delete Category Record?',
@@ -62,7 +61,7 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Categories</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Categories</h2>
             <div class="button-container">
                 <Link :href="route('category.create')">
                 <button class="btn btn-info">Add Category</button>
@@ -74,11 +73,11 @@ function getImageUrl(imageName) {
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900">
-                        <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                        <DataTable class="display"  style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
-                                    <th >ID</th>
-                                    <th >Thumbnail</th>
+                                    <th>S.No.</th>
+                                    <th>Thumbnail</th>
                                     <th>Category Heading</th>
                                     <th>Category Image</th>
                                     <th>Status</th>
@@ -89,7 +88,7 @@ function getImageUrl(imageName) {
                                 <tr v-for="(category,index) in categories" :key="category.id">
                                     <td >{{ index+1 }}</td>
                                     <td >
-                                         <img :src="`storage/categories/thumbnail/`+(category.thumbnail)" alt="" srcset="" style="width:100px">
+                                         <img :src="(category.thumbnail)" alt="" srcset="" style="width:100px">
                                     </td>
                                     <td>{{ category.category_heading }}</td>
                                     <td>
@@ -103,7 +102,7 @@ function getImageUrl(imageName) {
                                         <button class="btn btn-primary btn-sm" @click="editcategory(category.id)"
                                            ><i class="fas fa-edit" ></i></button>
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deletecategory(category.id)"
+                                        <button v-if="categories.length>1" class="btn btn-danger btn-sm" @click="deletecategory(category.id)"
                                             ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>

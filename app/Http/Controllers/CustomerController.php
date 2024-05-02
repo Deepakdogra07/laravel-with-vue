@@ -19,9 +19,9 @@ class CustomerController extends Controller
     {
         $authUser = Auth::user();
         if ($authUser->user_type == 1) {
-        $customers = User::where('user_type', '=', '3')->where('is_deleted', 0)->get();
+        $customers = User::where('user_type', '=', '3')->where('is_deleted',null)->get();
         }elseif($authUser->user_type == 2){
-            $customers = User::where('user_type', '=', '3')->where('is_deleted', 0)->get();
+            $customers = User::where('user_type', '=', '3')->where('is_deleted', null)->get();
         }
 
         return Inertia::render('Customers/Index', ['customers' => $customers,'authUser'=>$authUser]);

@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Withdraw;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\Withdraw;
+use App\Models\FooterData;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -24,8 +25,16 @@ class ProfileController extends Controller
     {
         $discountCode = User::where('id',Auth::user()->id)->first();
         $auth_type = Auth::user()->user_type;
-        // dd($auth_type);
-        // dd($discountCode);
+        if($auth_type!=1){
+            $footer_data = FooterData::first();
+            return Inertia::render('Profile/EditUser', [
+                'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+                'status' => session('status'),
+                'discountCode' => $discountCode,
+                'auth_type' => $auth_type,
+                'footer_data'=>$footer_data
+            ]);
+        }
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),

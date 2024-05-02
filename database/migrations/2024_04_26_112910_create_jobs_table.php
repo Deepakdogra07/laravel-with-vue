@@ -29,7 +29,6 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('pay_range')->nullable();
             $table->string('job_start_date')->nullable();
-            $table->string('application_link')->nullable();
             $table->timestamps();
         });
     }

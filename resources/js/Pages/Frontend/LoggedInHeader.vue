@@ -1,7 +1,6 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { usePage } from '@inertiajs/vue3'
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 
@@ -51,13 +50,14 @@ const props = defineProps({
         <div class="login-section-desk">                 
             <dropdown>
                 <template #trigger>
-                    <button @click="dropdownOpen = ! dropdownOpen" class="btn btn-info">
+                    <button @click="dropdownOpen = ! dropdownOpen" class="btn btn-success">
                         {{ $page.props.auth.user.name }}
+                        <i class="fa-solid fa-caret-down"></i>
                     </button>
                 </template>
 
                 <template #content>
-                    <dropdown-link :href="route('profile.edit')">
+                    <dropdown-link :href="route('profile.edit')" >
                         Profile
                     </dropdown-link>
 
@@ -67,6 +67,7 @@ const props = defineProps({
                 </template>
             </dropdown>
         </div>
+        
     </div>
     </nav>
     </div>
