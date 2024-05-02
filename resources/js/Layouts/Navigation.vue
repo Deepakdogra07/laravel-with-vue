@@ -5,7 +5,7 @@
   >
     <div class="py-4 text-black-500 main-links-nav">
       <Link class="main-heading-logo ml-6 font-bold" :href="route('dashboard')">
-        Unstoppable
+        <img src="/images/web-logo.png" alt="">
       </Link>
 
       <ul class="mt-6 pl-0">

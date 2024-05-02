@@ -18,7 +18,7 @@
     <aside v-show="$page.props.showingMobileMenu" class="fixed inset-y-0 z-20 flex-shrink-0 w-85 mt-16 overflow-y-auto side-navbar">
       <div class="py-4 text-gray-500">
         <Link class="main-heading-logo px-3" :href="route('dashboard')">
-          Dinheiro Agora
+          <img src="/images/web-logo.png" alt="">
       </Link>
         <ul class="mt-2">
           <li class="relative px-6 py-3">
