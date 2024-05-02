@@ -9,16 +9,14 @@ const props = defineProps({
         type: Array
     }
 })
-console.log(props.jobs)
 </script>
-
 <template>
     <Header />
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="container">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" v-if="jobs.length > 1">
-                <div class="job-listing-cards relative" v-for="(job) in jobs" :key="job.id">
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
+                <div class="job-listing-cards relative" v-if="jobs.length > 0" v-for="(job) in props.jobs" :key="job.id">
                     <div class="update-time absolute top-4 right-4">
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0">2 hours ago...</p>
@@ -31,12 +29,11 @@ console.log(props.jobs)
                         <p class="my-3"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
                             Chandigarh, India</p>
                         <div class="cards-bio">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text....</p>
+                            <p>{{ job?.job_description }}</p>
                         </div>
                         <div class="row mt-3">
                             <div class=" col-md-6 login-btn-main">
-                                <Link href="/view-job" class="forms-btn w-100">View Job <span> <i
+                                <Link :href="`/view-job/${job.id}`" class="forms-btn w-100">View Job <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
                             <div class="col-md-6 login-btn-main">

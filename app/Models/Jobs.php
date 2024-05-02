@@ -32,5 +32,16 @@ class Jobs extends Model
     public function createdby(){
         return $this->hasOne(User::class,'id','user_id');
     }
-    
+    public function customers(){
+        return $this->hasOne(Customer::class,'job_id','id');
+    }
+    public function customer_documents(){
+        return $this->hasOne(CustomerDocuments::class,'job_id','id');
+    }
+    public function customer_travel_details(){
+        return $this->hasOne(CustomerDocuments::class,'job_id','id');
+    }
+    public function customers_employments(){
+        return $this->hasOne(CustomerTraining::class,'job_id','id');
+    }
 }
