@@ -29,5 +29,10 @@ class HomeController extends Controller
         $footer_data = FooterData::first();
         return Inertia::render('Business/Welcome',compact('footer_data'));
     }
+
+    public function customer_dash(){
+        $footer_data = FooterData::first();
+        return Inertia::render('Customer/Welcome',compact('footer_data'));
+    }
     
 }

@@ -58,20 +58,23 @@ class AuthenticatedSessionController extends Controller
             $validator->errors()->add('email', "Your account is inactive. Please contact the admin.");
              return redirect()->back()->withErrors($validator)->withInput();
         }
+        $request->authenticate();
         if(!$Checkverified){
+            Auth::logout();
             $user = User::where('email', $request->email)->orwhere('name',$request->email)->first();
             Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'test'));
             $validator->errors()->add('email', "We sent you verification Email.Please verify your email for login.");
-             return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $request->authenticate();
         
         $request->session()->regenerate();
         
         $user = Auth::user();
         if ($user->user_type == '2') {
             return redirect()->route('business-dash');
+        } elseif ($user->user_type == '3') {
+            return redirect()->route('customer-dash');
         } else {
             return redirect()->route('dashboard');
         }

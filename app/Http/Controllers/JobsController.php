@@ -35,6 +35,7 @@ class JobsController extends Controller
     return Inertia::render('Admin/Jobs/Create',compact('positions','skills','industries','disciplines','seniorities','work_experience'));
    }
    public function store(Request $request){
+      dd($request->all());
   
       $validate = Validator::make($request->all(), [
             "job_title" => 'required',
@@ -66,7 +67,6 @@ class JobsController extends Controller
       $job->skills_id =$skills;
       // $job->job_description =json_encode($request->job_description);
       $job->remote_work = ($request->remote_work == true) ? 1 :0;
-      $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
       $job->save();
       return to_route('jobs.index');
@@ -100,7 +100,6 @@ class JobsController extends Controller
                "state" => 'required',
                "pay_range" => 'required',
                "job_start_date" => 'required',
-               // "application_link" => 'required',
             ]);
             if($validate->fails()){
                return back()->withErrors($validate->errors())->withInput();
@@ -116,7 +115,6 @@ class JobsController extends Controller
       $job->skills_id =$skills;
       // $job->job_description =json_encode($request->job_description);
       $job->remote_work =($request->remote_work == true) ? 1 :0;
-      $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
       $job->update();
       return to_route('jobs.index');

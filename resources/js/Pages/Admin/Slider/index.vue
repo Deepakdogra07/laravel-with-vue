@@ -84,7 +84,7 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Edit Slider</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Sliders</h2>
             <div class="button-container">
                 <Link v-if="sliders.length<5" :href="route('home-page.create')">
                 <button class="btn btn-info">Add Slider</button>
@@ -120,7 +120,7 @@ function getImageUrl(imageName) {
                                         <button class="btn btn-primary btn-sm" @click="editSlider(slider.id)"
                                            ><i class="fas fa-edit" ></i>  </button>
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deleteSlider(slider.id)"
+                                        <button v-if="sliders.length>1" class="btn btn-danger btn-sm" @click="deleteSlider(slider.id)"
                                             ><i class="fas fa-trash" ></i></button>
                                    </td> 
                                 </tr>
