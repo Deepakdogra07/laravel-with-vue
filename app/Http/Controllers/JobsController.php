@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
-use App\Models\JobsWithCustomers;
 use App\Models\Customer;
 use App\Models\CustomerDocuments;
-use App\Models\CustomerPassports;
 use App\Models\CustomerTraining;
+use App\Models\CustomerTravelDetails;
 use App\Models\VideoIntro;
 use App\Models\Position;
 use App\Models\Skills;
@@ -38,6 +37,7 @@ class JobsController extends Controller
   
       $validate = Validator::make($request->all(), [
             "job_title" => 'required',
+            "job_description" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
             "discipline_id" => 'required',
@@ -63,6 +63,7 @@ class JobsController extends Controller
       $job = new Jobs();
       $job->fill($request->except('skills_id'));
       $job->skills_id =$skills;
+      // $job->job_description =json_encode($request->job_description);
       $job->remote_work = ($request->remote_work == true) ? 1 :0;
       $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
@@ -83,8 +84,9 @@ class JobsController extends Controller
       return Inertia::render('Admin/Jobs/Edit',compact('positions','skills','industries','disciplines','seniorities','work_experience','job'));
    }
    public function update($id,Request $request){
-    $validate = Validator::make($request->all(), [
-               "job_title" => 'required',
+      $validate = Validator::make($request->all(), [
+         "job_title" => 'required',
+               "job_description" => 'required',
                "position_id" => 'required',
                "seniority_id" => 'required',
                "discipline_id" => 'required',
@@ -98,10 +100,11 @@ class JobsController extends Controller
                "pay_range" => 'required',
                "job_start_date" => 'required',
                // "application_link" => 'required',
-         ]);
-      if($validate->fails()){
-         return back()->withErrors($validate->errors())->withInput();
-      }
+            ]);
+            if($validate->fails()){
+               return back()->withErrors($validate->errors())->withInput();
+            }
+            
       $skills = [];
       foreach($request->skills_id as $skill){
          $skills[] = $skill['id'];
@@ -110,6 +113,7 @@ class JobsController extends Controller
       $job = Jobs::findOrFail($id);
       $job->fill($request->all());
       $job->skills_id =$skills;
+      // $job->job_description =json_encode($request->job_description);
       $job->remote_work =($request->remote_work == true) ? 1 :0;
       $job->application_link = ($request->application_link == true) ? 1 :0;
       $job->user_id = auth()->user()->id; 
@@ -124,7 +128,7 @@ class JobsController extends Controller
    public function show($id){
       $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills','createdby')->where('id',$id)->first();
 
-      $applied_customers = JobsWithCustomers::where('job_id',$id)->with('customers')->get();
+      $applied_customers = Jobs::where('id',$id)->with('customers')->get();
       
       return Inertia::render('Admin/Jobs/Show',compact('jobs','applied_customers'));
    }

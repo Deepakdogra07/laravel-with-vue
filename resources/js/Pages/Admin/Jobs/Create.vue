@@ -38,6 +38,7 @@ const props = defineProps({
 
 const form = useForm({
   job_title: null,
+  job_description: null,
   position_id: null,
   seniority_id: null,
   discipline_id: null,
@@ -84,6 +85,12 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               <TextInput id="job_title" type="text" v-model="form.job_title" placeholder="Enter job title"
                 class="form-control mt-2 mb-3" />
               <InputError class="mt-2" :message="form.errors.job_title" />
+            </div>
+            <div class="mt-4 col-md-6">
+              <label for="job_description">Job Description<span class="text-danger">*</span></label>
+              <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
+                class="form-control mt-2 mb-3" /> 
+              <InputError class="mt-2" :message="form.errors.job_description" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="postition_type">Position Type<span class="text-danger">*</span></label>
@@ -178,20 +185,20 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             <div class="mt-4 col-md-6">
               <label for="Segment">Segment<span class="text-danger">*</span></label>
-              <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Postions"
+              <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                 class="form-control mt-2 mb-3" />
               <InputError class="mt-2" :message="form.errors.segment" />
             </div>
 
             <div class="mt-4 col-md-6">
               <label for="salary_range">Pay Range<span class="text-danger">*</span></label>
-              <TextInput type="text" id="salary_range" v-model="form.pay_range" placeholder="Enter Postions"
+              <TextInput type="text" id="salary_range" v-model="form.pay_range" placeholder="Enter Pay Range"
                 class="form-control mt-2 mb-3" />
               <InputError class="mt-2" :message="form.errors.pay_range" />
             </div>
             <div class="mt-4 col-md-6">
               <label for="start_Date">Start Date<span class="text-danger">*</span></label>
-              <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Postions"
+              <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Start Date"
                 class="form-control mt-2 mb-3" />
               <InputError class="mt-2" :message="form.errors.job_start_date" />
             </div>

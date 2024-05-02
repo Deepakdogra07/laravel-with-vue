@@ -43,6 +43,7 @@ const props = defineProps({
 const form = useForm({
   id: props.job.id,
   job_title: props.job.job_title,
+  job_description: props.job.job_description,
   position_id: props.job.position_id,
   seniority_id: props.job.seniority_id,
   discipline_id: props.job.discipline_id,
@@ -96,6 +97,12 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               <InputError class="mt-2" :message="form.errors.job_title" />
             </div>
             <div class="mt-4 col-md-6">
+              <label for="job_description">Job Description<span class="text-danger">*</span></label>
+              <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
+                class="form-control mt-2 mb-3" /> 
+              <InputError class="mt-2" :message="form.errors.job_description" />
+            </div>
+            <div class="mt-4 col-md-6">
               <label for="postition_type">Position Type<span class="text-danger">*</span></label>
               <select class="form-select mb-3 " aria-label="Default select example" v-model="form.position_id">
                 <option selected :value="null">Select Type</option>
@@ -139,14 +146,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
               </multiselect>
               <InputError class="mt-2" :message="form.errors.skills_id" />
             </div>
-            <!-- <div class="mt-4 col-md-6">
-                            <label for="Work Experience">Work Experience<span class="text-danger">*</span></label>
-                            <select class="form-select mb-3 "  aria-label="Default select example" v-model="form.work_experience" >
-                                <option selected :value="null" >Select Type</option>
-                                <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{ position.name }}</option>
-                            </select>
-                            <InputError class="mt-2" :message="form.errors.work_experience" />
-                        </div>    -->
+           
 
             <div class="mt-4 col-md-6">
               <label for="postition_type">State/City<span class="text-danger">*</span></label>
