@@ -59,26 +59,34 @@ function select_country(event){
                     <div class="col-md-6 col-12">
                         <span class="label text-label">Company Address<span style="color:red"> *</span></span>
                         <div>
-                            <TextInput type="text" v-model="form.company_address" placeholder="Enter company address" class="form-control mt-2 mb-3" />
-                            <InputError class="mt-2" :message="form.errors.company_address" />
-                            <select class="form-select mb-3" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
-                                <option selected :value="null" >Select Country</option>
-                                <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
-                            </select>
-                            <InputError class="mt-2" :message="form.errors.company_country" />
-                            <select class="form-select mb-3" aria-label="Default select example"v-model="form.company_state">
-                                <option selected :value="null">Select State</option>
-                                <option  v-for="state in states" :key="state.id" :value="state.name">{{ state.name }}</option>
-                            </select>
-                            <InputError class="mt-2" :message="form.errors.company_state" />
-                            <TextInput type="number" placeholder="Enter pin code" v-model="form.company_pin" class="form-control mb-3" />
-                            <InputError class="mt-2" :message="form.errors.company_pin" />
+                            <div class="mb-3">
+                                <TextInput type="text" v-model="form.company_address" placeholder="Enter company address" class="form-control mt-2" />
+                                <InputError class="mt-1" :message="form.errors.company_address" />
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
+                                    <option selected :value="null" >Select Country</option>
+                                    <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
+                                </select>
+                                <InputError class="mt-1" :message="form.errors.company_country" />
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" aria-label="Default select example"v-model="form.company_state">
+                                    <option selected :value="null">Select State</option>
+                                    <option  v-for="state in states" :key="state.id" :value="state.name">{{ state.name }}</option>
+                                </select>
+                                <InputError class="mt-1" :message="form.errors.company_state" />
+                            </div>
+                            <div class="mb-3">
+                                <TextInput type="number" placeholder="Enter pin code" v-model="form.company_pin" class="form-control " />
+                                <InputError class="mt-1" :message="form.errors.company_pin" />
+                            </div>
                         </div>
                         <div class="mt-4">
                             <span class="label text-label">Key contact person<span style="color:red"> *</span></span>
                             <TextInput id="contact_number" type="number" placeholder="Enter Contact number"
                                 class="form-control mt-2" v-model="form.contact_number" />
-                            <InputError class="mt-2" :message="form.errors.contact_number" />
+                            <InputError class="mt-1" :message="form.errors.contact_number" />
                         </div>
     
                         <div class="mt-4">
@@ -86,7 +94,7 @@ function select_country(event){
                                     *</span></span>
                             <TextInput type="text" placeholder="Enter department" class="form-control mt-2"
                                 v-model="form.contact_department" autocomplete="new-contact_department" />
-                            <InputError class="mt-2" :message="form.errors.contact_department" />
+                            <InputError class="mt-1" :message="form.errors.contact_department" />
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
@@ -94,26 +102,26 @@ function select_country(event){
                             <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                             <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
                                 v-model="form.email" autocomplete="username" />
-                            <InputError class="mt-2" :message="form.errors.email" />
+                            <InputError class="mt-1" :message="form.errors.email" />
                         </div>
                         <div class="mt-4">
                             <span class="label text-label">Mobile<span style="color:red"> *</span></span>
                             <TextInput type="number" placeholder="Enter your mobile number" class="form-control mt-2"
                                 autofocus autocomplete="name" v-model="form.mobile_number" />
-                            <InputError class="mt-2" :message="form.errors.mobile_number" />
+                            <InputError class="mt-1" :message="form.errors.mobile_number" />
                         </div>
                         <div class="mt-4">
                             <span class="label text-label">Company name<span style="color:red"> *</span></span>
                             <TextInput id="name" type="text" placeholder="Enter company name" class="form-control mt-2"
                                 v-model="form.company_name" autofocus autocomplete="name" />
-                            <InputError class="mt-2" :message="form.errors.company_name" />
+                            <InputError class="mt-1" :message="form.errors.company_name" />
                         </div>
                         <div class="mt-4">
                             <TextInput  v-model="form.type" type="hidden" />
                             <span class="label text-label">Company VAT (if applicable)</span>
                             <TextInput id="name" type="text" placeholder="Enter company VAT" class="form-control mt-2"
                                 v-model="form.company_vat" autofocus autocomplete="name" />
-                            <InputError class="mt-2" :message="form.errors.company_vat" />
+                            <InputError class="mt-1" :message="form.errors.company_vat" />
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
@@ -123,14 +131,14 @@ function select_country(event){
                             <span class="label text-label">User name<span style="color:red"> *</span></span>
                             <TextInput type="text" placeholder="Enter user name" class="form-control mt-2"
                                 v-model="form.name" autocomplete="username" />
-                            <InputError class="mt-2" :message="form.errors.name" />
+                            <InputError class="mt-1" :message="form.errors.name" />
                         </div>
                         <div class="mt-4">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
                             <TextInput id="password" type="password" placeholder="Enter your password" class="form-control mt-2"
                                 v-model="form.password" autocomplete="username" />
-                            <InputError class="mt-2" :message="form.errors.password" />
+                            <InputError class="mt-1" :message="form.errors.password" />
                         </div>
                     </div>
                 </div>
