@@ -8,7 +8,7 @@
 </head>
 
 <body style="font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px; background-color: #ffffff;">
-    <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #2CBCDD;"><span><img class="email-logo"
+    <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #09332B;"><span><img class="email-logo"
         src="{{config('app.url')}}images/instant-loan-logo.png" alt="" style="width: 150px;"></span>
     </h2>
     <div style="padding: 20px; background-color: rgb(255, 255, 255);">
@@ -19,7 +19,7 @@
           <p style="padding-bottom: 16px">Nome de usuário : <strong style="font-size: 130%">{{ ucfirst($username) }}</strong></p>
           <p style="padding-bottom: 16px">Senha : <strong style="font-size: 130%">{{ $password }}</strong></p>
           {{-- <p style="padding-bottom: 16px"><strong style="font-size: 130%"><a  style="background-color: #2CBCDD; padding: 8px 10px;  border-radius: 10px; color: #fff; text-decoration: none;" href="{{ route('login') }}">Click here to Login</a></strong></p> --}}
-          <h3 style="color: #2CBCDD;">Obrigado,<br>Equipe de empréstimo instantâneo</h3>
+          <h3 style="color: #09332B;">Obrigado,<br>Equipe de empréstimo instantâneo</h3>
         </div>
       </div>
       <div style="background-color: blanchedalmond; padding: 10px 20px; display: flex; justify-content: center;">
