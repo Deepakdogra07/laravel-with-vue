@@ -24,10 +24,10 @@ return new class extends Migration
             $table->string('industry_id')->nullable();
             $table->string('segment')->nullable();
             $table->string('positions')->nullable();
-            $table->string('pin_code')->nullable();
             $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('pay_range')->nullable();
+            $table->string('pin_code')->nullable();
+            $table->string('min_pay_range')->nullable();
+            $table->string('max_pay_range')->nullable();
             $table->string('job_start_date')->nullable();
             $table->timestamps();
         });

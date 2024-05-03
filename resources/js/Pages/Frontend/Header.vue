@@ -4,6 +4,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import { usePage } from '@inertiajs/vue3'
 import { ref, onMounted, computed } from "vue";
 import axios from 'axios';
+import Dropdown from '@/Components/Dropdown.vue';
+import DropdownLink from '@/Components/DropdownLink.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 
 const page = usePage()
 const site_data = computed(() => page.props.site_data)
@@ -86,11 +89,34 @@ const showMenu = () => {
             </li>
           </ul>
         </div>
-        <div class="login-section-desk">                 
-          <Link class="main-btn" :href="route('login')">
-            Login
-          </Link>
-        </div>
+        <!-- <div class="login-section-desk">                  -->
+          <GuestLayout>
+            <div class="login-section-desk" v-if="$page.props.auth.user">                 
+            <dropdown>
+                <template #trigger>
+                    <button @click="dropdownOpen = ! dropdownOpen" class="btn btn-success">
+                        {{ $page.props.auth.user.name }}
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                </template>
+
+                <template #content>
+                    <dropdown-link :href="route('profile.edit')" >
+                        Profile
+                    </dropdown-link>
+
+                    <dropdown-link class="w-full text-left" :href="route('logout')" method="post" as="button">
+                        Log out
+                    </dropdown-link>
+                </template>
+            </dropdown>
+          </div>
+          <div v-else="">
+            <Link class="main-btn" :href="route('login')">Login</Link>
+          </div>
+            
+          </GuestLayout>
+        <!-- </div> -->
       </div>
     </nav>
   </div>
