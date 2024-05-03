@@ -15,8 +15,7 @@
                     <div >
                         <div style="text-align: left;">
                             <div>
-                                <!-- <img src="" alt="Company" style="display: block; margin: 0 auto;"> -->
-                            </div>
+                                <img src="{{ url('/images/unstoppable-bw.png') }}" alt="Company" style="display: block;width: 150px; margin: 0 auto;">                             </div>
                         </div>
                         <div class="email-section" style="background-color: #f0f0f0;">
                             <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #2CBCDD;"><span><img class="email-logo" src="{{config('app.url')}}images/instant-loan-logo.png" alt="" style="width: 150px;"></span></h2>
