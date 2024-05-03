@@ -157,4 +157,10 @@ Route::get('/contact-us', function () {
     return inertia('Frontend/Contactus/ContactUs');
 })->name('contact.us');
 
+Route::get('/job-application', function () {
+    return inertia('JobForm/JobApplication');
+})->name('job.application');
 
+Route::get('/jobs-list', function () {
+    return inertia('JobSection/JobSectionList');
+})->name('jobs.list');
