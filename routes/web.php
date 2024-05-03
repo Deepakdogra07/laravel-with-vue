@@ -92,6 +92,8 @@ Route::middleware(['admin', 'auth', 'check_user_status'])->group(function () {
     Route::post('/update-links/update',[FooterDataController::class,'update'])->name('update-link-update');
     Route::resource('update-links',FooterDataController::class);
     Route::resource('jobs',JobsController::class);
+    Route::post('jobs/updates/{id}',[JobsController::class,'update'])->name('jobs.updates');
+    
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
     // Route::put('/pages/update/{id}', [PagesController::class, 'updatePages'])->name('pages.update-pages');

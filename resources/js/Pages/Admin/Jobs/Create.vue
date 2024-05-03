@@ -35,13 +35,9 @@ const props = defineProps({
   },
 
 });
-const countries = countryStateCity.Country.getAllCountries();
-const cities = ref([]),
+const countries = countryStateCity.Country.getAllCountries(),
 image = ref('');
 
-function select_country(event){
-    cities.value = countryStateCity.City.getCitiesOfCountry(event.target.value);
-}
 
 const form = useForm({
   job_image:null,
@@ -151,18 +147,16 @@ const submit = () => {
             </div>
             <div class="mt-4 col-md-6">
               <label for="postition_type">Country<span class="text-danger">*</span></label>
-              <select class="form-select mb-3" @change="select_country($event)" aria-label="Default select example" v-model="form.job_country">
+              <select class="form-select mb-3"  aria-label="Default select example" v-model="form.job_country">
                 <option selected :value="null">Select Country</option>
-                <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
+                <option v-for="country in countries" :key="country.id" :value="country.name">{{ country.name }}</option>
               </select>
               <InputError class="mt-2" :message="form.errors.job_country" />
             </div>
             <div class="mt-4 col-md-6">
-              <label for="postition_type">City<span class="text-danger">*</span></label>
-              <select class="form-select mb-3" aria-label="Default select example" v-model="form.city">
-                <option selected :value="null">Select City</option>
-                <option v-for="country in cities" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
-              </select>
+              <label for="city">City<span class="text-danger">*</span></label>
+             <TextInput id="city" type="text" v-model="form.city" placeholder="Enter City"
+                class="form-control mt-2 mb-3"/>
               <InputError class="mt-2" :message="form.errors.city" />
             </div>
             <div class="mt-4 col-md-6">

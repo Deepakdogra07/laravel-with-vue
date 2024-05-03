@@ -1,6 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
-import Header from '../Frontend/LoggedInHeader.vue';
+import Header from '../Frontend/Header.vue';
 import Footer from '../Frontend/Footer.vue';
 
 
