@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
 use Inertia\Inertia;
+use App\Mail\VerifyUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Mail\AssignedAgentMAil;
 use App\Mail\RegisteredCustomer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,7 +53,7 @@ class CustomerController extends Controller
                 'status' => ($request->status == true) ? 1 :0,
             ]);
 
-        $user->sendEmailVerificationNotification();
+        // $user->sendEmailVerificationNotification();
 
 
 
@@ -62,6 +62,7 @@ class CustomerController extends Controller
         $password = $textpassword;
         $creator = Auth::user()->name;
         Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
+        Mail::to($email)->send(new VerifyUser($user->id , $username, $email, $password, $creator));
     }
 
     public function view(Request $request, $id)

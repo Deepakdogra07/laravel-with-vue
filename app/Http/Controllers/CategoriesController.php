@@ -66,12 +66,20 @@ class CategoriesController extends Controller
             }
             $category = Category::findOrFail($id);
             if ($request->thumbnail != $category->thumbnail) {
+                  if (public_path($category->thumbnail)) {
+                        $imagePath = substr($category->thumbnail, strlen('/storage'));
+                        Storage::disk('public')->delete($imagePath);
+                     }
                   $image = $request->file('thumbnail');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/thumbnail/' . $name, file_get_contents($image));
                   $category->thumbnail = '/storage/categories/thumbnail/'.$name;
             }
             if ($request->category_image != $category->category_image) {
+                  if (public_path($category->category_image)) {
+                        $imagePath = substr($category->category_image, strlen('/storage'));
+                        Storage::disk('public')->delete($imagePath);
+                     }
                   $image = $request->file('category_image');
                   $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
                   Storage::disk('public')->put('categories/' . $name, file_get_contents($image));

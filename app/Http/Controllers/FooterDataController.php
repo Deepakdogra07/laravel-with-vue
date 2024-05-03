@@ -127,6 +127,10 @@ class FooterDataController extends Controller
         }
         $data = FooterData::findorFail($request->id);
         if ($request->hasFile('logo_image')) {
+            if (public_path($data->logo_image)) {
+                $imagePath = substr($data->logo_image, strlen('/storage'));
+                Storage::disk('public')->delete($imagePath);
+             }
             $image = $request->file('logo_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logos/'.$name, file_get_contents($image));

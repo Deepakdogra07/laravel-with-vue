@@ -104,7 +104,7 @@ const editCustomer = (id) => {
                                     <th>Customer Name</th>
                                     <th>Email</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    <!-- <th>Actions</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,17 +115,17 @@ const editCustomer = (id) => {
                                     <td :class="{ 'active': customer.status == 1, 'inactive': customer.status == 0 }">
                                         {{ customer.status == 1 ? 'Active' : 'Inactive' }}
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <button class="btn btn-info btn-sm" @click="viewCustomer(customer.id)">View</button>
                                         &nbsp;
                                         <button v-if="authUser.user_type == 1" class="btn btn-primary btn-sm"
                                             @click="editCustomer(customer.id)"><i class="bi bi-pencil-square"></i>  Edit</button>
                                         &nbsp;
-                                        <!-- <button v-if="authUser.user_type == 1" @click="assigned(customer.id,customer.agent_id)"
-                                            class="btn btn-warning btn-sm mr-1">Assign To</button> -->
+                                         <button v-if="authUser.user_type == 1" @click="assigned(customer.id,customer.agent_id)"
+                                            class="btn btn-warning btn-sm mr-1">Assign To</button> 
                                         <button v-if="authUser.user_type == 1" class="btn btn-danger btn-sm"
                                             @click="deleteCustomer(customer.id)">Delete</button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </DataTable>

@@ -22,7 +22,7 @@ function submitForm(){
     form.post(route('contact_us.store'),
     {
       onSuccess: () => {
-        toast("Form is submitted!", {
+        toast("Form submitted successfully!", {
           autoClose: 2000,
           theme: 'dark',
         }

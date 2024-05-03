@@ -58,13 +58,13 @@ class TestimonialsController extends Controller
                 $image = $request->file('image');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
-                $testimonial->image_link = $name;
+                $testimonial->image_link = '/storage/testimonials/'.$name;
             }
             if ($request->hasFile('video')) {
                 $image = $request->file('video');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
-                $testimonial->video_link = $name;
+                $testimonial->video_link = '/storage/testimonials/'.$name;
             }
             $testimonial->save();
 
@@ -110,16 +110,24 @@ class TestimonialsController extends Controller
                 $testimonialUpdate->content = $request->content;
                 $testimonialUpdate->status = ($request->status =="1") ? 1 :0;
             if ($request->hasFile('image') && $testimonialUpdate->image_link != $request->image ) {
+                if (public_path($testimonialUpdate->image_link)) {
+                    $imagePath = substr($testimonialUpdate->image_link, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                 }
                 $image = $request->file('image');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
-                $testimonialUpdate->image_link = $name;
+                $testimonialUpdate->image_link = '/storage/testimonials/'.$name;
                 }
             if ($request->hasFile('video')) {
+                if (public_path($testimonialUpdate->video_link)) {
+                    $imagePath = substr($testimonialUpdate->video_link, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                 }
                 $image = $request->file('video');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
-                $testimonialUpdate->video_link = $name;
+                $testimonialUpdate->video_link = '/storage/testimonials/'.$name;;
             }
             $testimonialUpdate->update();
            

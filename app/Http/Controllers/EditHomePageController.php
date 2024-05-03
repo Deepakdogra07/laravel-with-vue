@@ -58,17 +58,22 @@ class EditHomePageController extends Controller
         return Inertia::render('Admin/Slider/edit',compact("slider"));
     }
     public function update(Request $request){
-        // $validator = Validator::make($request->all(),[
-        //     'slider_name' => 'required',
-        //     'slider_heading' => 'required',
-        //     'slider_description' => ['required',new MaxWords(100)],
-        // ]);
-        // if($validator->fails()){
-        //     return back()->withErrors($validator->errors());
-        // }
+        // dd($request->all());
+        $validator = Validator::make($request->all(),[
+            'slider_name' => 'required',
+            'slider_heading' => 'required',
+            // 'slider_description' => ['required',new MaxWords(100)],
+        ]);
+        if($validator->fails()){
+            return back()->withErrors($validator->errors());
+        }
         $slider = Slider::findOrFail($request->id);
 
         if ($request->hasFile('sliderImage') && ($slider->slider_image != $request->sliderImage)) {
+            if (public_path($slider->slider_image)) {
+                $imagePath = substr($slider->slider_image, strlen('/storage'));
+                Storage::disk('public')->delete($imagePath);
+             }
             $image = $request->file('sliderImage');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('slider/'.$name, file_get_contents($image));
@@ -125,6 +130,7 @@ class EditHomePageController extends Controller
         $logo->logo_heading = $request->image_heading;
         $logo->logo_description = $request->image_description;
         if ($request->hasFile('image_image')) {
+            
             $image = $request->file('image_image');
             $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
             Storage::disk('public')->put('logo/'.$name, file_get_contents($image));
@@ -187,6 +193,10 @@ class EditHomePageController extends Controller
             $logo->logo_heading = $request->image_heading;
             $logo->logo_description = $request->image_description;
             if($logo->logo_image != $request->image_image){
+                if (public_path($logo->logo_image)) {
+                    $imagePath = substr($logo->logo_image, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                 }
                 if ($request->hasFile('image_image')) {
                     $image = $request->file('image_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -195,6 +205,10 @@ class EditHomePageController extends Controller
             }
             }
             if($logo->video_introduction != $request->video){
+                if (public_path($logo->video_introduction)) {
+                    $imagePath = substr($logo->video_introduction, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                 }
                     if ($request->hasFile('video')) {
                         $image = $request->file('video');
                         $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -203,6 +217,10 @@ class EditHomePageController extends Controller
                     }
                 }
             if($logo->country_1_image != $request->country_1_image){
+                if (public_path($logo->country_1_image)) {
+                    $imagePath = substr($logo->country_1_image, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                 }
                 if ($request->hasFile('country_1_image')) {
                     $image = $request->file('country_1_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -220,6 +238,10 @@ class EditHomePageController extends Controller
             $logo->video_description = $request->video_description;
             if($logo->country_2_image != $request->country_2_image){
                 if ($request->hasFile('country_2_image')) {
+                    if (public_path($logo->country_2_image)) {
+                        $imagePath = substr($logo->country_2_image, strlen('/storage'));
+                        Storage::disk('public')->delete($imagePath);
+                     }
                     $image = $request->file('country_2_image');
                     $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                     Storage::disk('public')->put('logo/'.$name, file_get_contents($image));

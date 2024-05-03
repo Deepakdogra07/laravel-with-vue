@@ -2,17 +2,16 @@
 import { Link } from '@inertiajs/vue3';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { usePage } from '@inertiajs/vue3'
-import { ref, onMounted, computed } from "vue";
-import axios from 'axios';
+import { ref, computed } from "vue";
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 
+
+const dropdownOpen = ref(false);
+
 const page = usePage()
-const site_data = computed(() => page.props.site_data)
-
-const nameFirstLetter = ref('');
-
+const site_data = computed(() => page.props.site_data);
 
 const props = defineProps({
   logo_image: {
@@ -72,11 +71,11 @@ const showMenu = () => {
             <li class="nav-item">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'home' }" aria-current="page" href="/">Home</Link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!$page.props.auth.user || $page?.props?.auth?.user?.user_type == 3">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">For Individuals</Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link"  href="#">For Businesses</Link>
+            <li class="nav-item" v-if="$page?.props?.auth?.user?.user_type == 2">
+              <Link class="nav-link"  :href="route('business-jobs.index')">For Businesses</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'testimonial.main' }" href="/testimonials">Our Testimonials</Link>
@@ -94,7 +93,7 @@ const showMenu = () => {
             <div class="login-section-desk" v-if="$page.props.auth.user">                 
             <dropdown>
                 <template #trigger>
-                    <button @click="dropdownOpen = ! dropdownOpen" class="btn btn-success">
+                    <button @click="dropdownOpen = ! dropdownOpen" class="main-btn">
                         {{ $page.props.auth.user.name }}
                         <i class="fa-solid fa-caret-down"></i>
                     </button>

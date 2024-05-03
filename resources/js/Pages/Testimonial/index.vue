@@ -89,7 +89,7 @@ const testimonialedit = (id)=>{
                                   <td>{{ testimonialRecord.name }}</td>
                                   <td>
                                     <div class="image_sections_testimonial">
-                                      <img :src="`storage/testimonials/${testimonialRecord.image_link}`">
+                                      <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td>
                                   <td>{{ testimonialRecord.content }}</td>

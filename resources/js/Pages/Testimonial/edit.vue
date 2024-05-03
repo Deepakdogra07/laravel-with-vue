@@ -77,7 +77,7 @@ function update_all_data(type, event) {
             </div>
             <div class="mt-4 col-md-6">
               <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-              <img :src="'/storage/testimonials/' + form.image" alt="" style="height:250px">
+              <img :src="form.image" alt="" style="height:250px">
               <label for="logoImage" class="form-control mt-2 cursor-pointer">
                 {{ form.image ? 'Change File' : 'Upload File' }}
               </label>
@@ -86,7 +86,7 @@ function update_all_data(type, event) {
             </div>
             <div class="mt-4 col-md-6">
               <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
-              <video :src="'/storage/testimonials/' + form.video" alt="" controls></video>
+              <video :src="form.video" alt="" controls></video>
               <label for="video" class="form-control mt-2 cursor-pointer">
                 {{ form.video ? 'Change File' : 'Upload File' }}
               </label>

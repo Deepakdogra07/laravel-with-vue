@@ -5,6 +5,6 @@
 
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import Header from '.././Pages/Frontend/LoggedInHeader.vue';
+import Header from '.././Pages/Frontend/Header.vue';
 
 </script>
