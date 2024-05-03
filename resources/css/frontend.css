@@ -498,6 +498,7 @@ h2 {
 	font-weight: 400;
 	font-family: "Philosopher", sans-serif !important;
 	color: #d2d2d5;
+	padding: 5px 0;
 }
 
 .form-navigation .nav-underline .nav-link.active {
