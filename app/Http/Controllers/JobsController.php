@@ -126,9 +126,14 @@ class JobsController extends Controller
       }
       $skills = json_encode($skills);
       $job = Jobs::findOrFail($id);
-      $job->fill($request->except('skills_id'));
+      $job->fill($request->except('skills_id','job_image'));
       $job->skills_id =$skills;
+      // dd($job->job_image);
       if ($request->hasFile('job_image')) {
+         if (public_path($job->job_image)) {
+            $imagePath = substr($job->job_image, strlen('/storage'));
+            Storage::disk('public')->delete($imagePath);
+         }
          $image = $request->file('job_image');
          $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
          Storage::disk('public')->put('jobs/'.$name, file_get_contents($image));

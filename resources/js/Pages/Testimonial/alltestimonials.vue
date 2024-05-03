@@ -40,7 +40,7 @@ console.log(props.testimonials);
                         </div>
                         <div class="col-12">
                             <div class="popup-video-section">
-                                <video :src="`/storage/testimonials/${testimonial?.video_link}`" controls></video>
+                                <video :src="`${testimonial?.video_link}`" controls></video>
                                 <!-- <span class="bi bi-play-circle"></span> -->
                             </div>
                         </div>

@@ -15,10 +15,11 @@
                     <div >
                         <div style="text-align: left;">
                             <div>
-                                <img src="{{ url('/images/unstoppable-bw.png') }}" alt="Company" style="display: block;width: 150px; margin: 0 auto;">                             </div>
+                                
+                              </div>
                         </div>
                         <div class="email-section" style="background-color: #f0f0f0;">
-                            <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #2CBCDD;"><span><img class="email-logo" src="{{config('app.url')}}images/instant-loan-logo.png" alt="" style="width: 150px;"></span></h2>
+                            <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #09332B;"><span><img class="email-logo" src="{{ url('/images/unstoppable-bw.png') }}" alt="" style="width: 150px;"></span></h2>
                             <div class="email-content" style="color: rgb(0, 0, 0); padding: 20px;">
                                 <h3 style="margin-top: 0;">Your account was created by {{ $creator }}.</h3>
                                 <div class="email-detail-content">
@@ -28,15 +29,11 @@
                                     <p style="padding-bottom: 10px">Password : <strong style="font-size: 130%">{{ $password }}</strong></p>
                                     <p style="padding-bottom: 10px; margin: 10px 0; text-align: center;">
                                         <strong>
-                                            <a class="email-btn" style="background-color: #2CBCDD; padding: 8px 10px;  border-radius: 10px; color: #fff; text-decoration: none;" href="{{ route('login') }}">Login</a>
+                                            <a class="email-btn" style="background-color: #fff; padding: 8px 10px;  border-radius: 10px; color: #000; text-decoration: none;" href="{{ route('login') }}">Login</a>
                                         </strong>
                                     </p>
-                                    {{-- <h3 style="color: #2CBCDD; text-align: center;">Obrigado,<br>Dinheiro Agora Team</h3> --}}
                                 </div>
                             </div>
-                            {{-- <div style="background-color: blanchedalmond; padding: 10px 20px; display: flex; justify-content: center;">
-                                <h4>direito autoral &#169; Dinheiroagora</h4>
-                             </div> --}}
                         </div>
                     </div>
             </div>

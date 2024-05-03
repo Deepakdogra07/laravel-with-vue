@@ -1,10 +1,11 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import axios from 'axios';
 
 const page = usePage()
 const footer = computed(() => page.props.site_data)
+const user = ref(page?.props?.auth?.user)
 
 
 </script>
@@ -56,11 +57,11 @@ const footer = computed(() => page.props.site_data)
         <div class="footer-section footer-three">
           <h2 class="text-white relative">Business Segments</h2>
           <ul class="pl-0 listing-gap">
-            <li class="mb-3">
-              <Link href="/job-listing">For Individuals</Link>
+            <li class="mb-3" v-if="!user ||user?.user_type == 3">
+              <Link href="/job-listing" >For Individuals</Link>
             </li>
-            <li class="mb-3">
-              <Link href="">For Businesses</Link>
+            <li class="mb-3" v-if="user?.user_type == 2">
+              <Link :href="route('business-jobs.index')">For Businesses</Link>
             </li>
           </ul>
         </div>

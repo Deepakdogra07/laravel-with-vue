@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class BusinessMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,9 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->user_type == 1 ) {
+        if (Auth::check() && Auth::user()->user_type <= 2 ) {
             return $next($request);
         }
-        // If not an admin, redirect to login page
         abort(403);
     }
 }

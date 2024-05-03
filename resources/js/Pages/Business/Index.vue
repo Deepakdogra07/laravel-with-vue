@@ -8,6 +8,9 @@ import Footer from '../Frontend/Footer.vue';
 const props = defineProps({
   footer_data: {
     type: Object
+  },
+  jobs:{
+    type:Array
   }
 });
 
@@ -17,7 +20,7 @@ const props = defineProps({
 <template>
         <Header :logo_image="footer_data.logo_image" />
         <div>
-            <h1>Business Dashboard</h1>
+            <h2>View Posted Jobs:</h2>
         </div>
         <Footer :footer_data="footer_data" />
 

@@ -18,11 +18,11 @@ class CheckUserType
         if(auth()->user()){
             $user_type = auth()->user()->user_type;
             if($user_type == 2){
-                return redirect()->route('business-dash');
+                return redirect()->route('business-dash');          //2 For Employer
             }if($user_type == 3){
-                return redirect()->route('customer-dash');
+                return redirect()->route('customer-dash');          //3 For Customer
             }elseif($user_type == 1){
-                return $next($request);
+                return $next($request);                             // 1 For Admin
             }
         }
         return $next($request);
