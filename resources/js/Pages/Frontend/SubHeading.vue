@@ -16,20 +16,24 @@ import { Link } from '@inertiajs/vue3';
     </div>
     <div class="form-navigation" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
         <div class="container">
-            <ul class="nav nav-underline gap-5">
-                <li class="nav-item">
-                    <Link class="nav-link" 
-                        :class="{ 'active': route().current('login') || route().current('password.request') }" 
-                        aria-current="page" 
-                        :href="route('login')"
-                    >Login</Link>
-                </li>
-                <li class="nav-item">
-                    <Link class="nav-link"  
-                        :class="{ 'active': route().current('register') }"  
-                        :href="route('register')"
-                    >Create account</Link>
-                </li>
+            <ul class="row nav-underline pl-0">
+                <div class="col-md-1 col-3">
+                    <li class="nav-item">
+                        <Link class="nav-link text-center" 
+                            :class="{ 'active': route().current('login') || route().current('password.request') }" 
+                            aria-current="page" 
+                            :href="route('login')"
+                        >Login</Link>
+                    </li>
+                </div>
+                <div class="col-md-2 col-5">
+                    <li class="nav-item">
+                        <Link class="nav-link text-center"  
+                            :class="{ 'active': route().current('register') }"  
+                            :href="route('register')"
+                        >Create account</Link>
+                    </li>
+                </div>
             </ul>
         </div>
     </div>
