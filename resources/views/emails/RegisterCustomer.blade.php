@@ -28,7 +28,7 @@
                                     <p style="padding-bottom: 10px">Password : <strong style="font-size: 130%">{{ $password }}</strong></p>
                                     <p style="padding-bottom: 10px; margin: 10px 0; text-align: center;">
                                         <strong>
-                                            <a class="email-btn" style="background-color: #2CBCDD; padding: 8px 10px;  border-radius: 10px; color: #fff; text-decoration: none;" href="{{ route('login') }}">Login</a>
+                                            <a class="email-btn" style="background-color: #09332B; padding: 8px 10px;  border-radius: 10px; color: #fff; text-decoration: none;" href="{{ route('login') }}">Login</a>
                                         </strong>
                                     </p>
                                     {{-- <h3 style="color: #2CBCDD; text-align: center;">Obrigado,<br>Dinheiro Agora Team</h3> --}}
