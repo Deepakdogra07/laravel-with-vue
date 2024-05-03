@@ -1,16 +1,20 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import Header from "../Frontend/Header.vue"
+import Footer from "../Frontend/Footer.vue";
+import SubHeading from '@/Pages/Frontend/SubHeading.vue';
+import { Head, useForm } from '@inertiajs/vue3';
+// import CustomPagination from '@/Components/CustomPagination.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {  useForm } from '@inertiajs/vue3';
-import '@/../../resources/css/frontend.css';
-import * as countryStateCity from 'country-state-city';
-import { onMounted, ref } from 'vue';
-import Multiselect from 'vue-multiselect';
-import '@/../../resources/css/multiselect.css';
-import { toast } from 'vue3-toastify';
+import InputError from '@/Components/InputError.vue';
 import Checkbox from '@/Components/Checkbox.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { ref } from "vue";
+import { toast } from 'vue3-toastify';
+import '@/../../resources/css/frontend.css';
+import '@/../../resources/css/multiselect.css';
+import * as countryStateCity from 'country-state-city';
+import Multiselect from 'vue-multiselect';
+
 
 const props = defineProps({
   seniorities: {
@@ -31,57 +35,47 @@ const props = defineProps({
   disciplines: {
     type: Array
   },
-  job: {
-    type: Object
-  }
 
 });
 
+
+
+const countries = countryStateCity.Country.getAllCountries(),
+image = ref('');
 
 
 const form = useForm({
-  id: props.job.id,
-  job_title: props.job.job_title,
-  job_image: props.job.job_image,
-  job_description: props.job.job_description,
-  position_id: props.job.position_id,
-  seniority_id: props.job.seniority_id,
-  discipline_id: props.job.discipline_id,
-  work_experience_id: props.job.work_experience_id,
-  skills_id: [],
-  remote_work: (props.job.remote_work == 1) ? true : false,
-  industry_id: props.job.industry_id,
-  segment: props.job.segment,
-  positions: props.job.positions,
-  pin_code: props.job.pin_code,
-  state: props.job.state,
-  min_pay_range: props.job.min_pay_range,
-  max_pay_range: props.job.max_pay_range,
-  job_start_date: props.job.job_start_date,
-  city: props.job.city,
-  job_country: props.job.job_country,
+  job_image:null,
+  job_title: null,
+  job_description: null,
+  position_id: null,
+  seniority_id: null,
+  discipline_id: null,
+  work_experience_id: null,
+  skills_id: null,
+  remote_work: false,
+  industry_id: null,
+  segment: null,
+  positions: null,
+  pin_code: null,
+  job_country: null,
+  city: null,
+  min_pay_range: null,
+  max_pay_range: null,
+  job_start_date: null,
 });
 
-onMounted( () => {
-  props.skills.forEach(element => {
-    if(props.job.skills_id.includes(element.id)){
-      form.skills_id.push(element);
-    }
-  });
-})
-
-const countries = countryStateCity.Country.getAllCountries(),
-image = ref(form.job_image);
 function selectFile(event){
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
 }
 
+
 const submit = () => {
-  console.log(form,'123')
-    form.post(route('jobs.updates',form.id), {
+    form.post(route('business-jobs.store'),
+    {
       onSuccess: () => {
-        toast("Job Updated Successfully!", {
+        toast("Job Created Successfully!", {
           autoClose: 2000,
           theme: 'dark',
         }
@@ -89,15 +83,17 @@ const submit = () => {
       },
     });
 };
-</script>
-<template>
-  <AuthenticatedLayout>
-    <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Job</h2>
-    </template>
 
-    <div class="flex items-center justify-center">
-      <div class="login-bg-wrapper">
+
+
+</script>
+
+<template>
+
+    <Head title="Job Application Form" />
+    <Header class="login-wrapper" />
+    <SubHeading />
+    <div class="login-bg-wrapper">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -327,7 +323,7 @@ const submit = () => {
                             <div class="flex items-center justify-center mt-4 login-btn-main">
                                 
                                 <PrimaryButton type="submit" class="forms-btn" :disabled="form.processing">
-                                   Update Job<span> <i class="bi bi-arrow-right"></i></span>
+                                    Apply Now <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>
                         </div>
@@ -336,13 +332,5 @@ const submit = () => {
             </div>
         </div>
     </div>
-    </div>
-
-   
-  </AuthenticatedLayout>
+    <Footer />
 </template>
-<style scoped>
-#job_label{
-  cursor: pointer;
-}
-</style>

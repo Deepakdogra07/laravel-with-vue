@@ -1,16 +1,21 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+import Header from "../Frontend/Header.vue"
+import Footer from "../Frontend/Footer.vue";
+import SubHeading from '@/Pages/Frontend/SubHeading.vue'
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import CustomPagination from '@/Components/CustomPagination.vue';
 import TextInput from '@/Components/TextInput.vue';
-import {  useForm } from '@inertiajs/vue3';
-import '@/../../resources/css/frontend.css';
-import * as countryStateCity from 'country-state-city';
-import { onMounted, ref } from 'vue';
-import Multiselect from 'vue-multiselect';
-import '@/../../resources/css/multiselect.css';
-import { toast } from 'vue3-toastify';
+import InputError from '@/Components/InputError.vue';
 import Checkbox from '@/Components/Checkbox.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { ref,onMounted } from "vue";
+import { toast } from 'vue3-toastify';
+import '@/../../resources/css/frontend.css';
+import '@/../../resources/css/multiselect.css';
+import * as countryStateCity from 'country-state-city';
+import Multiselect from 'vue-multiselect';
+
+
 
 const props = defineProps({
   seniorities: {
@@ -79,7 +84,7 @@ function selectFile(event){
 
 const submit = () => {
   console.log(form,'123')
-    form.post(route('jobs.updates',form.id), {
+    form.post(route('business-jobs.updates',form.id), {
       onSuccess: () => {
         toast("Job Updated Successfully!", {
           autoClose: 2000,
@@ -89,15 +94,16 @@ const submit = () => {
       },
     });
 };
-</script>
-<template>
-  <AuthenticatedLayout>
-    <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Job</h2>
-    </template>
 
-    <div class="flex items-center justify-center">
-      <div class="login-bg-wrapper">
+
+</script>
+
+<template>
+
+    <Head title="Job Application Form" />
+    <Header class="login-wrapper" />
+    <SubHeading />
+    <div class="login-bg-wrapper">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -336,13 +342,5 @@ const submit = () => {
             </div>
         </div>
     </div>
-    </div>
-
-   
-  </AuthenticatedLayout>
+    <Footer />
 </template>
-<style scoped>
-#job_label{
-  cursor: pointer;
-}
-</style>
