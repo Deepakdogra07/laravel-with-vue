@@ -71,7 +71,9 @@ const submit = () => {
                             <div class="mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">E-mail or Username<span style="color:red"> *</span></span>
-                                <TextInput id="email" type="text" placeholder="Enter your e-mail or username" class="form-control mt-2"
+
+                                <TextInput id="email" type="text" placeholder="Enter your username or e-mail" class="form-control mt-2"
+
                                     v-model="form.email" autofocus/>
                                     <InputError class="mt-2" :message="form.errors.email" />
                                 <!-- <p style="color: red;"
