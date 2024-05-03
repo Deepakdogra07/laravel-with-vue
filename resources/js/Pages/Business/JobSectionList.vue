@@ -23,7 +23,7 @@ const setActiveSpan = (spanNumber) => {
             <div class="container">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3">
                     <div class="d-flex gap-5 align-items-center">
-                        <Link :class="{'active-nav': route().current('jobs.list')}">Jobs</Link>
+                        <Link class='active-nav'>Jobs</Link>
                         <Link>Employee</Link>
                     </div>
                     <div class="relative">

@@ -10,7 +10,7 @@ import { Link } from '@inertiajs/vue3';
             <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
             <h1 class="mb-0" v-if="route().current('contact.us')">Contact us</h1>
             <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
-            <h1 class="mb-0" v-if="route().current('job.application')">Job Application Form</h1>
+            <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Application Form</h1>
             <h1 class="mb-0" v-if="route().current('testimonial.main')">Testimonial</h1>
         </div>
     </div>

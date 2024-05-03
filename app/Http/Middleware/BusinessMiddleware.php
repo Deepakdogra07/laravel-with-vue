@@ -19,6 +19,7 @@ class BusinessMiddleware
         if (Auth::check() && Auth::user()->user_type <= 2 ) {
             return $next($request);
         }
+
         abort(403);
     }
 }

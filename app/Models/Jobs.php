@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Jobs extends Model
 {
@@ -44,4 +45,26 @@ class Jobs extends Model
     public function customers_employments(){
         return $this->hasOne(CustomerTraining::class,'job_id','id');
     }
+    public function business(){
+        return $this->hasOne(BusinessModal::class,'user_id','user_id');
+    }
+    // public function dateTime(){
+    //     $current_datetime = new DateTime(); // Current date and time
+    //     $job_created_at = new DateTime($this->created_at); // Job creation date and time
+        
+    //     // Calculate the difference
+    //     $interval = $current_datetime->diff($job_created_at);
+    //     $time= '';
+    //     if ($interval->d > 0) {
+    //         $time= $interval->d . ' days ago';
+    //     } elseif ($interval->h > 0) {
+    //         $time= $interval->h . ' hours ago';
+    //     } elseif ($interval->i > 0) {
+    //         $time= $interval->i . ' minutes ago';
+    //     } else {
+    //         $time= 'Just now';
+    //     }
+    //     dd($time);
+    //     return (string) $time;
+    // }
 }

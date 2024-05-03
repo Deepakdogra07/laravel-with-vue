@@ -114,10 +114,9 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
 
 
 Route::middleware(['auth', 'business'])->group(function () {
-    Route::get('/job-application', function () {
-        return inertia('JobForm/JobApplication');
-    })->name('job.application');
     Route::resource('business-jobs',BusinessController::class);
+    Route::post('business-jobs/updates/{id}',[BusinessController::class,'update'])->name('business-jobs.updates');
+    
 });
 
 
@@ -161,6 +160,3 @@ Route::get('/job-application', function () {
     return inertia('JobForm/JobApplication');
 })->name('job.application');
 
-Route::get('/jobs-list', function () {
-    return inertia('JobSection/JobSectionList');
-})->name('jobs.list');
