@@ -324,7 +324,7 @@ h2 {
 }
 .video-background .video-play {
 	height: 350px;
-	width: 100%;
+	width: 75%;
 	margin-bottom: 20px;
 	border-radius: 10px;
 	position: relative;
@@ -1251,6 +1251,9 @@ input[type="file"]{
 	}
 	.main-header .main-btn{
 		padding: 8px 14px;
+	}
+	.video-background .video-play{
+		width: 100%;
 	}
 }
 
