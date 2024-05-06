@@ -74,13 +74,15 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                     </div>
                 </div>
             </div>
-            <div class="about-us-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-8">
-                            <h2 class="mb-3 text-white">We Speak the Language of Immigration.</h2>
-                            <div class="mt-4">
-                                <Link class="main-btn">Contact Us</Link>
+            <div class="container-fluid">
+                <div class="about-us-bg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8">
+                                <h2 class="mb-3 text-white">We Speak the Language of Immigration.</h2>
+                                <div class="mt-4">
+                                    <Link class="main-btn">Contact Us</Link>
+                                </div>
                             </div>
                         </div>
                     </div>

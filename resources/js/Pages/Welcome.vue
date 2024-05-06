@@ -66,7 +66,7 @@ onMounted(() => {
 <template>
   <Header :logo_image="footer_data.logo_image" />
 
-  <div class="banner-section">
+  <div class="banner-section container-fluid">
     <div id="home_banner">
       <div v-for="(slider) in sliders" :key="slider.id" class="web-banner relative">
         <div class="banner-content">
@@ -167,7 +167,8 @@ onMounted(() => {
 .main-header {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   z-index: 999;
 }
