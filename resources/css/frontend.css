@@ -15,6 +15,12 @@ body {
 }
 .container-fluid {
 	max-width: 1920px !important;
+	margin: 0 auto !important;
+	padding: 0 !important;
+}
+.main-header{
+	max-width: 1920px ;
+	margin: 0 auto !important;
 }
 h1 {
 	font-size: 45px !important;
@@ -69,11 +75,12 @@ h2 {
 	transition: 0.3s;
 }
 /* .main-header{
-    position: absolute;
+    position: absolute !;
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
+    left: 50% !important;
+	transform: translateX(-50%);
+    width: 100% !important;
+    z-index: 999 !important;
 } */
 .main-header .navbar {
 	background-color: #01796f;
@@ -1087,6 +1094,76 @@ input[type="file"]{
 }
 /* job listing pages css end */
 
+/* Data table css start */
+.main-job-filter .job-data-table .th-row{
+	background-color: #D2D2D580 !important;
+	
+}
+
+.main-job-filter .dataTables_length, .main-job-filter .dataTables_filter, .main-job-filter .dataTables_info{
+	display: none !important;
+	
+}
+.main-job-filter .dataTables_paginate{
+	display: flex;
+    width: 100%;
+    justify-content: center;
+	align-items: center;
+    margin-top: 20px;
+	gap: 10px;
+}
+
+.main-job-filter .job-data-table th{
+	padding: 20px !important;
+	font-weight: 500 !important;
+	color: #000 !important;
+}
+.main-job-filter tbody {
+	background-color: #fff !important;
+}
+.main-job-filter tbody td{
+	box-shadow: unset !important;
+	padding: 20px !important;
+	color: #000 !important;
+}
+.paginate_button.previous, .paginate_button.next{
+	font-size: 0;
+}
+.paginate_button.previous::before{
+	content: "\F284";
+	font-family: 'bootstrap-icons';
+	color: #000;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.paginate_button.next::before{
+	content: "\F285";
+	font-family: 'bootstrap-icons';
+	color: #000;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.paginate_button.current{
+	font-size: 15px !important;
+	font-weight: 500 !important;
+	border-radius: 8px !important;
+	border: none !important;
+	background-color: #01796F !important;
+	color: #ffffff !important;
+}
+.paginate_button{
+	color: #ffffff !important;
+}
+/* Data table css end */
+
 
 @media (min-width: 1024px) {
 	.main-contact-form {
@@ -1108,6 +1185,11 @@ input[type="file"]{
 		padding: 20px;
 		background-color: #0ca78c;
 		border-radius: 10px;
+		position: absolute;
+        width: 95%;
+        transform: translateX(-50%);
+        left: 50%;
+        top: 100%;
 	}
 	.main-header .navbar-toggler {
 		border: none;
@@ -1161,6 +1243,15 @@ input[type="file"]{
 	.unstoppable-spaces-top.countries-section{
 		padding-top: 35px;
 	}
+	.main-header .container{
+		flex-wrap: nowrap !important;
+	}
+	.main-header ul{
+		padding-left: 0 !important;
+	}
+	.main-header .main-btn{
+		padding: 8px 14px;
+	}
 }
 
 @media (max-width: 576px) {
@@ -1169,6 +1260,9 @@ input[type="file"]{
 	}
 	.file-inputs h2{
 		font-size: 18px !important;
+	}
+	.main-header .navbar-collapse {
+        top: 130%;
 	}
 	.form-control {
 		padding: 10px;
@@ -1299,6 +1393,12 @@ input[type="file"]{
 	.main-job-filter.mt-5{
 		margin-top: 30px !important;
 	}
+}
+
+@media (max-width: 375px){
+	.main-header .main-btn {
+        padding: 8px 6px;
+    }
 }
 
 .unstopable-log {

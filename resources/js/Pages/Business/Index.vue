@@ -139,9 +139,9 @@ const deletejob = async (id) => {
                     </ul>
                 </div>
                 <div class="main-job-filter mt-5">
-                    <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                    <DataTable class="display job-data-table" :options="options" style="border:2px black ;width:100%">
                             <thead>
-                                <tr>
+                                <tr class="th-row">
                                     <th>ID</th>
                                     <th>Job Title</th>
                                     <th>Positions</th>
