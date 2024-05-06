@@ -30,7 +30,7 @@ function submitForm() {
     formData.append('sliderDescription', form.sliderDescription);
     formData.append('sliderImage', form.sliderImage);
     // Post
-    router.post('/home-page/update', formData,{
+    router.post(route('home-page.update'), formData,{
       onSuccess: () => {
         toast("Slider Updated Successfully", {
           autoClose: 2000,

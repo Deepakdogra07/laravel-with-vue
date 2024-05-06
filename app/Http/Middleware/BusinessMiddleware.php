@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,8 @@ class BusinessMiddleware
             return $next($request);
         }
 
-        abort(403);
+        // abort(403);
+        return redirect()->route('403');
+        // Inertia::render('Frontend/ErrorPages/403');
     }
 }

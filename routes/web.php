@@ -148,6 +148,9 @@ Route::get('/layouts', function () {
     return inertia('Frontend/Layouts/sidebar');
 });
 
+Route::get('/403', function () {
+    return inertia('Frontend/ErrorPages/403');
+})->name('403');
 Route::get('/about-us', function () {
     return Inertia('About/AboutUs');
 })->name('about.us');

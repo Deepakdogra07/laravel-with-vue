@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'company_address' => 'required',
             'company_country' => 'required',
             'company_state' => 'required',
-            'company_pin' => 'required|max:6|min:6',
+            'company_pin' => 'required|max:10|min:4',
             'contact_number' => 'required|max:15|min:8',
             'company_name' => 'required',
             'contact_department' => 'required',
@@ -54,9 +54,9 @@ class RegisteredUserController extends Controller
             'company_address.required'=>"Company address is required.",
             'company_country.required'=>"Country is required.",
             'company_state.required'=>"State is required.",
-            'company_pin.required'=>"PIN is required.",
-            'company_pin.max'=>"PIN should be 6 digits.",
-            'company_pin.min'=>"PIN should be 6 digits.",
+            'company_pin.required'=>"Postal Code is required.",
+            'company_pin.min'=>"Postal Code should be atleast 4 digits.",
+            'company_pin.max'=>"Postal Code should not more than 10 digits.",
             'company_name.required'=>"Company Name is required.",
             'mobile_number.required'=>"Mobile Number is required.",
             'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one digit and one special character.',
@@ -104,7 +104,6 @@ class RegisteredUserController extends Controller
         $business->user_id = $user->id;
         $business->save();
         if ($user->user_type == '2') {
-            // $user->sendEmailVerificationNotification();
             $username = $user->name;
             $email = $user->email;
             $password = $textpassword;
