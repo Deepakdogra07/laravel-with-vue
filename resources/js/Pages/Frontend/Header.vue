@@ -74,7 +74,8 @@ const showMenu = () => {
             <li class="nav-item" v-if="!$page.props.auth.user || $page?.props?.auth?.user?.user_type == 3">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">For Individuals</Link>
             </li>
-            <li class="nav-item" v-if="$page?.props?.auth?.user?.user_type == 2">
+            <li class="nav-item" >
+              <!-- v-if="$page?.props?.auth?.user?.user_type == 2" -->
               <Link class="nav-link"  :href="route('business-jobs.index')">For Businesses</Link>
             </li>
             <li class="nav-item">

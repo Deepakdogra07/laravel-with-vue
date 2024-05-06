@@ -60,10 +60,11 @@ class EditHomePageController extends Controller
     public function update(Request $request){
         // dd($request->all());
         $validator = Validator::make($request->all(),[
-            'slider_name' => 'required',
-            'slider_heading' => 'required',
-            // 'slider_description' => ['required',new MaxWords(100)],
+            'sliderHeading' => 'required',
+            'sliderImage' =>  'required',
+            'sliderDescription' =>['required',new MaxWords(100)],
         ]);
+        // dd($validator->errors());
         if($validator->fails()){
             return back()->withErrors($validator->errors());
         }

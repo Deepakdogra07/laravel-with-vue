@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+// use Illuminate\Auth\Access\AuthorizationException;
 
 class Handler extends ExceptionHandler
 {
@@ -27,4 +28,12 @@ class Handler extends ExceptionHandler
             //
         });
     }
+    // public function render($request, Throwable $exception)
+    //     {
+    //         if ($exception instanceof AuthorizationException) {
+    //             return redirect()->route('custom_403_page');
+    //         }
+
+    //         return parent::render($request, $exception);
+    //     }
 }

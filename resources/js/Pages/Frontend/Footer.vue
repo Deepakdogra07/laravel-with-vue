@@ -60,7 +60,8 @@ const user = ref(page?.props?.auth?.user)
             <li class="mb-3" v-if="!user ||user?.user_type == 3">
               <Link href="/job-listing" >For Individuals</Link>
             </li>
-            <li class="mb-3" v-if="user?.user_type == 2">
+            <li class="mb-3">
+              <!-- v-if="user?.user_type == 2" -->
               <Link :href="route('business-jobs.index')">For Businesses</Link>
             </li>
           </ul>
