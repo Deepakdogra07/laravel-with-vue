@@ -1190,6 +1190,7 @@ input[type="file"]{
         transform: translateX(-50%);
         left: 50%;
         top: 100%;
+		z-index: 999;
 	}
 	.main-header .navbar-toggler {
 		border: none;
