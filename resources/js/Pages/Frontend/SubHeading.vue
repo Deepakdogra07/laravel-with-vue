@@ -29,7 +29,7 @@ import { Link } from '@inertiajs/vue3';
                             >Login</Link>
                         </li>
                     </div>
-                    <div class="col-md-2 col-5">
+                    <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
                             <Link class="nav-link text-center"  
                                 :class="{ 'active': route().current('register') }"  
