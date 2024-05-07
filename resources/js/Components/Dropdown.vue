@@ -10,7 +10,7 @@
             leave-active-class="transition duration-150 ease-in"
             leave-from-class="opacity-100"
             leave-to-class="opacity-0">
-          <ul v-show="open" class="absolute right-0 mt-2 w-56 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md space-y-2"
+          <ul v-show="open" class="absolute right-0 z-10 mt-2 w-56 rounded-md border border-gray-100 bg-white p-2 text-gray-600 shadow-md space-y-2"
               aria-label="submenu">
             <li>
               <slot name="content" />
