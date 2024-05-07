@@ -1219,6 +1219,13 @@ input[type="file"]{
 	padding-right: 30px !important;
 }
 /* travel section css end */
+
+/* employment from css start */
+.employment-first-form h2{
+	font-family: "Open Sans", sans-serif !important;
+}
+/* employment from css end */
+
 @media (min-width: 1024px) {
 	.main-contact-form {
 		padding-left: 50px;
