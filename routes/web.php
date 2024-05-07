@@ -175,3 +175,7 @@ Route::get('/travel-details', function () {
 Route::get('/personal-details', function () {
     return inertia('Frontend/CustomerSection/Travel/PersonalDetail');
 })->name('personal.details');
+
+Route::get('/employment-details', function () {
+    return inertia('Frontend/CustomerSection/Employment/Index');
+})->name('employment.details');
