@@ -113,7 +113,7 @@ class JobsController extends Controller
             "skills_id" => 'required',
             "industry_id" => 'required',
             "positions" => 'required',
-            "pin_code" => 'required|max:6|min:6',
+            "pin_code" => 'required|max:10|min:4',
             "city" => 'required',
             "segment" => 'required',
             "job_country" => 'required',

@@ -40,6 +40,7 @@ import { Link } from '@inertiajs/vue3';
                 </ul>
             </div>
         </div>
+        
     </div>
 </template>
 

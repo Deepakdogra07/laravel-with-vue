@@ -12,6 +12,10 @@ const props = defineProps({
         type:String
     }
 })
+function job_description(description){
+    var job_description = description;
+    return job_description;
+}
 </script>
 
 <template>
@@ -42,46 +46,12 @@ const props = defineProps({
             <div class="job-detail-content mt-4">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-12">
-                            <h2 class="mb-2 semibold">Details of the job</h2>
-                            <p>{{job.job_description}}</p>
-                            <ul style="list-style-type: disc;" class="mt-2">
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                            </ul>
+                        <div class="col-md-12 col-12">
+                            <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
+                            <div v-html="job_description(job.job_description)"></div>
+                            
                         </div>
-                        <div class="col-md-6 col-12">
-                            <h2 class="mb-2 semibold">Requirements</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <ul style="list-style-type: disc;" class="mt-2">
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <h2 class="mb-2 semibold">Conditions</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                            <ul style="list-style-type: disc;" class="mt-2">
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                                <li class="mb-2">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                    industry.</li>
-                            </ul>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="row">
