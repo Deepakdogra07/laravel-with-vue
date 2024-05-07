@@ -163,3 +163,15 @@ Route::get('/job-application', function () {
     return inertia('JobForm/JobApplication');
 })->name('job.application');
 
+
+Route::get('/job-introduction', function () {
+    return inertia('Frontend/CustomerSection/Introduction/Index');
+})->name('job.introduction');
+
+Route::get('/travel-details', function () {
+    return inertia('Frontend/CustomerSection/Travel/TravelDetail');
+})->name('travel.details');
+
+Route::get('/personal-details', function () {
+    return inertia('Frontend/CustomerSection/Travel/PersonalDetail');
+})->name('personal.details');
