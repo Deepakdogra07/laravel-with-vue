@@ -440,8 +440,9 @@ h2 {
 .form-select {
 	border: 1px solid #d2d2d5;
 	background-color: #fbfbfb;
-	padding: 14px 10px;
-	border-radius: 8px;
+	padding: 12px 10px;
+    border-radius: 8px;
+    font-size: 15px;
 }
 .form-control:focus,
 .form-select:focus {
@@ -470,6 +471,10 @@ h2 {
 .forms-btn-transparent {
 	border: 1px solid #01796f;
 	color: #01796f;
+	background-color: transparent;
+}
+.step-form-back{
+	color: #000 !important;
 }
 .text-lightgreen {
 	color: #01796f;
@@ -506,11 +511,13 @@ h2 {
 	font-family: "Philosopher", sans-serif !important;
 	color: #d2d2d5;
 	padding: 5px 0;
+	width: fit-content;
 }
 
 .form-navigation .nav-underline .nav-link.active {
 	border-bottom: 3px solid #22caad !important;
 	color: #fff;
+	width: fit-content;
 }
 
 .form-navigation .nav-underline .nav-link.active {
@@ -1095,6 +1102,9 @@ input[type="file"]{
 /* job listing pages css end */
 
 /* Data table css start */
+.main-job-filter .job-data-table{
+	white-space: nowrap;
+}
 .main-job-filter .job-data-table .th-row{
 	background-color: #D2D2D580 !important;
 	
@@ -1164,6 +1174,57 @@ input[type="file"]{
 }
 /* Data table css end */
 
+/* Introduction css start */
+.text-margin{
+	margin-bottom: 20px;
+	color: #777980;
+}
+.light-text{
+	color: #777980;
+}
+.green-text{
+	color: #01796F;
+	font-size: 20px;
+	margin-top: 3px;
+}
+.employment-highlight{
+	padding: 30px 20px;
+	border-left: 4px solid #1A9882;
+	background-color: #ECFCFA80;
+	border-radius: 20px;
+	margin: 30px 0;
+}
+
+/* Introduction css end */
+
+/* travel section css start */
+.travel-section h4{
+	font-family: "Philosopher", sans-serif !important;
+	font-weight: 700;
+	color: #000;
+}
+.new-radio-btns input{
+	border: 2px solid #01796F !important;
+}
+.new-radio-btns input:checked{
+	background-color: #01796F !important;
+}
+.new-radio-btns input:focus{
+	box-shadow: none;
+}
+.form-division-left{
+	padding-left: 30px !important;
+}
+.form-division-right{
+	padding-right: 30px !important;
+}
+/* travel section css end */
+
+/* employment from css start */
+.employment-first-form h2{
+	font-family: "Open Sans", sans-serif !important;
+}
+/* employment from css end */
 
 @media (min-width: 1024px) {
 	.main-contact-form {
@@ -1171,6 +1232,12 @@ input[type="file"]{
 	}
 }
 @media (max-width: 992px) {
+	.form-division-left{
+		padding-left: 0px !important;
+	}
+	.form-division-right{
+		padding-right: 0px !important;
+	}
 	.footer-grid {
 		grid-template-columns: 50% 50%;
 		gap: 15px;
@@ -1397,13 +1464,16 @@ input[type="file"]{
 	.main-job-filter.mt-5{
 		margin-top: 30px !important;
 	}
+	.travel-form-main .mt-4{
+		margin-top: 14px !important;
+	}
 }
 
-@media (max-width: 375px){
+/* @media (max-width: 375px){
 	.main-header .main-btn {
         padding: 8px 6px;
     }
-}
+} */
 
 .unstopable-log {
 	text-align: center;

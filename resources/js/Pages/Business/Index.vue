@@ -69,11 +69,15 @@ const deletejob = async (id) => {
     <div class="main-outer-section">
         <div class="job-list-search">
             <div class="container">
-                <div class="d-flex justify-between align-items-center flex-wrap gap-3">
+                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
+                    <div class="login-section-mob absolute top-0 right-0">
+                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
+                    </div>
                     <div class="d-flex gap-5 align-items-center">
                         <Link class='active-nav'>Jobs</Link>
                         <Link>Employee</Link>
-                    </div>
+                    </div> 
+                    
                     <div class="relative">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
                         <input type="search" class="user-dashboard-search" placeholder="Search employe">
@@ -111,7 +115,7 @@ const deletejob = async (id) => {
                             </li>
                             
                         </ul>
-                        <div>
+                        <div class="login-section-desk">
                             <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                         </div>
                     </div>
