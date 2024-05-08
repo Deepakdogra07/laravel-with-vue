@@ -71,14 +71,14 @@ const testimonialedit = (id)=>{
           <div class="py-12">
           <div class="max-w-7xl mx-auto px-2">
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                  <div class="p-6 text-black-900">
+                  <div class="p-6 text-black-900 padding_remove bg_tablee">
                       <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                           <thead>
                               <tr>
                                   <th class="d-none">ID</th>
                                   <th>Name</th>
                                   <th>Image</th>
-                                  <th>Description</th>
+                                  <th>Content</th>
                                   <th>Status</th>
                                   <th>Actions</th>
                               </tr>
@@ -92,7 +92,7 @@ const testimonialedit = (id)=>{
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td>
-                                  <td v-html="testimonialRecord.description"></td>
+                                  <td>{{ testimonialRecord.content }}</td>
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>
