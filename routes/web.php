@@ -123,7 +123,7 @@ Route::middleware(['auth', 'business'])->group(function () {
 
 
 
-
+Route::get('data-filteration/{job_id}/{status}',[JobsController::class,'data_filteration'])->name('data-filteration');
 
 Route::get('/job-listing', [JobsController::class,'job_listing'])->name("job.listing");
 

@@ -13,6 +13,7 @@ use App\Models\Industries;
 use App\Models\VideoIntro;
 use App\Models\Seniorities;
 use Illuminate\Http\Request;
+use App\Models\CustomerStatus;
 use App\Models\Workexperience;
 use App\Models\CustomerTraining;
 use App\Models\CustomerDocuments;
@@ -203,7 +204,25 @@ class JobsController extends Controller
       return $time;
   }
   public function job_for_customer($job_id){
-   $applied_customers = Customer::where('job_id',$job_id)->get();
-   return Inertia::render('Admin/Jobs/ViewCustomers',compact('applied_customers','job_id'));
+   $applied_customers = Customer::where('job_id',$job_id)->with('status')->get();
+   $active = CustomerStatus::where('job_id',$job_id)->where('status',0)->count();
+   $awaited = CustomerStatus::where('job_id',$job_id)->where('status',1)->count();
+   $reviewed = CustomerStatus::where('job_id',$job_id)->where('status',2)->count();
+   $contacted = CustomerStatus::where('job_id',$job_id)->where('status',3)->count();
+   $hired = CustomerStatus::where('job_id',$job_id)->where('status',4)->count();
+   $rejected = CustomerStatus::where('job_id',$job_id)->where('status',5)->count();
+   $status = [
+      'active'=>$active,
+      'awaited'=>$awaited,
+      'reviewed'=>$reviewed,
+      'contacted'=>$contacted,
+      'hired'=>$hired,
+      'rejected'=>$rejected,
+   ];
+   return Inertia::render('Admin/Jobs/ViewCustomers',compact('applied_customers','job_id','status'));
+  }
+  public function data_filteration($job_id,$status){
+   $applied_customers = Customer::where('customers_personal_details.job_id',$job_id)->leftJoin('jobs_with_customer_status','jobs_with_customer_status.customer_id','customers_personal_details.id')->where('jobs_with_customer_status.status',$status)->with('status')->get();
+   return response()->json(['applied_customers'=>$applied_customers]);
   }
 }
