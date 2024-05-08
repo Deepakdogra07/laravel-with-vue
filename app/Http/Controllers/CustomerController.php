@@ -40,7 +40,6 @@ class CustomerController extends Controller
             'phone' => 'required|numeric|min:7',
             'password_confirmation' => 'required',
         ]);
-        $referralCode = Str::random(10);
         $textpassword = $request->password;
         $user = User::create(
             [
@@ -63,18 +62,19 @@ class CustomerController extends Controller
         $creator = Auth::user()->name;
         Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
         Mail::to($email)->send(new VerifyUser($user->id , $username, $email, $password, $creator));
+        return to_route('customers');
     }
 
     public function view(Request $request, $id)
     {
         $id = intval($id);
-        $customer = User::where('id', $id)->where('is_deleted', 0)->first();
+        $customer = User::where('id', $id)->first();
        
         return Inertia::render('Customers/ViewCustomer', ['customer' => $customer]);
     }
     public function edit(Request $request)
     {
-        $customer = User::where('id', $request->id)->where('is_deleted', 0)->first();
+        $customer = User::where('id', $request->id)->first();
         return Inertia::render('Customers/EditCustomer', ['customer' => $customer]);
     }
 
@@ -83,7 +83,7 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $request->id,
-            'phone' => 'required|numeric|digits:11',
+            'phone' => 'required|max:10|min:8',
         ]);
 
         User::where('id', $request->id)->update([
@@ -93,6 +93,7 @@ class CustomerController extends Controller
             'address' => $request->address,
             'status' => ($request->status == true) ? 1 :0,
         ]);
+        return to_route('customers');
     }
 
     public function delete(Request $request)

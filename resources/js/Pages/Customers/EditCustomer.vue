@@ -7,7 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 // import { defineProps , ref} from 'vue';
 import { router } from '@inertiajs/vue3';
-import { useToast } from 'vue-toastify';
+import { toast } from 'vue3-toastify';
 
 const { customer, errors } = defineProps(['customer', 'errors']);
 
@@ -20,8 +20,7 @@ const form = useForm({
 
 });
 // console.log(form);
-const submit = () => {
-  const toast = useToast();
+const submit = () => {  
   const formData = {
     name: form.name || '',
     email: form.email || '',
@@ -31,8 +30,12 @@ const submit = () => {
   };
   router.put(`/customers/update-customer/${customer.id}`, formData, {
     onSuccess: () => {
-      router.visit(route('customers'));
-      toast.success('Updated Customer Successfully');
+        toast("Customer Updated Successfully!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+     
     },
     // onError: (errors) => {
     //     toast.error('Validation Error: Please check your inputs');
