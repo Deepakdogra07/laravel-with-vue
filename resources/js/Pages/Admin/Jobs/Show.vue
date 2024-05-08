@@ -33,6 +33,34 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             
         </template>
+
+        <div class="nav-container">
+            <div class="form-navigation1" >
+                <div class="container">
+                    <ul class="row nav-underline pl-0 mb-0">
+                        <div class="col-md-2 col-3">
+                            <li class="nav-item">
+                                <Link class="nav-link text-center" 
+                                    aria-current="page" 
+                                    :class="{ 'active': route().current('jobs.show',jobs.id) }"
+                                    :href="route('jobs.show',jobs.id)"
+                                >View Job</Link>
+                            </li>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-5">
+                            <li class="nav-item">
+                                <Link class="nav-link text-center"  
+                                :class="{ 'active': route().current('jobs.show',jobs.id) }"
+                                    :href="route('job_for_customers',jobs.id)"
+                                >Employees</Link>
+                                <!-- :class="{ 'active': route().current('register') }"   -->
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
