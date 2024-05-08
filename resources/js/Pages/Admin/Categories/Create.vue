@@ -55,12 +55,12 @@ function handleFileInput1(event) {
 <template>
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-black-800 leading-tight">Add Category</h2>
+      <h2 class="font-semibold text-xl text-black-800 leading-tight">Add Category </h2>
       <div class="button-container">
       </div>
 
     </template>
-    <div class="py-12">
+    <div class="py-12 add_category_page">
       <div class="max-w-7xl mx-auto px-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
           <div class="p-6 text-black-900">
