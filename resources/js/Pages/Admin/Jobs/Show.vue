@@ -10,6 +10,9 @@ import * as countryStateCity from 'country-state-city';
 const props = defineProps({
     jobs: {
         type: Array
+    },
+    applied_customers:{
+        type: Array
     }
 });
 
@@ -30,6 +33,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
             
         </template>
+
         <div class="nav-container">
             <div class="form-navigation1" >
                 <div class="container">
@@ -56,6 +60,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                 </div>
             </div>
         </div>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
@@ -100,6 +105,41 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                             <b>Created By:</b>{{ jobs?.createdby?.name }}
                                         </p>   
                                     </div>       
+                                </div>
+                            </div>
+
+                            <div class = "card mt-5">                  
+                                <div class="card-header">         
+                                    <div class="card-header-caption">  
+                                        <div class="card-header-title">
+                                            <h1>Applied Customers:</h1>
+                                        </div> 
+                                        <div class="card-body">
+                                            <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Customer Name</th>
+                                                        <th>Email</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                   
+                                                    <tr v-if="applied_customers.length > 0"  v-for="(customer, index) in applied_customers" :key="customer.id">
+                                                        <td>{{ index + 1 }}</td>
+                                                        <td>
+                                                            {{ customer?.first_name }} {{ customer?.last_name }}
+                                                        </td>
+                                                        <td> {{ customer?.email }}</td>
+                                                        <td class="success">
+                                                            Active
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </DataTable>
+                                        </div>
+                                    </div>          
                                 </div>
                             </div>
                         </div>                      

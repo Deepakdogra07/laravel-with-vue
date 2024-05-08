@@ -1,11 +1,10 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link, useForm } from '@inertiajs/vue3';
+import { reactive } from 'vue';
+import { router } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 const props = defineProps({
   errors: Object,
@@ -73,7 +72,7 @@ function update_all_data(type, event) {
 
             <div class="mt-4 col-md-6">
               <label for="content">Content<span class="text-danger">*</span></label>
-              <QuillEditor contentType="html" toolbar="essential" v-model:content="form.content" placeholder="Enter Job Description"/>
+              <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
             <div class="mt-4 col-md-6">

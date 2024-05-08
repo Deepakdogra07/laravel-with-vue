@@ -6,7 +6,6 @@ import { useToast } from 'vue-toastify';
 import { router } from '@inertiajs/vue3'
 import { reactive,ref } from 'vue';
 import modal from '@/Components/Modal.vue';
-import moment from 'moment/moment';
 
 defineProps({
     customers: {
@@ -82,9 +81,6 @@ const viewCustomer = (id) => {
 const editCustomer = (id) => {
     router.get(`/customers/edit-customer/${id}`);
 };
-function formatDateTime(date){
-    return moment(date).format('MMMM-DD-YYYY h:mm A');
-}
 </script>
 
 <template>
@@ -100,14 +96,13 @@ function formatDateTime(date){
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900">
+                    <div class="p-6 text-black-900 padding_remove">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th class="d-none">ID</th>
                                     <th>Customer Name</th>
                                     <th>Email</th>
-                                    <th>Date Registered</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -117,7 +112,6 @@ function formatDateTime(date){
                                     <td class="d-none">{{ customer.id }}</td>
                                     <td>{{ customer.name }}</td>
                                     <td>{{ customer.email }}</td>
-                                    <td>{{ formatDateTime(customer.created_at) }}</td>
                                     <td :class="{ 'active': customer.status == 1, 'inactive': customer.status == 0 }">
                                         {{ customer.status == 1 ? 'Active' : 'Inactive' }}
                                     </td>

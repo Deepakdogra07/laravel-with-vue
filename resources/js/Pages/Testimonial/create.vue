@@ -6,10 +6,6 @@ import { router } from '@inertiajs/vue3';
 import { useToast } from 'vue-toastify';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import '@vueup/vue-quill/dist/vue-quill.bubble.css';
-
 
 const form = reactive({
   name: null,
@@ -69,11 +65,11 @@ function handleVideoInput2(event) {
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Testimonials</h2>
     </template>
 
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center create_testimonial_form">
       <div class="w-full px-2">
         <form @submit.prevent="submit" enctype="multipart/form-data">
           <div class="row">
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 input_firstt">
               <label for="name">Name<span class="text-danger">*</span></label>
               <input id="name" v-model="form.name" placeholder="Enter Name" class="block w-full mt-1 form-control"
                 autocomplete="name" />
@@ -101,7 +97,8 @@ function handleVideoInput2(event) {
             </div>
             <div class="mt-4 col-md-6">
               <label for="content">Content<span class="text-danger">*</span></label>
-              <QuillEditor contentType="html" toolbar="essential" v-model:content="form.content" placeholder="Enter Job Description"/>
+              <textarea id="content" v-model="form.content" placeholder="Enter Content"
+                class="block w-full mt-1 form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
             <br />
@@ -121,8 +118,8 @@ function handleVideoInput2(event) {
                 <label for="status" class="form-check-label text-gray-700 text-sm font-bold mb-2">Status</label>
               </div> -->
             </div>
-          <div class="mt-4 col-md-6"></div>
-            <div class="mt-4 col-md-6 ">
+
+            <div class="mt-4 col-md-12">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             <div></div><br>

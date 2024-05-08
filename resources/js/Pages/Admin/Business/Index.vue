@@ -3,8 +3,8 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
 import { onMounted, reactive } from 'vue';
 import Swal from 'sweetalert2';
+import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import moment from 'moment';
 
 const props = defineProps({
     customers: {
@@ -53,9 +53,6 @@ const props = defineProps({
             });
         }
     };
-    function formatDateTime(date){
-    return moment(date).format('MMMM-DD-YYYY h:mm A');
-}
 </script>
 
 <template>
@@ -79,7 +76,7 @@ const props = defineProps({
                                     <th>S.No.</th>
                                     <th>Username</th>
                                     <th>Email</th>
-                                    <th>Date Registered</th>
+                                    <!-- <th>test</th> -->
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -92,7 +89,9 @@ const props = defineProps({
                                         <p v-html="customer.name"></p>
                                     </td>
                                     <td>{{ customer.email }}</td>
-                                    <td>{{ formatDateTime(customers.created_at) }}</td>
+                                    <!-- <td>
+                                        <img :src="getImageUrl(customer.category_image)" alt="" srcset="" style="width:100px">
+                                        </td> -->
                                     <td :style="{ color: (customer.status == 0) ? 'red' : 'green' }">
                                         {{ (customer.status == 0) ?"Inactive" : "Active" }}
                                     </td>
