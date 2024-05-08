@@ -121,7 +121,10 @@ const submit = () => {
                                     <!-- <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
                                         class="form-control mt-2 mb-3" />  -->
                                         <!-- <Tiptap :text="form.job_description" /> -->
-                                        <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
+                                        <QuillEditor contentType="html" toolbar="indly find attached the Notification released by the government for your future reference below:-
+Employee: 0.2% of the salary, wages, or remuneration up to a maximum of Rs. 31. Eindly find attached the Notification released by the government for your future reference below:-
+Employee: 0.2% of the salary, wages, or remuneration up to a maximum of Rs. 31. Eindly find attached the Notification released by the government for your future reference below:-
+Employee: 0.2% of the salary, wages, or remuneration up to a maximum of Rs. 31. E" v-model:content="form.job_description" placeholder="Enter Job Description"/>
                                         <!-- <froala id="edit" :tag="'textarea'" v-model:value="form.job_description"></froala> -->
                                 </div>
                                     <InputError class="mt-2" :message="form.errors.job_description" />
