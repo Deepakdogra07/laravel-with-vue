@@ -42,8 +42,7 @@ function submitForm() {
         toast("Data Updated Successfully", {
           autoClose: 2000,
           theme: 'dark',
-        }
-        );
+        });
       },
     });
    

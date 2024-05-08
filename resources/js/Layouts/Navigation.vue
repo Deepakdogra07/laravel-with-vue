@@ -113,8 +113,8 @@
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
-            :href="route('business-listing')"
-            :active="route().current('business-listing')"
+            :href="route('business-listing.index')"
+            :active="route().current('business-listing.index')"
           >
             <i class="fa-solid fa-user-plus"></i>
             <span class="ml-4">Businesses</span>

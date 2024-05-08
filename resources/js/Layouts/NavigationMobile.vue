@@ -67,7 +67,7 @@
           </li>
 
           <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
-            <ResponsiveNavLink  :href="route('business-listing')" :active="route().current('business-listing')">
+            <ResponsiveNavLink  :href="route('business-listing.index')" :active="route().current('business-listing.index')">
               <template #icon>
                 <i class="fa-solid fa-user-plus"></i>
               </template>
