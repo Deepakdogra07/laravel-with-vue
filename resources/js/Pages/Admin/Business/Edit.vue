@@ -25,7 +25,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('business-listing.update', form.id), {
+    form.post(route('business-listing.updates', form.id), {
         onSuccess: () => {
             toast("Employer Updated Successfully", {
           autoClose: 2000,

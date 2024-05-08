@@ -67,7 +67,7 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
 
     // GET EMPLOYERS LISTING 
     Route::resource('/business-listing', AgentController::class);
-    Route::post('/business-listing/update', [AgentController::class,'update'])->name("business-listing.update");
+    Route::post('/business-listing/updates', [AgentController::class,'update'])->name("business-listing.updates");
 
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/add-customer', [CustomerController::class, 'show'])->name('customers.add-customer');
@@ -100,6 +100,7 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
     Route::resource('update-links',FooterDataController::class);
     Route::resource('jobs',JobsController::class);
     Route::post('jobs/updates/{id}',[JobsController::class,'update'])->name('jobs.updates');
+    Route::get('jobs-customers/{jobId}',[JobsController::class, 'job_for_customer'])->name('job_for_customers');
     
     // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
     // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');

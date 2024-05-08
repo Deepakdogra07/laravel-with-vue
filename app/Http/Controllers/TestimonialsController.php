@@ -7,6 +7,7 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use App\Rules\MaxWords;
 
 class TestimonialsController extends Controller
 {
@@ -38,7 +39,7 @@ class TestimonialsController extends Controller
             'name' => 'required',
             'image' => 'required',
             'content' => 'required',
-            'description' =>"required",
+            'description' =>["required ",new MaxWords(250)],
         ],[
             'name.required' => 'Name is must.',
             'image.required' => 'Image is must.',
@@ -65,6 +66,8 @@ class TestimonialsController extends Controller
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
                 $testimonial->video_link = '/storage/testimonials/'.$name;
+                $original_name = $image->getClientOriginalName();
+                $testimonial->video_name = $original_name;
             }
             $testimonial->save();
 
@@ -96,6 +99,7 @@ class TestimonialsController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'content' => 'required',
+            'description' =>['required',new MaxWords(250)],
         ],[
             'name.required' => 'Name is must.',
             'content.required' => 'Content is must.',
@@ -127,7 +131,9 @@ class TestimonialsController extends Controller
                 $image = $request->file('video');
                 $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
                 Storage::disk('public')->put('testimonials/'.$name, file_get_contents($image));
-                $testimonialUpdate->video_link = '/storage/testimonials/'.$name;;
+                $testimonialUpdate->video_link = '/storage/testimonials/'.$name;
+                $original_name = $image->getClientOriginalName();
+                $testimonialUpdate->video_name = $original_name;
             }
             $testimonialUpdate->update();
            

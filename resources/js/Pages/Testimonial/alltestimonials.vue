@@ -81,7 +81,7 @@ console.log(props.testimonials);
                                 </div>
                                 <button data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
                                     class="testimonial-video-btn"><span><i class="bi bi-play-circle"></i> </span>
-                                    {{ testimonial?.video_link }}</button>
+                                    {{ testimonial?.video_name }}</button>
                             </div>
                         </div>
                     </div>

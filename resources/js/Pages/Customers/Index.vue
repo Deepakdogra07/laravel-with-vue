@@ -6,6 +6,7 @@ import { useToast } from 'vue-toastify';
 import { router } from '@inertiajs/vue3'
 import { reactive,ref } from 'vue';
 import modal from '@/Components/Modal.vue';
+import moment from 'moment/moment';
 
 defineProps({
     customers: {
@@ -81,6 +82,9 @@ const viewCustomer = (id) => {
 const editCustomer = (id) => {
     router.get(`/customers/edit-customer/${id}`);
 };
+function formatDateTime(date){
+    return moment(date).format('MMMM-DD-YYYY h:mm A');
+}
 </script>
 
 <template>
@@ -103,6 +107,7 @@ const editCustomer = (id) => {
                                     <th class="d-none">ID</th>
                                     <th>Customer Name</th>
                                     <th>Email</th>
+                                    <th>Date Registered</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -112,6 +117,7 @@ const editCustomer = (id) => {
                                     <td class="d-none">{{ customer.id }}</td>
                                     <td>{{ customer.name }}</td>
                                     <td>{{ customer.email }}</td>
+                                    <td>{{ formatDateTime(customer.created_at) }}</td>
                                     <td :class="{ 'active': customer.status == 1, 'inactive': customer.status == 0 }">
                                         {{ customer.status == 1 ? 'Active' : 'Inactive' }}
                                     </td>

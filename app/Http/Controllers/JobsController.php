@@ -166,9 +166,9 @@ class JobsController extends Controller
    public function show($id){
       $jobs = Jobs::with('position','work_experience','discipline','industry','seniority','skills','createdby')->where('id',$id)->first();
 
-      $applied_customers = Customer::where('job_id',$id)->get();
       
-      return Inertia::render('Admin/Jobs/Show',compact('jobs','applied_customers'));
+      
+      return Inertia::render('Admin/Jobs/Show',compact('jobs'));
    }
 
    public function job_listing(){
@@ -201,5 +201,9 @@ class JobsController extends Controller
           $time= 'Just now';
       }
       return $time;
+  }
+  public function job_for_customer($job_id){
+   $applied_customers = Customer::where('job_id',$job_id)->get();
+   return Inertia::render('Admin/Jobs/ViewCustomers',compact('applied_customers','job_id'));
   }
 }
