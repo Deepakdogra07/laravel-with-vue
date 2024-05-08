@@ -1,0 +1,114 @@
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { Head, useForm } from '@inertiajs/vue3';
+import { useToast } from 'vue-toastify';
+import { router } from '@inertiajs/vue3';
+
+const form = useForm({
+  user_type: '2',
+  name: '',
+  email: '',
+  password: '',
+  isChecked: false,
+  status: null,
+  password_confirmation: '',
+  phone: '',
+  address: '',
+
+});
+
+const submit = () => {
+  const toast = useToast();
+  form.post(route('customers.add-customer'), {
+    onSuccess: () => {
+      router.visit(route('customers'));
+      toast.success('Customers Added Successfully');
+    },
+    // onError: (errors) => {
+    //   toast.error('Validation Error: Please check your inputs');
+    // },
+  });
+};
+</script>
+<template>
+  <AuthenticatedLayout>
+
+    <Head title="Add Employer" />
+    <div class="flex items-center justify-center px-2">
+      <div class="w-full">
+        <h1 class="text-xl font-semibold text-gray-700">Add Employer</h1>
+
+        <form @submit.prevent="submit">
+          <div class="row">
+            <div class="mt-4 col-md-6">
+              <InputLabel for="name" value="UserName" style="display: inline-block;" /><strong class="required-asterisk">*
+              </strong>
+              <TextInput id="name" type="text" placeholder="Enter Employer UserName" class="form-control"
+                v-model="form.name" autocomplete="name" />
+              <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
+            <div class="mt-4 col-md-6">
+              <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk">*
+              </strong>
+              <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" v-model="form.email"
+                autocomplete="email" />
+              <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div class="mt-4 col-md-6">
+              <InputLabel for="password" value="Password" style="display: inline-block;" /><strong
+                class="required-asterisk">* </strong>
+              <TextInput id="password" type="password" placeholder="Enter Password" class="form-control"
+                v-model="form.password" />
+              <InputError class="mt-2" :message="form.errors.password" />
+
+            </div>
+            <div class="mt-4 col-md-6">
+              <InputLabel for="password_confirmation" value="Confirm Password" style="display: inline-block;" /><strong
+                class="required-asterisk">* </strong>
+              <TextInput id="password_confirmation" type="password" placeholder="Enter Confirm Password"
+                class="form-control" v-model="form.password_confirmation" autocomplete="new-password" />
+              <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+
+            <div class="mt-4 col-md-6">
+              <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk">*
+              </strong>
+              <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
+                v-model="form.phone" autocomplete="phone" />
+              <InputError class="mt-2" :message="form.errors.phone" />
+            </div>
+            <!-- <div class="mt-4 col-md-6">
+                  <InputLabel for="address" value="Address" style="display: inline-block;"/><strong class="required-asterisk">* </strong>
+                  <TextInput id="address" type="text" placeholder="Enter Address" class="form-control" v-model="form.address" autocomplete="address" />
+                  <InputError class="mt-2" :message="form.errors.address" />
+              </div> -->
+            <div class="mt-4 col-md-6">
+
+              <div class="configure-switch d-flex align-items-center gap-3">
+                <div class="d-flex">
+                  <input type="checkbox" id="status" v-model="form.status" name="status" />
+                  <label for="status"></label>
+                </div>
+                <p class="mb-0 semibold">Status</p>
+              </div>
+
+           
+              <InputError class="mt-2" :message="form.errors.status" />
+            </div>
+          </div>
+          <div class="mt-4">
+            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
+              Submit
+            </PrimaryButton>
+          </div>
+        </form>
+      </div>
+    </div>
+  </AuthenticatedLayout>
+</template>

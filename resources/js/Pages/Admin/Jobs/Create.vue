@@ -11,7 +11,9 @@ import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
 import { ref } from 'vue';
 import Checkbox from '@/Components/Checkbox.vue';
-
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 const props = defineProps({
   seniorities: {
@@ -106,8 +108,7 @@ const submit = () => {
                             <div class="mt-4">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
-                                    <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
-                                        class="form-control mt-2 mb-3" /> 
+                                    <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
                                 </div>
                                     <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>

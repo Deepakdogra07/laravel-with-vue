@@ -29,7 +29,7 @@ const props = defineProps({
                         <p class="my-3"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
                             Chandigarh, India</p>
                         <div class="cards-bio">
-                            <p>{{ job?.job_description }}</p>
+                            <!-- <p>{{ job?.job_description }}</p> -->
                         </div>
                         <div class="row mt-3">
                             <div class=" col-md-6 login-btn-main">

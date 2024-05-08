@@ -66,7 +66,8 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
     Route::post('testimonial/updated/{id}', [TestimonialsController::class, 'update'])->name('testimonial.updated');
 
     // GET EMPLOYERS LISTING 
-    Route::get('/business-listing', [AgentController::class, 'index'])->name('business-listing');
+    Route::resource('/business-listing', AgentController::class);
+    Route::post('/business-listing/update', [AgentController::class,'update'])->name("business-listing.update");
 
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/add-customer', [CustomerController::class, 'show'])->name('customers.add-customer');

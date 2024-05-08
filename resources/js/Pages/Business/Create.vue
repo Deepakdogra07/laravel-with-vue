@@ -8,13 +8,15 @@ import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { toast } from 'vue3-toastify';
 import '@/../../resources/css/frontend.css';
 import '@/../../resources/css/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
-
+import { QuillEditor } from '@vueup/vue-quill'
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 
 const props = defineProps({
   seniorities: {
@@ -35,6 +37,7 @@ const props = defineProps({
   disciplines: {
     type: Array
   },
+  remote_work_check : false,
 
 });
 
@@ -63,6 +66,7 @@ const form = useForm({
   min_pay_range: null,
   max_pay_range: null,
   job_start_date: null,
+  
 });
 
 function selectFile(event){
@@ -83,6 +87,7 @@ const submit = () => {
       },
     });
 };
+
 
 
 
@@ -113,8 +118,11 @@ const submit = () => {
                             <div class="mt-4">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
-                                    <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
-                                        class="form-control mt-2 mb-3" /> 
+                                    <!-- <textarea id="job_description" type="text" v-model="form.job_description" placeholder="Enter job description"
+                                        class="form-control mt-2 mb-3" />  -->
+                                        <!-- <Tiptap :text="form.job_description" /> -->
+                                        <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
+                                        <!-- <froala id="edit" :tag="'textarea'" v-model:value="form.job_description"></froala> -->
                                 </div>
                                     <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
@@ -162,17 +170,18 @@ const submit = () => {
                         <div class="col-md-6">
                             <div class="mt-4">
                                 <label class="flex items-center">
-                                    <Checkbox class="remember-me-check" name="remember" />
+                                    <Checkbox class="remember-me-check" v-model="props.remote_work_check" name="remember" />
                                     <span class="label text-label pl-2">Remote Work</span>
                                 </label>
-                                <div class="d-flex align-items-center mt-3 gap-4">
+                                <div class="d-flex align-items-center mt-3 gap-4" >
+                                    <!-- v-if="props.remote_work_check" -->
                                     <div class="d-flex align-items-center">
-                                        <input type="radio" class="radio-new-btn" name="remote_work">
-                                        <label class="pl-2" for="">Remote Work</label>
+                                        <input type="radio" class="radio-new-btn" name="remote_work" id="remote">
+                                        <label class="pl-2" for="remote">Remote Work</label>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <input type="radio" class="radio-new-btn" name="remote_work">
-                                        <label class="pl-2" for="">Hybrid</label>
+                                        <input type="radio" class="radio-new-btn" name="remote_work" id="hybrid">
+                                        <label class="pl-2" for="hybrid">Hybrid</label>
                                     </div>
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
