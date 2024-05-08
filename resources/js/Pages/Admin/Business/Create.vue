@@ -5,7 +5,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import { useToast } from 'vue-toastify';
+import { toast } from 'vue3-toastify';
 import { router } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -22,11 +22,12 @@ const form = useForm({
 });
 
 const submit = () => {
-  const toast = useToast();
   form.post(route('customers.add-customer'), {
     onSuccess: () => {
-      router.visit(route('customers'));
-      toast.success('Customers Added Successfully');
+      toast("Employer Created Successfully", {
+          autoClose: 2000,
+          theme: 'dark',
+        });
     },
     // onError: (errors) => {
     //   toast.error('Validation Error: Please check your inputs');

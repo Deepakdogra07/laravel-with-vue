@@ -23,7 +23,7 @@ const options2 = createOptions();
 const options3 = createOptions();
 const options4 = createOptions();
 
-const props = defineProps(['authData', 'users']);
+const props = defineProps(['authData', 'users','customers','business','jobs']);
 
 
 
@@ -82,7 +82,7 @@ const getStatusColor = (status) => {
                                     </div>
                                     <div class="card-body">
                                         <h3 class="card-text text-center">
-                                            {{ '5' }}
+                                            {{ customers }}
                                         </h3>
                                     </div>
                                 </div>
@@ -97,7 +97,21 @@ const getStatusColor = (status) => {
                                 </div>
                                 <div class="card-body">
                                     <h3 class="card-text text-center">
-                                        {{  '4' }}
+                                        {{  business }}
+                                    </h3>
+                                </div>
+                            </div>
+                            </Link>
+                        </div>
+                        <div v-if="props.authData.user_type == 1" class="col-lg-3 col-md-6 col-xl-3 mb-3">
+                            <Link :href="route('jobs.index')">
+                            <div class="card bg-success text-white mb-3 card-flex py-2">
+                                <div class="card-header">
+                                    <h4>Total Jobs</h4>
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-text text-center">
+                                        {{  jobs }}
                                     </h3>
                                 </div>
                             </div>

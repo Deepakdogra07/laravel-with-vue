@@ -25,7 +25,6 @@ const form = useForm({
 });
 
 const submit = () => {
-    const toast = toast();
     form.post(route('business-listing.update', form.id), {
         onSuccess: () => {
             toast("Employer Updated Successfully", {
@@ -80,7 +79,7 @@ const submit = () => {
 
                             <div class="configure-switch d-flex align-items-center gap-3">
                                 <div class="d-flex">
-                                    <input type="checkbox" id="status" v-model="form.status" :checked="form.status ==1" name="status" />
+                                    <input type="checkbox" id="status" v-model="form.status" true-value="1" false-value="0" name="status" />
                                     <label for="status"></label>
                                 </div>
                                 <p class="mb-0 semibold">Status</p>

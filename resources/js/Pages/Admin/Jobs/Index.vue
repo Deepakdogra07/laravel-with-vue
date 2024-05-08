@@ -82,6 +82,7 @@ const deletejob = async (id) => {
                                     <th>Job Title</th>
                                     <th>Positions</th>
                                     <th>Industry</th>
+                                    <th>Created By</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -95,7 +96,9 @@ const deletejob = async (id) => {
                                     <td>
                                         {{ job?.industry?.name }}
                                     </td>
-
+                                    <td>
+                                        {{ job?.createdby?.name }}
+                                    </td>
                                     <td>
                                         <Link :href="route('jobs.show', job.id)" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i>

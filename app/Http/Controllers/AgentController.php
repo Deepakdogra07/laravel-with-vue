@@ -59,6 +59,7 @@ class AgentController extends Controller
         $creator = Auth::user()->name;
         Mail::to($email)->send(new VerifyUser(Auth::user()->id,$username, $email, $password, $creator));
         Mail::to($email)->send(new RegisteredAgent($username, $email, $password, $creator));
+        return to_route('business-listing.index');
     }
 
     public function view(Request $request, $id)
