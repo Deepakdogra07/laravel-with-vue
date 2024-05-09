@@ -36,10 +36,10 @@ function job_description(description){
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0">{{ created_time }}...</p>
                     </div>
-                    <!-- <div class=" col-md-4 view-job-btn mt-5">
-                        <Link :href="`/view-job/${job.id}`" class="forms-btn w-100">View Job <span> <i
+                    <div class=" col-md-4 view-job-btn mt-5">
+                        <Link :href="`/job-introduction?job_id=${job.id}`" class="forms-btn w-100">Apply Job <span> <i
                                 class="bi bi-arrow-right"></i></span></Link>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 

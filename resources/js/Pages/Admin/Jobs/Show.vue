@@ -11,18 +11,11 @@ const props = defineProps({
     jobs: {
         type: Array
     },
-    applied_customers:{
-        type: Array
-    }
+  
 });
 
 const states = countryStateCity.State.getStatesOfCountry('IN');
 
-// function getStateName(code){
-//     var state = states.find(state => state.isoCode == isoCode);
-//     return state ? state.name : '';
-// }
-// console.log(props.applied_customers,'123456789');
 </script>
 
 <template>
@@ -105,41 +98,6 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                             <b>Created By:</b>{{ jobs?.createdby?.name }}
                                         </p>   
                                     </div>       
-                                </div>
-                            </div>
-
-                            <div class = "card mt-5">                  
-                                <div class="card-header">         
-                                    <div class="card-header-caption">  
-                                        <div class="card-header-title">
-                                            <h1>Applied Customers:</h1>
-                                        </div> 
-                                        <div class="card-body">
-                                            <DataTable class="display" :options="options" style="border:2px black ;width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Customer Name</th>
-                                                        <th>Email</th>
-                                                        <th>Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                   
-                                                    <tr v-if="applied_customers.length > 0"  v-for="(customer, index) in applied_customers" :key="customer.id">
-                                                        <td>{{ index + 1 }}</td>
-                                                        <td>
-                                                            {{ customer?.first_name }} {{ customer?.last_name }}
-                                                        </td>
-                                                        <td> {{ customer?.email }}</td>
-                                                        <td class="success">
-                                                            Active
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </DataTable>
-                                        </div>
-                                    </div>          
                                 </div>
                             </div>
                         </div>                      

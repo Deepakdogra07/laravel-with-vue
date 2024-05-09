@@ -120,7 +120,7 @@ const deletejob = async (id) => {
                         </div>
                     </div>
                 </div>
-                <div class="main-job-filter mt-5">
+                <!-- <div class="main-job-filter mt-5">
                     <ul class="d-flex align-items-center flex-wrap pl-0">
                         <li>
                             <span>Yes (2)</span>
@@ -141,7 +141,7 @@ const deletejob = async (id) => {
                             <span>Sort: Apply date (newest) <i class="bi bi-chevron-down pl-3"></i></span>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="main-job-filter mt-5">
                     <DataTable class="display job-data-table" :options="options" style="border:2px black ;width:100%">
                             <thead>

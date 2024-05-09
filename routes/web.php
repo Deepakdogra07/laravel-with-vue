@@ -118,6 +118,7 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
 Route::middleware(['auth', 'business'])->group(function () {
     Route::resource('business-jobs',BusinessController::class);
     Route::post('business-jobs/updates/{id}',[BusinessController::class,'update'])->name('business-jobs.updates');
+    Route::get('business-jobs-customers/{jobId}',[BusinessController::class, 'job_for_customer'])->name('business_job_for_customers');
     
 });
 
