@@ -59,7 +59,7 @@ const testimonialedit = (id)=>{
 <template>
     <AuthenticatedLayout>
           <!-- <template #header> -->
-            <div class="d-flex justify-between align-items-center mb-4">
+            <div class="d-flex justify-between align-items-center mb-4 testimonial_row">
               <h2 class="font-semibold text-xl text-gray-800 leading-tight">Testimonials</h2>
               <div class="button-container">
                     <Link :href="route('testimonial.create')">
@@ -68,8 +68,8 @@ const testimonialedit = (id)=>{
                 </div>
             </div>
           <!-- </template> -->
-          <div class="py-12">
-          <div class="max-w-7xl mx-auto px-2">
+          <div class="py-12 craete_pagee">
+          <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                   <div class="p-6 text-black-900 padding_remove bg_tablee">
                       <DataTable class="display" :options="options" style="border:2px black ;width:100%">

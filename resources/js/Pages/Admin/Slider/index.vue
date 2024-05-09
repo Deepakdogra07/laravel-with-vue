@@ -84,7 +84,7 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Sliders</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Sliders </h2>
             <div class="button-container">
                 <Link v-if="sliders.length<5" :href="route('home-page.create')">
                 <button class="btn btn-info">Add Slider</button>
@@ -95,7 +95,7 @@ function getImageUrl(imageName) {
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900 table-responsive ">
+                    <div class="p-6 text-black-900 table-responsive sliders_page">
                        <DataTable class="display" :options="options" style="border:2px black ;width:100% ;overflow:hidden">
                             <thead>
                                 <tr>

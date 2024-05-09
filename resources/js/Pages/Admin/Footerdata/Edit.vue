@@ -76,7 +76,7 @@ function update_data(type, event) {
             </div>
 
         </template>
-        <div class=" text-black-900">
+        <div class=" text-black-900 other_data_fields">
             <div class="container">
                 <form @submit.prevent="submitForm">
                     <input type="hidden" v-value="form.id">
