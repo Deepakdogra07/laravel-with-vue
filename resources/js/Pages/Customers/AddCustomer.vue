@@ -36,7 +36,7 @@ const submit = () => {
   <AuthenticatedLayout>
 
     <Head title="Add Customer" />
-    <div class="flex items-center justify-center px-2">
+    <div class="flex items-center justify-center px-2 customer_page">
       <div class="w-full">
         <h1 class="text-xl font-semibold text-gray-700">Add Customer</h1>
 
