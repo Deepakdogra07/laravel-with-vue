@@ -1239,6 +1239,34 @@ input[type="file"]{
 		padding-left: 50px;
 	}
 }
+
+
+@media (max-width:909px){
+	.remote_woorkk label.pl-2 {
+		font-size: 13px;
+	}
+	.remote_work {
+		padding-left: 20px !important;
+	}
+	.mt-4.start_input {
+		margin-top: 10px !important;
+	}
+}
+
+@media (max-width:790px){
+	.remote_woorkk label.pl-2 {
+		font-size: 12px;
+	}
+	.create_space .text-label, .create_space label {
+		font-size: 13px;
+	}
+	.mt-4.start_input input#start_Date {
+		color: #999;
+	}
+}
+
+
+
 @media (max-width: 992px) {
 	.form-division-left{
 		padding-left: 0px !important;
@@ -1345,8 +1373,12 @@ input[type="file"]{
 		border-color: #fff !important;
 		color: #fff;
 	}
-
-
+	.country_input {
+		margin-top: 0px;
+	}
+	.create_space .label {
+		font-size: 13px;
+	}
 
 
 
@@ -1419,7 +1451,38 @@ input[type="file"]{
 	.customer_page .mt-4.col-md-6:nth-child(1) {
 		margin-top: 9px !important;
 	}
+	.row_width_100 {
+		width: 100%;
+		display: block;
+	}
+	.row_width_100 .container {
+		width: 100%;
+		max-width: 100%;
+		padding: 0px;
+	}
+	.mt-4.spacing_remove {
+		margin-top: 0px !important;
+	}
+	.create_space .text-label, .create_space label {
+		font-size: 16px;
+	}
+	.create_space .mt-4 {
+		margin-top: 0px !important;
+	}
+	.spacing_btm [for="job_description"] {
+		margin: 11px 0px;
+	}
+	.Position_type {
+		margin-top: 15px;
+	}
+	.remote_woorkk {
+		margin-bottom: 15px;
+	}
+	.country_input {
+		margin-top: 15px;
+	}
 }
+
 
 @media (max-width:640px){
 	.padding_remove div#DataTables_Table_0_filter {
@@ -1663,8 +1726,53 @@ input[type="file"]{
 		font-size: 20px !important;
 		margin-bottom: 0px;
 	}
-
-
+	.create_space .mt-4 {
+		margin-top: 12px !important;
+	}
+	.create_space .col-md-6 {
+		padding: 0px;
+	}
+	.create_space .container {
+		padding: 0px 5px;
+	}
+	.mt-4.spacing_remove {
+		margin-top: 0px !important;
+	}
+	.spacing_btm label {
+		margin-bottom: 10px;
+	}
+	.create_space .eye-icon-div select.form-select.mb-3 {
+		margin-bottom: 0px !important;
+	}
+	.remote_work {
+		padding-left: 20px;
+	}
+	.pin__code .mt-4, .spacing_mbb .mt-4, .mt-4.minimun_sall{
+		margin-top: 0px !important;
+	}
+	.maxxx_salary input#salary_range {
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	.file_upload .file-inputs {
+		margin-top: 0px !important;
+		margin-bottom: 0px;
+	}
+	.file_upload {
+		padding: 0px;
+	}
+	.file_upload .dotted-bg {
+		text-align: center;
+	}
+	.file_upload .dotted-bg h2 {
+		font-size: 15px !important;
+	}
+	.create_space .text-label, .create_space label {
+		font-size: 15px;
+	}
+	.remote_woorkk label.pl-2 {
+		font-size: 15px;
+	}
 
 }
 
@@ -1943,7 +2051,7 @@ button.btn.btn-primary {
     width: 100% !important; 
     overflow-x: scroll !important;
     white-space: nowrap !important;
-
+}
 .padding_remove div#DataTables_Table_0_paginate a#DataTables_Table_0_previous::before{
 	content: "\003c"!important;
     background: #6c6b6b;
@@ -1994,4 +2102,74 @@ button.btn.btn-primary {
 .testimonial_spacing {
     padding: 0px !important;
 
+}
+.create_space {
+    padding-top: 0px;
+}
+/* .create_space label, .create_space span.label.text-label input {
+    margin-top: 13px;
+} */
+.create_space .eye-icon-div select.form-select.mb-3 {
+    margin-top: 10px;
+    color: #A5A5AB;
+}
+.create_space label {
+    color: #4a4c56 !important;
+    font-weight: 600;
+}
+.remote_work {
+    padding-left: 30px;
+    padding-top: 0px;
+    margin-top: 7px !important;
+}
+.create_space span.multiselect__tag {
+    background: #01796F;
+    padding: 9px;
+    padding: 10px 25px 10px 10px;
+}
+.create_space i.multiselect__tag-icon::after {
+    color: #fff;
+}
+.create_space span.multiselect__tag i {
+    top: 6px;
+    right: 3px;
+}
+.skills_input .multiselect__tags {
+    background: #fbfbfb;
+    padding: 12px 10px;
+    margin-top: 10px;
+    border: 1px solid #d2d2d5;
+}
+.skills_input  .multiselect__placeholder {
+    margin-bottom: 0px;
+}
+.minimun_sall .col-md-6 {
+    padding: 0px !important;
+}
+.minimun_sall .col-md-6:nth-child(1) {
+    padding-right: 10px !important;
+}
+button.rounded-lg span i::before {
+    content: "\2192";
+    font-size: 24px;
+}
+.mt-4 .start_input {
+    margin-top: 10px !important;
+}
+.mt-4.start_input {
+    margin-top: 8px !important;
+}
+table#DataTables_Table_2 thead, table#DataTables_Table_2 tbody, table#DataTables_Table_2 tr {
+    width: 100%!important;
+    overflow-x: scroll;
+}
+.filter-status .d-flex.justify-between, .filter-status .d-flex.justify-between ul {
+    width: 100% !important;
+    max-width: 100%;
+}
+table#DataTables_Table_1 {
+    border: 1px solid #d7d5d5;
+}
+.datatable div#DataTables_Table_1_length {
+    margin-bottom: 17px;
 }
