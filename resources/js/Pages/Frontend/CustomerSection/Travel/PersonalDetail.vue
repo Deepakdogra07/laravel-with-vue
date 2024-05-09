@@ -10,7 +10,7 @@ import "../../../../../css/frontend.css";
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 </script>
-
+ 
 <template>
     <Header />
     <SubHeading />

@@ -87,6 +87,23 @@ import { Link } from '@inertiajs/vue3';
                 </ul>
             </div>
         </div>
+
+        <div class="form-navigation" v-else-if="route().current('business_job_for_customers') || route('business-jobs.index')"  >
+            <div class="container">
+                <ul class="row nav-underline pl-0 mb-0">
+                    <div class="col-lg-2 col-md-3 col-5">
+                        <li class="nav-item">
+                            <Link :href="route('business-jobs.index')" class="nav-link text-center" :class="{ 'active': route().current('business-jobs.index') }">Jobs</Link>
+                        </li>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-5">
+                        <li class="nav-item">
+                            <Link :href="route('business_job_for_customers',2)" class="nav-link text-center"  :class="{ 'active': route().current('business_job_for_customers') }">Employees</Link>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 

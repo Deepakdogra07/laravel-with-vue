@@ -134,7 +134,7 @@ const showMenu = () => {
             </li>
             <li class="nav-item">
               <!-- v-if="$page?.props?.auth?.user?.user_type == 2" -->
-              <Link class="nav-link" :href="route('business-jobs.index')">For Businesses</Link>
+              <Link class="nav-link" :href="route('business-jobs.index')" :class="{ 'active-nav': route().current() == 'business-jobs.index' }">For Businesses</Link>
             </li>
             <li class="nav-item">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'testimonial.main' }"

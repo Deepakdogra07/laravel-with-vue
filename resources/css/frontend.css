@@ -1703,3 +1703,9 @@ button.btn.btn-primary {
 .create_testimonial_form form .input_firstt input {
     height: 50px!important;
 }
+.display{
+    border: 2px black;
+    width: 100% !important; 
+    overflow-x: scroll !important;
+    white-space: nowrap !important;
+}

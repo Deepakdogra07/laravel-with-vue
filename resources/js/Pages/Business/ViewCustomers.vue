@@ -1,5 +1,4 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
 import { onMounted, reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
@@ -9,7 +8,9 @@ import * as countryStateCity from 'country-state-city';
 import moment from 'moment';
 import axios from 'axios';
 import DataTables from 'datatables.net';
-
+import Header from '@/Pages/Frontend/Header.vue'
+import Footer from '@/Pages/Frontend/Footer.vue'
+import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 
 const props = defineProps({
     applied_customers: {
@@ -56,40 +57,9 @@ function formatDateTime(date){
 </script>
 
 <template>
-    <AuthenticatedLayout>
-        <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">View Employees</h2>
-            <div class="button-container">
-            </div>
-            
-        </template>
-        <div class="nav-container">
-            <div class="form-navigation1" >
-                <div class="container">
-                    <ul class="row nav-underline pl-0 mb-0">
-                        <div class="col-md-2 col-3">
-                            <li class="nav-item">
-                                <Link class="nav-link text-center" 
-                                    aria-current="page" 
-                                    :class="{ 'active': route().current('jobs.show',job_id) }"
-                                    :href="route('jobs.show',job_id)"
-                                >View Job</Link>
-                            </li>
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-5">
-                            <li class="nav-item">
-                                <Link class="nav-link text-center"  
-                                    :class="{ 'active': route().current('jobs-customers',job_id) }"
-                                    :href="route('job_for_customers',job_id)"
-                                >Employees</Link>
-                                <!-- :class="{ 'active': route().current('register') }"   -->
-                            </li>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="py-12">
+    <Header />
+    <SubHeading/>
+       <div class="py-12">
             <div class="container">
                 <div class="filter-status">
                     <div class="d-flex justify-between">
@@ -147,11 +117,10 @@ function formatDateTime(date){
             <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->
                     <div class="p-6 text-black-1024">
-                        <DataTable class="display" :key="refreshDataTable" >
+                        <DataTable class="display" :key="refreshDataTable"  style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th>
                                     <th>Status</th>
                                     <th>Country to Immigrate</th>
                                     <th>Profile</th>
@@ -165,9 +134,6 @@ function formatDateTime(date){
                                 <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
                                     <td>
                                         {{ customer?.first_name }}
-                                    </td>
-                                    <td>
-                                        {{ customer?.email }}
                                     </td>
 
                                     <td>
@@ -209,7 +175,7 @@ function formatDateTime(date){
                 <!-- </div>
             </div> -->
         </div>
-    </AuthenticatedLayout>
+        <Footer/>
 </template>
 
 <style scoped>
@@ -226,5 +192,4 @@ function formatDateTime(date){
 .text-danger{
     color:red;
 }
-
 </style>
