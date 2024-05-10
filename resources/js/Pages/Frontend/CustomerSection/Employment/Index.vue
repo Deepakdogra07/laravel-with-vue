@@ -13,7 +13,9 @@ import { toast } from 'vue3-toastify';
 <template>
     <Header />
     <SubHeading />
-    <div class="login-bg-wrapper employment-first-form">
+
+    <!-------step one----------->
+    <div class="login-bg-wrapper employment-first-form step-form-1 d-none">
         <div class="container">
             <!-- 1 -->
             <div class="employment-first-form">
@@ -103,6 +105,195 @@ import { toast } from 'vue3-toastify';
             
         </div>
     </div>
+
+    <!-------step two----------->
+    <div class="login-bg-wrapper employment-first-form step-form-2 d-none">
+        <div class="container">
+            <!-- 1 -->
+            <div class="employment-first-form">
+                <h2>2. Financial evidence including at least 2 of the following items per year of employment claimed:</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">official government tax records such as income statements, payment summaries, tax group certificates or tax notices of assessment (listing the names of the employer and employee)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">three pay slips listing the names of the employer and employee (pay slips should be from the start, middle and end of each year claimed)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">superannuation (pension) documents citing the names of the employer and employee</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">bank statements clearly showing the employer’s name and income deposited (please highlight relevant deposits).</p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="file-inputs mt-3 relative">
+                            <div class="dotted-bg">
+                                <img src="" alt="" srcset="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
+                                    fill="none">
+                                    <path
+                                        d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
+                                        stroke="#01796F" stroke-width="4"></path>
+                                </svg>
+                                <h2 class="choose-para">Upload Document Or Scan Document </h2>
+                                <p class="file-type">Max size 20MB</p><input class="upload" type="file" id="banner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="employ_note">
+                            <h2>Please Note —</h2>
+                            <p>We cannot accept statutory declarations (affidavits) about your employment experience in the absence of third-party evidence (such as an employer statement or financial records).</p>
+                            <p>Your employment evidence must be verifiable. Ensure that the contact details provided on your employer statements are up-to-date and correct as we will contact your referees to verify their reference is genuine.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex justify-between align-items-center">
+                        <div class="flex items-center mt-4 ">
+                            <PrimaryButton class="forms-btn-transparent step-form-back">
+                                <span> <i class="bi bi-arrow-left"></i></span> Back
+                            </PrimaryButton>
+                        </div>
+                        <div class="flex items-center mt-4 login-btn-main">
+                            <PrimaryButton class="forms-btn">
+                                Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                            </PrimaryButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            
+        </div>
+    </div>
+
+     <!-------step three----------->
+     <div class="login-bg-wrapper employment-first-form step-form-3">
+        <div class="container">
+            <!-- 1 -->
+            <div class="employment-first-form">
+                <h2>3 Evidence of self-employment</h2>
+                <p class="light-text">If you are, or have been, self-employed, you must provide the following evidence for each year of self-employment claimed:</p>
+                <h3>3.1 Evidence of self-employment not undertaken in Australia:</h3>
+                <div class="row mt-4">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">business registration documents
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">annual business returns</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">relevant occupation or business licences</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a statement from a registered/certified accountant</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">taxation documents citing the name of the business.</p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="file-inputs mt-3 relative">
+                            <div class="dotted-bg">
+                                <img src="" alt="" srcset="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
+                                    fill="none">
+                                    <path
+                                        d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
+                                        stroke="#01796F" stroke-width="4"></path>
+                                </svg>
+                                <h2 class="choose-para">Upload Document Or Scan Document </h2>
+                                <p class="file-type">Max size 20MB</p><input class="upload" type="file" id="banner">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>3.2 Evidence of self-employment undertaken in Australia:</h3>
+
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">your Australian Business Number (ABN)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a payment summary information statement</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a Business Activity Statement (BAS)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a Notice of Assessment from the Australian Taxation Office (ATO)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a statement from a registered/certified accountant. </p>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="d-flex justify-between align-items-center">
+                        <div class="flex items-center mt-4 ">
+                            <PrimaryButton class="forms-btn-transparent step-form-back">
+                                <span> <i class="bi bi-arrow-left"></i></span> Back
+                            </PrimaryButton>
+                        </div>
+                        <div class="flex items-center mt-4 login-btn-main">
+                            <PrimaryButton class="forms-btn">
+                                Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                            </PrimaryButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            
+        </div>
+    </div>
+
     <Footer />
 </template>
 <style scoped></style>
