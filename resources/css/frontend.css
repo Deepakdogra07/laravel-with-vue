@@ -2616,3 +2616,20 @@ header.shadow-md .container {
 .spacing_rr {
     padding: 0px;
 }
+
+.employ_note {
+    background: #ECFCFA80;
+    border-left: 4px solid #1A9882;
+    border-radius: 4px;
+    padding: 30px 25px 25px;
+}
+.employ_note h2, .employ_note p {
+    color: #01796F;
+}
+.employ_note h2 {
+    font-size: 32px;
+    font-family: 'Philosopher';
+    font-weight: 700;
+    line-height: 44.8px;
+    margin: 10px 0px;
+}
