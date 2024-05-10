@@ -99,14 +99,14 @@ const submit = () => {
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create Job</h2>
     </template>
 
-    <div class="flex items-center justify-center">
-      <div class="login-bg-wrapper">
+    <div class="flex items-center justify-center width_100per">
+      <div class="login-bg-wrapper create_job_edit create_space">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mt-4">
+                            <div class="mt-4 edit_rrr">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                      <TextInput id="job_title" type="text" v-model="form.job_title" placeholder="Enter job title"
@@ -117,7 +117,7 @@ const submit = () => {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mt-4">
+                            <div class="mt-4 edit_second">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
                                     <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
@@ -299,16 +299,16 @@ const submit = () => {
 
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 input_date">
                                 <span class="label text-label">Start Date<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
+                                <div class="eye-icon-div ">
                                     <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Start Date"
                                         class="form-control mt-2 mb-3" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
                         </div>
-                        <div class="col-12 mt-4">
+                        <div class="col-12 mt-4 spacing_rr">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                 <img :src="image " alt="" srcset="">

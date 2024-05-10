@@ -63,7 +63,7 @@ function formatDateTime(date){
             </div>
             
         </template>
-        <div class="nav-container">
+        <div class="nav-container jobs_tabss">
             <div class="form-navigation1" >
                 <div class="container">
                     <ul class="row nav-underline pl-0 mb-0">
@@ -89,7 +89,7 @@ function formatDateTime(date){
                 </div>
             </div>
         </div>
-        <div class="py-12">
+        <div class="py-12 employesss_tabs employesss_tabs_dd">
             <div class="container">
                 <div class="filter-status">
                     <div class="d-flex justify-between">
@@ -146,7 +146,7 @@ function formatDateTime(date){
             </div>
             <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->
-                    <div class="p-6 text-black-1024">
+                    <div class="p-6 text-black-1024 padding_remove padding_table">
                         <DataTable class="display" :key="refreshDataTable" >
                             <thead>
                                 <tr>

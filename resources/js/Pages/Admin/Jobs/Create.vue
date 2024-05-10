@@ -88,7 +88,7 @@ const submit = () => {
     </template>
 
     <div class="flex items-center justify-center row_width_100">
-      <div class="login-bg-wrapper create_space">
+      <div class="login-bg-wrapper create_space create_code">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
