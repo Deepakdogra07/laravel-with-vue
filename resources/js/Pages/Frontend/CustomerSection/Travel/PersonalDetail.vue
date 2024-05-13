@@ -137,7 +137,7 @@ const submitData = () => {
                                     <select class="form-select mt-2" v-model="form.country_of_birth">
                                         <option selected :value="null">----</option>
                                         <option selected v-for="country in countries" :value="country.name" v-html="country.name"></option>
-                                        <option>Hello</option>
+                                        <!-- <option>Hello</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -152,10 +152,10 @@ const submitData = () => {
                                 <div class="mb-4">
                                     <span class="label text-label">Marital status</span>
     
-                                    <select class="form-select mt-2">
+                                    <select class="form-select mt-2" v-model="form.martial_status">
                                         <option selected :value="null">----</option>
-                                        <option value="married">Married</option>
-                                        <option value="unmarried">Unmarried</option>
+                                        <option value="0">Married</option>
+                                        <option value="1">Unmarried</option>
                                     </select>
                                 </div>
                             </div>

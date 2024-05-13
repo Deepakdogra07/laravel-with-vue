@@ -176,6 +176,4 @@ Route::match(['get','post'],'/personal-details/{job_id}',[JobApplicationControll
 Route::post('/submit-personal-details',[JobApplicationController::class , 'submit_personal_details'] )->name('submit_personal_details');
 
 
-Route::get('/employment-details', function () {
-    return inertia('Frontend/CustomerSection/Employment/Index');
-})->name('employment.details');
+Route::get('/employment-details/{job_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');

@@ -69,21 +69,26 @@ class JobApplicationController extends Controller
             // "citizen_of_more_than_one" => 'required',
             "visa_available" => 'required',
         ]);
-        // if ($validator->fails()) {
-        //     dd($request->all());
-        //     return back()->withErrors($validator->errors());
-        // }
+        dd($request->all());
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
         // dd($request->all());
         // dd($customer_personal_detail,$request->all());
         $password = Str::random(6);
-        $create_customer = User::create([
-            'name' => $request->first_name.$request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($password),
-            // 'phone' => $request->mobile_number,
-            'user_type' => "3",
-            'status' => 1,
-        ]);
+        $already_customer = User::where('email',$request->email)->first();
+        if(!$already_customer){
+            $create_customer = User::create([
+                'name' => $request->first_name.$request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($password),
+                // 'phone' => $request->mobile_number,
+                'user_type' => "3",
+                'status' => 1,
+            ]);
+        }else{
+            $create_customer  = $already_customer;
+        }
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
         $customer_personal_details->fill($customer_personal_detail);
@@ -102,13 +107,14 @@ class JobApplicationController extends Controller
         $customer_travel_details->customer_id = $customer_personal_details->id;
         $customer_travel_details->updated_at =null;
         $customer_travel_details->save();
-        Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
-        Auth::login($create_customer);
-        Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id,$create_customer->name, $create_customer->email, $password, $create_customer->name));
-        dd("here");
+        return to_route(route('employment.details',$request->job_id));
 
         
         
+    }
+    public function employment_details($job_id){
+        dd($job_id);
+        // return inertia('Frontend/CustomerSection/Employment/Index');
     }
 
 

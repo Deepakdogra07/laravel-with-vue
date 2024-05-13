@@ -3,7 +3,8 @@ import { Link } from '@inertiajs/vue3';
 const props=defineProps({
     job_id:{
         type:Number,
-        required:true
+        required:true,
+        default:0
     }
 })
 
@@ -61,7 +62,7 @@ const props=defineProps({
                     </div>
                     <div class="col-lg-2 col-md-3 col-4">
                         <li class="nav-item">
-                            <Link href="/employment-details" class="nav-link text-center"  
+                            <Link :href="`/employment-details/${job_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('employment.details') }"  
                             >Employment</Link>
                         </li>

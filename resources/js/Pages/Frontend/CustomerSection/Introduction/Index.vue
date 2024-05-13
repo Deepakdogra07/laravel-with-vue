@@ -19,7 +19,7 @@
 
 <template>
     <Header />
-    <SubHeading />
+    <SubHeading :job_id ="job_id" />
     <div class="login-bg-wrapper contactUs-section">
         <div class="container">
             <p class="text-margin">When you apply for a Trade Skills Assessment, the first step in the process will be a Documentary Evidence Assessment. The documentary evidence is a collection of your employment and training documents that prove you have the skills and knowledge needed to work in your trade in Australia.</p>
