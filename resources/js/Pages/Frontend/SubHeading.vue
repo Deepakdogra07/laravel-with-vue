@@ -1,5 +1,11 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
+const props=defineProps({
+    job_id:{
+        type:Number,
+        required:true
+    }
+})
 
 </script>
 <template>
@@ -76,19 +82,19 @@ import { Link } from '@inertiajs/vue3';
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link href="/travel-details" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details</Link>
+                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details</Link>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link href="/personal-details" :href="route('personal.details')" class="nav-link text-center"  :class="{ 'active': route().current('personal.details') }">Personal details</Link>
+                            <Link :href="`/personal-details/${job_id}`"  class="nav-link text-center"  :class="{ 'active': route().current('personal.details') }">Personal details</Link>
                         </li>
                     </div>
                 </ul>
             </div>
         </div>
-
-        <div class="form-navigation" v-else-if="route().current('business_job_for_customers') || route('business-jobs.index')"  >
+        <!-- v-if="$page.props.auth.user.user_type <= 2" -->
+        <!-- <div class="form-navigation"  v-else-if="route().current('business_job_for_customers') || route('business-jobs.index')"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
@@ -103,7 +109,7 @@ import { Link } from '@inertiajs/vue3';
                     </div>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 

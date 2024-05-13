@@ -1938,11 +1938,6 @@ button.btn.btn-primary {
     height: 50px!important;
 }
 
-.display{
-    border: 2px black;
-    width: 100% !important; 
-    overflow-x: scroll !important;
-    white-space: nowrap !important;
 
 .padding_remove div#DataTables_Table_0_paginate a#DataTables_Table_0_previous::before{
 	content: "\003c"!important;
@@ -1993,5 +1988,4 @@ button.btn.btn-primary {
 }
 .testimonial_spacing {
     padding: 0px !important;
-}
 }
