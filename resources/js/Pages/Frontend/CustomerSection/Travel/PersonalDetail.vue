@@ -9,18 +9,71 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import "../../../../../css/frontend.css";
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
+import { ref } from 'vue';
+import { Country } from 'country-state-city';
+
+
+const props = defineProps({
+    variable:{
+        type:Object
+    }
+})
+const countries = Country.getAllCountries(),
+image_src = ref('');
+const form =useForm({
+    job_id:props.variable.job_id,
+    date_of_travel:props.variable.date_of_travel,
+    passenger_nationality:props.variable.passenger_nationality,
+    port_of_arrival:props.variable.port_of_arrival,
+    purpose_of_stay:props.variable.purpose_of_stay,
+    type_of_visa:props.variable.type_of_visa,
+    customer_image : null,
+    first_name:null,
+    last_name:null,
+    email:null,
+    confirm_email:null,
+    date_of_birth:null,
+    country_of_birth:null,
+    city_of_birth:null,
+    gender:null,
+    martial_status:null,
+    passport_number:null,
+    issuing_authority:null,
+    passport_date_of_expiry:null,
+    citizen_of_more_than_one:null,
+    visa_available:null,
+});
+
+function upload_image(event){
+    form.customer_image = event.target.files[0];
+    image_src.value = URL.createObjectURL(event.target.files[0]);
+}
+
+const submitData = () => {
+    form.post(route('submit_personal_details'),
+    {
+      onSuccess: () => {
+        toast("Details Saved Successfully!", {
+          autoClose: 2000,
+          theme: 'dark',
+        }
+        );
+      },
+    });
+};
 </script>
  
 <template>
     <Header />
-    <SubHeading />
+    <SubHeading :job_id="form.job_id"/>
     <div class="login-bg-wrapper travel-section">
         <div class="container">
+            <form @submit.prevent="submitData()">
             <div class="row">
                 <div class="col-lg-7 col-12">
                     <div class="file-inputs mt-3 relative">
                         <div class="dotted-bg">
-                            <img src="" alt="" srcset="">
+                            <img :src="image_src" alt="" srcset="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                 fill="none">
                                 <path
@@ -28,7 +81,7 @@ import { toast } from 'vue3-toastify';
                                     stroke="#01796F" stroke-width="4"></path>
                             </svg>
                             <h2 class="choose-para">Upload Passport And Prefill Information</h2>
-                            <p class="file-type">Max size 20MB</p><input class="upload" type="file" id="banner">
+                            <p class="file-type">Max size 20MB</p><input class="upload" type="file" @change="upload_image($event)"id="banner">
                         </div>
                     </div>
                 </div>
@@ -41,70 +94,68 @@ import { toast } from 'vue3-toastify';
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Given Name (s)</span>
-    
-                                    <TextInput placeholder="---" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" v-model="form.first_name" type="text" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.first_name"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Surname / family name</span>
     
-                                    <TextInput placeholder="---" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" v-model="form.last_name" type="text" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.last_name"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">E-mail address</span>
     
-                                    <TextInput placeholder="---" type="email" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" type="email" v-model="form.email"class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.email" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Confirm E-mail</span>
     
-                                    <TextInput placeholder="---" type="email" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" v-model="form.confirm_email"type="email" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.confirm_email"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Date of birth</span>
     
-                                    <TextInput placeholder="---" type="date" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.date_of_birth"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Country/territory birth</span>
     
-                                    <select class="form-select mt-2">
+                                    <select class="form-select mt-2" v-model="form.country_of_birth">
                                         <option selected :value="null">----</option>
-                                        <option>Hello</option>
+                                        <option selected v-for="country in countries" :value="country.name" v-html="country.name"></option>
+                                        <!-- <option>Hello</option> -->
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">City of birth</span>
-    
-                                    <select class="form-select mt-2">
-                                        <option selected :value="null">----</option>
-                                        <option>Hello</option>
-                                    </select>
+                                    <TextInput placeholder="---" v-model="form.city_of_birth" type="text" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.city_of_birth"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Marital status</span>
     
-                                    <select class="form-select mt-2">
+                                    <select class="form-select mt-2" v-model="form.martial_status">
                                         <option selected :value="null">----</option>
-                                        <option>Hello</option>
+                                        <option value="0">Married</option>
+                                        <option value="1">Unmarried</option>
                                     </select>
                                 </div>
                             </div>
@@ -113,15 +164,15 @@ import { toast } from 'vue3-toastify';
                                     <span class="label text-label">Gender</span>
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                                id="flexRadioDefault1" v-model="form.gender" value="1">
                                             <label class="form-check-label font-normal" for="flexRadioDefault1">
                                                 Male
                                             </label>
                                         </div>
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2" checked>
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault1"
+                                                id="flexRadioDefault2" v-model="form.gender" value="1">
                                             <label class="form-check-label font-normal" for="flexRadioDefault2">
                                                 Female
                                             </label>
@@ -140,30 +191,30 @@ import { toast } from 'vue3-toastify';
                                 <div class="mb-4">
                                     <span class="label text-label">Passport Number</span>
 
-                                    <TextInput placeholder="---" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.passport_number" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     <span class="label text-label">Issuing Authority</span>
 
-                                    <TextInput placeholder="---" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.issuing_authority" />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-4">
                                     <span class="label text-label">Passport Date Of Expiry</span>
 
-                                    <TextInput placeholder="---" type="date" class="form-control mt-2" />
-                                    <InputError class="mt-2" />
+                                    <TextInput placeholder="---"v-model="form.passport_date_of_expiry"  type="date" class="form-control mt-2" />
+                                    <InputError class="mt-2" :message="form.errors.passport_date_of_expiry" />
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            <input class="form-check-input" type="radio" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
                                                 id="flexRadioDefault1">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 I’m a citizen of more than one country
@@ -176,14 +227,14 @@ import { toast } from 'vue3-toastify';
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            <input class="form-check-input" type="radio" v-model="form.visa_available" value="1"  name="flexRadioDefault4"
                                                 id="flexRadioDefault1">
                                             <label class="form-check-label font-normal" for="flexRadioDefault1">
                                                 Yes
                                             </label>
                                         </div>
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            <input class="form-check-input" type="radio" v-model="form.visa_available" value="0" name="flexRadioDefault4"
                                                 id="flexRadioDefault2" checked>
                                             <label class="form-check-label font-normal" for="flexRadioDefault2">
                                                 No
@@ -193,7 +244,7 @@ import { toast } from 'vue3-toastify';
                                 </div>
                             </div>
                             <div class="flex items-center login-btn-main">
-                                <PrimaryButton class="forms-btn">
+                                <PrimaryButton class="forms-btn" type="submit">
                                     Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>
@@ -201,12 +252,13 @@ import { toast } from 'vue3-toastify';
                     </div>
                 </div>
             </div>
+        </form>
 
             <div class="d-flex justify-between align-items-center">
                 <div class="flex items-center mt-4 ">
-                    <PrimaryButton class="forms-btn-transparent step-form-back">
+                    <Link class="forms-btn-transparent step-form-back" href="/travel-details/2">
                         <span> <i class="bi bi-arrow-left"></i></span>  Back 
-                    </PrimaryButton>
+                    </Link>
                 </div>
                 <div class="flex items-center mt-4 login-btn-main">
                     <PrimaryButton class="forms-btn">
@@ -214,6 +266,7 @@ import { toast } from 'vue3-toastify';
                     </PrimaryButton>
                 </div>
             </div>
+            
         </div>
     </div>
     <Footer />

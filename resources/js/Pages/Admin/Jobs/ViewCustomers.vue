@@ -226,5 +226,4 @@ function formatDateTime(date){
 .text-danger{
     color:red;
 }
-
 </style>
