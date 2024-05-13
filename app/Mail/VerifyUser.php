@@ -24,7 +24,7 @@ class VerifyUser extends Mailable
         $this->email = $email;
         $this->password = $password;
         $this->creator = $creator;
-// dd($username,$email,$password,$creator);
+
     }
 
     /**
