@@ -12,10 +12,11 @@ import { toast } from 'vue3-toastify';
 </script>
 <template>
     <Header />
+
     <SubHeading />
 
     <!-------step one----------->
-    <div class="login-bg-wrapper steps_form employment-first-form step-form-1 d-none">
+    <div class="login-bg-wrapper steps_form employment-first-form step-form-1">
         <div class="container">
             <!-- 1 -->
             <div class="employment-first-form">
