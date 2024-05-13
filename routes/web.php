@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\BusinessController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EditHomePageController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\FooterDataController;
-use App\Http\Controllers\JobsController;
+use App\Http\Controllers\EditHomePageController;
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\JobApplicationController;
     
 /*
 |--------------------------------------------------------------------------
@@ -167,21 +168,18 @@ Route::get('/job-application', function () {
 })->name('job.application');
 
 
-Route::get('/job-introduction', function () {
-    return inertia('Frontend/CustomerSection/Introduction/Index');
-})->name('job.introduction');
+Route::get('/job-introduction', [JobApplicationController::class , 'introduction'])->name('job.introduction');
 
-Route::get('/travel-details', function () {
-    return inertia('Frontend/CustomerSection/Travel/TravelDetail');
-})->name('travel.details');
+Route::get('/travel-details/{job_id}',[JobApplicationController::class , 'travel_details'] )->name('travel.details');
 
-Route::get('/personal-details', function () {
-    return inertia('Frontend/CustomerSection/Travel/PersonalDetail');
-})->name('personal.details');
+Route::match(['get','post'],'/personal-details/{job_id}',[JobApplicationController::class , 'personal_details'])->name('personal.details');
+Route::post('/submit-personal-details',[JobApplicationController::class , 'submit_personal_details'] )->name('submit_personal_details');
 
-Route::get('/employment-details', function () {
-    return inertia('Frontend/CustomerSection/Employment/Index');
-})->name('employment.details');
+
+Route::get('/employment-details/{job_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
+// Route::get('/employment-details', function () {
+//     return inertia('Frontend/CustomerSection/Employment/Index');
+// })->name('employment.details');
 
 
 Route::get('/document-details', function () {
