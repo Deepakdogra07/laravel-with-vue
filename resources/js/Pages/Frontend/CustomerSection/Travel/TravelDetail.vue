@@ -58,7 +58,7 @@ function submitform(){
                     </label>
                     <InputError  class="mt-2" :message="form.errors.purpose_of_stay"/>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-5 travel_row">
                     <div class="col-md-6 col-12">
                         <div class="travel-detail">
                             <h4 class="mb-3">Traditional visa</h4>
@@ -97,7 +97,8 @@ function submitform(){
                                 <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/>
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
                             </div>
-                            <div class="col-md-6 col-12 mt-4">
+                            <div class="row natoinality_row">
+                                <div class="col-md-6 col-12 mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Passenger nationality</span>
 
@@ -113,6 +114,8 @@ function submitform(){
 
                                 <TextInput  type="text" class="form-control mt-2" v-model="form.port_of_arrival"/>
                                     <InputError class="mt-2" :message="form.errors.port_of_arrival"/>
+                            </div>
+
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
                                 <PrimaryButton class="forms-btn">
