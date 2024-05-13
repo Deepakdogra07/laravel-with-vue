@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <Header />
+    <Header/>
     <SubHeading />
     <div class="login-bg-wrapper job-detail-page">
         <div class="container">
@@ -25,7 +25,7 @@ import { Link } from '@inertiajs/vue3';
                         <p class="mb-0">2 hours ago...</p>
                     </div>
                     <div class=" col-md-4 view-job-btn mt-5">
-                        <Link href="/view-job" class="forms-btn w-100">View Job <span> <i
+                        <Link href="/view-job" class="forms-btn w-100">View Job  <span> <i
                                 class="bi bi-arrow-right"></i></span></Link>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             
         </template>
 
-        <div class="nav-container">
+        <div class="nav-container jobs_tabss">
             <div class="form-navigation1" >
                 <div class="container">
                     <ul class="row nav-underline pl-0 mb-0">
@@ -54,10 +54,10 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
             </div>
         </div>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto px-2">
+        <div class="py-12 spacing_sshhow">
+            <div class="max-w-7xl mx-auto px-2 view_job_page">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900">
+                    <div class="p-6 text-black-900 padding_iiii">
                         <div class="container">
                             <div class = "card">                  
                                 <div class="card-header">         
@@ -71,6 +71,33 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                         </div> 
                                     </div>
                                     <div class="card-content">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <ul class="card_ullist card_ullist_2nd">
+                                                    <li><b>Seniority:</b>{{ jobs?.seniority?.name }}</li>
+                                                    <li><b>Discipline:</b>{{ jobs?.discipline?.name }}</li>
+                                                    <li><b>Work Experience:</b>{{ jobs?.work_experience?.experience }}</li>
+                                                    <li><b>Skills:</b>{{ jobs?.skills?.name }}</li>
+                                                    <li><b>Remote Work:</b> <p v-if="jobs.remote_work">Yes</p>
+                                                    <p v-else>No</p></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                                <ul class="card_ullist  card_ullist_2nd">  
+                                                    <li> <b>Industry:</b>{{ jobs?.industry?.name }}</li>
+                                                    <li><b>Segment:</b>{{ jobs?.segment }}</li>
+                                                    <li> <b>Pin Code:</b>{{ jobs?.pin_code }}</li>
+                                                    <li><b>City:</b>{{ jobs.state }}</li>
+                                                    <li><b>Pay Range:</b>{{ jobs?.pay_range }}</li>
+                                                    <li><b>Job Start Date:</b>{{ jobs?.job_start_date }}</li>
+                                                    <li><b>Created By:</b>{{ jobs?.createdby?.name }}</li>
+                                                </ul> 
+                                            </div>
+                                        </div>  
+                                    </div> 
+
+
+                                    <!-- <div class="card-content">
                                         <p> <b>Seniority:</b>{{ jobs?.seniority?.name }}
                                             &nbsp;
                                             <b>Discipline:</b>{{ jobs?.discipline?.name }}
@@ -97,7 +124,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                             <br>
                                             <b>Created By:</b>{{ jobs?.createdby?.name }}
                                         </p>   
-                                    </div>       
+                                    </div>        -->
                                 </div>
                             </div>
                         </div>                      

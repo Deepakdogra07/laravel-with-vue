@@ -177,3 +177,11 @@ Route::post('/submit-personal-details',[JobApplicationController::class , 'submi
 
 
 Route::get('/employment-details/{job_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
+// Route::get('/employment-details', function () {
+//     return inertia('Frontend/CustomerSection/Employment/Index');
+// })->name('employment.details');
+
+
+Route::get('/document-details', function () {
+    return inertia('Frontend/CustomerSection/Documents/Index');
+})->name('document.details');

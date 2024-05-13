@@ -20,7 +20,7 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Application Form</h1>
                 <h1 class="mb-0" v-if="route().current('testimonial.main')">Testimonial</h1>
-                <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details')">Your Application Guide</h1>
+                <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>
             </div>
         </div>
@@ -50,7 +50,7 @@ const props=defineProps({
             </div>
         </div>
 
-        <div class="form-navigation" v-else-if="route().current('job.introduction') || route().current('employment.details')">
+        <div class="form-navigation" v-else-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-md-2 col-4">
@@ -69,8 +69,8 @@ const props=defineProps({
                     </div>
                     <div class="col-lg-2 col-md-3 col-4">
                         <li class="nav-item">
-                            <Link class="nav-link text-center"  
-                                :class="{ 'active': route().current('document.upload') }"  
+                            <Link href="/document-details" class="nav-link text-center"  
+                                :class="{ 'active': route().current('document.details') }"  
                             >Document</Link>
                         </li>
                     </div>

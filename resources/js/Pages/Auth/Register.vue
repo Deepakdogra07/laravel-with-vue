@@ -85,7 +85,7 @@ function select_country(event){
                                     <InputError class="mt-1" :message="form.errors.company_state" />
                                 </div>
                                 <div class="mb-3">
-                                    <TextInput type="number" placeholder="Enter postal code" v-model="form.company_pin" class="form-control " />
+                                    <TextInput type="text" placeholder="Enter postal code" v-model="form.company_pin" class="form-control " />
                                     <InputError class="mt-1" :message="form.errors.company_pin" />
                                 </div>
                             </div>
