@@ -183,6 +183,4 @@ Route::post('/submit_employment_details', [JobApplicationController::class,'subm
 // })->name('employment.details');
 
 
-Route::get('/document-details', function () {
-    return inertia('Frontend/CustomerSection/Documents/Index');
-})->name('document.details');
+Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');

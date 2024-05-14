@@ -5,6 +5,10 @@ const props=defineProps({
         type:Number,
         required:true,
         default:0
+    },
+    data:{
+        type:Object,
+        required:true,
     }
 })
 
@@ -69,7 +73,7 @@ const props=defineProps({
                     </div>
                     <div class="col-lg-2 col-md-3 col-4">
                         <li class="nav-item">
-                            <Link href="/document-details" class="nav-link text-center"  
+                            <Link :href="`/document-details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('document.details') }"  
                             >Document</Link>
                         </li>
