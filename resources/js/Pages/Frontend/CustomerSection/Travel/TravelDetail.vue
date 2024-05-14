@@ -98,7 +98,7 @@ function submitform(){
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
                             </div>
                             <div class="row natoinality_row">
-                                <div class="col-md-6 col-12 mt-4">
+                                <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Passenger nationality</span>
 

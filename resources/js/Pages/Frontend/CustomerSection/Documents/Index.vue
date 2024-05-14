@@ -9,51 +9,12 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import "../../../../../css/frontend.css";
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
-import { reactive, ref } from 'vue';
-
-const props=defineProps({
-    job_id:{
-        type:Number,
-        required:true,
-        default:0
-    },
-    customer_id:{
-        type:Number,
-        required:true,
-        default:0
-    }
-});
-const form = useForm({
-    job_id:props.job_id,
-    customer_id:props.customer_id,
-    employment_evidence:null,
-    licences:null,
-    kitchen_area:null,
-    ingredients:null,
-    cooking_tech:null,
-    dish:null,
-    clean_up:null,
-    evidence_image:null,
-    resume:null,
-    is_australia:null
-});
-const div_numbers = ref(`step-form-1`),
-document = reactive({});
-
-function show_next_div(div_number) {
-    div_numbers.value = `step-form-${div_number + 1}`
-}
-function previous_div(div_number) {
-    div_numbers.value = `step-form-${div_number - 1}`
-}
-
-
 </script>
 <template>
     <Header />
     <SubHeading />
     <!------step one----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-1"v-if="div_numbers == 'step-form-1'">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-1 ">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -100,7 +61,7 @@ function previous_div(div_number) {
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" @click="show_next_div(1)">
+                            <PrimaryButton class="forms-btn">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -111,7 +72,7 @@ function previous_div(div_number) {
     </div>
 
     <!------step two----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-2 "v-if="div_numbers == 'step-form-2'">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-2 ">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -146,7 +107,7 @@ function previous_div(div_number) {
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" @click="show_next_div(2)">
+                            <PrimaryButton class="forms-btn">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -157,7 +118,7 @@ function previous_div(div_number) {
     </div>
 
     <!------step three----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-3 "v-if="div_numbers == 'step-form-3'">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-3 ">
         <div class="container">
             <div class="employment-first-form">
                 <h2>3. Photographs and videos</h2>
@@ -200,105 +161,107 @@ function previous_div(div_number) {
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-between align-items-center">
-                        <div class="flex items-center mt-4 ">
-                            <PrimaryButton class="forms-btn-transparent step-form-back">
-                                <span> <i class="bi bi-arrow-left"></i></span> Back
-                            </PrimaryButton>
+                </div>
+            </div>
+        </div>
+        <div class="determine_job ">
+            <div class="container">
+                <div class="inner_determine">
+                    <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate III in Engineering – Toolmaking Trade’.</h6>
+                    <h2>3.1 Determine job requirements</h2>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>1.1 Follow standard operating procedures (SOPs)</li>
+                                <li>1.2 Comply with work health and safety (WHS) requirements at all times</li>
+                            </ul>
                         </div>
-                        <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" @click="show_next_div(3)">
-                                Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                            </PrimaryButton>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>1.3 Use appropriate personal protective equipment (PPE) in accordance with SOPs</li>
+                                <li>1.4 Identify job requirements from specifications, sketches, job sheets or workinstructions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>3.2 Perform precision measurement</h2>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>2.1 Select appropriate precision equipment to achieve specified outcomes</li>
+                                <li>2.2 Check the accuracy of the selected measuring equipment for where appropriate </li>
+                                <li>2.3 Use correct and appropriate measuring techniques for the measurement task </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>2.4 Take measurements to the finest graduation of instrument in an accurate manner </li>
+                                <li>2.5 Interpret readings and measurements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>3.3 Maintain precision equipment</h2>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>3.1 Set measuring equipment to specifications using manufacturer guidelines or procedures and techniques</li>
+                                <li>3.2 Adjust and maintain measuring equipment to required accuracy using appropriate techniques according to manufacturer’s specifications or SOPs</li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            <ul class="job_ul">
+                                <li>3.3 Store equipment to manufacturer’s specifications or SOPs </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h6>For this unit, our AI Engine would be looking for evidence that you can</h6>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">identify the requirements of the job from drawings or instructions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">et up and adjust measuring equipment to required accuracy and specifications</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text"> use appropriate personal protective equipment and follow standard operating procedures</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text"> licences held.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>  
+        </div> 
+        <div class="container">
+            <div class="d-flex justify-between align-items-center">
+                <div class="flex items-center mt-4 ">
+                    <PrimaryButton class="forms-btn-transparent step-form-back">
+                        <span> <i class="bi bi-arrow-left"></i></span> Back
+                    </PrimaryButton>
+                </div>
+                <div class="flex items-center mt-4 login-btn-main">
+                    <PrimaryButton class="forms-btn">
+                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                        </PrimaryButton>
+                    </div>
             </div>
         </div>
     </div>
 
-    <Section class="determine_job step-form-4" v-if="div_numbers == 'step-form-4'">
-        <div class="container">
-            <div class="inner_determine">
-                <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate III in Engineering – Toolmaking Trade’.</h6>
-                <h2>3.1 Determine job requirements</h2>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>1.1 Follow standard operating procedures (SOPs)</li>
-                            <li>1.2 Comply with work health and safety (WHS) requirements at all times</li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>1.3 Use appropriate personal protective equipment (PPE) in accordance with SOPs</li>
-                            <li>1.4 Identify job requirements from specifications, sketches, job sheets or workinstructions</li>
-                        </ul>
-                    </div>
-                </div>
-                <h2>3.2 Perform precision measurement</h2>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>2.1 Select appropriate precision equipment to achieve specified outcomes</li>
-                            <li>2.2 Check the accuracy of the selected measuring equipment for where appropriate </li>
-                            <li>2.3 Use correct and appropriate measuring techniques for the measurement task </li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>2.4 Take measurements to the finest graduation of instrument in an accurate manner </li>
-                            <li>2.5 Interpret readings and measurements</li>
-                        </ul>
-                    </div>
-                </div>
-                <h2>3.3 Maintain precision equipment</h2>
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>3.1 Set measuring equipment to specifications using manufacturer guidelines or procedures and techniques</li>
-                            <li>3.2 Adjust and maintain measuring equipment to required accuracy using appropriate techniques according to manufacturer’s specifications or SOPs</li>
-                        </ul>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <ul class="job_ul">
-                            <li>3.3 Store equipment to manufacturer’s specifications or SOPs </li>
-                        </ul>
-                    </div>
-                </div>
-                <h6>For this unit, our AI Engine would be looking for evidence that you can</h6>
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text">identify the requirements of the job from drawings or instructions</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text">et up and adjust measuring equipment to required accuracy and specifications</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text"> use appropriate personal protective equipment and follow standard operating procedures</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text"> licences held.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </Section> 
 
     <!------step five----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-5 "v-if="div_numbers == 'step-form-5'">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
         <div class="container">
             <div class="employment-first-form intro_steps intro_top">
                 <h2>Introduction</h2>
@@ -582,7 +545,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" @click="show_next_div(5)">
+                            <PrimaryButton class="forms-btn">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -593,7 +556,7 @@ manufacturer specifications
     </div>
 
     <!------step six-----> 
-    <div class="login-bg-wrapper steps_form document-first-form step-form-6 "v-if="div_numbers == 'step-form-6'">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-5 ">
         <div class="container">
             <div class="employment-first-form instructions">
                 <h2>Instructions for photo evidence</h2>
@@ -704,7 +667,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" @click="show_next_div(6)">
+                            <PrimaryButton class="forms-btn">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -715,7 +678,7 @@ manufacturer specifications
     </div>
 
     <!------step seven----->
-     <div class="login-bg-wrapper steps_form document-first-form step-form-7"v-if="div_numbers == 'step-form-7'">
+     <div class="login-bg-wrapper steps_form document-first-form step-form-6">
         <div class="container">
             <div class="employment-first-form steps_55">
                 <h2>4. Resumé / CV</h2>
@@ -792,7 +755,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn" >
+                            <PrimaryButton class="forms-btn">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>

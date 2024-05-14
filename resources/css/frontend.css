@@ -727,10 +727,11 @@ h2 {
 	position: relative;
 }
 .testimonial-content {
-	box-shadow: 0px 4px 10px 0px #00000014;
-	border: 1px solid #a7eade;
-	border-radius: 10px;
-	padding: 10px 20px 130px 20px;
+    box-shadow: 0px 4px 10px 0px #00000014;
+    border: 1px solid #a7eade;
+    border-radius: 10px;
+    padding: 10px 20px 130px 20px;
+    color: #4A4C56;
 }
 
 .testimonial-content i::before {
@@ -752,6 +753,7 @@ h2 {
 	align-items: center;
 	flex-direction: column;
 	color: #fff;
+	border-radius: 0px 0px 10px 10px;
 }
 .testimonial-video-btn {
 	padding: 5px 10px;
@@ -1255,6 +1257,13 @@ input[type="file"]{
 		font-size: 11px !important;
 		padding: 12px 9px !important;
 	}
+	.viewAll-testimonial {
+		padding: 10px 0;
+	}
+
+
+
+
 }
 
 
@@ -1320,6 +1329,9 @@ input[type="file"]{
 	}
 	.job-detail-page .container {
 		padding: 0px;
+	}
+	.col-md-6.col-12.mt-4.spacinf_rigght {
+		padding-right: 0px !important;
 	}
 
 }
@@ -1574,8 +1586,29 @@ input[type="file"]{
 	.row.mt-5.travel_row {
 		margin-top: 20px !important;
 	}
-
-
+	.testimonials_wrapper h1 {
+		font-size: 40px !important;
+	}
+	.testimonial-bg {
+		bottom: 0;
+		height: 130px;
+		border-radius: 0px 0px 10px 10px;
+	}
+	.about_uss_wrapper h1, .about_uss_wrapper p {
+		text-align: left !important;
+	}
+	.about_us_section {
+		padding: 40px 0px !important;
+	}
+	.internationa_partners h1 {
+		font-size: 35px !important;
+	}
+	.internationa_partners .about-section-cards {
+		padding-bottom: 0px !important;
+	}
+	.add_sliedrs .p-6.text-black-900 .container {
+		max-width: 100%;
+	}
 }
 
 @media screen and (min-device-width: 481px) and (max-device-width: 798px){
@@ -1705,7 +1738,9 @@ input[type="file"]{
 	.create_Account .col-md-6.col-12 {
 		padding: 0px;
 	}
-
+	.about_us_section .container {
+		padding: 0px;
+	}
 }
 
 
@@ -1880,16 +1915,16 @@ input[type="file"]{
 		padding: 10px;
 	}
 	.viewAll-testimonial {
-		padding: 20px 0;
+		padding: 0px 0;
 	}
 	.testimonial {
 		margin-bottom: -30px;
 	}
 	.testimonial-bg {
-		width: 104.8%;
+		width: 100%;
 		position: relative;
 		bottom: 40px;
-		left: -9px;
+		left: 0px;
 	}
 	.main-contact-form {
 		margin-top: 30px !important;
@@ -2232,6 +2267,66 @@ input[type="file"]{
 	.job-detail-page .job-detail-content .company-section {
 		margin-top: 20px;
 	}
+	.job-detail-page .job-detail-content.mt-4 .company-section p {
+		font-size: 14px;
+	}
+	.company-logo {
+		width: 50px;
+		height: 50px;
+	}
+	.company-logo img {
+		width: 23px;
+	}
+	.testimonials_wrapper h1 {
+		font-size: 24px !important;
+		text-align: left !important;
+	}
+	.testimonials_wrapper p {
+		font-size: 14px;
+		text-align: left !important;
+	}
+	.single_testimonial {
+		padding: 0px 0px 18px!important;
+	}
+	.single_testimonial .col-md-2, .single_testimonial .col-md-10, .single_testimonial .col-12 {
+		padding: 0px;
+	}
+	.single_testimonial h2 {
+		margin-bottom: 5px !important;
+		font-size: 20px !important;
+	}
+	.single_testimonial .popup-profile-name p {
+		margin-bottom: 0px;
+	}
+	.about-us-bg h2 {
+		font-size: 25px !important;
+	}
+	.internationa_partners h1, .about_uss_wrapper h1 {
+		font-size: 25px !important;
+	}
+	.about_uss_wrapper p {
+		font-size: 15px;
+	}
+	.about_uss_wrapper span.profile-posts {
+		font-size: 13px;
+	}
+	.about_uss_wrapper .aboutus-card-outer h2 {
+		font-size: 20px !important;
+		margin-bottom: 5px !important;
+	}
+	.about_uss_wrapper .aboutus-card-outer p {
+		font-size: 14px;
+	}
+	.add_sliedrs .bg-white.overflow-hidden {
+		border-radius: 10px;
+	}
+	.add_sliedrs button.bg-blue-500 {
+		margin-top: 10px;
+	}
+	.add_sliedrs .max-w-7xl.mx-auto.px-2 {
+		padding: 0px 5px!important;
+	}
+
 }
 
 
@@ -3068,4 +3163,57 @@ li.last_border {
 .job-detail-page .view-main-image img {
     border: 0px !important;
     border-radius: 0px !important;
+}
+.job-detail-page .company-section {
+    margin-top: 20px;
+}
+.testimonial-section button.testimonial-video-btn {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.single_testimonial .popup-quote-img img {
+    opacity: 0.2;
+}
+.single_testimonial .popup-profile-name span::before {
+    content: "-";
+}
+.single_testimonial .popup-profile-name span i {
+    padding-left: 8px;
+}
+.single_testimonial p {
+    font-size: 15px !important;
+    line-height: 24.4px;
+}
+.about_us_section {
+    padding: 70px 0px;
+}
+.sliders_page table#DataTables_Table_0 td {
+    width: auto !important;
+    word-wrap: break-word;
+    white-space: break-spaces;
+}
+.sliders_page table.dataTable.no-footer button.btn.btn-primary.btn-sm {
+    width: 27px;
+    padding-left: 8px;
+}
+.sliders_page button.btn.btn-danger.btn-sm {
+    width: 27px;
+    padding-left: 7px;
+}
+.add_sliedrs .mb-4 input, .add_sliedrs .mb-4 textarea, .add_sliedrs .mb-4 {
+    margin-bottom: 3px !important;
+}
+.add_sliedrs .mb-4 label {
+    margin-top: 17px;
+}
+.add_sliedrs .p-6.text-black-900 {
+    padding: 0px 5px 15px!important;
+}
+.other_data_fields .video_Section .col-md-4 {
+    margin-bottom: 10px !important;
+}
+.login-bg-wrapper.steps_form.document-first-form.step-form-4 {
+    padding-top: 0px;
 }
