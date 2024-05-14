@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerDocuments;
 use App\Models\CustomerTraining;
 use App\Models\User;
 use Inertia\Inertia;
@@ -166,11 +167,96 @@ class JobApplicationController extends Controller
         $customer_employments->updated_at = null;
         $customer_employments->save();
         $job_id = $request->job_id;
-        $customer_id = $request->customer_id;
-        return to_route(route('document.details',$job_id,$customer_id));
+        $customer_id = $customer_employments->customer_id;
+        return redirect()->route('document.details',[$job_id,$customer_id]);
         // return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
     public function document_details($job_id , $customer_id){
         return Inertia::render('Frontend/CustomerSection/Documents/Index',compact('job_id','customer_id'));
+    }
+
+    public function submit_customers_documents(Request $request){
+        $validator = Validator::make($request->all(), [
+            'employment_evidence'=> 'required',
+            'licences'=> 'required',
+            'kitchen_area'=> 'required',
+            'ingredients'=> 'required',
+            'cooking_tech'=> 'required',
+            'dish'=> 'required',
+            'clean_up'=> 'required',
+            'evidence_image'=> 'required',
+            'resume'=> 'required',
+            // 'is_australia'=> 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->errors());
+        }
+        $customer = new CustomerDocuments();
+        $customer->job_id = $request->job_id;
+        $customer->customer_id = $request->customer_id;
+        if(isset($request->employment_evidence)&& $request->file('employment_evidence')){
+            $image = $request->file('employment_evidence');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->employment_evidence = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->licences)&& $request->file('licences')){
+            $image = $request->file('licences');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->licences = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->kitchen_area)&& $request->file('kitchen_area')){
+            $image = $request->file('kitchen_area');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->kitchen_area = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->cooking_tech)&& $request->file('cooking_tech')){
+            $image = $request->file('cooking_tech');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->cooking_tech = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->ingredients)&& $request->file('ingredients')){
+            $image = $request->file('ingredients');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->ingredients = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->dish)&& $request->file('dish')){
+            $image = $request->file('dish');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->dish = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->clean_up)&& $request->file('clean_up')){
+            $image = $request->file('clean_up');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->clean_up = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->evidence_image)&& $request->file('evidence_image')){
+            $image = $request->file('evidence_image');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->evidence_image = '/storage/customer/documents/' .$name;
+        }
+        if(isset($request->resume)&& $request->file('resume')){
+            $image = $request->file('resume');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/resume/'.$name, file_get_contents($image));
+            $customer->resume = '/storage/customer/resume/' .$name;
+        }
+        if(isset($request->is_australia)&& $request->file('is_australia')){
+            $image = $request->file('is_australia');
+            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
+            $customer->is_australia = '/storage/customer/documents/' .$name;
+        }
+        $customer->save();
+        
+
+        return redirect()->route('home');
     }
 }
