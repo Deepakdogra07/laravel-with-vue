@@ -178,9 +178,6 @@ Route::match(['get','post'],'/submit-personal-details/{job_id}',[JobApplicationC
 
 Route::get('/employment-details/{job_id}/{customer_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
 Route::post('/submit_employment_details', [JobApplicationController::class,'submit_employment_details'])->name('submit_employment_details');
-// Route::get('/employment-details', function () {
-//     return inertia('Frontend/CustomerSection/Employment/Index');
-// })->name('employment.details');
-
 
 Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');
+Route::post('/submit_customers_documents', [JobApplicationController::class,'submit_customers_documents'])->name('submit_customers_documents');

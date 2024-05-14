@@ -45,7 +45,6 @@ function show_document(type , event){
 }
 
 function submit_form(){
-    console.log(form,';sad')
     form.post(route('submit_employment_details'),{
         onSuccess:() => {
             toast("Details Saved Successfully!", {
