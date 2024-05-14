@@ -57,7 +57,9 @@ function submit_form(){
 </script>
 <template>
     <Header />
+
     <SubHeading />
+
 
     <form @submit.prevent="submit_form()">
         <!-------step one----------->
@@ -80,6 +82,7 @@ function submit_form(){
                                     month)
                                 </p>
                             </div>
+
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">

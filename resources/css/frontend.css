@@ -1250,6 +1250,14 @@ input[type="file"]{
 	}
 }
 
+@media (max-width:1199px){
+	.job-listing-cards a.forms-btn, .job-listing-cards .login-btn-main a{
+		font-size: 11px !important;
+		padding: 12px 9px !important;
+	}
+}
+
+
 @media (min-width: 1086px) {
 	.dashboard-home .card h4 {
 		font-size: 14px !important;
@@ -1268,14 +1276,6 @@ input[type="file"]{
 		gap: 22px !important;
 	}
 }
-
-@media screen and (min-device-width: 768px) and (max-device-width: 992px){
-
-}
-
-
-
-
 
 @media (max-width:909px){
 	.remote_woorkk label.pl-2 {
@@ -1312,6 +1312,16 @@ input[type="file"]{
 	.file-inputs.mt-3.relative h2{
 		font-size: 30px !important;
 	}
+	.natoinality_row .col-md-6 {
+		width: 100%;
+	}
+	.create_Account h2.login-texts {
+		margin-bottom: 0px !important;
+	}
+	.job-detail-page .container {
+		padding: 0px;
+	}
+
 }
 
 @media (max-width:800px){
@@ -1555,6 +1565,16 @@ input[type="file"]{
 	.step-form-4 p.light-text, h2.spacing_hd {
 		margin: 3px 0px;
 	}
+	.natoinality_row .col-12.mt-4:nth-child(1) {
+		padding: 0px !important;
+	}
+	.travel-detail.mb-5 {
+		margin-bottom: 0px !important;
+	}
+	.row.mt-5.travel_row {
+		margin-top: 20px !important;
+	}
+
 
 }
 
@@ -1678,6 +1698,12 @@ input[type="file"]{
 	}
 	.file-inputs .dotted-bg h2.choose-para {
 		font-size: 23px !important;
+	}
+	.create_Account h2 {
+		margin-bottom: 2px !important;
+	}
+	.create_Account .col-md-6.col-12 {
+		padding: 0px;
 	}
 
 }
@@ -2160,8 +2186,52 @@ input[type="file"]{
 	.documents_bottom p {
 		margin-bottom: 20px !important;
 	}
-
-
+	.travel-detail label {
+		font-size: 15px !important;
+	}
+	.travel-section .travel-detail h2 {
+		font-size: 26px !important;
+		margin-bottom: 8px !important;
+	}
+	.travel-section .travel-detail h4 {
+		font-size: 18px !important;
+		margin-bottom: 8px !important;
+	}
+	.create_Account h2.mb-4.login-texts {
+		margin-bottom: 0px !important;
+		font-size: 23px !important;
+	}
+	.create_Account {
+		padding: 15px 0px;
+	}
+	.create_Account .col-md-6.col-12 {
+		padding: 0px;
+	}
+	.create_Account .col-md-6.col-12 .mt-4 {
+		margin-top: 12px !important;
+	}
+	.job-detail-page .col-md-5, .job-detail-page .col-md-7 {
+		padding: 0px;
+	}
+	.job-detail-page .job-detail-content.mt-4, .job-detail-page .job-detail-content .col-md-12 {
+		padding: 0px;
+	}
+	.job-detail-page .job-detail-content.mt-4 {
+		padding: 12px 4px;
+	}
+	.job-detail-page .job-detail-content.mt-4 .company-section {
+		margin-top: 10px;
+	}
+	.job-detail-page {
+		margin-bottom: 0px !important;
+		padding-bottom: 12px !important;
+	}
+	.job-detail-page .container {
+		padding: 0px 10px;
+	}
+	.job-detail-page .job-detail-content .company-section {
+		margin-top: 20px;
+	}
 }
 
 
@@ -2933,4 +3003,69 @@ ul.img_format li {
 }
 li.last_border {
     border: 0px !important;
+}
+.login-bg-wrapper button.step-form-back, .login-bg-wrapper button.step-form-back {
+    align-items: center;
+}
+.login-bg-wrapper button.step-form-back span i::before, .travel-section .forms-btn span i::before{
+    line-height: 0px !important;
+}
+.travel-section input.form-control.remember-me-check {
+    border: 2px solid #01796F;
+    padding: 8px 3px !important;
+    border-radius: 4px;
+}
+.travel_row .col-md-6.col-12 {
+    padding: 0px;
+}
+.travel-detail h2 {
+    font-size: 35px !important;
+}
+.travel-detail h4 {
+    font-size: 24px !important;
+}
+.travel-detail label {
+    font-size: 18px;
+}
+.natoinality_row .col-md-6:nth-child(1) {
+    padding: 0px 16px 0px 0px!important;
+}
+.add_category_page input#categoryImage {
+    cursor: pointer;
+}
+.edits_fields .p-6.text-black-900 {
+    padding: 0px !important;
+}
+.edits_fields .container {
+    padding: 0px;
+    border: 0px !important;
+}
+.edits_fields .bg-white {
+    border: 0px !important;
+}
+.edits_fields .bg-white input, .edits_fields .bg-white textarea {
+    background: #fff;
+}
+.job-listing-cards .login-btn-main {
+    font-size: 14px;
+}
+.job-listing-cards .login-btn-main a.forms-btn:hover {
+    background: #01cdac;
+    border-color: #01cdac;
+    transition: all .40s;
+}
+.job-listing-cards .login-btn-main a.forms-btn-transparent:hover {
+    border-color: #00dfa8;
+    color: #00dfa8;
+}
+.job-listing-cards:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.view-job-btn .forms-btn:hover {
+    background: #0ab1a3;
+    transition: all .30s;
+}
+.job-detail-page .view-main-image img {
+    border: 0px !important;
+    border-radius: 0px !important;
 }
