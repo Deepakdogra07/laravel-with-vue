@@ -21,8 +21,10 @@ const props = defineProps({
         default: 0
     }
 });
+
 const div_numbers = ref(`step-form-1`),
-document = reactive({});
+document = reactive({}),
+data = {job_id:props.job_id,customer_id:props.customer_id};
 const form = useForm({
     job_id:props.job_id,
     customer_id:props.customer_id,
@@ -58,7 +60,7 @@ function submit_form(){
 <template>
     <Header />
 
-    <SubHeading />
+    <SubHeading :data="data"/>
 
 
     <form @submit.prevent="submit_form()">

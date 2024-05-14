@@ -165,8 +165,12 @@ class JobApplicationController extends Controller
         }
         $customer_employments->updated_at = null;
         $customer_employments->save();
-        return to_route('document.details');
+        $job_id = $request->job_id;
+        $customer_id = $request->customer_id;
+        return to_route(route('document.details',$job_id,$customer_id));
         // return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
-
+    public function document_details($job_id , $customer_id){
+        return Inertia::render('Frontend/CustomerSection/Documents/Index',compact('job_id','customer_id'));
+    }
 }

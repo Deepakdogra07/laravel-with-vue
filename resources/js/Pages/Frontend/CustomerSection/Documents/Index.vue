@@ -9,12 +9,51 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import "../../../../../css/frontend.css";
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
+import { reactive, ref } from 'vue';
+
+const props=defineProps({
+    job_id:{
+        type:Number,
+        required:true,
+        default:0
+    },
+    customer_id:{
+        type:Number,
+        required:true,
+        default:0
+    }
+});
+const form = useForm({
+    job_id:props.job_id,
+    customer_id:props.customer_id,
+    employment_evidence:null,
+    licences:null,
+    kitchen_area:null,
+    ingredients:null,
+    cooking_tech:null,
+    dish:null,
+    clean_up:null,
+    evidence_image:null,
+    resume:null,
+    is_australia:null
+});
+const div_numbers = ref(`step-form-1`),
+document = reactive({});
+
+function show_next_div(div_number) {
+    div_numbers.value = `step-form-${div_number + 1}`
+}
+function previous_div(div_number) {
+    div_numbers.value = `step-form-${div_number - 1}`
+}
+
+
 </script>
 <template>
     <Header />
     <SubHeading />
     <!------step one----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-1 ">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-1"v-if="div_numbers == 'step-form-1'">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -61,7 +100,7 @@ import { toast } from 'vue3-toastify';
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" @click="show_next_div(1)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -72,7 +111,7 @@ import { toast } from 'vue3-toastify';
     </div>
 
     <!------step two----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-2 ">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-2 "v-if="div_numbers == 'step-form-2'">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -107,7 +146,7 @@ import { toast } from 'vue3-toastify';
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" @click="show_next_div(2)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -118,7 +157,7 @@ import { toast } from 'vue3-toastify';
     </div>
 
     <!------step three----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-3 ">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-3 "v-if="div_numbers == 'step-form-3'">
         <div class="container">
             <div class="employment-first-form">
                 <h2>3. Photographs and videos</h2>
@@ -168,7 +207,7 @@ import { toast } from 'vue3-toastify';
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" @click="show_next_div(3)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -178,7 +217,7 @@ import { toast } from 'vue3-toastify';
         </div>
     </div>
 
-    <Section class="determine_job ">
+    <Section class="determine_job step-form-4" v-if="div_numbers == 'step-form-4'">
         <div class="container">
             <div class="inner_determine">
                 <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate III in Engineering – Toolmaking Trade’.</h6>
@@ -259,7 +298,7 @@ import { toast } from 'vue3-toastify';
     </Section> 
 
     <!------step five----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-5 "v-if="div_numbers == 'step-form-5'">
         <div class="container">
             <div class="employment-first-form intro_steps intro_top">
                 <h2>Introduction</h2>
@@ -543,7 +582,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" @click="show_next_div(5)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -554,7 +593,7 @@ manufacturer specifications
     </div>
 
     <!------step six-----> 
-    <div class="login-bg-wrapper steps_form document-first-form step-form-5 ">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-6 "v-if="div_numbers == 'step-form-6'">
         <div class="container">
             <div class="employment-first-form instructions">
                 <h2>Instructions for photo evidence</h2>
@@ -665,7 +704,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" @click="show_next_div(6)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
@@ -676,7 +715,7 @@ manufacturer specifications
     </div>
 
     <!------step seven----->
-     <div class="login-bg-wrapper steps_form document-first-form step-form-6">
+     <div class="login-bg-wrapper steps_form document-first-form step-form-7"v-if="div_numbers == 'step-form-7'">
         <div class="container">
             <div class="employment-first-form steps_55">
                 <h2>4. Resumé / CV</h2>
@@ -753,7 +792,7 @@ manufacturer specifications
                             </PrimaryButton>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">
-                            <PrimaryButton class="forms-btn">
+                            <PrimaryButton class="forms-btn" >
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </PrimaryButton>
                         </div>
