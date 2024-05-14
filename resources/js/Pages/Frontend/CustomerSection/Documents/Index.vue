@@ -259,7 +259,6 @@ import { toast } from 'vue3-toastify';
         </div>
     </div>
 
-
     <!------step five----->
     <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
         <div class="container">

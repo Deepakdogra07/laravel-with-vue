@@ -79,9 +79,9 @@ onMounted(() => {
         <img :src="`${slider.slider_image}`">
       </div>
     </div>
-    <div class="unstoppable-spaces-top">
+    <div class="unstoppable-spaces-top unstoppable_second">
       <div class="unstoppable-middle">
-        <img :src="`${logo.logo_image}`" alt="" 
+        <img :src="`${logo.logo_image}`" alt="" >
       </div>
       <div class="unstopable-log mt-2">
         <div class="container text-center">
