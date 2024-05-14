@@ -50,9 +50,9 @@ function show_document(type, event) {
     form[type] = event.target.files[0];
     document[type] = URL.createObjectURL(event.target.files[0]);
 }
-function submit_form(){
-    form.post(route('submit_customers_documents'),{
-        onSuccess:() => {
+function submit_form() {
+    form.post(route('submit_customers_documents'), {
+        onSuccess: () => {
             toast("Details Saved Successfully!", {
                 autoClose: 2000,
                 theme: 'dark',
@@ -109,7 +109,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('employment_evidence', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.employment_evidence"/>
+                                <InputError class="mt-2" :message="form.errors.employment_evidence" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -160,7 +160,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('licences', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.licences"/>
+                                <InputError class="mt-2" :message="form.errors.licences" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -224,7 +224,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('is_australia', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.is_australia"/>
+                                <InputError class="mt-2" :message="form.errors.is_australia" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -330,63 +330,71 @@ function submit_form(){
                         </div>
                     </div>
                 </div>
-                
-    </div>
 
-    <!------step five----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
-        <div class="container">
-            <div class="employment-first-form intro_steps intro_top">
-                <h2>Introduction</h2>
-                <p class="light-text">When you provide evidence of your workplace skills for the Stage 1 Documentary Evidence Assessment, you
-                must also provide Video and Photo evidence.</p>
-                <p class="light-text">This Guideline provides instructions about what types of skills to capture in your video/photo evidence and how
-                to record them.</p>
-                <h2 class="margin_intro">Instructions for video evidence</h2>
-                <h5 class="take_over">Task overview</h5>
-                <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
-                <div class="row mt-4">
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text">a protein (e.g. meat, fish, tofu)
-                            </p>
+
+
+
+                <!------step five----->
+                <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
+                    <div class="container">
+                        <div class="employment-first-form intro_steps intro_top">
+                            <h2>Introduction</h2>
+                            <p class="light-text">When you provide evidence of your workplace skills for the Stage 1
+                                Documentary Evidence Assessment, you
+                                must also provide Video and Photo evidence.</p>
+                            <p class="light-text">This Guideline provides instructions about what types of skills to
+                                capture in your video/photo evidence and how
+                                to record them.</p>
+                            <h2 class="margin_intro">Instructions for video evidence</h2>
+                            <h5 class="take_over">Task overview</h5>
+                            <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
+                            <div class="row mt-4">
+                                <div class="col-md-6 col-12">
+                                    <div class="d-flex gap-3">
+                                        <i class="fa-solid fa-circle-check green-text"></i>
+                                        <p class="light-text">a protein (e.g. meat, fish, tofu)
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="d-flex gap-3">
+                                        <i class="fa-solid fa-circle-check green-text"></i>
+                                        <p class="light-text">a side dish
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="d-flex gap-3">
+                                        <i class="fa-solid fa-circle-check green-text"></i>
+                                        <p class="light-text">a sauce.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <p class="light-text">As you prepare your dish, film the following five (5) videos.
+                                        Note the skills you should demonstrate in each
+                                        video</p>
+                                    <h2 class="margin_intro">Video</h2>
+                                    <p class="light-text">Video Skills you should demonstrate in this video </p>
+
+                                </div>
+                                <div class="d-flex justify-between align-items-center">
+                                    <div class="flex items-center mt-4 ">
+                                        <PrimaryButton class="forms-btn-transparent step-form-back"
+                                            @click="previous_div(4)">
+                                            <span> <i class="bi bi-arrow-left"></i></span> Back
+                                        </PrimaryButton>
+                                    </div>
+                                    <div class="flex items-center mt-4 login-btn-main">
+                                        <PrimaryButton class="forms-btn" @click="show_next_div(4)">
+                                            Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                                        </PrimaryButton>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text">a side dish
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12">
-                        <div class="d-flex gap-3">
-                            <i class="fa-solid fa-circle-check green-text"></i>
-                            <p class="light-text">a sauce.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <p class="light-text">As you prepare your dish, film the following five (5) videos. Note the skills you should demonstrate in each
-                        video</p>
-                        <h2 class="margin_intro">Video</h2>
-                        <p class="light-text">Video Skills you should demonstrate in this video </p>
-
-                    </div>
-                    <div class="d-flex justify-between align-items-center">
-                    <div class="flex items-center mt-4 ">
-                        <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(4)">
-                            <span> <i class="bi bi-arrow-left"></i></span> Back
-                        </PrimaryButton>
-                    </div>
-                      <div class="flex items-center mt-4 login-btn-main">
-                        <PrimaryButton class="forms-btn" @click="show_next_div(4)">
-                            Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                        </PrimaryButton>
-
-            </div>
-        </div>
                 </div>
             </div>
         </Section>
@@ -487,7 +495,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('kitchen_area', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.kitchen_area"/>
+                                <InputError class="mt-2" :message="form.errors.kitchen_area" />
                             </div>
                         </div>
 
@@ -552,7 +560,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('ingredients', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.ingredients"/>
+                                <InputError class="mt-2" :message="form.errors.ingredients" />
                             </div>
                         </div>
 
@@ -604,7 +612,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('cooking_tech', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.cooking_tech"/>
+                                <InputError class="mt-2" :message="form.errors.cooking_tech" />
                             </div>
                         </div>
 
@@ -651,7 +659,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.dish"/>
+                                <InputError class="mt-2" :message="form.errors.dish" />
                             </div>
                         </div>
 
@@ -698,7 +706,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('clean_up', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.clean_up"/>
+                                <InputError class="mt-2" :message="form.errors.clean_up" />
                             </div>
                         </div>
 
@@ -816,7 +824,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('evidence_image', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.evidence_image"/>
+                                <InputError class="mt-2" :message="form.errors.evidence_image" />
                             </div>
                         </div>
 
@@ -901,7 +909,7 @@ function submit_form(){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('resume', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.resume"/>
+                                <InputError class="mt-2" :message="form.errors.resume" />
                             </div>
                         </div>
 
