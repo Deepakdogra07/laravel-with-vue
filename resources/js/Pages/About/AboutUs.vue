@@ -13,7 +13,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
     <Header class="login-wrapper" />
     <SubHeading />
     <div class="login-bg-wrapper">
-        <div class="about-us-bg-wrapper">
+        <div class="about-us-bg-wrapper about_uss_wrapper">
             <div class="container">
                 <h1 class="mb-2 text-blue text-center">We're Here For You</h1>
                 <p class=" text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -75,7 +75,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="about-us-bg">
+                <div class="about-us-bg about_us_section">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6 col-md-8">
@@ -88,7 +88,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                     </div>
                 </div>
             </div>
-            <div class="login-bg-wrapper pb-0">
+            <div class="login-bg-wrapper pb-0 internationa_partners">
                 <div class="container">
                     <h1 class="mb-2 text-blue text-center">Our International Partners</h1>
                     <div class="grid lg:grid-cols-2 grid-cols-1 gap-5 about-section-cards login-bg-wrapper">

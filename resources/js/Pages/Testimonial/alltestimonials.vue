@@ -19,7 +19,7 @@ console.log(props.testimonials);
     <div v-for="testimonial in props.testimonials" :key="testimonial.id" class="modal fade custom-popover testimonial-popup" :id="`newAdvertModal-${testimonial?.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
-            <div class="popover-section popover-section-diff modal-content">
+            <div class="popover-section popover-section-diff modal-content single_testimonial">
                 <Link class="popup-cross" data-bs-dismiss="modal">
                 <i class="bi bi-x"></i>
                 </Link>
@@ -54,7 +54,7 @@ console.log(props.testimonials);
     <Header class="login-wrapper" />
     <SubHeading />
     <div class="login-bg-wrapper">
-        <div class="about-us-bg-wrapper">
+        <div class="about-us-bg-wrapper testimonials_wrapper">
             <div class="container">
                 <h1 class="mb-2 text-blue text-center">What Clients Says About us</h1>
                 <p class=" text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -80,8 +80,12 @@ console.log(props.testimonials);
                                     <p>{{ testimonial?.name }}</p>
                                 </div>
                                 <button data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
-                                    class="testimonial-video-btn"><span><i class="bi bi-play-circle"></i> </span>
-                                    {{ testimonial?.video_link }}</button>
+                                    class="testimonial-video-btn">
+                                    <span>
+                                        <i class="bi bi-play-circle"></i> 
+                                    </span>
+                                    {{ testimonial?.video_link }}
+                                </button>
                             </div>
                         </div>
                     </div>
