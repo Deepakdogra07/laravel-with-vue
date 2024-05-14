@@ -94,7 +94,7 @@ h2 {
 	color: #00dfb8 !important;
 }
 .navbar-expand-lg .navbar-nav .nav-link:hover {
-	color: #0ca78c;
+    color: #23fdd7;
 }
 .main-header .navbar-brand img,
 .footer-logo-sec img {
@@ -165,11 +165,11 @@ h2 {
 	left: 0;
 }
 .footer-section p {
-	font-size: 15px;
+	font-size: 14px;
 }
 .footer-section a {
 	color: #fff;
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .footer-grid {
@@ -1260,8 +1260,12 @@ input[type="file"]{
 	.viewAll-testimonial {
 		padding: 10px 0;
 	}
-
-
+	.contactUs-section .contactus-sidebar a {
+		font-size: 15px;
+	}	
+	.contactUs-section .col-md-4, .contactUs-section .col-md-8 {
+		padding: 0px !important;
+	}
 
 
 }
@@ -1279,6 +1283,13 @@ input[type="file"]{
 		padding-left: 50px;
 	}
 }
+
+@media (max-width: 1023px) {
+.contactUs-section .col-md-8 {
+    padding-left: 20px !important;
+}
+}
+
 
 @media screen and (min-device-width: 768px) and (max-device-width: 992px){
 	.employesss_tabs .filter-status ul {
@@ -1479,6 +1490,21 @@ input[type="file"]{
 }
 
 @media (max-width:767px){
+	.contactUs-section .row .col-md-8 {
+		padding-left: 0px !important;
+	}
+	.country-content.content-left.relative, .country-content.content-right.relative {
+		margin: 0px 10px 0px 10px;
+	}
+	.travel-section {
+		padding-top: 0px;
+	}
+	.travel-section .form-division-right .col-md-6, .travel-section .form-division-right h2, .travel-section .form-division-right .col-md-12, .travel-section .form-division-left .col-md-6, .travel-section .form-division-left h2, .travel-section .form-division-left .col-md-12, .travel-section .flex.items-center.login-btn-main {
+		padding: 0px;
+	}
+	.country-content .left-img {
+		border-radius: 10px !important;
+	}
 	.view_job_page .container, .jobs_tabss .container {
 		max-width: 100%;
 	}
@@ -1608,6 +1634,22 @@ input[type="file"]{
 	}
 	.add_sliedrs .p-6.text-black-900 .container {
 		max-width: 100%;
+	}
+	.contactUs-section {
+		padding-top: 15px !important;
+		padding-bottom: 15px !important;
+	}
+	.contactUs-section ul.pl-0.listing-gap {
+		margin-top: 0px;
+	}
+	.main-contact-form {
+		margin-top: 20px;
+	}
+	.contactUs-section .col-md-4, .contactUs-section .col-md-8 {
+		padding: 0px;
+	}
+	.contactUs-section .container {
+		padding: 0px;
 	}
 }
 
@@ -2326,6 +2368,59 @@ input[type="file"]{
 	.add_sliedrs .max-w-7xl.mx-auto.px-2 {
 		padding: 0px 5px!important;
 	}
+	.contactUs-section .container {
+		padding: 0px 12px;
+	}
+	.contactus-sidebar {
+		padding: 21px 20px;
+	}
+	.contactUs-section .mt-4 {
+		margin-top: 7px !important;
+	}
+	.category-section h2, .countries-section h2 {
+		font-size: 22px !important;
+	}
+	.category-section p {
+		font-size: 15px;
+		margin-top: 7px;
+	}
+	.unstoppable-spaces-top.countries-section {
+		padding-top: 20px;
+	}
+	div#welcome_slider_ .slick-list.draggable {
+		border-radius: 0px !important;
+		margin: 0px 10px 0px 10px;
+	}
+	div#welcome_slider_ .slick-slide {
+		margin-right: 0px !important;
+	}
+	.unstoppable-spaces-bottom.video-section {
+		padding-top: 20px !important;
+		padding-bottom: 20px;
+	}
+	.web-banner[data-v-6e0fb345] {
+		height: 500px !important;
+	}
+	.web-banner[data-v-6e0fb345] h1 {
+		margin-top: 50px;
+		margin-bottom: 5px !important;
+	}
+	.travel-section .col-lg-7.col-12 {
+		padding: 0px;
+	}
+	.travel-section .col-lg-6.col-12 {
+		padding: 0px;
+	}
+	.travel-section .row.mt-4 {
+		margin-top: 0px !important;
+	}
+	.file-inputs .dotted-bg h2.choose-para {
+		font-size: 19px !important;
+		line-height: 23px;
+	}
+
+
+
 
 }
 
@@ -3216,4 +3311,31 @@ li.last_border {
 }
 .login-bg-wrapper.steps_form.document-first-form.step-form-4 {
     padding-top: 0px;
+}
+.main-footer h2 {
+    font-size: 20px !important;
+}
+.footer-two li a:hover, .footer-three li a:hover, .footer-four li a:hover {
+    color: #18c3b4;
+    padding-left: 5px;
+    transition: all .30s;
+}
+.footer-logo-sec {
+    width: 300px;
+}
+.footer-logo-sec img {
+    width: 60%;
+}
+.contactUs-section button.rounded-lg span i::before {
+    line-height: 0px;
+}
+
+
+
+/*homepage*/
+.unstoppable_second .unstoppable-middle img {
+    width: 480px;
+}
+.unstoppable_second .unstopable-log.mt-2 {
+    display: none;
 }
