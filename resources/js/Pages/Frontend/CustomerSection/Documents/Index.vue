@@ -14,7 +14,7 @@ import { toast } from 'vue3-toastify';
     <Header />
     <SubHeading />
     <!------step one----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-1 d-none">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-1 ">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -72,7 +72,7 @@ import { toast } from 'vue3-toastify';
     </div>
 
     <!------step two----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-2 d-none">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-2 ">
         <div class="container">
             <div class="employment-first-form">
                 <p class="light-text">The following documents can be submitted as supporting evidence of your skills, knowledge and experience, in addition to the mandatory employment documents:</p>
@@ -118,7 +118,7 @@ import { toast } from 'vue3-toastify';
     </div>
 
     <!------step three----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-3 d-none">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-3 ">
         <div class="container">
             <div class="employment-first-form">
                 <h2>3. Photographs and videos</h2>
@@ -178,7 +178,7 @@ import { toast } from 'vue3-toastify';
         </div>
     </div>
 
-    <Section class="determine_job d-none">
+    <Section class="determine_job ">
         <div class="container">
             <div class="inner_determine">
                 <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate III in Engineering – Toolmaking Trade’.</h6>
@@ -259,7 +259,7 @@ import { toast } from 'vue3-toastify';
     </Section> 
 
     <!------step five----->
-    <div class="login-bg-wrapper steps_form document-first-form step-form-4 d-none">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
         <div class="container">
             <div class="employment-first-form intro_steps intro_top">
                 <h2>Introduction</h2>
@@ -554,7 +554,7 @@ manufacturer specifications
     </div>
 
     <!------step six-----> 
-    <div class="login-bg-wrapper steps_form document-first-form step-form-5 d-none">
+    <div class="login-bg-wrapper steps_form document-first-form step-form-5 ">
         <div class="container">
             <div class="employment-first-form instructions">
                 <h2>Instructions for photo evidence</h2>
