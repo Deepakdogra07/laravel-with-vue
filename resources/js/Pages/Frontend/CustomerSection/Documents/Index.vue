@@ -330,17 +330,63 @@ function submit_form(){
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-between align-items-center">
+                
+    </div>
+
+    <!------step five----->
+    <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
+        <div class="container">
+            <div class="employment-first-form intro_steps intro_top">
+                <h2>Introduction</h2>
+                <p class="light-text">When you provide evidence of your workplace skills for the Stage 1 Documentary Evidence Assessment, you
+                must also provide Video and Photo evidence.</p>
+                <p class="light-text">This Guideline provides instructions about what types of skills to capture in your video/photo evidence and how
+                to record them.</p>
+                <h2 class="margin_intro">Instructions for video evidence</h2>
+                <h5 class="take_over">Task overview</h5>
+                <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
+                <div class="row mt-4">
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a protein (e.g. meat, fish, tofu)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a side dish
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="d-flex gap-3">
+                            <i class="fa-solid fa-circle-check green-text"></i>
+                            <p class="light-text">a sauce.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <p class="light-text">As you prepare your dish, film the following five (5) videos. Note the skills you should demonstrate in each
+                        video</p>
+                        <h2 class="margin_intro">Video</h2>
+                        <p class="light-text">Video Skills you should demonstrate in this video </p>
+
+                    </div>
+                    <div class="d-flex justify-between align-items-center">
                     <div class="flex items-center mt-4 ">
                         <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(4)">
                             <span> <i class="bi bi-arrow-left"></i></span> Back
                         </PrimaryButton>
                     </div>
-                    <div class="flex items-center mt-4 login-btn-main">
+                      <div class="flex items-center mt-4 login-btn-main">
                         <PrimaryButton class="forms-btn" @click="show_next_div(4)">
                             Next Step <span> <i class="bi bi-arrow-right"></i></span>
                         </PrimaryButton>
-                    </div>
+
+            </div>
+        </div>
                 </div>
             </div>
         </Section>
