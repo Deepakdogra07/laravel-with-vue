@@ -27,6 +27,7 @@
         "bootstrap": "^5.3.0-alpha1",
         "bootstrap-icons": "^1.11.3",
         "country-state-city": "^3.2.1",
+        "currency-list": "^1.0.8",
         "datatables.net": "^1.13.8",
         "datatables.net-bs4": "^1.13.8",
         "datatables.net-bs5": "^2.0.6",

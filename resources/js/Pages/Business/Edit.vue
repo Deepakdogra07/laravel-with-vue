@@ -41,10 +41,12 @@ const props = defineProps({
   },
   job: {
     type: Object
+  },
+  languages:{
+    type:Array
   }
 
 });
-
 
 
 const form = useForm({
@@ -52,12 +54,18 @@ const form = useForm({
   job_title: props.job.job_title,
   job_image: props.job.job_image,
   job_description: props.job.job_description,
+  detail: props.job.detail,
+  conditions: props.job.conditions,
+  requirements: props.job.requirements,
+  language_id : [],
+  posting_summary: props.job.posting_summary,
+//   job_description: props.job.job_description,
   position_id: props.job.position_id,
   seniority_id: props.job.seniority_id,
   discipline_id: props.job.discipline_id,
   work_experience_id: props.job.work_experience_id,
   skills_id: [],
-  remote_work: (props.job.remote_work == 1) ? true : false,
+  remote_work: props.job.remote_work,
   industry_id: props.job.industry_id,
   segment: props.job.segment,
   positions: props.job.positions,
@@ -74,6 +82,11 @@ onMounted( () => {
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
       form.skills_id.push(element);
+    }
+  });
+  props.languages.forEach(element => {
+    if(props.job.language_id.includes(element.id)){
+      form.language_id.push(element);
     }
   });
 })
@@ -106,13 +119,13 @@ const submit = () => {
     <Head title="Job Application Form" />
     <Header class="login-wrapper" />
     <SubHeading />
-    <div class="login-bg-wrapper">
+    <div class="login-bg-wrapper create_space create_code">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_remove">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                      <TextInput id="job_title" type="text" v-model="form.job_title" placeholder="Enter job title"
@@ -123,7 +136,18 @@ const submit = () => {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_remove">
+                                <span class="label text-label">Job Posting Summary<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                     <TextInput id="job_summary" type="text" v-model="form.posting_summary" placeholder="Enter posting posting summary"
+                                        class="form-control mt-2" />
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.posting_summary" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 spacing_btm">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
                                     <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
@@ -131,7 +155,7 @@ const submit = () => {
                                     <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 Position_type">
                             <div class="mt-4">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
@@ -172,19 +196,56 @@ const submit = () => {
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="mt-4 spacing_remove">
+                                <span class="label text-label">Details of the Job<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                     <TextInput id="details" type="text" v-model="form.detail" placeholder="Enter Details of the Job"
+                                        class="form-control mt-2" />
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.detail" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 spacing_remove">
+                                <span class="label text-label">Conditions<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                     <TextInput id="conditions" type="text" v-model="form.conditions" placeholder="Enter Enter job conditions"
+                                        class="form-control mt-2" />
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.conditions" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 spacing_remove">
+                                <span class="label text-label">Requirements<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                     <TextInput id="requirements" type="text" v-model="form.requirements" placeholder="Enter Enter job requirements"
+                                        class="form-control mt-2" />
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.requirements" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-6 remote_woorkk">
                             <div class="mt-4">
                                 <label class="flex items-center">
-                                    <Checkbox class="remember-me-check" name="remember" />
+                                    <Checkbox class="remember-me-check" name="remember"/>
                                     <span class="label text-label pl-2">Remote Work</span>
                                 </label>
-                                <div class="d-flex align-items-center mt-3 gap-4">
+                                <div class="d-flex align-items-center mt-3 gap-4 remote_work">
                                     <div class="d-flex align-items-center">
-                                        <input type="radio" class="radio-new-btn" name="remote_work">
+                                        <input type="radio" class="radio-new-btn" name="remote_work"  v-model="form.remote_work "  value="remote_work" >
                                         <label class="pl-2" for="">Remote Work</label>
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <input type="radio" class="radio-new-btn" name="remote_work">
+                                        <input type="radio" class="radio-new-btn" name="remote_work" v-model="form.remote_work"  value="hybrid">
                                         <label class="pl-2" for="">Hybrid</label>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <input type="radio" class="radio-new-btn" name="remote_work" v-model="form.remote_work"  value="onsite">
+                                        <label class="pl-2" for="">On-Site</label>
                                     </div>
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
@@ -193,7 +254,7 @@ const submit = () => {
                         <div class="col-md-6">
                             <div class="mt-4">
                                 <span class="label text-label">Overall Work Experience<span class="text-danger">*</span></span>
-                                <div class="eye-icon-div">
+                                <div class="eye-icon-div skills_input">
                                     <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
@@ -206,7 +267,7 @@ const submit = () => {
                         <div class="col-md-6">
                             <div class="mt-4">
                                 <span class="label text-label">Skills<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
+                                <div class="eye-icon-div skills_input">
                                         <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true" :close-on-select="false" :clear-on-select="false"
                                         :preserve-search="true" placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
@@ -214,7 +275,20 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
                             </div>
                         </div>
+
                         <div class="col-md-6">
+                            <div class="mt-4">
+                                <span class="label text-label">Languages<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div language_input">
+                                        <multiselect v-model="form.language_id" :options="props.languages" :multiple="true" :close-on-select="false" :clear-on-select="false"
+                                        :preserve-search="true" placeholder="Select Languages" label="name" track-by="name">
+                                    </multiselect>
+                                </div>
+                                <InputError class="mt-2" :message="form.errors.language_id" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 country_input">
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
@@ -237,7 +311,7 @@ const submit = () => {
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 pin__code">
                             <div class="mt-4">
                                 <span class="label text-label">Pin Code</span>
                                 <div class="eye-icon-div">
@@ -258,7 +332,7 @@ const submit = () => {
                                 </div> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 spacing_mbb">
                             <div class="mt-4">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
@@ -280,7 +354,7 @@ const submit = () => {
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 minium_salary">
                                 <span class="label text-label">Segment</span>
                                 <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                                     class="form-control mt-2 mb-3" />
@@ -288,7 +362,7 @@ const submit = () => {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mt-4">
+                            <div class="mt-4 minimun_sall">
                                 <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
                                         *</span></span>
                                 <div class="row">
@@ -297,7 +371,7 @@ const submit = () => {
                                             class="form-control mt-2 mb-3" />
                                         <InputError class="mt-2" :message="form.errors.min_pay_range" />
                                     </div>
-                                    <div class="col-md-6 eye-icon-div">
+                                    <div class="col-md-6 eye-icon-div maxxx_salary">
                                         <TextInput type="text" id="salary_range" v-model="form.max_pay_range" placeholder="Enter Maximum Salary"
                                             class="form-control mt-2 mb-3" />
                                         <InputError class="mt-2" :message="form.errors.max_pay_range" />
@@ -305,7 +379,7 @@ const submit = () => {
 
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 start_input">
                                 <span class="label text-label">Start Date<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Start Date"
@@ -314,7 +388,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
                         </div>
-                        <div class="col-12 mt-4">
+                        <div class="col-12 mt-4 file_upload">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                 <img :src="image " alt="" srcset="">
@@ -335,7 +409,7 @@ const submit = () => {
                             <div class="flex items-center justify-center mt-4 login-btn-main">
                                 
                                 <PrimaryButton type="submit" class="forms-btn" :disabled="form.processing">
-                                   Update Job<span> <i class="bi bi-arrow-right"></i></span>
+                                    Update Job <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>
                         </div>

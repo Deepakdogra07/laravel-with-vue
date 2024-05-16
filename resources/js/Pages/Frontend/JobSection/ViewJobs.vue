@@ -3,6 +3,7 @@ import Header from '@/Pages/Frontend/Header.vue'
 import Footer from '@/Pages/Frontend/Footer.vue'
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
+import { onMounted, ref } from 'vue';
 
 const props = defineProps({
     job : {
@@ -10,12 +11,32 @@ const props = defineProps({
     },
     created_time:{
         type:String
+    },
+    skills:{
+        type:Array
+    },
+    languages:{
+        type:Array
     }
 })
 function job_description(description){
     var job_description = description;
     return job_description;
 }
+const skills = ref(''),
+language = ref('');
+onMounted( () => {
+  props.skills.forEach(element => {
+    if(props.job.skills_id.includes(element.id)){
+        skills.value += element.name +',';
+    }
+  });
+  props.languages.forEach(element => {
+    if(props.job.language_id.includes(element.id)){
+        language.value += element.name +',';
+    }
+  });
+})
 </script>
 
 <template>
@@ -46,7 +67,25 @@ function job_description(description){
             <div class="job-detail-content mt-4">
                 <div class="container">
                     <div class="row">
+
                         <div class="col-md-12 col-12">
+                            <div class="Details">
+                                <h2>Details:</h2>
+                                <b>Position type</b>: <span>{{ job.position.name }}</span><br>
+                                <b>Seniority</b>:<span>{{ job.seniority.name }}</span><br>
+                                <b>Discipline</b>:<span>{{ job.discipline.name }}</span><br>
+                                <b>Overall work experience</b>:<span>{{ job.work_experience.experience }}</span><br>
+                                <b>Skills</b>:<span>{{ skills }}</span><br>
+                                <b>Languages</b>:<span>{{ language }}</span><br>
+                                <b>City</b>:<span>{{ job.city }}</span><br>
+                                <b>Pincode</b>:<span>{{ job.pincode }}</span><br>
+                                <b>Remote Work</b>:<span>{{ job.remote_work }}</span><br>
+                                <b>Industry</b>:<span>{{ job.industry.name }}</span><br>
+                                <b>Segment</b>:<span>{{ job.segment }}</span><br>
+                                <b>Positions</b>:<span>{{ job.positions }}</span><br>
+                                <b>Minimum and Maximum Salary</b>:<span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span><br>
+                                <b>Start Date</b>:<span>{{ job.job_start_date }}</span><br>
+                            </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
                             <div v-html="job_description(job.job_description)"></div>
                             
