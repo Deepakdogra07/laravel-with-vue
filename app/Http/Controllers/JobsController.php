@@ -19,6 +19,7 @@ use App\Models\CustomerTraining;
 use App\Models\CustomerDocuments;
 use Illuminate\Contracts\Queue\Job;
 use App\Models\CustomerTravelDetails;
+use App\Models\Language;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -35,7 +36,8 @@ class JobsController extends Controller
       $disciplines= Discipline::all();
       $seniorities= Seniorities::all();
       $work_experience= Workexperience::all();
-    return Inertia::render('Admin/Jobs/Create',compact('positions','skills','industries','disciplines','seniorities','work_experience'));
+      $languages= Language::select('id','language_name as name')->get();
+    return Inertia::render('Admin/Jobs/Create',compact('languages','positions','skills','industries','disciplines','seniorities','work_experience'));
    }
    public function store(Request $request){
       // dd($request->all());
@@ -44,6 +46,11 @@ class JobsController extends Controller
          "job_title" => 'required',
          "job_image" => 'required',
          "job_description" => 'required',
+         "posting_summary" => 'required',
+         "detail" => 'required',
+         "conditions" => 'required',
+         "requirements" => 'required',
+         "language_id" => 'required',
          "position_id" => 'required',
          "seniority_id" => 'required',
          "discipline_id" => 'required',
@@ -51,7 +58,7 @@ class JobsController extends Controller
          "skills_id" => 'required',
          "industry_id" => 'required',
          "positions" => 'required',
-         "pin_code" => 'required|max:6|min:6',
+         "pin_code" => 'required',
          "city" => 'required',
          "segment" => 'required',
          "job_country" => 'required',
@@ -66,20 +73,28 @@ class JobsController extends Controller
          'discipline_id.required'=>'The discipline field is required.' ,
          'work_experience_id.required'=>'The overall work experience field is required.' ,
          'skills_id.required'=>'The skills field is required.' ,
+         'language_id.required'=>'The language field is required.' ,
          'industry_id.required'=>'The industry field is required.' ,
+         'posting_summary.required'=>'The job posting summary field is required.' ,
          'job_country.required'=>'The country field is required.' ,
       ]);
       if($validate->fails()){
          return back()->withErrors($validate->errors())->withInput();
       }
       $skills = [];
+      $languages = [];
       foreach($request->skills_id as $skill){
          $skills[] = $skill['id'];
       }
+      foreach($request->language_id as $language){
+         $languages[] = $language['id'];
+      }
       $skills = json_encode($skills);
+      $languages = json_encode($languages);
       $job = new Jobs();
       $job->fill($request->except('skills_id'));
       $job->skills_id =$skills;
+      $job->language_id =$languages;
       if ($request->hasFile('job_image')) {
          $image = $request->file('job_image');
          $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
@@ -100,13 +115,19 @@ class JobsController extends Controller
       $job = Jobs::where('id',$id)->first();
       // $job->skills_id = json_decode($job->skills_id);
       // dd($job);
-      return Inertia::render('Admin/Jobs/Edit',compact('positions','skills','industries','disciplines','seniorities','work_experience','job'));
+      $languages= Language::select('id','language_name as name')->get();
+      return Inertia::render('Admin/Jobs/Edit',compact('positions','languages','skills','industries','disciplines','seniorities','work_experience','job'));
    }
    public function update($id,Request $request){
          $validate = Validator::make($request->all(), [
             "job_title" => 'required',
             "job_image" => 'required',
             "job_description" => 'required',
+            "posting_summary" => 'required',
+            "detail" => 'required',
+            "conditions" => 'required',
+            "requirements" => 'required',
+            "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
             "discipline_id" => 'required',
@@ -114,7 +135,7 @@ class JobsController extends Controller
             "skills_id" => 'required',
             "industry_id" => 'required',
             "positions" => 'required',
-            "pin_code" => 'required|max:10|min:4',
+            "pin_code" => 'required',
             "city" => 'required',
             "segment" => 'required',
             "job_country" => 'required',
@@ -129,27 +150,35 @@ class JobsController extends Controller
             'discipline_id.required'=>'The discipline field is required.' ,
             'work_experience_id.required'=>'The overall work experience field is required.' ,
             'skills_id.required'=>'The skills field is required.' ,
+            'language_id.required'=>'The language field is required.' ,
             'industry_id.required'=>'The industry field is required.' ,
             'job_country.required'=>'The country field is required.' ,
+            'posting_summary.required'=>'The job posting summary field is required.' ,
          ]);
             if($validate->fails()){
                return back()->withErrors($validate->errors())->withInput();
             }
             
-      $skills = [];
-      foreach($request->skills_id as $skill){
-         $skills[] = $skill['id'];
-      }
-      $skills = json_encode($skills);
-      $job = Jobs::findOrFail($id);
-      $job->fill($request->except('skills_id','job_image'));
-      $job->skills_id =$skills;
-      // dd($job->job_image);
-      if ($request->hasFile('job_image')) {
-         if (public_path($job->job_image)) {
-            $imagePath = substr($job->job_image, strlen('/storage'));
-            Storage::disk('public')->delete($imagePath);
-         }
+            $skills = [];
+            $languages = [];
+            foreach($request->skills_id as $skill){
+               $skills[] = $skill['id'];
+            }
+            foreach($request->language_id as $language){
+               $languages[] = $language['id'];
+            }
+            $skills = json_encode($skills);
+            $languages = json_encode($languages);
+            $job = Jobs::findOrFail($id);
+            $job->fill($request->except('skills_id'));
+            $job->skills_id =$skills;
+            $job->language_id =$languages;
+            if ($request->hasFile('job_image')) {
+               if (public_path($job->job_image)) {
+                  $imagePath = substr($job->job_image, strlen('/storage'));
+                  Storage::disk('public')->delete($imagePath);
+               }
+               
          $image = $request->file('job_image');
          $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
          Storage::disk('public')->put('jobs/'.$name, file_get_contents($image));
@@ -179,9 +208,10 @@ class JobsController extends Controller
 
    public function view_job($id){
       $job = Jobs::with('position','work_experience','discipline','industry','seniority','skills','business')->where('id',$id)->first();
-      
+      $languages= Language::select('id','language_name as name')->get();
+      $skills= Skills::all();
       $created_time = $this->date_Time($job->created_at);
-      return Inertia::render('Frontend/JobSection/ViewJobs',compact('job','created_time'));
+      return Inertia::render('Frontend/JobSection/ViewJobs',compact('job','languages','skills','created_time'));
    }
 
 
