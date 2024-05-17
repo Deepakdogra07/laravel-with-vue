@@ -11,6 +11,7 @@ import SubHeading from '../Frontend/SubHeading.vue'
 import '@/../../resources/css/frontend.css';
 import * as countryStateCity from 'country-state-city';
 import { ref } from 'vue';
+import { toast } from 'vue3-toastify';
 
 
 const countries = countryStateCity.Country.getAllCountries();
@@ -26,6 +27,7 @@ const form = useForm({
     company_name:'',
     contact_department:'',
     mobile_number:'',
+    company_city:'',
     company_vat:'',
     email: '',
     password: '',
@@ -36,6 +38,13 @@ const form = useForm({
 const submit = () => {
     form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
+    },{
+        onsuccess:()=>{
+            toast("Please check your email.", {
+            autoClose: 3000,
+            theme: 'dark',
+                });
+        }
     });
 };
 function select_country(event){
@@ -67,15 +76,12 @@ function select_country(event){
                             <span class="label text-label">Company Address<span style="color:red"> *</span></span>
                             <div>
                                 <div class="mb-3">
-                                    <TextInput type="text" v-model="form.company_address" placeholder="Enter company address" class="form-control mt-2" />
+                                    <TextInput type="text" v-model="form.company_address" placeholder="Enter Street" class="form-control mt-2" />
                                     <InputError class="mt-1" :message="form.errors.company_address" />
                                 </div>
                                 <div class="mb-3">
-                                    <select class="form-select" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
-                                        <option selected :value="null" >Select Country</option>
-                                        <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
-                                    </select>
-                                    <InputError class="mt-1" :message="form.errors.company_country" />
+                                    <TextInput type="text" v-model="form.company_city" placeholder="Enter City" class="form-control mt-2" />
+                                    <InputError class="mt-1" :message="form.errors.company_city" />
                                 </div>
                                 <div class="mb-3">
                                     <select class="form-select" aria-label="Default select example"v-model="form.company_state">
@@ -83,6 +89,13 @@ function select_country(event){
                                         <option  v-for="state in states" :key="state.id" :value="state.name">{{ state.name }}</option>
                                     </select>
                                     <InputError class="mt-1" :message="form.errors.company_state" />
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
+                                        <option selected :value="null" >Select Country</option>
+                                        <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
+                                    </select>
+                                    <InputError class="mt-1" :message="form.errors.company_country" />
                                 </div>
                                 <div class="mb-3">
                                     <TextInput type="text" placeholder="Enter postal code" v-model="form.company_pin" class="form-control " />

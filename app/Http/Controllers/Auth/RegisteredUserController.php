@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|min:4|max:10',
             'name' => 'required|unique:users',
-            // 'company_vat'=>'required',
+            'company_city'=>'required',
             'checkbox' => 'accepted',
         ], [
             'checkbox.accepted' => 'You must agree to the Terms of Use and Privacy Policy.',
@@ -93,6 +93,7 @@ class RegisteredUserController extends Controller
             'user_type' => "2",
             'status' => 1,
         ]);
+        
         $business = new BusinessModal();
         $business->company_name = $request->company_name; 
         $business->contact_number = $request->contact_number; 
@@ -100,8 +101,10 @@ class RegisteredUserController extends Controller
         $business->company_country_code = $request->company_country; 
         $business->company_state = $request->company_state; 
         $business->company_pin = $request->company_pin; 
-        $business->contact_department = $request->test; 
+        $business->contact_department = $request->contact_department; 
         $business->company_vat = $request->company_vat; 
+        $business->company_city = $request->company_city; 
+        // dd($business,$request->All());
         $business->user_id = $user->id;
         $business->save();
         if ($user->user_type == '2') {
