@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerDocuments;
+use App\Models\CustomerStatus;
 use App\Models\CustomerTraining;
 use App\Models\User;
 use Inertia\Inertia;
@@ -93,7 +94,7 @@ class JobApplicationController extends Controller
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
         // dd($customer_personal_details);
-        $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
+        $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
         // dd($customer_travel_detail);
         $customer_travel_details = new CustomerTravelDetails();
         $customer_travel_details->fill($customer_travel_detail);
@@ -254,7 +255,15 @@ class JobApplicationController extends Controller
             Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
             $customer->is_australia = '/storage/customer/documents/' .$name;
         }
+
+
         $customer->save();
+
+        $status = new CustomerStatus();
+        $status->job_id = $customer->job_id;
+        $status->customer_id = $customer->customer_id;
+        $status->status = 0;
+        $status->save();
         
 
         return redirect()->route('home');
