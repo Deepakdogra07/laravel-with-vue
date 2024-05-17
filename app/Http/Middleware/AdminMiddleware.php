@@ -20,6 +20,6 @@ class AdminMiddleware
             return $next($request);
         }
         // If not an admin, redirect to login page
-        abort(403);
+        return redirect()->route('403');
     }
 }

@@ -78,7 +78,7 @@ onMounted( () => {
                                 <b>Skills</b>:<span>{{ skills }}</span><br>
                                 <b>Languages</b>:<span>{{ language }}</span><br>
                                 <b>City</b>:<span>{{ job.city }}</span><br>
-                                <b>Pincode</b>:<span>{{ job.pincode }}</span><br>
+                                <b>Postal Code</b>:<span>{{ job.pin_code }}</span><br>
                                 <b>Remote Work</b>:<span>{{ job.remote_work }}</span><br>
                                 <b>Industry</b>:<span>{{ job.industry.name }}</span><br>
                                 <b>Segment</b>:<span>{{ job.segment }}</span><br>
