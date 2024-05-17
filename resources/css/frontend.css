@@ -324,7 +324,7 @@ h2 {
 }
 .video-background .video-play {
 	height: 350px;
-	width: 75%;
+	width: 95%;
 	margin-bottom: 20px;
 	border-radius: 10px;
 	position: relative;
@@ -1266,7 +1266,14 @@ input[type="file"]{
 	.contactUs-section .col-md-4, .contactUs-section .col-md-8 {
 		padding: 0px !important;
 	}
-
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1fr 118px 143px 1fr 1fr;
+		gap: 24px;
+	}
+	.main-footer .footer-grid h2 {
+		font-size: 16px !important;
+	}
 
 }
 
@@ -1288,6 +1295,16 @@ input[type="file"]{
 .contactUs-section .col-md-8 {
     padding-left: 20px !important;
 }
+.unstoppable-spaces-top.countries-section .content-right.relative img, .unstoppable-spaces-top.countries-section .content-left.relative img, .unstoppable-spaces-top.countries-section .content-left.relative::before {
+	border-radius: 10px !important;
+}
+.countries-section {
+    margin: 0px 20px;
+}
+.countries-section h2 {
+    line-height: 47.4px !important;
+}
+
 }
 
 
@@ -1344,6 +1361,7 @@ input[type="file"]{
 	.col-md-6.col-12.mt-4.spacinf_rigght {
 		padding-right: 0px !important;
 	}
+	
 
 }
 
@@ -1353,6 +1371,22 @@ input[type="file"]{
 	}
 	
 }
+
+@media (max-width:797px){
+	#home_banner h1 {
+		font-size: 50px !important;
+	}
+}
+
+@media (max-width:797px){
+	#home_banner h1 {
+		font-size: 44px !important;
+	}
+	.banner-content {
+		width: 90%;
+	}
+}
+
 
 
 @media (max-width:799px){
@@ -1486,6 +1520,21 @@ input[type="file"]{
 	}
 	.create_space .label {
 		font-size: 13px;
+	}
+	.unstoppable-spaces-top.unstoppable_second img {
+		width: 130px !important;
+	}
+	.welcome-content {
+		width: 90%;
+	}
+	.unstoppable-spaces-top.countries-section .content-left.relative, .unstoppable-spaces-top.countries-section .content-right.relative {
+		margin: 0px 20px;
+	}
+	.unstoppable-spaces-top.countries-section .content-left::before, .unstoppable-spaces-top.countries-section .content-right.relative::before{
+		border-radius: 10px;
+	}
+	.countries-section h2 {
+		line-height: 43.4px !important;
 	}
 }
 
@@ -1651,6 +1700,14 @@ input[type="file"]{
 	.contactUs-section .container {
 		padding: 0px;
 	}
+	.unstoppable-spaces-top.category-section h2 {
+		font-size: 35px !important;
+		line-height: 49.4px !important;
+	}
+	.unstoppable-spaces-top.countries-section h2.dark-theme-color {
+		line-height: 40.4px !important;
+		font-size: 35px !important;
+	}
 }
 
 @media screen and (min-device-width: 481px) and (max-device-width: 798px){
@@ -1678,6 +1735,9 @@ input[type="file"]{
 }
 
 @media (max-width:767px){
+	.footer-section h2::before {
+		top: 24px;
+	}
 	.padding_remove div#DataTables_Table_0_paginate{
 		float: right;
 	}
@@ -1878,6 +1938,9 @@ input[type="file"]{
 
 
 @media (max-width: 576px) {
+	.main-footer ul.pl-0.listing-gap li {
+		margin-bottom: 5px !important;
+	}
 	h1 {
 		font-size: 30px !important;
 	}
@@ -2380,6 +2443,9 @@ input[type="file"]{
 	.category-section h2, .countries-section h2 {
 		font-size: 22px !important;
 	}
+	.banner-content p {
+		line-height: 24px;
+	}
 	.category-section p {
 		font-size: 15px;
 		margin-top: 7px;
@@ -2418,10 +2484,58 @@ input[type="file"]{
 		font-size: 19px !important;
 		line-height: 23px;
 	}
+	.unstoppable_second .unstoppable-middle img {
+		width: 80px !important;
+	}
+	.unstoppable_second .unstopable-log  h2.middle-logo-heading {
+		font-size: 20px !important;
+	}
+	.unstoppable_second  .unstopable-log p.middle-logo-para {
+		font-size: 15px;
+		margin-bottom: 0px;
+	}
+	.unstoppable-spaces-top.category-section h2 {
+		font-size: 26px !important;
+		margin-bottom: 0px;
+		line-height: 22px !important;
+		margin-top: 20px;
+	}
+	.category-section {
+		margin-top: 0px !important;
+		padding-top: 0px;
+	}
+	.unstoppable-spaces-top.countries-section h2.dark-theme-color {
+		line-height: 29.4px !important;
+		font-size: 24px !important;
+	}
+	.countries-section .country-names h3 {
+		font-size: 27px !important;
+		font-weight: 700 !important;
+		line-height: 35px;
+	}
+	.unstoppable-spaces-top.countries-section .content-left.relative, .unstoppable-spaces-top.countries-section .content-right.relative {
+		margin: 0px 12px;
+	}
+	.unstoppable-spaces-bottom.video-section .video-background h2 {
+		font-size: 26px !important;
+		margin-bottom: 0px !important;
+		line-height: 34px;
+	}
+	.video-section .container p {
+		font-size: 15px !important;
+	}
+	.video-background .video-play {
+		height: 210px;
+	}
+	.video-section .container p:last-child {
+		margin-top: 0px !important;
+	}
+}
 
-
-
-
+@media (max-width:426px){
+	#home_banner h1 {
+		font-size: 33px !important;
+	}
 }
 
 
@@ -3334,8 +3448,95 @@ li.last_border {
 
 /*homepage*/
 .unstoppable_second .unstoppable-middle img {
-    width: 480px;
+    width: 150px;
 }
-.unstoppable_second .unstopable-log.mt-2 {
-    display: none;
+.unstoppable_second h2.middle-logo-heading {
+    font-size: 50px !important;
 }
+.unstoppable_second  p.middle-logo-para {
+    font-size: 25px;
+}
+.job-listing-cards.relative.\34 03_page {
+    box-shadow: unset;
+    border: 0px;
+    width: 100% !important;
+    margin: 0 auto;
+    height: 460px;
+}
+.grid.lg\:grid-cols-3.md\:grid-cols-2.grid-cols-1.gap-3.\34 03_page_top {
+    display: block;
+}
+.login-bg-wrapper.\34 03_error_main {
+    background: #f7f7f7;
+    background-image: url("../")
+}
+.main-header .main-btn {
+    padding: 8px 35px 8px 35px;
+}
+.category-section p {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 400 !important;
+    line-height: 24px;
+}
+.banner-content h1 {
+    font-size: 64px !important;
+    font-family: 'Philosopher' !important;
+    font-weight: 700;
+}
+.category-section h2 {
+    font-size: 48px !important;
+    font-family: 'Philosopher';
+    font-weight: 700;
+    line-height: 62.4px;
+}
+.countries-section h2 {
+    font-size: 40px !important;
+    font-family: 'Philosopher';
+    font-weight: 700;
+    line-height: 62.4px;
+}
+.category-section{
+	width: 100%;
+}
+.countries-section h3 {
+    font-size: 40px !important;
+    font-weight: 700 !important;
+    line-height: 52px;
+}
+.countries-section a {
+    font-weight: 400;
+    font-size: 16px !important;
+    font-family: 'Open Sans';
+    line-height: 24px;
+    letter-spacing: 1.5px;
+}
+.video-section .video-background h2 {
+    font-weight: 700 !important;
+    font-family: 'Philosopher' !important;
+    font-size: 48px !important;
+    line-height: 62.4px;
+	margin-bottom: 10px !important;
+}
+.video-section .container p:last-child {
+    margin-bottom: 2px;
+    margin-top: 22px;
+}
+.video-section .container p {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    line-height: 24px;
+}
+.video-section p.text-center {
+    margin-bottom: 36px;
+}
+.welcome-section .slick-dots li button {
+    border-color: #d2d2d5 !important;
+}
+
+
+
+
+
+

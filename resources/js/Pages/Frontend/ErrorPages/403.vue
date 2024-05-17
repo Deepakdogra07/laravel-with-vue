@@ -13,10 +13,10 @@ const props = defineProps({
 <template>
     <Header />
     <SubHeading />
-    <div class="login-bg-wrapper">
+    <div class="login-bg-wrapper 403_error_main">
         <div class="container">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
-                <div class="job-listing-cards relative" >
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 403_page_top" >
+                <div class="job-listing-cards relative 403_page" >
                     <!-- <div class="cards-content"> -->
                         <link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Frijole|Josefin+Sans:300,400,400i,600,700|Viga" rel="stylesheet">
 
