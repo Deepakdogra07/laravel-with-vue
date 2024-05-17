@@ -1930,6 +1930,9 @@ input[type="file"]{
 	.banner-content h1 {
 		line-height: 45px;
 	} 
+	.test{
+		display: block;
+	}
 	.unstoppable-spaces {
 		padding: 35px 0;
 	}
