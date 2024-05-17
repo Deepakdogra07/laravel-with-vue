@@ -114,7 +114,7 @@ const submit = () => {
 
     <div class="flex items-center justify-center row_width_100">
       <div class="login-bg-wrapper create_space create_code">
-        <div class="about-us-bg-wrapper">
+        <div class="about-us-bg-wrapper form_settlement">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row">
@@ -130,23 +130,11 @@ const submit = () => {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mt-4 spacing_remove">
-                                <span class="label text-label">Job Posting Summary<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
-                                     <TextInput id="job_summary" type="text" v-model="form.posting_summary" placeholder="Enter posting posting summary"
-                                        class="form-control mt-2" />
-                                </div>
-                                    <InputError class="mt-2" :message="form.errors.posting_summary" />
-                               
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mt-4 spacing_btm">
-                                <label for="job_description">Job Description<span class="text-danger">*</span></label>
-                                <div class="eye-icon-div">
-                                    <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
-                                </div>
-                                    <InputError class="mt-2" :message="form.errors.job_description" />
+                            <div class="mt-4 minium_salary">
+                                <span class="label text-label">Segment</span>
+                                <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
+                                    class="form-control mt-2 mb-3" />
+                                <InputError class="mt-2" :message="form.errors.segment" />
                             </div>
                         </div>
                         <div class="col-md-6 Position_type">
@@ -164,6 +152,22 @@ const submit = () => {
                         </div>
                         <div class="col-md-6">
                             <div class="mt-4">
+                                <span class="label text-label">Positions</span>
+                                <div class="eye-icon-div">
+                                    <TextInput type="number" id="positions" v-model="form.positions" placeholder="Enter Postions"
+                                        class="form-control mt-2 mb-3" />
+                                    <InputError class="mt-2" :message="form.errors.positions" />
+                                </div>
+                            </div>
+                            <!-- <div class="mt-4 minium_salary">
+                                <span class="label text-label">Segment</span>
+                                <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
+                                    class="form-control mt-2 mb-3" />
+                                <InputError class="mt-2" :message="form.errors.segment" />
+                            </div> -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4">
                                 <label for="Seniority">Seniority<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
                                     <select class="form-select mb-3 " aria-label="Default select example" v-model="form.seniority_id">
@@ -175,7 +179,26 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 minimun_sall">
+                                <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
+                                        *</span></span>
+                                <div class="row">
+                                    <div class="col-md-6 eye-icon-div">
+                                        <TextInput type="text" id="salary_range" v-model="form.min_pay_range" placeholder="Enter Minimum Salary"
+                                            class="form-control mt-2 mb-3" />
+                                        <InputError class="mt-2" :message="form.errors.min_pay_range" />
+                                    </div>
+                                    <div class="col-md-6 eye-icon-div maxxx_salary">
+                                        <TextInput type="text" id="salary_range" v-model="form.max_pay_range" placeholder="Enter Maximum Salary"
+                                            class="form-control mt-2 mb-3" />
+                                        <InputError class="mt-2" :message="form.errors.max_pay_range" />
+                                    </div>
 
+                                </div>
+                            </div>
+                           
+                        </div>
                         <div class="col-md-6">
                             <div class="mt-4">
                                 <label for="discipline">Discipline<span class="text-danger">*</span></label>
@@ -189,6 +212,65 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 start_input">
+                                <span class="label text-label">Start Date<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                    <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Start Date"
+                                        class="form-control mt-2 mb-3" />
+                                </div>
+                                <InputError class="mt-2" :message="form.errors.job_start_date" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4">
+                                <span class="label text-label">Overall Work Experience<span class="text-danger">*</span></span>
+                                <div class="eye-icon-div skills_input">
+                                    <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience_id">
+                                        <option selected :value="null">Select Type</option>
+                                        <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
+                                        position.experience }}</option>
+                                    </select>
+                                </div>
+                                <InputError class="mt-2" :message="form.errors.work_experience_id" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4 spacing_remove">
+                                <span class="label text-label">Job Posting Summary<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                     <TextInput id="job_summary" type="text" v-model="form.posting_summary" placeholder="Enter posting posting summary"
+                                        class="form-control mt-2" />
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.posting_summary" />
+                               
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="col-md-6">
+                            <div class="mt-4 spacing_btm">
+                                <label for="job_description">Job Description<span class="text-danger">*</span></label>
+                                <div class="eye-icon-div">
+                                    <QuillEditor contentType="html" toolbar="essential" v-model:content="form.job_description" placeholder="Enter Job Description"/>
+                                </div>
+                                    <InputError class="mt-2" :message="form.errors.job_description" />
+                            </div>
+                        </div>
+                        
+
+                       
                         <div class="col-md-6">
                             <div class="mt-4 spacing_remove">
                                 <span class="label text-label">Details of the Job<span style="color:red"> *</span></span>
@@ -245,30 +327,8 @@ const submit = () => {
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mt-4">
-                                <span class="label text-label">Overall Work Experience<span class="text-danger">*</span></span>
-                                <div class="eye-icon-div skills_input">
-                                    <select class="form-select mb-3 " aria-label="Default select example" v-model="form.work_experience_id">
-                                        <option selected :value="null">Select Type</option>
-                                        <option v-for="(position, index) in work_experience" :key="index" :value="position.id">{{
-                                        position.experience }}</option>
-                                    </select>
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.work_experience_id" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mt-4">
-                                <span class="label text-label">Skills<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div skills_input">
-                                        <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true" :close-on-select="false" :clear-on-select="false"
-                                        :preserve-search="true" placeholder="Select Skills" label="name" track-by="name">
-                                    </multiselect>
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.skills_id" />
-                            </div>
-                        </div>
+                        
+                      
 
                         <div class="col-md-6">
                             <div class="mt-4">
@@ -339,49 +399,8 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mt-4">
-                                <span class="label text-label">Positions</span>
-                                <div class="eye-icon-div">
-                                    <TextInput type="number" id="positions" v-model="form.positions" placeholder="Enter Postions"
-                                        class="form-control mt-2 mb-3" />
-                                    <InputError class="mt-2" :message="form.errors.positions" />
-                                </div>
-                            </div>
-                            <div class="mt-4 minium_salary">
-                                <span class="label text-label">Segment</span>
-                                <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
-                                    class="form-control mt-2 mb-3" />
-                                <InputError class="mt-2" :message="form.errors.segment" />
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mt-4 minimun_sall">
-                                <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
-                                        *</span></span>
-                                <div class="row">
-                                    <div class="col-md-6 eye-icon-div">
-                                        <TextInput type="text" id="salary_range" v-model="form.min_pay_range" placeholder="Enter Minimum Salary"
-                                            class="form-control mt-2 mb-3" />
-                                        <InputError class="mt-2" :message="form.errors.min_pay_range" />
-                                    </div>
-                                    <div class="col-md-6 eye-icon-div maxxx_salary">
-                                        <TextInput type="text" id="salary_range" v-model="form.max_pay_range" placeholder="Enter Maximum Salary"
-                                            class="form-control mt-2 mb-3" />
-                                        <InputError class="mt-2" :message="form.errors.max_pay_range" />
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="mt-4 start_input">
-                                <span class="label text-label">Start Date<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
-                                    <TextInput type="date" id="start_Date" v-model="form.job_start_date" placeholder="Enter Start Date"
-                                        class="form-control mt-2 mb-3" />
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.job_start_date" />
-                            </div>
-                        </div>
+                        
+                        
                         <div class="col-12 mt-4 file_upload">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
