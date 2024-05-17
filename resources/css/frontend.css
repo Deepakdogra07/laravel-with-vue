@@ -1938,6 +1938,9 @@ input[type="file"]{
 
 
 @media (max-width: 576px) {
+	.countries-section {
+		margin: 0px;
+	}
 	.main-footer ul.pl-0.listing-gap li {
 		margin-bottom: 5px !important;
 	}
@@ -3534,7 +3537,9 @@ li.last_border {
 .welcome-section .slick-dots li button {
     border-color: #d2d2d5 !important;
 }
-
+.job_posting textarea, .details_job textarea, .Requirements_div textarea, .condtion_ddiv textarea{
+    height: 188px !important;
+}
 
 
 
