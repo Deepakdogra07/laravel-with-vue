@@ -83,11 +83,15 @@ function select_country(event){
                                     <TextInput type="text" v-model="form.company_city" placeholder="Enter City" class="form-control mt-2" />
                                     <InputError class="mt-1" :message="form.errors.company_city" />
                                 </div>
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <select class="form-select" aria-label="Default select example"v-model="form.company_state">
                                         <option selected :value="null">Select State</option>
                                         <option  v-for="state in states" :key="state.id" :value="state.name">{{ state.name }}</option>
                                     </select>
+                                    <InputError class="mt-1" :message="form.errors.company_state" />
+                                </div> -->
+                                <div class="mb-3">
+                                    <TextInput type="text" v-model="form.company_state" placeholder="Enter State" class="form-control mt-2" />
                                     <InputError class="mt-1" :message="form.errors.company_state" />
                                 </div>
                                 <div class="mb-3">
