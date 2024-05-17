@@ -41,7 +41,7 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
 
 <template>
     <Header />
-    <SubHeading />
+    <SubHeading :job_id="job.id"/>
     <!-- <div class="main-outer-section">
         <div class="job-list-search">
             <div class="container">

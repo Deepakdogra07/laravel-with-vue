@@ -29,6 +29,7 @@ onMounted(()=>{
     appliedCustomers.value = props.applied_customers;
     refreshDataTable.value++;
 });
+console.log(appliedCustomers);
 const activeSpan = ref(null);
 const setActiveSpan = async (spanNumber) => {
   try {
@@ -137,16 +138,16 @@ function formatDateTime(date){
                                     </td>
 
                                     <td>
-                                        <div v-if="customer.status.status ==0" style="color:green">Active </div>
-                                        <div v-if="customer.status.status ==1" style="color:green">Awaiting Review </div>
-                                        <div v-if="customer.status.status ==2" style="color:green">Reviewed </div>
-                                        <div v-if="customer.status.status ==3" style="color:green">Contacted </div>
-                                        <div v-if="customer.status.status ==4" style="color:green">Hired </div>
-                                        <div v-if="customer.status.status ==5" style="color:red">Rejected </div>
-                                        <div>{{ formatDateTime(customer.status.created_at) }}</div>
+                                        <div v-if="customer?.status?.status ==0" style="color:green">Active </div>
+                                        <div v-if="customer?.status?.status ==1" style="color:green">Awaiting Review </div>
+                                        <div v-if="customer?.status?.status ==2" style="color:green">Reviewed </div>
+                                        <div v-if="customer?.status?.status ==3" style="color:green">Contacted </div>
+                                        <div v-if="customer?.status?.status ==4" style="color:green">Hired </div>
+                                        <div v-if="customer?.status?.status ==5" style="color:red">Rejected </div>
+                                        <div>{{ formatDateTime(customer?.status?.created_at) }}</div>
                                     </td>
                                     <td>
-                                        {{ customer.migrate_country }}
+                                        {{ customer?.migrate_country }}
                                     </td>
                                     <td> <img :src="customer?.customer_image" alt=""></td>
                                     <td> {{ 'Student'}}</td>
@@ -158,7 +159,7 @@ function formatDateTime(date){
                                         <video src="/images/new-video.mp4" controls></video>
                                     </td> -->
                                     <td >
-                                        <div v-if="customer.status.status != 5">
+                                        <div v-if="customer?.status?.status != 5">
                                             <button class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
                                             <button class="btn btn-sm btn-primary"><i class="fas fa-question"></i></button>
                                             <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>

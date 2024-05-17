@@ -235,6 +235,7 @@ class JobsController extends Controller
   }
   public function job_for_customer($job_id){
    $applied_customers = Customer::where('job_id',$job_id)->with('status')->get();
+   // dd($applied_customers->status);
    $active = CustomerStatus::where('job_id',$job_id)->where('status',0)->count();
    $awaited = CustomerStatus::where('job_id',$job_id)->where('status',1)->count();
    $reviewed = CustomerStatus::where('job_id',$job_id)->where('status',2)->count();

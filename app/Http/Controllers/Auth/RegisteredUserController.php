@@ -110,7 +110,7 @@ class RegisteredUserController extends Controller
             $password = $textpassword;
             $creator = $user->name;
             Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
-            Auth::login($user);
+            // Auth::login($user);
             Mail::to($email)->send(new VerifyUser($user->id , $username, $email, $password, $creator));
             return redirect(route('business-dash'));
         }
