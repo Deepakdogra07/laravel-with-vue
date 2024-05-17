@@ -4,6 +4,7 @@ import Footer from '@/Pages/Frontend/Footer.vue'
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
+import moment from 'moment';
 
 const props = defineProps({
     job : {
@@ -36,7 +37,8 @@ onMounted( () => {
         language.value += element.name +',';
     }
   });
-})
+});
+const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
 </script>
 
 <template>
@@ -78,13 +80,13 @@ onMounted( () => {
                                 <b>Skills</b>:<span>{{ skills }}</span><br>
                                 <b>Languages</b>:<span>{{ language }}</span><br>
                                 <b>City</b>:<span>{{ job.city }}</span><br>
-                                <b>Pincode</b>:<span>{{ job.pincode }}</span><br>
+                                <b>Postal Code</b>:<span>{{ job.pin_code }}</span><br>
                                 <b>Remote Work</b>:<span>{{ job.remote_work }}</span><br>
                                 <b>Industry</b>:<span>{{ job.industry.name }}</span><br>
                                 <b>Segment</b>:<span>{{ job.segment }}</span><br>
                                 <b>Positions</b>:<span>{{ job.positions }}</span><br>
                                 <b>Minimum and Maximum Salary</b>:<span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span><br>
-                                <b>Start Date</b>:<span>{{ job.job_start_date }}</span><br>
+                                <b>Start Date</b>:<span>{{ date_ }}</span><br>
                             </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
                             <div v-html="job_description(job.job_description)"></div>
