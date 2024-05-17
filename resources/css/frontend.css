@@ -324,7 +324,7 @@ h2 {
 }
 .video-background .video-play {
 	height: 350px;
-	width: 95%;
+	width: 85%;
 	margin-bottom: 20px;
 	border-radius: 10px;
 	position: relative;
@@ -1236,19 +1236,9 @@ input[type="file"]{
 	}
 }
 
-
 @media (max-width:1249px){
 	ul.card_ullist li {
 		font-size: 13px !important;
-	}
-}
-
-@media (max-width:1117px){
-	ul.card_ullist li {
-		display: block !important; 
-	}
-	ul.card_ullist.card_ullist_2nd li{
-		width:100% !important;
 	}
 }
 
@@ -1277,13 +1267,20 @@ input[type="file"]{
 
 }
 
+@media (max-width:1117px){
+	ul.card_ullist li {
+		display: block !important; 
+	}
+	ul.card_ullist.card_ullist_2nd li{
+		width:100% !important;
+	}
+}
 
 @media (min-width: 1086px) {
 	.dashboard-home .card h4 {
 		font-size: 14px !important;
 	}
 }
-
 
 @media (min-width: 1024px) {
 	.main-contact-form {
@@ -1306,108 +1303,6 @@ input[type="file"]{
 }
 
 }
-
-
-@media screen and (min-device-width: 768px) and (max-device-width: 992px){
-	.employesss_tabs .filter-status ul {
-		gap: 22px !important;
-	}
-}
-
-@media (max-width:909px){
-	.remote_woorkk label.pl-2 {
-		font-size: 13px;
-	}
-	.remote_work {
-		padding-left: 20px !important;
-	}
-	.mt-4.start_input {
-		margin-top: 10px !important;
-	}
-}
-
-
-@media (max-width:991px){
-	.employesss_tabs .filter-status ul li span{
-		font-size: 12px;
-	}
-	.employesss_tabs {
-		padding-top: 10px;
-	}
-	.employesss_tabs .container {
-		max-width: 100% !important;
-	}
-	.steps_form.employment-first-form h2 {
-		font-size: 28px !important;
-		line-height: 35.47px;
-	}
-	.nav-underline .col-md-2, .nav-underline .col-lg-2 {
-		width: 30%;
-		margin: 0px !important;
-		padding: 0px;
-	}
-	.file-inputs.mt-3.relative h2{
-		font-size: 30px !important;
-	}
-	.natoinality_row .col-md-6 {
-		width: 100%;
-	}
-	.create_Account h2.login-texts {
-		margin-bottom: 0px !important;
-	}
-	.job-detail-page .container {
-		padding: 0px;
-	}
-	.col-md-6.col-12.mt-4.spacinf_rigght {
-		padding-right: 0px !important;
-	}
-	
-
-}
-
-@media (max-width:800px){
-	.employesss_tabs .filter-status ul li span {
-		font-size: 12px;
-	}
-	
-}
-
-@media (max-width:797px){
-	#home_banner h1 {
-		font-size: 50px !important;
-	}
-}
-
-@media (max-width:797px){
-	#home_banner h1 {
-		font-size: 44px !important;
-	}
-	.banner-content {
-		width: 90%;
-	}
-}
-
-
-
-@media (max-width:799px){
-	.nav-container.jobs_tabss .col-md-2, .nav-container.jobs_tabss .col-lg-2 {
-		width: 30% !important;
-	}
-}
-
-@media (max-width:790px){
-	.remote_woorkk label.pl-2 {
-		font-size: 12px;
-	}
-	.create_space .text-label, .create_space label {
-		font-size: 13px;
-	}
-	.mt-4.start_input input#start_Date {
-		color: #999;
-	}
-}
-
-
 
 @media (max-width: 992px) {
 	.form-division-left{
@@ -1535,6 +1430,109 @@ input[type="file"]{
 	}
 	.countries-section h2 {
 		line-height: 43.4px !important;
+	}
+}
+
+@media (max-width:991px){
+	.employesss_tabs .filter-status ul li span{
+		font-size: 12px;
+	}
+	.employesss_tabs {
+		padding-top: 10px;
+	}
+	.employesss_tabs .container {
+		max-width: 100% !important;
+	}
+	.steps_form.employment-first-form h2 {
+		font-size: 28px !important;
+		line-height: 35.47px;
+	}
+	.nav-underline .col-md-2, .nav-underline .col-lg-2 {
+		width: 30%;
+		margin: 0px !important;
+		padding: 0px;
+	}
+	.file-inputs.mt-3.relative h2{
+		font-size: 30px !important;
+	}
+	.natoinality_row .col-md-6 {
+		width: 100%;
+	}
+	.create_Account h2.login-texts {
+		margin-bottom: 0px !important;
+	}
+	.job-detail-page .container {
+		padding: 0px;
+	}
+	.col-md-6.col-12.mt-4.spacinf_rigght {
+		padding-right: 0px !important;
+	}
+	
+
+}
+
+@media (max-width:909px){
+	.remote_woorkk label.pl-2 {
+		font-size: 13px;
+	}
+	.remote_work {
+		padding-left: 20px !important;
+	}
+	.mt-4.start_input {
+		margin-top: 10px !important;
+	}
+}
+
+@media (max-width:800px){
+	.employesss_tabs .filter-status ul li span {
+		font-size: 12px;
+	}
+	
+}
+
+@media (max-width:799px){
+	.nav-container.jobs_tabss .col-md-2, .nav-container.jobs_tabss .col-lg-2 {
+		width: 30% !important;
+	}
+}
+
+@media (max-width:797px){
+	#home_banner h1 {
+		font-size: 44px !important;
+	}
+	.banner-content {
+		width: 90%;
+	}
+}
+
+@media (max-width:790px){
+	.remote_woorkk label.pl-2 {
+		font-size: 12px;
+	}
+	.create_space .text-label, .create_space label {
+		font-size: 13px;
+	}
+	.mt-4.start_input input#start_Date {
+		color: #999;
+	}
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 992px){
+	.employesss_tabs .filter-status ul {
+		gap: 22px !important;
+	}
+}
+
+@media (max-width:768px){
+	.padding_remove div#DataTables_Table_0_filter label {
+		font-size: 12px;
+	}
+	.padding_remove div#DataTables_Table_0_length {
+		font-size: 16px;
+	}
+	.padding_remove div#DataTables_Table_0_length {
+		font-size: 12px;
+		padding-top: 13px !important;
 	}
 }
 
@@ -1708,33 +1706,6 @@ input[type="file"]{
 		line-height: 40.4px !important;
 		font-size: 35px !important;
 	}
-}
-
-@media screen and (min-device-width: 481px) and (max-device-width: 798px){
-	.employesss_tabs .filter-status ul li span {
-		font-size: 12px;
-	}
-	.employesss_tabs .filter-status ul {
-		gap: 13px !important;
-	}
-}
-
-
-
-@media (max-width:768px){
-	.padding_remove div#DataTables_Table_0_filter label {
-		font-size: 12px;
-	}
-	.padding_remove div#DataTables_Table_0_length {
-		font-size: 16px;
-	}
-	.padding_remove div#DataTables_Table_0_length {
-		font-size: 12px;
-		padding-top: 13px !important;
-	}
-}
-
-@media (max-width:767px){
 	.footer-section h2::before {
 		top: 24px;
 	}
@@ -1845,7 +1816,6 @@ input[type="file"]{
 	}
 }
 
-
 @media (max-width:640px){
 	.padding_remove div#DataTables_Table_0_filter {
 		padding-top: 0px !important;
@@ -1894,10 +1864,14 @@ input[type="file"]{
 
 }
 
-
-
-
 @media (max-width: 576px) {
+	.main-header button.main-btn {
+		display: flex;
+		align-items: center;
+	}
+	.main-header button.main-btn i.fa-solid.fa-caret-down {
+		padding-left: 8px;
+	}
 	.countries-section {
 		margin: 0px;
 	}
@@ -2498,7 +2472,6 @@ input[type="file"]{
 	}
 }
 
-
 @media (max-width:503px){
 	.padding_remove div#DataTables_Table_0_filter label {
 		float: right;
@@ -2515,6 +2488,14 @@ input[type="file"]{
 	}
 }
 
+@media screen and (min-device-width: 481px) and (max-device-width: 798px){
+	.employesss_tabs .filter-status ul li span {
+		font-size: 12px;
+	}
+	.employesss_tabs .filter-status ul {
+		gap: 13px !important;
+	}
+}
 
 @media (max-width:471px){
 	.padding_remove div#DataTables_Table_0_length {
@@ -2546,7 +2527,6 @@ input[type="file"]{
 	}
 }
 
-
 @media (max-width:442px){
 		.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
 			width: 100%;
@@ -2564,9 +2544,9 @@ input[type="file"]{
 		.padding_table div#DataTables_Table_1_filter label {
 			font-size: 11px;
 		}
-	}
+}
 
-	@media (max-width:412px){
+@media (max-width:412px){
 		.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
 			width: 100%;
 			margin-left: 0px;
@@ -2584,7 +2564,7 @@ input[type="file"]{
 
 
 
-	}
+}
 
 
 
@@ -3478,7 +3458,7 @@ li.last_border {
     background: #f7f7f7;
     background-image: url("../")
 }
-.main-header .main-btn {
+.main-header.login-wrapper .main-btn {
     padding: 8px 35px 8px 35px;
 }
 .category-section p {
