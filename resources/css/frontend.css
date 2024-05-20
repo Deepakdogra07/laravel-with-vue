@@ -1234,6 +1234,9 @@ input[type="file"]{
 	transform: translateY(-50%);
 	right: 15px !important;
 }
+.multiselect__tag{
+	margin-top: 5px;
+}
 /* 20-0524 CSS END */
 
 
