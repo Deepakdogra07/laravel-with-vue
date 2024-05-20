@@ -21,12 +21,12 @@ const props = defineProps({
     }
 })
 
-const skills = ref(''),
+const skill = ref(''),
 language = ref('');
 onMounted( () => {
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
-        skills.value += element.name +',';
+        skill.value += element.name +',';
     }
   });
   props.languages.forEach(element => {
@@ -35,7 +35,7 @@ onMounted( () => {
     }
   });
 })
-
+// console.log(skills,language);
 const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
 </script>
 
@@ -91,23 +91,23 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                         <div class="col-md-12 col-12">
                             <div class="Details">
                                 <h2>Details:</h2>
-                                <b>Position type</b>: <span>{{ job.position.name }}</span><br>
-                                <b>Seniority</b>:<span>{{ job.seniority.name }}</span><br>
-                                <b>Discipline</b>:<span>{{ job.discipline.name }}</span><br>
-                                <b>Overall work experience</b>:<span>{{ job.work_experience.experience }}</span><br>
-                                <b>Skills</b>:<span>{{ skills }}</span><br>
+                                <b>Position type</b>: <span>{{ job?.position?.name }}</span><br>
+                                <b>Seniority</b>:<span>{{ job?.seniority?.name }}</span><br>
+                                <b>Discipline</b>:<span>{{ job?.discipline?.name }}</span><br>
+                                <b>Overall work experience</b>:<span>{{ job?.work_experience?.experience }}</span><br>
+                                <b>Skills</b>:<span>{{ skill }}</span><br>
                                 <b>Languages</b>:<span>{{ language }}</span><br>
-                                <b>City</b>:<span>{{ job.city }}</span><br>
-                                <b>Postal Code</b>:<span>{{ job.pin_code }}</span><br>
-                                <b>Remote Work</b>:<span>{{ job.remote_work }}</span><br>
-                                <b>Industry</b>:<span>{{ job.industry.name }}</span><br>
-                                <b>Segment</b>:<span>{{ job.segment }}</span><br>
-                                <b>Positions</b>:<span>{{ job.positions }}</span><br>
-                                <b>Minimum and Maximum Salary</b>:<span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span><br>
+                                <b>City</b>:<span>{{ job?.city }}</span><br>
+                                <b>Postal Code</b>:<span>{{ job?.pin_code }}</span><br>
+                                <b>Remote Work</b>:<span>{{ job?.remote_work }}</span><br>
+                                <b>Industry</b>:<span>{{ job?.industry?.name }}</span><br>
+                                <b>Segment</b>:<span>{{ job?.segment }}</span><br>
+                                <b>Positions</b>:<span>{{ job?.positions }}</span><br>
+                                <b>Minimum and Maximum Salary</b>:<span>{{ job?.min_pay_range }} - {{ job?.max_pay_range }}</span><br>
                                 <b>Start Date</b>:<span>{{ date_ }}</span><br>
                             </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
-                            <div v-html="job.job_description"></div>
+                            <div v-html="job?.job_description"></div>
                             
                         </div>
                         <!-- <div class="col-md-6 col-12">
