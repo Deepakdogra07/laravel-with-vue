@@ -1225,9 +1225,7 @@ input[type="file"]{
 /* employment from css end */
 
 /* 20-0524 CSS START */
-.add-job-form-section{
-	padding: 20px 10px;
-}
+
 .multiselect__select::before{
 	position: absolute !important;
 	top: 50% !important;
@@ -1239,7 +1237,14 @@ input[type="file"]{
 }
 /* 20-0524 CSS END */
 
-
+@media (min-width: 1440px) {
+	.main-header .navbar-brand, .footer-logo-sec{
+		width: 220px;
+	}
+	.unstoppable_second .unstoppable-middle img{
+		width: 200px !important;
+	}
+}
 
 @media (max-width:1300px){
 	.padding_table table#DataTables_Table_1, .padding_table table#DataTables_Table_1 tr, .padding_table table#DataTables_Table_1 td, .padding_table table#DataTables_Table_1 thead, .padding_table table#DataTables_Table_1 tbody, .padding_table table#DataTables_Table_1 tbody tr td {
@@ -2486,6 +2491,9 @@ input[type="file"]{
 	}
 	.filter-status ul{
 		gap: 20px;
+	}
+	.add-job-form-section{
+		padding: 20px 10px;
 	}
 }
 
