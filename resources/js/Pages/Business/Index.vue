@@ -87,37 +87,39 @@ const deletejob = async (id) => {
         </div>
         <div class="login-bg-wrapper">
             <div class="container">
-                <div class="filter-status">
-                    <div class="d-flex justify-between">
-                        <ul class="d-flex align-items-center flex-wrap pl-0">
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
-                                    Active</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 2 }" @click="setActiveSpan(2)">12 Awaiting
-                                    Review</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 3 }" @click="setActiveSpan(3)">2
-                                    Reviewed</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 4 }" @click="setActiveSpan(4)">2
-                                    Contacted</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 5 }" @click="setActiveSpan(5)">0 Hired</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 6 }" @click="setActiveSpan(6)">22
-                                    Rejected</span>
-                            </li>
-                            
-                        </ul>
-                        <div class="login-section-desk">
-                            <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
+                <div class="filter-status row">
+                    <div class="col-md-11">
+                        <div class="d-flex justify-between align-items-center">
+                            <ul class="d-flex align-items-center flex-wrap pl-0">
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
+                                        Active</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 2 }" @click="setActiveSpan(2)">12 Awaiting
+                                        Review</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 3 }" @click="setActiveSpan(3)">2
+                                        Reviewed</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 4 }" @click="setActiveSpan(4)">2
+                                        Contacted</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 5 }" @click="setActiveSpan(5)">0 Hired</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 6 }" @click="setActiveSpan(6)">22
+                                        Rejected</span>
+                                </li>
+                                
+                            </ul>
                         </div>
+                    </div>
+                    <div class="col-md-1 login-section-desk text-end">
+                        <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                     </div>
                 </div>
                 <!-- <div class="main-job-filter mt-5">
