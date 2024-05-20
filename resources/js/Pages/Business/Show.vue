@@ -88,26 +88,68 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
             <div class="job-detail-content mt-4">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="Details">
                                 <h2>Details:</h2>
-                                <b>Position type</b>: <span>{{ job?.position?.name }}</span><br>
-                                <b>Seniority</b>:<span>{{ job?.seniority?.name }}</span><br>
-                                <b>Discipline</b>:<span>{{ job?.discipline?.name }}</span><br>
-                                <b>Overall work experience</b>:<span>{{ job?.work_experience?.experience }}</span><br>
-                                <b>Skills</b>:<span>{{ skill }}</span><br>
-                                <b>Languages</b>:<span>{{ language }}</span><br>
-                                <b>City</b>:<span>{{ job?.city }}</span><br>
-                                <b>Postal Code</b>:<span>{{ job?.pin_code }}</span><br>
-                                <b>Remote Work</b>:<span>{{ job?.remote_work }}</span><br>
-                                <b>Industry</b>:<span>{{ job?.industry?.name }}</span><br>
-                                <b>Segment</b>:<span>{{ job?.segment }}</span><br>
-                                <b>Positions</b>:<span>{{ job?.positions }}</span><br>
-                                <b>Minimum and Maximum Salary</b>:<span>{{ job?.min_pay_range }} - {{ job?.max_pay_range }}</span><br>
-                                <b>Start Date</b>:<span>{{ date_ }}</span><br>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Position type :</p>
+                                    <p class=" text-end">{{ job?.position?.name }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Seniority :</p>
+                                    <p class=" text-end">{{ job?.seniority?.name }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Discipline :</p>
+                                    <p class=" text-end">{{ job?.discipline?.name }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Overall work experience :</p>
+                                    <p class=" text-end">{{ job?.work_experience?.experience }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Skills :</p>
+                                    <p class=" text-end">{{ skill }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Languages :</p>
+                                    <p class=" text-end">{{ language }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">City :</p>
+                                    <p class=" text-end">{{ job?.city }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Postal Code :</p>
+                                    <p class=" text-end">{{ job?.pin_code }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Remote Work :</p>
+                                    <p class=" text-end">{{ job?.remote_work }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Industry :</p>
+                                    <p class=" text-end">{{ job?.industry?.name }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Segment :</p>
+                                    <p class=" text-end">{{ job?.segment }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Positions :</p>
+                                    <p class=" text-end">{{ job?.positions }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Minimum and Maximum Salary :</p>
+                                    <p class=" text-end">{{ job?.min_pay_range }} - {{ job?.max_pay_range }}</p>
+                                </div>
+                                <div class="d-flex align-items-center justify-between">
+                                    <p class="getIn-touch">Start Date :</p>
+                                    <p class=" text-end">{{ job?.min_pay_range }} - {{ job?.max_pay_range }}</p>
+                                </div>
                             </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
-                            <div v-html="job?.job_description"></div>
+                            <!-- <div v-html="job?.job_description"></div> -->
                             
                         </div>
                         <!-- <div class="col-md-6 col-12">

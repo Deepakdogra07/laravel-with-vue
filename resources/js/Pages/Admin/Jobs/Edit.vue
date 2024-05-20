@@ -323,6 +323,14 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
+                            <div class="mt-4 spacing_btm new-job-description">
+                                <label for="job_description">Job Description<span class="text-danger">*</span></label>
+                                <div class="eye-icon-div mt-2">
+                                    <QuillEditor contentType="html" toolbar="essential"
+                                        v-model:content="form.job_description" placeholder="Enter Job Description" />
+                                </div>
+                                <InputError class="mt-2" :message="form.errors.job_description" />
+                            </div>
                             <!-- </div> -->
                         </div>
                         <div class="col-md-6">
@@ -361,22 +369,11 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.requirements" />
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mt-4 spacing_btm">
-                                <label for="job_description">Job Description<span class="text-danger">*</span></label>
-                                <div class="eye-icon-div">
-                                    <QuillEditor contentType="html" toolbar="essential"
-                                        v-model:content="form.job_description" placeholder="Enter Job Description" />
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.job_description" />
-                            </div>
-                        </div>
-
                         <div class="col-md-6 country_input">
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  " aria-label="Default select example"
+                                    <select class="form-select  mt-2" aria-label="Default select example"
                                         v-model="form.job_country">
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{

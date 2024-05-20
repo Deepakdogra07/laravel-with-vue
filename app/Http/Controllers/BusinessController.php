@@ -12,6 +12,7 @@ use App\Models\Position;
 use App\Models\Discipline;
 use App\Models\FooterData;
 use App\Models\Industries;
+use App\Rules\MaxWords;
 use App\Models\Seniorities;
 use Illuminate\Http\Request;
 use App\Models\CustomerStatus;
@@ -48,10 +49,10 @@ class BusinessController extends Controller
             "job_title" => 'required',
             "job_image" => 'required',
             "job_description" => 'required',
-            "posting_summary" => 'required',
-            "detail" => 'required',
-            "conditions" => 'required',
-            "requirements" => 'required',
+            "posting_summary" =>  ['required', new MaxWords(30)],
+            "detail" => ['required', new MaxWords(30)],
+            "conditions" => ['required', new MaxWords(30)],
+            "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
@@ -77,8 +78,8 @@ class BusinessController extends Controller
             'skills_id.required' => 'The skills field is required.',
             'language_id.required' => 'The language field is required.',
             'industry_id.required' => 'The industry field is required.',
-            'posting_summary.required' => 'The job posting summary field is required.',
             'job_country.required' => 'The country field is required.',
+            'posting_summary.required' => 'The job posting summary field is required.',
         ]);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
@@ -127,10 +128,10 @@ class BusinessController extends Controller
             "job_title" => 'required',
             "job_image" => 'required',
             "job_description" => 'required',
-            "posting_summary" => 'required',
-            "detail" => 'required',
-            "conditions" => 'required',
-            "requirements" => 'required',
+            "posting_summary" =>  ['required', new MaxWords(30)],
+            "detail" => ['required', new MaxWords(30)],
+            "conditions" => ['required', new MaxWords(30)],
+            "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
