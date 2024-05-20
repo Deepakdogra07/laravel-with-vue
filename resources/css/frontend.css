@@ -1075,7 +1075,7 @@ input[type="file"]{
 	color: #000;
 }
 .filter-status ul{
-	gap: 40px !important;
+	gap: 40px;
 	padding-bottom: 12px;
 	border-bottom: 2px solid #E9E9EA;
 }
@@ -1224,6 +1224,11 @@ input[type="file"]{
 }
 /* employment from css end */
 
+/* 20-0524 CSS START */
+.add-job-form-section{
+	padding: 20px 10px;
+}
+/* 20-0524 CSS END */
 
 
 
@@ -2470,6 +2475,9 @@ input[type="file"]{
 	.video-section .container p:last-child {
 		margin-top: 0px !important;
 	}
+	.filter-status ul{
+		gap: 20px;
+	}
 }
 
 @media (max-width:503px){
@@ -2486,6 +2494,7 @@ input[type="file"]{
 	.padding_table div#DataTables_Table_1_filter label {
 		font-size: 12px;
 	}
+	
 }
 
 @media screen and (min-device-width: 481px) and (max-device-width: 798px){
