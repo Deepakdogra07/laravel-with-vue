@@ -367,7 +367,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.requirements" />
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="mt-4 spacing_btm">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div">
@@ -376,9 +376,9 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
-                        </div> -->
+                        </div>
 
-                        <!-- <div class="col-md-6 country_input">
+                        <div class="col-md-6 country_input">
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
@@ -391,7 +391,7 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_country" />
                             </div>
-                        </div> -->
+                        </div>
 
                         <div class="col-12 mt-4 file_upload">
                             <div class="file-inputs mt-3 relative">
