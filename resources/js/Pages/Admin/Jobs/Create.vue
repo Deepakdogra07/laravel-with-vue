@@ -14,7 +14,8 @@ import Checkbox from '@/Components/Checkbox.vue';
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
-// import CurrencyList from 'currency-list'
+import '@vuepic/vue-datepicker/dist/main.css'; 
+import VueDatePicker from '@vuepic/vue-datepicker'; 
 
 
 
@@ -92,6 +93,15 @@ const submit = () => {
       },
     });
 };
+const today = new Date();
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+   var month1 = (month <=9) ?`0${month}`:month;
+   form.job_start_date = `${year}-${month1}-${day}`;
+  return `${year}/${month1}/${day}`;
+}
 </script>
 <template>
   <AuthenticatedLayout>
@@ -203,8 +213,9 @@ const submit = () => {
                             <div class="mt-4">
                                 <span class="label text-label">Start Date<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <TextInput type="date" id="start_Date" v-model="form.job_start_date"
-                                        placeholder="Enter Start Date" class="form-control mt-2  " />
+                                    <!-- <TextInput type="date" id="start_Date" v-model="form.job_start_date"
+                                        placeholder="Enter Start Date" class="form-control mt-2  " /> -->
+                                        <VueDatePicker  placeholder="Select Start Date" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
@@ -236,6 +247,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
                             </div>
                             <div class="mt-4">
+
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -388,6 +400,7 @@ const submit = () => {
                                     <input class="upload" type="file" id="banner" @change="selectFile($event)" />
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="form.errors.job_image"/>
                         </div>
                         <div class="col-12 ">
                             <div class="flex items-center justify-center mt-4 login-btn-main">
