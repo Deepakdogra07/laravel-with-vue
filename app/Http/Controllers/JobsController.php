@@ -112,18 +112,25 @@ class JobsController extends Controller
       }
       $skills = [];
       $languages = [];
+      $industries = [];
       foreach ($request->skills_id as $skill) {
          $skills[] = $skill['id'];
       }
       foreach ($request->language_id as $language) {
          $languages[] = $language['id'];
       }
+      foreach ($request->industry_id as $industry) {
+         $industries[] = $industry['id'];
+      }
+      //   dd($industries);
       $skills = json_encode($skills);
       $languages = json_encode($languages);
+      $industries = json_encode($industries);
       $job = new Jobs();
       $job->fill($request->except('skills_id'));
       $job->skills_id = $skills;
       $job->language_id = $languages;
+      $job->industry_id = $industries;
       if ($request->hasFile('job_image')) {
          $image = $request->file('job_image');
          $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
@@ -131,6 +138,7 @@ class JobsController extends Controller
          $job->job_image = '/storage/jobs/' . $name;
       }
       $job->user_id = auth()->user()->id;
+
       $job->save();
       return to_route('jobs.index');
    }
