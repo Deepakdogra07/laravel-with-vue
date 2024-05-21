@@ -81,13 +81,13 @@ function handleVideoInput2(event) {
                 class="block w-full mt-1 form-control"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
             </div>
-            <div class="mt-4 col-md-6">
+            <!-- <div class="mt-4 col-md-6">
               <label for="name">Image<span class="text-danger">*</span></label>
               <input @change="handleFileInput1" type="file" required accept="image/*"  placeholder="Enter Name"
                 class="block w-full mt-1 form-control" autocomplete="name" />
                 <img v-bind:src='url' alt="" class="mt-2">
               <div v-if="errors.image" class="text-danger">{{ errors.image }}</div>
-            </div>
+            </div> -->
             <div class="mt-4 col-md-6">
               <label for="name">Video</label>
               <input type="file" accept="video/*" @change="handleVideoInput2" placeholder="Enter Name"

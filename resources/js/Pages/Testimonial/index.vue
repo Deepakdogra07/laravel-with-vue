@@ -55,6 +55,14 @@ const testimonialDelete = async (id) => {
 const testimonialedit = (id)=>{
     router.get(`testimonial/${id}/edit`);
 }
+
+function splitStringIntoChunks(inputString, chunkSize = 100) {
+  const chunks = [];
+  for (let i = 0; i < inputString.length; i += chunkSize) {
+    chunks.push(inputString.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -77,7 +85,7 @@ const testimonialedit = (id)=>{
                               <tr>
                                   <th class="d-none">ID</th>
                                   <th>Name</th>
-                                  <th>Image</th>
+                                  <!-- <th>Image</th> -->
                                   <th>Description</th>
                                   <th>Status</th>
                                   <th>Actions</th>
@@ -87,12 +95,12 @@ const testimonialedit = (id)=>{
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
                                   <td class="d-none">{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
-                                  <td>
+                                  <!-- <td>
                                     <div class="image_sections_testimonial">
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
-                                  </td>
-                                  <td>{{ testimonialRecord.description }}</td>
+                                  </td> -->
+                                  <td v-html="splitStringIntoChunks(testimonialRecord.description)"></td>
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>

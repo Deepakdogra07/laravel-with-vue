@@ -3713,14 +3713,14 @@ ul.details_lists {
 }
 
 /*testimonial admin Page*/
-.testimonial_spacing table#DataTables_Table_0, .testimonial_spacing table#DataTables_Table_0 tr, .testimonial_spacing table#DataTables_Table_0 td td {
+/* .testimonial_spacing table#DataTables_Table_0, .testimonial_spacing table#DataTables_Table_0 tr, .testimonial_spacing table#DataTables_Table_0 td td {
     width: 100% !important;
     display: block;
 }
 .testimonial_spacing table#DataTables_Table_0 td {
     white-space: wrap;
 	width: auto;
-}
+} */
 
 /* .testimonial_spacing table#DataTables_Table_0 td {
     white-space: break-spaces !important;
