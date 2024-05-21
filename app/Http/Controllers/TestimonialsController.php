@@ -37,12 +37,13 @@ class TestimonialsController extends Controller
         
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             'content' => 'required',
+            'video'=>'required',
             'description' =>["required ",new MaxWords(250)],
         ],[
             'name.required' => 'Name is must.',
-            'image.required' => 'Image is must.',
+            // 'image.required' => 'Image is must.',
             'content.required' => 'Content is must.',
         ]);
         
