@@ -43,6 +43,7 @@ onMounted( () => {
         language.value += element.name +',';
     }
   });
+  
 })
 // console.log(skills,language);
 const date_ = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
@@ -107,16 +108,16 @@ function job_description(description){
                             <div class="Details">
                                 <h2>Details</h2>
                                 <ul class="details_lists pl-0">
-                                    <li><b>Position type</b> <span>{{ job.position.name }}</span></li>
-                                    <li><b>Seniority</b><span>{{ job.seniority.name }}</span></li>
-                                    <li><b>Discipline</b><span>{{ job.discipline.name }}</span></li>
-                                    <li><b>Overall work experience</b><span>{{ job.work_experience.experience }}</span></li>
+                                    <li><b>Position type</b> <span>{{ job?.position?.name }}</span></li>
+                                    <li><b>Seniority</b><span>{{ job?.seniority?.name }}</span></li>
+                                    <li><b>Discipline</b><span>{{ job?.discipline?.name }}</span></li>
+                                    <li><b>Overall work experience</b><span>{{ job?.work_experience?.experience }}</span></li>
                                     <li><b>Skills</b><span>{{ skills }}</span></li>
                                     <li><b>Languages</b><span>{{ language }}</span></li>
                                     <li><b>City</b><span>{{ job.city }}</span></li>
                                     <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
                                     <li><b>Remote Work</b><span>{{ job.remote_work }}</span></li>
-                                    <li><b>Industry</b><span>{{ job.industry.name }}</span></li>
+                                    <li><b>Industry</b><span>{{ industry }}</span></li>
                                     <li><b>Segment</b><span>{{ job.segment }}</span></li>
                                     <li><b>Positions</b><span>{{ job.positions }}</span></li>
                                     <li><b>Minimum and Maximum Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>

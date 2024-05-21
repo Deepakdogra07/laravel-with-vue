@@ -18,6 +18,9 @@ const props = defineProps({
     },
     languages:{
         type:Array
+    },
+    industries:{
+        type:Array
     }
 })
 function job_description(description){
@@ -25,7 +28,8 @@ function job_description(description){
     return job_description;
 }
 const skills = ref(''),
-language = ref('');
+language = ref(''),
+industry = ref('');
 onMounted( () => {
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
@@ -35,6 +39,11 @@ onMounted( () => {
   props.languages.forEach(element => {
     if(props.job.language_id.includes(element.id)){
         language.value += element.name +',';
+    }
+  });
+  props.industries.forEach(element => {
+    if(props.job.language_id.includes(element.id)){
+        industry.value += element.name +',';
     }
   });
 });
@@ -73,16 +82,16 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                             <div class="Details">
                                 <h2>Details</h2>
                                 <ul class="details_lists pl-0">
-                                    <li><b>Position type</b> <span>{{ job.position.name }}</span></li>
-                                    <li><b>Seniority</b><span>{{ job.seniority.name }}</span></li>
-                                    <li><b>Discipline</b><span>{{ job.discipline.name }}</span></li>
-                                    <li><b>Overall work experience</b><span>{{ job.work_experience.experience }}</span></li>
+                                    <li><b>Position type</b> <span>{{ job?.position?.name }}</span></li>
+                                    <li><b>Seniority</b><span>{{ job?.seniority?.name }}</span></li>
+                                    <li><b>Discipline</b><span>{{ job?.discipline?.name }}</span></li>
+                                    <li><b>Overall work experience</b><span>{{ job?.work_experience?.experience }}</span></li>
                                     <li><b>Skills</b><span>{{ skills }}</span></li>
                                     <li><b>Languages</b><span>{{ language }}</span></li>
                                     <li><b>City</b><span>{{ job.city }}</span></li>
                                     <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
                                     <li><b>Remote Work</b><span>{{ job.remote_work }}</span></li>
-                                    <li><b>Industry</b><span>{{ job.industry.name }}</span></li>
+                                    <li><b>Industry</b><span>{{ industry }}</span></li>
                                     <li><b>Segment</b><span>{{ job.segment }}</span></li>
                                     <li><b>Positions</b><span>{{ job.positions }}</span></li>
                                     <li><b>Minimum and Maximum Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
