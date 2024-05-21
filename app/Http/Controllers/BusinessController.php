@@ -43,7 +43,6 @@ class BusinessController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all());
 
         $validate = Validator::make($request->all(), [
             "job_title" => 'required',
