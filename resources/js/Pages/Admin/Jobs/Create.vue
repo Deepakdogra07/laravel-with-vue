@@ -42,6 +42,9 @@ const props = defineProps({
   disciplines: {
     type: Array
   },
+  currencies:{
+    type:Array
+  }
 
 });
 const countries = countryStateCity.Country.getAllCountries(),
@@ -72,6 +75,7 @@ const form = useForm({
   min_pay_range: null,
   max_pay_range: null,
   job_start_date: null,
+  currency_id:null
 });
 
 function selectFile(event){
@@ -117,7 +121,7 @@ const format = (date) => {
                     <div class="row add-job-form-section">
                         <div class="col-md-6">
                             <div class="mt-4   ">
-                                <span class="label text-label">Job Title<span style="color:red"> *</span></span>
+                                <span class="label text-label">Job Title <span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
                                         placeholder="Enter job title" class="form-control mt-2" />
@@ -153,7 +157,7 @@ const format = (date) => {
                             <div class="mt-4">
                                 <span class="label text-label">Positions<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <TextInput type="number" id="positions" v-model="form.positions"
+                                    <TextInput type="text" id="positions" v-model="form.positions"
                                         placeholder="Enter Postions" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
@@ -172,6 +176,21 @@ const format = (date) => {
                                     </select>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4">
+                                <span class="label text-label">Currency<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                        v-model="form.currency_id">
+                                        <option selected :value="null">Select Currency</option>
+                                        <option v-for="(position, index) in currencies" :key="index"
+                                            :value="position.id"> {{ position.country }} ({{
+                                                position.symbol }})</option>
+                                    </select>
+                                    <InputError class="mt-2" :message="form.errors.currency_id" />
+                                </div>
                             </div>
                         </div>
 
@@ -215,7 +234,7 @@ const format = (date) => {
                                 <div class="eye-icon-div">
                                     <!-- <TextInput type="date" id="start_Date" v-model="form.job_start_date"
                                         placeholder="Enter Start Date" class="form-control mt-2  " /> -->
-                                        <VueDatePicker  placeholder="Select Start Date" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks" />
+                                        <VueDatePicker v-model="form.job_start_date" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
@@ -244,10 +263,13 @@ const format = (date) => {
                                         placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
                                 </div>
+                                <div>
+                                    <h4>Recommended Skills:</h4>
+                                    <div></div>
+                                </div>
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
                             </div>
                             <div class="mt-4">
-
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -269,7 +291,7 @@ const format = (date) => {
                             <div class="mt-4">
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
-                                    <TextInput id="pin_code" type="number" v-model="form.pin_code"
+                                    <TextInput id="pin_code" type="text" v-model="form.pin_code"
                                         placeholder="Enter Pin Code" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.pin_code" />
                                 </div>
@@ -312,13 +334,17 @@ const format = (date) => {
                             <div class="mt-4">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
-                                    <select class="form-select  " aria-label="Default select example"
+                                    <!-- <select class="form-select  " aria-label="Default select example"
                                         v-model="form.industry_id">
                                         <option selected :value="null">Select Industry</option>
                                         <option v-for="(position, index) in industries" :key="index"
                                             :value="position.id">{{ position.name }}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <multiselect v-model="form.industry_id" :options="props.industries" :multiple="true"
+                                        :close-on-select="false" :clear-on-select="false" :preserve-search="true"
+                                        placeholder="Select Industries" label="name" track-by="name">
+                                    </multiselect>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
@@ -345,10 +371,10 @@ const format = (date) => {
                                 <InputError class="mt-2" :message="form.errors.detail" />
                             </div> -->
                             <div class="mt-4 spacing_btm new-job-description">
-                                <label for="job_description">Details of the Job<span class="text-danger">*</span></label>
+                                <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
                                 <div class="eye-icon-div mt-2">
                                     <QuillEditor contentType="html" toolbar="essential"
-                                        v-model:content="form.job_description"  placeholder="Enter Details of the Job" />
+                                        v-model:content="form.job_description" placeholder="Enter Details of the Job" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
