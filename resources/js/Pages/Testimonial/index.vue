@@ -77,9 +77,9 @@ const testimonialedit = (id)=>{
                               <tr>
                                   <th class="d-none">ID</th>
                                   <th>Name</th>
-                                  <th>Image</th>
-                                  <th>Description</th>
-                                  <th>Status</th>
+                                  <th><div class="image_div">Image</div></th>
+                                  <th><div class="description_width">Description</div></th>
+                                  <th><div class="status_th">Status</div></th>
                                   <th>Actions</th>
                               </tr>
                           </thead>
@@ -92,7 +92,7 @@ const testimonialedit = (id)=>{
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td>
-                                  <td>{{ testimonialRecord.description }}</td>
+                                  <td><div class="description_width">{{ testimonialRecord.description }}</div></td>
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>

@@ -36,7 +36,7 @@ function dateTime(created_at) {
 <template>
     <Header />
     <SubHeading />
-    <div class="login-bg-wrapper">
+    <div class="login-bg-wrapper list_of_jobs">
         <div class="container">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
                 <div class="job-listing-cards relative" v-if="jobs.length > 0" v-for="(job) in props.jobs" :key="job.id">

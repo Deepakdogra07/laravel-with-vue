@@ -85,7 +85,7 @@ const deletejob = async (id) => {
                 </div>
             </div>
         </div>
-        <div class="login-bg-wrapper">
+        <div class="login-bg-wrapper business_job_details">
             <div class="container">
                 <div class="filter-status row">
                     <div class="col-md-11 width_mobile">
