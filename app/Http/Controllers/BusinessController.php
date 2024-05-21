@@ -50,7 +50,7 @@ class BusinessController extends Controller
             "job_image" => 'required',
             "job_description" => 'required',
             "posting_summary" =>  ['required', new MaxWords(30)],
-            "detail" => ['required', new MaxWords(30)],
+            // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
@@ -80,6 +80,7 @@ class BusinessController extends Controller
             'industry_id.required' => 'The industry field is required.',
             'job_country.required' => 'The country field is required.',
             'posting_summary.required' => 'The job posting summary field is required.',
+            'job_description.required' => 'The details of the job field is required.'
         ]);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
@@ -129,7 +130,7 @@ class BusinessController extends Controller
             "job_image" => 'required',
             "job_description" => 'required',
             "posting_summary" =>  ['required', new MaxWords(30)],
-            "detail" => ['required', new MaxWords(30)],
+            // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
@@ -148,17 +149,18 @@ class BusinessController extends Controller
             "max_pay_range" => 'required',
             "job_start_date" => 'required',
         ], [
-            'min_pay_range.required' => 'The minimum salary  field is required.',
-            'max_pay_range.required' => 'The maximum salary  field is required.',
-            'position_id.required' => 'The position type field is required.',
-            'seniority_id.required' => 'The seniority field is required.',
-            'discipline_id.required' => 'The discipline field is required.',
-            'work_experience_id.required' => 'The overall work experience field is required.',
-            'skills_id.required' => 'The skills field is required.',
-            'language_id.required' => 'The language field is required.',
-            'industry_id.required' => 'The industry field is required.',
-            'job_country.required' => 'The country field is required.',
-            'posting_summary.required' => 'The job posting summary field is required.',
+            'min_pay_range.required' => 'The minimum salary  is required.',
+            'max_pay_range.required' => 'The maximum salary  is required.',
+            'position_id.required' => 'The position type is required.',
+            'seniority_id.required' => 'The seniority is required.',
+            'discipline_id.required' => 'The discipline is required.',
+            'work_experience_id.required' => 'The overall work experience is required.',
+            'skills_id.required' => 'The skills is required.',
+            'language_id.required' => 'The language is required.',
+            'industry_id.required' => 'The industry is required.',
+            'job_country.required' => 'The country is required.',
+            'posting_summary.required' => 'The job posting summary  is required.',
+            'job_description.required' => 'The details of the job  is required.'
         ]);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();

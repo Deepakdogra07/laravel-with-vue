@@ -323,14 +323,14 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
-                            <div class="mt-4 spacing_btm new-job-description">
+                            <!-- <div class="mt-4 spacing_btm new-job-description">
                                 <label for="job_description">Job Description<span class="text-danger">*</span></label>
                                 <div class="eye-icon-div mt-2">
                                     <QuillEditor contentType="html" toolbar="essential"
                                         v-model:content="form.job_description" placeholder="Enter Job Description" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_description" />
-                            </div>
+                            </div> -->
                             <!-- </div> -->
                         </div>
                         <div class="col-md-6">
@@ -343,14 +343,13 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.posting_summary" />
                             </div>
-                            <div class="mt-4   ">
-                                <span class="label text-label">Details of the Job<span style="color:red">
-                                        *</span></span>
-                                <div class="eye-icon-div">
-                                    <textarea id="details" rows="5" type="text" v-model="form.detail"
-                                        placeholder="Enter Details of the Job" class="form-control mt-2" />
+                            <div class="mt-4 spacing_btm new-job-description">
+                                <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
+                                <div class="eye-icon-div mt-2">
+                                    <QuillEditor contentType="html" toolbar="essential"
+                                        v-model:content="form.job_description" placeholder="Enter Details of the Job" />
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.detail" />
+                                <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
                             <div class="mt-4   ">
                                 <span class="label text-label">Conditions<span style="color:red"> *</span></span>

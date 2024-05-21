@@ -48,7 +48,7 @@ class JobsController extends Controller
          "job_image" => 'required',
          "job_description" => 'required',
          "posting_summary" =>  ['required', new MaxWords(30)],
-         "detail" => ['required', new MaxWords(30)],
+         // "detail" => ['required', new MaxWords(30)],
          "conditions" => ['required', new MaxWords(30)],
          "requirements" => ['required', new MaxWords(30)],
          "language_id" => 'required',
@@ -126,7 +126,7 @@ class JobsController extends Controller
          "job_image" => 'required',
          "job_description" => 'required',
          "posting_summary" =>  ['required', new MaxWords(30)],
-         "detail" => ['required', new MaxWords(30)],
+         // "detail" => ['required', new MaxWords(30)],
          "conditions" => ['required', new MaxWords(30)],
          "requirements" => ['required', new MaxWords(30)],
          "language_id" => 'required',
@@ -156,6 +156,7 @@ class JobsController extends Controller
          'industry_id.required' => 'The industry field is required.',
          'job_country.required' => 'The country field is required.',
          'posting_summary.required' => 'The job posting summary field is required.',
+         'job_description.required' => 'The details of the job field is required.'
      ]);
             if($validate->fails()){
                return back()->withErrors($validate->errors())->withInput();
