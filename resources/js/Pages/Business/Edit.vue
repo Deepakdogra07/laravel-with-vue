@@ -198,7 +198,7 @@ const submit = () => {
                         </div>
 
                         <div class="col-md-6">
-                            <div class="mt-4 ">
+                            <div class="mt-4">
                                 <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
                                         *</span></span>
                                 <div class="row">
