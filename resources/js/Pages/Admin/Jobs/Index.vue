@@ -74,7 +74,7 @@ const deletejob = async (id) => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2 padding_remove border_index">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class=" text-black-900 padding_remove">
+                    <div class=" text-black-900 padding_remove  table-responsive">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
