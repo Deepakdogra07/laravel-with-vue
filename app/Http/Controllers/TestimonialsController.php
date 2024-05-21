@@ -113,6 +113,7 @@ class TestimonialsController extends Controller
            if($testimonialUpdate){
                 $testimonialUpdate->name = $request->name;
                 $testimonialUpdate->content = $request->content;
+                $testimonialUpdate->description = $request->description;
                 $testimonialUpdate->status = ($request->status =="1") ? 1 :0;
             if ($request->hasFile('image') && $testimonialUpdate->image_link != $request->image ) {
                 if (public_path($testimonialUpdate->image_link)) {
