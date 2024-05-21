@@ -18,15 +18,24 @@ const props = defineProps({
     },
     languages:{
         type:Array
+    },
+    industries:{
+        type:Array
     }
 })
 
 const skill = ref(''),
-language = ref('');
+language = ref(''),
+industry = ref('');
 onMounted( () => {
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
         skill.value += element.name +',';
+    }
+  });
+  props.industries.forEach(element => {
+    if(props.job.skills_id.includes(element.id)){
+        industry.value += element.name +',';
     }
   });
   props.languages.forEach(element => {
@@ -36,7 +45,7 @@ onMounted( () => {
   });
 })
 // console.log(skills,language);
-const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
+const date_ = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
 </script>
 
 <template>
@@ -129,7 +138,7 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                                 </div>
                                 <div class="d-flex align-items-center justify-between">
                                     <p class="getIn-touch">Industry :</p>
-                                    <p class=" text-end">{{ job?.industry?.name }}</p>
+                                    <p class=" text-end">{{ industry }}</p>
                                 </div>
                                 <div class="d-flex align-items-center justify-between">
                                     <p class="getIn-touch">Segment :</p>
@@ -145,7 +154,7 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                                 </div>
                                 <div class="d-flex align-items-center justify-between">
                                     <p class="getIn-touch">Start Date :</p>
-                                    <p class=" text-end">{{ job?.min_pay_range }} - {{ job?.max_pay_range }}</p>
+                                    <p class=" text-end" v-html="date_"></p>
                                 </div>
                             </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->

@@ -53,6 +53,9 @@ const props = defineProps({
     disciplines: {
         type: Array
     },
+    currencies:{
+        type:Array
+    }
 
 });
 const countries = countryStateCity.Country.getAllCountries(),
@@ -83,6 +86,7 @@ const form = useForm({
     min_pay_range: null,
     max_pay_range: null,
     job_start_date: null,
+    currency_id:null,
 });
 
 function selectFile(event) {
@@ -157,8 +161,8 @@ const submit = () => {
                             <div class="mt-4">
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <TextInput type="number" id="positions" v-model="form.positions"
-                                        placeholder="Enter Position" class="form-control mt-2  " />
+                                    <TextInput type="text" id="positions" v-model="form.positions"
+                                        placeholder="Enter Postions" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
@@ -176,6 +180,21 @@ const submit = () => {
                                     </select>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mt-4">
+                                <span class="label text-label">Currency<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                        v-model="form.currency_id">
+                                        <option selected :value="null">Select Currency</option>
+                                        <option v-for="(position, index) in currencies" :key="index"
+                                            :value="position.id"> {{ position.country }} ({{
+                                                position.symbol }})</option>
+                                    </select>
+                                    <InputError class="mt-2" :message="form.errors.currency_id" />
+                                </div>
                             </div>
                         </div>
 
@@ -248,6 +267,10 @@ const submit = () => {
                                         placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
                                 </div>
+                                <div>
+                                    <h4>Recommended Skills:</h4>
+                                    <div></div>
+                                </div>
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
                             </div>
                             <div class="mt-4">
@@ -315,13 +338,17 @@ const submit = () => {
                             <div class="mt-4">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
-                                    <select class="form-select  " aria-label="Default select example"
+                                    <!-- <select class="form-select  " aria-label="Default select example"
                                         v-model="form.industry_id">
                                         <option selected :value="null">Select Industry</option>
                                         <option v-for="(position, index) in industries" :key="index"
                                             :value="position.id">{{ position.name }}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <multiselect v-model="form.industry_id" :options="props.industries" :multiple="true"
+                                        :close-on-select="false" :clear-on-select="false" :preserve-search="true"
+                                        placeholder="Select Industries" label="name" track-by="name">
+                                    </multiselect>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
@@ -403,6 +430,7 @@ const submit = () => {
                                     <input class="upload" type="file" id="banner" @change="selectFile($event)" />
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="form.errors.job_image"/>
                         </div>
                         <div class="col-12 ">
                             <div class="flex items-center justify-center mt-4 login-btn-main">
