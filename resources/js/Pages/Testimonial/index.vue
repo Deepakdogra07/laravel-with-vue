@@ -56,12 +56,12 @@ const testimonialedit = (id)=>{
     router.get(`testimonial/${id}/edit`);
 }
 
-function splitStringIntoChunks(inputString, chunkSize = 100) {
-  const chunks = [];
+function splitStringIntoChunks(inputString, chunkSize = 70) {
+  let result = '';
   for (let i = 0; i < inputString.length; i += chunkSize) {
-    chunks.push(inputString.slice(i, i + chunkSize));
+    result += inputString.slice(i, i + chunkSize) + '<br>';
   }
-  return chunks;
+  return result;
 }
 </script>
 <template>
