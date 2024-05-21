@@ -3825,3 +3825,12 @@ ul.job_recommenrded_skills li {
     color: #01796F;
     margin-top: 10px;
 }
+.contactUs-section a.forms-btn:hover, .login-btn-main .forms-btn:hover {
+    background: #09332b;
+}
+.new-job-description .ql-container.ql-snow {
+    height: 75px;
+}
+.travel-section a.forms-btn-transparent.step-form-back:hover {
+    border-color: #000;
+}
