@@ -90,6 +90,18 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                             </div>
                             <!-- <h2 class="mb-2 semibold">Details of the job</h2> -->
                             <div v-html="job_description(job.job_description)"></div>
+                            <div class="requirement">
+                                <h2>Requirements:</h2>
+                                <div v-html="(job.requirements)"></div>
+                            </div>
+                            <div class="Posting_Summary">
+                                <h2>Posting Summary:</h2>
+                                <div v-html="(job.posting_summary)"></div>
+                            </div>
+                            <div class="conditions">
+                                <h2>Conditions:</h2>
+                                <div v-html="(job.conditions)"></div>
+                            </div>
                             
                         </div>
                        
