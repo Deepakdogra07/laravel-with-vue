@@ -9,10 +9,12 @@ import { Link } from '@inertiajs/vue3';
 <template>
     <Header />
     <SubHeading />
-    <div class="login-bg-wrapper">
+    <div class="login-bg-wrapper four_zero_four_page">
         <div class="container">
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
-                <div class="job-listing-cards relative" >
+            <div class="row justify-content-center" >
+                <div class="col-lg-4 col-md-4 col-sm-12 relative" >
+                    <img src="/images/404.png">
+                    <h2 class="text-center text-uppercase mt-2">Sorry, Page not found</h2>
                 </div>
             </div>
         </div>

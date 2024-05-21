@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/vue3';
 <template>
     <Header/>
     <SubHeading />
-    <div class="login-bg-wrapper job-detail-page">
+    <div class="login-bg-wrapper job-detail-page Business_details_page">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-5">

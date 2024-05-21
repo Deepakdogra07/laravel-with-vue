@@ -103,13 +103,13 @@ function submitForm() {
             </div>
             
         </template>
-        <div class="py-12 edits_fields padding_remove">
+        <div class="py-12 edits_fields padding_remove edit_fiedls_sec">
                 <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900">
                     <div class="container">
                            <form @submit.prevent="submitForm">
-                        <div class="image_uploading" >
+                        <div class="image_uploading image_upload_2" >
                             <h2>Image Section</h2>
                             <div class="mb-4">
                                 <label for="logoHeading" class="block text-gray-700 text-sm font-bold mb-2">Image Heading</label>
