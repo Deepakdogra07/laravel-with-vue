@@ -452,7 +452,7 @@ const today = new Date();
                             
                         </div>
 
-                        <div class="col-md-6 country_input d-none">
+                        <div class="col-md-6 country_input ">
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
