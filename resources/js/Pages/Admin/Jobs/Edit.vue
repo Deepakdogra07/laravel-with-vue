@@ -154,10 +154,10 @@ const submit = () => {
                         </div>
                         <div class="col-md-6">
                             <div class="mt-4">
-                                <span class="label text-label">Positions<span style="color:red"> *</span></span>
+                                <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="number" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postions" class="form-control mt-2  " />
+                                        placeholder="Enter Position" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
@@ -178,9 +178,9 @@ const submit = () => {
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-6 minimum_input">
                             <div class="mt-4 ">
-                                <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
+                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary<span style="color:red">
                                         *</span></span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
@@ -286,10 +286,10 @@ const submit = () => {
                                     </div>
                                 </div> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 Remote Work_label">
                                 <label class="flex items-center">
-                                    <Checkbox class="remember-me-check" name="remember" />
-                                    <span class="label text-label pl-2">Remote Work</span>
+                                    <!-- <Checkbox class="remember-me-check" name="remember" /> -->
+                                    <span class="label text-label">Remote Work</span>
                                 </label>
                                 <div class="d-flex align-items-center mt-3 gap-4 remote_work">
                                     <div class="d-flex align-items-center">
@@ -355,7 +355,7 @@ const submit = () => {
                                 <span class="label text-label">Conditions<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="conditions" rows="5" type="text" v-model="form.conditions"
-                                        placeholder="Enter Enter job conditions" class="form-control mt-2" />
+                                        placeholder="Enter Conditions" class="form-control mt-2" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.conditions" />
                             </div>
@@ -363,7 +363,7 @@ const submit = () => {
                                 <span class="label text-label">Requirements<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="requirements" rows="5" type="text" v-model="form.requirements"
-                                        placeholder="Enter Enter job requirements" class="form-control mt-2" />
+                                        placeholder="Enter Requirements" class="form-control mt-2" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.requirements" />
                             </div>

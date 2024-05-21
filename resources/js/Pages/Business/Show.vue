@@ -63,7 +63,7 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
         </div>
     </div> -->
 
-    <div class="login-bg-wrapper job-detail-page">
+    <div class="login-bg-wrapper job-detail-page Business_details_page">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-5">
@@ -73,7 +73,7 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                 </div>
                 <div class="col-md-7">
                     <h2 class="semibold mb-3">{{ props.job.job_title }}</h2>
-                    <p class="my-3"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }}, {{ job?.job_country }}</p>
+                    <p class="my-3 text_job"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }}, {{ job?.job_country }}</p>
                     <div class="update-time mt-3 " style="display: inline-flex;">
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0">{{ created_time }}...</p>
@@ -85,11 +85,11 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                 </div>
             </div>
 
-            <div class="job-detail-content mt-4">
+            <div class="job-detail-content job_details_cnt mt-4">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-12">
-                            <div class="Details">
+                            <div class="Details business_coll">
                                 <h2>Details:</h2>
                                 <div class="d-flex align-items-center justify-between">
                                     <p class="getIn-touch">Position type :</p>
@@ -152,6 +152,25 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                             <!-- <div v-html="job?.job_description"></div> -->
                             
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="compnay_box">
+                                <div class="compnay_box_inner">
+                                    <div class="company-section">
+                                        <h3 class="mb-2 semibold">Company</h3>
+                                        <div class="d-flex align-items-center mt-3 gap-4">
+                                            <div class="company-logo">
+                                                <img src="/images/buildings1.png" alt="">
+                                            </div>  
+                                            <div class="company-name-loaction">
+                                                <h3 class="mb-2 semibold">{{ job?.business?.company_name }}</h3>
+                                                <p class="mb-0"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }},
+                                                    {{ job?.job_country }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- <div class="col-md-6 col-12">
                             <h2 class="mb-2 semibold">Requirements</h2>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -180,23 +199,6 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                                     industry.</li>
                             </ul>
                         </div> -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="company-section">
-                            <h3 class="mb-2 semibold">Company</h3>
-                            <div class="d-flex align-items-center mt-3 gap-4">
-                                <div class="company-logo">
-                                    <img src="/images/buildings1.png" alt="">
-                                </div>  
-                                <div class="company-name-loaction">
-                                    <h3 class="mb-2 semibold">{{ job?.business?.company_name }}</h3>
-                                    <p class="mb-0"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }},
-                                        {{ job?.job_country }}</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
