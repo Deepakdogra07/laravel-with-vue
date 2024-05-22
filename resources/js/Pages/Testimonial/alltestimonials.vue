@@ -23,14 +23,14 @@ console.log(props.testimonials);
                 <Link class="popup-cross" data-bs-dismiss="modal">
                 <i class="bi bi-x"></i>
                 </Link>
-                <div class="modal-body">
+                <div class="modal-body container-fluid">
                     <div class="row">
                         <div class="col-md-2 popup-quote-img">
                             <img src="/images/quotes.png" alt="">
                             <!-- <img :src="`/storage/testimonials/${testimonial?.image_link}`" alt=""> -->
                         </div>
                         <div class="col-md-10">
-                            <h2 class="mb-3">{{ testimonial?.description }}
+                            <h2 class="mb-3 testimonial-heading">{{ testimonial?.description }}
                             </h2>
                             <div class="d-flex align-items-center gap-2 mb-2 popup-profile-name">
                                 <p><span><i class="bi bi-person-square"></i></span></p>
@@ -79,13 +79,13 @@ console.log(props.testimonials);
                                     <p>- <span> <i class="bi bi-person-square pl-2"></i></span></p>
                                     <p>{{ testimonial?.name }}</p>
                                 </div>
-                                <button data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
+                                <span data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
                                     class="testimonial-video-btn">
                                     <span>
                                         <i class="bi bi-play-circle"></i> 
                                     </span>
                                     {{ testimonial?.video_name }}
-                                </button>
+                                </span>
                             </div>
                         </div>
                     </div>

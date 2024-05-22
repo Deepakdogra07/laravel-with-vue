@@ -270,7 +270,18 @@ const format = (date) => {
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
 
-
+                            <div class="mt-4">
+                                <span class="label text-label">Country<span style="color:red"> *</span></span>
+                                <div class="eye-icon-div">
+                                    <select class="form-select  mt-2" aria-label="Default select example"
+                                        v-model="form.job_country">
+                                        <option selected :value="null">Select Country</option>
+                                        <option v-for="country in countries" :key="country.id" :value="country.name">{{
+                                            country.name }}</option>
+                                    </select>
+                                </div>
+                                <InputError class="mt-2" :message="form.errors.job_country" />
+                            </div>
 
                         </div>
 
@@ -430,21 +441,6 @@ const format = (date) => {
                             </div> -->
                             
                             
-                        </div>
-
-                        <div class="col-md-6 country_input ">
-                            <div class="mt-4">
-                                <span class="label text-label">Country<span style="color:red"> *</span></span>
-                                <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" aria-label="Default select example"
-                                        v-model="form.job_country">
-                                        <option selected :value="null">Select Country</option>
-                                        <option v-for="country in countries" :key="country.id" :value="country.name">{{
-                                            country.name }}</option>
-                                    </select>
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.job_country" />
-                            </div>
                         </div>
 
                         <div class="col-12 mt-4 file_upload">
