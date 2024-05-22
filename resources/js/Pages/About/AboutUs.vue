@@ -76,7 +76,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                             <div class="col-lg-6 col-md-8">
                                 <h2 class="mb-3 text-white">We Speak the Language of Immigration.</h2>
                                 <div class="mt-4">
-                                    <Link class="main-btn">Contact Us</Link>
+                                    <Link class="main-btn" :href="route('contact.us')">Contact Us</Link>
                                 </div>
                             </div>
                         </div>
