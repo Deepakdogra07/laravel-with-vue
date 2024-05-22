@@ -151,7 +151,7 @@ const deletejob = async (id) => {
                                     <th>ID</th>
                                     <th>Job Title</th>
                                     <th>Positions</th>
-                                    <th>Industry</th>
+                                    <th>Seniority</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -163,7 +163,7 @@ const deletejob = async (id) => {
                                     </td>
                                     <td> {{ job?.position?.name }}</td>
                                     <td>
-                                        {{ job?.industry?.name }}
+                                        {{ job?.seniority?.name }}
                                     </td>
 
                                     <td>
