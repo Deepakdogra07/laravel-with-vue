@@ -1257,6 +1257,18 @@ input[type="file"]{
     border-radius: 8px;
     font-size: 15px;
 }
+.testimonial-heading{
+	word-break: break-all;
+}
+.testimonial-video-btn{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	width: 50%;
+	cursor: pointer;
+}
 /* 20-0524 CSS END */
 
 @media (min-width: 1440px) {
