@@ -73,37 +73,37 @@ class BusinessController extends Controller
         ];
 
         $messages = [
-            'position_id.required' => 'The position type is required.',
-            'seniority_id.required' => 'The seniority  is required.',
-            'discipline_id.required' => 'The discipline  is required.',
-            'work_experience_id.required' => 'The overall work experience  is required.',
-            'skills_id.required' => 'The skills  is required.',
-            'language_id.required' => 'The language  is required.',
-            'industry_id.required' => 'The industry  is required.',
-            'job_country.required' => 'The country  is required.',
-            'posting_summary.required' => 'The job posting summary  is required.',
-            'job_description.required' => 'The details of the job  is required.',
-            'pin_code.required' => 'The Zip Code  is required.',
-            'job_image.required' => 'The Job Image  is required.',
-            'positions.required' => 'The Positions  is required.',
-            'segment.required' => 'The Segment  is required.',
-            'job_title.required' => 'The Job title  is required.',
-            'conditions.required' => 'The Conditions  is required.',
-            'requirements.required' => 'The requirements  is required.',
-            'job_image.max' => 'The Job Image should be less than 20MB.',
-            'job_start_date.required' => 'The job start date  is required.'
-
+            'position_id.required' => 'Position type is required.',
+            'seniority_id.required' => 'Seniority  is required.',
+            'discipline_id.required' => 'Discipline  is required.',
+            'work_experience_id.required' => 'Overall work experience  is required.',
+            'skills_id.required' => 'Skills  is required.',
+            'language_id.required' => 'Language  is required.',
+            'industry_id.required' => 'Industry  is required.',
+            'job_country.required' => 'Country  is required.',
+            'posting_summary.required' => 'Job posting summary  is required.',
+            'job_description.required' => 'Details of the job  is required.',
+            'pin_code.required' => 'Zip Code  is required.',
+            'job_image.required' => 'Job Image  is required.',
+            'positions.required' => 'Positions  is required.',
+            'segment.required' => 'Segment  is required.',
+            'job_title.required' => 'Job title  is required.',
+            'conditions.required' => 'Conditions  is required.',
+            'requirements.required' => 'requirements  is required.',
+            'job_image.max' => 'Job Image should be less than 20MB.',
+            'job_start_date.required' => 'Job start date  is required.'
+   
         ];
-        if (isset($request->min_pay_range)) {
+         if (isset($request->min_pay_range)) {
             $rules["min_pay_range"] = 'required|gt:0';
             $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
             $rules["currency_id"] = 'required';
-            $message['min_pay_range.required'] = 'The minimum salary  is required.';
-            $message['min_pay_range.gt'] = 'The minimum salary must be greater than 0.';
-            $message['currency_id.required'] = 'The currency  is required.';
-            $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
-            $message['max_pay_range.required'] = 'The maximum salary  is required.';
-        }
+            $message['min_pay_range.required'] = 'Minimum salary  is required.';
+            $message['min_pay_range.gt'] = 'Minimum salary must be greater than 0.';
+            $message['currency_id.required'] = 'Currency  is required.';
+            $message['max_pay_range.gt'] = 'Minimum salary  must be greater than 0.';
+            $message['max_pay_range.required'] = 'Maximum salary  is required.';
+         }
         $validate = Validator::make($request->all(), $rules, $messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
@@ -183,37 +183,37 @@ class BusinessController extends Controller
         ];
 
         $messages = [
-            'position_id.required' => 'The position type is required.',
-            'seniority_id.required' => 'The seniority  is required.',
-            'discipline_id.required' => 'The discipline  is required.',
-            'work_experience_id.required' => 'The overall work experience  is required.',
-            'skills_id.required' => 'The skills  is required.',
-            'language_id.required' => 'The language  is required.',
-            'industry_id.required' => 'The industry  is required.',
-            'job_country.required' => 'The country  is required.',
-            'posting_summary.required' => 'The job posting summary  is required.',
-            'job_description.required' => 'The details of the job  is required.',
-            'pin_code.required' => 'The Zip Code  is required.',
-            'job_image.required' => 'The Job Image  is required.',
-            'positions.required' => 'The Positions  is required.',
-            'segment.required' => 'The Segment  is required.',
-            'job_title.required' => 'The Job title  is required.',
-            'conditions.required' => 'The Conditions  is required.',
-            'requirements.required' => 'The requirements  is required.',
-            'job_image.max' => 'The Job Image should be less than 20MB.',
-            'job_start_date.required' => 'The job start date  is required.'
-
+            'position_id.required' => 'Position type is required.',
+            'seniority_id.required' => 'Seniority  is required.',
+            'discipline_id.required' => 'Discipline  is required.',
+            'work_experience_id.required' => 'Overall work experience  is required.',
+            'skills_id.required' => 'Skills  is required.',
+            'language_id.required' => 'Language  is required.',
+            'industry_id.required' => 'Industry  is required.',
+            'job_country.required' => 'Country  is required.',
+            'posting_summary.required' => 'Job posting summary  is required.',
+            'job_description.required' => 'Details of the job  is required.',
+            'pin_code.required' => 'Zip Code  is required.',
+            'job_image.required' => 'Job Image  is required.',
+            'positions.required' => 'Positions  is required.',
+            'segment.required' => 'Segment  is required.',
+            'job_title.required' => 'Job title  is required.',
+            'conditions.required' => 'Conditions  is required.',
+            'requirements.required' => 'requirements  is required.',
+            'job_image.max' => 'Job Image should be less than 20MB.',
+            'job_start_date.required' => 'Job start date  is required.'
+   
         ];
-        if (isset($request->min_pay_range)) {
+         if (isset($request->min_pay_range)) {
             $rules["min_pay_range"] = 'required|gt:0';
             $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
             $rules["currency_id"] = 'required';
-            $message['min_pay_range.required'] = 'The minimum salary  is required.';
-            $message['min_pay_range.gt'] = 'The minimum salary must be greater than 0.';
-            $message['currency_id.required'] = 'The currency  is required.';
-            $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
-            $message['max_pay_range.required'] = 'The maximum salary  is required.';
-        }
+            $message['min_pay_range.required'] = 'Minimum salary  is required.';
+            $message['min_pay_range.gt'] = 'Minimum salary must be greater than 0.';
+            $message['currency_id.required'] = 'Currency  is required.';
+            $message['max_pay_range.gt'] = 'Minimum salary  must be greater than 0.';
+            $message['max_pay_range.required'] = 'Maximum salary  is required.';
+         }
         $validate = Validator::make($request->all(), $rules, $messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
