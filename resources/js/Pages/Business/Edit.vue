@@ -174,9 +174,9 @@ const submit = () => {
                                     <select class="form-select  mt-2 " aria-label="Default select example"
                                         v-model="form.seniority_id">
                                         <option selected :value="null">Select Seniority</option>
-                                        <option v-for="(position, index) in work_experience" :key="index"
+                                        <option v-for="(position, index) in seniorities" :key="index"
                                             :value="position.id">{{
-                                                position.experience }}</option>
+                                                position.name }}</option>
                                     </select>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />

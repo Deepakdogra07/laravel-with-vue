@@ -267,6 +267,7 @@ class BusinessController extends Controller
         $skills = Skills::all();
         $industries = Industries::all();
         $created_time = $this->date_Time($job->created_at);
+        // dd($job);
         return Inertia::render('Business/Show', compact('job', 'industries', 'languages', 'skills', 'applied_customers', 'created_time'));
     }
 
