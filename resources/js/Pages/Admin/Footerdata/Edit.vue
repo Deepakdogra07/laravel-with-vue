@@ -94,6 +94,7 @@ function update_data(type, event) {
                                 class=" file_cursor form-control mt-2 cursor-pointer">
                                 {{ form.logo_image ? 'Change File' : 'Upload File' }}
                             </label>
+                            
                             <input type="file" id="logoImage" @change="update_data('logo_image', $event)"
                                 accept="image/*" class="hidden">
                         </div>

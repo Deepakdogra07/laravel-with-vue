@@ -1626,6 +1626,9 @@ input[type="file"]{
 }
 
 @media (max-width:767px){
+	.create_Account .margin_top {
+		margin-top: 0px;
+	}
 	.contactUs-section .row .col-md-8 {
 		padding-left: 0px !important;
 	}
@@ -3612,7 +3615,7 @@ li.last_border {
 
 /*homepage*/
 .unstoppable_second .unstoppable-middle img {
-    width: 150px;
+    width: 20%;
 }
 .unstoppable_second h2.middle-logo-heading {
     font-size: 50px !important;
@@ -3844,4 +3847,29 @@ ul.job_recommenrded_skills li {
 }
 .travel-section a.forms-btn-transparent.step-form-back:hover {
     border-color: #000;
+}
+.employment_next .step-form-back i.bi.bi-arrow-left::before {
+    transform: rotate(-180deg) !important;
+    position: absolute;
+    margin-top: 14px;
+}
+.employment_next .step-form-back i.bi.bi-arrow-left {
+    margin-top: 10px !important;
+    margin-right: 23px;
+}
+.employment_next .forms-btn i.bi.bi-arrow-right::before {
+    line-height: 0px;
+}
+.employment_next .forms-btn i.bi.bi-arrow-right, .employment_next i.bi.bi-arrow-right {
+    line-height: 0px !important;
+}
+.employment-first-form.step-form-4 p {
+    line-height: 27px !important;
+}
+.image_uploading.image_upload_2 {
+    margin-top: 38px;
+}
+
+.margin_top{
+	margin-top: 30px;
 }
