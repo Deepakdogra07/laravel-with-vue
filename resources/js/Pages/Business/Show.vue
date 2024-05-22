@@ -112,7 +112,7 @@ function job_description(description){
                                     <li><b>Seniority</b><span>{{ job?.seniority?.name }}</span></li>
                                     <li><b>Discipline</b><span>{{ job?.discipline?.name }}</span></li>
                                     <li><b>Overall work experience</b><span>{{ job?.work_experience?.experience }}</span></li>
-                                    <li><b>Skills</b><span>{{ skills }}</span></li>
+                                    <li><b>Skills</b><span>{{ skill }}</span></li>
                                     <li><b>Languages</b><span>{{ language }}</span></li>
                                     <li><b>City</b><span>{{ job.city }}</span></li>
                                     <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
