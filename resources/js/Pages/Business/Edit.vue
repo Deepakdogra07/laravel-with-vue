@@ -250,7 +250,7 @@ const submit = () => {
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
-                                        placeholder="Enter Pin Code" class="form-control mt-2  " />
+                                        placeholder="Enter Zip Code" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.pin_code" />
                                 </div>
                             </div>
@@ -424,7 +424,7 @@ const submit = () => {
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
-                                        placeholder="Enter Pin Code" class="form-control mt-2  " />
+                                        placeholder="Enter Zip Code" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.pin_code" />
                                 </div>
                                 <!-- <div class="mt-4">
