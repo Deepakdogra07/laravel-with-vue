@@ -261,13 +261,11 @@ class BusinessController extends Controller
     public function show($id)
     {
         $job = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby', 'business')->where('id', $id)->first();
-        $created_time = $this->date_Time($job->created_at);
         $applied_customers = Customer::where('job_id', $id)->get();
         $languages = Language::select('id', 'language_name as name')->get();
         $skills = Skills::all();
         $industries = Industries::all();
         $created_time = $this->date_Time($job->created_at);
-        // dd($job);
         return Inertia::render('Business/Show', compact('job', 'industries', 'languages', 'skills', 'applied_customers', 'created_time'));
     }
 

@@ -59,7 +59,7 @@ function formatDateTime(date){
 
 <template>
     <Header />
-    <SubHeading/>
+    <SubHeading :job_id ="job_id"/>
        <div class="py-12">
             <div class="container">
                 <div class="filter-status">
