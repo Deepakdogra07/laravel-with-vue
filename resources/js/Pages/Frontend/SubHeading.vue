@@ -83,6 +83,7 @@ const props=defineProps({
         </div>
 
         <div class="form-navigation" v-else-if="route().current('travel.details') || route().current('personal.details')">
+            
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
@@ -99,7 +100,7 @@ const props=defineProps({
             </div>
         </div>
         <!-- v-if="$page.props.auth.user.user_type <= 2" -->
-        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers',job_id) || route('business-jobs.index')"  >
+        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers',job_id) || route().current('business-jobs.index')"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">

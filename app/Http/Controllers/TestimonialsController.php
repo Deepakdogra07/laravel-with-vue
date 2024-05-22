@@ -37,12 +37,13 @@ class TestimonialsController extends Controller
         
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'image' => 'required',
+            // 'image' => 'required',
             'content' => 'required',
+            'video'=>'required',
             'description' =>["required ",new MaxWords(250)],
         ],[
             'name.required' => 'Name is must.',
-            'image.required' => 'Image is must.',
+            // 'image.required' => 'Image is must.',
             'content.required' => 'Content is must.',
         ]);
         
@@ -112,6 +113,7 @@ class TestimonialsController extends Controller
            if($testimonialUpdate){
                 $testimonialUpdate->name = $request->name;
                 $testimonialUpdate->content = $request->content;
+                $testimonialUpdate->description = $request->description;
                 $testimonialUpdate->status = ($request->status =="1") ? 1 :0;
             if ($request->hasFile('image') && $testimonialUpdate->image_link != $request->image ) {
                 if (public_path($testimonialUpdate->image_link)) {

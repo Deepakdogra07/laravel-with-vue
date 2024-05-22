@@ -55,6 +55,14 @@ const testimonialDelete = async (id) => {
 const testimonialedit = (id)=>{
     router.get(`testimonial/${id}/edit`);
 }
+
+function splitStringIntoChunks(inputString, chunkSize = 70) {
+  let result = '';
+  for (let i = 0; i < inputString.length; i += chunkSize) {
+    result += inputString.slice(i, i + chunkSize) + '<br>';
+  }
+  return result;
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -70,6 +78,7 @@ const testimonialedit = (id)=>{
           <!-- </template> -->
           <div class="py-12 craete_pagee">
           <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
+
               <div class="bg-white shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                   <div class="p-6 text-black-900 padding_remove bg_tablee table-responsive">
                       <DataTable class="table display" :options="options" style="border:2px black ; display: inline-block;">
@@ -77,7 +86,7 @@ const testimonialedit = (id)=>{
                               <tr>
                                   <th class="d-none">ID</th>
                                   <th>Name</th>
-                                  <th>Image</th>
+                                  <!-- <th>Image</th> -->
                                   <th>Description</th>
                                   <th>Status</th>
                                   <th>Actions</th>
@@ -87,12 +96,14 @@ const testimonialedit = (id)=>{
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
                                   <td class="d-none">{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
+
                                   <td>
                                     <div class="">
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td>
                                   <td style="width: 200px;">  {{testimonialRecord.description}} </td>
+
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>

@@ -6,17 +6,19 @@ use DateTime;
 use App\Models\Jobs;
 use Inertia\Inertia;
 use App\Models\Skills;
+use App\Rules\MaxWords;
+use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Language;
 use App\Models\Position;
 use App\Models\Discipline;
 use App\Models\FooterData;
 use App\Models\Industries;
-use App\Rules\MaxWords;
 use App\Models\Seniorities;
 use Illuminate\Http\Request;
 use App\Models\CustomerStatus;
 use App\Models\Workexperience;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -39,18 +41,18 @@ class BusinessController extends Controller
         $seniorities = Seniorities::all();
         $work_experience = Workexperience::all();
         $languages = Language::select('id', 'language_name as name')->get();
-        return Inertia::render('Business/Create', compact('languages', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
+        $currencies = DB::table('currencies')->get();
+        return Inertia::render('Business/Create', compact('currencies','languages', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
     }
     public function store(Request $request)
     {
-        // dd($request->all());
 
-        $validate = Validator::make($request->all(), [
+      $rules= [
             "job_title" => 'required',
-            "job_image" => 'required',
+            "job_image" => 'required|max:20480',
             "job_description" => 'required',
             "posting_summary" =>  ['required', new MaxWords(30)],
-            "detail" => ['required', new MaxWords(30)],
+            // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
@@ -65,38 +67,65 @@ class BusinessController extends Controller
             "city" => 'required',
             "segment" => 'required',
             "job_country" => 'required',
-            "min_pay_range" => 'required',
-            "max_pay_range" => 'required',
             "job_start_date" => 'required',
-        ], [
-            'min_pay_range.required' => 'The minimum salary  field is required.',
-            'max_pay_range.required' => 'The maximum salary  field is required.',
-            'position_id.required' => 'The position type field is required.',
-            'seniority_id.required' => 'The seniority field is required.',
-            'discipline_id.required' => 'The discipline field is required.',
-            'work_experience_id.required' => 'The overall work experience field is required.',
-            'skills_id.required' => 'The skills field is required.',
-            'language_id.required' => 'The language field is required.',
-            'industry_id.required' => 'The industry field is required.',
-            'job_country.required' => 'The country field is required.',
-            'posting_summary.required' => 'The job posting summary field is required.',
-        ]);
+            
+      ];
+
+      $messages =  [
+            'position_id.required' => 'The position type is required.',
+            'seniority_id.required' => 'The seniority  is required.',
+            'discipline_id.required' => 'The discipline  is required.',
+            'work_experience_id.required' => 'The overall work experience  is required.',
+            'skills_id.required' => 'The skills  is required.',
+            'language_id.required' => 'The language  is required.',
+            'industry_id.required' => 'The industry  is required.',
+            'job_country.required' => 'The country  is required.',
+            'posting_summary.required' => 'The job posting summary  is required.',
+            'job_description.required' => 'The details of the job  is required.',
+            'pin_code.required' => 'The Zip Code  is required.',
+            'job_image.required' => 'The Job Image  is required.',
+            'positions.required' => 'The Positions  is required.',
+            'segment.required' => 'The Segment  is required.',
+            'job_title.required' => 'The Job title  is required.',
+            'conditions.required' => 'The Conditions  is required.',
+            'requirements.required' => 'The requirements  is required.',
+            'job_image.max' => 'The Job Image should be less than 20MB.',
+            'job_start_date.required' => 'The job start date  is required.'
+
+        ];
+        if(isset($request->min_pay_range)){
+            $rules["min_pay_range"] = 'required|gt:0';
+            $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
+            $rules["currency_id"] = 'required';
+            $message['min_pay_range.required'] = 'The minimum salary  is required.';
+            $message['min_pay_range.gt'] = 'The minimum salary must be greater than 0.';
+            $message['currency_id.required'] = 'The currency  is required.';
+            $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
+            $message['max_pay_range.required'] = 'The maximum salary  is required.';
+        }
+        $validate = Validator::make($request->all(),$rules,$messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
         }
         $skills = [];
         $languages = [];
+        $industries = [];
         foreach ($request->skills_id as $skill) {
             $skills[] = $skill['id'];
         }
         foreach ($request->language_id as $language) {
             $languages[] = $language['id'];
         }
+        foreach ($request->industry_id as $industry) {
+            $industries[] = $industry['id'];
+        }
         $skills = json_encode($skills);
         $languages = json_encode($languages);
+        $industries = json_encode($industry);
         $job = new Jobs();
         $job->fill($request->except('skills_id'));
         $job->skills_id = $skills;
+        $job->industry_id = $industries;
         $job->language_id = $languages;
         if ($request->hasFile('job_image')) {
             $image = $request->file('job_image');
@@ -116,20 +145,19 @@ class BusinessController extends Controller
         $disciplines = Discipline::all();
         $seniorities = Seniorities::all();
         $work_experience = Workexperience::all();
+        $currencies = Currency::all();
         $job = Jobs::where('id', $id)->first();
-        // $job->skills_id = json_decode($job->skills_id);
-        // dd($job);
         $languages = Language::select('id', 'language_name as name')->get();
-        return Inertia::render('Business/Edit', compact('positions', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
+        return Inertia::render('Business/Edit', compact('positions','currencies', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
     }
     public function update($id, Request $request)
     {
-        $validate = Validator::make($request->all(), [
+        $rules= [
             "job_title" => 'required',
-            "job_image" => 'required',
+            "job_image" => 'required|max:20480',
             "job_description" => 'required',
             "posting_summary" =>  ['required', new MaxWords(30)],
-            "detail" => ['required', new MaxWords(30)],
+            // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
             "language_id" => 'required',
@@ -144,40 +172,67 @@ class BusinessController extends Controller
             "city" => 'required',
             "segment" => 'required',
             "job_country" => 'required',
-            "min_pay_range" => 'required',
-            "max_pay_range" => 'required',
             "job_start_date" => 'required',
-        ], [
-            'min_pay_range.required' => 'The minimum salary  field is required.',
-            'max_pay_range.required' => 'The maximum salary  field is required.',
-            'position_id.required' => 'The position type field is required.',
-            'seniority_id.required' => 'The seniority field is required.',
-            'discipline_id.required' => 'The discipline field is required.',
-            'work_experience_id.required' => 'The overall work experience field is required.',
-            'skills_id.required' => 'The skills field is required.',
-            'language_id.required' => 'The language field is required.',
-            'industry_id.required' => 'The industry field is required.',
-            'job_country.required' => 'The country field is required.',
-            'posting_summary.required' => 'The job posting summary field is required.',
-        ]);
+            
+      ];
+
+      $messages =  [
+            'position_id.required' => 'The position type is required.',
+            'seniority_id.required' => 'The seniority  is required.',
+            'discipline_id.required' => 'The discipline  is required.',
+            'work_experience_id.required' => 'The overall work experience  is required.',
+            'skills_id.required' => 'The skills  is required.',
+            'language_id.required' => 'The language  is required.',
+            'industry_id.required' => 'The industry  is required.',
+            'job_country.required' => 'The country  is required.',
+            'posting_summary.required' => 'The job posting summary  is required.',
+            'job_description.required' => 'The details of the job  is required.',
+            'pin_code.required' => 'The Zip Code  is required.',
+            'job_image.required' => 'The Job Image  is required.',
+            'positions.required' => 'The Positions  is required.',
+            'segment.required' => 'The Segment  is required.',
+            'job_title.required' => 'The Job title  is required.',
+            'conditions.required' => 'The Conditions  is required.',
+            'requirements.required' => 'The requirements  is required.',
+            'job_image.max' => 'The Job Image should be less than 20MB.',
+            'job_start_date.required' => 'The job start date  is required.'
+
+        ];
+        if(isset($request->min_pay_range)){
+            $rules["min_pay_range"] = 'required|gt:0';
+            $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
+            $rules["currency_id"] = 'required';
+            $message['min_pay_range.required'] = 'The minimum salary  is required.';
+            $message['min_pay_range.gt'] = 'The minimum salary must be greater than 0.';
+            $message['currency_id.required'] = 'The currency  is required.';
+            $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
+            $message['max_pay_range.required'] = 'The maximum salary  is required.';
+        }
+        $validate = Validator::make($request->all(),$rules,$messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
         }
 
         $skills = [];
         $languages = [];
+        $industries = [];
         foreach ($request->skills_id as $skill) {
             $skills[] = $skill['id'];
         }
         foreach ($request->language_id as $language) {
             $languages[] = $language['id'];
         }
+        foreach ($request->industry_id as $industry) {
+            $industries[] = $industry['id'];
+        }
         $skills = json_encode($skills);
+        $industries = json_encode($industries);
         $languages = json_encode($languages);
         $job = Jobs::findOrFail($id);
         $job->fill($request->except('skills_id'));
         $job->skills_id = $skills;
         $job->language_id = $languages;
+        $job->industry_id = $industries;
         if ($request->hasFile('job_image')) {
             if (public_path($job->job_image)) {
                 $imagePath = substr($job->job_image, strlen('/storage'));
@@ -200,9 +255,9 @@ class BusinessController extends Controller
         $applied_customers = Customer::where('job_id', $id)->get();
         $languages= Language::select('id','language_name as name')->get();
         $skills= Skills::all();
+        $industries= Industries::all();
         $created_time = $this->date_Time($job->created_at);
-
-        return Inertia::render('Business/Show', compact('job','languages','skills', 'applied_customers', 'created_time'));
+        return Inertia::render('Business/Show', compact('job','industries','languages','skills', 'applied_customers', 'created_time'));
     }
 
 

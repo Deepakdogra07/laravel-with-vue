@@ -84,7 +84,7 @@ console.log(props.testimonials);
                                     <span>
                                         <i class="bi bi-play-circle"></i> 
                                     </span>
-                                    {{ testimonial?.video_link }}
+                                    {{ testimonial?.video_name }}
                                 </button>
                             </div>
                         </div>

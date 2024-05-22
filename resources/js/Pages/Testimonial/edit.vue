@@ -75,7 +75,7 @@ function update_all_data(type, event) {
               <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
-            <div class="mt-4 col-md-6">
+            <!-- <div class="mt-4 col-md-6">
               <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
               <img :src="form.image" alt="" style="height:250px">
               <label for="logoImage" class="form-control mt-2 cursor-pointer">
@@ -83,7 +83,7 @@ function update_all_data(type, event) {
               </label>
               <input type="file" id="logoImage" @change="update_all_data('image', $event)" accept="image/*"
                 class="hidden">
-            </div>
+            </div> -->
             <div class="mt-4 col-md-6">
               <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
               <video :src="form.video" alt="" controls></video>

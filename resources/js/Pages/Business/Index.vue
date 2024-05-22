@@ -67,10 +67,10 @@ const deletejob = async (id) => {
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <div class="job-list-search">
+        <div class="job-list-search srch_responsive">
             <div class="container">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
-                    <div class="login-section-mob absolute top-0 right-0">
+                    <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
                     </div>
                     <div class="d-flex gap-5 align-items-center">
@@ -85,10 +85,10 @@ const deletejob = async (id) => {
                 </div>
             </div>
         </div>
-        <div class="login-bg-wrapper">
+        <div class="login-bg-wrapper business_job_details">
             <div class="container">
                 <div class="filter-status row">
-                    <div class="col-md-11">
+                    <div class="col-md-11 width_mobile">
                         <div class="d-flex justify-between align-items-center">
                             <ul class="d-flex align-items-center flex-wrap pl-0">
                                 <li>
@@ -118,7 +118,7 @@ const deletejob = async (id) => {
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-1 login-section-desk text-end">
+                    <div class="col-md-1 login-section-desk text-end width_mobileS">
                         <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                     </div>
                 </div>
@@ -144,8 +144,8 @@ const deletejob = async (id) => {
                         </li>
                     </ul>
                 </div> -->
-                <div class="main-job-filter mt-5">
-                    <DataTable class="display job-data-table" :options="options" style="border:2px black ;width:100%">
+                <div class="main-job-filter mt-5 spacing_nine">
+                    <DataTable class="display job-data-table business_table" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr class="th-row">
                                     <th>ID</th>

@@ -21,9 +21,9 @@
             <span class="text-white">Dashboard</span>
           </NavLink>
         </li>
-        <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+        <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1" @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2">
           <button
-            @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2"
+            
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
             aria-haspopup="true"
           >
