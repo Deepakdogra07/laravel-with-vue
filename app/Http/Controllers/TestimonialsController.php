@@ -16,7 +16,7 @@ class TestimonialsController extends Controller
      */
     public function index()
     {
-        $testimonialRecords =    Testimonial::all();
+        $testimonialRecords =    Testimonial::latest()->get();
         return Inertia::render('Testimonial/index',['testimonialRecords'=>$testimonialRecords]);
     }
 

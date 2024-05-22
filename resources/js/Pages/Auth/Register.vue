@@ -116,7 +116,7 @@ function select_country(event){
                         </div>
                         <div class="mt-4">
                             <span class="label text-label">Key Contact Person<span style="color:red"> *</span></span>
-                            <TextInput id="contact_number" type="number" placeholder="Enter Contact number"
+                            <TextInput id="contact_number" type="text" placeholder="Enter Contact number"
                                 class="form-control mt-2" v-model="form.contact_number" />
                             <InputError class="mt-1" :message="form.errors.contact_number" />
                         </div>
