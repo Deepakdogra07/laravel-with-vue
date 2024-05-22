@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Exception;
 
 class BusinessController extends Controller
 {
@@ -42,16 +43,16 @@ class BusinessController extends Controller
         $work_experience = Workexperience::all();
         $languages = Language::select('id', 'language_name as name')->get();
         $currencies = DB::table('currencies')->get();
-        return Inertia::render('Business/Create', compact('currencies','languages', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
+        return Inertia::render('Business/Create', compact('currencies', 'languages', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
     }
     public function store(Request $request)
     {
 
-      $rules= [
+        $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" =>  ['required', new MaxWords(30)],
+            "posting_summary" => ['required', new MaxWords(30)],
             // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
@@ -68,10 +69,10 @@ class BusinessController extends Controller
             "segment" => 'required',
             "job_country" => 'required',
             "job_start_date" => 'required',
-            
-      ];
 
-      $messages =  [
+        ];
+
+        $messages = [
             'position_id.required' => 'The position type is required.',
             'seniority_id.required' => 'The seniority  is required.',
             'discipline_id.required' => 'The discipline  is required.',
@@ -93,7 +94,7 @@ class BusinessController extends Controller
             'job_start_date.required' => 'The job start date  is required.'
 
         ];
-        if(isset($request->min_pay_range)){
+        if (isset($request->min_pay_range)) {
             $rules["min_pay_range"] = 'required|gt:0';
             $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
             $rules["currency_id"] = 'required';
@@ -103,38 +104,43 @@ class BusinessController extends Controller
             $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
             $message['max_pay_range.required'] = 'The maximum salary  is required.';
         }
-        $validate = Validator::make($request->all(),$rules,$messages);
+        $validate = Validator::make($request->all(), $rules, $messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
         }
-        $skills = [];
-        $languages = [];
-        $industries = [];
-        foreach ($request->skills_id as $skill) {
-            $skills[] = $skill['id'];
+        try {
+            $skills = [];
+            $languages = [];
+            $industries = [];
+            foreach ($request->skills_id as $skill) {
+                $skills[] = $skill['id'];
+            }
+            foreach ($request->language_id as $language) {
+                $languages[] = $language['id'];
+            }
+            foreach ($request->industry_id as $industry) {
+                $industries[] = $industry['id'];
+            }
+            $skills = json_encode($skills);
+            $languages = json_encode($languages);
+            $industries = json_encode($industry);
+            $job = new Jobs();
+            $job->fill($request->except('skills_id'));
+            $job->skills_id = $skills;
+            $job->industry_id = $industries;
+            $job->language_id = $languages;
+            if ($request->hasFile('job_image')) {
+                $image = $request->file('job_image');
+                $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
+                Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
+                $job->job_image = '/storage/jobs/' . $name;
+            }
+            $job->user_id = auth()->user()->id;
+            $job->save();
+        } catch (\Exception $e) {
+            return back()->withErrors(['success' => false, 'message' => $e->getMessage()]);
         }
-        foreach ($request->language_id as $language) {
-            $languages[] = $language['id'];
-        }
-        foreach ($request->industry_id as $industry) {
-            $industries[] = $industry['id'];
-        }
-        $skills = json_encode($skills);
-        $languages = json_encode($languages);
-        $industries = json_encode($industry);
-        $job = new Jobs();
-        $job->fill($request->except('skills_id'));
-        $job->skills_id = $skills;
-        $job->industry_id = $industries;
-        $job->language_id = $languages;
-        if ($request->hasFile('job_image')) {
-            $image = $request->file('job_image');
-            $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
-            $job->job_image = '/storage/jobs/' . $name;
-        }
-        $job->user_id = auth()->user()->id;
-        $job->save();
+
         return to_route('business-jobs.index');
     }
     public function edit($id)
@@ -148,15 +154,15 @@ class BusinessController extends Controller
         $currencies = Currency::all();
         $job = Jobs::where('id', $id)->first();
         $languages = Language::select('id', 'language_name as name')->get();
-        return Inertia::render('Business/Edit', compact('positions','currencies', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
+        return Inertia::render('Business/Edit', compact('positions', 'currencies', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
     }
     public function update($id, Request $request)
     {
-        $rules= [
+        $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" =>  ['required', new MaxWords(30)],
+            "posting_summary" => ['required', new MaxWords(30)],
             // "detail" => ['required', new MaxWords(30)],
             "conditions" => ['required', new MaxWords(30)],
             "requirements" => ['required', new MaxWords(30)],
@@ -173,10 +179,10 @@ class BusinessController extends Controller
             "segment" => 'required',
             "job_country" => 'required',
             "job_start_date" => 'required',
-            
-      ];
 
-      $messages =  [
+        ];
+
+        $messages = [
             'position_id.required' => 'The position type is required.',
             'seniority_id.required' => 'The seniority  is required.',
             'discipline_id.required' => 'The discipline  is required.',
@@ -198,7 +204,7 @@ class BusinessController extends Controller
             'job_start_date.required' => 'The job start date  is required.'
 
         ];
-        if(isset($request->min_pay_range)){
+        if (isset($request->min_pay_range)) {
             $rules["min_pay_range"] = 'required|gt:0';
             $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
             $rules["currency_id"] = 'required';
@@ -208,44 +214,48 @@ class BusinessController extends Controller
             $message['max_pay_range.gt'] = 'The minimum salary  must be greater than 0.';
             $message['max_pay_range.required'] = 'The maximum salary  is required.';
         }
-        $validate = Validator::make($request->all(),$rules,$messages);
+        $validate = Validator::make($request->all(), $rules, $messages);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();
         }
-
-        $skills = [];
-        $languages = [];
-        $industries = [];
-        foreach ($request->skills_id as $skill) {
-            $skills[] = $skill['id'];
-        }
-        foreach ($request->language_id as $language) {
-            $languages[] = $language['id'];
-        }
-        foreach ($request->industry_id as $industry) {
-            $industries[] = $industry['id'];
-        }
-        $skills = json_encode($skills);
-        $industries = json_encode($industries);
-        $languages = json_encode($languages);
-        $job = Jobs::findOrFail($id);
-        $job->fill($request->except('skills_id'));
-        $job->skills_id = $skills;
-        $job->language_id = $languages;
-        $job->industry_id = $industries;
-        if ($request->hasFile('job_image')) {
-            if (public_path($job->job_image)) {
-                $imagePath = substr($job->job_image, strlen('/storage'));
-                Storage::disk('public')->delete($imagePath);
+        try {
+            $skills = [];
+            $languages = [];
+            $industries = [];
+            foreach ($request->skills_id as $skill) {
+                $skills[] = $skill['id'];
             }
+            foreach ($request->language_id as $language) {
+                $languages[] = $language['id'];
+            }
+            foreach ($request->industry_id as $industry) {
+                $industries[] = $industry['id'];
+            }
+            $skills = json_encode($skills);
+            $industries = json_encode($industries);
+            $languages = json_encode($languages);
+            $job = Jobs::findOrFail($id);
+            $job->fill($request->except('skills_id'));
+            $job->skills_id = $skills;
+            $job->language_id = $languages;
+            $job->industry_id = $industries;
+            if ($request->hasFile('job_image')) {
+                if (public_path($job->job_image)) {
+                    $imagePath = substr($job->job_image, strlen('/storage'));
+                    Storage::disk('public')->delete($imagePath);
+                }
 
-            $image = $request->file('job_image');
-            $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
-            $job->job_image = '/storage/jobs/' . $name;
+                $image = $request->file('job_image');
+                $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
+                Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
+                $job->job_image = '/storage/jobs/' . $name;
+            }
+            $job->user_id = auth()->user()->id;
+            $job->update();
+        } catch (\Exception $e) {
+            return back()->withErrors(['success' => false, 'message' => $e->getMessage()]);
         }
-        $job->user_id = auth()->user()->id;
-        $job->update();
+
         return to_route('business-jobs.index');
     }
     public function show($id)
@@ -253,11 +263,11 @@ class BusinessController extends Controller
         $job = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby', 'business')->where('id', $id)->first();
         $created_time = $this->date_Time($job->created_at);
         $applied_customers = Customer::where('job_id', $id)->get();
-        $languages= Language::select('id','language_name as name')->get();
-        $skills= Skills::all();
-        $industries= Industries::all();
+        $languages = Language::select('id', 'language_name as name')->get();
+        $skills = Skills::all();
+        $industries = Industries::all();
         $created_time = $this->date_Time($job->created_at);
-        return Inertia::render('Business/Show', compact('job','industries','languages','skills', 'applied_customers', 'created_time'));
+        return Inertia::render('Business/Show', compact('job', 'industries', 'languages', 'skills', 'applied_customers', 'created_time'));
     }
 
 
