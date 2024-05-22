@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'company_state' => 'required',
             'company_pin' => 'required',
             // |max:10|min:4
-            'contact_number' => 'required|max:15|min:8',
+            'contact_number' => 'required',
             'company_name' => 'required',
             'contact_department' => 'required',
             'mobile_number' => 'required|max:15|min:8',
@@ -70,7 +70,7 @@ class RegisteredUserController extends Controller
             'email.unique' => 'The email address is already in use.',
 
             'contact_department.required' => "Contact department  is required.",
-            'contact_number.required' => "Contact Number  is required.",
+            'contact_number.required' => "Contact Person  is required.",
             // 'contact_number.min' => "Contact Number  should be more than 8 digits.",
             // 'contact_number.max' => "Contact Number  should be less than 15 digits..",
 
