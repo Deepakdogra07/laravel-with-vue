@@ -46,7 +46,7 @@ onMounted( () => {
   
 })
 // console.log(skills,language);
-const date_ = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
+const job_start_date = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
 
 
 function job_description(description){
@@ -121,7 +121,7 @@ function job_description(description){
                                     <li><b>Segment</b><span>{{ job.segment }}</span></li>
                                     <li><b>Positions</b><span>{{ job.positions }}</span></li>
                                     <li><b>Min and Max Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
-                                    <li><b>Start Date</b><span>{{ date_ }}</span></li>
+                                    <li><b>Start Date</b><span>{{ job_start_date }}</span></li>
                                 </ul>
                             </div>
                             <div class="job_col2">
