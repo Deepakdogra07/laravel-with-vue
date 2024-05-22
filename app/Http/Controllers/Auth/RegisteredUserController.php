@@ -55,6 +55,7 @@ class RegisteredUserController extends Controller
             'company_address.required'=>"Company address is required.",
             'company_country.required'=>"Country is required.",
             'company_state.required'=>"State is required.",
+            'company_city.required'=>"City is required.",
             'company_pin.required'=>"Postal Code is required.",
             // 'company_pin.min'=>"Postal Code should be atleast 4 digits.",
             // 'company_pin.max'=>"Postal Code should not more than 10 digits.",
@@ -73,10 +74,10 @@ class RegisteredUserController extends Controller
             // 'contact_number.min' => "Contact Number  should be more than 8 digits.",
             // 'contact_number.max' => "Contact Number  should be less than 15 digits..",
 
-            'name.required'=>"The user name is required",
-            'name.unique'=>"The user name already taken. Please select other username.",
+            'name.required'=>"User name is required",
+            'name.unique'=>"User name already taken. Please select other username.",
 
-            'password.required' => 'The password is required.',
+            'password.required' => 'Password is required.',
             'password.confirmed' => 'Password confirmation does not match.',
             'password.min' => 'Password must be at least 4 characters long.',
             'password.max' => 'Password must not exceed 10 characters.',
