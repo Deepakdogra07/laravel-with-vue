@@ -112,11 +112,11 @@ h2 {
 	background-color: #161721;
 	border-bottom: 1px solid #e9e9ea80;
 }
-.footer-two li a:hover,
+/* .footer-two li a:hover,
 .footer-three li a:hover,
 .footer-four li a:hover {
 	text-decoration: underline !important;
-}
+} */
 
 .bottom-footer {
 	padding: 20px 0;
@@ -3596,8 +3596,8 @@ li.last_border {
 }
 .footer-two li a:hover, .footer-three li a:hover, .footer-four li a:hover {
     color: #18c3b4;
-    padding-left: 5px;
-    transition: all .30s;
+    /* padding-left: 5px; */
+    /* transition: all .30s; */
 }
 .footer-logo-sec {
     width: 300px;
