@@ -56,7 +56,7 @@ const testimonialedit = (id)=>{
     router.get(`testimonial/${id}/edit`);
 }
 
-function splitStringIntoChunks(inputString, chunkSize = 70) {
+function splitStringIntoChunks(inputString, chunkSize = 80) {
   let result = '';
   for (let i = 0; i < inputString.length; i += chunkSize) {
     result += inputString.slice(i, i + chunkSize) + '<br>';
@@ -84,7 +84,7 @@ function splitStringIntoChunks(inputString, chunkSize = 70) {
                       <DataTable class="table display" :options="options" style="border:2px black ; display: inline-block;">
                           <thead>
                               <tr>
-                                  <th class="d-none">ID</th>
+                                  <th >ID</th>
                                   <th>Name</th>
                                   <!-- <th>Image</th> -->
                                   <th>Description</th>
@@ -94,15 +94,15 @@ function splitStringIntoChunks(inputString, chunkSize = 70) {
                           </thead>
                           <tbody>
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
-                                  <td class="d-none">{{ testimonialRecord.id }}</td>
+                                  <td >{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
 
-                                  <td>
+                                  <!-- <td>
                                     <div class="">
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
-                                  </td>
-                                  <td style="width: 200px;">  {{testimonialRecord.description}} </td>
+                                  </td> -->
+                                  <td v-html="splitStringIntoChunks(testimonialRecord.description)">  </td>
 
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
