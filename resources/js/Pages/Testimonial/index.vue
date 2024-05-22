@@ -81,7 +81,7 @@ function splitStringIntoChunks(inputString, chunkSize = 80) {
 
               <div class="bg-white shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                   <div class="p-6 text-black-900 padding_remove bg_tablee table-responsive">
-                      <DataTable class="table display" :options="options" style="border:2px black ; display: inline-block;">
+                      <DataTable class="table display" :options="options" style="border:2px black ;">
                           <thead>
                               <tr>
                                   <th >ID</th>
