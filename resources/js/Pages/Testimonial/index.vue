@@ -16,7 +16,7 @@ defineProps({
 const testimonialDelete = async (id) => {
   const { value: confirmed } = await Swal.fire({
     title: 'Are you sure?',
-    text: 'You want to Delete News Record?',
+    text: 'You want to Delete Testimonial Record?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#d33',
@@ -70,9 +70,9 @@ const testimonialedit = (id)=>{
           <!-- </template> -->
           <div class="py-12 craete_pagee">
           <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
-              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                  <div class="p-6 text-black-900 padding_remove bg_tablee">
-                      <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+              <div class="bg-white shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
+                  <div class="p-6 text-black-900 padding_remove bg_tablee table-responsive">
+                      <DataTable class="table display" :options="options" style="border:2px black ; display: inline-block;">
                           <thead>
                               <tr>
                                   <th class="d-none">ID</th>
@@ -88,11 +88,11 @@ const testimonialedit = (id)=>{
                                   <td class="d-none">{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
                                   <td>
-                                    <div class="image_sections_testimonial">
+                                    <div class="">
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td>
-                                  <td>{{ testimonialRecord.description }}</td>
+                                  <td style="width: 200px;">  {{testimonialRecord.description}} </td>
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>
@@ -113,7 +113,7 @@ const testimonialedit = (id)=>{
 </template>
 
 <style scoped>
-  .dataTable thead th, .dataTable tbody td{
+  /* .dataTable thead th, .dataTable tbody td{
     white-space: unset !important;
-  }
+  } */
 </style>
