@@ -270,11 +270,15 @@ class JobsController extends Controller
    }
    public function show($id)
    {
+
+      $languages = Language::select('id', 'language_name as name')->get();
+      $skills = Skills::all();
+      $industries = Industries::all();
       $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby')->where('id', $id)->first();
 
 
 
-      return Inertia::render('Admin/Jobs/Show', compact('jobs'));
+      return Inertia::render('Admin/Jobs/Show', compact('jobs','industries','skills','languages'));
    }
 
    public function job_listing()
@@ -289,7 +293,8 @@ class JobsController extends Controller
       $languages = Language::select('id', 'language_name as name')->get();
       $skills = Skills::all();
       $created_time = $this->date_Time($job->created_at);
-      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job', 'languages', 'skills', 'created_time'));
+      $industries = Industries::all();
+      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','industries', 'languages', 'skills', 'created_time'));
    }
 
 

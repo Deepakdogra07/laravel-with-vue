@@ -42,7 +42,7 @@ onMounted( () => {
     }
   });
   props.industries.forEach(element => {
-    if(props.job.language_id.includes(element.id)){
+    if(props.job.industry_id.includes(element.id)){
         industry.value += element.name +',';
     }
   });
@@ -90,11 +90,11 @@ const date_ = moment(props.job.start_date).format('DD/MMMM/YYYY');
                                     <li><b>Languages</b><span>{{ language }}</span></li>
                                     <li><b>City</b><span>{{ job.city }}</span></li>
                                     <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
-                                    <li><b>Remote Work</b><span>{{ job.remote_work }}</span></li>
+                                    <li><b>Remote Work</b><span>{{ (job.remote_work !=0) ? job.remote_work:'No' }}</span></li>
                                     <li><b>Industry</b><span>{{ industry }}</span></li>
                                     <li><b>Segment</b><span>{{ job.segment }}</span></li>
                                     <li><b>Positions</b><span>{{ job.positions }}</span></li>
-                                    <li><b>Minimum and Maximum Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
+                                    <li><b>Min and Max Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
                                     <li><b>Start Date</b><span>{{ date_ }}</span></li>
                                 </ul>
                             </div>
