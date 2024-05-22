@@ -11,6 +11,7 @@ const props=defineProps({
         required:true,
     }
 })
+// console.log(route().current('business_job_for_customers',props.job_id),route().current());
 
 </script>
 <template>
@@ -100,12 +101,14 @@ const props=defineProps({
             </div>
         </div>
         <!-- v-if="$page.props.auth.user.user_type <= 2" -->
-        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers',job_id) || route().current('business-jobs.index')"  >
+
+        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link :href="route('business-jobs.index')" class="nav-link text-center" :class="{ 'active': route().current('business-jobs.index') }">Jobs</Link>
+                          
+                            <Link :href="route('business-jobs.show',job_id)" class="nav-link text-center" :class="{ 'active': route().current('business-jobs.show',job_id) }">Jobs</Link>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5">

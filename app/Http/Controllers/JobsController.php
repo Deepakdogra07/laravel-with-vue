@@ -277,7 +277,6 @@ class JobsController extends Controller
       $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby')->where('id', $id)->first();
 
 
-
       return Inertia::render('Admin/Jobs/Show', compact('jobs','industries','skills','languages'));
    }
 
