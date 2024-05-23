@@ -293,9 +293,9 @@ h2 {
 	border-radius: 10px 0 0 10px;
 }
 .country-names {
-	position: absolute;
-	bottom: 20px;
-	left: 30px;
+    position: absolute;
+    bottom: 60px;
+    left: 90px;
 }
 .country-names h3,
 .country-names a {
@@ -324,7 +324,7 @@ h2 {
 }
 .video-background .video-play {
 	height: 350px;
-	width: 85%;
+	width: 80%;
 	margin-bottom: 20px;
 	border-radius: 10px;
 	position: relative;
@@ -365,9 +365,9 @@ h2 {
 	border-radius: 10px;
 }
 .slider-profile-name {
-	position: absolute;
-	bottom: 10px;
-	left: 20px;
+    position: absolute;
+    bottom: 32px;
+    left: 33px;
 }
 .slider-profile-name .slider-profile-img {
 	width: 40px;
@@ -377,9 +377,9 @@ h2 {
 	border: 2px solid #7adfce;
 }
 .slider-profile-name p {
-	color: #fff;
-	font-weight: 700;
-	font-size: 20px;
+    color: #fff;
+    font-weight: 700 !important;
+    font-size: 22px;
 }
 .slider-profile-name .slider-profile-img img {
 	width: 100%;
@@ -1275,7 +1275,7 @@ input[type="file"]{
 		width: 220px;
 	}
 	.unstoppable_second .unstoppable-middle img{
-		width: 200px !important;
+		width: 40% !important;
 	}
 }
 
@@ -1493,6 +1493,14 @@ input[type="file"]{
 	.countries-section h2 {
 		line-height: 43.4px !important;
 	}
+	.country-names {
+		left: 60px;
+	}
+	.countries-section h3 {
+		font-size: 30px !important;
+		line-height: 41px;
+	}
+
 }
 
 @media (max-width:991px){
@@ -1623,9 +1631,27 @@ input[type="file"]{
 		font-size: 12px;
 		padding-top: 13px !important;
 	}
+	.country-names.country_hd h3 {
+		font-size: 30px !important;
+		line-height: 41px;
+	}
+	.category-section {
+		width: 100% !important;
+	}
+	.slider-profile-name {
+		bottom: 17px;
+		left: 16px;
+	}
+	.slider-profile-name p {
+		font-size: 18px;
+	}
 }
 
 @media (max-width:767px){
+	.country-names {
+		bottom: 20px;
+		left: 20px;
+	}
 	.create_Account .margin_top {
 		margin-top: 0px;
 	}
@@ -1924,6 +1950,16 @@ input[type="file"]{
 	}
 	.testimonial-section .testimonial {
 		margin-bottom: 0px;
+	}
+	.active-nav {
+		color: #ffffff !important;
+		font-weight: 600 !important;
+	}
+	ul.navbar-nav {
+		gap: 1px !important;
+	}
+	.testimonial-popup .single_testimonial {
+		padding: 20px !important;
 	}
 
 }
@@ -2546,7 +2582,7 @@ input[type="file"]{
 		line-height: 23px;
 	}
 	.unstoppable_second .unstoppable-middle img {
-		width: 30% !important;
+		width: 40% !important;
 	} 
 	.unstoppable_second .unstopable-log  h2.middle-logo-heading {
 		font-size: 20px !important;
@@ -2620,7 +2656,9 @@ input[type="file"]{
 	.Business_details_page {
 		padding: 12px 2px !important;
 	}
-
+	.country-content img {
+		height: 220px;
+	}
 	/*business job PAge*/
 	.job-list-search input.user-dashboard-search {
 		width: 100%;
@@ -2633,6 +2671,7 @@ input[type="file"]{
 		width: 100% !important;
 		display: table-row;
 	}
+
 }
 
 @media (max-width:503px){
@@ -3664,12 +3703,12 @@ li.last_border {
     line-height: 62.4px;
 }
 .category-section{
-	width: 100%;
+	width: 68%;
 }
 .countries-section h3 {
     font-size: 40px !important;
     font-weight: 700 !important;
-    line-height: 52px;
+    line-height: 66px;
 }
 .countries-section a {
     font-weight: 400;
@@ -3872,4 +3911,18 @@ ul.job_recommenrded_skills li {
 
 .margin_top{
 	margin-top: 30px;
+}
+.login-btn-main .forms-btn i::before {
+    line-height: 0px !important;
+}
+.form-select[data-gtm-form-interact-field-id="0"] {
+    color: #000;
+}
+ .form-select {
+    color: #A5A5AB;
+} 
+span.video_txt {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
 }

@@ -100,7 +100,14 @@ const user = ref(page?.props?.auth?.user)
   <div class="container-fluid">
     <div class="bottom-footer">
       <div class="container">
-        <p class="text-center mb-0">Copyright © 2024 Dizon & Associates Pty Ltd |Terms & Conditions</p> 
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <p></p>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+              <p class="mb-0">Copyright © 2024 Dizon & Associates Pty Ltd |Terms & Conditions</p> 
+            </div>
+        </div>
       </div>
     </div>
   </div>
