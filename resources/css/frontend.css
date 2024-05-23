@@ -230,9 +230,9 @@ h2 {
 	justify-content: center;
 	align-items: center;
 }
-.unstoppable-middle img {
+/* .unstoppable-middle img {
 	width: 180px;
-}
+} */
 
 .welcome-content {
 	width: 70%;
@@ -1478,9 +1478,9 @@ input[type="file"]{
 	.create_space .label {
 		font-size: 13px;
 	}
-	.unstoppable-spaces-top.unstoppable_second img {
+	/* .unstoppable-spaces-top.unstoppable_second img {
 		width: 130px !important;
-	}
+	} */
 	.welcome-content {
 		width: 90%;
 	}
@@ -2546,8 +2546,8 @@ input[type="file"]{
 		line-height: 23px;
 	}
 	.unstoppable_second .unstoppable-middle img {
-		width: 80px !important;
-	}
+		width: 30% !important;
+	} 
 	.unstoppable_second .unstopable-log  h2.middle-logo-heading {
 		font-size: 20px !important;
 	}
