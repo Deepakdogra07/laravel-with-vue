@@ -120,17 +120,17 @@ onMounted(() => {
       <h2 class="dark-theme-color">{{ logo.country_description }}</h2>
     </div>
     <div class="container-fluid px-0">
-      <div class="grid lg:grid-cols-2 grid-cols-1 gap-3 countries-section-margin">
+      <div class="grid lg:grid-cols-2 grid-cols-1 md:grid-cols-2 gap-3 countries-section-margin">
         <div class="country-content content-left relative">
           <img class="left-img" :src="logo.country_1_image" alt="">
-          <div class="country-names">
+          <div class="country-names country_hd">
             <h3>{{ logo.country_1_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
           <img class="right-img" :src="logo.country_2_image" alt="">
-          <div class="country-names">
+          <div class="country-names country_hd">
             <h3>{{ logo.country_2_name }}</h3>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>

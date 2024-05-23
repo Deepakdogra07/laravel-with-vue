@@ -81,10 +81,12 @@ console.log(props.testimonials);
                                 </div>
                                 <span data-bs-toggle="modal" :data-bs-target="`#newAdvertModal-${testimonial?.id}`" 
                                     class="testimonial-video-btn">
-                                    <span>
-                                        <i class="bi bi-play-circle"></i> 
+                                    <span class="video_txt">
+                                        
+                                        <i class="bi bi-play-circle"></i>
+                                        <span class="video_hd" v-html="testimonial?.video_name"></span> 
                                     </span>
-                                    {{ testimonial?.video_name }}
+                                    
                                 </span>
                             </div>
                         </div>
