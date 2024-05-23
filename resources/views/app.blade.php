@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
+        <meta name="robots" content="noindex, nofollow" />
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <!-- Scripts -->

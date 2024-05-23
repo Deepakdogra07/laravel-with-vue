@@ -7,7 +7,7 @@
                 </svg>
             </button>
         </div>
-        <meta name="robots" content="noindex, nofollow" />
+       
         <div class="flex items-center">
             <dropdown>
                 <template #trigger>
