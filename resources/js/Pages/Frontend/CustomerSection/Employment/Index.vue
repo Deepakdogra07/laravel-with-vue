@@ -166,7 +166,7 @@ function submit_form(){
         </div>
 
         <!-------step two----------->
-        <div class="login-bg-wrapper steps_form employment-first-form step-form-2 " v-if="div_numbers == 'step-form-2'">
+        <div class="login-bg-wrapper steps_form employment-first-form step-form-2 application_guide" v-if="div_numbers == 'step-form-2'">
             <div class="container">
                 <!-- 1 -->
                 <div class="employment-first-form">
@@ -255,7 +255,7 @@ function submit_form(){
         </div>
 
         <!-------step three----------->
-        <div class="login-bg-wrapper steps_form employment-first-form step-form-3" v-if="div_numbers == 'step-form-3'">
+        <div class="login-bg-wrapper steps_form employment-first-form step-form-3 application_guide" v-if="div_numbers == 'step-form-3'">
             <div class="container">
                 <!-- 1 -->
                 <div class="employment-first-form">
@@ -387,7 +387,7 @@ function submit_form(){
         </div>
 
         <!-------step four----------->
-        <div class="login-bg-wrapper steps_form employment-first-form step-form-4 " v-if="div_numbers == 'step-form-4'">
+        <div class="login-bg-wrapper steps_form employment-first-form step-form-4 application_guide" v-if="div_numbers == 'step-form-4'">
             <div class="container">
                 <!-- 1 -->
                 <div class="employment-first-form">

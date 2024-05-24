@@ -67,7 +67,7 @@ function submit_form() {
     <SubHeading />
     <form @submit.prevent="submit_form()">
         <!------step one----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-1" v-if="div_numbers == 'step-form-1'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-1 application_guide" v-if="div_numbers == 'step-form-1'">
             <div class="container">
                 <div class="employment-first-form">
                     <p class="light-text">The following documents can be submitted as supporting evidence of your
@@ -130,7 +130,7 @@ function submit_form() {
         </div>
 
         <!------step two----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-2 " v-if="div_numbers == 'step-form-2'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-2 application_guide" v-if="div_numbers == 'step-form-2'">
             <div class="container">
                 <div class="employment-first-form">
                     <p class="light-text">The following documents can be submitted as supporting evidence of your
@@ -181,7 +181,7 @@ function submit_form() {
         </div>
 
         <!------step three----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-3 " v-if="div_numbers == 'step-form-3'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-3 application_guide" v-if="div_numbers == 'step-form-3'">
             <div class="container">
                 <div class="employment-first-form">
                     <h2>3. Photographs and videos</h2>
@@ -335,7 +335,7 @@ function submit_form() {
 
 
                 <!------step five----->
-                <div class="login-bg-wrapper steps_form document-first-form step-form-4 ">
+                <div class="login-bg-wrapper steps_form document-first-form step-form-4 application_guide">
                     <div class="container">
                         <div class="employment-first-form intro_steps intro_top">
                             <h2>Introduction</h2>
@@ -363,7 +363,7 @@ function submit_form() {
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 fff">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">a sauce.

@@ -58,7 +58,7 @@ const showMenu = () => {
 
 <template>
   <!-- <div class="container-fluid relative"> -->
-  <div class="main-header">
+  <div class="main-header" onClick={this.handleClick}>
     <nav class="navbar navbar-expand-lg" :class="{ '!bg-[#1D1F2C1A] border-home': route().current('home') }">
       <div class="container">
         <Link class="navbar-brand" href="/"><img :src="`${site_data?.logo_image}`" alt=""></Link>
@@ -207,6 +207,17 @@ const showMenu = () => {
   </div>
   <!-- </div> -->
 </template>
+
+
+
+      <!-- <script>
+      $('.navbar.navbar-expand-lg').addClass('navbar_close');
+      </script> -->
+
+
+
+
+
 
 <style scoped>
 .border-home {
