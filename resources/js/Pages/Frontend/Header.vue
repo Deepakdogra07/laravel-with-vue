@@ -54,11 +54,14 @@ const showMenu = () => {
     }, 1000 / framesPerSecond);
   }
 };
+function TriggerButton(type){
+  console.log(type);
+}
 </script>
 
 <template>
   <!-- <div class="container-fluid relative"> -->
-  <div class="main-header" onClick={this.handleClick}>
+  <div class="main-header">
     <nav class="navbar navbar-expand-lg" :class="{ '!bg-[#1D1F2C1A] border-home': route().current('home') }">
       <div class="container">
         <Link class="navbar-brand" href="/"><img :src="`${site_data?.logo_image}`" alt=""></Link>
@@ -85,15 +88,12 @@ const showMenu = () => {
                   </template>
                 </dropdown>
               </div>
-              <!-- <div v-else="">
-                  <div class="nav-item">
-                    <Link class="main-btn" :href="route('login')">Login</Link>
-                  </div>
-                </div> -->
+          
               <div class="login-section-mob" v-if="$page.props.auth.user">
-                <dropdown>
+                <dropdown >
                   <template #trigger>
-                    <button @click="dropdownOpen = !dropdownOpen" class="main-btn">
+                    <!-- @click="dropdownOpen = !dropdownOpen" -->
+                    <button  class="main-btn " @click="TriggerButton('admin_hover')" >
                       {{ $page.props.auth.user.name }}
                       <i class="fa-solid fa-caret-down"></i>
                     </button>
@@ -101,11 +101,11 @@ const showMenu = () => {
     
                   <template #content>
                     <dropdown-link :href="route('profile.edit')">
-                      Profile
+                      Profile 
                     </dropdown-link>
     
                     <dropdown-link class="w-full text-left" :href="route('logout')" method="post" as="button">
-                      Log out
+                      Log out 
                     </dropdown-link>
                   </template>
                 </dropdown>
@@ -119,7 +119,7 @@ const showMenu = () => {
           </GuestLayout>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="padding-right: 0;">
-            <span><i class="bi bi-list"></i></span>
+            <span><i class="bi bi-list" @click="TriggerButton('hamburger_icon')" ></i></span>
           </button>
         </div>
         <div class="collapse navbar-collapse justify-center" id="navbarNav">
@@ -211,9 +211,12 @@ const showMenu = () => {
 
 
       <!-- <script>
-      $('.navbar.navbar-expand-lg').addClass('navbar_close');
-      </script> -->
-
+     $(document).ready(function(){
+      $(".main-btn").click(function(){
+        $(".main-header").toggleClass("main");
+      });
+    });
+      </script>  -->
 
 
 
