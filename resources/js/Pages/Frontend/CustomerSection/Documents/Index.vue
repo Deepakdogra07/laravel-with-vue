@@ -400,7 +400,7 @@ function submit_form() {
         </Section>
 
         <!------step five----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-5 " v-if="div_numbers == 'step-form-5'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-5 application_guide" v-if="div_numbers == 'step-form-5'">
             <div class="container">
                 <div class="employment-first-form intro_steps intro_top">
                     <h2>Introduction</h2>
@@ -728,7 +728,7 @@ function submit_form() {
         </div>
 
         <!------step six----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-6 " v-if="div_numbers == 'step-form-6'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-6 application_guide" v-if="div_numbers == 'step-form-6'">
             <div class="container">
                 <div class="employment-first-form instructions">
                     <h2>Instructions for photo evidence</h2>
@@ -861,7 +861,7 @@ function submit_form() {
         </div>
 
         <!------step seven----->
-        <div class="login-bg-wrapper steps_form document-first-form step-form-7" v-if="div_numbers == 'step-form-7'">
+        <div class="login-bg-wrapper steps_form document-first-form step-form-7 application_guide" v-if="div_numbers == 'step-form-7'">
             <div class="container">
                 <div class="employment-first-form steps_55">
                     <h2>4. Resumé / CV</h2>
