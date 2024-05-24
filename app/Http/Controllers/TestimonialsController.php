@@ -163,4 +163,9 @@ class TestimonialsController extends Controller
         $testimonials = Testimonial::where('status', 1)->get();
         return Inertia::render('Testimonial/alltestimonials', compact('testimonials'));
     }
+
+    public function show_detailed_testimonial($id){
+        $testimonial = Testimonial::where('status', 1)->where('id',$id)->first();
+        return Inertia::render('Testimonial/showtestimonial', compact('testimonial'));
+    }
 }

@@ -145,6 +145,7 @@ Route::get('/faq', function () {
 })->name('faq');
 
 Route::get('/testimonials',[TestimonialsController::class,"show_testimonials"])->name('testimonial.main');
+Route::get('/show-testimonials/{testimonial_id}',[TestimonialsController::class,"show_detailed_testimonial"])->name('show.testimonial');
 
 require __DIR__ . '/auth.php';
 

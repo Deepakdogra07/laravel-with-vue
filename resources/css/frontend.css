@@ -250,7 +250,7 @@ h2 {
 }
 
 .country-content img {
-	height: 350px;
+	height: 400px;
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
@@ -792,14 +792,14 @@ h2 {
 
 /* popup design css start */
 .popover-section {
-	padding: 30px 45px;
+	padding: 70px 0px;
 	background-color: #fff;
 	border-radius: 0px;
 	position: relative;
 }
 .popover-section h2 {
 	color: #000;
-	font-size: 26px !important;
+	font-size: 40px !important;
 }
 .popover-section p {
 	color: #4a4c56;
@@ -818,6 +818,10 @@ h2 {
 .modal-body::-webkit-scrollbar-thumb {
 	background: #888;
 	border-radius: 10px;
+}
+section.testimonials_page .modal-body {
+    height: auto !important;
+    overflow-y: unset !important;
 }
 .popover-section .popup-cross {
 	position: absolute;
@@ -839,7 +843,7 @@ h2 {
 }
 .popup-video-section {
 	width: 100%;
-	height: 250px;
+	height: 450px;
 	position: relative;
 }
 .popup-video-section video {
@@ -1302,6 +1306,12 @@ input[type="file"]{
 	.filter-status .width_mobileS {
 		width: 20%;
 	}
+	.popover-section h2 {
+		font-size: 30px !important;
+	}
+	.single_testimonial .popup-quote-img img {
+		width: 90%;
+	}
 }
 
 @media (max-width:1199px){
@@ -1427,9 +1437,9 @@ input[type="file"]{
 		width: 100%;
 		left: -1px;
 	}
-	.popover-section {
+	/* .popover-section {
 		padding: 20px;
-	}
+	} */
 	.custom-popover .modal-dialog {
 		width: 95% !important;
 	}
@@ -1565,7 +1575,13 @@ input[type="file"]{
 	.business_table{
 		overflow-x: scroll;
 	}
-	
+	.popover-section h2 {
+		font-size: 24px !important;
+	}
+	.popup-profile-name p {
+		font-size: 17px !important;
+		margin-bottom: 4px;
+	}
 }
 
 @media (max-width:909px){
@@ -2000,7 +2016,9 @@ input[type="file"]{
 	.employesss_tabs {
 		padding-top: 0px !important;
 	}
-
+	.popup-video-section {
+		height: 220px;
+	}
 
 
 
@@ -2015,6 +2033,9 @@ input[type="file"]{
 @media (max-width: 576px) {
 	.testimonial-section .testimonial {
 		margin-bottom: -30px;
+	}
+	.testimonials_page {
+		padding: 0px 10px;
 	}
 	.job-listing-cards .cards-content {
 		padding: 10px 0px 0px;
@@ -2131,9 +2152,9 @@ input[type="file"]{
 	.main-contact-form {
 		margin-top: 30px !important;
 	}
-	.popover-section {
+	/* .popover-section {
 		padding: 20px;
-	}
+	} */
 	.custom-popover .modal-dialog {
 		width: 95% !important;
 	}
@@ -2488,14 +2509,17 @@ input[type="file"]{
 		text-align: left !important;
 	}
 	.single_testimonial {
-		padding: 0px 0px 18px!important;
+		padding: 20px 0px !important;
 	}
 	.single_testimonial .col-md-2, .single_testimonial .col-md-10, .single_testimonial .col-12 {
 		padding: 0px;
 	}
 	.single_testimonial h2 {
 		margin-bottom: 5px !important;
-		font-size: 20px !important;
+		font-size: 24px !important;
+	}
+	.single_testimonial p.name_profile_txt {
+		font-size: 14px !important;
 	}
 	.single_testimonial .popup-profile-name p {
 		margin-bottom: 0px;
@@ -2671,6 +2695,11 @@ input[type="file"]{
 		width: 100% !important;
 		display: table-row;
 	}
+	.single_testimonial .popup-quote-img img {
+		width: 10% !important;
+	}
+
+
 
 }
 
@@ -3590,6 +3619,7 @@ li.last_border {
 }
 .single_testimonial .popup-quote-img img {
     opacity: 0.2;
+    width: 100%;
 }
 .single_testimonial .popup-profile-name span::before {
     content: "-";
@@ -3598,8 +3628,9 @@ li.last_border {
     padding-left: 8px;
 }
 .single_testimonial p {
-    font-size: 15px !important;
+    font-size: 16px !important;
     line-height: 24.4px;
+    margin-bottom: 30px;
 }
 .about_us_section {
     padding: 70px 0px;
@@ -3915,7 +3946,7 @@ ul.job_recommenrded_skills li {
 .login-btn-main .forms-btn i::before {
     line-height: 0px !important;
 }
-.form-select[data-gtm-form-interact-field-id="0"] {
+.form-select[data-gtm-form-interact-field-id="0"], .form-select[data-gtm-form-interact-field-id="11"], .form-select[data-gtm-form-interact-field-id="13"], .form-select[data-gtm-form-interact-field-id="3"], .form-select[data-gtm-form-interact-field-id="10"], .form-select[data-gtm-form-interact-field-id="25"] {
     color: #000;
 }
  .form-select {
@@ -3925,4 +3956,27 @@ span.video_txt {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: hidden;
+    word-break: break-all;
+    height: 20px;
+}
+.buttons_div a.forms-btn, .buttons_div .login-btn-main a {
+    justify-content: space-between;
+}
+.application_guide button.step-form-back span {
+    transform: rotate(180deg);
+}
+.popup-profile-name p {
+    margin-bottom: 0px;
+}
+.popup-profile-name p {
+    font-size: 20px !important;
+    margin-bottom: 8px;
+}
+
+
+.navbar-collapse.collapse.show .main-header ul ul.absolute[style] {
+    display: none;
+}
+.navbar-collapse.collapse .main-header ul ul.absolute[style="display:none"] {
+    display: block !important;
 }

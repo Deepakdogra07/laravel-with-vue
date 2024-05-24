@@ -16,39 +16,7 @@ console.log(props.testimonials);
 
 </script>
 <template>
-    <div v-for="testimonial in props.testimonials" :key="testimonial.id" class="modal fade custom-popover testimonial-popup" :id="`newAdvertModal-${testimonial?.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="popover-section popover-section-diff modal-content single_testimonial">
-                <Link class="popup-cross" data-bs-dismiss="modal">
-                <i class="bi bi-x"></i>
-                </Link>
-                <div class="modal-body container-fluid">
-                    <div class="row">
-                        <div class="col-md-2 popup-quote-img">
-                            <img src="/images/quotes.png" alt="">
-                            <!-- <img :src="`/storage/testimonials/${testimonial?.image_link}`" alt=""> -->
-                        </div>
-                        <div class="col-md-10">
-                            <h2 class="mb-3 testimonial-heading">{{ testimonial?.description }}
-                            </h2>
-                            <div class="d-flex align-items-center gap-2 mb-2 popup-profile-name">
-                                <p><span><i class="bi bi-person-square"></i></span></p>
-                                <p>{{ testimonial?.name }}</p>
-                            </div>
-                            <p>{{ testimonial?.content }}</p>
-                        </div>
-                        <div class="col-12">
-                            <div class="popup-video-section">
-                                <video :src="`${testimonial?.video_link}`" controls></video>
-                                <!-- <span class="bi bi-play-circle"></span> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <Head title="Our Testimonials" />
     <Header class="login-wrapper" />
@@ -68,7 +36,9 @@ console.log(props.testimonials);
                 <div class="container">
                     <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
                         <div class="testimonial" v-for="testimonial in props.testimonials" :key="testimonial.id">
-                            <div class="testimonial-content">
+                            <Link :href="route('show.testimonial',testimonial.id)"> 
+                            
+                                <div class="testimonial-content">
                                 <div class="text-end mb-2">
                                     <i class="fa-solid fa-quote-right"></i>
                                 </div>
@@ -89,6 +59,7 @@ console.log(props.testimonials);
                                     
                                 </span>
                             </div>
+                        </Link>
                         </div>
                     </div>
                 </div>
