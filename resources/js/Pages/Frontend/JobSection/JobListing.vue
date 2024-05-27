@@ -49,7 +49,7 @@ function dateTime(created_at) {
                     </div>
                     <div class="cards-content">
                         <h2>{{ job?.job_title }}</h2>
-                        <p class="my-3"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
+                        <p class="my-3 listing_txt"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
                             Chandigarh, India</p>
                         <div class="cards-bio">
                             <p>{{ job?.posting_summary }}</p>

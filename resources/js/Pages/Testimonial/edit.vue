@@ -53,7 +53,7 @@ function update_all_data(type, event) {
         <form @submit.prevent="update" enctype="multipart/form-data">
           <div class="row">
             <div class="mt-4 col-md-6">
-              <label for="name">Name<span class="text-danger">*</span></label>
+              <label for="name">Name<span class="text-danger"> *</span></label>
               <input id="name" v-model="form.name" placeholder="Enter Name" class="form-control" autocomplete="name" />
               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
             </div>
@@ -64,14 +64,14 @@ function update_all_data(type, event) {
                                <div v-if="errors.rating" class="text-danger">{{ errors.rating }}</div>
                         </div> -->
             <div class="mt-4 col-md-6">
-              <label for="description">Description<span class="text-danger">*</span></label>
+              <label for="description">Description<span class="text-danger"> *</span></label>
               <textarea id="description" v-model="form.description" placeholder="Enter description"
                 class="form-control"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
             </div>
 
             <div class="mt-4 col-md-6">
-              <label for="content">Content<span class="text-danger">*</span></label>
+              <label for="content">Content<span class="text-danger"> *</span></label>
               <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>

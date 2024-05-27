@@ -69,9 +69,9 @@ const getStatusColor = (status) => {
         </template>
 
         <!-- <div class="p-4 bg-white rounded-lg shadow-xs"> -->
-        <div class="py-4 dashboard-home home_padding">
+        <div class="dashboard-home home_padding">
             <div class="col-12 col-lg-12 mb-4">
-                <div class="card px-2">
+                <div class="card">
                     <!-- <h5 class="pb-1 mb-4"></h5> -->
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-xl-3 mb-3">

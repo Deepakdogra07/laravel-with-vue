@@ -47,31 +47,31 @@ const submit = () => {
   <AuthenticatedLayout>
 
     <Head title="Edit Customer" />
-    <div class="flex items-center justify-center p-6 ">
+    <div class="flex items-center justify-center edit_customer_page">
       <div class="w-full">
-        <h1 class="mb-4 text-xl font-semibold text-black-700">Edit Customer</h1>
+        <h2 class="font-semibold text-xl text-black-800 leading-tight pl-3 pb-2">Edit Customer</h2>
 
-        <form class="row" @submit.prevent="submit">
-          <div class="mt-4 col-md-6">
-            <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk">*
+        <form class="row edit_customer" @submit.prevent="submit">
+          <div class="col-md-6 spacing_x">
+            <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="name" type="text" placeholder="Enter Name" class="form-control" :value="form.name"
+            <TextInput id="name" type="text" placeholder="Enter name" class="form-control" :value="form.name"
               v-model="form.name" autocomplete="name" />
             <InputError class="mt-2" :message="errors.name" />
           </div>
 
-          <div class="mt-4 col-md-6">
-            <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk">*
+          <div class="col-md-6 spacing_edit">
+            <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" :value="form.email"
+            <TextInput id="email" type="email" placeholder="Enter email" class="form-control" :value="form.email"
               v-model="form.email" autocomplete="email" readonly />
             <InputError class="mt-2" :message="errors.email" />
           </div>
 
-          <div class="mt-4 col-md-6">
-            <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk">*
+          <div class="mt-4 col-md-6 spacing_mobile">
+            <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control" v-model="form.phone"
+            <TextInput id="phone" type="text" placeholder="Enter phone number" class="form-control" v-model="form.phone"
               autocomplete="phone" />
             <InputError class="mt-2" :message="errors.phone" />
           </div>
@@ -81,8 +81,8 @@ const submit = () => {
                 <TextInput id="address" type="text" placeholder="Enter Address" class="form-control" v-model="form.address" autocomplete="address" />
                 <InputError class="mt-2" :message="errors.address" />
             </div> -->
-
-          <div class="mt-4 col-md-6">
+ 
+          <div class="mt-4 col-md-6 spacing_mobile">
 
             <div class="configure-switch d-flex align-items-center gap-3">
               <div class="d-flex">
@@ -102,7 +102,7 @@ const submit = () => {
             <InputError class="mt-2" :message="errors.status" />
           </div>
 
-          <div class="mt-4">
+          <div class="mt-4 button_margin">
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
               Submit
             </PrimaryButton>

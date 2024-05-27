@@ -125,7 +125,7 @@ const submit = () => {
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="mt-4 ">
-                                <span class="label text-label">Job Title <span style="color:red"> *</span></span>
+                                <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
                                         placeholder="Enter job title" class="form-control mt-2" />
@@ -147,7 +147,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.position_id" />
                             </div>
                             <div class="mt-4">
-                                <label for="Seniority">Seniority<span class="text-danger">*</span></label>
+                                <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
                                     <select class="form-select  mt-2 " aria-label="Default select example"
                                         v-model="form.seniority_id">
@@ -160,7 +160,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
                             </div>
                             <div class="mt-4">
-                                <label for="discipline">Discipline<span class="text-danger">*</span></label>
+                                <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
                                     <select class="form-select  mt-2 " aria-label="Default select example"
                                         v-model="form.discipline_id">
@@ -174,7 +174,7 @@ const submit = () => {
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Overall Work Experience<span
-                                        class="text-danger">*</span></span>
+                                        class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
                                     <select class="form-select   mt-2" aria-label="Default select example"
                                         v-model="form.work_experience_id">
@@ -197,7 +197,7 @@ const submit = () => {
                                 <div class="mt-4">
                                     <span class="label text-label recommended_text">Recommended Skills</span>
                                     <ul class="job_recommenrded_skills pl-0">
-                                        <li>Dokumentation</li>
+                                        <li>Documentation</li>
                                         <li>Mechanical </li>
                                         <li>Technical</li>
                                         <li>Electrician </li>
@@ -291,7 +291,7 @@ const submit = () => {
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="mt-4 minium_salary">
-                                <span class="label text-label">Segment</span>
+                                <span class="label text-label">Segment <span style="color:red"> *</span></span>
                                 <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                                     class="form-control mt-2  " />
                                 <InputError class="mt-2" :message="form.errors.segment" />

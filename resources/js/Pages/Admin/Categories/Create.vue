@@ -61,12 +61,12 @@ function handleFileInput1(event) {
 
     </template>
     <div class="py-12 add_category_page">
-      <div class="max-w-7xl mx-auto px-2">
+      <div class="max-w-7xl mx-auto px-1">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-          <div class="p-6 text-black-900">
+          <div class="p-6 text-black-900 inner_admin">
             <div class="container">
               <form @submit.prevent="submitForm">
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category
                     Heading</label>
                   <input type="text" id="categoryHeading" v-model="form.category_heading"
@@ -74,14 +74,14 @@ function handleFileInput1(event) {
                   <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading
                     }}</span>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
                   <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="form-control">
                   <img v-bind:src="rul1" alt="" class="mt-2">
                   <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image
                     }}</span>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <label for="category_thumb" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
                   <input type="file" id="category_thumb" @change="handleFileInput1" accept="image/*"
                   class="form-control">

@@ -39,7 +39,7 @@ const submit = () => {
 </script>
 
 <template>
-    <section>
+    <section class="profile_info">
         <header>
             <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
 
@@ -50,7 +50,7 @@ const submit = () => {
 
         <!-- @submit.prevent="form.patch(route('profile.update'))"  -->
 
-        <form class="mt-6 space-y-6">
+        <form class="mt-6 space-y-6 profile_form">
             <div>
                 <InputLabel for="name" value="Name" />
                 <TextInput

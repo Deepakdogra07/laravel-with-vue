@@ -93,7 +93,7 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.password" />
                         </div>
 
-                        <div class="d-flex align-items-center justify-content-between mt-4">
+                        <div class="d-flex align-items-center justify-content-between mt-4 last_login_input">
                             <label class="flex items-center">
                                 <Checkbox class="remember-me-check" name="remember" v-model:checked="form.remember" />
                                 <span class="ml-2 cursor-pointer remember-me">Remember Me</span>
@@ -101,7 +101,7 @@ const submit = () => {
                         
                             <Link  :href="route('password.request')"
                                 class="text-lightgreen  hover:text-gray-900">
-                            Forgot Password?
+                            Forgot Password ?
                             </Link>
                         </div>
                         <div class="flex items-center mt-4 login-btn-main">

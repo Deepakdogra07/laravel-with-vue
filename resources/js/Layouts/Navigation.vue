@@ -1,14 +1,14 @@
 <template>
   <aside
-    class="z-20 hidden px-3 md:block flex-shrink-0 side-navbar"
+    class="z-20 hidden px-3 md:block flex-shrink-0 side-navbar dashboard_sidebar"
     style="height: 100vh"
   >
     <div class="py-4 text-black-500 main-links-nav">
-      <Link class="main-heading-logo ml-6 font-bold" :href="route('dashboard')">
+      <Link class="main-heading-logo ml-6 font-bold logo-dashboard" :href="route('dashboard')">
         <img src="/images/web-logo.png" alt="">
       </Link>
 
-      <ul class="mt-6 pl-0">
+      <ul class="mt-6 pl-0 dashboard_menu">
         <li class="relative px-6 py-3">
           <NavLink
             class="text-white"
@@ -109,7 +109,7 @@
           </NavLink>
         </li>
         <li
-          class="relative px-2 py-3"
+          class="relative px-2 py-3 dashboard_items"
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
@@ -117,11 +117,11 @@
             :active="route().current('business-listing.index')"
           >
             <i class="fa-solid fa-user-plus"></i>
-            <span class="ml-4">Businesses</span>
+            <span class="ml-4 ">Businesses</span>
           </NavLink>
         </li>
         <li
-          class="relative px-2 py-3"
+          class="relative px-2 py-3 dashboard_items"
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
@@ -133,7 +133,7 @@
           </NavLink>
         </li>
         <li
-          class="relative px-2 py-3"
+          class="relative px-2 py-3 dashboard_items"
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
