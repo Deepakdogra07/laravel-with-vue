@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
@@ -57,7 +57,12 @@ const deletejob = async (id) => {
         });
     }
 };
-
+const  options= {columnDefs: [{
+            targets: 5, 
+            orderable: false 
+          }
+        ]
+      };
 
 </script>
 
@@ -83,7 +88,7 @@ const deletejob = async (id) => {
                                     <th>Positions</th>
                                     <th>Seniority</th>
                                     <th>Created By</th>
-                                    <th>Actions</th>
+                                    <th >Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

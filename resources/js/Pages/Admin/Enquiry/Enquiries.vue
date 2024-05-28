@@ -20,6 +20,12 @@ const props = defineProps({
     const viewenquiry = async (id) => {
         router.get(route('contactus.view',id));
     };
+    const  options= {columnDefs: [{
+            targets: 4, 
+            orderable: false 
+          }
+        ]
+      };
 
 </script>
 
@@ -30,7 +36,7 @@ const props = defineProps({
                 
         </template>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto px-2 view_enquiry">
+            <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 padding_remove  table-responsive">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">
