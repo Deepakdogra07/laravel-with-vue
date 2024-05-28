@@ -11,6 +11,7 @@ import "../../../../../css/frontend.css";
 import {  } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import { Country } from 'country-state-city';
+import { ref } from 'vue';
 const props = defineProps({
     job_id:{
         type:Number
@@ -27,9 +28,14 @@ const form = useForm({
     port_of_arrival:null,
 
 })
+const select_class = ref('');
+
 
 function submitform(){
     form.post(route('personal.details',form.job_id));
+}
+function handleCountryInput(){
+    select_class.value = 'Selected_option' ;
 }
 
 </script>
@@ -102,7 +108,7 @@ function submitform(){
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Passenger nationality</span>
 
-                                <select class="form-select mt-2" v-model="form.passenger_nationality">
+                                <select class="form-select select_option mt-2" :class="select_class" @change="handleCountryInput()" v-model="form.passenger_nationality">
                                     <option selected :value="null" >----</option>
                                     <option v-for="country in countries" :value="country.name">{{ country.name }}</option>
                                 </select>

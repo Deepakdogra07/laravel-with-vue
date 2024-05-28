@@ -48,6 +48,7 @@ const submit = () => {
     });
 };
 function select_country(event){
+    // console.log(event,'1234566')
     states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
 }
 </script>
@@ -65,8 +66,8 @@ function select_country(event){
             </div>
             <form @submit.prevent="submit">
                 <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="mt-4">
+                    <div class="col-md-6 col-12 craete_account_col">
+                        <div class="mt-3">
                             <span class="label text-label">Company name<span style="color:red"> *</span></span>
                             <TextInput id="name" type="text" placeholder="Enter company name" class="form-control mt-2"
                                 v-model="form.company_name" autofocus autocomplete="name" />
@@ -86,7 +87,8 @@ function select_country(event){
                                     <InputError class="mt-1" :message="form.errors.company_pin" />
                                     </div>
                                 </div>
-                                <div class="select_country">
+                                <!-- v-bind:class = "(selected)?'Selected_option':''" -->
+                                <div class="select_country select_options">
                                     <span class="label text-label">Select Country<span style="color:red"> *</span></span>
                                     <div class="mb-3 margin_top">
                                     <select class="form-select" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
@@ -97,7 +99,7 @@ function select_country(event){
                                     </div>
                                 </div>
                                
-                                <div class="select_state">
+                                <div class="select_state select_options">
                                     <span class="label text-label">Select state<span style="color:red"> *</span></span>
                                     <div class="mb-3 margin_top">
                                     <select class="form-select"  aria-label="Default select example" v-model="form.company_state">
@@ -108,7 +110,7 @@ function select_country(event){
                                 </div>
                                 </div>
                                
-                                <div class="select_state">
+                                <div class="select_state select_options">
                                     <span class="label text-label">City<span style="color:red"> *</span></span>
                                 </div>
                                 <div class="mb-3 margin_top">
@@ -123,8 +125,8 @@ function select_country(event){
                         </div>
                         
                     </div>
-                    <div class="col-md-6 col-12">
-                        <div class="mt-4">
+                    <div class="col-md-6 col-12 craete_account_cols">
+                        <div class="mt-3">
                             <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                             <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
                                 v-model="form.email" autocomplete="username" />
@@ -144,13 +146,13 @@ function select_country(event){
                                 v-model="form.company_vat" autofocus autocomplete="name" />
                             <InputError class="mt-1" :message="form.errors.company_vat" />
                         </div>
-                        <div class="mt-4">
+                        <div class="key_contact">
                             <span class="label text-label">Key Contact Person<span style="color:red"> *</span></span>
                             <TextInput id="contact_number" type="text" placeholder="Enter contact person"
                                 class="form-control mt-2" v-model="form.contact_number" />
                             <InputError class="mt-1" :message="form.errors.contact_number" />
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-3">
                             <span class="label text-label">Key Contact Person Department<span style="color:red">
                                     *</span></span>
                             <TextInput type="text" placeholder="Enter department" class="form-control mt-2"
@@ -159,16 +161,16 @@ function select_country(event){
                         </div>
                         
                     </div>
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 login_Col">
                         <h2 class="mt-4 login-texts">Login Details</h2>
-                        <div class="mt-4">
+                        <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">User name<span style="color:red"> *</span></span>
                             <TextInput type="text" placeholder="Enter user name" class="form-control mt-2"
                                 v-model="form.name" autocomplete="username" />
                             <InputError class="mt-1" :message="form.errors.name" />
                         </div>
-                        <div class="mt-4">
+                        <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
                             <TextInput id="password" type="password" placeholder="Enter your password" class="form-control mt-2"
@@ -242,6 +244,12 @@ function select_country(event){
     </div>
     <Footer />
 </template>
+
+
+
+<script>
+
+</script>
 
 
 <style scoped>

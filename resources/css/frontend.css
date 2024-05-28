@@ -4055,12 +4055,12 @@ section#home_banner {
     background-position: right !important;
 }
 .margin_top{
-	margin-top: 5px;
+	margin-top: 6px;
 }
 .login-btn-main .forms-btn i::before {
     line-height: 0px !important;
 }
-.form-select[data-gtm-form-interact-field-id="0"], .form-select[data-gtm-form-interact-field-id="11"], .form-select[data-gtm-form-interact-field-id="13"], .form-select[data-gtm-form-interact-field-id="3"], .form-select[data-gtm-form-interact-field-id="10"], .form-select[data-gtm-form-interact-field-id="25"], .form-select[data-gtm-form-interact-field-id="4"], .form-select[data-gtm-form-interact-field-id="5"]{
+.form-select.Selected_option{
     color: #000;
 }
  .form-select {
@@ -4209,4 +4209,19 @@ form.row.edit_customer label {
 }
 .update_pass {
     max-width: 100% !important;
+}
+.column_nav_one {
+    padding-left: 0px;
+}
+.key_contact {
+    margin-top: 11px;
+}
+.craete_account_col {
+    padding-left: 0px;
+}
+.craete_account_cols {
+    padding-right: 0px;
+}
+.login_Col {
+    padding: 0px;
 }

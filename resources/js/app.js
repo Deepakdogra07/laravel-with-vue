@@ -49,3 +49,11 @@ createInertiaApp({
         color: '#4B5563',
     },
 });
+
+$(document).on('change','.select_options select',function(){
+    if($(this).val() != ''){
+        $(this).addClass('Selected_option')
+    }else{
+        $(this).removeClass('Selected_option')
+    }
+})

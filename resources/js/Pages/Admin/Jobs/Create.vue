@@ -106,6 +106,23 @@ const format = (date) => {
    form.job_start_date = `${year}-${month1}-${day}`;
   return `${year}/${month1}/${day}`;
 }
+const select_class =ref({
+    discipline:'',
+    work_exp:'',
+    discipline:'',
+    discipline:'',
+    discipline:'',
+
+});
+function handleChange(type){
+    if(type =="discipline"){
+        select_class.value.discipline = 'Selected_option';
+    }
+    if(type =="work_exp"){
+        select_class.value.work_exp = 'Selected_option';
+    }
+    
+}
 </script>
 <template>
   <AuthenticatedLayout>
@@ -132,7 +149,7 @@ const format = (date) => {
                             <div class="mt-4">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select select_options  mt-2" aria-label="Default select example"
                                         v-model="form.position_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in positions" :key="index"
@@ -158,7 +175,7 @@ const format = (date) => {
                             <div class="mt-4">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 " :class="select_class?.discipline" @change="handleChange('discipline')" aria-label="Default select example"
                                         v-model="form.discipline_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in disciplines" :key="index"
@@ -172,7 +189,7 @@ const format = (date) => {
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select select_options  mt-2" :class="select_class?.work_exp" @change="handleChange('work_exp')" aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index"
@@ -273,7 +290,7 @@ const format = (date) => {
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options" aria-label="Default select example"
                                         v-model="form.job_country">
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{
@@ -308,9 +325,9 @@ const format = (date) => {
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <span class="label text-label">Currency<span style="color:red"> *</span></span>
+                                <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options " aria-label="Default select example"
                                         v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
@@ -321,8 +338,7 @@ const format = (date) => {
                                 </div>
                             </div>
                             <div class="mt-4 minimum_input">
-                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary<span style="color:red">
-                                        *</span></span>
+                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary</span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
                                         <TextInput type="text" id="salary_range" v-model="form.min_pay_range"

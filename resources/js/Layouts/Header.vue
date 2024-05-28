@@ -35,4 +35,5 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import { ref } from 'vue';
 const dropdownOpen = ref(false);
+
 </script>
