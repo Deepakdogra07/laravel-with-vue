@@ -53,6 +53,12 @@ const props = defineProps({
             });
         }
     };
+    const  options= {columnDefs: [{
+            targets: 4, 
+            orderable: false 
+          }
+        ]
+      };
 </script>
 
 <template>

@@ -54,8 +54,19 @@ const showMenu = () => {
     }, 1000 / framesPerSecond);
   }
 };
-function TriggerButton(type){
-  console.log(type);
+const navbar_open = ref(false);
+const admin_hover = ref(false);
+
+function TriggerButton(type, event) {
+  if (type == 'hamburger_icon') {
+    event.preventDefault();
+    navbar_open.value = !navbar_open.value;
+    admin_hover.value = false;
+  } else if (type == 'admin_hover') {
+    event.preventDefault();
+    admin_hover.value = !admin_hover.value;
+    navbar_open.value = false;
+  }
 }
 </script>
 
@@ -92,8 +103,7 @@ function TriggerButton(type){
               <div class="login-section-mob" v-if="$page.props.auth.user">
                 <dropdown >
                   <template #trigger>
-                    <!-- @click="dropdownOpen = !dropdownOpen" -->
-                    <button  class="main-btn " @click="TriggerButton('admin_hover')" >
+                    <button class="main-btn" :class="{ show: admin_hover }" @click="TriggerButton('admin_hover', $event)">
                       {{ $page.props.auth.user.name }}
                       <i class="fa-solid fa-caret-down"></i>
                     </button>
@@ -119,10 +129,11 @@ function TriggerButton(type){
           </GuestLayout>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="padding-right: 0;">
-            <span><i class="bi bi-list" @click="TriggerButton('hamburger_icon')" ></i></span>
+      <span><i class="bi bi-list" @click="TriggerButton('hamburger_icon', $event)"></i></span>
           </button>
         </div>
-        <div class="collapse navbar-collapse justify-center" id="navbarNav">
+        <!-- <div class="collapse navbar-collapse justify-center" id="navbarNav" :class="{show:navbar_open}"> -->
+          <div id="navbarNav" class="collapse navbar-collapse justify-center" :class="{ show: navbar_open }">
           <ul class="navbar-nav gap-3">
             <li class="nav-item">
               <Link class="nav-link" :class="{ 'active-nav': route().current() == 'home' }" aria-current="page"
@@ -160,6 +171,9 @@ function TriggerButton(type){
                 </template>
   
                 <template #content>
+                  <dropdown-link :href="route('dashboard')">
+                    Dashboard
+                  </dropdown-link>
                   <dropdown-link :href="route('profile.edit')">
                     Profile
                   </dropdown-link>
@@ -185,6 +199,9 @@ function TriggerButton(type){
                 </template>
   
                 <template #content>
+                  <dropdown-link :href="route('dashboard')">
+                    Dashboard
+                  </dropdown-link>
                   <dropdown-link :href="route('profile.edit')">
                     Profile
                   </dropdown-link>

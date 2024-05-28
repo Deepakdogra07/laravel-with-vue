@@ -20,6 +20,12 @@ const props = defineProps({
     const viewenquiry = async (id) => {
         router.get(route('contactus.view',id));
     };
+    const  options= {columnDefs: [{
+            targets: 4, 
+            orderable: false 
+          }
+        ]
+      };
 
 </script>
 
