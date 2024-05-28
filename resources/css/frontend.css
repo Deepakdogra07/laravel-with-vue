@@ -1379,7 +1379,9 @@ input[type="file"]{
 .countries-section h2 {
     line-height: 47.4px !important;
 }
-
+.internationa_partners .about-us-cards, .aboutcard_align .about-us-cards {
+    height: auto !important;
+}
 }
 
 @media (max-width: 992px) {
@@ -1688,6 +1690,12 @@ input[type="file"]{
 }
 
 @media (max-width:767px){
+	.col_padding {
+		padding: 0px 5px;
+	}
+	.add_employer_hd {
+		padding-left: 5px;
+	}
 	.country-names {
 		bottom: 20px;
 		left: 20px;
@@ -2047,6 +2055,42 @@ input[type="file"]{
 		display: block !important;
 		overflow-x: scroll !important;
 	}
+	.customer_page {
+		padding: 0px 4px;
+	}
+	.add_customer_row, .add_customer_hd {
+		padding: 0px !important;
+	}
+	.update_hd {
+		padding-left: 5px !important;
+	}
+	.col_update {
+		padding: 0px 6px;
+	}
+	.col_update {
+		padding: 0px 7px !important;
+	}
+	.col_updates {
+		margin-top: 10px !important;
+	}
+	.phn_input {
+		margin-top: 10px !important;
+	}
+	.other_data_fields .container {
+		padding: 0px 5px;
+	}
+	.view_enquiry {
+		padding: 0px 5px !important;
+	}
+	.create_testimonial_form {
+		padding: 0px 5px;
+	}
+	.padding_btm {
+		margin-bottom: 16px;
+	}
+	.button_marginss {
+		padding-left: 5px;
+	}
 }
 
 @media (max-width:767px){
@@ -2059,7 +2103,23 @@ input[type="file"]{
 	div#welcome_slider_ .image_for_Card {
 		height: 390px;
 	}
+	.customer_page {
+		padding: 0px 5px !important;
+	}
+	.button_margins {
+		padding-left: 0px !important;
+	}
+	.remove_padding {
+		padding: 0px;
+	}
 }
+
+@media (max-width:740px){
+	.unstoppable-spaces-top.countries-section .content-right.relative{
+		margin: 0px;
+	}
+}
+
 
 @media (max-width:640px){
 	.padding_remove div#DataTables_Table_0_filter {
@@ -2100,15 +2160,6 @@ input[type="file"]{
 	.popup-video-section {
 		height: 220px;
 	}
-
-
-
-
-
-
-
-
-
 }
 
 @media (max-width: 576px) {
@@ -2793,7 +2844,9 @@ input[type="file"]{
 	.last_login_input .remember-me, .last_login_input a.text-lightgreen {
 		font-size: 14px;
 	}
-
+	.add_customers_inner {
+		padding: 0px 5px !important;
+	}
 	
 }
 
@@ -3767,8 +3820,15 @@ li.last_border {
 .add_sliedrs .mb-4 input, .add_sliedrs .mb-4 textarea, .add_sliedrs .mb-4 {
     margin-bottom: 3px !important;
 }
-.add_sliedrs .mb-4 label {
+.add_sliedrs label {
     margin-top: 17px;
+    color: #212529;
+    font-size: 16px;
+}
+.inner_admin label {
+    color: #212529 !important;
+    font-size: 16px;
+    font-weight: 700;
 }
 .add_sliedrs .p-6.text-black-900 {
     padding: 0px 5px 15px!important;
@@ -4174,6 +4234,8 @@ span.video_txt {
 }
 .update_hd {
     font-size: 24px !important;
+    padding-left: 10px;
+    margin-bottom: 14px;
 }
 .job_posting_page .text-label {
     text-transform: capitalize;
@@ -4275,8 +4337,59 @@ form.row.edit_customer label, .customer_page form label {
 .add_customers_inner {
     padding: 0px 5px!important;
 }
-.add_customers_inner a.paginate_button {
+.add_customers_inner a.paginate_button, .update_employer button.rounded-lg{
     background: #097b72 !important;
     border: 0px!important;
     /* padding: 7px !important; */
+}
+.aboutcard_align .about-us-cards {
+    height: 320px;
+}
+.business_links li span:hover {
+    color: #01796f;
+}
+.add_customers a.paginate_button {
+    margin-right: 5px;
+}
+.add_customers .padding_remove .dataTables_paginate .paginate_button {
+    color: #fff !important;
+    line-height: 22px;
+}
+.add_customer_row {
+    padding: 0px;
+}
+.add_customer_hd {
+    padding: 0px;
+}
+a.paginate_button.current {
+    padding-top: 6px !important;
+}
+.categories_pagea.paginate_button.current {
+    padding-top: 6px !important;
+}
+.categories_inner, .ADD_SLIDER_MAIN .add__slider {
+    padding: 0px 5px !important;
+}
+.buttons_margin {
+    padding-left: 10px;
+}
+.update_employer form label {
+    color: #212529;
+    margin-bottom: 7px;
+}
+.create_space.create_code .container {
+    padding: 0px;
+}
+.add_empLoyer_page label {
+    color: #212529;
+    margin-bottom: 8px;
+}
+.button_marginss {
+    padding-left: 10px;
+}
+.button_marginss button.rounded-lg {
+    background: #060d1a;
+}
+.button_marginss button.rounded-lg:hover{
+	background:#3c5b6f;
 }

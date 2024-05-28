@@ -38,11 +38,11 @@ const submit = () => {
     <Head title="Add Customer" />
     <div class="flex items-center justify-center customer_page">
       <div class="w-full">
-        <h2 class="font-semibold text-xl text-black-800 leading-tight pl-3 pb-2">Add Customer</h2>
+        <h2 class="font-semibold text-xl text-black-800 leading-tight pl-3 pb-2 add_customer_hd">Add Customer</h2>
 
         <form @submit.prevent="submit">
           <div class="row add_customer_page">
-            <div class="col-md-6">
+            <div class="col-md-6 add_customer_row">
               <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="name" type="text" placeholder="Enter Customer Name" class="form-control"
@@ -50,7 +50,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 add_customer_row">
               <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" v-model="form.email"

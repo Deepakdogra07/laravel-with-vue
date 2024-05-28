@@ -2,7 +2,7 @@
 import Header from "../Frontend/Header.vue"
 import Footer from "../Frontend/Footer.vue";
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
-import "../../../css/frontend.css";
+import "@@/frontend.css";
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import CustomPagination from '@/Components/CustomPagination.vue';
 </script>
@@ -45,7 +45,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                                 </div>
                             </div>
                         </div>
-                        <div class="aboutus-card-outer">
+                        <div class="aboutus-card-outer aboutcard_align">
                             <div class="about-us-cards">
                                 <span class="profile-posts">LEGAL CONSULTANT</span>
                                 <h2 class="mb-3">Julian Hayden</h2>
@@ -57,7 +57,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                                 </div>
                             </div>
                         </div>
-                        <div class="aboutus-card-outer">
+                        <div class="aboutus-card-outer aboutcard_align">
                             <div class="about-us-cards">
                                 <span class="profile-posts">CLIENT SERVICES</span>
                                 <h2 class="mb-3">Marie Macdonald</h2>

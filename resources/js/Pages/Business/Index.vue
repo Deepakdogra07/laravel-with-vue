@@ -90,7 +90,7 @@ const deletejob = async (id) => {
                 <div class="filter-status row">
                     <div class="col-md-11 width_mobile">
                         <div class="d-flex justify-between align-items-center">
-                            <ul class="d-flex align-items-center flex-wrap pl-0">
+                            <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
                                         Active</span>

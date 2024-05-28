@@ -10,8 +10,8 @@ import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { ref,onMounted } from "vue";
 import { toast } from 'vue3-toastify';
-import '@/../../resources/css/frontend.css';
-import '@/../../resources/css/multiselect.css';
+import '@@/frontend.css';
+import '@@/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
 import { QuillEditor } from '@vueup/vue-quill'

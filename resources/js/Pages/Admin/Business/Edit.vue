@@ -40,13 +40,13 @@ const submit = () => {
     <AuthenticatedLayout>
 
         <Head title="Update Employer" />
-        <div class="flex items-center justify-center px-2">
+        <div class="flex items-center justify-center update_employer">
             <div class="w-full">
-                <h1 class="text-xl font-semibold text-gray-700 update_hd">Update Employer</h1>
+                <h1 class="text-xl font-semibold text-gray-700 update_hd ">Update Employer</h1>
 
                 <form @submit.prevent="submit">
                     <div class="row">
-                        <div class="mt-4 col-md-6">
+                        <div class="col-md-6 col_update">
                             <InputLabel for="name" value="UserName" style="display: inline-block;" /><strong
                                 class="required-asterisk"> *
                             </strong>
@@ -55,7 +55,7 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.name" />
                         </div>
 
-                        <div class="mt-4 col-md-6">
+                        <div class="col-md-6 col_update col_updates">
                             <InputLabel for="email" value="Email" style="display: inline-block;" /><strong
                                 class="required-asterisk"> *
                             </strong>
@@ -66,7 +66,7 @@ const submit = () => {
 
 
 
-                        <div class="mt-4 col-md-6">
+                        <div class="mt-4 col-md-6 col_update phn_input">
                             <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong
                                 class="required-asterisk"> *
                             </strong>
@@ -75,7 +75,7 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.phone" />
                         </div>
                        
-                        <div class="mt-4 col-md-6">
+                        <div class="mt-4 col-md-6 col_update">
 
                             <div class="configure-switch d-flex align-items-center gap-3">
                                 <div class="d-flex">
@@ -89,7 +89,7 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.status" />
                         </div>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-4 buttons_margin">
                         <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                             type="submit">
                             Submit

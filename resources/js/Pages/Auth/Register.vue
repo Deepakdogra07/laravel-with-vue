@@ -8,7 +8,7 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
 import SubHeading from '../Frontend/SubHeading.vue'
-import '@/../../resources/css/frontend.css';
+import '@@/frontend.css';
 import * as countryStateCity from 'country-state-city';
 import { ref } from 'vue';
 import { toast } from 'vue3-toastify';
@@ -51,6 +51,9 @@ function select_country(event){
     // console.log(event,'1234566')
     states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
 }
+
+
+
 </script>
 
 

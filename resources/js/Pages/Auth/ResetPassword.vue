@@ -68,7 +68,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import '@/../../resources/css/frontend.css';
+import '@@/frontend.css';
 import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
 import SubHeading from '../Frontend/SubHeading.vue';

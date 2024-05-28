@@ -5,8 +5,8 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import '@/../../resources/css/frontend.css';
-import '@/../../resources/css/multiselect.css';
+import '@@/frontend.css';
+import '@@/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
 import { ref } from 'vue';
@@ -148,7 +148,7 @@ function handleChange(type){
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 ">
+                            <div class="">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
@@ -321,7 +321,7 @@ function handleChange(type){
 
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 minium_salary">
+                            <div class="minium_salary">
                                 <span class="label text-label">Segment <span style="color:red"> *</span></span>
                                 <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                                     class="form-control mt-2  " />
