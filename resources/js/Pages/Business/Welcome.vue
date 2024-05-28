@@ -16,7 +16,7 @@ const props = defineProps({
 
 <template>
         <Header :logo_image="footer_data.logo_image" />
-        <div>
+        <div class="container my-4">
             <h1>Business Dashboard</h1>
         </div>
         <Footer :footer_data="footer_data" />

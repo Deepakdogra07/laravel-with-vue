@@ -5,8 +5,13 @@ const props=defineProps({
         type:Number,
         required:true,
         default:0
+    },
+    data:{
+        type:Object,
+        required:true,
     }
 })
+// console.log(route().current('business_job_for_customers',props.job_id),route().current());
 
 </script>
 <template>
@@ -18,7 +23,7 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
                 <h1 class="mb-0" v-if="route().current('contact.us')">Contact us</h1>
                 <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
-                <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Application Form</h1>
+                <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Posting</h1>
                 <h1 class="mb-0" v-if="route().current('testimonial.main')">Testimonial</h1>
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>
@@ -28,8 +33,8 @@ const props=defineProps({
     <div class="container-fluid">
         <div class="form-navigation" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
             <div class="container">
-                <ul class="row nav-underline pl-0 mb-0">
-                    <div class="col-md-1 col-3">
+                <ul class="row nav-underline pl-0 mb-0 second_navbar">
+                    <div class="col-md-1 col-3 column_nav_one">
                         <li class="nav-item">
                             <Link class="nav-link text-center" 
                                 :class="{ 'active': route().current('login') || route().current('password.request') }" 
@@ -38,7 +43,7 @@ const props=defineProps({
                             >Login</Link>
                         </li>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-5">
+                    <div class="col-lg-2 col-md-3 col-5 column_nav_two">
                         <li class="nav-item">
                             <Link class="nav-link text-center"  
                                 :class="{ 'active': route().current('register') }"  
@@ -69,7 +74,7 @@ const props=defineProps({
                     </div>
                     <div class="col-lg-2 col-md-3 col-4">
                         <li class="nav-item">
-                            <Link href="/document-details" class="nav-link text-center"  
+                            <Link :href="`/document-details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('document.details') }"  
                             >Document</Link>
                         </li>
@@ -79,6 +84,7 @@ const props=defineProps({
         </div>
 
         <div class="form-navigation" v-else-if="route().current('travel.details') || route().current('personal.details')">
+            
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
@@ -95,22 +101,24 @@ const props=defineProps({
             </div>
         </div>
         <!-- v-if="$page.props.auth.user.user_type <= 2" -->
-        <!-- <div class="form-navigation"  v-else-if="route().current('business_job_for_customers') || route('business-jobs.index')"  >
+
+        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link :href="route('business-jobs.index')" class="nav-link text-center" :class="{ 'active': route().current('business-jobs.index') }">Jobs</Link>
+                          
+                            <Link :href="route('business-jobs.show',job_id)" class="nav-link text-center" :class="{ 'active': route().current('business-jobs.show',job_id) }">Jobs</Link>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link :href="route('business_job_for_customers',2)" class="nav-link text-center"  :class="{ 'active': route().current('business_job_for_customers') }">Employees</Link>
+                            <Link :href="route('business_job_for_customers',job_id)" class="nav-link text-center"  :class="{ 'active': route().current('business_job_for_customers') }">Employees</Link>
                         </li>
                     </div>
                 </ul>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 

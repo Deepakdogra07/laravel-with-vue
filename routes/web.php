@@ -145,6 +145,7 @@ Route::get('/faq', function () {
 })->name('faq');
 
 Route::get('/testimonials',[TestimonialsController::class,"show_testimonials"])->name('testimonial.main');
+Route::get('/show-testimonials/{testimonial_id}',[TestimonialsController::class,"show_detailed_testimonial"])->name('show.testimonial');
 
 require __DIR__ . '/auth.php';
 
@@ -155,6 +156,9 @@ Route::get('/layouts', function () {
 Route::get('/403', function () {
     return inertia('Frontend/ErrorPages/403');
 })->name('403');
+Route::get('/404', function () {
+    return inertia('Frontend/ErrorPages/404');
+})->name('404');
 Route::get('/about-us', function () {
     return Inertia('About/AboutUs');
 })->name('about.us');
@@ -173,15 +177,11 @@ Route::get('/job-introduction', [JobApplicationController::class , 'introduction
 Route::get('/travel-details/{job_id}',[JobApplicationController::class , 'travel_details'] )->name('travel.details');
 
 Route::match(['get','post'],'/personal-details/{job_id}',[JobApplicationController::class , 'personal_details'])->name('personal.details');
-Route::post('/submit-personal-details',[JobApplicationController::class , 'submit_personal_details'] )->name('submit_personal_details');
+Route::match(['get','post'],'/submit-personal-details/{job_id}',[JobApplicationController::class , 'submit_personal_details'] )->name('submit_personal_details');
 
 
-Route::get('/employment-details/{job_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
-// Route::get('/employment-details', function () {
-//     return inertia('Frontend/CustomerSection/Employment/Index');
-// })->name('employment.details');
+Route::get('/employment-details/{job_id}/{customer_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
+Route::post('/submit_employment_details', [JobApplicationController::class,'submit_employment_details'])->name('submit_employment_details');
 
-
-Route::get('/document-details', function () {
-    return inertia('Frontend/CustomerSection/Documents/Index');
-})->name('document.details');
+Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');
+Route::post('/submit_customers_documents', [JobApplicationController::class,'submit_customers_documents'])->name('submit_customers_documents');

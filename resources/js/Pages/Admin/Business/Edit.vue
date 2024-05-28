@@ -42,13 +42,13 @@ const submit = () => {
         <Head title="Update Employer" />
         <div class="flex items-center justify-center px-2">
             <div class="w-full">
-                <h1 class="text-xl font-semibold text-gray-700">Update Employer</h1>
+                <h1 class="text-xl font-semibold text-gray-700 update_hd">Update Employer</h1>
 
                 <form @submit.prevent="submit">
                     <div class="row">
                         <div class="mt-4 col-md-6">
                             <InputLabel for="name" value="UserName" style="display: inline-block;" /><strong
-                                class="required-asterisk">*
+                                class="required-asterisk"> *
                             </strong>
                             <TextInput id="name" type="text" placeholder="Enter Employer UserName" class="form-control"
                                 v-model="form.name" autocomplete="name" />
@@ -57,7 +57,7 @@ const submit = () => {
 
                         <div class="mt-4 col-md-6">
                             <InputLabel for="email" value="Email" style="display: inline-block;" /><strong
-                                class="required-asterisk">*
+                                class="required-asterisk"> *
                             </strong>
                             <TextInput id="email" type="email" placeholder="Enter Email" class="form-control"
                                 v-model="form.email" autocomplete="email" />
@@ -68,7 +68,7 @@ const submit = () => {
 
                         <div class="mt-4 col-md-6">
                             <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong
-                                class="required-asterisk">*
+                                class="required-asterisk"> *
                             </strong>
                             <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
                                 v-model="form.phone" autocomplete="phone" />

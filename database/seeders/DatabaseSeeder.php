@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call(Adding_job_description::class);
         $this->call(DummyDataEntry::class);
+        $this->call(LanguageSeeder::class);
+        $this->call(CurrenciesTableSeeder::class);
+
     }
 }

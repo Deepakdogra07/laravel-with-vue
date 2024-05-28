@@ -16,7 +16,7 @@ defineProps({
 const testimonialDelete = async (id) => {
   const { value: confirmed } = await Swal.fire({
     title: 'Are you sure?',
-    text: 'You want to Delete News Record?',
+    text: 'You want to Delete Testimonial Record?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#d33',
@@ -55,6 +55,14 @@ const testimonialDelete = async (id) => {
 const testimonialedit = (id)=>{
     router.get(`testimonial/${id}/edit`);
 }
+
+function splitStringIntoChunks(inputString, chunkSize = 80) {
+  let result = '';
+  for (let i = 0; i < inputString.length; i += chunkSize) {
+    result += inputString.slice(i, i + chunkSize) + '<br>';
+  }
+  return result;
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -70,14 +78,16 @@ const testimonialedit = (id)=>{
           <!-- </template> -->
           <div class="py-12 craete_pagee">
           <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
-              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
+
+              <div class="bg-white shadow-sm sm:rounded-lg shift-u tesstimonials_bgg" style="border: 1px solid #ddd;">
                   <div class="p-6 text-black-900 padding_remove bg_tablee">
-                      <DataTable class="display" :options="options" style="border:2px black ;width:100%">
+                    <div class="">
+                      <DataTable class="table display add_testimonial_page" :options="options" style="border:2px black ;">
                           <thead>
                               <tr>
-                                  <th class="d-none">ID</th>
+                                  <th >ID</th>
                                   <th>Name</th>
-                                  <th>Image</th>
+                                  <!-- <th>Image</th> -->
                                   <th>Description</th>
                                   <th>Status</th>
                                   <th>Actions</th>
@@ -85,14 +95,16 @@ const testimonialedit = (id)=>{
                           </thead>
                           <tbody>
                           <tr v-for="testimonialRecord in testimonialRecords" :key="testimonialRecord.id">
-                                  <td class="d-none">{{ testimonialRecord.id }}</td>
+                                  <td >{{ testimonialRecord.id }}</td>
                                   <td>{{ testimonialRecord.name }}</td>
-                                  <td>
-                                    <div class="image_sections_testimonial">
+
+                                  <!-- <td>
+                                    <div class="">
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
-                                  </td>
-                                  <td>{{ testimonialRecord.description }}</td>
+                                  </td> -->
+                                  <td v-html="splitStringIntoChunks(testimonialRecord.description)">  </td>
+
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
                                     {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>
@@ -105,6 +117,7 @@ const testimonialedit = (id)=>{
                               </tr>
                           </tbody>
                       </DataTable>
+                    </div>
                   </div>
               </div>
           </div>
@@ -113,7 +126,7 @@ const testimonialedit = (id)=>{
 </template>
 
 <style scoped>
-  .dataTable thead th, .dataTable tbody td{
+  /* .dataTable thead th, .dataTable tbody td{
     white-space: unset !important;
-  }
+  } */
 </style>

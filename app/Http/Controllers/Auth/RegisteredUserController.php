@@ -41,20 +41,21 @@ class RegisteredUserController extends Controller
             'company_state' => 'required',
             'company_pin' => 'required',
             // |max:10|min:4
-            'contact_number' => 'required|max:15|min:8',
+            'contact_number' => 'required',
             'company_name' => 'required',
             'contact_department' => 'required',
             'mobile_number' => 'required|max:15|min:8',
             'email' => 'required|email|unique:users|max:255',
             'password' => 'required|min:4|max:10',
             'name' => 'required|unique:users',
-            // 'company_vat'=>'required',
+            'company_city'=>'required',
             'checkbox' => 'accepted',
         ], [
             'checkbox.accepted' => 'You must agree to the Terms of Use and Privacy Policy.',
             'company_address.required'=>"Company address is required.",
             'company_country.required'=>"Country is required.",
             'company_state.required'=>"State is required.",
+            'company_city.required'=>"City is required.",
             'company_pin.required'=>"Postal Code is required.",
             // 'company_pin.min'=>"Postal Code should be atleast 4 digits.",
             // 'company_pin.max'=>"Postal Code should not more than 10 digits.",
@@ -69,14 +70,14 @@ class RegisteredUserController extends Controller
             'email.unique' => 'The email address is already in use.',
 
             'contact_department.required' => "Contact department  is required.",
-            'contact_number.required' => "Contact Number  is required.",
+            'contact_number.required' => "Contact Person  is required.",
             // 'contact_number.min' => "Contact Number  should be more than 8 digits.",
             // 'contact_number.max' => "Contact Number  should be less than 15 digits..",
 
-            'name.required'=>"The user name is required",
-            'name.unique'=>"The user name already taken. Please select other username.",
+            'name.required'=>"User name is required",
+            'name.unique'=>"User name already taken. Please select other username.",
 
-            'password.required' => 'The password is required.',
+            'password.required' => 'Password is required.',
             'password.confirmed' => 'Password confirmation does not match.',
             'password.min' => 'Password must be at least 4 characters long.',
             'password.max' => 'Password must not exceed 10 characters.',
@@ -93,6 +94,7 @@ class RegisteredUserController extends Controller
             'user_type' => "2",
             'status' => 1,
         ]);
+        
         $business = new BusinessModal();
         $business->company_name = $request->company_name; 
         $business->contact_number = $request->contact_number; 
@@ -100,8 +102,10 @@ class RegisteredUserController extends Controller
         $business->company_country_code = $request->company_country; 
         $business->company_state = $request->company_state; 
         $business->company_pin = $request->company_pin; 
-        $business->contact_department = $request->test; 
+        $business->contact_department = $request->contact_department; 
         $business->company_vat = $request->company_vat; 
+        $business->company_city = $request->company_city; 
+        // dd($business,$request->All());
         $business->user_id = $user->id;
         $business->save();
         if ($user->user_type == '2') {
@@ -110,7 +114,7 @@ class RegisteredUserController extends Controller
             $password = $textpassword;
             $creator = $user->name;
             Mail::to($email)->send(new RegisteredCustomer($username, $email, $password, $creator));
-            Auth::login($user);
+            // Auth::login($user);
             Mail::to($email)->send(new VerifyUser($user->id , $username, $email, $password, $creator));
             return redirect(route('business-dash'));
         }

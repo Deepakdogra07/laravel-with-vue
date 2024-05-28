@@ -24,9 +24,9 @@ const getIdColumnIndex = () => {
 
 const idColumnIndex = getIdColumnIndex();
 
-const options = reactive({
-    order: [[idColumnIndex, 'desc']],
-});
+// const options = reactive({
+//     order: [[idColumnIndex, 'desc']],
+// });
 
 const submit = () => {
     form.post(route('customers'));
@@ -81,6 +81,12 @@ const viewCustomer = (id) => {
 const editCustomer = (id) => {
     router.get(`/customers/edit-customer/${id}`);
 };
+const  options= {columnDefs: [{
+            targets: 4, 
+            orderable: false 
+          }
+        ]
+      };
 </script>
 
 <template>
@@ -93,8 +99,8 @@ const editCustomer = (id) => {
                 </Link>
             </div>
         </template>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto px-2">
+        <div class="py-12 add_customers">
+            <div class="max-w-7xl mx-auto px-2 add_customers_inner">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 padding_remove">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">

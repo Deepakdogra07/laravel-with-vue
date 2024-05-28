@@ -16,7 +16,12 @@ import { Country } from 'country-state-city';
 const props = defineProps({
     variable:{
         type:Object
+    },
+    errors:{
+        type:Object,
+        default:null
     }
+
 })
 const countries = Country.getAllCountries(),
 image_src = ref('');
@@ -50,7 +55,7 @@ function upload_image(event){
 }
 
 const submitData = () => {
-    form.post(route('submit_personal_details'),
+    form.post(route('submit_personal_details',form.job_id),
     {
       onSuccess: () => {
         toast("Details Saved Successfully!", {
@@ -81,7 +86,8 @@ const submitData = () => {
                                     stroke="#01796F" stroke-width="4"></path>
                             </svg>
                             <h2 class="choose-para">Upload Passport And Prefill Information</h2>
-                            <p class="file-type">Max size 20MB</p><input class="upload" type="file" @change="upload_image($event)"id="banner">
+                            <p class="file-type">Max size 20MB</p>
+                            <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*">
                         </div>
                     </div>
                 </div>
@@ -95,7 +101,7 @@ const submitData = () => {
                                 <div class="mb-4">
                                     <span class="label text-label">Given Name (s)</span>
                                     <TextInput placeholder="---" v-model="form.first_name" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.first_name"/>
+                                    <InputError class="mt-2" v-if="props.errors.first_name" :message="props.errors.first_name[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -103,7 +109,7 @@ const submitData = () => {
                                     <span class="label text-label">Surname / family name</span>
     
                                     <TextInput placeholder="---" v-model="form.last_name" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.last_name"/>
+                                    <InputError class="mt-2" v-if="props.errors.last_name" :message="props.errors.last_name[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -111,7 +117,7 @@ const submitData = () => {
                                     <span class="label text-label">E-mail address</span>
     
                                     <TextInput placeholder="---" type="email" v-model="form.email"class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.email" />
+                                    <InputError class="mt-2" v-if="props.errors.email" :message="props.errors.email[0]" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -119,7 +125,7 @@ const submitData = () => {
                                     <span class="label text-label">Confirm E-mail</span>
     
                                     <TextInput placeholder="---" v-model="form.confirm_email"type="email" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.confirm_email"/>
+                                    <InputError class="mt-2" v-if="props.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -127,7 +133,7 @@ const submitData = () => {
                                     <span class="label text-label">Date of birth</span>
     
                                     <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.date_of_birth"/>
+                                    <InputError class="mt-2" v-if="props.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -145,7 +151,7 @@ const submitData = () => {
                                 <div class="mb-4">
                                     <span class="label text-label">City of birth</span>
                                     <TextInput placeholder="---" v-model="form.city_of_birth" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.city_of_birth"/>
+                                    <InputError class="mt-2" v-if="props.errors.city_of_birth" :message="props.errors.city_of_birth[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -192,7 +198,7 @@ const submitData = () => {
                                     <span class="label text-label">Passport Number</span>
 
                                     <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.passport_number" />
+                                    <InputError class="mt-2" v-if="props.errors.passport_number" :message="props.errors.passport_number[0]" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -200,7 +206,7 @@ const submitData = () => {
                                     <span class="label text-label">Issuing Authority</span>
 
                                     <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.issuing_authority" />
+                                    <InputError class="mt-2" v-if="props.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -208,7 +214,7 @@ const submitData = () => {
                                     <span class="label text-label">Passport Date Of Expiry</span>
 
                                     <TextInput placeholder="---"v-model="form.passport_date_of_expiry"  type="date" class="form-control mt-2" />
-                                    <InputError class="mt-2" :message="form.errors.passport_date_of_expiry" />
+                                    <InputError class="mt-2" v-if="props.errors.passport_date_of_expiry" :message="props.errors.passport_date_of_expiry[0]" />
                                 </div>
                             </div>
                             <div class="col-md-12">

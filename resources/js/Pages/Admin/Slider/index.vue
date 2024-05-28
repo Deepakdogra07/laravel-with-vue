@@ -79,7 +79,13 @@ const options = {
 function getImageUrl(imageName) {
       return `${imageName}`;
     }
-    
+    function splitStringIntoChunks(inputString, chunkSize = 80) {
+  let result = '';
+  for (let i = 0; i < inputString.length; i += chunkSize) {
+    result += inputString.slice(i, i + chunkSize) + '<br>';
+  }
+  return result;
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -93,15 +99,15 @@ function getImageUrl(imageName) {
             
         </template>
         <div class="py-12">
-            <div class="max-w-7xl mx-auto px-2">
+            <div class="max-w-7xl mx-auto px-2 add__slider">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900 table-responsive sliders_page">
+                    <div class="p-6 text-black-900 table-responsive sliders_page ">
                        <DataTable class="display" :options="options" style="border:2px black ;width:100% ;overflow:hidden">
                             <thead>
                                 <tr>
                                     <th >ID</th>
                                     <th>Slider Heading</th>
-                                    <th style="width:200px !important;" >Slider Description</th>
+                                    <th >Slider Description</th>
                                     <th>Slider Image</th>
                                     <th>Actions</th>
                                 </tr>
@@ -109,7 +115,7 @@ function getImageUrl(imageName) {
                             <tbody>
                                 <tr v-for="(slider, index) in sliders" :key="slider.id">
                                     <td >{{ index+1 }}</td>
-                                    <td>{{ slider.slider_heading }}</td>
+                                    <td v-html="splitStringIntoChunks(slider.slider_heading)"></td>
                                     <td style="width:200px !important;">{{ slider.slider_description }}</td>
                                     <td>
                                         <img :src="getImageUrl(slider.slider_image)" alt="" srcset="" style="width:100px">

@@ -100,7 +100,34 @@ const user = ref(page?.props?.auth?.user)
   <div class="container-fluid">
     <div class="bottom-footer">
       <div class="container">
-        <p class="text-center mb-0">Copyright © 2024 Dizon & Associates Pty Ltd |Terms & Conditions</p> 
+        <div class="row justify-content-around align-items-center">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <div class="rating_image">
+                <img src="/images/google_rating.png" style="border-top: 5px solid #34A853; border-radius: 5px 5px 0px 0px; background-color: #fff">
+              </div>
+        
+              <!-- <div class="google_ratings">
+                <div class="ratings_img">
+                  <img src="/images/google-logo.png">
+                </div>
+                <div class="rating_txt">
+                  <h6>Google Rating</h6>
+                  <ul class="pl-0 mb-0">
+                    <li>4.8</li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                  </ul>
+                  <a href="#">See all reviews</a>
+                </div>
+              </div> -->
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+              <p class="mb-0">Copyright © 2024 Dizon & Associates Pty Ltd |Terms & Conditions</p> 
+            </div>
+        </div>
       </div>
     </div>
   </div>

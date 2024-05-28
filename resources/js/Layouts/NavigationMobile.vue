@@ -1,5 +1,5 @@
 <template>
-  <transition
+  <!-- <transition
       enter-active-class="transition ease-in-out duration-150"
       enter-from-class="opacity-0"
       enter-to-class="opacity-100"
@@ -7,7 +7,7 @@
       leave-from-class="opacity-100"
       leave-to-class="opacity-0">
     <div v-show="$page.props.showingMobileMenu" class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
-  </transition>
+  </transition> -->
   <transition
       enter-active-class="transition ease-in-out duration-150"
       enter-from-class="opacity-0 transform -translate-x-20"
@@ -17,10 +17,10 @@
       leave-to-class="opacity-0 transform -translate-x-20">
     <aside v-show="$page.props.showingMobileMenu" class="fixed inset-y-0 z-20 flex-shrink-0 w-85 mt-16 overflow-y-auto side-navbar">
       <div class="py-4 text-gray-500">
-        <Link class="main-heading-logo px-3" :href="route('dashboard')">
+        <Link class="main-heading-logo px-3 logo_spacing" :href="route('dashboard')">
           <img src="/images/web-logo.png" alt="">
       </Link>
-        <ul class="mt-2">
+        <ul class="mt-2 responsive_dashboard">
           <li class="relative px-6 py-3">
             <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
               <template #icon>
@@ -71,7 +71,7 @@
               <template #icon>
                 <i class="fa-solid fa-user-plus"></i>
               </template>
-              Agents
+              Business
             </ResponsiveNavLink>
           </li>
           

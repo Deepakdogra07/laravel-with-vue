@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { router, Link } from '@inertiajs/vue3';
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
@@ -57,7 +57,12 @@ const deletejob = async (id) => {
         });
     }
 };
-
+const  options= {columnDefs: [{
+            targets: 5, 
+            orderable: false 
+          }
+        ]
+      };
 
 </script>
 
@@ -74,16 +79,16 @@ const deletejob = async (id) => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto px-2 padding_remove border_index">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class=" text-black-900 padding_remove">
+                    <div class=" text-black-900 padding_remove  table-responsive">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Job Title</th>
                                     <th>Positions</th>
-                                    <th>Industry</th>
+                                    <th>Seniority</th>
                                     <th>Created By</th>
-                                    <th>Actions</th>
+                                    <th >Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,7 +99,7 @@ const deletejob = async (id) => {
                                     </td>
                                     <td> {{ job?.position?.name }}</td>
                                     <td>
-                                        {{ job?.industry?.name }}
+                                        {{ job?.seniority?.name }}
                                     </td>
                                     <td>
                                         {{ job?.createdby?.name }}

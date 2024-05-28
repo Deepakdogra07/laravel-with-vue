@@ -53,7 +53,7 @@ function update_all_data(type, event) {
         <form @submit.prevent="update" enctype="multipart/form-data">
           <div class="row">
             <div class="mt-4 col-md-6">
-              <label for="name">Name<span class="text-danger">*</span></label>
+              <label for="name">Name<span class="text-danger"> *</span></label>
               <input id="name" v-model="form.name" placeholder="Enter Name" class="form-control" autocomplete="name" />
               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
             </div>
@@ -64,18 +64,18 @@ function update_all_data(type, event) {
                                <div v-if="errors.rating" class="text-danger">{{ errors.rating }}</div>
                         </div> -->
             <div class="mt-4 col-md-6">
-              <label for="description">Description<span class="text-danger">*</span></label>
+              <label for="description">Description<span class="text-danger"> *</span></label>
               <textarea id="description" v-model="form.description" placeholder="Enter description"
                 class="form-control"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
             </div>
 
             <div class="mt-4 col-md-6">
-              <label for="content">Content<span class="text-danger">*</span></label>
+              <label for="content">Content<span class="text-danger"> *</span></label>
               <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
-            <div class="mt-4 col-md-6">
+            <!-- <div class="mt-4 col-md-6">
               <label for="logoImage" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
               <img :src="form.image" alt="" style="height:250px">
               <label for="logoImage" class="form-control mt-2 cursor-pointer">
@@ -83,7 +83,7 @@ function update_all_data(type, event) {
               </label>
               <input type="file" id="logoImage" @change="update_all_data('image', $event)" accept="image/*"
                 class="hidden">
-            </div>
+            </div> -->
             <div class="mt-4 col-md-6">
               <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
               <video :src="form.video" alt="" controls></video>
