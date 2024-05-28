@@ -49,7 +49,7 @@ function submitForm() {
                 <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900">
-                    <div class="container">
+                    <div class="container other_section">
                         <form @submit.prevent="submitForm">
                         <div class="image_uploading" >
                             <h2>Logo Section</h2>

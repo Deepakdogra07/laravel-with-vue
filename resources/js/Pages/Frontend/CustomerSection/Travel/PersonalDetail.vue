@@ -41,7 +41,7 @@ const form =useForm({
     country_of_birth:null,
     city_of_birth:null,
     gender:null,
-    martial_status:null,
+    marital_status:null,
     passport_number:null,
     issuing_authority:null,
     passport_date_of_expiry:null,
@@ -66,12 +66,28 @@ const submitData = () => {
       },
     });
 };
+
+
+const select_class =ref({
+    territory_birth:'',
+    marital_status:'',
+});
+
+function handleChange(type){
+    if(type =="territory_birth"){
+        select_class.value.territory_birth = 'Selected_option';
+    }
+    if(type =="marital_status"){
+        select_class.value.marital_status = 'Selected_option';
+    }
+}
+
 </script>
  
 <template>
     <Header />
     <SubHeading :job_id="form.job_id"/>
-    <div class="login-bg-wrapper travel-section">
+    <div class="login-bg-wrapper travel-section s">
         <div class="container">
             <form @submit.prevent="submitData()">
             <div class="row">
@@ -99,14 +115,14 @@ const submitData = () => {
                             <h2 class="mb-3">Personal Details</h2>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Given Name (s)</span>
+                                    <span class="label text-label">Given Name (s) <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.first_name" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.first_name" :message="props.errors.first_name[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Surname / family name</span>
+                                    <span class="label text-label">Surname / family name <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.last_name" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.last_name" :message="props.errors.last_name[0]"/>
@@ -114,7 +130,7 @@ const submitData = () => {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">E-mail address</span>
+                                    <span class="label text-label">E-mail address <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" type="email" v-model="form.email"class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.email" :message="props.errors.email[0]" />
@@ -122,7 +138,7 @@ const submitData = () => {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Confirm E-mail</span>
+                                    <span class="label text-label">Confirm E-mail <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.confirm_email"type="email" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
@@ -130,7 +146,7 @@ const submitData = () => {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Date of birth</span>
+                                    <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
@@ -140,7 +156,7 @@ const submitData = () => {
                                 <div class="mb-4">
                                     <span class="label text-label">Country/territory birth</span>
     
-                                    <select class="form-select mt-2" v-model="form.country_of_birth">
+                                    <select class="form-select mt-2  Selected_option" :class="select_class?.territory_birth" @change="handleChange('territory_birth')" v-model="form.country_of_birth">
                                         <option selected :value="null">----</option>
                                         <option selected v-for="country in countries" :value="country.name" v-html="country.name"></option>
                                         <!-- <option>Hello</option> -->
@@ -149,7 +165,7 @@ const submitData = () => {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">City of birth</span>
+                                    <span class="label text-label">City of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.city_of_birth" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.city_of_birth" :message="props.errors.city_of_birth[0]"/>
                                 </div>
@@ -158,7 +174,7 @@ const submitData = () => {
                                 <div class="mb-4">
                                     <span class="label text-label">Marital status</span>
     
-                                    <select class="form-select mt-2" v-model="form.martial_status">
+                                    <select class="form-select mt-2 Selected_option" :class="select_class?.marital_status" @change="handleChange('marital_status')" v-model="form.marital_status">
                                         <option selected :value="null">----</option>
                                         <option value="0">Married</option>
                                         <option value="1">Unmarried</option>
@@ -195,7 +211,7 @@ const submitData = () => {
                             <h2 class="mb-3">Passport Details</h2>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Passport Number</span>
+                                    <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.passport_number" :message="props.errors.passport_number[0]" />
@@ -203,7 +219,7 @@ const submitData = () => {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <span class="label text-label">Issuing Authority</span>
+                                    <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="props.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />

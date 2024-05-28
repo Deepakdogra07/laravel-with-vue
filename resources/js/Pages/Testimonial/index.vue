@@ -76,7 +76,7 @@ function splitStringIntoChunks(inputString, chunkSize = 80) {
                 </div>
             </div>
           <!-- </template> -->
-          <div class="py-12 craete_pagee">
+          <div class="craete_pagee">
           <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
 
               <div class="bg-white shadow-sm sm:rounded-lg shift-u tesstimonials_bgg" style="border: 1px solid #ddd;">

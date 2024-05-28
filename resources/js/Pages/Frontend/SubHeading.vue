@@ -89,7 +89,7 @@ const props=defineProps({
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details</Link>
+                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details </Link>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5">

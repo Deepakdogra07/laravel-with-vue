@@ -72,17 +72,17 @@ function submitForm() {
                     <div class="container">
                         <form @submit.prevent="submitForm">
                         <div class="mb-4">
-                            <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading</label>
+                            <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading <span style="color: red;"> *</span></label>
                             <input type="text" id="sliderHeading"placeholder="Enter Slider Heading" v-model="form.slider_heading"  class="form-control mt-2 mb-3">
                              <span v-if="props.errors.slider_heading" class="error-message">{{ props.errors.slider_heading }}</span> 
                         </div>
                         <div class="mb-4">
-                            <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words)</label>
+                            <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words) <span style="color: red;"> *</span></label>
                             <textarea id="sliderDescription"placeholder="Enter Slider Description" v-model="form.slider_description" class="form-control mt-2 mb-3"></textarea>
                              <span v-if="props.errors.slider_description" class="error-message">{{ props.errors.slider_description }}</span> 
                         </div>
                         <div class="mb-4">
-                          <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image</label>
+                          <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image <span style="color: red;"> *</span></label>
                           <input type="file" id="sliderImage" @change="handleFileInput($event)" accept="image/*" class="form-control">
                           <img v-bind:src="url" alt="" class="mt-2">
                           <span v-if="props.errors.slider_image" class="error-message">{{ props.errors.slider_image }}</span> 
