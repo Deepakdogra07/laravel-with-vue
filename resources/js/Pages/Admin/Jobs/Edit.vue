@@ -126,6 +126,39 @@ const format = (date) => {
   return `${year}/${month1}/${day}`;
 }
 const today = new Date();
+
+
+
+const select_class =ref({
+    discipline:'',
+    work_exp:'',
+    seniority:'',
+    position_type:'',
+    select_country:'',
+    currency:'',
+});
+function handleChange(type){
+    if(type =="discipline"){
+        select_class.value.discipline = 'Selected_option';
+    }
+    if(type =="work_exp"){
+        select_class.value.work_exp = 'Selected_option';
+    }
+    if(type =="seniority"){
+        select_class.value.seniority = 'Selected_option';
+    }
+    if(type =="position_type"){
+        select_class.value.position_type = 'Selected_option';
+    }
+    if(type =="select_country"){
+        select_class.value.select_country = 'Selected_option';
+    }
+    if(type =="Currency"){
+        select_class.value.Currency = 'Selected_option';
+    }
+}
+
+
 </script>
 <template>
   <AuthenticatedLayout>
@@ -152,7 +185,7 @@ const today = new Date();
                             <div class="mt-4">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select  select_options mt-2" :class="select_class?.position_type" @change="handleChange('position_type')" aria-label="Default select example"
                                         v-model="form.position_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in positions" :key="index"
@@ -165,7 +198,7 @@ const today = new Date();
                             <div class="mt-4">
                                 <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options" :class="select_class?.seniority" @change="handleChange('seniority')"aria-label="Default select example"
                                         v-model="form.seniority_id">
                                         <option selected :value="null">Select Seniority</option>
                                         <option v-for="(position, index) in seniorities" :key="index"
@@ -178,7 +211,7 @@ const today = new Date();
                             <div class="mt-4">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options" :class="select_class?.discipline" @change="handleChange('discipline')" aria-label="Default select example"
                                         v-model="form.discipline_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in disciplines" :key="index"
@@ -192,7 +225,7 @@ const today = new Date();
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger">*</span></span>
                                 <div class="eye-icon-div skills_input">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select  select_options mt-2" :class="select_class?.work_exp" @change="handleChange('work_exp')" aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index"
@@ -319,7 +352,7 @@ const today = new Date();
                             <div class="mt-4">
                                 <span class="label text-label">Currency<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options" :class="select_class?.Currency" @change="handleChange('Currency')" aria-label="Default select example"
                                         v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
@@ -456,7 +489,7 @@ const today = new Date();
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" aria-label="Default select example"
+                                    <select class="form-select  mt-2 select_options" :class="select_class?.select_country" @change="handleChange('select_country')" aria-label="Default select example"
                                         v-model="form.job_country">
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{

@@ -2035,14 +2035,25 @@ input[type="file"]{
 	.inner_admin .margin_btm {
 		margin-bottom: 10px !important;
 	}
-
+	.logo_spacing img {
+		width: 190px;
+		margin-left: 1.5rem;
+	}
+	.add__slider {
+		padding: 0px 5px!important;
+	}
+	.add_testimonial_page {
+		width: 100% !important;
+		display: block !important;
+		overflow-x: scroll !important;
+	}
 }
 
-@media (max-width:766px){
+@media (max-width:767px){
 	div#home_banner .web-banner {
 		height: 480px;
 	}
-	.container, .container-sm {
+	.unstoppable-spaces-top-special .container, .unstoppable-spaces-top-special .container-sm, .category-section .container{
 		max-width: 720px !important;
 	}
 	div#welcome_slider_ .image_for_Card {
@@ -4195,7 +4206,10 @@ span.video_txt {
 .inner_admin .bg-blue-500, .video_Section button.bg-blue-500, form.row.edit_customer button.rounded-lg {
     background-color: rgb(60 91 111);
 }
-form.row.edit_customer label {
+.inner_admin .bg-blue-500:hover, .video_Section button.bg-blue-500:hover, form.row.edit_customer button.rounded-lg:hover, .add_sliedrs button.bg-blue-500:hover, .button_margins button.rounded-lg:hover{
+	background-color: #060d1a;
+}
+form.row.edit_customer label, .customer_page form label {
     margin-bottom: 8px;
     color: #212529;
 }
@@ -4224,4 +4238,45 @@ form.row.edit_customer label {
 }
 .login_Col {
     padding: 0px;
+}
+.View_Detailed_Enquiry_box {
+    width: 50%;
+}
+.View_Detailed_Enquiry_box .card-header-title h2 b, .View_Detailed_Enquiry_box .card-header-title h4 b, .View_Detailed_Enquiry_box .card-header-title p b {
+    font-size: 16px;
+    font-family: 'open sans';
+    font-weight: 700;
+    margin-right: 5px;
+}
+.View_Detailed_Enquiry_box .card-header-title h2, .View_Detailed_Enquiry_box .card-header-title h4, .View_Detailed_Enquiry_box .card-header-title p {
+    font-size: 16px !important;
+    font-family: 'open sans';
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    line-height: 30px;
+	color: #fff;
+}
+.view_detailed_header {
+    padding: 30px !important;
+    background: #3c5b6f !important;
+}
+.configure-switch label {
+    margin-bottom: 0px !important;
+}
+.button_margins {
+    padding-left: 10px;
+}
+.button_margins button.rounded-lg {
+    background: #3c5b6f;
+}
+.category_tables a.paginate_button.current, .tesstimonials_bgg a.paginate_button.current {
+    padding-top: 6px;
+}
+.add_customers_inner {
+    padding: 0px 5px!important;
+}
+.add_customers_inner a.paginate_button {
+    background: #097b72 !important;
+    border: 0px!important;
+    /* padding: 7px !important; */
 }

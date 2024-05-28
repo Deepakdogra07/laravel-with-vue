@@ -36,22 +36,22 @@ const submit = () => {
   <AuthenticatedLayout>
 
     <Head title="Add Customer" />
-    <div class="flex items-center justify-center px-2 customer_page">
+    <div class="flex items-center justify-center customer_page">
       <div class="w-full">
-        <h1 class="text-xl font-semibold text-gray-700">Add Customer</h1>
+        <h2 class="font-semibold text-xl text-black-800 leading-tight pl-3 pb-2">Add Customer</h2>
 
         <form @submit.prevent="submit">
-          <div class="row">
-            <div class="mt-4 col-md-6">
-              <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk">*
+          <div class="row add_customer_page">
+            <div class="col-md-6">
+              <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="name" type="text" placeholder="Enter Customer Name" class="form-control"
                 v-model="form.name" autocomplete="name" />
               <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="mt-4 col-md-6">
-              <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk">*
+            <div class="col-md-6">
+              <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" v-model="form.email"
                 autocomplete="email" />
@@ -60,7 +60,7 @@ const submit = () => {
 
             <div class="mt-4 col-md-6">
               <InputLabel for="password" value="Password" style="display: inline-block;" /><strong
-                class="required-asterisk">* </strong>
+                class="required-asterisk"> * </strong>
               <TextInput id="password" type="password" placeholder="Enter Password" class="form-control"
                 v-model="form.password" />
               <InputError class="mt-2" :message="form.errors.password" />
@@ -68,14 +68,14 @@ const submit = () => {
             </div>
             <div class="mt-4 col-md-6">
               <InputLabel for="password_confirmation" value="Confirm Password" style="display: inline-block;" /><strong
-                class="required-asterisk">* </strong>
+                class="required-asterisk"> * </strong>
               <TextInput id="password_confirmation" type="password" placeholder="Enter Confirm Password"
                 class="form-control" v-model="form.password_confirmation" autocomplete="new-password" />
               <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
             <div class="mt-4 col-md-6">
-              <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk">*
+              <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
                 v-model="form.phone" autocomplete="phone" />
@@ -89,7 +89,7 @@ const submit = () => {
             <div class="mt-4 col-md-6">
 
               <div class="configure-switch d-flex align-items-center gap-3">
-                <div class="d-flex">
+                <div class="d-flex align-items-center">
                   <input type="checkbox" id="status" v-model="form.status" name="status" />
                   <label for="status"></label>
                 </div>
@@ -106,7 +106,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.status" />
             </div>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 button_margins">
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
               Submit
             </PrimaryButton>
