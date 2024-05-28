@@ -89,6 +89,10 @@ function TriggerButton(type, event) {
                   </template>
     
                   <template #content>
+                    <dropdown-link :href="route('dashboard')">
+                      Dashboard 
+                    </dropdown-link>
+                    
                     <dropdown-link :href="route('profile.edit')">
                       Profile
                     </dropdown-link>
@@ -110,6 +114,10 @@ function TriggerButton(type, event) {
                   </template>
     
                   <template #content>
+                    <dropdown-link :href="route('dashboard')">
+                      Dashboard 
+                    </dropdown-link>
+
                     <dropdown-link :href="route('profile.edit')">
                       Profile 
                     </dropdown-link>
