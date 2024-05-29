@@ -141,17 +141,17 @@ function handleChange(type){
 }
 
 
-function select_skill(skill){
-    let index = form.skills_id.findIndex(s => s.id === skill.id);
-    if(index !== -1){
-        form.skills_id.splice(index,1);
-    }else{
-        index = props.skills.findIndex(s => s.id === skill.id);
-        if(index >0){
-            form.skills_id.push(skill);
-        }
-    }   
-}
+// function select_skill(skill){
+//     let index = form.skills_id.findIndex(s => s.id === skill.id);
+//     if(index !== -1){
+//         form.skills_id.splice(index,1);
+//     }else{
+//         index = props.skills.findIndex(s => s.id === skill.id);
+//         if(index >0){
+//             form.skills_id.push(skill);
+//         }
+//     }   
+// }
 
 
 </script>
@@ -238,11 +238,27 @@ function select_skill(skill){
                                     </multiselect>
                                 </div>
                                 <div class="mt-4">
-                                    <span class="label text-label recommended_text">Recommended Skills</span>
+                                    <label class="label text-label recommended_text">Recommended Skills</label>
                                     <ul class="job_recommenrded_skills pl-0"  >
-                                        <li v-for="(skill,key )  in skills.slice(4)" :key="key" >
-                                        <span  @click="select_skill(skill)">{{ skill.name }}</span> 
-                                        </li>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-1"/>
+                                            <label class="label_checkbox" for="documents-1"  > php</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-2"/>
+                                        <label class="label_checkbox" for="documents-2"> Laravel</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-3"/>
+                                             <label class="label_checkbox" for="documents-3"> React</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-4"/>
+                                        <label class="label_checkbox" for="documents-4"> Js</label>
+                                        </div>                        
+                                        <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                        <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                        <!-- </li> -->
                                     </ul>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.skills_id" />

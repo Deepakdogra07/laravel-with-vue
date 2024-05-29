@@ -228,11 +228,27 @@ function select_skill(skill){
                                     </multiselect>
                                 </div>
                                 <div class="mt-4">
-                                    <span class="label text-label recommended_text">Recommended Skills</span>
+                                    <label class="label text-label recommended_text">Recommended Skills</label>
                                     <ul class="job_recommenrded_skills pl-0"  >
-                                        <li v-for="(skill,key )  in skills.slice(4)" :key="key" >
-                                        <span  @click="select_skill(skill)">{{ skill.name }}</span> 
-                                        </li>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-1"/>
+                                            <label class="label_checkbox" for="sills-1"  > PHP</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-2"/>
+                                        <label class="label_checkbox" for="sills-2"> Laravel</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-3"/>
+                                             <label class="label_checkbox" for="sills-3"> React</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-4"/>
+                                        <label class="label_checkbox" for="sills-4"> JS</label>
+                                        </div>                        
+                                        <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                        <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                        <!-- </li> -->
                                     </ul>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
