@@ -249,7 +249,7 @@ function handleChange(type){
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
                             <div class="mt-4">
-                                <span class="label text-label">Zip Code</span>
+                                <span class="label text-label">Zip Code<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
                                         placeholder="Enter Zip Code" class="form-control mt-2  " />

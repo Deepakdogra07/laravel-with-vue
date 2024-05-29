@@ -77,7 +77,7 @@ class BusinessController extends Controller
             'seniority_id.required' => 'Seniority  is required.',
             'discipline_id.required' => 'Discipline  is required.',
             'work_experience_id.required' => 'Overall work experience  is required.',
-            'skills_id.required' => 'Skills  is required.',
+            'skills_id.required' => 'Skills  are required.',
             'language_id.required' => 'Language  is required.',
             'industry_id.required' => 'Industry  is required.',
             'job_country.required' => 'Country  is required.',
@@ -85,11 +85,11 @@ class BusinessController extends Controller
             'job_description.required' => 'Details of the job  is required.',
             'pin_code.required' => 'Zip Code  is required.',
             'job_image.required' => 'Job Image  is required.',
-            'positions.required' => 'Positions  is required.',
+            'positions.required' => 'Position  is required.',
             'segment.required' => 'Segment  is required.',
             'job_title.required' => 'Job title  is required.',
             'conditions.required' => 'Conditions  is required.',
-            'requirements.required' => 'requirements  is required.',
+            'requirements.required' => 'Requirements  is required.',
             'job_image.max' => 'Job Image should be less than 20MB.',
             'job_start_date.required' => 'Job start date  is required.'
    
@@ -199,7 +199,7 @@ class BusinessController extends Controller
             'segment.required' => 'Segment  is required.',
             'job_title.required' => 'Job title  is required.',
             'conditions.required' => 'Conditions  is required.',
-            'requirements.required' => 'requirements  is required.',
+            'requirements.required' => 'Requirements  is required.',
             'job_image.max' => 'Job Image should be less than 20MB.',
             'job_start_date.required' => 'Job start date  is required.'
    

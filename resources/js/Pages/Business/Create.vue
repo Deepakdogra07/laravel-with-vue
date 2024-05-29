@@ -258,7 +258,7 @@ function handleChange(type){
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
                             <div class="mt-4">
-                                <span class="label text-label">Zip Code</span>
+                                <span class="label text-label">Zip Code<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
                                         placeholder="Enter Zip Code" class="form-control mt-2  " />
@@ -333,14 +333,14 @@ function handleChange(type){
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="text" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postions" class="form-control mt-2  " />
+                                        placeholder="Enter Postion" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Currency<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 select_options" :class="select_class?.currency" @change="handleChange('currency')" aria-label="Default select example"
+                                    <select class="form-select mt-2 select_options" :class="select_class?.Currency" @change="handleChange('Currency')" aria-label="Default select example"
                                         v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
