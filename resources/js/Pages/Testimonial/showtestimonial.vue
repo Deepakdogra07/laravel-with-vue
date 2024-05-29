@@ -18,7 +18,7 @@ console.log(props.testimonials);
 
     <Head title="Our Testimonials" />
     <Header class="login-wrapper" />
-    <SubHeading />
+    <!-- <SubHeading /> -->
 
 <section class="testimonials_page" >
     <div class="container modal-dialogs">
