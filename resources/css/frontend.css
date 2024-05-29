@@ -3443,6 +3443,7 @@ input[type="file"] {
 	.job_posting_page ul.job_recommenrded_skills li {
 		padding: 7px 7px 7px 7px;
 		font-size: 12px;
+		cursor:pointer;
 	}
 
 	.Remote.Work_label label {
@@ -5081,6 +5082,7 @@ ul.job_recommenrded_skills li {
 	font-family: 'Open Sans';
 	color: #01796F;
 	margin-top: 10px;
+	cursor:pointer;
 }
 
 .contactUs-section a.forms-btn:hover,
