@@ -478,7 +478,7 @@ h2 {
 	padding: 50px 0;
 }
 
-.text-label {
+.text-label, .profile_info label span, .update_pass label span {
 	color: #4a4c56;
 	font-weight: 600;
 	font-size: 16px;
@@ -1874,6 +1874,15 @@ input[type="file"] {
 		font-size: 17px !important;
 		margin-bottom: 4px;
 	}
+
+	.profile_col {
+		margin-bottom: 20px;
+	}
+
+
+
+
+
 }
 
 @media (max-width:909px) {
@@ -2532,14 +2541,30 @@ input[type="file"] {
 		height: 480px;
 	}
 
+	.profile_update_page {
+		margin: 20px 0px !important;
+	}
+
+	.profile_col {
+		margin-bottom: 20px;
+	}
+
 	.unstoppable-spaces-top-special .container,
 	.unstoppable-spaces-top-special .container-sm,
 	.category-section .container {
 		max-width: 720px !important;
 	}
 
+	.update_pass .remove_paddings {
+		padding-right: 0px;
+	}
+
 	div#welcome_slider_ .image_for_Card {
 		height: 390px;
+	}
+
+	.confirm_pass {
+		margin-top: 10px;
 	}
 
 	.customer_page {
@@ -2628,7 +2653,9 @@ input[type="file"] {
 	.list_of_jobs {
 		padding-top: 15px;
 	}
-
+	.profile_col, .update_pass_col {
+		padding: 0px 5px !important;
+	}
 	.main-header button.main-btn {
 		display: flex;
 		align-items: center;
@@ -5073,16 +5100,16 @@ ul.details_lists {
 }
 
 ul.job_recommenrded_skills li {
-	border: 1px solid #01796F;
-	padding: 14px 16px 14px 16px;
-	display: inline-block;
-	border-radius: 8px;
-	margin-right: 10px;
-	font-size: 14px;
-	font-family: 'Open Sans';
-	color: #01796F;
-	margin-top: 10px;
-	cursor:pointer;
+    border: 1px solid #01796F;
+    padding: 9px 13px 9px 13px;
+    display: inline-block;
+    border-radius: 8px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-family: 'Open Sans';
+    color: #01796F;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .contactUs-section a.forms-btn:hover,
@@ -5470,7 +5497,6 @@ a.paginate_button.current {
 .create_space.create_code .container {
 	padding: 0px;
 }
-
 .add_empLoyer_page label {
 	color: #212529;
 	margin-bottom: 8px;
@@ -5483,7 +5509,53 @@ a.paginate_button.current {
 .button_marginss button.rounded-lg {
 	background: #060d1a;
 }
-
 .button_marginss button.rounded-lg:hover {
 	background: #3c5b6f;
 }
+ul.job_recommenrded_skills li:hover {
+    background: #09332b;
+    color: #fff;
+}
+.profile_update_page {
+    margin: 50px 0px;
+}
+.update_pass_div .remove_padding {
+    padding: 0px;
+}
+.update_pass .remove_paddings {
+    padding-left: 0px;
+}
+.profile_info h2, .update_pass h2 {
+    font-weight: 700;
+}
+.profile_info .form-control, .update_pass .form-control {
+    padding: 9px 10px;
+    background: #fbfbfb;
+}
+.profile_info .form-control:focus, .update_pass .form-control:focus{
+	border-color: #dee2e6;
+	box-shadow: unset;
+}
+.profile_input, .update_pass_div {
+    margin: 10px 0px !important;
+}
+ul.job_recommenrded_skills.pl-0 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.recommended_checkbox {
+    width: 120px;
+    height: 42px;
+    margin-right: 8px;
+    position: relative;
+    line-height: 39px;
+    font-size: 14px !important;
+}
+label.label_checkbox {
+    position: absolute;
+    top: 2px;
+    padding: 0px 8px;
+}
+
+
