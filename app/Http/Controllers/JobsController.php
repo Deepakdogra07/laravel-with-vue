@@ -46,6 +46,7 @@ class JobsController extends Controller
    }
    public function store(Request $request)
    {
+      // dd($request->all());
       $rules = [
          "job_title" => 'required',
          "job_image" => 'required|max:20480',
