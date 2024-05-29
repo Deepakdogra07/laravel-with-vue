@@ -344,7 +344,7 @@ h2 {
 
 .video-background {
 	background-image: url("/images/video-bg.png");
-	padding: 40px 50px;
+	padding: 40px 0px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -5557,5 +5557,10 @@ label.label_checkbox {
     top: 2px;
     padding: 0px 8px;
 }
-
+.sub-heading-section {
+    text-transform: capitalize;
+}
+.create_space input.form-control option, .create_space select.form-select option {
+    color: #000;
+}
 
