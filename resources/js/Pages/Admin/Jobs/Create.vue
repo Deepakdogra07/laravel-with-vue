@@ -63,7 +63,7 @@ const form = useForm({
   seniority_id: null,
   discipline_id: null,
   work_experience_id: null,
-  skills_id: null,
+  skills_id: [],
   language_id: null,
   remote_work: false,
   industry_id: null,
@@ -133,6 +133,22 @@ function handleChange(type){
     if(type =="Currency"){
         select_class.value.Currency = 'Selected_option';
     }
+}
+// selectRecommendedSkill(skillName) {
+//             const skill = this.props.skills.find(s => s.name === skillName);
+//             if (skill && !this.form.skills_id.includes(skill)) {
+//                 this.form.skills_id.push(skill);
+//             }
+function select_skill(skill){
+    let index = form.skills_id.findIndex(s => s.id === skill.id);
+    if(index !== -1){
+        form.skills_id.splice(index,1);
+    }else{
+        index = props.skills.findIndex(s => s.id === skill.id);
+        if(index >0){
+            form.skills_id.push(skill);
+        }
+    }   
 }
 </script>
 <template>
@@ -220,12 +236,17 @@ function handleChange(type){
                                 </div>
                                 <div class="mt-4">
                                     <span class="label text-label recommended_text">Recommended Skills</span>
-                                    <ul class="job_recommenrded_skills pl-0">
+                                    <ul class="job_recommenrded_skills pl-0"  >
+                                        <li v-for="(skill,key )  in skills.slice(4)" :key="key" >
+                                        <span  @click="select_skill(skill)">{{ skill.name }}</span> 
+                                        </li>
+                                    </ul>
+                                    <!-- <ul class="job_recommenrded_skills pl-0" >
                                         <li>Documentation</li>
                                         <li>Mechanical </li>
                                         <li>Technical</li>
                                         <li>Electrician </li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.skills_id" />
                             </div>

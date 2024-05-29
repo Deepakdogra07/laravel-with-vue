@@ -24,7 +24,10 @@ class Adding_job_description extends Seeder
             ["name" => "React Js "],
             ["name" => "Node js"],
             ["name" => "Laravel"],
-
+            ["name" => "Documentation"],
+            ["name" => "Mechanical"],
+            ["name" => "Technical"],
+            ["name" => "Electrician"],
         ]);
         \App\Models\Seniorities::insert([
             ["name" => "Entry Level"],
