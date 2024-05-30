@@ -5666,7 +5666,7 @@ label.label_checkbox {
 }
 .arrow_label .multiselect__select::before {
     content: "";
-    background-image: url("../images/arrow_down.png");
+    background-image: url("/images/arrow_down.png") ;
     background-size: contain;
     z-index: 1111;
     border: 0px;
