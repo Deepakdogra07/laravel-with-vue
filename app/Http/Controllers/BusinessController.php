@@ -47,7 +47,7 @@ class BusinessController extends Controller
     }
     public function store(Request $request)
     {
-
+// dd($request->all());
         $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
@@ -69,6 +69,7 @@ class BusinessController extends Controller
             "segment" => 'required',
             "job_country" => 'required',
             "job_start_date" => 'required',
+            'recommended_skills'=>'required'
 
         ];
 
@@ -91,7 +92,8 @@ class BusinessController extends Controller
             'conditions.required' => 'Conditions  is required.',
             'requirements.required' => 'Requirements  is required.',
             'job_image.max' => 'Job Image should be less than 20MB.',
-            'job_start_date.required' => 'Job start date  is required.'
+            'job_start_date.required' => 'Job start date  is required.',
+            'recommended_skills.required' => 'Please select atleast one recommended skill.'
    
         ];
          if (isset($request->min_pay_range)) {
@@ -129,6 +131,7 @@ class BusinessController extends Controller
             $job->skills_id = $skills;
             $job->industry_id = $industries;
             $job->language_id = $languages;
+            $job->recommended_skills = json_encode($request->recommended_skills);
             if ($request->hasFile('job_image')) {
                 $image = $request->file('job_image');
                 $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
@@ -179,6 +182,7 @@ class BusinessController extends Controller
             "segment" => 'required',
             "job_country" => 'required',
             "job_start_date" => 'required',
+            'recommended_skills'=>'required'
 
         ];
 
@@ -201,7 +205,8 @@ class BusinessController extends Controller
             'conditions.required' => 'Conditions  is required.',
             'requirements.required' => 'Requirements  is required.',
             'job_image.max' => 'Job Image should be less than 20MB.',
-            'job_start_date.required' => 'Job start date  is required.'
+            'job_start_date.required' => 'Job start date  is required.',
+            'recommended_skills.required' => 'Please select atlease one of the recommended skills.'
    
         ];
          if (isset($request->min_pay_range)) {
@@ -239,6 +244,7 @@ class BusinessController extends Controller
             $job->skills_id = $skills;
             $job->language_id = $languages;
             $job->industry_id = $industries;
+            $job->recommended_skills = json_encode($request->recommended_skills);
             if ($request->hasFile('job_image')) {
                 if (public_path($job->job_image)) {
                     $imagePath = substr($job->job_image, strlen('/storage'));

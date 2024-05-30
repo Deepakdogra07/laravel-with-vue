@@ -87,6 +87,7 @@ const form = useForm({
     max_pay_range: null,
     job_start_date: null,
     currency_id:null,
+    recommended_skills:[],
 });
 
 function selectFile(event) {
@@ -107,6 +108,13 @@ const submit = () => {
             },
         });
 };
+function checked_event(event){
+    if(event.target.checked){
+        form.recommended_skills.push(event.target.value);
+    }else{
+        form.recommended_skills.splice(event.target.value,1);
+    }
+}
 
 
 
@@ -236,32 +244,34 @@ function handleChange(type){
                                         :close-on-select="false" :clear-on-select="false" :preserve-search="true"
                                         placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
+                                    <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
+
                                 <div class="mt-4">
                                     <label class="label text-label recommended_text">Recommended Skills</label>
                                     <ul class="job_recommenrded_skills pl-0"  >
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-1"/>
-                                            <label class="label_checkbox" for="documents-1"  > php</label>
+                                            <TextInput  type="checkbox" @click="checked_event($event)"  class="recommended_checkbox" value ="documentation" id="documents-1"/>
+                                            <label class="label_checkbox" for="documents-1"  > Documentation</label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-2"/>
-                                        <label class="label_checkbox" for="documents-2"> Laravel</label>
+                                            <TextInput  type="checkbox"@click="checked_event($event)" class="recommended_checkbox" value ="mechanical" id="documents-2"/>
+                                        <label class="label_checkbox"  for="documents-2"> Mechanical </label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-3"/>
-                                             <label class="label_checkbox" for="documents-3"> React</label>
+                                            <TextInput  type="checkbox" @click="checked_event($event)" class="recommended_checkbox" value ="technical" id="documents-3"/>
+                                             <label class="label_checkbox" for="documents-3"> Technical</label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="documents-4"/>
-                                        <label class="label_checkbox" for="documents-4"> Js</label>
+                                            <TextInput  type="checkbox" @click="checked_event($event)" class="recommended_checkbox" value ="electrician" id="documents-4"/>
+                                        <label class="label_checkbox" for="documents-4"> Electrician </label>
                                         </div>                        
                                         <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
                                         <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
                                         <!-- </li> -->
                                     </ul>
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.skills_id" />
+                                <InputError class="mt-2" :message="form.errors.recommended_skills" />
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
