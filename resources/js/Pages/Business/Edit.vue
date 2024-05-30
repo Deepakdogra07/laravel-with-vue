@@ -92,24 +92,26 @@ const form = useForm({
   job_start_date: props.job.job_start_date,
   city: props.job.city,
   job_country: props.job.job_country,
-  currency_id:props.job.currency_id
+  currency_id:props.job.currency_id,
+  recommended_skills: JSON.parse(props.job.recommended_skills)
 });
 onMounted( () => {
-  props.skills.forEach(element => {
-    if(props.job.skills_id.includes(element.id)){
-      form.skills_id.push(element);
-    }
-  });
-  props.languages.forEach(element => {
-    if(props.job.language_id.includes(element.id)){
-      form.language_id.push(element);
-    }
-  });
-  props.industries.forEach(element => {
-    if(props.job.industry_id.includes(element.id)){
-      form.industry_id.push(element);
-    }
-  });
+    props.skills.forEach(element => {
+        if(props.job.skills_id.includes(element.id)){
+            form.skills_id.push(element);
+        }
+    });
+    // form.recommended_skills = JSON.parse(props.job.recommended_skills);
+    props.languages.forEach(element => {
+        if(props.job.language_id.includes(element.id)){
+            form.language_id.push(element);
+        }
+    });
+    props.industries.forEach(element => {
+        if(props.job.industry_id.includes(element.id)){
+            form.industry_id.push(element);
+        }
+    });
 })
 
 const countries = countryStateCity.Country.getAllCountries(),
@@ -131,18 +133,24 @@ const submit = () => {
       },
     });
 };
-function select_skill(skill){
-    let index = form.skills_id.findIndex(s => s.id === skill.id);
-    if(index !== -1){
-        form.skills_id.splice(index,1);
+// function select_skill(skill){
+//     let index = form.skills_id.findIndex(s => s.id === skill.id);
+//     if(index !== -1){
+//         form.skills_id.splice(index,1);
+//     }else{
+//         index = props.skills.findIndex(s => s.id === skill.id);
+//         if(index >0){
+//             form.skills_id.push(skill);
+//         }
+//     }   
+// }
+function checked_event(event){
+    if(event.target.checked){
+        form.recommended_skills.push(event.target.value);
     }else{
-        index = props.skills.findIndex(s => s.id === skill.id);
-        if(index >0){
-            form.skills_id.push(skill);
-        }
-    }   
+        form.recommended_skills.splice(event.target.value,1);
+    }
 }
-
 
 </script>
 
@@ -226,32 +234,35 @@ function select_skill(skill){
                                         :close-on-select="false" :clear-on-select="false" :preserve-search="true"
                                         placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
+                                    <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
                                 <div class="mt-4">
                                     <label class="label text-label recommended_text">Recommended Skills</label>
                                     <ul class="job_recommenrded_skills pl-0"  >
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-1"/>
-                                            <label class="label_checkbox" for="sills-1"  > PHP</label>
+                                            <!--  -->
+                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('documentation')"  class="recommended_checkbox" value ="documentation" id="documents-1"/>
+                                            <label class="label_checkbox" for="documents-1"  > Documentation</label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-2"/>
-                                        <label class="label_checkbox" for="sills-2"> Laravel</label>
+                                            <TextInput  type="checkbox"@click="checked_event($event)" :checked="form.recommended_skills.includes('mechanical')" class="recommended_checkbox" value ="mechanical" id="documents-2"/>
+                                        <label class="label_checkbox"  for="documents-2"> Mechanical </label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-3"/>
-                                             <label class="label_checkbox" for="sills-3"> React</label>
+                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('mechanical')" class="recommended_checkbox" value ="technical" id="documents-3"/>
+                                             <label class="label_checkbox" for="documents-3"> Technical</label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"  class="recommended_checkbox" id="sills-4"/>
-                                        <label class="label_checkbox" for="sills-4"> JS</label>
+                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('electrician')"  class="recommended_checkbox" value ="electrician" id="documents-4"/>
+                                        <label class="label_checkbox" for="documents-4"> Electrician </label>
                                         </div>                        
                                         <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
                                         <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
                                         <!-- </li> -->
                                     </ul>
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.skills_id" />
+                                <InputError class="mt-2" :message="form.errors.recommended_skills" />
+                               
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
