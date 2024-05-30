@@ -175,7 +175,7 @@ function handleChange(type){
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 ">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
@@ -184,7 +184,7 @@ function handleChange(type){
                                 <InputError class="mt-2" :message="form.errors.job_title" />
 
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <select class="form-select  mt-2 select_options" :class="select_class?.position_type" @change="handleChange('position_type')" aria-label="Default select example"
@@ -197,7 +197,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.position_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
                                     <select class="form-select  mt-2 select_options" :class="select_class?.seniority" @change="handleChange('seniority')" aria-label="Default select example"
@@ -210,7 +210,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
                                     <select class="form-select  mt-2 select_options" :class="select_class?.discipline" @change="handleChange('discipline')" aria-label="Default select example"
@@ -223,7 +223,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
-                            <div class="mt-4 arrow_label">
+                            <div class="mt-4 arrow_label spacing_tab">
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
@@ -237,7 +237,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.work_experience_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label spacing_tab">
                                 <span class="label text-label">Skills<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div skills_input">
                                     <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true"
@@ -247,7 +247,7 @@ function handleChange(type){
                                     <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
 
-                                <div class="mt-4">
+                                <div class="mt-4 spacing_tab">
                                     <label class="label text-label recommended_text">Recommended Skills</label>
                                     <ul class="job_recommenrded_skills pl-0"  >
                                         <div class="recommended_checkbox">
@@ -273,7 +273,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.recommended_skills" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label spacing_tab">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -283,7 +283,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.language_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">City<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="city" type="text" v-model="form.city" placeholder="Enter City"
@@ -292,7 +292,7 @@ function handleChange(type){
                                 <InputError class="mt-2" :message="form.errors.city" />
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Zip Code<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
@@ -300,7 +300,7 @@ function handleChange(type){
                                     <InputError class="mt-2" :message="form.errors.pin_code" />
                                 </div>
                             </div>
-                            <div class="mt-4 Remote Work_label">
+                            <div class="mt-4 Remote Work_label spacing_tab">
                                 <label class="flex items-center">
                                     <!-- <Checkbox class="remember-me-check" name="remember" /> -->
                                     <span class="label text-label">Remote Work</span>
@@ -324,7 +324,7 @@ function handleChange(type){
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4 industry_label">
+                            <div class="mt-4 industry_label arrow_label spacing_tab">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
                                     <!-- <select class="form-select  " aria-label="Default select example"
@@ -342,7 +342,7 @@ function handleChange(type){
                                 <InputError class="mt-2" :message="form.errors.industry_id" />
                             </div>
                             <div class="country_input">
-                                <div class="mt-4">
+                                <div class="mt-4 spacing_tab">
                                     <span class="label text-label">Country<span style="color:red"> *</span></span>
                                     <div class="eye-icon-div">
                                         <select class="form-select  mt-2 select_options" :class="select_class?.select_country" @change="handleChange('select_country')" aria-label="Default select example"
@@ -364,15 +364,15 @@ function handleChange(type){
                                     class="form-control mt-2  " />
                                 <InputError class="mt-2" :message="form.errors.segment" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="text" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postion" class="form-control mt-2  " />
+                                        placeholder="Enter Position" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
                                     <select class="form-select mt-2 select_options" :class="select_class?.Currency" @change="handleChange('Currency')" aria-label="Default select example"
@@ -385,7 +385,7 @@ function handleChange(type){
                                     <InputError class="mt-2" :message="form.errors.currency_id" />
                                 </div>
                             </div>
-                            <div class="mt-4 minimum_input">
+                            <div class="mt-4 minimum_input spacing_tab">
                                 <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary</span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
@@ -401,7 +401,7 @@ function handleChange(type){
 
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Start Date<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <!-- <TextInput type="date" id="start_Date" v-model="form.job_start_date"
@@ -410,7 +410,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Job Posting Summary<span style="color:red">
                                         *</span></span>
                                 <div class="eye-icon-div">
@@ -419,7 +419,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.posting_summary" />
                             </div>
-                            <div class="mt-4 spacing_btm new-job-description">
+                            <div class="mt-4 spacing_btm new-job-description spacing_tab">
                                 <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
                                 <div class="eye-icon-div mt-2">
                                     <QuillEditor contentType="html" toolbar="essential"
@@ -427,7 +427,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Conditions<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="conditions" rows="5" type="text" v-model="form.conditions"
@@ -435,7 +435,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.conditions" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Requirements<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="requirements" rows="5" type="text" v-model="form.requirements"

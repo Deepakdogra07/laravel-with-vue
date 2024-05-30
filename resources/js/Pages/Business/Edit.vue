@@ -263,8 +263,8 @@ function checked_event(event){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.recommended_skills" />
                                
-                            </div>
-                            <div class="mt-4">
+                            </div> 
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
