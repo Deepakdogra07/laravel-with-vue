@@ -349,15 +349,6 @@ function checked_event(event) {
                                                 <input type="radio" class="radio-new-btn" name="remote_work"
                                                     v-model="form.remote_work" value="remote_work">
                                                 <label class="pl-2" for="">Remote Work</label>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <input type="radio" class="radio-new-btn" name="remote_work"
-                                                    v-model="form.remote_work" value="hybrid">
-                                                <label class="pl-2" for="">Hybrid</label>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <input type="radio" class="radio-new-btn" name="remote_work"
-                                                    v-model="form.remote_work" value="onsite">
                                                 <label class="pl-2" for="">On-Site</label>
                                             </div>
                                         </div>
@@ -490,7 +481,6 @@ function checked_event(event) {
                                         <InputError class="mt-2" :message="form.errors.requirements" />
                                     </div>
                                 </div>
-
 
 
 

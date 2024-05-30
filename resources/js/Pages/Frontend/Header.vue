@@ -6,7 +6,8 @@ import { ref, computed } from "vue";
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-
+import $ from 'jquery';
+import { onMounted } from 'vue';
 
 const dropdownOpen = ref(false);
 
@@ -68,6 +69,19 @@ function TriggerButton(type, event) {
     navbar_open.value = false;
   }
 }
+
+onMounted(() => {
+  $(function () {
+    $(document).click(function (event) {
+      var clickover = $(event.target);
+      var _opened = $(".navbar-collapse").hasClass("show");
+      if (_opened === true && !clickover.hasClass("navbar-toggler")) {
+        $("button.navbar-toggler").click();
+      }
+    });
+  });
+});
+
 </script>
 
 <template>
@@ -105,7 +119,19 @@ function TriggerButton(type, event) {
               </div>
           
               <div class="login-section-mob" v-if="$page.props.auth.user">
-                <dropdown >
+                 <div class="dropdown mobile_amdin_dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    SuperAdmin
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"> Dashboard </a></li>
+                    <li><a class="dropdown-item" href="#"> Profile </a></li>
+                    <li><a class="dropdown-item" href="#"> Log out </a></li>
+                  </ul>
+                </div> 
+
+
+            <!-- <dropdown >
                   <template #trigger>
                     <button class="main-btn" :class="{ show: admin_hover }" @click="TriggerButton('admin_hover', $event)">
                       {{ $page.props.auth.user.name }}
@@ -126,7 +152,9 @@ function TriggerButton(type, event) {
                       Log out 
                     </dropdown-link>
                   </template>
-                </dropdown>
+                </dropdown>   -->
+
+
               </div>
               <div v-else="">
                 <div class="nav-item">
