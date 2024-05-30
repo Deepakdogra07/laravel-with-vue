@@ -119,7 +119,7 @@ onMounted(() => {
               </div>
           
               <div class="login-section-mob" v-if="$page.props.auth.user">
-                 <div class="dropdown mobile_amdin_dropdown">
+                 <!-- <div class="dropdown mobile_amdin_dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     SuperAdmin
                   </button>
@@ -128,12 +128,12 @@ onMounted(() => {
                     <li><a class="dropdown-item" href="#"> Profile </a></li>
                     <li><a class="dropdown-item" href="#"> Log out </a></li>
                   </ul>
-                </div> 
+                </div>  -->
 
 
-            <!-- <dropdown >
+            <dropdown class="user_dropdown" >
                   <template #trigger>
-                    <button class="main-btn" :class="{ show: admin_hover }" @click="TriggerButton('admin_hover', $event)">
+                    <button class="main-btn user_dropdown_btn"  >
                       {{ $page.props.auth.user.name }}
                       <i class="fa-solid fa-caret-down"></i>
                     </button>
@@ -152,7 +152,7 @@ onMounted(() => {
                       Log out 
                     </dropdown-link>
                   </template>
-                </dropdown>   -->
+                </dropdown>  
 
 
               </div>

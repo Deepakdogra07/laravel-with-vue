@@ -98,7 +98,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                     </div>
                                     <div class="card-content">
                                         <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <ul class="card_ullist card_ullist_2nd">
                                                     <li><b>Seniority:</b>{{ jobs?.seniority?.name }}</li>
                                                     <li><b>Discipline:</b>{{ jobs?.discipline?.name }}</li>
@@ -109,10 +109,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                                         <p v-if="jobs.remote_work">Yes</p>
                                                         <p v-else>No</p>
                                                     </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <ul class="card_ullist  card_ullist_2nd">
+                                                
                                                     <li> <b>Industry:</b>{{ industry }}</li>
                                                     <li><b>Segment:</b>{{ jobs?.segment }}</li>
                                                     <li> <b>Pin Code:</b>{{ jobs?.pin_code }}</li>

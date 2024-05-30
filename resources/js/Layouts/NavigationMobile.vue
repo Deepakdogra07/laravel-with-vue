@@ -15,7 +15,7 @@
       leave-active-class="transition ease-in-out duration-150"
       leave-from-class="opacity-100"
       leave-to-class="opacity-0 transform -translate-x-20">
-    <aside v-show="$page.props.showingMobileMenu" class="fixed inset-y-0 z-20 flex-shrink-0 w-85 mt-16 overflow-y-auto side-navbar">
+    <aside v-show="$page.props.showingMobileMenu" class="fixed inset-y-0 z-20 flex-shrink-0 w-85 mt-16 overflow-y-auto side-navbar mobile_sidebar">
       <div class="py-4 text-gray-500">
         <Link class="main-heading-logo px-3 logo_spacing" :href="route('dashboard')">
           <img src="/images/web-logo.png" alt="">
@@ -74,9 +74,34 @@
               Business
             </ResponsiveNavLink>
           </li>
+
+          <li
+          class="relative px-6 py-2"
+          v-if="$page.props.auth.user.user_type == 1"
+        >
+          <NavLink
+            :href="route('jobs.index')"
+            :active="route().current('jobs.index')"
+          >
+            <i class="fa-solid fa-tasks"></i>
+            <span class="ml-4">Jobs</span>
+          </NavLink>
+        </li>
+        <li
+        class="relative px-6 py-3"
+          v-if="$page.props.auth.user.user_type == 1"
+        >
+          <NavLink
+            :href="route('contactus.listing')"
+            :active="route().current('contactus.listing')"
+          >
+            <i class="fa-solid fa-user-plus"></i>
+            <span class="ml-4">Enquiries</span>
+          </NavLink>
+        </li>
           
        
-          <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+          <!-- <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
           <button @click="showingTwoLevelMenu_3 = !showingTwoLevelMenu_3"
               class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"
               aria-haspopup="true">
@@ -91,6 +116,35 @@
             </svg>
           </button>
            
+        </li> -->
+
+        <li
+          v-if="$page.props.auth.user.user_type == 1"
+          class="relative px-6 py-2 color_white"
+        >
+          <button
+            @click="showingTwoLevelMenu_6 = !showingTwoLevelMenu_6"
+            class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
+            aria-haspopup="true"
+          >
+            <span class="inline-flex items-center">
+              <i class="fa-solid fa-gears"></i
+              ><span class="ml-4">Settings</span>
+            </span>
+
+            <i class="fa-solid fa-caret-down"></i>
+          </button>
+
+          <ul v-show="showingTwoLevelMenu_6"
+                        class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
+                        aria-label="submenu">
+                        <li class="px-2 py-1 transition-colors duration-150 hover:text-black-800">
+                            <NavLink :href="route('update-links.index')" :active="route().current('update-links.index')">
+                              Logo Updation
+                            </NavLink>
+                        </li>
+                    
+          </ul>
         </li>
 
 

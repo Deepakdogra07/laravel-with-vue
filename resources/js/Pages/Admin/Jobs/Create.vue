@@ -233,7 +233,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.work_experience_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Skills<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div skills_input">
                                     <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true"
@@ -269,7 +269,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.recommended_skills" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -371,7 +371,7 @@ function handleChange(type){
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="text" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postions" class="form-control mt-2  " />
+                                        placeholder="Enter Position" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>

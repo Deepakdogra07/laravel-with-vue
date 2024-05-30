@@ -311,7 +311,7 @@ function checked_event(event) {
                                         <InputError class="mt-2" :message="form.errors.recommended_skills" />
 
                                     </div>
-                                    <div class="mt-4">
+                                    <div class="mt-4 arrow_label">
                                         <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                         <div class="eye-icon-div language_input mt-2">
                                             <multiselect v-model="form.language_id" :options="props.languages"
@@ -354,7 +354,7 @@ function checked_event(event) {
                                         </div>
                                         <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                                     </div>
-                                    <div class="mt-4">
+                                    <div class="mt-4 arrow_label">
                                         <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                         <div class="eye-icon-div mt-2">
                                             <!-- <select class="form-select  " aria-label="Default select example"
@@ -395,7 +395,7 @@ function checked_event(event) {
                                         <span class="label text-label">Position<span style="color:red"> *</span></span>
                                         <div class="eye-icon-div">
                                             <TextInput type="text" id="positions" v-model="form.positions"
-                                                placeholder="Enter Postions" class="form-control mt-2  " />
+                                                placeholder="Enter Position" class="form-control mt-2  " />
                                             <InputError class="mt-2" :message="form.errors.positions" />
                                         </div>
                                     </div>

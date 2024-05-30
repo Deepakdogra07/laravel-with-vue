@@ -41,7 +41,9 @@ console.log(props.testimonials);
                         </div>
                         <p class="name_profile_txt">{{ testimonial?.content }}</p>
                     </div>
-                    <div class="col-12">
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-lg-10 col-md-10 col-sm-12">
                         <div class="popup-video-section">
                             <video :src="`${testimonial?.video_link}`" controls></video>
                             <!-- <span class="bi bi-play-circle"></span> -->
