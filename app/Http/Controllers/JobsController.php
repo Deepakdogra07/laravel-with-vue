@@ -68,6 +68,7 @@ class JobsController extends Controller
          "segment" => 'required',
          "job_country" => 'required',
          "job_start_date" => 'required',
+         'recommended_skills'=>'required'
 
       ];
 
@@ -90,7 +91,8 @@ class JobsController extends Controller
          'conditions.required' => 'Conditions  is required.',
          'requirements.required' => 'Requirements  is required.',
          'job_image.max' => 'Job Image should be less than 20MB.',
-         'job_start_date.required' => 'Job start date  is required.'
+         'job_start_date.required' => 'Job start date  is required.',
+         'recommended_skills.required' => 'Please select atleast one recommended skill.'
 
      ];
       if (isset($request->min_pay_range)) {
@@ -133,6 +135,7 @@ class JobsController extends Controller
          $job->skills_id = $skills;
          $job->language_id = $languages;
          $job->industry_id = $industries;
+         $job->recommended_skills = json_encode($request->recommended_skills);
          if ($request->hasFile('job_image')) {
             $image = $request->file('job_image');
             $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
@@ -183,6 +186,7 @@ class JobsController extends Controller
          "segment" => 'required',
          "job_country" => 'required',
          "job_start_date" => 'required',
+         'recommended_skills'=>'required',
 
       ];
 
@@ -205,8 +209,8 @@ class JobsController extends Controller
          'conditions.required' => 'Conditions  is required.',
          'requirements.required' => 'Requirements  is required.',
          'job_image.max' => 'Job Image should be less than 20MB.',
-         'job_start_date.required' => 'Job start date  is required.'
-
+         'job_start_date.required' => 'Job start date  is required.',
+         'recommended_skills.required' => 'Please select atleast one recommended skill.'
      ];
       if (isset($request->min_pay_range)) {
          $rules["min_pay_range"] = 'required|gt:0';
@@ -236,7 +240,7 @@ class JobsController extends Controller
          foreach ($request->industry_id as $industry) {
             $industries[] = $industry['id'];
          }
-         //   dd($industries);
+         //   dd($request->all());
          $skills = json_encode($skills);
          $languages = json_encode($languages);
          $industries = json_encode($industries);
@@ -245,6 +249,7 @@ class JobsController extends Controller
          $job->skills_id = $skills;
          $job->language_id = $languages;
          $job->industry_id = $industries;
+         $job->recommended_skills = json_encode($request->recommended_skills);
          if ($request->hasFile('job_image')) {
             if (public_path($job->job_image)) {
                $imagePath = substr($job->job_image, strlen('/storage'));
