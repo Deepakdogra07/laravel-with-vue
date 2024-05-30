@@ -212,10 +212,10 @@ function select_skill(skill){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
-                                <div class="eye-icon-div skills_input">
+                                <div class="eye-icon-div skills_input ">
                                     <select class="form-select select_options  mt-2" :class="select_class?.work_exp" @change="handleChange('work_exp')" aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
@@ -311,7 +311,7 @@ function select_skill(skill){
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
                                     <!-- <select class="form-select  " aria-label="Default select example"
