@@ -249,7 +249,7 @@ function checked_event(event){
                                         <label class="label_checkbox"  for="documents-2"> Mechanical </label>
                                         </div>
                                         <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('mechanical')" class="recommended_checkbox" value ="technical" id="documents-3"/>
+                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('technical')" class="recommended_checkbox" value ="technical" id="documents-3"/>
                                              <label class="label_checkbox" for="documents-3"> Technical</label>
                                         </div>
                                         <div class="recommended_checkbox">

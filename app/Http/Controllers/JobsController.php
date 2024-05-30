@@ -240,7 +240,7 @@ class JobsController extends Controller
          foreach ($request->industry_id as $industry) {
             $industries[] = $industry['id'];
          }
-         //   dd($industries);
+         //   dd($request->all());
          $skills = json_encode($skills);
          $languages = json_encode($languages);
          $industries = json_encode($industries);
