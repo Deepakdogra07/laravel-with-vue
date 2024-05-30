@@ -108,7 +108,6 @@ function TriggerButton(type, event) {
               </div>
 
               <div class="login-section-mob" v-if="$page.props.auth.user">
-
                 
                 <div class="dropdown mobile_amdin_dropdown">
                   <button class="btn btn-secondary dropdown-toggle" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
@@ -126,7 +125,6 @@ function TriggerButton(type, event) {
               <!-- <dropdown >
                   <template #trigger>
                     <button class="main-btn"  @click="TriggerButton('admin_hover', $event)">
-
                       {{ $page.props.auth.user.name }}
                       <i class="fa-solid fa-caret-down"></i>
                     </button>
@@ -148,7 +146,7 @@ function TriggerButton(type, event) {
                     </dropdown-link>
                   </div>
                   </template>
-                </dropdown>  
+                </dropdown>   -->
 
 
             </div>
