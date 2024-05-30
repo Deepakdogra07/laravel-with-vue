@@ -238,7 +238,7 @@ function handleChange(type){
                                 <div class="eye-icon-div skills_input">
                                     <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true"
                                         :close-on-select="false" :clear-on-select="false" :preserve-search="true"
-                                        placeholder="Select Skills" label="name" track-by="name">
+                                        placeholder="Select Skills" label="name" track-by="name" class="custom-multiselect">
                                     </multiselect>
                                     <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
