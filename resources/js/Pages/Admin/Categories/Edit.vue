@@ -78,21 +78,21 @@ function submitForm() {
                 <div class="mb-4">
                   <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image <span style="color: red;"> *</span></label>
                   <img :src="category_image" alt="" style="height:100px">
-                  <label for="category_image" class="form-control cursor-pointer mt-2">
+                  <!-- <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}
-                  </label>
+                  </label> -->
                   <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*"
-                    class="hidden">
+                    class="form-control cursor-pointer mt-2">
                 </div>
                 <div class="mb-4">
                   <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail <span style="color: red;"> *</span></label>
                   <img :src="thumbnail" alt=""
                     style="height:100px;margin-top:10px;">
-                  <label for="thumbnail" class="form-control mt-2">
+                  <!-- <label for="thumbnail" class="form-control mt-2">
                     {{ form.thumbnail ? 'Change File' : 'Upload File' }}
-                  </label>
+                  </label> -->
                   <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)"
-                    accept="image/*" class="hidden ">
+                    accept="image/*" class="form-control cursor-pointer mt-2 ">
                 </div>
 
                   <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->

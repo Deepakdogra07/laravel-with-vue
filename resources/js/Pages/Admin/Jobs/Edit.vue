@@ -78,7 +78,7 @@ const form = useForm({
     city: props.job.city,
     job_country: props.job.job_country,
     currency_id: props.job.currency_id,
-    recommended_skills: JSON.parse(props.job.recommended_skills)
+    recommended_skills: JSON.parse(props.job.recommended_skills) 
 });
 
 onMounted(() => {
