@@ -5884,3 +5884,7 @@ label.label_checkbox {
     padding: 0px !important;
 }
 
+.active-checkbox label {
+    background: #01796F;
+	border-radius: 5px;
+}

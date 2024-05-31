@@ -112,7 +112,25 @@ onMounted( () => {
             form.industry_id.push(element);
         }
     });
+    if(form.recommended_skills.includes('documentation')){
+        active_checkbox.value.documentation = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('technical')){
+        active_checkbox.value.technical = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('electrician')){
+        active_checkbox.value.electrician = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('mechanical')){
+        active_checkbox.value.mechanical = 'active-checkbox';
+    }
 })
+const active_checkbox =ref({
+        documentation:'',
+        mechanical:'',
+        electrician:'',
+        technical:''
+    });
 
 const countries = countryStateCity.Country.getAllCountries(),
 image = ref(form.job_image);
@@ -151,6 +169,15 @@ function checked_event(event){
         form.recommended_skills.splice(event.target.value,1);
     }
 }
+const  select_class = ref({
+    discipline:'',
+    work_exp:'',
+    seniority:'',
+    position_type:'',
+    selected_country:'',
+    currency_:'',
+});
+
 
 </script>
 
@@ -177,7 +204,7 @@ function checked_event(event){
                             <div class="mt-4">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select   mt-2 Selected_option " aria-label="Default select example"
                                         v-model="form.position_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in positions" :key="index"
@@ -190,8 +217,8 @@ function checked_event(event){
                             <div class="mt-4">
                                 <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
-                                        v-model="form.seniority_id">
+                                    <select class="form-select  mt-2 Selected_option "  aria-label="Default select example"
+                                        v-model="form.seniority_id" >
                                         <option selected :value="null">Select Seniority</option>
                                         <option v-for="(position, index) in seniorities" :key="index"
                                             :value="position.id">{{
@@ -203,7 +230,7 @@ function checked_event(event){
                             <div class="mt-4">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2  Selected_option" aria-label="Default select example"
                                         v-model="form.discipline_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in disciplines" :key="index"
@@ -217,7 +244,7 @@ function checked_event(event){
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select   mt-2 Selected_option"  aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index"
@@ -237,30 +264,46 @@ function checked_event(event){
                                     <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
                                 <div class="mt-4">
-                                    <label class="label text-label recommended_text">Recommended Skills</label>
-                                    <ul class="job_recommenrded_skills pl-0"  >
-                                        <div class="recommended_checkbox">
-                                            <!--  -->
-                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('documentation')"  class="recommended_checkbox" value ="documentation" id="documents-1"/>
-                                            <label class="label_checkbox" for="documents-1"  > Documentation</label>
+                                            <label class="label text-label recommended_text">Recommended Skills</label>
+                                            <ul class="job_recommenrded_skills pl-0">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.documentation">
+                                                    <!--  -->
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('documentation')"
+                                                        
+                                                        class="recommended_checkbox" value="documentation"
+                                                        id="documents-1" />
+                                                    <label class="label_checkbox" for="documents-1">
+                                                        Documentation</label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.mechanical">
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('mechanical')"
+                                                        class="recommended_checkbox" value="mechanical"
+
+                                                        id="documents-2" />
+                                                    <label class="label_checkbox" for="documents-2"> Mechanical </label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.technical" >
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('technical')"
+                                                        class="recommended_checkbox" value="technical"
+                                                        id="documents-3" />
+                                                    <label class="label_checkbox" for="documents-3"> Technical</label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.electrician">
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('electrician')"
+                                                        class="recommended_checkbox" value="electrician"
+                                                        id="documents-4" />
+                                                    <label class="label_checkbox" for="documents-4"> Electrician
+                                                    </label>
+                                                </div>
+                                                <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                                <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                                <!-- </li> -->
+                                            </ul>
                                         </div>
-                                        <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox"@click="checked_event($event)" :checked="form.recommended_skills.includes('mechanical')" class="recommended_checkbox" value ="mechanical" id="documents-2"/>
-                                        <label class="label_checkbox"  for="documents-2"> Mechanical </label>
-                                        </div>
-                                        <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('technical')" class="recommended_checkbox" value ="technical" id="documents-3"/>
-                                             <label class="label_checkbox" for="documents-3"> Technical</label>
-                                        </div>
-                                        <div class="recommended_checkbox">
-                                            <TextInput  type="checkbox" @click="checked_event($event)" :checked="form.recommended_skills.includes('electrician')"  class="recommended_checkbox" value ="electrician" id="documents-4"/>
-                                        <label class="label_checkbox" for="documents-4"> Electrician </label>
-                                        </div>                        
-                                        <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
-                                        <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
-                                        <!-- </li> -->
-                                    </ul>
-                                </div>
                                 <InputError class="mt-2" :message="form.errors.recommended_skills" />
                                
                             </div> 
@@ -362,8 +405,8 @@ function checked_event(event){
                             <div class="mt-4">
                                 <span class="label text-label">Currency<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
-                                        v-model="form.currency_id">
+                                    <select class="form-select  mt-2 Selected_option" aria-label="Default select example"
+                                        v-model="form.currency_id" >
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
                                             :value="position.id"> {{ position.country }} ({{
@@ -373,7 +416,8 @@ function checked_event(event){
                                 </div>
                             </div>
                             <div class="mt-4 minimum_input">
-                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary<span style="color:red">
+                                <!-- <input type="checkbox"> -->
+                                <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
                                         *</span></span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
@@ -499,8 +543,8 @@ function checked_event(event){
                             <div class="mt-4">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" aria-label="Default select example"
-                                        v-model="form.job_country">
+                                    <select class="form-select  mt-2 Selected_option" aria-label="Default select example"
+                                        v-model="form.job_country" >
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{
                                             country.name }}</option>

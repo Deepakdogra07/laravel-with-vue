@@ -29,7 +29,7 @@ class JobsController extends Controller
 {
    public function index()
    {
-      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby')->get();
+      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby')->latest()->get();
       return Inertia::render('Admin/Jobs/Index', compact('jobs'));
    }
    public function create()
@@ -288,7 +288,7 @@ class JobsController extends Controller
 
    public function job_listing()
    {
-      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->get();
+      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();
       return Inertia::render('Frontend/JobSection/JobListing', compact('jobs'));
    }
 
