@@ -77,7 +77,7 @@ function TriggerButton(type, event) {
   <!-- <div class="container-fluid relative"> -->
   <div class="main-header">
     <nav class="navbar navbar-expand-lg" :class="{ '!bg-[#1D1F2C1A] border-home': route().current('home') }">
-      <div class="container">
+      <div class="container header_cn">
         <Link class="navbar-brand" href="/"><img :src="`${site_data?.logo_image}`" alt=""></Link>
         <div class="d-flex align-items-center gap-2">
           <GuestLayout>
@@ -234,27 +234,18 @@ function TriggerButton(type, event) {
       <GuestLayout>
         <div class="login-section-desk">
           <div class="login-section-desk" v-if="$page.props.auth.user">
-            <dropdown>
-              <template #trigger>
-                <button @click="dropdownOpen = !dropdownOpen" class="main-btn">
-                  {{ $page.props.auth.user.name }}
-                  <i class="fa-solid fa-caret-down"></i>
-                </button>
-              </template>
-
-              <template #content>
-                <dropdown-link :href="route('dashboard')">
-                  Dashboard
-                </dropdown-link>
-                <dropdown-link :href="route('profile.edit')">
-                  Profile
-                </dropdown-link>
-
-                <dropdown-link class="w-full text-left" :href="route('logout')" method="post" as="button">
-                  Log out
-                </dropdown-link>
-              </template>
-            </dropdown>
+            <div class="dropdown mobile_amdin_dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                      {{ $page.props.auth.user.name }}
+                  </button>
+                    <ul class="dropdown-menu" v-show="admin_hover">
+                      <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>
+                      <li><Link class="dropdown-item" :href="route('profile.edit')"> Profile </Link></li>
+                      <li><Link class="dropdown-item":href="route('profile.edit')"> Log out </Link></li>
+                    </ul>
+                  <!-- </div> -->
+                </div>
           </div>
           <!-- <div v-else="">
                 <div class="nav-item">

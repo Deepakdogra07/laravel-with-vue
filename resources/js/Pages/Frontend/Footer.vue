@@ -84,11 +84,11 @@ const user = ref(page?.props?.auth?.user)
             </ul>
           </div>
 
-          <div class="footer-section footer-four">
+          <div class="footer-section footer-five">
             <h2 class="text-white relative">Registration</h2>
               <div class="row mt-5">
                   <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
-                      :key="index" class="col-md-6 col-4  mb-2">
+                      :key="index" class="col-md-6 col-4  mb-2 certificate_ftr">
                       <img class="certificate-img" :src="image" alt="">
                   </div>
               </div>
@@ -100,7 +100,7 @@ const user = ref(page?.props?.auth?.user)
   <div class="container-fluid">
     <div class="bottom-footer">
       <div class="container footer_padding">
-        <div class="row justify-content-around align-items-center">
+        <div class="row justify-content-between align-items-center">
             <div class="col-lg-3 col-md-3 col-sm-12 remove_padding_footer">
               <div class="rating_image">
                 <img src="/images/google_rating.png" style="border-top: 5px solid #34A853; border-radius: 5px 5px 0px 0px; background-color: #fff">
@@ -131,7 +131,6 @@ const user = ref(page?.props?.auth?.user)
       </div>
     </div>
   </div>
-
 </template>
 
 
