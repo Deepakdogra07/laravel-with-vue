@@ -114,6 +114,7 @@ function checked_event(event){
     }else{
         form.recommended_skills.splice(event.target.value,1);
     }
+    console.log(form.recommended_skills)
 }
 
 

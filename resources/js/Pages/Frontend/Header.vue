@@ -195,12 +195,12 @@ function TriggerButton(type, event) {
         </div>
          <!-- Section mobile -->
          <div class="login-section-mob">
-          <div class="dropdown mobile_amdin_dropdown">
+          <div class="dropdown mobile_amdin_dropdown navbar_toggler_tab">
                   <button class="btn dropdown-toggle" @click="TriggerButton('hamburger_icon', $event)" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <span><i class="bi bi-list" ></i></span>
                   </button>
-                    <ul class="dropdown-menu" v-show="navbar_open">
+                    <ul class="dropdown-menu toggler_menu" v-show="navbar_open">
               <li class="nav-item">
                 <Link class="nav-link" :class="{ 'active-nav': route().current() == 'home' }" aria-current="page" href="/">
                 Home

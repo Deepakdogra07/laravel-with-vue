@@ -1561,6 +1561,9 @@ input[type="file"] {
 	ul.card_ullist.card_ullist_2nd li {
 		width: 100% !important;
 	}
+	.countries-section h2 {
+		line-height: 46.4px !important;
+	}
 }
 
 @media (min-width: 1086px) {
@@ -1609,10 +1612,35 @@ input[type="file"] {
 		padding-right: 0px !important;
 	}
 
-	.footer-grid {
+	.footer-section p, .footer-section a {
+		font-size: 13px;
+	}
+
+	.footer-section ul li {
+		margin-bottom: 8px !important;
+	}
+
+	.social-icons {
+		width: 30px;
+		height: 30px;
+	}
+
+	.social-icons i::before {
+		font-size: 16px;
+	}
+
+	.footer-section h2::before {
+		top: 29px;
+	}
+
+	.listing-gap {
+		margin-top: 30px;
+	}
+
+	/* .footer-grid {
 		grid-template-columns: 50% 50%;
 		gap: 15px;
-	}
+	} */
 
 	.main-header.login-wrapper .main-btn {
 		padding: 8px 14px !important;
@@ -1802,12 +1830,40 @@ input[type="file"] {
 		width: 90% !important;
 	}
 
-	.business_table thead, .business_table tr, .business_table tbody {
+	.business_table tr, .business_table tbody {
 		width: 100% !important;
 		display: block;
 	}
+	.country-content img {
+		height: 300px;
+	}
+	.country-names {
+		bottom: 46px;
+	}
 
-
+	.main-header .mobile_amdin_dropdown button::after {
+		display: none;
+	}
+	.toggler_menu {
+		right: 0;
+		left: unset !important;
+	}
+	.toggler_menu li {
+		padding: 5px 20px;
+	}
+	.navbar_toggler_tab .toggler_menu li a.active-nav{
+		color: #fff !important;
+	}
+	ul.dropdown-menu.toggler_menu {
+		width: 100%;
+		position: fixed;
+		padding: 20px;
+		margin-top: 0px;
+		background: #209882;
+	}
+	ul.dropdown-menu.toggler_menu li a {
+		color: #fff;
+	}
 
 }
 
@@ -1886,7 +1942,7 @@ input[type="file"] {
 	}
 
 	.business_table,
-	.business_table thead,
+	
 	.business_table tr,
 	.business_table tbody {
 		width: 100%;
@@ -1908,6 +1964,22 @@ input[type="file"] {
 
 	.profile_col {
 		margin-bottom: 20px;
+	}
+
+	.footer-grid {
+		display: flex;
+		flex-wrap: wrap;
+	} 
+	.footer-one {
+		width: 60% !important;
+	}
+
+	.navbar_toggler_tab i {
+		font-size: 20px;
+	}
+
+	.navbar_toggler_tab button {
+		padding: 2px 8px;
 	}
 
 }
@@ -2657,6 +2729,16 @@ input[type="file"] {
 	.remove_padding {
 		padding: 0px;
 	}
+
+	.single_testimonial .popup-quote-img img {
+		width: 10% !important;
+		margin-bottom: 10px;
+	}
+
+	.single_testimonial {
+		padding: 20px 0px !important;
+	}
+
 }
 
 @media (max-width:740px) {
@@ -2719,6 +2801,10 @@ input[type="file"] {
 @media (max-width: 576px) {
 	.testimonial-section .testimonial {
 		margin-bottom: -30px;
+	}
+
+	div#welcome_slider_ .image_for_Card {
+		height: 250px;
 	}
 
 	.job_posting_page {
@@ -3596,7 +3682,7 @@ input[type="file"] {
 	}
 
 	.business_table,
-	.business_table thead,
+	
 	.business_table tr,
 	.business_table tbody {
 		width: auto;
@@ -3653,8 +3739,20 @@ input[type="file"] {
 	.padding_table div#DataTables_Table_1_filter label {
 		font-size: 12px;
 	}
-
 }
+
+@media screen and (min-device-width: 427px) and (max-device-width: 500px) {
+	.srch_navbar {
+		width: 50%;
+	}
+	
+	.search_bar {
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+
+
 
 @media screen and (min-device-width: 481px) and (max-device-width: 798px) {
 	.employesss_tabs .filter-status ul li span {
@@ -5394,9 +5492,12 @@ span.video_txt {
 }
 
 .new-job-description .ql-editor.ql-blank::before {
-	left: 2px;
+    left: 2px;
+    font-style: normal;
+    color: #a5a5b3;
+    font-size: 15px;
+    font-family: 'Open Sans';
 }
-
 .login-section-desk button.main-btn {
 	text-transform: capitalize;
 }
@@ -5678,10 +5779,10 @@ label.label_checkbox {
     background-image: none !important;
     margin-bottom: 12px;
 }
-.recommended_checkbox [data-gtm-form-interact-field-id="0"], .recommended_checkbox [data-gtm-form-interact-field-id="1"], .recommended_checkbox [data-gtm-form-interact-field-id="2"], .recommended_checkbox [data-gtm-form-interact-field-id="3"], .recommended_checkbox [data-gtm-form-interact-field-id="4"] {
-    background: #26dacb;
+/* .recommended_checkbox [data-gtm-form-interact-field-id="0"], .recommended_checkbox [data-gtm-form-interact-field-id="1"], .recommended_checkbox [data-gtm-form-interact-field-id="2"], .recommended_checkbox [data-gtm-form-interact-field-id="3"], .recommended_checkbox [data-gtm-form-interact-field-id="4"] {
+    background: #26dacb !important;
     color: #fff !important;
-}
+} */
 .recommended_checkbox input.recommended_checkbox:hover {
     background: #09332b;
 }
@@ -5696,4 +5797,13 @@ label.label_checkbox {
 }
 .form-select option {
     color: #000;
+}
+.remove_padding_footer {
+    padding: 0px;
+}
+.footer_padding {
+    padding: 0px;
+}
+.recommended_checkbox input[type='checkbox']:checked {
+    background: #09332b;
 }

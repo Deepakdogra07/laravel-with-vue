@@ -63,7 +63,7 @@ function submitForm() {
     <AuthenticatedLayout>
         <template #header>
                 <h2 class="font-semibold text-xl text-black-800 leading-tight">Update Slider</h2>
-            <div class="button-container">
+            <div class="button-container">fff
             </div>
             
         </template>
@@ -87,10 +87,10 @@ function submitForm() {
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image <span style="color: red;"> *</span></label>
                             <img :src="slider_" alt="" style="height:250px">
-                              <label for="sliderImage" class="form-control mt-2 cursor-pointer">
+                              <!-- <label for="sliderImage" class="form-control mt-2 cursor-pointer">
                                 {{ slider.slider_image ? 'Change File' : 'Upload File' }}
-                              </label>
-                              <input type="file" id="sliderImage" @change="updateSliderName('image', $event)" accept="image/*" class="form-control !hidden mt-2">
+                              </label> -->
+                              <input type="file" id="sliderImage" @change="updateSliderName('image', $event)" accept="image/*" class="form-control mt-2 cursor-pointer">
                             <span v-if="!form.sliderImage" class="error-message">Slider Image is required</span>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
