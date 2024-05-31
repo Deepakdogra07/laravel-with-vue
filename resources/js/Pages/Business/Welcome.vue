@@ -28,7 +28,7 @@ const props = defineProps({
   <div class="container my-4">
     <h3>Welcome, {{ user.name }}:</h3>
       <div class="d-flex">
-        <div class="col-lg-3 col-md-6 col-xl-3 mb-3 ms-5">
+        <div class="col-lg-3 col-md-6 col-xl-3 mb-3">
           <Link :href="route('business-jobs.index')">
             <div class="card bg-success text-white mb-3 card-flex py-2">
                 <div class="card-header">
@@ -42,7 +42,7 @@ const props = defineProps({
             </div>
           </Link>
         </div>
-        <div class="col-lg-3 col-md-6 col-xl-3 mb-3 ms-5">
+        <div class="col-lg-3 col-md-6 col-xl-3 mb-3 mx-2">
           <Link :href="route('business-jobs.index')">
             <div class="card  text-white mb-3 card-flex py-2" style="background-color:#060d1a;">
                 <div class="card-header">

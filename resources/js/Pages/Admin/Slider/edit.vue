@@ -83,6 +83,7 @@ function submitForm() {
                             <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">Slider Description (less than 100 words) <span style="color: red;"> *</span></label>
                             <textarea id="sliderDescription" v-model="slider.slider_description" @input="updateSliderName('description',$event)" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
                             <span v-if="!form.sliderDescription" class="error-message">Slider Description is required</span>
+                            <span v-if="errors.sliderDescription" class="error-message">{{ errors.sliderDescription }}</span>
                         </div>
                         <div class="mb-4">
                             <label for="sliderImage" class="block text-gray-700 text-sm font-bold mb-2">Slider Image <span style="color: red;"> *</span></label>
