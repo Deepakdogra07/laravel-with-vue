@@ -158,7 +158,7 @@ function checked_event(event){
 
     <Head title="Job Application Form" />
     <Header class="login-wrapper" />
-    <SubHeading />
+    <SubHeading :job_id="form.id" />
     <div class="login-bg-wrapper create_space create_code">
         <div class="about-us-bg-wrapper">
             <div class="container">
