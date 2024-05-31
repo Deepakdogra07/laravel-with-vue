@@ -77,7 +77,7 @@ function TriggerButton(type, event) {
   <!-- <div class="container-fluid relative"> -->
   <div class="main-header">
     <nav class="navbar navbar-expand-lg" :class="{ '!bg-[#1D1F2C1A] border-home': route().current('home') }">
-      <div class="container">
+      <div class="container header_cn">
         <Link class="navbar-brand" href="/"><img :src="`${site_data?.logo_image}`" alt=""></Link>
         <div class="d-flex align-items-center gap-2">
           <GuestLayout>

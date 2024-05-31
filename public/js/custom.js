@@ -12,6 +12,18 @@
 //   });
 // });
 
+$(document).ready(function () {
+    $(document).on('click ','input.recommended_checkbox', function () 
+    {
+        // console.log($(this),'123456')
+        if($(this).parent('div').hasClass("active-checkbox")){
+            $(this).parent('div').removeClass("active-checkbox");
+        }else{
+            $(this).parent('div').addClass("active-checkbox");
+        }
+    });
+});
+
 
 // $(document).click(function (event) {
 //     setTimeout(function(){      
