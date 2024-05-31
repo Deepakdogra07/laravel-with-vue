@@ -117,7 +117,7 @@ function TriggerButton(type, event) {
                     <ul class="dropdown-menu" v-show="admin_hover">
                       <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>
                       <li><Link class="dropdown-item" :href="route('profile.edit')"> Profile </Link></li>
-                      <li><Link class="dropdown-item":href="route('profile.edit')"> Log out </Link></li>
+                      <li><Link class="dropdown-item":href="route('logout')"> Log out </Link></li>
                     </ul>
                   <!-- </div> -->
                 </div>
@@ -242,7 +242,7 @@ function TriggerButton(type, event) {
                     <ul class="dropdown-menu" v-show="admin_hover">
                       <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>
                       <li><Link class="dropdown-item" :href="route('profile.edit')"> Profile </Link></li>
-                      <li><Link class="dropdown-item":href="route('profile.edit')"> Log out </Link></li>
+                      <li><Link class="dropdown-item":href="route('logout')"> Log out </Link></li>
                     </ul>
                   <!-- </div> -->
                 </div>
