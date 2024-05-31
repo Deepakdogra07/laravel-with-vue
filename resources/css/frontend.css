@@ -2666,6 +2666,9 @@ input[type="file"] {
 		padding: 0px 6px;
 	}
 
+	.header_cn {
+		max-width: 720px !important;
+	}
 	.col_update {
 		padding: 0px 7px !important;
 	}
