@@ -100,6 +100,7 @@ const user = ref(page?.props?.auth?.user)
   <div class="container-fluid">
     <div class="bottom-footer">
       <div class="container footer_padding">
+
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-3 col-md-3 col-sm-12 remove_padding_footer">
               <div class="rating_image">

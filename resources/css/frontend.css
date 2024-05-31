@@ -1831,6 +1831,7 @@ input[type="file"] {
 	}
 
 	.business_table tr {
+
 		width: 100% !important;
 		display: block;
 	}
@@ -1856,11 +1857,13 @@ input[type="file"] {
 	}
 	ul.dropdown-menu.toggler_menu {
 		width: 100%;
+
 		padding: 20px;
 		margin-top: 0px;
 		background: #209882;
 		height: 170px !important;
 		top: 50px;
+
 	}
 	ul.dropdown-menu.toggler_menu li a {
 		color: #fff;
@@ -1945,6 +1948,7 @@ input[type="file"] {
 	.business_table,
 	
 	.business_table tr {
+
 		width: 100%;
 		display: block;
 	}
@@ -1969,6 +1973,7 @@ input[type="file"] {
 	.footer-grid {
 		display: flex;
 		flex-wrap: wrap;
+
 		width: 100%;
 	} 
 	.footer-one {
@@ -1983,6 +1988,7 @@ input[type="file"] {
 		padding: 2px 8px;
 	}
 
+
 	.footer-two, .footer-three {
 		width: 20%;
 	}
@@ -1990,7 +1996,6 @@ input[type="file"] {
 	.footer-four {
 		width: 40%;
 	}
-
 
 
 }
@@ -2771,7 +2776,6 @@ input[type="file"] {
 	}
 
 
-
 }
 
 @media (max-width:740px) {
@@ -2840,6 +2844,7 @@ input[type="file"] {
 	.testimonial-section .testimonial {
 		margin-bottom: -30px;
 	}
+
 
 	.certificate_ftr {
 		padding: 0px;
@@ -3729,8 +3734,8 @@ input[type="file"] {
 	}
 
 	.business_table,
-	
 	.business_table tr {
+
 		width: auto;
 		display: block;
 	}
@@ -5863,10 +5868,12 @@ label.label_checkbox {
 }
 .footer_padding {
     padding: 0px !important;
+
 }
 .recommended_checkbox input[type='checkbox']:checked {
     background: #09332b;
 }
+
 .navbar_toggler_tab {
     position: unset !important;
 }
@@ -5876,3 +5883,4 @@ label.label_checkbox {
 .footer_padding, .remove_padding_footer {
     padding: 0px !important;
 }
+
