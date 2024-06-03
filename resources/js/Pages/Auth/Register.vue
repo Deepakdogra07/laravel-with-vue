@@ -37,10 +37,10 @@ const form = useForm({
 });
 const submit = () => {
     form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    },{
-        onsuccess:()=>{
-            toast("Please check your email.", {
+    //     onFinish: () => form.reset('password', 'password_confirmation'),
+    // },{
+        onSuccess:()=>{
+            toast(`Form Submitted Successfully. Please check your email on ${form.email}. `, {
             autoClose: 3000,
             theme: 'dark',
                 });

@@ -362,7 +362,7 @@ function checked_event(event){
                             <div class="mt-4">
                                 <span class="label text-label">Currency<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2 "  aria-label="Default select example"
                                         v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
