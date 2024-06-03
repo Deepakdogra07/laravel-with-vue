@@ -27,13 +27,19 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request): Response
     {    
+        // dd($request->all());
+        $msg = '';
+        if($request->msg){
+            $msg = $request->msg;
+        }
         $footer_data = FooterData::first();
         $cookies = Cookie::get();
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             'footer_data'=>$footer_data,
-            'cookies' =>$cookies
+            'cookies' =>$cookies,
+            'msg' =>$msg
         ]);
     }
     
