@@ -30,9 +30,10 @@ class HomeController extends Controller
     public function business_dash(){
         $footer_data = FooterData::first();
         $user = Auth::user();
-        $jobs_created = Jobs::where('user_id',$user->id)->count(); 
-        $total_customers = Jobs::join('customers_personal_details','customers_personal_details.job_id','jobs.id')->count();
-        return Inertia::render('Business/Welcome',compact('footer_data','user','jobs_created','total_customers'));
+        $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
+        // $total_customers = Jobs::join('customers_personal_details','customers_personal_details.job_id','jobs.id')->count();
+        $customers = Customer::whereIn('job_id',$jobs_created)->with('status','jobs')->get();
+        return Inertia::render('Business/Welcome',compact('footer_data','user','customers'));
     }
 
     public function customer_dash(){
