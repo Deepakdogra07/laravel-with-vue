@@ -140,7 +140,6 @@ function selectFile(event){
 }
 
 const submit = () => {
-  console.log(form,'123')
     form.post(route('business-jobs.updates',form.id), {
       onSuccess: () => {
         toast("Job Updated Successfully!", {
@@ -561,7 +560,7 @@ console.log(select_class,'selected_class')
                                     </svg>
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" />
+                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>
