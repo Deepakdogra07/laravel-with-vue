@@ -20,9 +20,6 @@ class BusinessMiddleware
         if (Auth::check() && Auth::user()->user_type <= 2 ) {
             return $next($request);
         }
-
-        // abort(403);
         return redirect()->route('403');
-        // Inertia::render('Frontend/ErrorPages/403');
     }
 }

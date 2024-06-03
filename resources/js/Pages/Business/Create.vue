@@ -459,7 +459,7 @@ function handleChange(type){
                                     </svg>
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" />
+                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>

@@ -54,8 +54,10 @@ class LoginRequest extends FormRequest
         $email = $this->only('email')['email'];
         $password = $this->only('password')['password'];
         $remember = $this->boolean('remember');
+        $is_email = false;
         if(strpos($email, '@') !== false) {
             $attempt = Auth::attempt(['email' => $email, 'password' => $password], $this->boolean('remember'));
+            $is_email = true;
         } else {
             $attempt = Auth::attempt(['name' => $email, 'password' => $password], $this->boolean('remember'));
         } 
@@ -65,10 +67,17 @@ class LoginRequest extends FormRequest
         }
         if (!$attempt) {
             RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+            if($is_email){
+                throw ValidationException::withMessages([
+                    // 'email' => trans('auth.failed'),
+                    'email' => "Email or Password doesn't match.",
+                ]);
+            }else{
+                throw ValidationException::withMessages([
+                    // 'email' => trans('auth.failed'),
+                    'email' => "Username or Password doesn't match.",
+                ]);
+            }
         }else{
 
             // RateLimiter::clear($this->throttleKey());
