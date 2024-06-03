@@ -90,13 +90,13 @@ function update_data(type, event) {
                                     background-color: #ccc;
                                     padding: 20px;
                                     margin-bottom: 10px;">
-                            <label for="logoImage"
-                                class=" file_cursor form-control mt-2 cursor-pointer">
-                                {{ form.logo_image ? 'Change File' : 'Upload File' }}
-                            </label>
+                            <!-- <label for="logoImage"
+                                >
+                                {{form.logo_image}}
+                            </label> -->
                             
-                            <input type="file" id="logoImage" @change="update_data('logo_image', $event)"
-                                accept="image/*" class="hidden">
+                            <input type="file"  @change="update_data('logo_image', $event)"
+                                accept="image/*"class=" file_cursor form-control mt-2 cursor-pointer" >
                         </div>
                         <div class="mb-4">
                             <label for="logoDescription"
@@ -191,13 +191,13 @@ function update_data(type, event) {
                                         alt="" style="height:150px;">
                                 </div>
                             </div>
-                            <label for="certificate_images"
+                            <!-- <label for="certificate_images"
                                 class="form-control mt-2 cursor-pointer">
                                 {{ form.certificate_images ? 'Change File' : 'Upload File' }}
-                            </label>
+                            </label> -->
                             <input type="file" id="certificate_images"
                                 @change="update_data('certificate_images', $event)" accept="image/*" multiple
-                                class="hidden">
+                                class="form-control mt-2 cursor-pointer">
                         </div>
                         <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>

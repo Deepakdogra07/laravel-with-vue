@@ -55,11 +55,11 @@ function dateTime(created_at) {
                             <p>{{ job?.posting_summary }}</p>
                         </div>
                         <div class="row mt-3 buttons_div">
-                            <div class=" col-md-6 login-btn-main">
+                            <div class=" col-6 login-btn-main">
                                 <Link :href="`/view-job/${job.id}`" class="forms-btn w-100">View Job <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
-                            <div class="col-md-6 login-btn-main">
+                            <div class="col-6 login-btn-main">
                                 <Link class="forms-btn-transparent w-100" :href="`/job-introduction?job_id=${job.id}`">Apply Now <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>

@@ -1561,6 +1561,9 @@ input[type="file"] {
 	ul.card_ullist.card_ullist_2nd li {
 		width: 100% !important;
 	}
+	.countries-section h2 {
+		line-height: 46.4px !important;
+	}
 }
 
 @media (min-width: 1086px) {
@@ -1609,10 +1612,35 @@ input[type="file"] {
 		padding-right: 0px !important;
 	}
 
-	.footer-grid {
+	.footer-section p, .footer-section a {
+		font-size: 13px;
+	}
+
+	.footer-section ul li {
+		margin-bottom: 8px !important;
+	}
+
+	.social-icons {
+		width: 30px;
+		height: 30px;
+	}
+
+	.social-icons i::before {
+		font-size: 16px;
+	}
+
+	.footer-section h2::before {
+		top: 29px;
+	}
+
+	.listing-gap {
+		margin-top: 30px;
+	}
+
+	/* .footer-grid {
 		grid-template-columns: 50% 50%;
 		gap: 15px;
-	}
+	} */
 
 	.main-header.login-wrapper .main-btn {
 		padding: 8px 14px !important;
@@ -1718,7 +1746,7 @@ input[type="file"] {
 	}
 
 	.main-header .main-btn {
-		padding: 8px 14px;
+		padding: 6px 14px;
 	}
 
 	.video-background .video-play {
@@ -1802,12 +1830,43 @@ input[type="file"] {
 		width: 90% !important;
 	}
 
-	.business_table thead, .business_table tr, .business_table tbody {
+	.business_table tr {
+
 		width: 100% !important;
 		display: block;
 	}
+	.country-content img {
+		height: 300px;
+	}
+	.country-names {
+		bottom: 46px;
+	}
 
+	.main-header .mobile_amdin_dropdown button::after {
+		display: none;
+	}
+	.toggler_menu {
+		right: 0;
+		left: unset !important;
+	}
+	.toggler_menu li {
+		padding: 8px 20px;
+	}
+	.navbar_toggler_tab .toggler_menu li a.active-nav{
+		color: #fff !important;
+	}
+	ul.dropdown-menu.toggler_menu {
+		width: 100%;
+		padding: 20px;
+		margin-top: 0px;
+		background: #209882;
+		/* height: 170px !important; */
+		top: 85px;
 
+	}
+	ul.dropdown-menu.toggler_menu li a {
+		color: #fff;
+	}
 
 }
 
@@ -1886,9 +1945,9 @@ input[type="file"] {
 	}
 
 	.business_table,
-	.business_table thead,
-	.business_table tr,
-	.business_table tbody {
+	
+	.business_table tr {
+
 		width: 100%;
 		display: block;
 	}
@@ -1909,6 +1968,34 @@ input[type="file"] {
 	.profile_col {
 		margin-bottom: 20px;
 	}
+
+	.footer-grid {
+		display: flex;
+		flex-wrap: wrap;
+
+		width: 100%;
+	} 
+	.footer-one {
+		width: 50% !important;
+	}
+
+	.navbar_toggler_tab i {
+		font-size: 20px;
+	}
+
+	.navbar_toggler_tab button {
+		padding: 2px 8px;
+	}
+
+
+	.footer-two, .footer-three {
+		width: 20%;
+	}
+
+	.footer-four {
+		width: 40%;
+	}
+
 
 }
 
@@ -2578,6 +2665,9 @@ input[type="file"] {
 		padding: 0px 6px;
 	}
 
+	.header_cn {
+		max-width: 720px !important;
+	}
 	.col_update {
 		padding: 0px 7px !important;
 	}
@@ -2614,6 +2704,10 @@ input[type="file"] {
 @media (max-width:767px) {
 	.countries-section{
 		margin:0px !important;
+	}
+
+	.header_cn {
+		max-width: 720px;
 	}
 
 	div#home_banner .web-banner {
@@ -2657,6 +2751,33 @@ input[type="file"] {
 	.remove_padding {
 		padding: 0px;
 	}
+
+	.single_testimonial .popup-quote-img img {
+		width: 10% !important;
+		margin-bottom: 10px;
+	}
+
+	.single_testimonial {
+		padding: 20px 0px !important;
+	}
+
+	.footer-one {
+		width: 70% !important;
+	}
+
+	.footer-three {
+		width: 26%;
+	}
+
+	.footer-four {
+		width: 33%;
+	}
+
+	.footer-five {
+		width: 30%;
+	}
+
+
 }
 
 @media (max-width:740px) {
@@ -2714,11 +2835,33 @@ input[type="file"] {
 	.popup-video-section {
 		height: 220px;
 	}
+
+	.footer_padding, .footer_padding .remove_padding_footer {
+		padding: 0px 10px!important; 
+	}
+
 }
 
 @media (max-width: 576px) {
+	ul.dropdown-menu.toggler_menu{
+		top: 65px;
+	}
 	.testimonial-section .testimonial {
 		margin-bottom: -30px;
+	}
+
+
+	.certificate_ftr {
+		padding: 0px;
+		padding-right: 10px;
+	}
+
+	.main-footer .footer-grid h2 {
+		font-size: 13px !important;
+	}
+
+	div#welcome_slider_ .image_for_Card {
+		height: 250px;
 	}
 
 	.job_posting_page {
@@ -3596,9 +3739,8 @@ input[type="file"] {
 	}
 
 	.business_table,
-	.business_table thead,
-	.business_table tr,
-	.business_table tbody {
+	.business_table tr {
+
 		width: auto;
 		display: block;
 	}
@@ -3635,6 +3777,13 @@ input[type="file"] {
 		padding: 0px 5px !important;
 	}
 
+	.footer_padding {
+		padding: 0px 10px !important;
+	}
+
+
+
+
 }
 
 @media (max-width:503px) {
@@ -3653,8 +3802,20 @@ input[type="file"] {
 	.padding_table div#DataTables_Table_1_filter label {
 		font-size: 12px;
 	}
-
 }
+
+@media screen and (min-device-width: 427px) and (max-device-width: 500px) {
+	.srch_navbar {
+		width: 50%;
+	}
+	
+	.search_bar {
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+
+
 
 @media screen and (min-device-width: 481px) and (max-device-width: 798px) {
 	.employesss_tabs .filter-status ul li span {
@@ -3742,6 +3903,15 @@ input[type="file"] {
 	.padding_table div#DataTables_Table_1_filter label {
 		font-size: 11px;
 	}
+
+	.footer-grid{
+		display: block;
+	}
+
+	.footer-one, .footer-three, .footer-two, .footer-four, .footer-five{
+		width: 100% !important;
+	}
+
 }
 
 @media (max-width:412px) {
@@ -5394,9 +5564,12 @@ span.video_txt {
 }
 
 .new-job-description .ql-editor.ql-blank::before {
-	left: 2px;
+    left: 2px;
+    font-style: normal;
+    color: #a5a5b3;
+    font-size: 15px;
+    font-family: 'Open Sans';
 }
-
 .login-section-desk button.main-btn {
 	text-transform: capitalize;
 }
@@ -5659,6 +5832,7 @@ label.label_checkbox {
 .mobile_amdin_dropdown button {
     background: #fff !important;
     color: #000 !important;
+    text-transform: capitalize;
 }
 .mobile_amdin_dropdown ul li a {
     color: #000;
@@ -5678,10 +5852,10 @@ label.label_checkbox {
     background-image: none !important;
     margin-bottom: 12px;
 }
-.recommended_checkbox [data-gtm-form-interact-field-id="0"], .recommended_checkbox [data-gtm-form-interact-field-id="1"], .recommended_checkbox [data-gtm-form-interact-field-id="2"], .recommended_checkbox [data-gtm-form-interact-field-id="3"], .recommended_checkbox [data-gtm-form-interact-field-id="4"] {
-    background: #26dacb;
+/* .recommended_checkbox [data-gtm-form-interact-field-id="0"], .recommended_checkbox [data-gtm-form-interact-field-id="1"], .recommended_checkbox [data-gtm-form-interact-field-id="2"], .recommended_checkbox [data-gtm-form-interact-field-id="3"], .recommended_checkbox [data-gtm-form-interact-field-id="4"] {
+    background: #26dacb !important;
     color: #fff !important;
-}
+} */
 .recommended_checkbox input.recommended_checkbox:hover {
     background: #09332b;
 }
@@ -5696,4 +5870,29 @@ label.label_checkbox {
 }
 .form-select option {
     color: #000;
+}
+.footer_padding {
+    padding: 0px !important;
+
+}
+.recommended_checkbox input[type='checkbox']:checked {
+    background: #09332b;
+}
+
+.navbar_toggler_tab {
+    position: unset !important;
+}
+.active-checkbox label{
+	color: #fff !important;
+}
+.footer_padding, .remove_padding_footer {
+    padding: 0px !important;
+}
+
+.active-checkbox label {
+    background: #01796F;
+	border-radius: 5px;
+}
+.login-btn-main{
+	padding: 0 8px !important;
 }

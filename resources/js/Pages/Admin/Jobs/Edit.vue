@@ -78,7 +78,7 @@ const form = useForm({
     city: props.job.city,
     job_country: props.job.job_country,
     currency_id: props.job.currency_id,
-    recommended_skills: JSON.parse(props.job.recommended_skills)
+    recommended_skills: JSON.parse(props.job.recommended_skills) 
 });
 
 onMounted(() => {
@@ -97,6 +97,18 @@ onMounted(() => {
             form.industry_id.push(element);
         }
     });
+    if(form.recommended_skills.includes('documentation')){
+        active_checkbox.value.documentation = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('technical')){
+        active_checkbox.value.technical = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('electrician')){
+        active_checkbox.value.electrician = 'active-checkbox';
+    }
+    if(form.recommended_skills.includes('mechanical')){
+        active_checkbox.value.mechanical = 'active-checkbox';
+    }
 })
 
 const countries = countryStateCity.Country.getAllCountries(),
@@ -105,7 +117,12 @@ function selectFile(event) {
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
 }
-
+    const active_checkbox =ref({
+        documentation:'',
+        mechanical:'',
+        electrician:'',
+        technical:''
+    });
 const submit = () => {
     console.log(form, '123')
     form.post(route('jobs.updates', form.id), {
@@ -155,7 +172,7 @@ function handleChange(type) {
         select_class.value.select_country = 'Selected_option';
     }
     if (type == "Currency") {
-        select_class.value.Currency = 'Selected_option';
+        select_class.value.currency = 'Selected_option';
     }
 }
 function select_skill(skill) {
@@ -272,30 +289,32 @@ function checked_event(event) {
                                         <div class="mt-4">
                                             <label class="label text-label recommended_text">Recommended Skills</label>
                                             <ul class="job_recommenrded_skills pl-0">
-                                                <div class="recommended_checkbox">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.documentation">
                                                     <!--  -->
                                                     <TextInput type="checkbox" @click="checked_event($event)"
                                                         :checked="form.recommended_skills.includes('documentation')"
+                                                        
                                                         class="recommended_checkbox" value="documentation"
                                                         id="documents-1" />
                                                     <label class="label_checkbox" for="documents-1">
                                                         Documentation</label>
                                                 </div>
-                                                <div class="recommended_checkbox">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.mechanical">
                                                     <TextInput type="checkbox" @click="checked_event($event)"
                                                         :checked="form.recommended_skills.includes('mechanical')"
                                                         class="recommended_checkbox" value="mechanical"
+
                                                         id="documents-2" />
                                                     <label class="label_checkbox" for="documents-2"> Mechanical </label>
                                                 </div>
-                                                <div class="recommended_checkbox">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.technical" >
                                                     <TextInput type="checkbox" @click="checked_event($event)"
                                                         :checked="form.recommended_skills.includes('technical')"
                                                         class="recommended_checkbox" value="technical"
                                                         id="documents-3" />
                                                     <label class="label_checkbox" for="documents-3"> Technical</label>
                                                 </div>
-                                                <div class="recommended_checkbox">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.electrician">
                                                     <TextInput type="checkbox" @click="checked_event($event)"
                                                         :checked="form.recommended_skills.includes('electrician')"
                                                         class="recommended_checkbox" value="electrician"
@@ -414,7 +433,8 @@ function checked_event(event) {
                                         </div>
                                     </div>
                                     <div class="mt-4 minimum_input">
-                                        <span class="label text-label"><input type="checkbox">Minimum and Maximum
+                                        <!-- <input type="checkbox"> -->
+                                        <span class="label text-label">Minimum and Maximum
                                             Salary</span>
                                         <div class="row">
                                             <div class="col-md-6 eye-icon-div ">

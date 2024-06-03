@@ -27,5 +27,5 @@
 import Navigation from './Navigation.vue';
 import TopMenu from "./TopMenu.vue";
 import NavigationMobile from './NavigationMobile.vue';
-import '../custom.js';
+// import '../custom.js';
 </script>
