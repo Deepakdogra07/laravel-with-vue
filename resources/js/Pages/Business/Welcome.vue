@@ -26,8 +26,9 @@ function formatDateTime(date){
 
 <template>
   <Header :logo_image="footer_data.logo_image" />
-  <div class="container my-4">
-    <h3>Welcome, {{ user.name }}:</h3>
+  <section class="business_dashboard_page">
+    <div class="container my-4 business_dashboard_inner">
+    <h2 class="text-lg font-medium text-gray-900">Welcome, {{ user.name }}:</h2>
 
     <!-- <table class="table table-responsive">
         <thead>
@@ -47,7 +48,7 @@ function formatDateTime(date){
         </tbody>
       </table> -->
     <!-- <div class="p-6 text-black"> -->
-      <DataTable class="display table-responsive" :key="refreshDataTable" style="border:2px black ;width:100%" >
+      <DataTable class="display table-responsive business_dashboard_tabel" :key="refreshDataTable" style="border:2px black ;width:100%" >
         <thead>
           <tr>
             <th>Name</th>
@@ -107,6 +108,8 @@ function formatDateTime(date){
     <!-- </div> -->
 
   </div>
+  </section>
+ 
   <Footer :footer_data="footer_data" />
 
 </template>
