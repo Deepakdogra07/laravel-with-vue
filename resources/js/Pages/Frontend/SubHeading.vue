@@ -33,6 +33,7 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('testimonial.main') || route().current('show.testimonial',testimonial_id)">Testimonial</h1>
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>
+                <h1 class="mb-0" v-if="route().current('term.condition')">Terms and Conditions</h1>
             </div>
         </div>
     </div>

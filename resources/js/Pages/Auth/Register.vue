@@ -12,6 +12,7 @@ import '@@/frontend.css';
 import * as countryStateCity from 'country-state-city';
 import { ref } from 'vue';
 import { toast } from 'vue3-toastify';
+import Swal from 'sweetalert2';
 
 
 const countries = countryStateCity.Country.getAllCountries();
@@ -44,6 +45,11 @@ const submit = () => {
             autoClose: 3000,
             theme: 'dark',
                 });
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Please verify your email for login.',
+            });
         }
     });
 };

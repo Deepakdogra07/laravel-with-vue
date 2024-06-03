@@ -27,7 +27,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request): Response
     {    
-        // dd($request->all());
         $msg = '';
         if($request->msg){
             $msg = $request->msg;
@@ -56,7 +55,7 @@ class AuthenticatedSessionController extends Controller
 
         // Add your validation rules here if needed
        $validator = Validator::make($request->all(), $rules);
-
+// dd($validator->errors());
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
