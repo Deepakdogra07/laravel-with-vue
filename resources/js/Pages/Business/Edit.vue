@@ -169,16 +169,11 @@ function checked_event(event){
         form.recommended_skills.splice(event.target.value,1);
     }
 }
-const  select_class = ref({
-    discipline:'',
-    work_exp:'',
-    seniority:'',
-    position_type:'',
-    selected_country:'',
-    currency_:'',
-});
-
-
+const  select_class = ref('');
+function handleChange(){
+        select_class.value = 'Selected_option';
+}
+console.log(select_class,'selected_class')
 </script>
 
 <template>
@@ -403,9 +398,9 @@ const  select_class = ref({
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <span class="label text-label">Currency<span style="color:red"> *</span></span>
+                                <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 Selected_option" aria-label="Default select example"
+                                    <select class="form-select  mt-2" :class="[select_class, { 'Selected_option': form.currency_id }]" aria-label="Default select example" @change="handleChange()"
                                         v-model="form.currency_id" >
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
@@ -453,7 +448,7 @@ const  select_class = ref({
                             </div>
                             <div class="mt-4 spacing_btm new-job-description">
                                 <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
-                                <div class="eye-icon-div mt-2">
+                                <div class="eye-icon-div mt-2 textarea_font">
                                     <QuillEditor contentType="html" toolbar="essential"
                                         v-model:content="form.job_description" placeholder="Enter Details of the Job" />
                                 </div>

@@ -1604,6 +1604,29 @@ input[type="file"] {
 }
 
 @media (max-width: 992px) {
+	.mobile_dropdown .dropdown-toggle i {
+		font-size: 10px;
+		padding-left: 5px;
+		margin-top: 3px;
+	}
+
+	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle {
+		display: flex;
+		align-items: start;
+		flex-wrap: nowrap;
+	}
+
+	.mobile_amdin_dropdown .dropdown-toggle::after {
+		content: "";
+		display: inline-block;
+		margin-left: .255em;
+		vertical-align: .255em;
+		border-top: .3em solid;
+		border-right: .3em solid transparent;
+		border-bottom: 0;
+		border-left: .3em solid transparent;
+	}
+
 	.form-division-left {
 		padding-left: 0px !important;
 	}
@@ -1861,7 +1884,7 @@ input[type="file"] {
 		margin-top: 0px;
 		background: #209882;
 		/* height: 170px !important; */
-		top: 85px;
+		top: 78px;
 
 	}
 	ul.dropdown-menu.toggler_menu li a {
@@ -1875,6 +1898,11 @@ input[type="file"] {
 		font-size: 12px;
 	}
 
+	.mobile_amdin_dropdown ul.dropdown-menu {
+		right: 0 !important;
+		left: unset!important;
+	}
+	
 	.employesss_tabs {
 		padding-top: 10px;
 	}
@@ -2143,6 +2171,7 @@ input[type="file"] {
 	.col_padding {
 		padding: 0px 5px;
 	}
+
 
 	.add_employer_hd {
 		padding-left: 5px;
@@ -2635,7 +2664,7 @@ input[type="file"] {
 
 	.logo_spacing img {
 		width: 190px;
-		margin-left: 1.5rem;
+		margin-left: 1.0rem;
 	}
 
 	.add__slider {
@@ -2704,6 +2733,10 @@ input[type="file"] {
 @media (max-width:767px) {
 	.countries-section{
 		margin:0px !important;
+	}
+
+	.spacing_left .dashboard_btn {
+		padding-left: 22px !important;
 	}
 
 	.header_cn {
@@ -2777,7 +2810,21 @@ input[type="file"] {
 		width: 30%;
 	}
 
+	.job-list-search input.user-dashboard-search{
+		width:100% ;
+	}
 
+	.skills_input {
+		margin-bottom: 10px;
+	}
+
+}
+
+
+@media (max-width:766px){
+	.countries-section .content-left, .countries-section .content-right {
+		margin: 0px 15px !important;
+	}
 }
 
 @media (max-width:740px) {
@@ -2844,12 +2891,16 @@ input[type="file"] {
 
 @media (max-width: 576px) {
 	ul.dropdown-menu.toggler_menu{
-		top: 65px;
+		top: 55px;
 	}
+
 	.testimonial-section .testimonial {
 		margin-bottom: -30px;
 	}
 
+	#welcome_slider_ {
+		margin: 0px 5px;
+	}
 
 	.certificate_ftr {
 		padding: 0px;
@@ -2869,7 +2920,7 @@ input[type="file"] {
 	}
 
 	.recommended_checkbox, label.label_checkbox {
-		width: 140px !important;
+		width: 135px !important;
 	}
 
 	.testimonials_page {
@@ -3694,7 +3745,7 @@ input[type="file"] {
 	}
 
 	.add-job-form-section {
-		padding: 20px 10px;
+		padding: 20px 15px;
 	}
 
 	.job_posting_page ul.job_recommenrded_skills li {
@@ -4014,13 +4065,56 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .antialiased .side-navbar {
-	padding-right: 0px !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
 }
 
-.antialiased .side-navbar ul li.relative:hover {
+.antialiased .side-navbar ul li:hover, .dashboard_btn:hover {
 	background: #3c5b6f;
 	transition: all .30s;
 }
+
+.dashboard_inner_menu li {
+    margin: 0px !important;
+}
+
+.dashboard_inner_menu li a {
+    padding: 4px 0px !important;
+}
+.dashboard_inner_menu li:hover {
+    background: #3c5b6f !important;
+}
+
+.dashboard_btn {
+    padding-left: 20px !important;
+}
+
+.dashboard_inner_menu {
+    padding-top: 0px!important;
+    padding-left: 30px !important;
+}
+
+.dashboard_btn {
+    padding: 0px 20px;
+}
+
+.dashboard_menu li.spacing_left {
+    padding-left: 0px !important;
+}
+
+.dashboard_inner_menu li {
+    color: #fff;
+}
+
+.antialiased .side-navbar ul li:nth-child(2):hover, .antialiased .side-navbar ul li:nth-child(8):hover, .mobile_sidebar ul li:nth-child(2):hover, .mobile_sidebar ul li:nth-child(8):hover{
+    background: transparent;
+}
+
+/* .antialiased .side-navbar ul li.relative:hover, .antialiased .side-navbar ul li.relative ul[aria-label="submenu"] li:hover {
+    background: #3c5b6f;
+    transition: all .3s;
+} */
+
 
 li.relative ul.rounded-md li {
 	padding: 4px 16px !important;
@@ -5510,7 +5604,7 @@ span.video_txt {
 }
 
 .dashboard_menu li {
-	padding-left: 10px;
+	padding-left: 20px !important;
 }
 
 .dashboard_items a span:nth-child(1) {
@@ -5799,7 +5893,7 @@ ul.job_recommenrded_skills li:hover {
 .profile_input, .update_pass_div {
     margin: 10px 0px !important;
 }
-ul.job_recommenrded_skills.pl-0 {
+ul.job_recommenrded_skills {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
@@ -5816,12 +5910,14 @@ ul.job_recommenrded_skills.pl-0 {
 }
 label.label_checkbox {
     position: absolute;
-    top: 1px;
-    padding: 0px 8px;
+    top: 0px;
+    padding: 1px 8px;
     width: 120px;
     text-align: center;
     overflow: hidden;
     font-size: 13px !important;
+    cursor: pointer;
+    border-radius: 5px !important;
 }
 .sub-heading-section {
     text-transform: capitalize;
@@ -5875,10 +5971,20 @@ label.label_checkbox {
     padding: 0px !important;
 
 }
-.recommended_checkbox input[type='checkbox']:checked {
+/* .recommended_checkbox input[type='checkbox']:checked {
     background: #09332b;
+} */
+.recommended_checkbox input.form-control {
+    background: #fbfbfb !important;
+    border: 1px solid #d2d2d5;
+}
+.recommended_checkbox input, .recommended_checkbox input:focus {
+    border: 1px solid #d2d2d5;
 }
 
+.recommended_checkbox:hover input {
+    background-color: #01796f !important;
+}
 .navbar_toggler_tab {
     position: unset !important;
 }
@@ -5895,4 +6001,15 @@ label.label_checkbox {
 }
 .login-btn-main{
 	padding: 0 8px !important;
+}
+.textarea_font .ql-editor p, .new-job-description .ql-editor p {
+    font-family: 'Open Sans';
+    font-size: 15px;
+    color: #212529;
+}
+.textarea_font .ql-editor, .new-job-description .ql-editor {
+    padding: 0px !important;
+}
+.logo-dashboard img {
+    margin-left: 16px;
 }

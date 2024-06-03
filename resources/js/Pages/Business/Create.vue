@@ -144,7 +144,7 @@ function handleChange(type){
     if(type =="select_country"){
         select_class.value.select_country = 'Selected_option';
     }
-    if(type =="Currency"){
+    if(type =="currency"){
         select_class.value.currency = 'Selected_option';
     }
 }
@@ -376,11 +376,11 @@ function handleChange(type){
                             <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select mt-2 select_options" :class="select_class?.Currency" @change="handleChange('Currency')" aria-label="Default select example"
+                                    <select class="form-select mt-2 select_options" :class="select_class?.currency" @change="handleChange('currency')" aria-label="Default select example"
                                         v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
-                                            :value="position.id"> {{ position.country }} ({{
+                                            :value="position.id"> {{ position.currency }} ({{
                                                 position.symbol }})</option>
                                     </select>
                                     <InputError class="mt-2" :message="form.errors.currency_id" />
@@ -423,7 +423,7 @@ function handleChange(type){
                             </div>
                             <div class="mt-4 spacing_btm new-job-description spacing_tab">
                                 <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
-                                <div class="eye-icon-div mt-2">
+                                <div class="eye-icon-div mt-2 ">
                                     <QuillEditor contentType="html" toolbar="essential"
                                         v-model:content="form.job_description" placeholder="Enter Details of the Job" />
                                 </div>

@@ -16,15 +16,15 @@
             :active="route().current('dashboard')"
           >
             <template #icon>
-              <i class="fa-solid fa-house"></i>
+              <i class="fas fa-tachometer-alt"></i>
             </template>
             <span class="text-white">Dashboard</span>
           </NavLink>
         </li>
-        <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1" @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2">
+        <li class="relative spacing_left" v-if="$page.props.auth.user.user_type == 1" @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2">
           <button
             
-            class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
+            class="pr-4 pl-1 py-3 inline-flex items-center justify-between w-full dashboard_btn text-sm font-semibold transition-colors duration-150 hover:text-black-800"
             aria-haspopup="true"
           >
             <span class="inline-flex items-center">
@@ -36,7 +36,7 @@
 
           <ul
             v-show="showingTwoLevelMenu_2"
-            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
+            class="p-2 space-y-2 dashboard_inner_menu overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
             aria-label="submenu"
           >
             <li class="relative px-6 py-3">
@@ -148,11 +148,11 @@
    
         <li
           v-if="$page.props.auth.user.user_type == 1"
-          class="relative px-6 py-3"
+          class="relative spacing_left"
         >
           <button
             @click="showingTwoLevelMenu_6 = !showingTwoLevelMenu_6"
-            class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
+            class="pr-4 pl-1 py-3 inline-flex items-center dashboard_btn justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-black-800"
             aria-haspopup="true"
           >
             <span class="inline-flex items-center">
@@ -164,7 +164,7 @@
           </button>
 
           <ul v-show="showingTwoLevelMenu_6"
-                        class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
+                        class="p-2 space-y-2 dashboard_inner_menu overflow-hidden text-sm font-medium text-black-500 rounded-md shadow-inner bg-black-50"
                         aria-label="submenu">
                         <li class="px-2 py-1 transition-colors duration-150 hover:text-black-800">
                             <NavLink :href="route('update-links.index')" :active="route().current('update-links.index')">

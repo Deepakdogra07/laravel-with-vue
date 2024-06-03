@@ -222,7 +222,7 @@ function handleChange(type){
                             <div class="mt-4 arrow_label">
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
-                                <div class="eye-icon-div skills_input ">
+                                <div class="eye-icon-div skills_input">
                                     <select class="form-select select_options  mt-2" :class="select_class?.work_exp" @change="handleChange('work_exp')" aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>

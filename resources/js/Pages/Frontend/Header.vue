@@ -109,10 +109,10 @@ function TriggerButton(type, event) {
 
               <div class="login-section-mob" v-if="$page.props.auth.user">
                 
-                <div class="dropdown mobile_amdin_dropdown">
+                <div class="dropdown mobile_amdin_dropdown mobile_dropdown">
                   <button class="btn btn-secondary dropdown-toggle" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                      {{ $page.props.auth.user.name }}
+                    aria-expanded="false"> 
+                      {{ $page.props.auth.user.name }} <i class="fas fa-sort-down"></i>
                   </button>
                     <ul class="dropdown-menu" v-show="admin_hover">
                       <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>
