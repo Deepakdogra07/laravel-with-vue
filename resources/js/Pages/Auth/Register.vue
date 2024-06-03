@@ -41,7 +41,7 @@ const submit = () => {
     //     onFinish: () => form.reset('password', 'password_confirmation'),
     // },{
         onSuccess:()=>{
-            toast(`Form Submitted Successfully. Please check your email on ${form.email}. `, {
+            toast(`Form Submitted Successfully.`, {
             autoClose: 3000,
             theme: 'dark',
                 });
