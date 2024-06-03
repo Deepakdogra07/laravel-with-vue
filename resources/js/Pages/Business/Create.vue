@@ -114,6 +114,7 @@ function checked_event(event){
     }else{
         form.recommended_skills.splice(event.target.value,1);
     }
+    console.log(form.recommended_skills)
 }
 
 
@@ -144,7 +145,7 @@ function handleChange(type){
         select_class.value.select_country = 'Selected_option';
     }
     if(type =="Currency"){
-        select_class.value.Currency = 'Selected_option';
+        select_class.value.currency = 'Selected_option';
     }
 }
 
@@ -386,7 +387,8 @@ function handleChange(type){
                                 </div>
                             </div>
                             <div class="mt-4 minimum_input spacing_tab">
-                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary</span>
+                                <!-- <input type="checkbox"> -->
+                                <span class="label text-label">Minimum and Maximum Salary</span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
                                         <TextInput type="text" id="salary_range" v-model="form.min_pay_range"

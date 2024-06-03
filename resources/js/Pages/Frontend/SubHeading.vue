@@ -29,6 +29,7 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('contact.us')">Contact us</h1>
                 <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Posting</h1>
+                <h1 class="mb-0" v-if="route().current('business-jobs.edit',job_id)">Edit Job Posting</h1>
                 <h1 class="mb-0" v-if="route().current('testimonial.main') || route().current('show.testimonial',testimonial_id)">Testimonial</h1>
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>

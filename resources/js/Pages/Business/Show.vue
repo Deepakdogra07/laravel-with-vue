@@ -81,7 +81,7 @@ function job_description(description){
                     
                     <div class="relative">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-                        <input type="search" class="user-dashboard-search" placeholder="Search employe">
+                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
                     </div>
                 </div>
             </div>

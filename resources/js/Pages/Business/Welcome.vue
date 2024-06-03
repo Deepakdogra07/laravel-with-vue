@@ -28,6 +28,7 @@ function formatDateTime(date){
   <Header :logo_image="footer_data.logo_image" />
   <div class="container my-4">
     <h3>Welcome, {{ user.name }}:</h3>
+
     <!-- <table class="table table-responsive">
         <thead>
           <th>Name</th>
@@ -104,6 +105,7 @@ function formatDateTime(date){
       </DataTable>
 
     <!-- </div> -->
+
   </div>
   <Footer :footer_data="footer_data" />
 
