@@ -41,7 +41,7 @@ const form =useForm({
     country_of_birth:null,
     city_of_birth:null,
     gender:null,
-    marital_status:null,
+    martial_status:null,
     passport_number:null,
     issuing_authority:null,
     passport_date_of_expiry:null,
@@ -70,7 +70,7 @@ const submitData = () => {
 
 const select_class =ref({
     territory_birth:'',
-    marital_status:'',
+    martial_status:'',
 });
 
 function handleChange(type){
@@ -78,7 +78,7 @@ function handleChange(type){
         select_class.value.territory_birth = 'Selected_option';
     }
     if(type =="marital_status"){
-        select_class.value.marital_status = 'Selected_option';
+        select_class.value.martial_status = 'Selected_option';
     }
 }
 
@@ -174,7 +174,7 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">Marital status</span>
     
-                                    <select class="form-select mt-2 Selected_option" :class="select_class?.marital_status" @change="handleChange('marital_status')" v-model="form.marital_status">
+                                    <select class="form-select mt-2 Selected_option" :class="select_class?.martial_status" @change="handleChange('marital_status')" v-model="form.martial_status">
                                         <option selected :value="null">----</option>
                                         <option value="0">Married</option>
                                         <option value="1">Unmarried</option>

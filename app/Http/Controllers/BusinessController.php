@@ -28,7 +28,7 @@ class BusinessController extends Controller
 {
     public function index()
     {
-        $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->get();   //Get data for particular business
+        $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
         $footer_data = FooterData::first();
         return Inertia::render('Business/Index', compact('jobs', 'footer_data'));
 

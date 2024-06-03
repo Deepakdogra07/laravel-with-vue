@@ -43,7 +43,14 @@ onMounted(() => {
     });
 });
 
-const states = countryStateCity.State.getStatesOfCountry('IN');
+
+const recommended_skills = sepratedString(props?.jobs?.recommended_skills);
+function sepratedString(recommended_skills){
+    let array = JSON.parse(recommended_skills);
+    return array.join(", ");
+}
+
+
 
 </script>
 
@@ -104,6 +111,7 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                                     <li><b>Discipline:</b>{{ jobs?.discipline?.name }}</li>
                                                     <li><b>Work Experience:</b>{{ jobs?.work_experience?.experience }}
                                                     </li>
+                                                    <li><b>Recommended Skills:</b>{{ recommended_skills }}</li>
                                                     <li><b>Skills:</b>{{ skills }}</li>
                                                     <li><b>Remote Work:</b>
                                                         <p v-if="jobs.remote_work">Yes</p>
@@ -113,13 +121,15 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
                                                     <li> <b>Industry:</b>{{ industry }}</li>
                                                     <li><b>Segment:</b>{{ jobs?.segment }}</li>
                                                     <li> <b>Pin Code:</b>{{ jobs?.pin_code }}</li>
-                                                    <li><b>City:</b>{{ jobs.city }}</li>
+                                                    <!-- <li><b>City:</b>{{ jobs.city }}</li> -->
                                                     <li><b>Pay Range:</b>{{ jobs?.min_pay_range }}-{{
                                                         jobs?.max_pay_range }}
                                                     </li>
                                                     <li><b>Job Start Date:</b>{{ jobs?.job_start_date }}</li>
                                                     <li> <b>Languages:</b>{{ language }}</li>
                                                     <li><b>Created By:</b>{{ jobs?.createdby?.name }}</li>
+                                                    <li><b>City</b><span>{{ jobs.city }}</span></li>
+                                                    <li><b>Country</b><span>{{ jobs?.job_country }}</span></li>
                                                 </ul>
                                             </div>
                                         </div>
