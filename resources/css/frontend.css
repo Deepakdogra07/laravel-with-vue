@@ -6013,3 +6013,7 @@ label.label_checkbox {
 .logo-dashboard img {
     margin-left: 16px;
 }
+.footer_padding a {
+    text-decoration: underline !important;
+    color: #fff;
+}
