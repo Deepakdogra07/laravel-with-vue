@@ -1613,6 +1613,11 @@ input[type="file"] {
 		margin-top: 3px;
 	}
 
+	.create_space input.form-control,
+	.create_space select.form-select {
+	font-size: 13px;
+	}
+
 	.business_table {
 		display: inline-table;
 	}
@@ -2160,7 +2165,7 @@ input[type="file"] {
 		margin-top: 10px !important;
 	}
 	.testimonials_width, .about-width, .all-testimonial_width {
-		max-width: 720px;
+		max-width: 720px !important;
 		padding: 0px 5px !important;
 	}
 
@@ -5381,7 +5386,9 @@ section#home_banner {
 }
 
 .login-btn-main .forms-btn i::before {
-	line-height: 0px !important;
+    line-height: 0px !important;
+    position: absolute;
+    top: 24px;
 }
 
 .form-select.Selected_option {
@@ -5400,15 +5407,22 @@ span.video_txt {
 	height: 20px;
 }
 
-.buttons_div a.forms-btn,
-.buttons_div .login-btn-main a {
-	justify-content: space-between;
+/* .buttons_div a.forms-btn, .buttons_div .login-btn-main a {
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+} */
+.buttons_div a.forms-btn i, .buttons_div .login-btn-main a i {
+    font-size: 19px;
+    padding-left: 10px;
+    line-height: 19px;
 }
-
 .application_guide button.step-form-back span {
 	transform: rotate(180deg);
 }
-
+.buttons_div .login-btn-main {
+    line-height: 20px;
+}
 .popup-profile-name p {
 	margin-bottom: 0px;
 }
@@ -5905,7 +5919,7 @@ label.label_checkbox {
 }
 
 .contactus-sidebar a:hover {
-    color: #dde1e1 !important;
+    color: #23fdd7 !important;
 }
 .previous_btn, .next_btn:hover {
     background: #09332b;
@@ -5935,10 +5949,10 @@ label.label_checkbox {
     height: 450px;
 }
 .sorting_icon::before, .sorting_icon::after{
-	display: none;
+	display: none !important;
 }
 .swal2-actions .swal2-styled {
-    background: #000;
+    background: #01796f;
     padding: 8px 40px;
 }
 .login_inner i.bi.bi-eye-slash {
@@ -5946,4 +5960,18 @@ label.label_checkbox {
 }
 .certificate_ftr {
     padding: 0px 10px 0px 0px;
+}
+.create_Account i.bi.bi-eye-slash{
+	cursor: pointer;
+}
+.buttons_div .login-btn-main .forms-btn, .buttons_div .login-btn-main .forms-btn-transparent  {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    padding-left: 0px !important;
+}
+.login-btn-main .forms-btn-transparent i::before {
+    line-height: 0px !important;
+    position: absolute;
+    top: 24px;
 }

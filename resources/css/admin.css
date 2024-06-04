@@ -27,7 +27,7 @@
 	padding-left: 9px;
 }
 
-.padding_remove div#DataTables_Table_0_length {
+.padding_remove .dataTables_length {
     float: left;
     font-size: 16px;
 }
@@ -182,7 +182,7 @@ table.dataTable td img {
 
 	.padding_remove .dataTables_length {
 		font-size: 12px;
-		padding-top: 13px !important;
+		padding-top: 4px !important;
 	}
 }
 
@@ -222,10 +222,10 @@ table.dataTable td img {
         margin-left: 10px;
         text-align: left;
     }
-    .dataTables_wrapper .dataTables_info,
+    /* .dataTables_wrapper .dataTables_info,
 	.dataTables_wrapper .dataTables_paginate {
 		float: right;
-	}
+	} */
     .padding_remove {
 		padding: 0px !important;
 	}
@@ -273,17 +273,39 @@ table.dataTable td img {
     .padding_remove .dataTables_filter label, .padding_remove .dataTables_filter {
         float: left;
     }
-	.dataTables_filter, .dataTables_wrapper .dataTables_filter label {
+	.dataTables_filter {
 		width: 100% !important;
 	}
-	/* .dataTables_wrapper .dataTables_filter input {
-		width: 85%;
+	.dataTables_wrapper .dataTables_filter input {
+		width: 80%;
 	}
-	.dataTables_wrapper .dataTables_filter label{
+	.dataTables_wrapper .dataTables_filter label {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-	} */
+		float: unset !important;
+	}
+	.padding_remove .dataTables_length {
+		padding-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+	.padding_remove .dataTables_filter label {
+		font-size: 14px !important;
+	}
+	.padding_remove .dataTables_filter label input[type="search"] {
+		height: 32px !important;
+		margin-top: 7px;
+	}
+	.padding_remove .dataTables_length label {
+		font-size: 13px !important;
+		float: left;
+	}
+	.padding_remove .dataTables_length {
+		width: 70% !important;
+	}
+	.padding_remove .dataTables_length label select {
+		width: 52px !important;
+	}
 
 }
 
@@ -305,13 +327,14 @@ table.dataTable td img {
 	}
 
 	.padding_remove .dataTables_filter label input {
-		margin-left: 0px !important;
+		margin-left: 10px !important;
 		padding-left: 0px;
 	}
 
 	.padding_remove .dataTables_filter label input[type="search"] {
 		height: 25px;
 	}
+	
 }  
 
 @media (max-width:442px) {
@@ -321,7 +344,7 @@ table.dataTable td img {
 
 	.padding_remove .dataTables_filter label input[type="search"] {
 		width: 100%;
-		margin-left: 0px;
+		margin-left: 0px !important;
 	}
 
 	.padding_remove .dataTables_filter {
@@ -347,17 +370,20 @@ table.dataTable td img {
 
 	.padding_remove .dataTables_filter label {
 		text-align: left;
-		font-size: 10px;
+		width: 100% !important;
 	}
 
 	.padding_table .dataTables_filter label {
 		text-align: left;
-		font-size: 10px;
+		width: 100% !important;
 	}
 
-    .padding_remove .dataTables_filter{
-        display: flex;
-        flex-wrap: nowrap;
-    }
+    .padding_remove .dataTables_filter {
+		display: flex;
+		flex-wrap: nowrap;
+		width: 100% !important;
+	}
+
+
 
 }
