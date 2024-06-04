@@ -29,24 +29,30 @@ const props = defineProps({
 const skill = ref(''),
 language = ref(''),
 industry = ref('');
+
 onMounted( () => {
+    const skillNames = [];
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
-        skill.value += element.name +',';
+        skillNames.push(element.name);
     }
   });
-  props.industries.forEach(element => {
-    if(props.job.skills_id.includes(element.id)){
-        industry.value += element.name +',';
-    }
-  });
+  skill.value = skillNames.join(',');
+  const languagesArray = [];
   props.languages.forEach(element => {
     if(props.job.language_id.includes(element.id)){
-        language.value += element.name +',';
+        languagesArray.push(element.name);
     }
   });
-  // console.log(business_country,'123456');
-  
+
+  language.value = languagesArray.join(',');
+  const indusArray = [];
+  props.industries.forEach(element => {
+    if(props.job.industry_id.includes(element.id)){
+        indusArray.push(element.name)
+    }
+});
+industry.value = indusArray.join(',');
 });
 const business_country = Country.getCountryByCode(props?.job?.business?.company_country_code);
 const recommended_skills = sepratedString(props?.job?.recommended_skills);

@@ -86,7 +86,7 @@ const submit = () => {
                             <div class="eye-icon-div relative">
                                 <TextInput id="password" :type="passwordFieldType" placeholder="Enter your Password"
                                     class="form-control mt-2" v-model="form.password"/>
-                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" @click="togglePasswordVisibility">
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" style="cursor:pointer;" @click="togglePasswordVisibility">
                                     <i :class="eyeIconClass"></i>
                                 </span>
                             </div>
