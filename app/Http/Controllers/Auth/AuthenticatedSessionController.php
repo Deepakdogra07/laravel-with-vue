@@ -67,7 +67,7 @@ class AuthenticatedSessionController extends Controller
         if(!$Checkverified){
             Auth::logout();
             $user = User::where('email', $request->email)->orwhere('name',$request->email)->first();
-            Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'test'));
+            Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'Unstoppable Job'));
             $validator->errors()->add('email', "We sent you verification Email.Please verify your email for login.");
             return redirect()->back()->withErrors($validator)->withInput();
         }
