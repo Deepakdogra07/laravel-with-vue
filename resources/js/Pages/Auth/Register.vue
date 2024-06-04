@@ -10,7 +10,7 @@ import Footer from '../Frontend/Footer.vue'
 import SubHeading from '../Frontend/SubHeading.vue'
 import '@@/frontend.css';
 import * as countryStateCity from 'country-state-city';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import Swal from 'sweetalert2';
 
@@ -58,6 +58,14 @@ function select_country(event){
     states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
 }
 
+const showPassword = ref(false);
+
+const passwordFieldType = computed(() => showPassword.value ? 'text' : 'password');
+const eyeIconClass = computed(() => showPassword.value ? 'bi bi-eye' : 'bi bi-eye-slash');
+
+const togglePasswordVisibility = () => {
+    showPassword.value = !showPassword.value;
+};
 
 
 </script>
@@ -182,11 +190,16 @@ function select_country(event){
                         <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
-                            <TextInput id="password" type="password" placeholder="Enter your password" class="form-control mt-2"
+                            <div class="relative">
+                            <TextInput id="password" :type="passwordFieldType" placeholder="Enter your password" class="form-control mt-2"
                                 v-model="form.password" autocomplete="username" />
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%] " @click="togglePasswordVisibility">
+                                    <i :class="eyeIconClass"></i>
+                                </span>
+                            </div>
                             <InputError class="mt-1" :message="form.errors.password" />
+                            </div>
                         </div>
-                    </div>
                 </div>
 
 
