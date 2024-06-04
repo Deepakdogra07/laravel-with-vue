@@ -106,7 +106,7 @@ function getImageUrl(imageName) {
                        <DataTable class="display" :options="options" style="border:2px black ;width:100% ;overflow:hidden">
                             <thead>
                                 <tr>
-                                    <th >ID</th>
+                                    <th >IDdd</th>
                                     <th>Slider Heading</th>
                                     <th >Slider Description</th>
                                     <th>Slider Image</th>

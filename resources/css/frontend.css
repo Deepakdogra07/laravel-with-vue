@@ -1905,6 +1905,10 @@ input[type="file"] {
 		font-size: 12px;
 	}
 
+	.button_bs_ryt {
+		top: 25px !important;
+	}
+
 	.mobile_amdin_dropdown ul.dropdown-menu {
 		right: 0 !important;
 		left: unset!important;
@@ -2926,6 +2930,10 @@ input[type="file"] {
 		top: 55px;
 	}
 
+	.button_bs_ryt {
+		top: 7px !important;
+	}
+
 	.business_job_details {
 		padding-top: 6px;
 	}
@@ -3927,6 +3935,10 @@ input[type="file"] {
 	.main-job-filter.mt-5 {
 		margin-top: 10px !important;
 	}
+	.business_table {
+		margin-top: 20px !important;
+	}
+
 }
 
 @media (max-width:442px) {
@@ -5385,7 +5397,7 @@ section#home_banner {
 	margin-top: 6px;
 }
 
-.login-btn-main .forms-btn i::before {
+.list_of_job .login-btn-main .forms-btn i::before {
     line-height: 0px !important;
     position: absolute;
     top: 24px;
@@ -5959,19 +5971,31 @@ label.label_checkbox {
     cursor: pointer;
 }
 .certificate_ftr {
-    padding: 0px 10px 0px 0px;
+    padding: 0px 10px 0px 0px !important;
 }
 .create_Account i.bi.bi-eye-slash{
 	cursor: pointer;
 }
-.buttons_div .login-btn-main .forms-btn, .buttons_div .login-btn-main .forms-btn-transparent  {
+.list_of_job .buttons_div .login-btn-main .forms-btn, .list_of_job .buttons_div .login-btn-main .forms-btn-transparent  {
     display: inline-block;
     text-align: center;
     position: relative;
     padding-left: 0px !important;
 }
-.login-btn-main .forms-btn-transparent i::before {
+.list_of_job .login-btn-main .forms-btn-transparent i::before {
     line-height: 0px !important;
     position: absolute;
     top: 24px;
+}
+.business_srccc {
+    padding: 0px;
+}
+.login_inner button {
+    position: relative;
+    padding: 13px 36px 13px 19px!important;
+}
+
+.login_inner button i.bi.bi-arrow-right::before {
+    position: absolute;
+    top: 5px;
 }
