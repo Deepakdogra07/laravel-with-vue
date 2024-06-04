@@ -33,7 +33,7 @@ class VerifyUser extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to  Unstoppable Job',
+            subject: 'Verify Email (Unstoppable Job)',
         );
     }
 

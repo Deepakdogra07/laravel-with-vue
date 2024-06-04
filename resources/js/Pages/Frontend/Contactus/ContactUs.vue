@@ -75,7 +75,7 @@ function submitForm(){
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Mobile<span style="color:red"> *</span></span>
-                                <TextInput type="number"name="user_mobile" v-model="form.user_mobile" placeholder="Enter your mobile number" class="form-control mt-2" />
+                                <TextInput type="text"name="user_mobile" v-model="form.user_mobile" placeholder="Enter your mobile number" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_mobile" />
                             </div>
                             <div class="mt-4">
