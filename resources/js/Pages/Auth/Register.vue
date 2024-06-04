@@ -143,7 +143,7 @@ function select_country(event){
                         </div>
                         <div class="mt-3">
                             <span class="label text-label">Mobile<span style="color:red"> *</span></span>
-                            <TextInput type="number" placeholder="Enter your mobile number" class="form-control mt-2"
+                            <TextInput type="text" placeholder="Enter your mobile number" class="form-control mt-2"
                                 autofocus autocomplete="name" v-model="form.mobile_number" />
                             <InputError class="mt-1" :message="form.errors.mobile_number" />
                         </div>

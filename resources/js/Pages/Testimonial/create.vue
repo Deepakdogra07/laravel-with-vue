@@ -6,6 +6,7 @@ import { router } from '@inertiajs/vue3';
 import { useToast } from 'vue-toastify';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { QuillEditor } from '@vueup/vue-quill';
 
 const form = reactive({
   name: null,
@@ -99,6 +100,10 @@ function handleVideoInput2(event) {
               <label for="content">Content<span class="text-danger"> *</span></label>
               <textarea id="content" v-model="form.content" placeholder="Enter Content"
                 class="block w-full mt-1 form-control"></textarea>
+                <!-- <QuillEditor contentType="html" toolbar="minimal"
+                                        v-model:content="form.content" placeholder="Enter Content" /> -->
+                  <!-- <QuillEditor contentType="html" toolbar="essential"
+                  v-model:content="form.content" placeholder="Enter Details of the Job" /> -->
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
             <br />

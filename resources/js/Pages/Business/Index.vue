@@ -45,7 +45,7 @@ const deletejob = async (id) => {
                 title: 'Success',
                 text: 'Job Deleted Successfully',
             });
-            location.reload();
+            // location.reload();
         } else {
             Swal.fire({
                 icon: 'info',
