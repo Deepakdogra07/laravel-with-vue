@@ -30,9 +30,9 @@ console.log(props);
     <SubHeading :testimonial_id="testimonial.id"/>
 
 <section class="testimonials_page" >
-    <div class="container modal-dialogs">
+    <div class="container modal-dialogs testimonials_width">
         <div class="popover-section  modal-content single_testimonial">
-            <Link class="popup-cross" data-bs-dismiss="modal">
+            <Link class="popup-cross cross_testimonials" data-bs-dismiss="modal">
             <i class="bi bi-x"></i>
             </Link>
             <div class="modal-body">
@@ -62,8 +62,8 @@ console.log(props);
             </div>
             <div class="row mt-3">
                 <div class="previous_next"> 
-                    <Link class="btn btn-secondary" :href="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
-                    <Link class="btn btn-success" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
+                    <Link class="btn btn-secondary previous_btn" :href="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
+                    <Link class="btn btn-success next_btn" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
                 </div>
             </div>
         </div>

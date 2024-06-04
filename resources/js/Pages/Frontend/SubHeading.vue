@@ -20,9 +20,9 @@ const props=defineProps({
 
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid subheading_Sec">
         <div class="sub-heading-section" :class="{'!pb-[50px]' : !route().current('login') || !route().current('password.request')}">
-            <div class="container">
+            <div class="container subheading_cn">
                 <h1 class="mb-0" v-if="route().current('login') || route().current('password.request') || route().current('password.reset') ">Welcome to Login</h1>
                 <h1 class="mb-0" v-if="route().current('job.listing') || route().current('view.job')">List of Jobs</h1>
                 <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
@@ -38,8 +38,8 @@ const props=defineProps({
         </div>
     </div>
     <div class="container-fluid">
-        <div class="form-navigation" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
-            <div class="container">
+        <div class="form-navigation login_nav" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
+            <div class="container login_inner_cn">
                 <ul class="row nav-underline pl-0 mb-0 second_navbar">
                     <div class="col-md-1 col-3 column_nav_one">
                         <li class="nav-item">

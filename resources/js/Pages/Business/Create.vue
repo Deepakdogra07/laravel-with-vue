@@ -172,7 +172,7 @@ function handleChange(type){
     <SubHeading />
     <div class="login-bg-wrapper create_space create_code">
         <div class="about-us-bg-wrapper">
-            <div class="container">
+            <div class="container about-width">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
