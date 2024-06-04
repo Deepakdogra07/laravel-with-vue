@@ -67,13 +67,13 @@ const deletejob = async (id) => {
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <!-- <div class="job-list-search srch_responsive">
+        <div class="job-list-search srch_responsive business_srccc">
             <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
                     </div>
-                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                    <!-- <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link>Employee</Link>
                     </div> 
@@ -81,10 +81,10 @@ const deletejob = async (id) => {
                     <div class="relative search_bar">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
                         <input type="search" class="user-dashboard-search" placeholder="Search employee">
-                    </div>
+                    </div> -->
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="login-bg-wrapper business_job_details">
             <div class="container about-width">
                 <div class="filter-status row">
@@ -118,6 +118,9 @@ const deletejob = async (id) => {
                             </ul> -->
                         </div>
                     </div>
+
+                    
+
                     <div class="col-md-1 login-section-desk text-end width_mobileS">
                         <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                     </div>

@@ -130,7 +130,10 @@ table.dataTable td img {
 	border-radius: 0px;
 }
 
-
+/* .category_tables a.paginate_button.current {
+    padding-top: 7px !important;
+    padding-bottom: 8px !important;
+} */
 
 @media (max-width:992px) {
 .padding_remove table.dataTable tbody,
