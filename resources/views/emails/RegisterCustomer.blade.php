@@ -24,12 +24,12 @@
                                 <h3 style="margin-top: 0;">Your account was created by {{ $creator }}.</h3>
                                 <div class="email-detail-content">
                                     <p style="padding-bottom: 10px">You can login with the following details:</p>
-                                    <p style="padding-bottom: 10px">E-mail : <strong style="font-size: 130%">{{ $email }}</strong></p>
-                                    <p style="padding-bottom: 10px">User name : <strong style="font-size: 130%">{{ ucfirst($username) }}</strong></p>
-                                    <p style="padding-bottom: 10px">Password : <strong style="font-size: 130%">{{ $password }}</strong></p>
+                                    <p style="padding-bottom: 10px">E-mail : <strong style="font-size: 100%">{{ $email }}</strong></p>
+                                    <p style="padding-bottom: 10px">User name : <strong style="font-size: 100%">{{ ucfirst($username) }}</strong></p>
+                                    <p style="padding-bottom: 10px">Password : <strong style="font-size: 100%">{{ $password }}</strong></p>
                                     <p style="padding-bottom: 10px; margin: 10px 0; text-align: center;">
                                         <strong>
-                                            <a class="email-btn" style="background-color: #09332B; padding: 8px 10px;  border-radius: 10px; color: #fff; text-decoration: none;" href="{{ route('login') }}">Login</a>
+                                            <a class="email-btn" style="text-decoration:none; padding: 12px 15px; color: #fff; background-color: #01796f; border-radius: 8px; font-size: 17px;" href="{{ route('login') }}">Login</a>
                                         </strong>
                                     </p>
                                 </div>
