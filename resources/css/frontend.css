@@ -5999,9 +5999,15 @@ label.label_checkbox {
     position: absolute;
     top: 5px;
 }
-
-
-
+.create_code .login-btn-main button {
+    position: relative;
+    width: 150px;
+}
+.create_code .login-btn-main button i::before{
+	position: absolute;
+	top: 6px;
+	right: 20px;
+}
 
 
 
@@ -6019,6 +6025,7 @@ label.label_checkbox {
     padding: 10px 30px!important;
     border-color: #01796f !important;
     box-shadow: unset;
+    font-size: 16px;
 }
 .business_job_details a.btn.btn-sm.btn-success {
     background: #01796f;
