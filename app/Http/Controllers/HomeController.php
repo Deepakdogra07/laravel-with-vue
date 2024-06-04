@@ -28,12 +28,16 @@ class HomeController extends Controller
         return Inertia::render('Welcome',compact('sliders',"logo","categories","footer_data"));
     }
     public function business_dash(){
+        // $footer_data = FooterData::first();
+        // $user = Auth::user();
+        // $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
+        // // $total_customers = Jobs::join('customers_personal_details','customers_personal_details.job_id','jobs.id')->count();
+        // $customers = Customer::whereIn('job_id',$jobs_created)->with('status','jobs')->get();
+        $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
         $footer_data = FooterData::first();
-        $user = Auth::user();
-        $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
-        // $total_customers = Jobs::join('customers_personal_details','customers_personal_details.job_id','jobs.id')->count();
-        $customers = Customer::whereIn('job_id',$jobs_created)->with('status','jobs')->get();
-        return Inertia::render('Business/Welcome',compact('footer_data','user','customers'));
+        return Inertia::render('Business/Index',compact('jobs','footer_data'));
+
+        // return Inertia::render('Business/Index',compact('footer_data','user','customers'));
     }
 
     public function customer_dash(){
