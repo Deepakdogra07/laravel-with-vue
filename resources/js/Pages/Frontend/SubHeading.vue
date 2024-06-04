@@ -39,7 +39,7 @@ const props=defineProps({
         </div>
     </div>
     <div class="container-fluid">
-        <div class="form-navigation login_nav" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
+        <div class="form-navigation login_nav" v-if="route().current('login') || route().current('password.request') || route().current('register') ">
             <div class="container login_inner_cn">
                 <ul class="row nav-underline pl-0 mb-0 second_navbar">
                     <div class="col-md-1 col-3 column_nav_one">
