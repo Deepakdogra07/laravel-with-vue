@@ -166,6 +166,11 @@ class TestimonialsController extends Controller
 
     public function show_detailed_testimonial($id){
         $testimonial = Testimonial::where('status', 1)->where('id',$id)->first();
-        return Inertia::render('Testimonial/showtestimonial', compact('testimonial'));
+        $previous =$next=null;
+        if($id > 1){
+            $previous = Testimonial::where('status', 1)->where('id','<',$id )->orderBy('id','desc')->pluck('id')->first();
+        }
+        $next = Testimonial::where('status', 1)->where('id','>',$id)->orderBy('id','asc')->pluck('id')->first();
+        return Inertia::render('Testimonial/showtestimonial', compact('testimonial','previous','next'));
     }
 }

@@ -3,12 +3,21 @@ import Header from "../Frontend/Header.vue"
 import Footer from "../Frontend/Footer.vue";
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import "../../../css/frontend.css";
+import { Link } from '@inertiajs/vue3';
 
 
 const props = defineProps({
-    testimonial: Array
+    testimonial:{
+        type: Array
+    },
+    previous:{
+        type:Number
+    },
+    next:{
+        type:Number
+    }
 });
-console.log(props.testimonials);
+console.log(props);
 
 
 </script>
@@ -49,6 +58,12 @@ console.log(props.testimonials);
                             <!-- <span class="bi bi-play-circle"></span> -->
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="previous_next"> 
+                    <Link class="btn btn-secondary" :href="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
+                    <Link class="btn btn-success" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
                 </div>
             </div>
         </div>
