@@ -5,7 +5,7 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import '@@/frontend.css';
+import '@@/admin.css';
 import '@@/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
