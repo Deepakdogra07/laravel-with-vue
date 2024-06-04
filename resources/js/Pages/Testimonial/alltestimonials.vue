@@ -23,7 +23,7 @@ console.log(props.testimonials);
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="about-us-bg-wrapper testimonials_wrapper">
-            <div class="container">
+            <div class="container all-testimonial_width">
                 <h1 class="mb-2 text-blue text-center">What Clients Says About us</h1>
                 <p class=" text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                     Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took

@@ -58,10 +58,10 @@ const submit = () => {
     <Head title="Log in" />
     <Header class="login-wrapper" :logo_image="props?.footer_data?.logo_image"/>
     <SubHeading />
-    <div class="login-bg-wrapper">
-        <div class="container h-100">
+    <div class="login-bg-wrapper login_inner">
+        <div class="container h-100 login_inner_cn">
             <div class="row align-items-center justify-center h-100">
-                <div class="col-lg-7 col-md-9 ">
+                <div class="col-lg-7 col-md-12 col-sm-12 p-0">
                     <h1 class="mb-4 text-blue">Login</h1>
                     <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                         <h3>Please Enter Your email and password for login</h3>

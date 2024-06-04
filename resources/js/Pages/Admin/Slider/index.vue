@@ -5,6 +5,7 @@ import { onMounted, reactive } from 'vue';
 import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import '@@/admin.css';
 
 
 const props = defineProps({

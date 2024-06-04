@@ -1334,15 +1334,6 @@ input[type="file"] {
 	cursor: pointer;
 }
 
-.paginate_button.current {
-	font-size: 15px !important;
-	font-weight: 500 !important;
-	border-radius: 8px !important;
-	border: none !important;
-	background-color: #01796F !important;
-	color: #ffffff !important;
-}
-
 .paginate_button {
 	color: #ffffff !important;
 }
@@ -1519,6 +1510,10 @@ input[type="file"] {
 
 @media (max-width:1199px) {
 
+	.abt_cards_one {
+		height: 540px;
+	}
+
 	.job-listing-cards a.forms-btn,
 	.job-listing-cards .login-btn-main a {
 		font-size: 11px !important;
@@ -1581,6 +1576,10 @@ input[type="file"] {
 @media (max-width: 1023px) {
 	.contactUs-section .col-md-8 {
 		padding-left: 20px !important;
+	}
+
+	.abt_cards_one{
+		height: auto !important;
 	}
 
 	.unstoppable-spaces-top.countries-section .content-right.relative img,
@@ -1748,7 +1747,7 @@ input[type="file"] {
 	}
 
 	.popover-section .popup-cross {
-		top: 1px;
+		top: 7px;
 		right: 1px;
 	}
 
@@ -1776,10 +1775,6 @@ input[type="file"] {
 		width: 100%;
 	}
 
-	.padding_remove table#DataTables_Table_0 tbody,
-	.padding_remove table#DataTables_Table_0 th {
-		width: 100% !important;
-	}
 
 	.sliders_page table#DataTables_Table_0,
 	.sliders_page table#DataTables_Table_0 tbody,
@@ -2110,19 +2105,6 @@ input[type="file"] {
 }
 
 @media (max-width:768px) {
-	.padding_remove div#DataTables_Table_0_filter label {
-		font-size: 12px;
-	}
-
-	.padding_remove div#DataTables_Table_0_length {
-		font-size: 16px;
-	}
-
-	.padding_remove div#DataTables_Table_0_length {
-		font-size: 12px;
-		padding-top: 13px !important;
-	}
-
 	.country-names.country_hd h3 {
 		font-size: 30px !important;
 		line-height: 41px;
@@ -2171,7 +2153,25 @@ input[type="file"] {
 	.col_padding {
 		padding: 0px 5px;
 	}
+	.recommended_checkbox {
+		margin-bottom: 10px !important;
+	}
+	.edit_job .edit_space {
+		margin-top: 10px !important;
+	}
+	.testimonials_width, .about-width, .all-testimonial_width {
+		max-width: 720px;
+		padding: 0px 5px !important;
+	}
 
+	.main-footer .footer-grid h2 {
+		font-size: 15px !important;
+	}
+
+	.login_inner_cn {
+		max-width: 720px;
+	}
+	
 	.business_dashboard_inner div#DataTables_Table_0_length, .business_dashboard_inner div#DataTables_Table_0_filter {
 		margin: 10px 0px 0px 0px !important;
 	}
@@ -2185,7 +2185,6 @@ input[type="file"] {
 		width: 70%;
 		float: right;
 	}
-
 
 	.business_dashboard_inner div#DataTables_Table_0_length label {
 		float: left;
@@ -2281,10 +2280,6 @@ input[type="file"] {
 	.employesss_tabs ul li {
 		border-right: 1px solid #999;
 		padding-right: 12px;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter {
-		padding-bottom: 10px;
 	}
 
 	.padding_table .datatable {
@@ -2435,7 +2430,7 @@ input[type="file"] {
 	}
 
 	.contactUs-section {
-		padding-top: 15px !important;
+		padding-top: 30px !important;
 		padding-bottom: 15px !important;
 	}
 
@@ -2468,10 +2463,6 @@ input[type="file"] {
 
 	.footer-section h2::before {
 		top: 24px;
-	}
-
-	.padding_remove div#DataTables_Table_0_paginate {
-		float: right;
 	}
 
 	.home_padding.dashboard-home {
@@ -2754,6 +2745,15 @@ input[type="file"] {
 	.button_marginss {
 		padding-left: 5px;
 	}
+
+	.contact_cn, .subheading_cn {
+		max-width: 720px !important;
+	}
+
+	.contact_cn {
+		padding: 0px 10px !important;
+	}
+
 }
 
 @media (max-width:767px) {
@@ -2857,39 +2857,17 @@ input[type="file"] {
 	.unstoppable-spaces-top.countries-section .content-right.relative {
 		margin: 0px;
 	}
+	.contactUs-section {
+		padding-top: 15px !important;
+	}
+	.testimonials_width, .about-width, .all-testimonial_width {
+		padding: 0px 15px !important;
+	}
 }
 
 
+
 @media (max-width:640px) {
-	.padding_remove div#DataTables_Table_0_filter {
-		padding-top: 0px !important;
-	}
-
-	.padding_remove div#DataTables_Table_0_length {
-		float: left;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter {
-		float: right;
-	}
-
-	.padding_remove .dataTables_length label {
-		font-weight: 700;
-		font-size: 12px;
-	}
-
-	.padding_table div#DataTables_Table_1_length {
-		float: left;
-	}
-
-	.padding_table div#DataTables_Table_1_filter {
-		float: right;
-		margin-bottom: 13px;
-		margin-top: 0px;
-		width: 50%;
-		text-align: left;
-	}
-
 	.employesss_tabs {
 		padding-top: 12px;
 	}
@@ -2937,6 +2915,14 @@ input[type="file"] {
 @media (max-width: 576px) {
 	ul.dropdown-menu.toggler_menu{
 		top: 55px;
+	}
+
+	.testimonials_width, .about-width, .all-testimonial_width {
+		padding: 0px 15px !important;
+	}
+
+	.contactUs-section {
+		padding-top:10px !important
 	}
 
 	div#DataTables_Table_0_info {
@@ -3189,25 +3175,8 @@ input[type="file"] {
 		padding-left: 0px;
 	}
 
-	.padding_remove div#DataTables_Table_0_length {
-		float: left;
-		font-size: 16px;
-		padding-top: 2px;
-	}
-
 	.dataTables_length label select {
 		width: 60px;
-	}
-
-	.dataTables_wrapper .dataTables_info,
-	.dataTables_wrapper .dataTables_paginate {
-		float: right;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label {
-		float: right;
-		margin-left: 10px;
-		text-align: left;
 	}
 
 	.add_sliedrs .p-6 {
@@ -3310,10 +3279,6 @@ input[type="file"] {
 
 	.remote_woorkk label.pl-2 {
 		font-size: 15px;
-	}
-
-	.padding_remove {
-		padding: 0px !important;
 	}
 
 	.border_index div#DataTables_Table_0_length {
@@ -3660,8 +3625,12 @@ input[type="file"] {
 		padding: 0px 5px !important;
 	}
 
-	.contactUs-section .container {
+	/* .contactUs-section .container {
 		padding: 0px 12px;
+	} */
+
+	.contact_cn {
+		padding: 0px 12px !important;
 	}
 
 	.contactus-sidebar {
@@ -3792,10 +3761,10 @@ input[type="file"] {
 	.filter-status ul {
 		gap: 20px;
 	}
-
+/* 
 	.add-job-form-section {
 		padding: 20px 15px;
-	}
+	} */
 
 	.job_posting_page ul.job_recommenrded_skills li {
 		padding: 7px 7px 7px 7px;
@@ -3880,45 +3849,16 @@ input[type="file"] {
 	.footer_padding {
 		padding: 0px 10px !important;
 	}
-}
 
-@media (max-width:522px){
-	.business_dashboard_inner div#DataTables_Table_0_length {
-		width: 100%;
+	.previous_next {
+		padding: 0px;
 	}
-	.business_dashboard_inner div#DataTables_Table_0_filter, .business_dashboard_inner div#DataTables_Table_0_filter label {
-		width: 100%;
-	}
-	.business_dashboard_inner div#DataTables_Table_0_filter label input {
-		width: 100%;
-		margin-left: 0px;
-		margin-top: 7px;
-	}
-	.business_dashboard_inner div#DataTables_Table_0_filter label {
-		justify-content: start;
-	}
+
+
+
 
 }
 
-
-
-@media (max-width:503px) {
-	.padding_remove div#DataTables_Table_0_filter label {
-		float: right;
-		font-size: 12px;
-	}
-
-	.padding_remove div#DataTables_Table_0_length {
-		float: left;
-		font-size: 16px;
-		padding-top: 13px !important;
-		padding-bottom: 0px !important;
-	}
-
-	.padding_table div#DataTables_Table_1_filter label {
-		font-size: 12px;
-	}
-}
 
 @media screen and (min-device-width: 427px) and (max-device-width: 500px) {
 	.srch_navbar {
@@ -3944,34 +3884,8 @@ input[type="file"] {
 }
 
 @media (max-width:471px) {
-	.padding_remove div#DataTables_Table_0_length {
-		width: 50%;
-		text-align: left;
-	}
-
 	.business_dashboard_inner .dataTables_length label select {
 		width: 55px !important;
-	}
-
-	.padding_remove .dataTables_length label {
-		font-size: 11px;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter {
-		width: 50%;
-	}
-
-	.dataTables_length label select {
-		width: 43px !important;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label input {
-		margin-left: 0px !important;
-		padding-left: 0px;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
-		height: 25px;
 	}
 
 }
@@ -4003,27 +3917,6 @@ input[type="file"] {
 }
 
 @media (max-width:442px) {
-	.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
-		width: 100%;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
-		width: 100%;
-		margin-left: 0px;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter {
-		padding-right: 10px !important;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label {
-		float: unset;
-	}
-
-	.padding_table div#DataTables_Table_1_filter label {
-		font-size: 11px;
-	}
-
 	.footer-grid{
 		display: block;
 	}
@@ -4035,22 +3928,6 @@ input[type="file"] {
 }
 
 @media (max-width:412px) {
-	.padding_remove div#DataTables_Table_0_filter label input[type="search"] {
-		width: 100%;
-		margin-left: 0px;
-		text-align: left;
-	}
-
-	.padding_remove div#DataTables_Table_0_filter label {
-		text-align: left;
-		font-size: 10px;
-	}
-
-	.padding_table div#DataTables_Table_0_filter label {
-		text-align: left;
-		font-size: 10px;
-	}
-
 	.aboutus-card-outer {
 		padding-left: 0px;
 	}
@@ -4286,34 +4163,10 @@ div#app .row {
 	margin: 0px;
 }
 
-.max-w-7xl .table-responsive div#DataTables_Table_0_info,
-.padding_remove div#DataTables_Table_0_info {
-	text-align: center;
-	display: block;
-	margin: 0 auto;
-	padding-bottom: 10px;
-	float: unset;
-	background: #e9e9e9;
-	color: #000;
-	font-size: 14px;
-	font-weight: 600;
-}
-
 .category_tables div#DataTables_Table_0_paginate {
 	/* background: #dddddd; */
 	float: unset;
 	padding: 10px 10px;
-}
-
-.category_tables div#DataTables_Table_0_paginate a.paginate_button.current {
-	margin: 0px 0px;
-}
-
-.category_tables div#DataTables_Table_0_paginate a.paginate_button.current {
-	margin: 0px 0px;
-	border-radius: 0px !important;
-	background: #5c5c5c !important;
-	color: #fff !important;
 }
 
 .max-w-7xl .table-responsive th {
@@ -4329,60 +4182,32 @@ table.dataTable.no-footer button.btn.btn-primary.btn-sm {
 	margin-left: 14px;
 }
 
-table.dataTable.no-footer td img {
-	width: 100px !important;
-	height: 60px !important;
-	max-width: 100px !important;
-}
-
 .padding_remove {
 	padding: 0px !important;
 }
 
-.padding_remove div#DataTables_Table_0_length {
-	padding-left: 9px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.padding_remove div#DataTables_Table_0_filter {
+/* .padding_remove div#DataTables_Table_0_filter {
 	padding-right: 9px;
 	padding-top: 10px;
-}
+} */
 
-.padding_remove .dataTables_paginate .paginate_button {
+/* .padding_remove .dataTables_paginate .paginate_button {
 	color: #fff !important;
 	margin-left: 0px;
-}
+} */
 
-.category_tables .paginate_button.next::before {
+/* .category_tables .paginate_button.next::before {
 	content: "\003E" !important;
 	background: #6c6b6b;
 	color: #fff;
 	border-radius: 0px 3px 3px 0px;
-}
-
-.padding_remove div#DataTables_Table_0_paginate a#DataTables_Table_0_previous::before,
-.padding_remove div#DataTables_Table_1_paginate a#DataTables_Table_1_next::before,
-.employesss_tabs a#DataTables_Table_3_next::before {
-	content: "\003E" !important;
-	background: #6c6b6b;
-	color: #fff;
-	border-radius: 0px 3px 3px 0px;
-}
+} */
 
 .employesss_tabs div#DataTables_Table_3_paginate {
 	margin-top: 10px;
 }
 
-.bg_tablee .paginate_button.next::before {
-	content: "\003E" !important;
-	background: #6c6b6b;
-	color: #fff;
-	border-radius: 0px;
-}
-
-.bg_tablee .paginate_button.previous::before,
+/* .bg_tablee .paginate_button.previous::before,
 .padding_remove div#DataTables_Table_1_paginate a#DataTables_Table_1_previous::before,
 .employesss_tabs a#DataTables_Table_3_previous::before {
 	content: "\003C" !important;
@@ -4396,7 +4221,7 @@ table.dataTable.no-footer td img {
 	background: #6c6b6b;
 	color: #fff;
 	border-radius: 3px 0px 0px 3px;
-}
+} */
 
 .add_category_page input {
 	background: transparent;
@@ -4433,24 +4258,6 @@ button.btn.btn-primary {
 	width: 100% !important;
 	overflow-x: scroll !important;
 	white-space: nowrap !important;
-}
-
-.padding_remove div#DataTables_Table_0_paginate a#DataTables_Table_0_previous::before {
-	content: "\003c" !important;
-	background: #6c6b6b;
-	color: #fff;
-	border-radius: 0;
-}
-
-.padding_remove div#DataTables_Table_0_paginate a#DataTables_Table_0_next::before {
-	content: "\003e" !important;
-	background: #6c6b6b;
-	color: #fff;
-	border-radius: 0;
-}
-
-.padding_remove div#DataTables_Table_0_paginate {
-	margin: 6px 7px 12px;
 }
 
 .other_data_fields .image_uploading {
@@ -4589,22 +4396,11 @@ table#DataTables_Table_1 {
 	border: 1px solid #d7d5d5;
 }
 
-.datatable div#DataTables_Table_1_length {
-	margin-bottom: 17px;
-}
 
 .padding_remove div#DataTables_Table_0_paginate span {
 	color: #fff;
 }
 
-.padding_remove div#DataTables_Table_0_paginate a.paginate_button.current {
-	border-radius: 0px !important;
-}
-
-.padding_remove table#DataTables_Table_0 thead {
-	background: #e2e2e3;
-	border: 0px !important;
-}
 
 .border_index .bg-white {
 	border: 0px !important;
@@ -5178,12 +4974,6 @@ li.last_border {
 
 .about_us_section {
 	padding: 70px 0px;
-}
-
-.sliders_page table#DataTables_Table_0 td {
-	width: auto !important;
-	word-wrap: break-word;
-	white-space: break-spaces;
 }
 
 .sliders_page table.dataTable.no-footer button.btn.btn-primary.btn-sm {
@@ -5878,10 +5668,6 @@ form.row.edit_customer label,
 	color: #01796f;
 }
 
-.add_customers a.paginate_button {
-	margin-right: 5px;
-}
-
 .add_customers .padding_remove .dataTables_paginate .paginate_button {
 	color: #fff !important;
 	line-height: 22px;
@@ -6069,8 +5855,8 @@ label.label_checkbox {
     background: #01796F;
 	border-radius: 5px;
 }
-.login-btn-main{
-	padding: 0 8px !important;
+.login-btn-main {
+    padding: 0 8px 0px 0px!important;
 }
 .textarea_font .ql-editor p, .new-job-description .ql-editor p {
     font-family: 'Open Sans';
@@ -6104,5 +5890,39 @@ label.label_checkbox {
 .footer_padding a {
     text-decoration: underline !important;
     color: #fff;
+}
 
+.footer_padding a:hover {
+    color: #18c3b4;
+}
+
+.contactus-sidebar a:hover {
+    color: #dde1e1 !important;
+}
+.previous_btn, .next_btn:hover {
+    background: #09332b;
+}
+.previous_btn i {
+    padding-right: 10px;
+	font-size: 13px;
+}
+.next_btn, .previous_btn:hover {
+    background: #01796f;
+}
+.next_btn i {
+    padding-left: 10px;
+	font-size: 13px;
+}
+.cross_testimonials i {
+    background: #09332b;
+    padding: 7px 2px 0px 3px;
+}
+.cross_testimonials i::before {
+    color: #fff !important;
+}
+.cross_testimonials{
+	display: none;
+}
+.abt_cards_one {
+    height: 450px;
 }

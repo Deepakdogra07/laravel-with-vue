@@ -68,7 +68,7 @@ const deletejob = async (id) => {
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
         <div class="job-list-search srch_responsive">
-            <div class="container">
+            <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
@@ -86,7 +86,7 @@ const deletejob = async (id) => {
             </div>
         </div>
         <div class="login-bg-wrapper business_job_details">
-            <div class="container">
+            <div class="container about-width">
                 <div class="filter-status row">
                     <div class="col-md-11 width_mobile">
                         <div class="d-flex justify-between align-items-center">
