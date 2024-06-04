@@ -31,21 +31,28 @@ const skills = ref(''),
 language = ref(''),
 industry = ref('');
 onMounted( () => {
+    const skillNames = [];
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
-        skills.value += element.name +',';
+        skillNames.push(element.name);
     }
   });
+  skills.value = skillNames.join(',');
+  const languagesArray = [];
   props.languages.forEach(element => {
     if(props.job.language_id.includes(element.id)){
-        language.value += element.name +',';
+        languagesArray.push(element.name);
     }
   });
+
+  language.value = languagesArray.join(',');
+  const indusArray = [];
   props.industries.forEach(element => {
     if(props.job.industry_id.includes(element.id)){
-        industry.value += element.name +',';
+        indusArray.push(element.name)
     }
-  });
+});
+industry.value += indusArray.join(',');
 });
 const job_start_date = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
 console.log(job_start_date)

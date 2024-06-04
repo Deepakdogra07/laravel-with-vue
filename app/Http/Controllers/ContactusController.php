@@ -52,7 +52,7 @@ class ContactusController extends Controller
             'user_mobile.required' => 'Mobile Number is required',
             'user_mobile.min' => 'Mobile Number should be not less than 8 digits. ',
             'user_mobile.max' => 'Mobile Number should be not more than 15 digits. ',
-            'user_mobile.regex' => 'Mobile Number should be in number format. ',
+            'user_mobile.regex' => 'Mobile Number must be a number.',
 
             'user_message.required' => 'Message is required',
         ];

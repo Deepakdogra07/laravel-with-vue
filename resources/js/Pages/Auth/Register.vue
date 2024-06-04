@@ -194,7 +194,7 @@ const togglePasswordVisibility = () => {
                             <div class="relative">
                             <TextInput id="password" :type="passwordFieldType" placeholder="Enter your password" class="form-control mt-2"
                                 v-model="form.password" autocomplete="username" />
-                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%] " @click="togglePasswordVisibility">
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" style="cursor:pointer;" @click="togglePasswordVisibility">
                                     <i :class="eyeIconClass"></i>
                                 </span>
                             </div>
@@ -246,14 +246,13 @@ const togglePasswordVisibility = () => {
                         v-model="form.checkbox">
                     <label class="form-check-label text-label pl-2 " for="flexCheckDefault">
                         I accept the
-                        <a class="text-lightgreen" href="/term-condition" target="_blank">Term & Conditions</a>
+                        <a class="text-lightgreen" href="/term-condition" target="_blank">Terms & Conditions</a>
                         <!-- <span style="color:red"> *</span> -->
                     </label>
                     <InputError class="mt-2" :message="form.errors.checkbox" />
                 </div>
 
                 <div class="flex items-center mt-4 login-btn-main">
-
                     <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing">
                         Continue <span> <i class="bi bi-arrow-right"></i></span>
