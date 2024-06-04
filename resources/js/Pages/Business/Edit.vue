@@ -257,7 +257,7 @@ console.log(select_class,'selected_class')
                                     </multiselect>
                                     <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
-                                <div class="mt-4 edit_space">
+                                <div class="mt-4 edit_space job_recommenrded__iin">
                                             <label class="label text-label recommended_text">Recommended Skills</label>
                                             <ul class="job_recommenrded_skills pl-0">
                                                 <div class="recommended_checkbox" :class = "active_checkbox.documentation">

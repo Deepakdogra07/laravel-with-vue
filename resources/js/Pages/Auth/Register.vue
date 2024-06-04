@@ -191,14 +191,17 @@ const togglePasswordVisibility = () => {
                         <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
-                            <TextInput id="password" type="password" placeholder="Enter your password" class="form-control mt-2"
-                                v-model="form.password" autocomplete="username"  />
-                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" @click="togglePasswordVisibility">
+                            <div class="relative">
+                            <TextInput id="password" :type="passwordFieldType" placeholder="Enter your password" class="form-control mt-2"
+                                v-model="form.password" autocomplete="username" />
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%] " @click="togglePasswordVisibility">
                                     <i :class="eyeIconClass"></i>
                                 </span>
+                            </div>
+
                             <InputError class="mt-1" :message="form.errors.password" />
+                            </div>
                         </div>
-                    </div>
                 </div>
 
 

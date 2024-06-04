@@ -67,7 +67,7 @@ const deletejob = async (id) => {
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <div class="job-list-search srch_responsive">
+        <!-- <div class="job-list-search srch_responsive">
             <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
@@ -84,13 +84,13 @@ const deletejob = async (id) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="login-bg-wrapper business_job_details">
             <div class="container about-width">
                 <div class="filter-status row">
                     <div class="col-md-11 width_mobile">
                         <div class="d-flex justify-between align-items-center">
-                            <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
+                            <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
                                         Active</span>
@@ -115,7 +115,7 @@ const deletejob = async (id) => {
                                         Rejected</span>
                                 </li>
                                 
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <div class="col-md-1 login-section-desk text-end width_mobileS">
@@ -148,11 +148,11 @@ const deletejob = async (id) => {
                     <DataTable class="display job-data-table business_table" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr class="th-row">
-                                    <th>ID</th>
+                                    <th>S.No</th>
                                     <th>Job Title</th>
                                     <th>Positions</th>
                                     <th>Seniority</th>
-                                    <th>Actions</th>
+                                    <th class="sorting_icon">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

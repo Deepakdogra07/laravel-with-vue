@@ -1315,7 +1315,7 @@ input[type="file"] {
 	font-family: 'bootstrap-icons';
 	color: #000;
 	padding: 10px;
-	border-radius: 8px;
+	border-radius: 0px;
 	background-color: #fff;
 	font-size: 15px;
 	font-weight: 700;
@@ -1327,11 +1327,15 @@ input[type="file"] {
 	font-family: 'bootstrap-icons';
 	color: #000;
 	padding: 10px;
-	border-radius: 8px;
+	border-radius: 0px;
 	background-color: #fff;
 	font-size: 15px;
 	font-weight: 700;
 	cursor: pointer;
+}
+
+.business_tablesss_inner .dataTables_paginate {
+    gap: 0px;
 }
 
 .paginate_button {
@@ -1497,7 +1501,7 @@ input[type="file"] {
 	}
 
 	.recommended_checkbox {
-		margin-bottom: 12px;
+		
 	}
 	.spacing_tab {
 		margin: 12px 0px;
@@ -1607,6 +1611,10 @@ input[type="file"] {
 		font-size: 10px;
 		padding-left: 5px;
 		margin-top: 3px;
+	}
+
+	.business_table {
+		display: inline-table;
 	}
 
 	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle {
@@ -1798,9 +1806,9 @@ input[type="file"] {
 		margin-top: 0px;
 	}
 
-	.create_space .label {
+	/* .create_space .label {
 		font-size: 13px;
-	}
+	} */
 
 	/* .unstoppable-spaces-top.unstoppable_second img {
 		width: 130px !important;
@@ -1848,11 +1856,10 @@ input[type="file"] {
 		width: 90% !important;
 	}
 
-	.business_table tr {
-
-		width: 100% !important;
+	/* .business_table tr {
+	width: 100% !important;
 		display: block;
-	}
+	} */
 	.country-content img {
 		height: 300px;
 	}
@@ -1967,12 +1974,8 @@ input[type="file"] {
 		margin-top: 10px !important;
 	}
 
-	.business_table,
-	
-	.business_table tr {
-
+	.business_table {
 		width: 100%;
-		display: block;
 	}
 
 	.business_table {
@@ -2042,10 +2045,9 @@ input[type="file"] {
 	.remote_woorkk label.pl-2 {
 		font-size: 13px;
 	}
-
-	.remote_work {
-		padding-left: 20px !important;
-	}
+	/* .remote.Work_label label{
+		font-size: 14px;
+	} */
 
 	.mt-4.start_input {
 		margin-top: 10px !important;
@@ -2153,9 +2155,7 @@ input[type="file"] {
 	.col_padding {
 		padding: 0px 5px;
 	}
-	.recommended_checkbox {
-		margin-bottom: 10px !important;
-	}
+
 	.edit_job .edit_space {
 		margin-top: 10px !important;
 	}
@@ -2166,6 +2166,10 @@ input[type="file"] {
 
 	.main-footer .footer-grid h2 {
 		font-size: 15px !important;
+	}
+	.minimum_input .eye-icon-div:nth-child(1) {
+		padding-right: 0px !important;
+		margin-bottom: 6px;
 	}
 
 	.login_inner_cn {
@@ -2915,6 +2919,10 @@ input[type="file"] {
 @media (max-width: 576px) {
 	ul.dropdown-menu.toggler_menu{
 		top: 55px;
+	}
+
+	.business_job_details {
+		padding-top: 6px;
 	}
 
 	.testimonials_width, .about-width, .all-testimonial_width {
@@ -5752,10 +5760,11 @@ ul.job_recommenrded_skills {
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-	margin-bottom: 0px;
+    margin-bottom: 0px;
+    gap: 10px;
 }
 .recommended_checkbox {
-    width: 120px;
+    width: 130px !important;
     height: 42px;
     margin-right: 8px;
     position: relative;
@@ -5768,7 +5777,7 @@ label.label_checkbox {
     position: absolute;
     top: 0px;
     padding: 1px 8px;
-    width: 120px;
+    width: 130px !important;
     text-align: center;
     overflow: hidden;
     font-size: 13px !important;
@@ -5802,7 +5811,6 @@ label.label_checkbox {
 }
 .recommended_checkbox {
     background-image: none !important;
-    margin-bottom: 0px;
 }
 /* .recommended_checkbox [data-gtm-form-interact-field-id="0"], .recommended_checkbox [data-gtm-form-interact-field-id="1"], .recommended_checkbox [data-gtm-form-interact-field-id="2"], .recommended_checkbox [data-gtm-form-interact-field-id="3"], .recommended_checkbox [data-gtm-form-interact-field-id="4"] {
     background: #26dacb !important;
@@ -5925,4 +5933,17 @@ label.label_checkbox {
 }
 .abt_cards_one {
     height: 450px;
+}
+.sorting_icon::before, .sorting_icon::after{
+	display: none;
+}
+.swal2-actions .swal2-styled {
+    background: #000;
+    padding: 8px 40px;
+}
+.login_inner i.bi.bi-eye-slash {
+    cursor: pointer;
+}
+.certificate_ftr {
+    padding: 0px 10px 0px 0px;
 }
