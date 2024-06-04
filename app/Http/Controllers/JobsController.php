@@ -95,24 +95,28 @@ class JobsController extends Controller
          'recommended_skills.required' => 'Please select atleast one recommended skill.'
 
      ];
-      if (isset($request->min_pay_range)) {
-         $rules["min_pay_range"] = 'required|gt:0';
-         $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
-         $rules["currency_id"] = 'required';
-         $message['min_pay_range.required'] = 'Minimum salary  is required.';
-         $message['min_pay_range.gt'] = 'Minimum salary must be greater than 0.';
-         $message['currency_id.required'] = 'Currency  is required.';
-         $message['max_pay_range.gt'] = 'Minimum salary  must be greater than 0.';
-         $message['max_pay_range.required'] = 'Maximum salary  is required.';
-      }
+     if (isset($request->min_pay_range)  || isset($request->max_pay_range) || isset($request->currency_id)) {
+      $rules = [
+          'min_pay_range' => 'required|numeric|gt:0',
+          'max_pay_range' => 'required|numeric|gt:' . $request->min_pay_range,
+          'currency_id' => 'required',
+      ];
+      $messages = [
+          'min_pay_range.required' => 'Minimum salary is required.',
+          'min_pay_range.numeric' => 'Minimum salary must be number.',
+          'max_pay_range.numeric' => 'Maximum salary must be number.',
+          'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
+          'max_pay_range.required' => 'Maximum salary is required.',
+          'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
+          'currency_id.required' => 'Currency is required.',
+      ];
+   }
       $validate = Validator::make($request->all(), $rules, $messages);
       if ($validate->fails()) {
          return back()->withErrors($validate->errors())->withInput();
       }
 
-      if ($validate->fails()) {
-         return back()->withErrors($validate->errors())->withInput();
-      }
+    
       try {
          $skills = [];
          $languages = [];
@@ -212,16 +216,22 @@ class JobsController extends Controller
          'job_start_date.required' => 'Job start date  is required.',
          'recommended_skills.required' => 'Please select atleast one recommended skill.'
      ];
-      if (isset($request->min_pay_range)) {
-         $rules["min_pay_range"] = 'required|gt:0';
-         $rules["max_pay_range"] = "required|gt:$request->min_pay_range";
-         $rules["currency_id"] = 'required';
-         $message['min_pay_range.required'] = 'Minimum salary  is required.';
-         $message['min_pay_range.gt'] = 'Minimum salary must be greater than 0.';
-         $message['currency_id.required'] = 'Currency  is required.';
-         $message['max_pay_range.gt'] = 'Minimum salary  must be greater than 0.';
-         $message['max_pay_range.required'] = 'Maximum salary  is required.';
-      }
+     if (isset($request->min_pay_range)  || isset($request->max_pay_range) || isset($request->currency_id)) {
+      $rules = [
+          'min_pay_range' => 'required|numeric|gt:0',
+          'max_pay_range' => 'required|numeric|gt:' . $request->min_pay_range,
+          'currency_id' => 'required',
+      ];
+      $messages = [
+          'min_pay_range.required' => 'Minimum salary is required.',
+          'min_pay_range.numeric' => 'Minimum salary must be number.',
+          'max_pay_range.numeric' => 'Maximum salary must be number.',
+          'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
+          'max_pay_range.required' => 'Maximum salary is required.',
+          'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
+          'currency_id.required' => 'Currency is required.',
+      ];
+   }
       $validate = Validator::make($request->all(), $rules, $messages);
       if ($validate->fails()) {
          return back()->withErrors($validate->errors())->withInput();

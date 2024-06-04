@@ -59,10 +59,29 @@ function formatDateTime(date){
 
 <template>
     <Header />
-    <SubHeading :job_id ="job_id"/>
+    <!-- <SubHeading :job_id ="job_id"/> -->
        <div class="py-12">
             <div class="container">
-                <div class="filter-status">
+                
+                <div class="container about-width">
+                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
+                    <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
+                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
+                    </div>
+                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                        <!-- <Link >Jobs</Link>
+                        <Link>Employee</Link> -->
+                        <Link :href="route('business-jobs.index')" >Jobs</Link>
+                <Link :href="route('business-dash')" class='active-nav'>Employees</Link>
+                    </div> 
+                    
+                    <!-- <div class="relative search_bar">
+                        <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
+                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
+                    </div> -->
+                </div>
+            </div>
+                <!-- <div class="filter-status">
                     <div class="d-flex justify-between">
                         <ul class="d-flex align-items-center flex-wrap pl-0">
                             <li>
@@ -91,7 +110,7 @@ function formatDateTime(date){
                             
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="main-job-filter mt-5">
                     <ul class="d-flex align-items-center flex-wrap pl-0">
                         <li>
