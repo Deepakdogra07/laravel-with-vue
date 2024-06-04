@@ -140,7 +140,7 @@ onMounted(() => {
   </div>
 
   <div class="unstoppable-spaces-top-special unstoppable-spaces-bottom video-section">
-    <div class="container">
+    <div class="container video-section_cn">
       <div class="video-background">
         <h2 class="mb-3 dark-theme-color">{{ logo.video_heading }}</h2>
         <p class="text-center">{{ logo.video_subheading }}</p>

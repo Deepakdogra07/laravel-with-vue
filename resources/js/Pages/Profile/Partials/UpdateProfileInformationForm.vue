@@ -51,7 +51,7 @@ const submit = () => {
         <!-- @submit.prevent="form.patch(route('profile.update'))"  -->
 
         <form class="mt-6 space-y-6 profile_form">
-            <div>
+            <div class="profile_input">
                 <InputLabel for="name" value="Name" />
                 <TextInput
                     id="name"
@@ -66,7 +66,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div>
+            <div class="profile_input">
                 <InputLabel for="email" value="Email" />
 
                 <TextInput
@@ -79,7 +79,7 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+            </div class="profile_input">
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">

@@ -10,8 +10,8 @@ import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { ref,onMounted } from "vue";
 import { toast } from 'vue3-toastify';
-import '@/../../resources/css/frontend.css';
-import '@/../../resources/css/multiselect.css';
+import '@@/frontend.css';
+import '@@/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
 import { QuillEditor } from '@vueup/vue-quill'
@@ -92,25 +92,45 @@ const form = useForm({
   job_start_date: props.job.job_start_date,
   city: props.job.city,
   job_country: props.job.job_country,
-  currency_id:props.job.currency_id
+  currency_id:props.job.currency_id,
+  recommended_skills: JSON.parse(props.job.recommended_skills)
 });
 onMounted( () => {
-  props.skills.forEach(element => {
-    if(props.job.skills_id.includes(element.id)){
-      form.skills_id.push(element);
+    props.skills.forEach(element => {
+        if(props.job.skills_id.includes(element.id)){
+            form.skills_id.push(element);
+        }
+    });
+    // form.recommended_skills = JSON.parse(props.job.recommended_skills);
+    props.languages.forEach(element => {
+        if(props.job.language_id.includes(element.id)){
+            form.language_id.push(element);
+        }
+    });
+    props.industries.forEach(element => {
+        if(props.job.industry_id.includes(element.id)){
+            form.industry_id.push(element);
+        }
+    });
+    if(form.recommended_skills.includes('documentation')){
+        active_checkbox.value.documentation = 'active-checkbox';
     }
-  });
-  props.languages.forEach(element => {
-    if(props.job.language_id.includes(element.id)){
-      form.language_id.push(element);
+    if(form.recommended_skills.includes('technical')){
+        active_checkbox.value.technical = 'active-checkbox';
     }
-  });
-  props.industries.forEach(element => {
-    if(props.job.industry_id.includes(element.id)){
-      form.industry_id.push(element);
+    if(form.recommended_skills.includes('electrician')){
+        active_checkbox.value.electrician = 'active-checkbox';
     }
-  });
+    if(form.recommended_skills.includes('mechanical')){
+        active_checkbox.value.mechanical = 'active-checkbox';
+    }
 })
+const active_checkbox =ref({
+        documentation:'',
+        mechanical:'',
+        electrician:'',
+        technical:''
+    });
 
 const countries = countryStateCity.Country.getAllCountries(),
 image = ref(form.job_image);
@@ -120,7 +140,6 @@ function selectFile(event){
 }
 
 const submit = () => {
-  console.log(form,'123')
     form.post(route('business-jobs.updates',form.id), {
       onSuccess: () => {
         toast("Job Updated Successfully!", {
@@ -131,22 +150,43 @@ const submit = () => {
       },
     });
 };
-
-
+// function select_skill(skill){
+//     let index = form.skills_id.findIndex(s => s.id === skill.id);
+//     if(index !== -1){
+//         form.skills_id.splice(index,1);
+//     }else{
+//         index = props.skills.findIndex(s => s.id === skill.id);
+//         if(index >0){
+//             form.skills_id.push(skill);
+//         }
+//     }   
+// }
+function checked_event(event){
+    if(event.target.checked){
+        form.recommended_skills.push(event.target.value);
+    }else{
+        form.recommended_skills.splice(event.target.value,1);
+    }
+}
+const  select_class = ref('');
+function handleChange(){
+        select_class.value = 'Selected_option';
+}
+console.log(select_class,'selected_class')
 </script>
 
 <template>
 
     <Head title="Job Application Form" />
     <Header class="login-wrapper" />
-    <SubHeading />
-    <div class="login-bg-wrapper create_space create_code">
+    <SubHeading :job_id="form.id" />
+    <div class="login-bg-wrapper create_space create_code edit_job">
         <div class="about-us-bg-wrapper">
-            <div class="container">
+            <div class="container about-width">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 ">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Job Title <span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
@@ -155,10 +195,10 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.job_title" />
 
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select   mt-2 Selected_option " aria-label="Default select example"
                                         v-model="form.position_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in positions" :key="index"
@@ -168,11 +208,11 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.position_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
-                                        v-model="form.seniority_id">
+                                    <select class="form-select  mt-2 Selected_option "  aria-label="Default select example"
+                                        v-model="form.seniority_id" >
                                         <option selected :value="null">Select Seniority</option>
                                         <option v-for="(position, index) in seniorities" :key="index"
                                             :value="position.id">{{
@@ -181,10 +221,10 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.seniority_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
+                                    <select class="form-select  mt-2  Selected_option" aria-label="Default select example"
                                         v-model="form.discipline_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in disciplines" :key="index"
@@ -194,11 +234,11 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label edit_space">
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
-                                    <select class="form-select   mt-2" aria-label="Default select example"
+                                    <select class="form-select   mt-2 Selected_option"  aria-label="Default select example"
                                         v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index"
@@ -208,26 +248,60 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.work_experience_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Skills<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div skills_input">
                                     <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true"
                                         :close-on-select="false" :clear-on-select="false" :preserve-search="true"
                                         placeholder="Select Skills" label="name" track-by="name">
                                     </multiselect>
+                                    <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
-                                <div class="mt-4">
-                                    <span class="label text-label recommended_text">Recommended Skills</span>
-                                    <ul class="job_recommenrded_skills pl-0">
-                                        <li>Documentation</li>
-                                        <li>Mechanical </li>
-                                        <li>Technical</li>
-                                        <li>Electrician </li>
-                                    </ul>
-                                </div>
-                                <InputError class="mt-2" :message="form.errors.skills_id" />
-                            </div>
-                            <div class="mt-4">
+                                <div class="mt-4 edit_space job_recommenrded__iin">
+                                            <label class="label text-label recommended_text">Recommended Skills</label>
+                                            <ul class="job_recommenrded_skills pl-0">
+                                                <div class="recommended_checkbox" :class = "active_checkbox.documentation">
+                                                    <!--  -->
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('documentation')"
+                                                        
+                                                        class="recommended_checkbox" value="documentation"
+                                                        id="documents-1" />
+                                                    <label class="label_checkbox" for="documents-1">
+                                                        Documentation</label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.mechanical">
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('mechanical')"
+                                                        class="recommended_checkbox" value="mechanical"
+
+                                                        id="documents-2" />
+                                                    <label class="label_checkbox" for="documents-2"> Mechanical </label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.technical" >
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('technical')"
+                                                        class="recommended_checkbox" value="technical"
+                                                        id="documents-3" />
+                                                    <label class="label_checkbox" for="documents-3"> Technical</label>
+                                                </div>
+                                                <div class="recommended_checkbox" :class = "active_checkbox.electrician">
+                                                    <TextInput type="checkbox" @click="checked_event($event)"
+                                                        :checked="form.recommended_skills.includes('electrician')"
+                                                        class="recommended_checkbox" value="electrician"
+                                                        id="documents-4" />
+                                                    <label class="label_checkbox" for="documents-4"> Electrician
+                                                    </label>
+                                                </div>
+                                                <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                                <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                                <!-- </li> -->
+                                            </ul>
+                                        </div>
+                                <InputError class="mt-2" :message="form.errors.recommended_skills" />
+                               
+                            </div> 
+                            <div class="mt-4 arrow_label edit_space">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -237,7 +311,7 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.language_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">City<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="city" type="text" v-model="form.city" placeholder="Enter City"
@@ -246,7 +320,7 @@ const submit = () => {
                                 <InputError class="mt-2" :message="form.errors.city" />
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
@@ -254,7 +328,7 @@ const submit = () => {
                                     <InputError class="mt-2" :message="form.errors.pin_code" />
                                 </div>
                             </div>
-                            <div class="mt-4 Remote Work_label">
+                            <div class="mt-4 edit_space Remote Work_label">
                                 <label class="flex items-center">
                                     <!-- <Checkbox class="remember-me-check" name="remember" /> -->
                                     <span class="label text-label">Remote Work</span>
@@ -278,7 +352,7 @@ const submit = () => {
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 industry_label edit_space">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
                                     <!-- <select class="form-select  " aria-label="Default select example"
@@ -308,25 +382,25 @@ const submit = () => {
 
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 minium_salary">
+                            <div class="mt-4 minium_salary edit_space">
                                 <span class="label text-label">Segment <span style="color:red"> *</span></span>
                                 <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                                     class="form-control mt-2  " />
                                 <InputError class="mt-2" :message="form.errors.segment" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="text" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postions" class="form-control mt-2  " />
+                                        placeholder="Enter Position" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
-                            <div class="mt-4">
-                                <span class="label text-label">Currency<span style="color:red"> *</span></span>
+                            <div class="mt-4 edit_space">
+                                <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 " aria-label="Default select example"
-                                        v-model="form.currency_id">
+                                    <select class="form-select  mt-2" :class="[select_class, { 'Selected_option': form.currency_id }]" aria-label="Default select example" @change="handleChange()"
+                                        v-model="form.currency_id" >
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
                                             :value="position.id"> {{ position.country }} ({{
@@ -335,8 +409,9 @@ const submit = () => {
                                     <InputError class="mt-2" :message="form.errors.currency_id" />
                                 </div>
                             </div>
-                            <div class="mt-4 minimum_input">
-                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary<span style="color:red">
+                            <div class="mt-4 minimum_input edit_space">
+                                <!-- <input type="checkbox"> -->
+                                <span class="label text-label">Minimum and Maximum Salary<span style="color:red">
                                         *</span></span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
@@ -352,7 +427,7 @@ const submit = () => {
 
                                 </div>
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Start Date<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <!-- <TextInput type="date" id="start_Date" v-model="form.job_start_date"
@@ -361,7 +436,7 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4  edit_space">
                                 <span class="label text-label">Job Posting Summary<span style="color:red">
                                         *</span></span>
                                 <div class="eye-icon-div">
@@ -370,15 +445,15 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.posting_summary" />
                             </div>
-                            <div class="mt-4 spacing_btm new-job-description">
+                            <div class="mt-4 edit_space spacing_btm new-job-description">
                                 <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
-                                <div class="eye-icon-div mt-2">
+                                <div class="eye-icon-div mt-2 textarea_font">
                                     <QuillEditor contentType="html" toolbar="essential"
                                         v-model:content="form.job_description" placeholder="Enter Details of the Job" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_description" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4  edit_space">
                                 <span class="label text-label">Conditions<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="conditions" rows="5" type="text" v-model="form.conditions"
@@ -386,7 +461,7 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.conditions" />
                             </div>
-                            <div class="mt-4   ">
+                            <div class="mt-4   edit_space">
                                 <span class="label text-label">Requirements<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <textarea id="requirements" rows="5" type="text" v-model="form.requirements"
@@ -411,7 +486,7 @@ const submit = () => {
                             <!-- <div class="col-md-6"> -->
                             
                             
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">City<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="city" type="text" v-model="form.city" placeholder="Enter City"
@@ -419,8 +494,8 @@ const submit = () => {
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.city" />
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
-                            </div>
-                            <div class="mt-4">
+                            </div> 
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
@@ -459,11 +534,11 @@ const submit = () => {
                         </div>
 
                         <div class="col-md-6 country_input ">
-                            <div class="mt-4">
+                            <div class="mt-4 edit_space">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" aria-label="Default select example"
-                                        v-model="form.job_country">
+                                    <select class="form-select  mt-2 Selected_option" aria-label="Default select example"
+                                        v-model="form.job_country" >
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{
                                             country.name }}</option>
@@ -473,7 +548,7 @@ const submit = () => {
                             </div>
                         </div>
 
-                        <div class="col-12 mt-4 file_upload">
+                        <div class="col-12 mt-4 file_upload edit_space">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="image" alt="" srcset="">
@@ -485,7 +560,7 @@ const submit = () => {
                                     </svg>
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" />
+                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>

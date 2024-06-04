@@ -2,7 +2,7 @@
 import Header from "../Frontend/Header.vue"
 import Footer from "../Frontend/Footer.vue";
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
-import "../../../css/frontend.css";
+import "@@/frontend.css";
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import CustomPagination from '@/Components/CustomPagination.vue';
 </script>
@@ -14,12 +14,12 @@ import CustomPagination from '@/Components/CustomPagination.vue';
     <SubHeading />
     <div class="login-bg-wrapper">
         <div class="about-us-bg-wrapper about_uss_wrapper">
-            <div class="container">
+            <div class="container about-width">
                 <h1 class="mb-2 text-blue text-center">We're Here For You</h1>
                 <p class=" text-center">Our team will provide you with the most experienced and committed representation. We know that the immigration process can be stressful, emotional and overwhelming. However, we will ensure that you understand what your options are and what you need to do. Whatever your situation, let us take the lead – because we’re here to help you.</p>
                 <div class="grid lg:grid-cols-2 grid-cols-1 gap-5 about-section-cards login-bg-wrapper">
                     <div class="aboutus-card-outer">
-                            <div class="about-us-cards">
+                            <div class="about-us-cards abt_cards_one">
                                 <span class="profile-posts">PRINCIPAL DIRECTOR</span>
                                 <h2 class="mb-3">Paul Dizon</h2>
                                 <p>Paul holds a Bachelor of Laws, Bachelor of Arts (Cultural Studies), Master of Business
@@ -36,7 +36,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                             </div>
                         </div>
                         <div class="aboutus-card-outer">
-                            <div class="about-us-cards">
+                            <div class="about-us-cards abt_cards_one">
                                 <span class="profile-posts">SENIOR ASSOCIATE</span>
                                 <h2 class="mb-3">Oliver Christensen</h2>
                                 <p>Oliver holds a Bachelor of Laws (Hons), a Bachelor of Arts (International Relations & Spanish), a Graduate Diploma in Legal Practice and a Graduate Certificate in Australian Migration Law and Practice. He is an Australian Registered Migration Agent (MARA No. 1683569). His strong legal aptitude has resulted in high success rates in complex cases and cancellation matters, including at the Administrative Appeals Tribunal. He also regularly volunteers at an asylum seeker centre in Melbourne where he provides migration assistance to asylum seekers and protection visa holders. Oliver speaks fluent Spanish and intermediate level Mandarin.Oliver is a third-generation Australian of Irish, English, Scottish and Scandinavian descent.</p>
@@ -45,7 +45,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                                 </div>
                             </div>
                         </div>
-                        <div class="aboutus-card-outer">
+                        <div class="aboutus-card-outer aboutcard_align">
                             <div class="about-us-cards">
                                 <span class="profile-posts">LEGAL CONSULTANT</span>
                                 <h2 class="mb-3">Julian Hayden</h2>
@@ -57,7 +57,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                                 </div>
                             </div>
                         </div>
-                        <div class="aboutus-card-outer">
+                        <div class="aboutus-card-outer aboutcard_align">
                             <div class="about-us-cards">
                                 <span class="profile-posts">CLIENT SERVICES</span>
                                 <h2 class="mb-3">Marie Macdonald</h2>

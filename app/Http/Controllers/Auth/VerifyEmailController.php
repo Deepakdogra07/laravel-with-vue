@@ -37,7 +37,10 @@ class VerifyEmailController extends Controller
         $data = User::where('id',$id)->pluck('email_verified_at')->first();
         if(!$data){
             $data =User::where('id',$id)->update(['email_verified_at'=>Carbon::now()]);
+            
         }
-        return redirect()->intended(RouteServiceProvider::HOME)->with('msg', 'Email verified successfully');
+        $msg =  'Email verified successfully';
+        // return redirect()->intended(RouteServiceProvider::HOME)->with('msg', 'Email verified successfully');
+        return to_route("login",compact('msg'));
     }
 }

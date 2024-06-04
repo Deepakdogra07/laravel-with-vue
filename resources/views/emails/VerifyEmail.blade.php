@@ -8,7 +8,7 @@
     <div style="padding: 30px 20px; background-color: #f7f7f7;">
         <p style="font-size: 16px; color: #000;">Click the button below to Verify your Email..</p>
         <div style="text-align: center; margin: 30px 0;">
-            <a  href="{{ $actionUrl }}" style="text-decoration:none; padding: 11px 20px; color: #fff; background-color: #000D37; border-radius: 10px;">Verify Email</a>
+            <a  href="{{ $actionUrl }}" style="text-decoration:none; padding: 12px 15px; color: #fff; background-color: #01796f; border-radius: 8px; font-size: 17px;">Verify Email</a>
         </div>
         <p style="font-size: 16px; color: #000;"> If you have not created an account, no further action is required
             <br>

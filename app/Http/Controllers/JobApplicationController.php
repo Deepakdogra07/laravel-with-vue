@@ -53,6 +53,7 @@ class JobApplicationController extends Controller
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',

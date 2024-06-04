@@ -5,6 +5,7 @@ import { onMounted, reactive } from 'vue';
 import Swal from 'sweetalert2';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import '@@/admin.css';
 
 
 const props = defineProps({
@@ -98,14 +99,14 @@ function getImageUrl(imageName) {
             </div>
             
         </template>
-        <div class="py-12">
+        <div class="py-12 ADD_SLIDER_MAIN">
             <div class="max-w-7xl mx-auto px-2 add__slider">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 table-responsive sliders_page ">
                        <DataTable class="display" :options="options" style="border:2px black ;width:100% ;overflow:hidden">
                             <thead>
                                 <tr>
-                                    <th >ID</th>
+                                    <th >IDdd</th>
                                     <th>Slider Heading</th>
                                     <th >Slider Description</th>
                                     <th>Slider Image</th>

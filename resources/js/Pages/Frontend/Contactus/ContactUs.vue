@@ -36,22 +36,22 @@ function submitForm(){
     <Header class="login-wrapper"/>
     <SubHeading />
     <div class="login-bg-wrapper contactUs-section">
-        <div class="container">
+        <div class="container contact_cn">
             <div class="row">
                 <div class="col-md-4">
                     <div class="contactus-sidebar">
                         <h2 class="text-white mb-4">Contact Info</h2>
                         <ul class="pl-0 listing-gap">
                             <li class="mb-3">
-                                <a><i class="bi bi-telephone-fill pr-2"></i> +1300 779 462</a>
+                                <a href="tel:+1300 779 462"><i class="bi bi-telephone-fill pr-2"></i> +1300 779 462</a>
                             </li>
                             <li class="mb-3">
-                                <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i
+                                <a href="mailto:Info@dizonassociates.com.au" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i
                                         class="fa-solid fa-envelope pr-2"></i>
                                     Info@dizonassociates.com.au</a>
                             </li>
                             <li class="mb-3">
-                                <a class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i
+                                <a href="https://www.google.com/maps/search/?api=1&query=Level%205%2012%20clarke%20St%2C%20Sunshine%20Victoria%2C%20Australia%203020%20(enter%20via%20vicroads%20building" class="d-flex align-items-baseline gap-2" style="word-break: break-all;"><i
                                         class="bi bi-geo-alt-fill"></i>
                                     Level 5 12 clarke St, Sunshine Victoria, Australia 3020 (enter via vicroads
                                     building) </a>
@@ -75,7 +75,7 @@ function submitForm(){
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Mobile<span style="color:red"> *</span></span>
-                                <TextInput type="number"name="user_mobile" v-model="form.user_mobile" placeholder="Enter your mobile number" class="form-control mt-2" />
+                                <TextInput type="text"name="user_mobile" v-model="form.user_mobile" placeholder="Enter your mobile number" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_mobile" />
                             </div>
                             <div class="mt-4">

@@ -29,7 +29,7 @@
 
         <!-- Google tag (gtag.js) -->
 
-
+        <script src="/js/custom.js?v=5554631"></script>
         <meta property="og:title" content="{{ config('app.name', 'Unstoppable') }}">
         <!-- please change belowdinheiroagora.com.br/ url on production -->
         <meta property="og:image" content="https://dinheiroagora.com.br/images/link-logo.png">
@@ -40,4 +40,5 @@
     <body class="font-sans antialiased">
         @inertia
     </body>
+    
 </html>

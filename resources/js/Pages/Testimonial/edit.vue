@@ -87,10 +87,10 @@ function update_all_data(type, event) {
             <div class="mt-4 col-md-6">
               <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
               <video :src="form.video" alt="" controls></video>
-              <label for="video" class="form-control mt-2 cursor-pointer">
+              <!-- <label for="video" class="form-control mt-2 cursor-pointer">
                 {{ form.video ? 'Change File' : 'Upload File' }}
-              </label>
-              <input type="file" id="video" @change="update_all_data('video', $event)" accept="video/*" class="hidden">
+              </label> -->
+              <input type="file" id="video" @change="update_all_data('video', $event)" accept="video/*" class="form-control mt-2 cursor-pointer">
             </div>
             <div class="mt-5 col-md-6">
 

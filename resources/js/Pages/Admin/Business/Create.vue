@@ -39,46 +39,46 @@ const submit = () => {
   <AuthenticatedLayout>
 
     <Head title="Add Employer" />
-    <div class="flex items-center justify-center px-2">
+    <div class="flex items-center justify-">
       <div class="w-full">
-        <h1 class="text-xl font-semibold text-gray-700">Add Employer</h1>
+        <h2 class="font-semibold text-xl text-black-800 leading-tight pl-3 pb-2 add_employer_hd">Add Employer</h2>
 
         <form @submit.prevent="submit">
-          <div class="row">
-            <div class="mt-4 col-md-6">
-              <InputLabel for="name" value="UserName" style="display: inline-block;" /><strong class="required-asterisk">*
+          <div class="row add_empLoyer_page">
+            <div class="col-md-6 col_padding padding_btm">
+              <InputLabel for="name" value="UserName" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="name" type="text" placeholder="Enter Employer UserName" class="form-control"
                 v-model="form.name" autocomplete="name" />
               <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="mt-4 col-md-6">
-              <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk">*
+            <div class="col-md-6 col_padding">
+              <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" v-model="form.email"
                 autocomplete="email" />
               <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 col_padding">
               <InputLabel for="password" value="Password" style="display: inline-block;" /><strong
-                class="required-asterisk">* </strong>
+                class="required-asterisk"> * </strong>
               <TextInput id="password" type="password" placeholder="Enter Password" class="form-control"
                 v-model="form.password" />
               <InputError class="mt-2" :message="form.errors.password" />
 
             </div>
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 col_padding">
               <InputLabel for="password_confirmation" value="Confirm Password" style="display: inline-block;" /><strong
-                class="required-asterisk">* </strong>
+                class="required-asterisk"> * </strong>
               <TextInput id="password_confirmation" type="password" placeholder="Enter Confirm Password"
                 class="form-control" v-model="form.password_confirmation" autocomplete="new-password" />
               <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="mt-4 col-md-6">
-              <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk">*
+            <div class="mt-4 col-md-6 col_padding">
+              <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
                 v-model="form.phone" autocomplete="phone" />
@@ -89,7 +89,7 @@ const submit = () => {
                   <TextInput id="address" type="text" placeholder="Enter Address" class="form-control" v-model="form.address" autocomplete="address" />
                   <InputError class="mt-2" :message="form.errors.address" />
               </div> -->
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 col_padding">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">
@@ -103,7 +103,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.status" />
             </div>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 button_marginss">
             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" type="submit">
               Submit
             </PrimaryButton>

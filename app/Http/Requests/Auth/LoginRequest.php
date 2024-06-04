@@ -65,10 +65,10 @@ class LoginRequest extends FormRequest
         }
         if (!$attempt) {
             RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
+                throw ValidationException::withMessages([
+                    // 'email' => trans('auth.failed'),
+                    'email' => "These credentials doesn't match.",
+                ]);
         }else{
 
             // RateLimiter::clear($this->throttleKey());

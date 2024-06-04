@@ -8,10 +8,11 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 import Header from '../Frontend/Header.vue'
 import Footer from '../Frontend/Footer.vue'
 import SubHeading from '../Frontend/SubHeading.vue'
-import '@/../../resources/css/frontend.css';
+import '@@/frontend.css';
 import * as countryStateCity from 'country-state-city';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { toast } from 'vue3-toastify';
+import Swal from 'sweetalert2';
 
 
 const countries = countryStateCity.Country.getAllCountries();
@@ -37,13 +38,18 @@ const form = useForm({
 });
 const submit = () => {
     form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    },{
-        onsuccess:()=>{
-            toast("Please check your email.", {
+    //     onFinish: () => form.reset('password', 'password_confirmation'),
+    // },{
+        onSuccess:()=>{
+            toast(`Form Submitted Successfully.`, {
             autoClose: 3000,
             theme: 'dark',
                 });
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Please verify your email for login.',
+            });
         }
     });
 };
@@ -51,6 +57,18 @@ function select_country(event){
     // console.log(event,'1234566')
     states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
 }
+
+const showPassword = ref(false);
+
+const passwordFieldType = computed(() => showPassword.value ? 'text' : 'password');
+const eyeIconClass = computed(() => showPassword.value ? 'bi bi-eye' : 'bi bi-eye-slash');
+
+const togglePasswordVisibility = () => {
+    showPassword.value = !showPassword.value;
+};
+
+
+
 </script>
 
 
@@ -134,7 +152,7 @@ function select_country(event){
                         </div>
                         <div class="mt-3">
                             <span class="label text-label">Mobile<span style="color:red"> *</span></span>
-                            <TextInput type="number" placeholder="Enter your mobile number" class="form-control mt-2"
+                            <TextInput type="text" placeholder="Enter your mobile number" class="form-control mt-2"
                                 autofocus autocomplete="name" v-model="form.mobile_number" />
                             <InputError class="mt-1" :message="form.errors.mobile_number" />
                         </div>
@@ -173,11 +191,17 @@ function select_country(event){
                         <div class="mt-3">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
-                            <TextInput id="password" type="password" placeholder="Enter your password" class="form-control mt-2"
+                            <div class="relative">
+                            <TextInput id="password" :type="passwordFieldType" placeholder="Enter your password" class="form-control mt-2"
                                 v-model="form.password" autocomplete="username" />
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" style="cursor:pointer;" @click="togglePasswordVisibility">
+                                    <i :class="eyeIconClass"></i>
+                                </span>
+                            </div>
+
                             <InputError class="mt-1" :message="form.errors.password" />
+                            </div>
                         </div>
-                    </div>
                 </div>
 
 
@@ -222,14 +246,13 @@ function select_country(event){
                         v-model="form.checkbox">
                     <label class="form-check-label text-label pl-2 " for="flexCheckDefault">
                         I accept the
-                        <a class="text-lightgreen" href="/term-condition" target="_blank">Term & Conditions</a>
+                        <a class="text-lightgreen" href="/term-condition" target="_blank">Terms & Conditions</a>
                         <!-- <span style="color:red"> *</span> -->
                     </label>
                     <InputError class="mt-2" :message="form.errors.checkbox" />
                 </div>
 
                 <div class="flex items-center mt-4 login-btn-main">
-
                     <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing">
                         Continue <span> <i class="bi bi-arrow-right"></i></span>

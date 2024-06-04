@@ -5,6 +5,8 @@ import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import moment from 'moment';
+import { Country } from 'country-state-city';
+
 
 const props = defineProps({
     job : {
@@ -27,25 +29,38 @@ const props = defineProps({
 const skill = ref(''),
 language = ref(''),
 industry = ref('');
+
 onMounted( () => {
+    const skillNames = [];
   props.skills.forEach(element => {
     if(props.job.skills_id.includes(element.id)){
-        skill.value += element.name +',';
+        skillNames.push(element.name);
     }
   });
-  props.industries.forEach(element => {
-    if(props.job.skills_id.includes(element.id)){
-        industry.value += element.name +',';
-    }
-  });
+  skill.value = skillNames.join(',');
+  const languagesArray = [];
   props.languages.forEach(element => {
     if(props.job.language_id.includes(element.id)){
-        language.value += element.name +',';
+        languagesArray.push(element.name);
     }
   });
-  
-})
-// console.log(skills,language);
+
+  language.value = languagesArray.join(',');
+  const indusArray = [];
+  props.industries.forEach(element => {
+    if(props.job.industry_id.includes(element.id)){
+        indusArray.push(element.name)
+    }
+});
+industry.value = indusArray.join(',');
+});
+const business_country = Country.getCountryByCode(props?.job?.business?.company_country_code);
+const recommended_skills = sepratedString(props?.job?.recommended_skills);
+function sepratedString(recommended_skills){
+    let array = JSON.parse(recommended_skills);
+    return array.join(", ");
+}
+
 const job_start_date = moment(props.job.job_start_date).format('DD/MMMM/YYYY');
 
 
@@ -72,7 +87,7 @@ function job_description(description){
                     
                     <div class="relative">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-                        <input type="search" class="user-dashboard-search" placeholder="Search employe">
+                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
                     </div>
                 </div>
             </div>
@@ -112,9 +127,9 @@ function job_description(description){
                                     <li><b>Seniority</b><span>{{ job?.seniority?.name }}</span></li>
                                     <li><b>Discipline</b><span>{{ job?.discipline?.name }}</span></li>
                                     <li><b>Overall work experience</b><span>{{ job?.work_experience?.experience }}</span></li>
+                                    <li><b>Recommended Skills</b><span>{{ recommended_skills }}</span></li>
                                     <li><b>Skills</b><span>{{ skill }}</span></li>
                                     <li><b>Languages</b><span>{{ language }}</span></li>
-                                    <li><b>City</b><span>{{ job.city }}</span></li>
                                     <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
                                     <li><b>Remote Work</b><span>{{ (job.remote_work !=0) ? job.remote_work:'-' }}</span></li>
                                     <li><b>Industry</b><span>{{ industry }}</span></li>
@@ -122,6 +137,8 @@ function job_description(description){
                                     <li><b>Positions</b><span>{{ job.positions }}</span></li>
                                     <li><b>Min and Max Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
                                     <li><b>Start Date</b><span>{{ job_start_date }}</span></li>
+                                    <li><b>City</b><span>{{ job.city }}</span></li>
+                                    <li><b>Country</b><span>{{ job?.job_country }}</span></li>
                                 </ul>
                             </div>
                             <div class="job_col2">
@@ -152,8 +169,8 @@ function job_description(description){
                                             </div>  
                                             <div class="company-name-loaction">
                                                 <h3 class="mb-1 semibold">{{ job?.business?.company_name }}</h3>
-                                                <p class="mb-0"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }},
-                                                    {{ job?.job_country }}</p>
+                                                <p class="mb-0"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.business?.company_city }},
+                                                    {{ business_country?.name }}</p>
                                             </div>
                                         </div>
                                     </div>

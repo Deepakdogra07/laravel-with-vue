@@ -49,7 +49,7 @@ function handleCountryInput(){
                 <div class="travel-detail mb-5">
 
                     <h2 class="mb-3">Travel details</h2>
-                    <h4 class="mb-3">Purpose of stay</h4>
+                    <h4 class="mb-3">Purpose of stay <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                     <label class="flex items-center mb-2">
                         <TextInput type="checkbox"  class="remember-me-check" name="remember1" value="Tourism" v-model="form.purpose_of_stay" />
                         <span class="ml-2 cursor-pointer remember-me">Tourism</span>
@@ -67,7 +67,7 @@ function handleCountryInput(){
                 <div class="row mt-5 travel_row">
                     <div class="col-md-6 col-12">
                         <div class="travel-detail">
-                            <h4 class="mb-3">Traditional visa</h4>
+                            <h4 class="mb-3">Traditional visa <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                             <label class="flex items-center mb-2">
                                 <TextInput type="checkbox" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (individual)</span>
@@ -98,7 +98,7 @@ function handleCountryInput(){
                     <div class="col-md-6 col-12 travel-form-main">
                             <div class="col-md-12 mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                                <span class="label text-label">Planned date of travel</span>
+                                <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                 <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/>
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
@@ -106,7 +106,7 @@ function handleCountryInput(){
                             <div class="row natoinality_row">
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                                <span class="label text-label">Passenger nationality</span>
+                                <span class="label text-label">Passenger nationality <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                 <select class="form-select select_option mt-2" :class="select_class" @change="handleCountryInput()" v-model="form.passenger_nationality">
                                     <option selected :value="null" >----</option>
@@ -116,7 +116,7 @@ function handleCountryInput(){
                             </div>
                             <div class="col-md-6 col-12 mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                                <span class="label text-label">Port of arrival</span>
+                                <span class="label text-label">Port of arrival <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                 <TextInput  type="text" class="form-control mt-2" v-model="form.port_of_arrival"/>
                                     <InputError class="mt-2" :message="form.errors.port_of_arrival"/>

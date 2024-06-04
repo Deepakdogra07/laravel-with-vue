@@ -5,8 +5,8 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import '@/../../resources/css/frontend.css';
-import '@/../../resources/css/multiselect.css';
+import '@@/admin.css';
+import '@@/multiselect.css';
 import * as countryStateCity from 'country-state-city';
 import Multiselect from 'vue-multiselect';
 import { ref } from 'vue';
@@ -63,7 +63,7 @@ const form = useForm({
   seniority_id: null,
   discipline_id: null,
   work_experience_id: null,
-  skills_id: null,
+  skills_id: [],
   language_id: null,
   remote_work: false,
   industry_id: null,
@@ -75,7 +75,8 @@ const form = useForm({
   min_pay_range: null,
   max_pay_range: null,
   job_start_date: null,
-  currency_id:null
+  currency_id:null,
+  recommended_skills:[],
 });
 
 function selectFile(event){
@@ -84,7 +85,13 @@ function selectFile(event){
     console.log(image)
 }
 
-
+function checked_event(event){
+    if(event.target.checked){
+        form.recommended_skills.push(event.target.value);
+    }else{
+        form.recommended_skills.splice(event.target.value,1);
+    }
+}
 const submit = () => {
     form.post(route('jobs.store'),
     {
@@ -134,6 +141,22 @@ function handleChange(type){
         select_class.value.Currency = 'Selected_option';
     }
 }
+// selectRecommendedSkill(skillName) {
+//             const skill = this.props.skills.find(s => s.name === skillName);
+//             if (skill && !this.form.skills_id.includes(skill)) {
+//                 this.form.skills_id.push(skill);
+//             }
+// function select_skill(skill){
+//     let index = form.skills_id.findIndex(s => s.id === skill.id);
+//     if(index !== -1){
+//         form.skills_id.splice(index,1);
+//     }else{
+//         index = props.skills.findIndex(s => s.id === skill.id);
+//         if(index >0){
+//             form.skills_id.push(skill);
+//         }
+//     }   
+// }
 </script>
 <template>
   <AuthenticatedLayout>
@@ -148,7 +171,7 @@ function handleChange(type){
                 <form @submit.prevent="submit" enctype="multipart/form-data">
                     <div class="row add-job-form-section job_posting_page">
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 ">
+                            <div class="">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="job_title" type="text" v-model="form.job_title"
@@ -196,7 +219,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Overall Work Experience<span
                                         class="text-danger"> *</span></span>
                                 <div class="eye-icon-div skills_input">
@@ -210,26 +233,43 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.work_experience_id" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Skills<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div skills_input">
                                     <multiselect v-model="form.skills_id" :options="props.skills" :multiple="true"
                                         :close-on-select="false" :clear-on-select="false" :preserve-search="true"
-                                        placeholder="Select Skills" label="name" track-by="name">
+                                        placeholder="Select Skills" label="name" track-by="name" class="custom-multiselect">
                                     </multiselect>
+                                    <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
-                                <div class="mt-4">
-                                    <span class="label text-label recommended_text">Recommended Skills</span>
-                                    <ul class="job_recommenrded_skills pl-0">
-                                        <li>Documentation</li>
-                                        <li>Mechanical </li>
-                                        <li>Technical</li>
-                                        <li>Electrician </li>
+
+                                <div class="mt-4 job_recommenrded__iin">
+                                    <label class="label text-label recommended_text">Recommended Skills</label>
+                                    <ul class="job_recommenrded_skills pl-0"  >
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox" @click="checked_event($event)"  class="recommended_checkbox" value ="documentation" id="documents-1"/>
+                                            <label class="label_checkbox" for="documents-1"  > Documentation</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox"@click="checked_event($event)" class="recommended_checkbox" value ="mechanical" id="documents-2"/>
+                                        <label class="label_checkbox"  for="documents-2"> Mechanical </label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox" @click="checked_event($event)" class="recommended_checkbox" value ="technical" id="documents-3"/>
+                                             <label class="label_checkbox" for="documents-3"> Technical</label>
+                                        </div>
+                                        <div class="recommended_checkbox">
+                                            <TextInput  type="checkbox" @click="checked_event($event)" class="recommended_checkbox" value ="electrician" id="documents-4"/>
+                                        <label class="label_checkbox" for="documents-4"> Electrician </label>
+                                        </div>                        
+                                        <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                        <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                        <!-- </li> -->
                                     </ul>
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.skills_id" />
+                                <InputError class="mt-2" :message="form.errors.recommended_skills" />
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
                                     <multiselect v-model="form.language_id" :options="props.languages" :multiple="true"
@@ -249,7 +289,7 @@ function handleChange(type){
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
                             <div class="mt-4">
-                                <span class="label text-label">Zip Code</span>
+                                <span class="label text-label">Zip Code<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput id="pin_code" type="text" v-model="form.pin_code"
                                         placeholder="Enter Zip Code" class="form-control mt-2  " />
@@ -280,7 +320,7 @@ function handleChange(type){
                                 </div>
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
                             </div>
-                            <div class="mt-4">
+                            <div class="mt-4 arrow_label">
                                 <span class="label text-label">Industry<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div mt-2">
                                     <!-- <select class="form-select  " aria-label="Default select example"
@@ -321,7 +361,7 @@ function handleChange(type){
 
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="mt-4 minium_salary">
+                            <div class="minium_salary">
                                 <span class="label text-label">Segment <span style="color:red"> *</span></span>
                                 <TextInput type="text" id="Segment" v-model="form.segment" placeholder="Enter Segment"
                                     class="form-control mt-2  " />
@@ -331,7 +371,7 @@ function handleChange(type){
                                 <span class="label text-label">Position<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
                                     <TextInput type="text" id="positions" v-model="form.positions"
-                                        placeholder="Enter Postions" class="form-control mt-2  " />
+                                        placeholder="Enter Position" class="form-control mt-2  " />
                                     <InputError class="mt-2" :message="form.errors.positions" />
                                 </div>
                             </div>
@@ -349,7 +389,8 @@ function handleChange(type){
                                 </div>
                             </div>
                             <div class="mt-4 minimum_input">
-                                <span class="label text-label"><input type="checkbox">Minimum and Maximum Salary</span>
+                                <!-- <input type="checkbox"> -->
+                                <span class="label text-label">Minimum and Maximum Salary</span>
                                 <div class="row">
                                     <div class="col-md-6 eye-icon-div ">
                                         <TextInput type="text" id="salary_range" v-model="form.min_pay_range"

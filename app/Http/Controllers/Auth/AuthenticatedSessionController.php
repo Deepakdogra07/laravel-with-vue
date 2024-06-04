@@ -27,13 +27,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(Request $request): Response
     {    
+        $msg = '';
+        if($request->msg){
+            $msg = $request->msg;
+        }
         $footer_data = FooterData::first();
         $cookies = Cookie::get();
         return Inertia::render('Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
             'footer_data'=>$footer_data,
-            'cookies' =>$cookies
+            'cookies' =>$cookies,
+            'msg' =>$msg
         ]);
     }
     
@@ -50,7 +55,7 @@ class AuthenticatedSessionController extends Controller
 
         // Add your validation rules here if needed
        $validator = Validator::make($request->all(), $rules);
-
+// dd($validator->errors());
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
@@ -62,7 +67,7 @@ class AuthenticatedSessionController extends Controller
         if(!$Checkverified){
             Auth::logout();
             $user = User::where('email', $request->email)->orwhere('name',$request->email)->first();
-            Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'test'));
+            Mail::to($user->email)->send(new VerifyUser($user->id , $user->name, $user->email, $user->password, 'Unstoppable Job'));
             $validator->errors()->add('email', "We sent you verification Email.Please verify your email for login.");
             return redirect()->back()->withErrors($validator)->withInput();
         }

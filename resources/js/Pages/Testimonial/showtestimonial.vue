@@ -3,12 +3,21 @@ import Header from "../Frontend/Header.vue"
 import Footer from "../Frontend/Footer.vue";
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import "../../../css/frontend.css";
+import { Link } from '@inertiajs/vue3';
 
 
 const props = defineProps({
-    testimonial: Array
+    testimonial:{
+        type: Array
+    },
+    previous:{
+        type:Number
+    },
+    next:{
+        type:Number
+    }
 });
-console.log(props.testimonials);
+console.log(props);
 
 
 </script>
@@ -18,12 +27,12 @@ console.log(props.testimonials);
 
     <Head title="Our Testimonials" />
     <Header class="login-wrapper" />
-    <SubHeading />
+    <SubHeading :testimonial_id="testimonial.id"/>
 
 <section class="testimonials_page" >
-    <div class="container modal-dialogs">
+    <div class="container modal-dialogs testimonials_width">
         <div class="popover-section  modal-content single_testimonial">
-            <Link class="popup-cross" data-bs-dismiss="modal">
+            <Link class="popup-cross cross_testimonials" data-bs-dismiss="modal">
             <i class="bi bi-x"></i>
             </Link>
             <div class="modal-body">
@@ -41,12 +50,20 @@ console.log(props.testimonials);
                         </div>
                         <p class="name_profile_txt">{{ testimonial?.content }}</p>
                     </div>
-                    <div class="col-12">
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col-lg-10 col-md-10 col-sm-12">
                         <div class="popup-video-section">
                             <video :src="`${testimonial?.video_link}`" controls></video>
                             <!-- <span class="bi bi-play-circle"></span> -->
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="previous_next"> 
+                    <Link class="btn btn-secondary previous_btn" :href="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
+                    <Link class="btn btn-success next_btn" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
                 </div>
             </div>
         </div>

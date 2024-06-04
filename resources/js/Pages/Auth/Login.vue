@@ -8,7 +8,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import '@/../../resources/css/frontend.css';
+import '@@/frontend.css';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import { ref, computed, onMounted } from 'vue';
 import { toast } from 'vue3-toastify';
@@ -58,10 +58,10 @@ const submit = () => {
     <Head title="Log in" />
     <Header class="login-wrapper" :logo_image="props?.footer_data?.logo_image"/>
     <SubHeading />
-    <div class="login-bg-wrapper">
-        <div class="container h-100">
+    <div class="login-bg-wrapper login_inner">
+        <div class="container h-100 login_inner_cn">
             <div class="row align-items-center justify-center h-100">
-                <div class="col-lg-7 col-md-9 ">
+                <div class="col-lg-7 col-md-12 col-sm-12 p-0">
                     <h1 class="mb-4 text-blue">Login</h1>
                     <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                         <h3>Please Enter Your email and password for login</h3>
@@ -86,7 +86,7 @@ const submit = () => {
                             <div class="eye-icon-div relative">
                                 <TextInput id="password" :type="passwordFieldType" placeholder="Enter your Password"
                                     class="form-control mt-2" v-model="form.password"/>
-                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" @click="togglePasswordVisibility">
+                                <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" style="cursor:pointer;" @click="togglePasswordVisibility">
                                     <i :class="eyeIconClass"></i>
                                 </span>
                             </div>

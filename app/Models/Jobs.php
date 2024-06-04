@@ -10,7 +10,32 @@ class Jobs extends Model
 {
     use HasFactory;
     protected $table = "jobs";
-    protected $fillable = ['job_title','job_description','position_id','seniority_id','discipline_id','work_experience_id','skills_id','remote_work','industry_id','segment','positions','pin_code','city','job_country','min_pay_range','job_start_date','max_pay_range','job_image','language_id','posting_summary','detail','conditions','requirements','currency_id'];
+    protected $fillable = [
+        'job_title',
+        'job_description',
+        'position_id',
+        'seniority_id',
+        'discipline_id',
+        'work_experience_id',
+        'skills_id',
+        'remote_work',
+        'industry_id',
+        'segment',
+        'positions',
+        'pin_code',
+        'city',
+        'job_country',
+        'min_pay_range',
+        'job_start_date',
+        'max_pay_range',
+        'job_image',
+        'language_id',
+        'posting_summary',
+        'detail',
+        'conditions',
+        'requirements',
+        'currency_id',
+        'recommended_skills'];
 
     public function position(){
         return $this->hasOne(Position::class,'id','position_id');

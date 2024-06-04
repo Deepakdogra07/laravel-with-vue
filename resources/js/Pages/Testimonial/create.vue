@@ -6,6 +6,7 @@ import { router } from '@inertiajs/vue3';
 import { useToast } from 'vue-toastify';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { QuillEditor } from '@vueup/vue-quill';
 
 const form = reactive({
   name: null,
@@ -66,17 +67,17 @@ function handleVideoInput2(event) {
     </template>
 
     <div class="flex items-center justify-center create_testimonial_form">
-      <div class="w-full px-2">
+      <div class="w-full">
         <form @submit.prevent="submit" enctype="multipart/form-data">
           <div class="row">
             <div class="mt-4 col-md-6 input_firstt">
-              <label for="name">Name<span class="text-danger">*</span></label>
+              <label for="name">Name<span class="text-danger"> *</span></label>
               <input id="name" v-model="form.name" placeholder="Enter Name" class="block w-full mt-1 form-control"
                 autocomplete="name" />
               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
             </div>
-            <div class="mt-4 col-md-6">
-              <label for="description">Description<span class="text-danger">*</span></label>
+            <div class="mt-4 col-md-6 second_input">
+              <label for="description">Description<span class="text-danger"> *</span></label>
               <textarea id="description" v-model="form.description" placeholder="Enter description"
                 class="block w-full mt-1 form-control"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
@@ -89,20 +90,24 @@ function handleVideoInput2(event) {
               <div v-if="errors.image" class="text-danger">{{ errors.image }}</div>
             </div> -->
             <div class="mt-4 col-md-6">
-              <label for="name">Video</label>
+              <label for="name">Video <span class="text-danger"> *</span></label>
               <input type="file" accept="video/*" @change="handleVideoInput2" placeholder="Enter Name"
                 class="block w-full mt-1 form-control" autocomplete="name" />
                 <video :src='newVideo' class="mt-2"></video>
               <div v-if="errors.video" class="text-danger">{{ errors.video }}</div>
             </div>
             <div class="mt-4 col-md-6">
-              <label for="content">Content<span class="text-danger">*</span></label>
+              <label for="content">Content<span class="text-danger"> *</span></label>
               <textarea id="content" v-model="form.content" placeholder="Enter Content"
                 class="block w-full mt-1 form-control"></textarea>
+                <!-- <QuillEditor contentType="html" toolbar="minimal"
+                                        v-model:content="form.content" placeholder="Enter Content" /> -->
+                  <!-- <QuillEditor contentType="html" toolbar="essential"
+                  v-model:content="form.content" placeholder="Enter Details of the Job" /> -->
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
             <br />
-            <div class="mt-5 col-md-6">
+            <div class="col-md-6 remove_padding">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">

@@ -6,7 +6,7 @@
   <div class="login-bg-wrapper">
     <div class="container h-100">
       <div class="row align-items-center justify-center h-100">
-        <div class="col-md-9 col-lg-7">
+        <div class="col-lg-7 col-md-12 col-sm-12 p-0">
           <div class="w-full">
             <h1 class="mb-4 text-blue">Forgot Password</h1>
             <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
@@ -44,7 +44,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import '@/../../resources/css/frontend.css';
+import '@@/frontend.css';
 import Header from '../Frontend/Header.vue';
 import Footer from '../Frontend/Footer.vue';
 import SubHeading from '../Frontend/SubHeading.vue';

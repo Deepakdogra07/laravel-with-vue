@@ -45,7 +45,7 @@ const deletejob = async (id) => {
                 title: 'Success',
                 text: 'Job Deleted Successfully',
             });
-            location.reload();
+            // location.reload();
         } else {
             Swal.fire({
                 icon: 'info',
@@ -67,30 +67,30 @@ const deletejob = async (id) => {
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <div class="job-list-search srch_responsive">
-            <div class="container">
+        <div class="job-list-search srch_responsive business_srccc">
+            <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
                     </div>
-                    <div class="d-flex gap-5 align-items-center">
+                    <!-- <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link>Employee</Link>
                     </div> 
                     
-                    <div class="relative">
+                    <div class="relative search_bar">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-                        <input type="search" class="user-dashboard-search" placeholder="Search employe">
-                    </div>
+                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
+                    </div> -->
                 </div>
             </div>
         </div>
         <div class="login-bg-wrapper business_job_details">
-            <div class="container">
+            <div class="container about-width">
                 <div class="filter-status row">
                     <div class="col-md-11 width_mobile">
                         <div class="d-flex justify-between align-items-center">
-                            <ul class="d-flex align-items-center flex-wrap pl-0">
+                            <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
                                         Active</span>
@@ -115,9 +115,12 @@ const deletejob = async (id) => {
                                         Rejected</span>
                                 </li>
                                 
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
+
+                    
+
                     <div class="col-md-1 login-section-desk text-end width_mobileS">
                         <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                     </div>
@@ -144,15 +147,15 @@ const deletejob = async (id) => {
                         </li>
                     </ul>
                 </div> -->
-                <div class="main-job-filter mt-5 spacing_nine">
+                <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
                     <DataTable class="display job-data-table business_table" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr class="th-row">
-                                    <th>ID</th>
+                                    <th>S.No</th>
                                     <th>Job Title</th>
                                     <th>Positions</th>
                                     <th>Seniority</th>
-                                    <th>Actions</th>
+                                    <th class="sorting_icon">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -18,9 +18,6 @@ const props = defineProps({
     },
     job_id:{
         type:String
-    },
-    status:{
-        type:Array
     }
 });
 const appliedCustomers = ref([]);
@@ -62,37 +59,55 @@ function formatDateTime(date){
     <SubHeading :job_id ="job_id"/>
        <div class="py-12">
             <div class="container">
-                <div class="filter-status">
-                    <div class="d-flex justify-between">
-                        <ul class="d-flex align-items-center flex-wrap pl-0">
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
-                                    Active</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 2 }" @click="setActiveSpan(2)">{{ status.awaited }} Awaiting
-                                    Review</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 3 }" @click="setActiveSpan(3)">{{ status.reviewed }}
-                                    Reviewed</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 4 }" @click="setActiveSpan(4)">{{ status.contacted }}
-                                    Contacted</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 5 }" @click="setActiveSpan(5)">{{ status.hired }} Hired</span>
-                            </li>
-                            <li>
-                                <span :class="{ 'active-filter': activeSpan === 6 }" @click="setActiveSpan(6)">{{ status.rejected }}
-                                    Rejected</span>
-                            </li>
-                            
-                        </ul>
+                
+                <div class="container about-width">
+                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
+                    <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
+                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
+                    </div>
+                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                       
+                        <Link :href="route('business-jobs.index')" >Jobs</Link>
+                        <Link :href="route('business-dash')" class='active-nav'>Employees</Link>
+                    </div> 
+                    
+                    <div class="relative search_bar">
+                        <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
+                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
                     </div>
                 </div>
-                <!-- <div class="main-job-filter mt-5">
+            </div>
+                <div class="filter-status">
+                    <div class="d-flex justify-between">
+                         <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
+                                        Active</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 2 }" @click="setActiveSpan(2)">12 Awaiting
+                                        Review</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 3 }" @click="setActiveSpan(3)">2
+                                        Reviewed</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 4 }" @click="setActiveSpan(4)">2
+                                        Contacted</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 5 }" @click="setActiveSpan(5)">0 Hired</span>
+                                </li>
+                                <li>
+                                    <span :class="{ 'active-filter': activeSpan === 6 }" @click="setActiveSpan(6)">22
+                                        Rejected</span>
+                                </li>
+                                
+                            </ul> -->
+                    </div>
+                </div>
+                <div class="main-job-filter mt-5">
                     <ul class="d-flex align-items-center flex-wrap pl-0">
                         <li>
                             <span>Yes (2)</span>
@@ -113,7 +128,7 @@ function formatDateTime(date){
                             <span>Sort: Apply date (newest) <i class="bi bi-chevron-down pl-3"></i></span>
                         </li>
                     </ul>
-                </div> -->
+                </div>
             </div>
             <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->

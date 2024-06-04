@@ -34,9 +34,9 @@ class ContactusController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'user_name' => 'required|string|max:255',
+            'user_name' => 'required|string|max:255|regex:/^[A-Za-z\s]+$/',
             'user_email' => 'required|email|max:255',
-            'user_mobile' => 'required|min:8|max:15',
+            'user_mobile' => 'required|min:8|max:15|regex:/^[0-9]+$/',
             'user_message' => 'required|string',
         ];
 
@@ -44,14 +44,16 @@ class ContactusController extends Controller
             'user_name.required' => 'Name is required',
             'user_name.string' => 'Name must be type of string',
             'user_name.max' => 'Name Must Be maximum 255 digit',
+            'user_name.regex' => 'Name Must Be in characters.',
 
             'user_email.required' => 'Email is required',
             'user_email.email' => 'Please enter a valid email address.',
             'user_email.max' => 'Email must be less than 255 digits.',
 
             'user_mobile.required' => 'Mobile Number is required',
-            'user_mobile.min' => 'Mobile Number should be not less than 8 digits. ',
-            'user_mobile.max' => 'Mobile Number should be not more than 15 digits. ',
+            'user_mobile.min' => 'Mobile Number should  not be less than 8 digits. ',
+            'user_mobile.max' => 'Mobile Number should not be more than 15 digits. ',
+            'user_mobile.regex' => 'Mobile Number must be a number.',
 
             'user_message.required' => 'Message is required',
         ];

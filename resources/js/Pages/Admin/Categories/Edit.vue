@@ -68,7 +68,7 @@ function submitForm() {
                 <div class="mb-4">
                   <input type="hidden" id="categoryId" v-model="category.id">
                   <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category
-                    Heading</label>
+                    Heading <span style="color: red;"> *</span></label>
                   <input type="text" id="categoryHeading" v-model="form.category_heading"
                     class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
                   <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading
@@ -76,23 +76,23 @@ function submitForm() {
                 </div>
 
                 <div class="mb-4">
-                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image</label>
+                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image <span style="color: red;"> *</span></label>
                   <img :src="category_image" alt="" style="height:100px">
-                  <label for="category_image" class="form-control cursor-pointer mt-2">
+                  <!-- <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}
-                  </label>
+                  </label> -->
                   <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*"
-                    class="hidden">
+                    class="form-control cursor-pointer mt-2">
                 </div>
                 <div class="mb-4">
-                  <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail</label>
+                  <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail <span style="color: red;"> *</span></label>
                   <img :src="thumbnail" alt=""
                     style="height:100px;margin-top:10px;">
-                  <label for="thumbnail" class="form-control mt-2">
+                  <!-- <label for="thumbnail" class="form-control mt-2">
                     {{ form.thumbnail ? 'Change File' : 'Upload File' }}
-                  </label>
+                  </label> -->
                   <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)"
-                    accept="image/*" class="hidden ">
+                    accept="image/*" class="form-control cursor-pointer mt-2 ">
                 </div>
 
                   <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->

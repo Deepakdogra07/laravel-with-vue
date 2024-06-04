@@ -9,30 +9,40 @@ const props=defineProps({
     data:{
         type:Object,
         required:true,
+    },
+    testimonial_id:{
+        type:Number,
+        required:true,
+        default:0
     }
 })
 // console.log(route().current('business_job_for_customers',props.job_id),route().current());
 
 </script>
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid subheading_Sec">
         <div class="sub-heading-section" :class="{'!pb-[50px]' : !route().current('login') || !route().current('password.request')}">
-            <div class="container">
-                <h1 class="mb-0" v-if="route().current('login') || route().current('password.request') || route().current('password.reset') ">Welcome to Login</h1>
+            <div class="container subheading_cn">
+                <h1 class="mb-0" v-if="route().current('login') || route().current('password.request')  ">Welcome to Login</h1>
+                <h1 class="mb-0" v-if="route().current('password.reset') ">Reset Password</h1>
                 <h1 class="mb-0" v-if="route().current('job.listing') || route().current('view.job')">List of Jobs</h1>
                 <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
                 <h1 class="mb-0" v-if="route().current('contact.us')">Contact us</h1>
                 <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Posting</h1>
-                <h1 class="mb-0" v-if="route().current('testimonial.main')">Testimonial</h1>
+                <h1 class="mb-0" v-if="route().current('business-jobs.edit',job_id)">Edit Job Posting</h1>
+                <h1 class="mb-0" v-if="route().current('testimonial.main') || route().current('show.testimonial',testimonial_id)">Testimonial</h1>
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>
+                <h1 class="mb-0" v-if="route().current('term.condition')">Terms and Conditions</h1>
+                <h1 class="mb-0" v-if="route().current('business-jobs.show',job_id)">View Job</h1>
+                
             </div>
         </div>
     </div>
     <div class="container-fluid">
-        <div class="form-navigation" v-if="route().current('login') || route().current('password.request') || route().current('register') || route().current('password.reset')">
-            <div class="container">
+        <div class="form-navigation login_nav" v-if="route().current('login') || route().current('password.request') || route().current('register') ">
+            <div class="container login_inner_cn">
                 <ul class="row nav-underline pl-0 mb-0 second_navbar">
                     <div class="col-md-1 col-3 column_nav_one">
                         <li class="nav-item">
@@ -89,7 +99,7 @@ const props=defineProps({
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
                         <li class="nav-item">
-                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details</Link>
+                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details </Link>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5">
@@ -102,7 +112,7 @@ const props=defineProps({
         </div>
         <!-- v-if="$page.props.auth.user.user_type <= 2" -->
 
-        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
+        <!-- <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
@@ -118,7 +128,7 @@ const props=defineProps({
                     </div>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
