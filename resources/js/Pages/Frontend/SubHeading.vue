@@ -35,6 +35,8 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Questions</h1>
                 <h1 class="mb-0" v-if="route().current('term.condition')">Terms and Conditions</h1>
+                <h1 class="mb-0" v-if="route().current('business-jobs.show',job_id)">View Job</h1>
+                
             </div>
         </div>
     </div>
@@ -110,7 +112,7 @@ const props=defineProps({
         </div>
         <!-- v-if="$page.props.auth.user.user_type <= 2" -->
 
-        <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
+        <!-- <div class="form-navigation"  v-else-if="route().current('business_job_for_customers')  || route().current('business-jobs.show',job_id)"  >
             <div class="container">
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5">
@@ -126,7 +128,7 @@ const props=defineProps({
                     </div>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
