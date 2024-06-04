@@ -5999,3 +5999,33 @@ label.label_checkbox {
     position: absolute;
     top: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profile_info a.btn.btn-primary, .update_pass button.rounded-lg {
+    background: #01796f;
+    border: 0px;
+    padding: 10px 30px!important;
+    border-color: #01796f !important;
+    box-shadow: unset;
+}
+.business_job_details a.btn.btn-sm.btn-success {
+    background: #01796f;
+    border: 0px;
+    width: 100px;
+    padding: 10px;
+}
+.col-md-1.login-section-desk.text-end.width_mobileS {
+    width: 100%;
+}
