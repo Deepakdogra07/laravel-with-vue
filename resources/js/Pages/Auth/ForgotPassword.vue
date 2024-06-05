@@ -23,7 +23,7 @@
                 <!-- <p style="color:red" v-if="form.errors.email">We couldn't find a user with that email address.</p> -->
               </div>
 
-              <div class="flex items-center justify-start mt-4 login-btn-main">
+              <div class="flex items-center justify-start mt-4 login-btn-main forgot_Pass">
                 <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                   Continue <span> <i class="bi bi-arrow-right"></i></span>
                 </PrimaryButton>
