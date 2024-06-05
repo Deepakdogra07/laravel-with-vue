@@ -2049,8 +2049,8 @@ input[type="file"] {
 	.add_job_srchhs .user-dashboard-search {
 		width: 225px;
 	}
-	.add_job_srchhs .srch_responsive .src_bar {
-		justify-content: start;
+	.add_job_srchhs .srch_responsives {
+		justify-content: start ;
 	}
 
 
@@ -3967,15 +3967,18 @@ input[type="file"] {
 
 @media (max-width:435px) {
 
-	.add_job_srchhs .job-list-search input.user-dashboard-search {
+	.add_job_srchhs .search_bar input.user-dashboard-search {
 		width: 60%;
 	}
 	.add_job_srchhs .button_bs_ryt {
-		margin-top: 60px;
+		margin-top: 54px;
 	}
 	.add_job_srchhs .search_bar {
 		width: 100%;
 		margin-top: 10px;
+	}
+	.business_srccc .business_btn_adds {
+		padding: 12px 24px !important;
 	}
 }
 
@@ -5681,6 +5684,10 @@ form.row.edit_customer label,
 	padding: 10px 30px !important;
 	line-height: 23px;
 	font-size: 17px;
+}
+
+.admin_profile .profile_info a.btn.btn-primary, .admin_profile .update_pass button.rounded-lg {
+    background: #3c5b6f;
 }
 
 .profile_info a.btn.btn-primary:hover, .update_pass button.rounded-lg:hover {
