@@ -6174,3 +6174,13 @@ span.job-filter_text {
     position: relative;
     top: 3px;
 }
+.forgot_Pass button {
+    display: inline-block;
+}
+.forgot_Pass button {
+    display: inline-block;
+    padding-top: 7px !important;
+}
+.forgot_Pass button i {
+    padding-left: 8px;
+}
