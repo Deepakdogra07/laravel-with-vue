@@ -22,6 +22,20 @@ const props = defineProps({
     }
 });
 
+
+// const image_src = reactive({
+//     'employer_statement' : null,
+//     'financial_evidence' : null,
+//     'evidence_self_employment' : null,
+//     'formal_training_evidence' : null,
+// });
+const image_name = reactive({
+    'employer_statement' : null,
+    'financial_evidence' : null,
+    'evidence_self_employment' : null,
+    'formal_training_evidence' : null,
+});
+
 const div_numbers = ref(`step-form-1`),
 document = reactive({}),
 data = {job_id:props.job_id,customer_id:props.customer_id};
@@ -33,16 +47,20 @@ const form = useForm({
     evidence_self_employment:null,
     formal_training_evidence:null,
 });
+
 function show_next_div(div_number) {
     div_numbers.value = `step-form-${div_number + 1}`
 }
 function previous_div(div_number) {
     div_numbers.value = `step-form-${div_number - 1}`
 }
+
 function show_document(type , event){
     form[type] = event.target.files[0];
     document[type] = URL.createObjectURL(event.target.files[0]);
+    image_name[type] = event.target.files[0].name;
 }
+
 
 function submit_form(){
     form.post(route('submit_employment_details'),{
@@ -54,6 +72,8 @@ function submit_form(){
         }
     })
 };
+
+
 
 </script>
 <template>
@@ -141,6 +161,7 @@ function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)">
+                                    <p>{{ image_name.employer_statement }}</p>
                                     <InputError class="mt-2" :message="form.errors.employer_statement"/>
                                 </div>
                             </div>
@@ -216,6 +237,7 @@ function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('financial_evidence',$event)">
+                                    <p>{{ image_name.financial_evidence }}</p>
                                     <InputError class="mt-2" :message="form.errors.financial_evidence"/>
                                 </div>
                             </div>
@@ -308,6 +330,7 @@ function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
+                                    <p>{{ image_name.evidence_self_employment }}</p>
                                     <InputError class="mt-2" :message="form.errors.evidence_self_employment"/>
                                 </div>
                             </div>
@@ -360,6 +383,7 @@ function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
+                                    <p>{{ image_name.evidence_self_employment }}</p>
                                     <InputError class="mt-2" :message="form.errors.evidence_self_employment"/>
                                 </div>
                             </div>
@@ -429,6 +453,7 @@ function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('formal_training_evidence',$event)">
+                                    <p>{{ image_name.formal_training_evidence }}</p>
                                     <InputError class="mt-2" :message="form.errors.formal_training_evidence"/>
                                 </div>
                             </div>
