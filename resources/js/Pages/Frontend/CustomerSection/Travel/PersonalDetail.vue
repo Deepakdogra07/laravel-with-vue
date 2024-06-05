@@ -24,7 +24,11 @@ const props = defineProps({
 
 })
 const countries = Country.getAllCountries(),
-image_src = ref('');
+
+image_src = ref(''),
+image_name = ref('');
+
+
 const form =useForm({
     job_id:props.variable.job_id,
     date_of_travel:props.variable.date_of_travel,
@@ -52,6 +56,8 @@ const form =useForm({
 function upload_image(event){
     form.customer_image = event.target.files[0];
     image_src.value = URL.createObjectURL(event.target.files[0]);
+    image_name.value = event.target.files[0].name;
+    
 }
 
 const submitData = () => {
@@ -103,7 +109,9 @@ function handleChange(type){
                             </svg>
                             <h2 class="choose-para">Upload Passport And Prefill Information</h2>
                             <p class="file-type">Max size 20MB</p>
-                            <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*">
+                            <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*" >
+                            <p>{{ image_name }}</p>
+                            
                         </div>
                     </div>
                 </div>

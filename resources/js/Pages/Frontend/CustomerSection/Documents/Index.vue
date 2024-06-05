@@ -23,6 +23,13 @@ const props = defineProps({
         default: 0
     }
 });
+
+const countries = Country.getAllCountries()
+
+const image_src = ref('')
+const image_name = ref('')
+
+
 const form = useForm({
     job_id: props.job_id,
     customer_id: props.customer_id,
@@ -59,6 +66,13 @@ function submit_form() {
             });
         }
     })
+}
+
+
+function upload_image(event){
+    image_src.value = URL.createObjectURL(event.target.files[0]);
+    image_name.value = event.target.files[0].name;
+    
 }
 
 </script>
@@ -108,6 +122,7 @@ function submit_form() {
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('employment_evidence', $event)">
+                                        <p>{{ image_name }}</p>
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.employment_evidence" />
                             </div>

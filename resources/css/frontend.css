@@ -6163,3 +6163,16 @@ span.job-filter_text {
     background: #09332b !important;
 	border-color: #09332b !important;
 }
+.list_of_jobs .buttons_div .forms-btn, .list_of_jobs .buttons_div .forms-btn-transparent {
+    display: inline-block;
+    text-align: center;
+}
+.list_of_jobs .buttons_div a.forms-btn i, .list_of_jobs .buttons_div .login-btn-main a i {
+    font-size: 19px;
+    padding-left: 10px;
+    line-height: 23px;
+}
+.list_of_jobs .buttons_div a.forms-btn i::before, .list_of_jobs .buttons_div .login-btn-main a i::before {
+    position: relative;
+    top: 3px;
+}

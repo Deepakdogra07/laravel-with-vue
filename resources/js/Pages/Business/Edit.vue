@@ -132,11 +132,15 @@ const active_checkbox =ref({
         technical:''
     });
 
+
 const countries = countryStateCity.Country.getAllCountries(),
-image = ref(form.job_image);
+image_name = ref(''),
+image = ref('');
+
 function selectFile(event){
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
+    image_name.value =event.target.files[0].name;
 }
 
 const submit = () => {
@@ -150,6 +154,11 @@ const submit = () => {
       },
     });
 };
+
+
+
+
+
 // function select_skill(skill){
 //     let index = form.skills_id.findIndex(s => s.id === skill.id);
 //     if(index !== -1){
@@ -561,6 +570,7 @@ console.log(select_class,'selected_class')
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
+                                    <p>{{ image_name }}</p>
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>
