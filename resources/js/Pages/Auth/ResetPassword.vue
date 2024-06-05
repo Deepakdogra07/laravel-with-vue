@@ -47,7 +47,8 @@
 
 
 
-              <div class="flex items-center justify-start mt-4 login-btn-main">
+
+              <div class="flex items-center justify-start mt-4 login-btn-main ">
                 <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                   Reset Password <span><i class="bi bi-arrow-right"></i></span>
                 </PrimaryButton>
