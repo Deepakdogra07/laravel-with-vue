@@ -130,10 +130,10 @@ table.dataTable td img {
 	border-radius: 0px;
 }
 
-/* .category_tables a.paginate_button.current {
-    padding-top: 7px !important;
-    padding-bottom: 8px !important;
-} */
+.category_tables a.paginate_button.current, .categories_inner a.paginate_button.current, .job_admin_all a.paginate_button.current{
+    padding-top: 8px !important;
+    padding-bottom: 6px !important;
+}
 
 @media (max-width:992px) {
 .padding_remove table.dataTable tbody,

@@ -36,8 +36,10 @@ class HomeController extends Controller
         // $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
         // $footer_data = FooterData::first();
         // return Inertia::render('Business/Index',compact('jobs','footer_data'));
+        
+        // return Inertia::render('Business/ViewCustomers',compact('jobs','footer_data'));
 
-        return Inertia::render('Business/ViewCustomers',compact('footer_data','user','applied_customers'));
+        return Inertia::render('Business/Welcome',compact('footer_data','user','applied_customers'));
     }
 
     public function customer_dash(){
