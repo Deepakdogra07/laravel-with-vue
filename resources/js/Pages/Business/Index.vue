@@ -69,7 +69,7 @@ const deletejob = async (id) => {
     <div class="main-outer-section">
         <div class="job-list-search srch_responsive business_srccc add_job_srchhs">
             <div class="container aboutt-width">
-                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
+                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative srch_responsives">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white business_btn_adds" :href="route('business-jobs.create')">Add job</Link>
                     </div>
