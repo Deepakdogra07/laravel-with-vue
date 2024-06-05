@@ -1630,8 +1630,7 @@ input[type="file"] {
 	}
 
 	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle {
-		display: flex;
-		align-items: start;
+		display: flex-start;
 		flex-wrap: nowrap;
 	}
 
@@ -2952,11 +2951,10 @@ input[type="file"] {
 
 @media (max-width:602px) {
 	.business_dashboard_inner div#DataTables_Table_0_filter label {
-		display: flex;
+		display: flex-end;
 		flex-wrap: wrap;
 		font-size: 13px;
 		align-items: center;
-		justify-content: end;
 	}
 
 	.business_dashboard_inner div#DataTables_Table_0_filter label input {
