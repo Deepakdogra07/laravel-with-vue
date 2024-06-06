@@ -112,10 +112,15 @@ onMounted(() => {
 })
 
 const countries = countryStateCity.Country.getAllCountries(),
-    image = ref(form.job_image);
+    image_name = ref(''),
+    image = ref('');
+
+
 function selectFile(event) {
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
+    image_name.value =event.target.files[0].name;
+    console.log(image)
 }
     const active_checkbox =ref({
         documentation:'',
@@ -595,6 +600,7 @@ function checked_event(event) {
                                             <p class="file-type">Max size 20MB</p>
                                             <input class="upload" type="file" id="banner"
                                                 @change="selectFile($event)" />
+                                                <p>{{ image_name }}</p>
                                         </div>
                                     </div>
                                     <InputError class="mt-2" :message="form.errors.job_image" />

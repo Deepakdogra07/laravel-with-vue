@@ -130,9 +130,19 @@ table.dataTable td img {
 	border-radius: 0px;
 }
 
-.category_tables a.paginate_button.current, .categories_inner a.paginate_button.current, .job_admin_all a.paginate_button.current{
+/* .category_tables a.paginate_button.current, .categories_inner a.paginate_button.current, .job_admin_all a.paginate_button.current{
     padding-top: 8px !important;
     padding-bottom: 6px !important;
+} */
+
+/* .job_admin_all a.paginate_button.current{
+    padding-top: 8px !important;
+    padding-bottom: 6px !important;
+} */
+
+.categories_inner a.paginate_button.current{
+    padding-top: 7px !important;
+    padding-bottom: 8px !important;
 }
 
 @media (max-width:992px) {
