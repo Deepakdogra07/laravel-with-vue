@@ -5762,10 +5762,10 @@ form.row.edit_customer label,
 	background: #3c5b6f;
 }
 
-.category_tables a.paginate_button.current,
+/* .category_tables a.paginate_button.current,
 .tesstimonials_bgg a.paginate_button.current {
 	padding-top: 6px;
-}
+} */
 
 .add_customers_inner {
 	padding: 0px 5px !important;
@@ -6184,4 +6184,3 @@ span.job-filter_text {
 .forgot_Pass button i {
     padding-left: 8px;
 }
-
