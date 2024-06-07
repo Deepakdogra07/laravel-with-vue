@@ -195,7 +195,7 @@ function handleChange(type){
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault1"
-                                                id="flexRadioDefault1" v-model="form.gender" value="1">
+                                                id="flexRadioDefault1" v-model="form.gender" value="0">
                                             <label class="form-check-label font-normal" for="flexRadioDefault1">
                                                 Male
                                             </label>

@@ -26,16 +26,23 @@ const form = useForm({
     date_of_travel:null,
     passenger_nationality:null,
     port_of_arrival:null,
+    migrate_country:null
 
 })
 const select_class = ref('');
+const migrate = ref('');
 
 
 function submitform(){
     form.post(route('personal.details',form.job_id));
 }
-function handleCountryInput(){
-    select_class.value = 'Selected_option' ;
+function handleCountryInput(type){
+    if(type == 'nationality'){
+        select_class.value = 'Selected_option' ;
+    }
+    if(type == 'migrate'){
+        migrate.value = 'Selected_option' ;
+    }
 }
 
 </script>
@@ -51,15 +58,15 @@ function handleCountryInput(){
                     <h2 class="mb-3">Travel details</h2>
                     <h4 class="mb-3">Purpose of stay <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                     <label class="flex items-center mb-2">
-                        <TextInput type="checkbox"  class="remember-me-check" name="remember1" value="Tourism" v-model="form.purpose_of_stay" />
+                        <TextInput type="radio"  class="remember-me-check" name="remember1" value="Tourism" v-model="form.purpose_of_stay" />
                         <span class="ml-2 cursor-pointer remember-me">Tourism</span>
                     </label>
                     <label class="flex items-center mb-2">
-                        <TextInput type="checkbox" class="remember-me-check" name="remember1" value="Business" v-model="form.purpose_of_stay"/>
+                        <TextInput type="radio" class="remember-me-check" name="remember1" value="Business" v-model="form.purpose_of_stay"/>
                         <span class="ml-2 cursor-pointer remember-me">Business</span>
                     </label>
                     <label class="flex items-center mb-2">
-                        <TextInput type="checkbox" class="remember-me-check" name="remember1" value="Transit" v-model="form.purpose_of_stay"/>
+                        <TextInput type="radio" class="remember-me-check" name="remember1" value="Transit" v-model="form.purpose_of_stay"/>
                         <span class="ml-2 cursor-pointer remember-me">Transit</span>
                     </label>
                     <InputError  class="mt-2" :message="form.errors.purpose_of_stay"/>
@@ -69,50 +76,60 @@ function handleCountryInput(){
                         <div class="travel-detail">
                             <h4 class="mb-3">Traditional visa <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (individual)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="relative_option_visa"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="relative_option_visa"  v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Relative Option Visa</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="partner_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="partner_visa(consultation)"  v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Partner Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="investor_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="investor_visa(consultation)"  v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Investor Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="checkbox" class="remember-me-check" name="remember" value="other(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="other(consultation)"  v-model="form.type_of_visa"/>
                                 <span class="ml-2 cursor-pointer remember-me">Other (consultation)</span>
                             </label>
                         </div>
                         <InputError  class="mt-2" :message="form.errors.type_of_visa"/>
                     </div>
                     <div class="col-md-6 col-12 travel-form-main">
-                            <div class="col-md-12 mt-4">
-                                <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                                <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
-
-                                <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/>
+                            <div class="col-md-12 natoinality_row mt-4 row">
+                                <div class="col-md-6 col-12 mt-4 spacinf_rigght">
+                                    <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
+                                    <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/>
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
-                            </div>
-                            <div class="row natoinality_row">
+                                </div>
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Passenger nationality <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
-                                <select class="form-select select_option mt-2" :class="select_class" @change="handleCountryInput()" v-model="form.passenger_nationality">
+                                <select class="form-select select_option mt-2" :class="select_class" @change="handleCountryInput('nationality')" v-model="form.passenger_nationality">
                                     <option selected :value="null" >----</option>
                                     <option v-for="country in countries" :value="country.name">{{ country.name }}</option>
                                 </select>
                                 <InputError class="mt-2" :message="form.errors.passenger_nationality"/>
+                            </div>
+                            </div>
+                            <div class="row natoinality_row">
+                                <div class="col-md-6 col-12 mt-4 spacinf_rigght">
+                                <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
+                                <span class="label text-label">Country To Immigrate <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
+
+                                <select class="form-select select_option mt-2" :class="migrate" @change="handleCountryInput('migrate')" v-model="form.migrate_country">
+                                    <option selected :value="null" >----</option>
+                                    <option v-for="country in countries" :value="country.name">{{ country.name }}</option>
+                                </select>
+                                <InputError class="mt-2" :message="form.errors.migrate_country"/>
                             </div>
                             <div class="col-md-6 col-12 mt-4">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->

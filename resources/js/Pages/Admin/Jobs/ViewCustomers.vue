@@ -1,14 +1,11 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { router, Link } from '@inertiajs/vue3';
-import { onMounted, reactive, ref } from 'vue';
-import Swal from 'sweetalert2';
-import { toast } from 'vue3-toastify';
+import {  Link } from '@inertiajs/vue3';
+import { onMounted, ref } from 'vue';
 import 'vue3-toastify/dist/index.css';
 import * as countryStateCity from 'country-state-city';
 import moment from 'moment';
 import axios from 'axios';
-import DataTables from 'datatables.net';
 
 
 const props = defineProps({

@@ -70,6 +70,7 @@ class JobApplicationController extends Controller
             "city_of_birth" => 'required',
             "gender" => 'required',
             "martial_status" => 'required',
+            "migrate_country" => 'required',
             "passport_number" => 'required',
             "issuing_authority" => 'required',
             "passport_date_of_expiry" => 'required',
@@ -88,9 +89,8 @@ class JobApplicationController extends Controller
         $customer_personal_details->fill($customer_personal_detail);
         if(isset($request->customer_image)&& $request->file('customer_image')){
             $image = $request->file('customer_image');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/personal/'.$name, file_get_contents($image));
-            $customer_personal_details->customer_image = '/storage/customer/personal/' .$name;
+            $imageName = insertData($image,'customer/personal/');
+            $customer_personal_details->customer_image = '/storage/' .$imageName;
         }
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
@@ -119,7 +119,7 @@ class JobApplicationController extends Controller
             $create_customer  = $already_customer;
         }
         
-        return redirect()->route('employment.details',[$request->job_id,$create_customer->id]);
+        return redirect()->route('employment.details',[$request->job_id,$customer_personal_details->id]);
 
         
         
@@ -129,42 +129,44 @@ class JobApplicationController extends Controller
         return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
     public function submit_employment_details(Request $request){
-       
+    //    dd($request->all());
         $validator = Validator::make($request->all(), [
             "employer_statement" => 'required',
             "financial_evidence" => 'required',
             "evidence_self_employment" => 'required',
+            "evidence_self_employment_aus" => 'required',
             "formal_training_evidence" => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
         }
-
+        // $data = insertData('test','/storage/');
         $customer_employments = new CustomerTraining();
         $customer_employments->fill($request->all());
         if(isset($request->employer_statement)&& $request->file('employer_statement')){
             $image = $request->file('employer_statement');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/employments/'.$name, file_get_contents($image));
-            $customer_employments->employer_statement = '/storage/customer/employments/' .$name;
+            $imageName = insertData($image,'customer/employments/');
+            $customer_employments->employer_statement = '/storage/' .$imageName;
         }
         if(isset($request->financial_evidence)&& $request->file('financial_evidence')){
             $image = $request->file('financial_evidence');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/employments/'.$name, file_get_contents($image));
-            $customer_employments->financial_evidence = '/storage/customer/employments/' .$name;
+            $imageName = insertData($image,'customer/employments/');
+            $customer_employments->financial_evidence = '/storage/' .$imageName;
         }
         if(isset($request->evidence_self_employment)&& $request->file('evidence_self_employment')){
             $image = $request->file('evidence_self_employment');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/employments/'.$name, file_get_contents($image));
-            $customer_employments->evidence_self_employment = '/storage/customer/employments/' .$name;
+            $imageName = insertData($image,'customer/employments/');
+            $customer_employments->evidence_self_employment = '/storage/' .$imageName;
+        }
+        if(isset($request->evidence_self_employment_aus)&& $request->file('evidence_self_employment_aus')){
+            $image = $request->file('evidence_self_employment_aus');
+            $imageName = insertData($image,'customer/employments/');
+            $customer_employments->evidence_self_employment_aus = '/storage/' .$imageName;
         }
         if(isset($request->formal_training_evidence)&& $request->file('formal_training_evidence')){
             $image = $request->file('formal_training_evidence');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/employments/'.$name, file_get_contents($image));
-            $customer_employments->formal_training_evidence = '/storage/customer/employments/' .$name;
+            $imageName = insertData($image,'customer/employments/');
+            $customer_employments->formal_training_evidence = '/storage/' .$imageName;
         }
         $customer_employments->updated_at = null;
         $customer_employments->save();
@@ -198,63 +200,53 @@ class JobApplicationController extends Controller
         $customer->customer_id = $request->customer_id;
         if(isset($request->employment_evidence)&& $request->file('employment_evidence')){
             $image = $request->file('employment_evidence');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->employment_evidence = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->employment_evidence = '/storage/' .$imageName;
         }
         if(isset($request->licences)&& $request->file('licences')){
             $image = $request->file('licences');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->licences = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->licences = '/storage/' .$imageName;
         }
         if(isset($request->kitchen_area)&& $request->file('kitchen_area')){
             $image = $request->file('kitchen_area');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->kitchen_area = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->kitchen_area = '/storage/' .$imageName;
         }
         if(isset($request->cooking_tech)&& $request->file('cooking_tech')){
             $image = $request->file('cooking_tech');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->cooking_tech = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->cooking_tech = '/storage/' .$imageName;
         }
         if(isset($request->ingredients)&& $request->file('ingredients')){
             $image = $request->file('ingredients');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->ingredients = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->ingredients = '/storage/' .$imageName;
         }
         if(isset($request->dish)&& $request->file('dish')){
             $image = $request->file('dish');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->dish = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->dish = '/storage/' .$imageName;
         }
         if(isset($request->clean_up)&& $request->file('clean_up')){
             $image = $request->file('clean_up');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->clean_up = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->clean_up = '/storage/' .$imageName;
         }
         if(isset($request->evidence_image)&& $request->file('evidence_image')){
             $image = $request->file('evidence_image');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->evidence_image = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->evidence_image = '/storage/' .$imageName;
         }
         if(isset($request->resume)&& $request->file('resume')){
             $image = $request->file('resume');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/resume/'.$name, file_get_contents($image));
-            $customer->resume = '/storage/customer/resume/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->resume = '/storage/' .$imageName;
         }
         if(isset($request->is_australia)&& $request->file('is_australia')){
             $image = $request->file('is_australia');
-            $name = uniqid().'_'.time().'_'.'.'.$image->getClientOriginalExtension();
-            Storage::disk('public')->put('customer/documents/'.$name, file_get_contents($image));
-            $customer->is_australia = '/storage/customer/documents/' .$name;
+            $imageName = insertData($image,'customer/documents/');
+            $customer->is_australia = '/storage/' .$imageName;
         }
 
 

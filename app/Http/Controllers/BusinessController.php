@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JobStatus;
 use DateTime;
 use App\Models\Jobs;
 use Inertia\Inertia;
@@ -317,7 +318,7 @@ class BusinessController extends Controller
 
     public function job_for_customer($job_id)
     {
-        $applied_customers = Customer::where('job_id', $job_id)->with('status')->get();
+        $applied_customers = JobStatus::whereIn('job_id',$job_id)->with('customers')->get();
         $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->count();
         $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->count();
         $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->count();
@@ -334,9 +335,32 @@ class BusinessController extends Controller
         ];
         return Inertia::render('Business/ViewCustomers', compact('applied_customers', 'job_id', 'status'));
     }
-    public function data_filteration($job_id, $status)
+    public function customer_filteration($status)
     {
-        $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->leftJoin('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->where('jobs_with_customer_status.status', $status)->with('status')->get();
+        $user_id = Auth::user()->id;
+        $job_id = Jobs::where('user_id',$user_id)->pluck('id')->toArray();
+        
+        $applied_customers = JobStatus::where('status',$status)->whereIn('job_id',$job_id)->with('customers','jobs')->get();
+        // dd($applied_customers);
         return response()->json(['applied_customers' => $applied_customers]);
+    }
+    public function customer_search($string)
+    {
+        $user_id = Auth::user()->id;
+        $job_id = Jobs::where('user_id',$user_id)->pluck('id')->toArray();
+        
+        $applied_customers = JobStatus::whereIn('jobs_with_customer_status.job_id',$job_id)
+        ->whereHas('customers', function ($query) use ($string) {
+            $query->where('first_name', 'like', "%{$string}%");
+        })
+        ->orwhereHas('jobs', function ($query) use ($string) {
+            $query->where('job_title', 'like', "%{$string}%");
+        })->with('customers','jobs')->get();
+        return response()->json(['applied_customers' => $applied_customers]);
+    }
+    public function jobs_search($string){
+        $jobs = Jobs::where('user_id', Auth::user()->id)->where('job_title','like',"%$string%")->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get(); 
+        return response()->json(['jobs' => $jobs]);
+
     }
 }

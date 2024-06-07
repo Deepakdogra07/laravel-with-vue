@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
-use App\Models\Testimonial;
-use App\Models\Slider;
+use App\Models\Jobs;
 use App\Models\Logo;
-use App\Models\FooterData;
+use Inertia\Inertia;
+use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Customer;
-use App\Models\Jobs;
+use App\Models\JobStatus;
+use App\Models\FooterData;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Models\CustomerStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -31,15 +33,25 @@ class HomeController extends Controller
         $footer_data = FooterData::first();
         $user = Auth::user();
         $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
-        // $total_customers = Jobs::join('customers_personal_details','customers_personal_details.job_id','jobs.id')->count();
-        $applied_customers = Customer::whereIn('job_id',$jobs_created)->with('status','jobs')->get();
-        // $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
-        // $footer_data = FooterData::first();
-        // return Inertia::render('Business/Index',compact('jobs','footer_data'));
+        $applied_customers = JobStatus::whereIn('job_id',$jobs_created)->with('customers','jobs')->get();
+        $active = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 0)->count();
+        $awaited = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 1)->count();
+        $reviewed = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 2)->count();
+        $contacted = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 3)->count();
+        $hired = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 4)->count();
+        $rejected = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 5)->count();
+        $status = [
+           'active' => $active,
+           'awaited' => $awaited,
+           'reviewed' => $reviewed,
+           'contacted' => $contacted,
+           'hired' => $hired,
+           'rejected' => $rejected,
+        ];
+        // dd($applied_customers);
         
         // return Inertia::render('Business/ViewCustomers',compact('jobs','footer_data'));
-
-        return Inertia::render('Business/Welcome',compact('footer_data','user','applied_customers'));
+        return Inertia::render('Business/Welcome',compact('footer_data','user','applied_customers','status'));
     }
 
     public function customer_dash(){
