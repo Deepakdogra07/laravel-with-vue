@@ -45,6 +45,7 @@ const form = useForm({
     employer_statement:null,
     financial_evidence:null,
     evidence_self_employment:null,
+    evidence_self_employment_aus:null,
     formal_training_evidence:null,
 });
 
@@ -56,6 +57,7 @@ function previous_div(div_number) {
 }
 
 function show_document(type , event){
+    console.log(type,'123456')
     form[type] = event.target.files[0];
     document[type] = URL.createObjectURL(event.target.files[0]);
     image_name[type] = event.target.files[0].name;
@@ -160,7 +162,7 @@ function submit_form(){
                                     </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)" >
                                     <p>{{ image_name.employer_statement }}</p>
                                     <InputError class="mt-2" :message="form.errors.employer_statement"/>
                                 </div>
@@ -373,7 +375,7 @@ function submit_form(){
                         <div class="col-12 employment_next">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.evidence_self_employment" alt="" srcset="">
+                                    <img :src="document.evidence_self_employment_aus" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -382,9 +384,9 @@ function submit_form(){
                                     </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
-                                    <p>{{ image_name.evidence_self_employment }}</p>
-                                    <InputError class="mt-2" :message="form.errors.evidence_self_employment"/>
+                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
+                                    <p>{{ image_name.evidence_self_employment_aus }}</p>
+                                    <InputError class="mt-2" :message="form.errors.evidence_self_employment_aus"/>
                                 </div>
                             </div>
                         </div>

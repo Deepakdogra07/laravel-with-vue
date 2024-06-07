@@ -142,9 +142,8 @@ class JobsController extends Controller
          $job->recommended_skills = json_encode($request->recommended_skills);
          if ($request->hasFile('job_image')) {
             $image = $request->file('job_image');
-            $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
-            $job->job_image = '/storage/jobs/' . $name;
+            $imageName = insertData($image,'jobs/');
+            $job->job_image = '/storage/' . $imageName;
          }
          $job->user_id = auth()->user()->id;
 
@@ -267,9 +266,8 @@ class JobsController extends Controller
             }
 
             $image = $request->file('job_image');
-            $name = uniqid() . '_' . time() . '_' . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->put('jobs/' . $name, file_get_contents($image));
-            $job->job_image = '/storage/jobs/' . $name;
+            $imageName = insertData($image,'jobs/');
+            $job->job_image = '/storage/' . $imageName;
          }
          $job->user_id = auth()->user()->id;
          $job->update();

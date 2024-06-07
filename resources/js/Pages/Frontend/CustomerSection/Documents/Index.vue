@@ -10,6 +10,7 @@ import "../../../../../css/frontend.css";
 import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import { reactive, ref } from 'vue';
+import { Country } from 'country-state-city';
 
 const props = defineProps({
     job_id: {
@@ -23,7 +24,6 @@ const props = defineProps({
         default: 0
     }
 });
-
 const countries = Country.getAllCountries()
 
 const image_src = ref('')
@@ -498,7 +498,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.kitchen_area" alt="" srcset="">
+                                    <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -508,7 +508,7 @@ function upload_image(event){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('kitchen_area', $event)">
+                                        @change="show_document('kitchen_area', $event)" accept="video/*">
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.kitchen_area" />
                             </div>
@@ -563,7 +563,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.ingredients" alt="" srcset="">
+                                    <video :src="document.ingredients" controls v-if="document.ingredients"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -573,7 +573,7 @@ function upload_image(event){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('ingredients', $event)">
+                                        @change="show_document('ingredients', $event)" accept="video/*">
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.ingredients" />
                             </div>
@@ -615,7 +615,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.cooking_tech" alt="" srcset="">
+                                    <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -625,7 +625,7 @@ function upload_image(event){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('cooking_tech', $event)">
+                                        @change="show_document('cooking_tech', $event)" accept="video/*">
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.cooking_tech" />
                             </div>
@@ -662,7 +662,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.dish" alt="" srcset="">
+                                    <video :src="document.dish" controls v-if="document.dish"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -672,7 +672,7 @@ function upload_image(event){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('dish', $event)">
+                                        @change="show_document('dish', $event)" accept="video/*">
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.dish" />
                             </div>
@@ -709,7 +709,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.clean_up" alt="" srcset="">
+                                    <video :src="document.clean_up" controls v-if="document.clean_up"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -719,7 +719,7 @@ function upload_image(event){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('clean_up', $event)">
+                                        @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.clean_up" />
                             </div>

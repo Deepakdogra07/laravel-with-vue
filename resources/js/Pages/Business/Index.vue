@@ -2,7 +2,7 @@
 import { Head, Link, router } from '@inertiajs/vue3';
 import Header from '../Frontend/Header.vue';
 import Footer from '../Frontend/Footer.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Swal from 'sweetalert2';
 
 
@@ -24,6 +24,7 @@ const setActiveSpan = (spanNumber) => {
     activeSpan.value = spanNumber; // Set the clicked span as active
   }
 };
+
 
 
 const deletejob = async (id) => {
@@ -61,6 +62,29 @@ const deletejob = async (id) => {
         });
     }
 };
+const refreshDataTable = ref(0);
+const totaljobs = ref([]);
+
+
+onMounted(() => {
+        totaljobs.value = props.jobs;
+        refreshDataTable.value++;
+});
+
+async function search_data(event){
+    let string = event.target.value;
+    if(string.length > 0){
+        try {
+            const response = await axios.get(route('jobs.search',string));
+            totaljobs.value = response.data.jobs;
+            refreshDataTable.value++;
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }else{
+      location.reload();
+    }
+}
 
 </script>
 
@@ -75,13 +99,13 @@ const deletejob = async (id) => {
                     </div>
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
-                        <Link>Employee</Link>
+                        <Link :href="route('dashboard')">Employee</Link>
                         <Link>Messages</Link>
                     </div> 
                     
                     <div class="relative search_bar">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-                        <input type="search" class="user-dashboard-search" placeholder="Search employee">
+                        <input type="search" class="user-dashboard-search" @input="search_data($event)" placeholder="Search job">
                     </div>
                 </div>
             </div>
@@ -147,7 +171,7 @@ const deletejob = async (id) => {
                     </ul>
                 </div>
                 <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
-                    <DataTable class="display job-data-table business_table business_dash_table business_table_dashboard" :options="options" style="border:2px black ;width:100%">
+                    <DataTable :key="refreshDataTable" class="display job-data-table business_table business_dash_table business_table_dashboard" :options="options" style="border:2px black ;width:100%">
                             <thead>
                                 <tr class="th-row">
                                     <th>S.No</th>
@@ -158,7 +182,7 @@ const deletejob = async (id) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(job, index) in jobs" :key="job.id">
+                                <tr v-for="(job, index) in totaljobs" :key="job.id">
                                     <td>{{ index + 1 }}</td>
                                     <td>
                                         {{ job?.job_title }}

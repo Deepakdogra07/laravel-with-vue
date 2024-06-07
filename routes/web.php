@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BusinessController;
@@ -120,6 +121,9 @@ Route::middleware(['auth', 'business'])->group(function () {
     Route::resource('business-jobs',BusinessController::class);
     Route::post('business-jobs/updates/{id}',[BusinessController::class,'update'])->name('business-jobs.updates');
     Route::get('business-jobs-customers/{jobId}',[BusinessController::class, 'job_for_customer'])->name('business_job_for_customers');
+    Route::get('customer-filteration/{status}',[BusinessController::class,'customer_filteration'])->name('customer.filteration');
+    Route::get('customer-search/{status}',[BusinessController::class,'customer_search'])->name('customer.search');
+    Route::get('jobs-search/{status}',[BusinessController::class,'jobs_search'])->name('jobs.search');
     
 });
 
@@ -185,3 +189,6 @@ Route::post('/submit_employment_details', [JobApplicationController::class,'subm
 
 Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');
 Route::post('/submit_customers_documents', [JobApplicationController::class,'submit_customers_documents'])->name('submit_customers_documents');
+
+
+Route::get('testing',[TestController::class,'index']);
