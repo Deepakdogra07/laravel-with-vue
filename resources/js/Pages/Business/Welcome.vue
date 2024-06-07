@@ -53,7 +53,6 @@ async function search_datatable(event){
             const response = await axios.get(route('customer.search',string));
             appliedCustomers.value = response.data.applied_customers;
             refreshDataTable.value++;
-            activeSpan.value = spanNumber;
         } catch (error) {
             console.error('Error:', error);
         }
