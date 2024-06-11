@@ -4,6 +4,7 @@ import Header from '../Frontend/Header.vue';
 import Footer from '../Frontend/Footer.vue';
 import { onMounted, ref } from 'vue';
 import Swal from 'sweetalert2';
+import { Country } from 'country-state-city';
 
 
 
@@ -13,20 +14,14 @@ const props = defineProps({
     },
     jobs: {
         type: Array
+    },
+    seniorities: {
+        type: Array
+    },
+    positions: {
+        type: Array
     }
 });
-
-const activeSpan = ref(null);
-const setActiveSpan = (spanNumber) => {
-  if (activeSpan.value === spanNumber) {
-    activeSpan.value = null; // Toggle off if clicking on the same span
-  } else {
-    activeSpan.value = spanNumber; // Set the clicked span as active
-  }
-};
-
-
-
 const deletejob = async (id) => {
     const { value: confirmed } = await Swal.fire({
         title: 'Are you sure?',
@@ -67,24 +62,58 @@ const totaljobs = ref([]);
 
 
 onMounted(() => {
-        totaljobs.value = props.jobs;
-        refreshDataTable.value++;
+    totaljobs.value = props.jobs;
+    refreshDataTable.value++;
 });
 
-async function search_data(event){
+async function search_data(event) {
     let string = event.target.value;
-    if(string.length > 0){
+    if (string.length > 0) {
         try {
-            const response = await axios.get(route('jobs.search',string));
+            const response = await axios.get(route('jobs.search', string));
             totaljobs.value = response.data.jobs;
             refreshDataTable.value++;
         } catch (error) {
             console.error('Error:', error);
         }
-    }else{
-      location.reload();
+    } else {
+        location.reload();
     }
 }
+
+const countries = Country.getAllCountries();
+function filterData(type, event) {
+    let total_jobs = totaljobs.value;
+    if (type == 'seniority') {
+        totaljobs.value = total_jobs.filter(target => target.seniority_id == event.target.value);
+        refreshDataTable.value++;
+    }
+    if (type == 'position') {
+        totaljobs.value = total_jobs.filter(target => target.position_id == event.target.value);
+        refreshDataTable.value++;
+    }
+    if (type == 'location') {
+        totaljobs.value = total_jobs.filter(target => target.job_country == event.target.value);
+        refreshDataTable.value++;
+    }
+    if (type == 'sort') {
+        if (event.target.value == 'asc') {
+            totaljobs.value = total_jobs.sort();
+        } else if (event.target.value == 'desc') {
+            totaljobs.value = total_jobs.reverse();
+        }
+        refreshDataTable.value++;
+    }
+
+
+
+    if (event.target.value == '') {
+        totaljobs.value = props.jobs;
+        refreshDataTable.value++;
+    }
+}
+
+
 
 </script>
 
@@ -95,17 +124,19 @@ async function search_data(event){
             <div class="container aboutt-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative srch_responsives">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
-                        <Link class="btn btn-sm btn-success text-white business_btn_adds" :href="route('business-jobs.create')">Add job</Link>
+                        <Link class="btn btn-sm btn-success text-white business_btn_adds"
+                            :href="route('business-jobs.create')">Add job</Link>
                     </div>
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
                         <Link>Messages</Link>
-                    </div> 
-                    
+                    </div>
+
                     <div class="relative search_bar">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-                        <input type="search" class="user-dashboard-search" @input="search_data($event)" placeholder="Search job">
+                        <input type="search" class="user-dashboard-search" @input="search_data($event)"
+                            placeholder="Search job">
                     </div>
                 </div>
             </div>
@@ -115,7 +146,7 @@ async function search_data(event){
                 <div class="filter-status row">
                     <div class="col-md-8 width_mobile p-0">
                         <div class="d-flex justify-between align-items-center">
-                            <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
+                            <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                <li class="active_menu">
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
                                         Active</span>
@@ -140,73 +171,94 @@ async function search_data(event){
                                         Rejected</span>
                                 </li>
                                 
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
 
                     <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job">
-                        <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add job</Link>
+                        <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add
+                        job</Link>
                     </div>
                 </div>
                 <div class="main-job-filter mt-5">
                     <ul class="d-flex align-items-center flex-wrap pl-0">
-                        <li>
-                            <span>Yes (2)</span>
-                        </li>
-                        <li>
+                        <!-- <li>
                             <span>Maybe (2)</span>
+                        </li> -->
+                        <li>
+                            <span>Seniority:
+                                <select class="job-filter_text" @change="filterData('seniority', $event)">
+                                    <option value="">Select</option>
+                                    <option v-for="seniority in seniorities" :value="seniority.id">{{ seniority.name }}
+                                    </option>
+                                </select>
+                            </span>
                         </li>
                         <li>
-                            <span>Expiring (2)</span>
+                            <span>Positions:
+                                <select class="job-filter_text" @change="filterData('position', $event)">
+                                    <option value="">Select</option>
+                                    <option v-for="postion in positions" :value="postion.id">{{ postion.name }}</option>
+                                </select>
+                            </span>
                         </li>
                         <li>
-                            <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
+                            <span>Location:
+                                <select @change="filterData('location', $event)" class="job-filter_text">
+                                    <option value="">Any</option>
+                                    <option v-for="country in countries" :value="country.name">{{
+                                        country.name }}</option>
+                                </select>
+                            </span>
                         </li>
-                        <li>
-                            <span>Location: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
-                        </li>
-                        <li>
-                            <span>Sort: <span class="job-filter_text">Apply date (newest)</span> <i class="bi bi-chevron-down pl-3"></i></span>
-                        </li>
+                        <span>
+                            Sort:
+                            <select @change="filterData('sort', $event)" class="job-filter_text">
+                                <option value="asc">Apply date (newest)</option>
+                                <option value="desc">Apply date (oldest)</option>
+                            </select>
+                        </span>
                     </ul>
                 </div>
                 <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
-                    <DataTable :key="refreshDataTable" class="display job-data-table business_table business_dash_table business_table_dashboard" :options="options" style="border:2px black ;width:100%">
-                            <thead>
-                                <tr class="th-row">
-                                    <th>S.No</th>
-                                    <th>Job Title</th>
-                                    <th>Positions</th>
-                                    <th>Seniority</th>
-                                    <th class="sorting_icon">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(job, index) in totaljobs" :key="job.id">
-                                    <td>{{ index + 1 }}</td>
-                                    <td>
-                                        {{ job?.job_title }}
-                                    </td>
-                                    <td> {{ job?.position?.name }}</td>
-                                    <td>
-                                        {{ job?.seniority?.name }}
-                                    </td>
+                    <DataTable :key="refreshDataTable"
+                        class="display job-data-table business_table business_dash_table business_table_dashboard"
+                        :options="options" style="border:2px black ;width:100%">
+                        <thead>
+                            <tr class="th-row">
+                                <th>S.No</th>
+                                <th>Job Title</th>
+                                <th>Positions</th>
+                                <th>Seniority</th>
+                                <th class="sorting_icon">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(job, index) in totaljobs" :key="job.id">
+                                <td>{{ index + 1 }}</td>
+                                <td>
+                                    {{ job?.job_title }}
+                                </td>
+                                <td> {{ job?.position?.name }}</td>
+                                <td>
+                                    {{ job?.seniority?.name }}
+                                </td>
 
-                                    <td>
-                                        <Link :href="route('business-jobs.show', job.id)" class="btn btn-info btn-sm">
-                                        <i class="fas fa-eye"></i>
-                                        </Link>
-                                        &nbsp;
-                                        <Link :href="route('business-jobs.edit', job.id)" class="btn btn-primary btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                        </Link>
-                                        &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deletejob(job.id)"><i
-                                                class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </DataTable>
+                                <td>
+                                    <Link :href="route('business-jobs.show', job.id)" class="btn btn-info btn-sm">
+                                    <i class="fas fa-eye"></i>
+                                    </Link>
+                                    &nbsp;
+                                    <Link :href="route('business-jobs.edit', job.id)" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                    </Link>
+                                    &nbsp;
+                                    <button class="btn btn-danger btn-sm" @click="deletejob(job.id)"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </DataTable>
                 </div>
             </div>
         </div>
@@ -215,11 +267,13 @@ async function search_data(event){
 
 </template>
 <style scoped>
- .main-outer-section{
-        background-color: #F2F2F2;
-    }
-    .active-filter {
-        color: #1A9882; /* Change color as per your requirement */
-        border-bottom: 2px solid #1A9882;
-    }
+.main-outer-section {
+    background-color: #F2F2F2;
+}
+
+.active-filter {
+    color: #1A9882;
+    /* Change color as per your requirement */
+    border-bottom: 2px solid #1A9882;
+}
 </style>

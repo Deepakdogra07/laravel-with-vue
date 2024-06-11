@@ -41,6 +41,9 @@ class JobApplicationController extends Controller
             "date_of_travel" => 'required',
             "passenger_nationality" => 'required',
             "port_of_arrival" => 'required',
+            "migrate_country" => 'required',
+        ],[
+            'migrate_country.required' =>'The country to immigrate field is required.'
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
@@ -64,13 +67,12 @@ class JobApplicationController extends Controller
             "first_name" => 'required',
             "last_name" => 'required',
             "email" => 'required',
-            "confirm_email" => 'required',
+            "confirm_email" => 'required|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
             "city_of_birth" => 'required',
             "gender" => 'required',
             "martial_status" => 'required',
-            "migrate_country" => 'required',
             "passport_number" => 'required',
             "issuing_authority" => 'required',
             "passport_date_of_expiry" => 'required',

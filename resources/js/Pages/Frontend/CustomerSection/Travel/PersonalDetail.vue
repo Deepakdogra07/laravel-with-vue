@@ -24,7 +24,6 @@ const props = defineProps({
 
 })
 const countries = Country.getAllCountries(),
-
 image_src = ref(''),
 image_name = ref('');
 
@@ -36,6 +35,7 @@ const form =useForm({
     port_of_arrival:props.variable.port_of_arrival,
     purpose_of_stay:props.variable.purpose_of_stay,
     type_of_visa:props.variable.type_of_visa,
+    migrate_country:props.variable.migrate_country,
     customer_image : null,
     first_name:null,
     last_name:null,
@@ -207,7 +207,8 @@ function handleChange(type){
                                                 Female
                                             </label>
                                         </div>
-                                    </div>
+                                        </div>
+                                    <InputError class="mt-2" v-if="props.errors.gender" :message="props.errors.gender[0]"/>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +275,7 @@ function handleChange(type){
                                 </div>
                             </div>
                             <div class="flex items-center login-btn-main">
-                                <PrimaryButton class="forms-btn" type="submit">
+                                <PrimaryButton class="forms-btn" type="submit" :disabled="form.processing">
                                     Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>

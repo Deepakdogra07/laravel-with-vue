@@ -124,6 +124,7 @@ Route::middleware(['auth', 'business'])->group(function () {
     Route::get('customer-filteration/{status}',[BusinessController::class,'customer_filteration'])->name('customer.filteration');
     Route::get('customer-search/{status}',[BusinessController::class,'customer_search'])->name('customer.search');
     Route::get('jobs-search/{status}',[BusinessController::class,'jobs_search'])->name('jobs.search');
+    Route::post('change-status',[BusinessController::class,'change_status'])->name('change.status');
     
 });
 
