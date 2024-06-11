@@ -4,6 +4,8 @@ import Header from '../Frontend/Header.vue';
 import Footer from '../Frontend/Footer.vue';
 import moment from 'moment';
 import { onMounted, ref } from 'vue';
+import { Country } from 'country-state-city';
+import { toast } from 'vue3-toastify';
 
 
 const props = defineProps({
@@ -18,6 +20,9 @@ const props = defineProps({
   },
   status: {
     type: Array
+  },
+  jobs:{
+    type:Array
   }
 });
 function formatDateTime(date) {
@@ -60,7 +65,62 @@ async function search_datatable(event){
       location.reload();
     }
 }
+const countries = Country.getAllCountries();
+function filterData(type, event) {
+  let customers_data = props.applied_customers;
+  // appliedCustomers.value ?? 
+    console.log(customers_data,'customers_data')
+    if(type=='location'){
+    appliedCustomers.value = customers_data.filter(customer=> customer.customers.migrate_country == event.target.value);
+    refreshDataTable.value++;
+  }
+  if(type=='job_title'){
+    appliedCustomers.value = customers_data.filter(jobs=> jobs.job_id == event.target.value);
+    refreshDataTable.value++;
+  }
+  // if(type=='applied_date'){
+  //   if(event.target.value =='desc'){
+  //     appliedCustomers.value = customers_data.sort(i=>i.created_at);
+  //   }
+  //   else if(event.target.value =='asc'){
+  //      appliedCustomers.value = customers_data.reverse();
+  //   }
+  //   refreshDataTable.value++;
+  // }
+  
 
+
+
+  if (event.target.value == '') {
+        appliedCustomers.value = customers_data;
+        refreshDataTable.value++;
+    }
+}
+const navbar_key = ref(0);
+async function changeStatus(customer_id, job_id, event) {
+  const newStatus = event.target.value;
+
+  if (newStatus) {
+    try {
+      const response = await axios.post('/change-status', {
+        customer_id: customer_id,
+        job_id: job_id,
+        status: newStatus
+      });
+      navbar_key.value++;
+      toast('Status updated successfully', {
+          autoClose: 2000,
+          theme: 'dark',
+        });
+        refreshDataTable.value++;
+    } catch (error) {
+      toast(error, {
+          autoClose: 2000,
+          theme: 'dark',
+        });
+    }
+  }
+}
 </script>
 
 <template>
@@ -92,7 +152,7 @@ async function search_datatable(event){
         <div class="filter-status row">
           <div class="col-md-8 width_mobile p-0">
             <div class="d-flex justify-between align-items-center">
-              <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
+              <ul class="d-flex align-items-center flex-wrap pl-0 business_links" :key="navbar_key">
                 <li>
                   <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
                     Active</span>
@@ -130,24 +190,42 @@ async function search_datatable(event){
         </div>
         <div class="main-job-filter mt-5">
           <ul class="d-flex align-items-center flex-wrap pl-0">
-            <li>
+            <!-- <li>
               <span>Yes (2)</span>
             </li>
             <li>
               <span>Maybe (2)</span>
-            </li>
+            </li> -->
             <li>
-              <span>Expiring (2)</span>
+              <span>Job:
+                  <select class="job-filter_text" @change="filterData('job_title',$event)">
+                    <option value=""> Any</option>
+                    <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
+                  </select>
+              </span>
             </li>
-            <li>
+            <!-- <li>
               <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
-            </li>
+            </li> -->
             <li>
-              <span>Location: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
-            </li>
+                            <span>Location:
+                                <select @change="filterData('location', $event)" class="job-filter_text">
+                                    <option value="">Any</option>
+                                    <option v-for="country in countries" :value="country.name">{{
+                                        country.name }}</option>
+                                </select>
+                            </span>
+                        </li>
             <li>
-              <span>Sort: <span class="job-filter_text">Apply date (newest)</span> <i
-                  class="bi bi-chevron-down pl-3"></i></span>
+              <span>Sort:
+                  <span class="job-filter_text">
+                    <select @change="filterData('applied_date',$event)">
+                      <option value="">Any</option>
+                      <option value="desc">Apply Date(newest)</option>
+                      <option value="asc">Apply Date(oldest)</option>
+                    </select>
+                  </span>
+              </span>
             </li>
           </ul>
         </div>
@@ -173,7 +251,7 @@ async function search_datatable(event){
                   <input type="checkbox">
                   {{ customer?.customers?.first_name }}
                 </td>
-                <td> {{ customer?.jobs.job_title }}</td>
+                <td> {{ customer?.jobs?.job_title }}</td>
 
                 <td>
                   <div v-if="customer?.status == 0" style="color:green">Active </div>
@@ -199,14 +277,19 @@ async function search_datatable(event){
 
                 </td>
                 <td>
-                  <div v-if="customer?.status != 5">
-                    <button class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-sm btn-primary"><i class="fas fa-question"></i></button>
-                    <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
-                  </div>
-                  <div v-else>
+                  <!-- <div v-if="customer?.status < 5"> -->
+                    <select class="form-control" style="width:112px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
+                      <option value="0"> Active</option>
+                      <option value="1"> Awaiting Review</option>
+                      <option value="2"> Reviewed</option>
+                      <option value="3"> Contacted</option>
+                      <option value="4"> Hired</option>
+                      <option value="5"> Rejected</option>
+                    </select>
+                  <!-- </div> -->
+                  <!-- <div v-else>
                     <span class="text-danger">Rejected</span>
-                  </div>
+                  </div> -->
                 </td>
               </tr>
             </tbody>

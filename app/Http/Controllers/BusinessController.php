@@ -31,7 +31,11 @@ class BusinessController extends Controller
     {
         $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
         $footer_data = FooterData::first();
-        return Inertia::render('Business/Index', compact('jobs', 'footer_data'));
+        $positions = Position::all();
+        $industries = Industries::all();
+        $disciplines = Discipline::all();
+        $seniorities = Seniorities::all();
+        return Inertia::render('Business/Index', compact('disciplines','industries', 'seniorities','positions', 'jobs', 'footer_data'));
 
     }
     public function create()
@@ -362,5 +366,14 @@ class BusinessController extends Controller
         $jobs = Jobs::where('user_id', Auth::user()->id)->where('job_title','like',"%$string%")->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get(); 
         return response()->json(['jobs' => $jobs]);
 
+    }
+
+    public function change_status(Request $request){
+         $data = JobStatus::where(['customer_id'=>$request->customer_id,'job_id'=>$request->job_id])->update(['status'=>$request->status]);
+        if($data){
+            return response()->json(['success'=>true]);
+        }else{
+            return response()->json(['success'=>false]);
+        }
     }
 }
