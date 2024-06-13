@@ -89,7 +89,7 @@ function formatDateTime(date){
             <div class="container">
                 <div class="filter-status">
                     <div class="d-flex justify-between">
-                        <ul class="d-flex align-items-center flex-wrap pl-0">
+                        <ul class="d-flex align-items-center flex-wrap pl-0 view_employes_nav_wrapper">
                             <li>
                                 <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
                                     Active</span>
@@ -143,7 +143,7 @@ function formatDateTime(date){
             <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->
                     <div class="p-6 text-black-1024 padding_remove padding_table">
-                        <DataTable class="display" :key="refreshDataTable" >
+                        <DataTable class="display employ_table" :key="refreshDataTable" >
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -188,10 +188,10 @@ function formatDateTime(date){
                                         <video src="/images/new-video.mp4" controls></video>
                                     </td> -->
                                     <td >
-                                        <div v-if="customer?.status?.status != 5">
-                                            <button class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-                                            <button class="btn btn-sm btn-primary"><i class="fas fa-question"></i></button>
-                                            <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                                        <div v-if="customer?.status?.status != 5 " class="employ_all_btn_wrapper">
+                                            <button class="btn btn-sm btn-success employ_btn"><i class="fas fa-check"></i></button>
+                                            <button class="btn btn-sm btn-primary employ_btn_mid"><i class="fas fa-question"></i></button>
+                                            <button class="btn btn-sm btn-danger employ_btn_bottom"><i class="fas fa-times"></i></button>
                                         </div>
                                         <div v-else>
                                             <span class="text-danger">Rejected</span>

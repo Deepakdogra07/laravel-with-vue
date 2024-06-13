@@ -77,7 +77,7 @@ function update_data(type, event) {
 
         </template>
         <div class=" text-black-900 other_data_fields">
-            <div class="container">
+            <div class="container wrapper_other_fields">
                 <form @submit.prevent="submitForm">
                     <input type="hidden" v-value="form.id">
                     <div class="image_uploading">
@@ -178,7 +178,7 @@ function update_data(type, event) {
                                 props.errors.office_address }}</span>
                         </div>
                     </div>
-                    <div class="video_Section">
+                    <div class="video_Section certifiacte-wrapper">
                         <h2>Certificates Upload</h2>
                         <div class="mb-4">
                             <label for="certificate_imagez"
@@ -186,7 +186,7 @@ function update_data(type, event) {
                                 Images</label>
                             <div class="row">
                                 <div v-for="(image, index) in form.certificate_images_status ? updatedCertificate : form.certificate_images"
-                                    :key="index" class="col-md-4">
+                                    :key="index" class="col-md-4 certifiacte-wrapper-col">
                                     <img :src="form.certificate_images_status ? image : `${image}`"
                                         alt="" style="height:150px;">
                                 </div>

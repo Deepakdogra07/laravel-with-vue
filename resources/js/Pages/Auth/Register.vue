@@ -252,7 +252,7 @@ const togglePasswordVisibility = () => {
                     <InputError class="mt-2" :message="form.errors.checkbox" />
                 </div>
 
-                <div class="flex items-center mt-4 login-btn-main">
+                <div class="flex items-center justify-start mt-4 login-btn-main forgot_Pass">
                     <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing">
                         Continue <span> <i class="bi bi-arrow-right"></i></span>

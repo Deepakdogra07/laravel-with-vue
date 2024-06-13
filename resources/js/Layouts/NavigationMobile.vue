@@ -16,7 +16,7 @@
       leave-from-class="opacity-100"
       leave-to-class="opacity-0 transform -translate-x-20">
     <aside v-show="$page.props.showingMobileMenu" class="fixed inset-y-0 z-20 flex-shrink-0 w-85 mt-16 overflow-y-auto side-navbar mobile_sidebar">
-      <div class="py-4 text-gray-500">
+      <div class="py-4 text-gray-500 mobile_sidebar_inner_wrapper">
         <Link class="main-heading-logo px-3 logo_spacing" :href="route('dashboard')">
           <img src="/images/web-logo.png" alt="">
       </Link>
