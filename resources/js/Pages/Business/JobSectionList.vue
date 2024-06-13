@@ -36,7 +36,7 @@ const setActiveSpan = (spanNumber) => {
         <div class="login-bg-wrapper">
             <div class="container">
                 <div class="filter-status">
-                    <ul class="d-flex align-items-center flex-wrap pl-0">
+                    <ul class="d-flex align-items-center flex-wrap pl-0" >
                         <li>
                             <span :class="{'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17 Active</span>
                         </li>

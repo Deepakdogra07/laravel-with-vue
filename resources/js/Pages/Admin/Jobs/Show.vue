@@ -90,69 +90,69 @@ function sepratedString(recommended_skills){
         <div class="py-12 spacing_sshhow">
             <div class="max-w-7xl mx-auto px-2 view_job_page">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900 padding_iiii">
+                    <div class="p-6 text-black-900 view_job_wrapper">
                         <div class="container">
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-header-caption">
                                         <div class="card-header-title">
-                                            <h2><b>Job Title:</b>{{ jobs?.job_title }}</h2>
+                                            <h2><b>Job Title :</b>{{ jobs?.job_title }}</h2>
                                             <br>
-                                            <h4><b>Positions:</b>{{ jobs?.positions }}</h4>
+                                            <h4><b>Positions :</b>{{ jobs?.positions }}</h4>
                                             <br>
-                                            <p><b>Postion Type:</b>{{ jobs?.position?.name }}</p>
+                                            <p><b>Postion Type :</b>{{ jobs?.position?.name }}</p>
                                         </div>
                                     </div>
                                     <div class="card-content">
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <ul class="card_ullist card_ullist_2nd">
-                                                    <li><b>Seniority:</b>{{ jobs?.seniority?.name }}</li>
-                                                    <li><b>Discipline:</b>{{ jobs?.discipline?.name }}</li>
-                                                    <li><b>Work Experience:</b>{{ jobs?.work_experience?.experience }}
+                                                    <li><b>Seniority :</b>{{ jobs?.seniority?.name }}</li>
+                                                    <li><b>Discipline :</b>{{ jobs?.discipline?.name }}</li>
+                                                    <li><b>Work Experience :</b>{{ jobs?.work_experience?.experience }}
                                                     </li>
-                                                    <li><b>Recommended Skills:</b>{{ recommended_skills }}</li>
-                                                    <li><b>Skills:</b>{{ skills }}</li>
+                                                    <li><b>Recommended Skills :</b>{{ recommended_skills }}</li>
+                                                    <li><b>Skills :</b>{{ skills }}</li>
                                                     <li><b>Remote Work:</b>
                                                         <p v-if="jobs.remote_work">Yes</p>
                                                         <p v-else>No</p>
                                                     </li>
                                                 
-                                                    <li> <b>Industry:</b>{{ industry }}</li>
-                                                    <li><b>Segment:</b>{{ jobs?.segment }}</li>
+                                                    <li> <b>Industry :</b>{{ industry }}</li>
+                                                    <li><b>Segment :</b>{{ jobs?.segment }}</li>
                                                     <li> <b>Pin Code:</b>{{ jobs?.pin_code }}</li>
                                                     <!-- <li><b>City:</b>{{ jobs.city }}</li> -->
-                                                    <li><b>Pay Range:</b>{{ jobs?.min_pay_range }}-{{
+                                                    <li><b>Pay Range :</b>{{ jobs?.min_pay_range }}-{{
                                                         jobs?.max_pay_range }}
                                                     </li>
-                                                    <li><b>Job Start Date:</b>{{ jobs?.job_start_date }}</li>
-                                                    <li> <b>Languages:</b>{{ language }}</li>
-                                                    <li><b>Created By:</b>{{ jobs?.createdby?.name }}</li>
-                                                    <li><b>City</b><span>{{ jobs.city }}</span></li>
-                                                    <li><b>Country</b><span>{{ jobs?.job_country }}</span></li>
+                                                    <li><b>Job Start Date :</b>{{ jobs?.job_start_date }}</li>
+                                                    <li> <b>Languages :</b>{{ language }}</li>
+                                                    <li><b>Created By :</b>{{ jobs?.createdby?.name }}</li>
+                                                    <li><b>City :</b><span>{{ jobs.city }}</span></li>
+                                                    <li><b>Country :</b><span>{{ jobs?.job_country }}</span></li>
                                                 </ul>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="card-content mt-5">
+                                    <div class="card-content mt-2 requirement_wrapper">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="details_job">
-                                                    <h2>Requirements:</h2>
+                                                    <h2>Requirements :</h2>
                                                     <p v-html="jobs?.requirements"></p>
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 condition_wrapper">
                                                 <div class="details_job">
-                                                    <h2>Conditions:</h2>
+                                                    <h2>Conditions :</h2>
                                                     <p v-html="jobs?.conditions"></p>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12 mt-5">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mt-2 view_job_end_wrapper">
                                             <div class="details_job">
                                                 <h2>Details of The Job:</h2>
                                                 <p v-html="jobs?.job_description"></p>

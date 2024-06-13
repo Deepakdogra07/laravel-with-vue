@@ -137,7 +137,7 @@ async function changeStatus(customer_id, job_id, event) {
           <div class="d-flex gap-5 align-items-center srch_navbar">
             <Link :href="route('business-jobs.index')">Jobs</Link>
             <Link class='active-nav'>Employee</Link>
-            <Link>Messages</Link>
+            <!-- <Link>Messages</Link> -->
           </div>
 
           <div class="relative search_bar">
@@ -188,8 +188,8 @@ async function changeStatus(customer_id, job_id, event) {
                         <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                     </div> -->
         </div>
-        <div class="main-job-filter mt-5">
-          <ul class="d-flex align-items-center flex-wrap pl-0">
+        <div class="main-job-filter mt-4">
+          <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper">
             <!-- <li>
               <span>Yes (2)</span>
             </li>
@@ -198,7 +198,7 @@ async function changeStatus(customer_id, job_id, event) {
             </li> -->
             <li>
               <span>Job:
-                  <select class="job-filter_text" @change="filterData('job_title',$event)">
+                  <select class="job-filter_text any_select_box" @change="filterData('job_title',$event)">
                     <option value=""> Any</option>
                     <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
                   </select>
@@ -219,7 +219,7 @@ async function changeStatus(customer_id, job_id, event) {
             <li>
               <span>Sort:
                   <span class="job-filter_text">
-                    <select @change="filterData('applied_date',$event)">
+                    <select class="job-filter_text" @change="filterData('applied_date',$event)">
                       <option value="">Any</option>
                       <option value="desc">Apply Date(newest)</option>
                       <option value="asc">Apply Date(oldest)</option>
@@ -230,7 +230,7 @@ async function changeStatus(customer_id, job_id, event) {
           </ul>
         </div>
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
-          <DataTable class="display " :key="refreshDataTable">
+          <DataTable class="display business_dash_tables_wrapper" :key="refreshDataTable">
             <thead>
               <tr>
                 <th>Name</th>
@@ -247,18 +247,18 @@ async function changeStatus(customer_id, job_id, event) {
             </thead>
             <tbody>
               <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
-                <td>
+                <td class="business_wrap_name">
                   <input type="checkbox">
                   {{ customer?.customers?.first_name }}
                 </td>
                 <td> {{ customer?.jobs?.job_title }}</td>
 
-                <td>
-                  <div v-if="customer?.status == 0" style="color:green">Active </div>
-                  <div v-if="customer?.status == 1" style="color:green">Awaiting Review </div>
-                  <div v-if="customer?.status == 2" style="color:green">Reviewed </div>
-                  <div v-if="customer?.status == 3" style="color:green">Contacted </div>
-                  <div v-if="customer?.status == 4" style="color:green">Hired </div>
+                <td class="status_business">
+                  <div v-if="customer?.status == 0" style="color:">Active </div>
+                  <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
+                  <div v-if="customer?.status == 2" style="color:">Reviewed </div>
+                  <div v-if="customer?.status == 3" style="color:">Contacted </div>
+                  <div v-if="customer?.status == 4" style="color:">Hired </div>
                   <div v-if="customer?.status == 5" style="color:red">Rejected </div>
                   <div>{{ formatDateTime(customer?.created_at) }}</div>
                 </td>
@@ -278,7 +278,7 @@ async function changeStatus(customer_id, job_id, event) {
                 </td>
                 <td>
                   <!-- <div v-if="customer?.status < 5"> -->
-                    <select class="form-control" style="width:112px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
+                    <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
                       <option value="0"> Active</option>
                       <option value="1"> Awaiting Review</option>
                       <option value="2"> Reviewed</option>

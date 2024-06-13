@@ -58,7 +58,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-4 col-md-6">
+            <div class="mt-2 col-md-6">
               <InputLabel for="password" value="Password" style="display: inline-block;" /><strong
                 class="required-asterisk"> * </strong>
               <TextInput id="password" type="password" placeholder="Enter Password" class="form-control"
@@ -66,7 +66,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.password" />
 
             </div>
-            <div class="mt-4 col-md-6">
+            <div class="mt-2 col-md-6">
               <InputLabel for="password_confirmation" value="Confirm Password" style="display: inline-block;" /><strong
                 class="required-asterisk"> * </strong>
               <TextInput id="password_confirmation" type="password" placeholder="Enter Confirm Password"
@@ -74,7 +74,7 @@ const submit = () => {
               <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="mt-4 col-md-6">
+            <div class="mt-2 col-md-6">
               <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
               <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
@@ -86,7 +86,7 @@ const submit = () => {
                   <TextInput id="address" type="text" placeholder="Enter Address" class="form-control" v-model="form.address" autocomplete="address" />
                   <InputError class="mt-2" :message="form.errors.address" />
               </div> -->
-            <div class="mt-4 col-md-6">
+            <div class="mt-2 col-md-6">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex align-items-center">
