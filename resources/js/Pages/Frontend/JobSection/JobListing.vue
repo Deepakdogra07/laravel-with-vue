@@ -32,14 +32,17 @@ function dateTime(created_at) {
 
     return time;
 }
+
+
 </script>
 <template>
     <Header />
     <SubHeading />
     <div class="login-bg-wrapper list_of_jobs">
         <div class="container about-width">
+
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
-                <div class="job-listing-cards relative" v-if="jobs.length > 0" v-for="(job) in props.jobs" :key="job.id">
+                <div class="job-listing-cards relative" v-if="jobs.data.length > 0" v-for="(job) in jobs.data" :key="job.id">
                     <div class="update-time absolute top-4 right-4">
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0" v-html="dateTime(job?.created_at)"></p>
@@ -64,6 +67,19 @@ function dateTime(created_at) {
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="jobs.links.length > 3" >
+                <div class="d-flex justify-content-end w-100 mt-3">
+                    <div class="flex  mt-2 mb-1"  >
+                        <template v-for="(link, p) in jobs.links" :key="p">
+                            <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded"
+                                v-html="link.label" />
+                            <Link v-else
+                                class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
+                                :class="{ 'bg-blue-700 text-white': link.active }" :href="link.url" v-html="link.label" />
+                        </template>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,26 @@ const props = defineProps({
     <Header />
     <SubHeading :job_id ="job_id"/>
     <div class="container py-12">
-                
+        <div class="card">
+            <div class="card-image">
+                        <img :src="customer.customer_image" alt="" width="450px">
+                    </div>
+                    <div class="card-header">
+                        <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
+                        </div>
+
+                    <div class="card-body">
+                        <h2>Other Details:</h2>
+                        <b>Date of Birth:</b>{{ customer.date_of_birth }}<br>
+                        <b>County of birth:</b>{{ customer.country_of_birth }}<br>
+                        <b>City of birth:</b>{{ customer.city_of_birth }}<br>
+                        <b>martial_status:</b>{{ customer.martial_status }}<br>
+                        <b>Country to immigrate:</b>{{ customer.migrate_country }}<br>
+                        <b>Gender:</b>{{ customer.gender }}<br>
+                        <!-- {{ customer.martial_status }} -->
+
+                    </div>
+                </div>
                
                
                

@@ -35,6 +35,7 @@ const format1 = (date) => {
   return `${year}/${month1}/${day1}`;
 }
 
+
 const props = defineProps({
     variable:{
         type:Object
