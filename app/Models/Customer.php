@@ -12,10 +12,12 @@ class Customer extends Model
     protected $table = "customers_personal_details";
     protected $fillable = [
         'id',
+        'user_id',
         'job_id',
         'first_name',
         'last_name',
         'email',
+        'mobile_number'.
         'confirm_email',
         'date_of_birth',
         'country_of_birth',
@@ -40,6 +42,9 @@ class Customer extends Model
     }
     public function status(){
         return $this->belongsTo(CustomerStatus::class,'id');
+    }
+    public function travel_details(){
+        return $this->hasone(CustomerTravelDetails::class,'id');
     }
     
 }

@@ -61,6 +61,7 @@ class Jobs extends Model
     public function customers(){
         return $this->hasOne(Customer::class,'job_id','id');
     }
+
     public function customer_documents(){
         return $this->hasOne(CustomerDocuments::class,'job_id','id');
     }
