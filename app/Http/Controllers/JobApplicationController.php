@@ -28,7 +28,9 @@ class JobApplicationController extends Controller
     }
     public function travel_details($job_id)
     {
-        return Inertia::render('Frontend/CustomerSection/Travel/TravelDetail', compact('job_id'));
+        $user_id = Auth::user()->id ?? '';
+        $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
+        return Inertia::render('Frontend/CustomerSection/Travel/TravelDetail', compact('job_id','already_customer'));
     }
     public function personal_details(Request $request,$job_id)
     {
@@ -49,7 +51,9 @@ class JobApplicationController extends Controller
             return back()->withErrors($validator->errors());
         }
         $variable = ($request->all());
-        return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable'));
+        $user_id = Auth::user()->id ?? '';
+        $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
+        return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable','already_customer'));
     }
     public function submit_personal_details(Request $request,$job_id)
     {
@@ -75,7 +79,7 @@ class JobApplicationController extends Controller
             "martial_status" => 'required',
             "passport_number" => 'required',
             "issuing_authority" => 'required',
-            "passport_date_of_expiry" => 'required',
+            "date_of_expiry" => 'required',
             // "citizen_of_more_than_one" => 'required',
             // "visa_available" => 'required',
         ]);
@@ -84,7 +88,6 @@ class JobApplicationController extends Controller
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-        
         
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
@@ -96,9 +99,7 @@ class JobApplicationController extends Controller
         }
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
-        // dd($customer_personal_details);
         $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
-        // dd($customer_travel_detail);
         $customer_travel_details = new CustomerTravelDetails();
         $customer_travel_details->fill($customer_travel_detail);
         $customer_travel_details->customer_id = $customer_personal_details->id;
@@ -115,10 +116,12 @@ class JobApplicationController extends Controller
                 'user_type' => "3",
                 'status' => 1,
             ]);
+            Customer::where('id',$customer_personal_details->id)->update(['user_id'=>$create_customer->id]);
             Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
             Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
         }else{
             $create_customer  = $already_customer;
+            Customer::where('id',$customer_personal_details->id)->update(['user_id'=>$create_customer->id]);
         }
         
         return redirect()->route('employment.details',[$request->job_id,$customer_personal_details->id]);

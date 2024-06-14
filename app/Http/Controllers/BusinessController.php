@@ -376,4 +376,8 @@ class BusinessController extends Controller
             return response()->json(['success'=>false]);
         }
     }
+    public function view_customer($customer_id){
+        $customer = Customer::where('id',$customer_id)->first();
+        return Inertia::render('Business/ViewCustomer',compact('customer'));
+    }
 }

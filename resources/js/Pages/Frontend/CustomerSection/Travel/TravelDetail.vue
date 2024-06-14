@@ -8,27 +8,47 @@ import SubHeading from '@/Pages/Frontend/SubHeading.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import "../../../../../css/frontend.css";
-import {  } from '@inertiajs/vue3';
-import { toast } from 'vue3-toastify';
 import { Country } from 'country-state-city';
 import { ref } from 'vue';
+import '@vuepic/vue-datepicker/dist/main.css'; 
+import VueDatePicker from '@vuepic/vue-datepicker'; 
+
+const today = new Date();
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+   var month1 = (month <=9) ?`0${month}`:month;
+   form.date_of_travel = `${year}-${month1}-${day}`;
+  return `${year}/${month1}/${day}`;
+}
 const props = defineProps({
     job_id:{
         type:Number
+    },
+    already_customer:{
+        type:Object
     }
 })
 const countries =  Country.getAllCountries();
-
-const form = useForm({
-    job_id:props.job_id,
-    purpose_of_stay:[],
-    type_of_visa:[],
-    date_of_travel:null,
-    passenger_nationality:null,
-    port_of_arrival:null,
-    migrate_country:null
-
-})
+    const form = useForm({
+        job_id:props.job_id,
+        purpose_of_stay:props?.already_customer?.travel_details?.purpose_of_stay,
+        type_of_visa:props?.already_customer?.travel_details?.type_of_visa,
+        date_of_travel:props?.already_customer?.travel_details?.date_of_travel,
+        passenger_nationality:props?.already_customer?.travel_details?.passenger_nationality ,
+        port_of_arrival:props?.already_customer?.travel_details?.port_of_arrival,
+        migrate_country:props?.already_customer?.migrate_country
+    })
+//     const form = useForm({
+//         job_id:props.job_id,
+//         purpose_of_stay:[],
+//         type_of_visa:[],
+//         date_of_travel:null,
+//         passenger_nationality:null,
+//         port_of_arrival:null,
+//         migrate_country:null
+//     })
 const select_class = ref('');
 const migrate = ref('');
 
@@ -76,27 +96,27 @@ function handleCountryInput(type){
                         <div class="travel-detail">
                             <h4 class="mb-3">Traditional visa <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (individual)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="relative_option_visa"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="relative_option_visa"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Relative Option Visa</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="partner_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="partner_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Partner Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="investor_visa(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="investor_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Investor Visa (consultation)</span>
                             </label>
                             <label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="other(consultation)"  v-model="form.type_of_visa"/>
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="other(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Other (consultation)</span>
                             </label>
                         </div>
@@ -106,7 +126,9 @@ function handleCountryInput(type){
                             <div class="col-md-12 natoinality_row mt-4 row">
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                     <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
-                                    <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/>
+                                    <!-- <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/> -->
+                                    <VueDatePicker v-model="form.date_of_travel" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks"   :type="'date'"
+                                    />
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
                                 </div>
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">

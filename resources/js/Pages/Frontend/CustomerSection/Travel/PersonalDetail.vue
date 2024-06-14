@@ -11,7 +11,29 @@ import { useForm } from '@inertiajs/vue3';
 import { toast } from 'vue3-toastify';
 import { ref } from 'vue';
 import { Country } from 'country-state-city';
+import '@vuepic/vue-datepicker/dist/main.css'; 
+import VueDatePicker from '@vuepic/vue-datepicker'; 
 
+const today = new Date();
+const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+   var month1 = (month <=9) ?`0${month}`:month;
+   var day1 = (day <=9) ?`0${day}`:day;
+   form.date_of_birth = `${year}-${month1}-${day1}`;
+  return `${year}/${month1}/${day1}`;
+}
+const format1 = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+   var month1 = (month <=9) ?`0${month}`:month;
+   var day1 = (day <=9) ?`0${day}`:day;
+   form.date_of_expiry = `${year}-${month1}-${day1}`;
+  return `${year}/${month1}/${day1}`;
+}
 
 const props = defineProps({
     variable:{
@@ -20,6 +42,9 @@ const props = defineProps({
     errors:{
         type:Object,
         default:null
+    },
+    already_customer:{
+        type:Object
     }
 
 })
@@ -36,21 +61,21 @@ const form =useForm({
     purpose_of_stay:props.variable.purpose_of_stay,
     type_of_visa:props.variable.type_of_visa,
     migrate_country:props.variable.migrate_country,
-    customer_image : null,
-    first_name:null,
-    last_name:null,
-    email:null,
-    confirm_email:null,
-    date_of_birth:null,
-    country_of_birth:null,
-    city_of_birth:null,
-    gender:null,
-    martial_status:null,
-    passport_number:null,
-    issuing_authority:null,
-    passport_date_of_expiry:null,
+    customer_image : props?.already_customer?.customer_image,
+    first_name:props?.already_customer?.first_name,
+    last_name:props?.already_customer?.last_name,
+    email:props?.already_customer?.email,
+    confirm_email:props?.already_customer?.confirm_email,
+    date_of_birth:props?.already_customer?.date_of_birth,
+    country_of_birth:props?.already_customer?.country_of_birth,
+    city_of_birth:props?.already_customer?.city_of_birth,
+    gender:props?.already_customer?.gender,
+    martial_status:props?.already_customer?.martial_status,
+    passport_number:props?.already_customer?.passport_number,
+    issuing_authority:props?.already_customer?.issuing_authority,
+    date_of_expiry:props?.already_customer?.date_of_expiry,
     citizen_of_more_than_one:null,
-    visa_available:null,
+    visa_available:props?.already_customer?.visa_available,
 });
 
 function upload_image(event){
@@ -58,6 +83,11 @@ function upload_image(event){
     image_src.value = URL.createObjectURL(event.target.files[0]);
     image_name.value = event.target.files[0].name;
     
+}
+if(form.customer_image){
+    console.log(form.customer_image,123)
+    image_src.value = form.customer_image;
+    image_name.value = form.customer_image;
 }
 
 const submitData = () => {
@@ -156,7 +186,8 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
-                                    <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" />
+                                    <!-- <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" /> -->
+                                     <VueDatePicker v-model="form.date_of_birth" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :max-date="eighteenYearsAgo"   :type="'date'" />
                                     <InputError class="mt-2" v-if="props.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
@@ -238,8 +269,9 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">Passport Date Of Expiry</span>
 
-                                    <TextInput placeholder="---"v-model="form.passport_date_of_expiry"  type="date" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.passport_date_of_expiry" :message="props.errors.passport_date_of_expiry[0]" />
+                                    <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
+                                    <VueDatePicker v-model="form.date_of_expiry" placeholder="Select Start Date" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
+                                    <InputError class="mt-2" v-if="props.errors.date_of_expiry" :message="props.errors.passport_date_of_expiry[0]" />
                                 </div>
                             </div>
                             <div class="col-md-12">
