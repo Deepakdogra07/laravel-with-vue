@@ -243,6 +243,7 @@ async function changeStatus(customer_id, job_id, event) {
                 <th>Experience Summary</th>
                 <th>Videos</th>
                 <th>Intersts</th>
+                <th>View </th>
               </tr>
             </thead>
             <tbody>
@@ -268,16 +269,12 @@ async function changeStatus(customer_id, job_id, event) {
                 </td>
                 <td> <img :src="customer?.customers?.customer_image" alt=""></td>
                 <td> {{ 'Student' }}</td>
-
                 <td>
                   {{ '2 Years' }}
                 </td>
                 <td>
-                  <!-- <video src="/images/new-video.mp4" controls></video> -->
-
                 </td>
                 <td>
-                  <!-- <div v-if="customer?.status < 5"> -->
                     <select class="form-control" style="width:112px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
                       <option value="0"> Active</option>
                       <option value="1"> Awaiting Review</option>
@@ -286,10 +283,9 @@ async function changeStatus(customer_id, job_id, event) {
                       <option value="4"> Hired</option>
                       <option value="5"> Rejected</option>
                     </select>
-                  <!-- </div> -->
-                  <!-- <div v-else>
-                    <span class="text-danger">Rejected</span>
-                  </div> -->
+                </td>
+                <td>
+                  <Link class="btn btn-sm btn-success" :href="route('view_customer',customer.id)"><i class="fas fa-eye"></i> </Link>
                 </td>
               </tr>
             </tbody>

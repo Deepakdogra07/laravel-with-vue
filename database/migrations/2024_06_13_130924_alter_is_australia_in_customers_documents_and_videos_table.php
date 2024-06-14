@@ -14,7 +14,7 @@ class AlterIsAustraliaInCustomersDocumentsAndVideosTable extends Migration
     public function up()
     {
         Schema::table('customers_documents_and_videos', function (Blueprint $table) {
-            $table->string('is_australia', 255)->change();
+            $table->string('is_australia', 255)->nullable()->change();
         });
     }
 
