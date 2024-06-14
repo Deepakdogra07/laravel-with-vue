@@ -147,7 +147,7 @@ async function changeStatus(customer_id, job_id, event) {
         </div>
       </div>
     </div>
-    <div class="login-bg-wrapper business_job_details business_inner_dash">
+    <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper">
       <div class="container about-width p-0">
         <div class="filter-status row">
           <div class="col-md-8 width_mobile p-0">
@@ -207,10 +207,11 @@ async function changeStatus(customer_id, job_id, event) {
             <!-- <li>
               <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
             </li> -->
-            <li>
-                            <span>Location:
+            <li class="business_location_list">
+                            <span>
+                              Location:
                                 <select @change="filterData('location', $event)" class="job-filter_text">
-                                    <option value="">Any</option>
+                                    <option value="" class="any_option">Any</option>
                                     <option v-for="country in countries" :value="country.name">{{
                                         country.name }}</option>
                                 </select>
@@ -218,7 +219,7 @@ async function changeStatus(customer_id, job_id, event) {
                         </li>
             <li>
               <span>Sort:
-                  <span class="job-filter_text">
+                  <span class="job-filter_textss">
                     <select class="job-filter_text" @change="filterData('applied_date',$event)">
                       <option value="">Any</option>
                       <option value="desc">Apply Date(newest)</option>

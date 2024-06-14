@@ -476,9 +476,15 @@ h2 {
 .business_dash_tables_wrapper th {
     border: 0px !important;
 }
-
-
-
+.job-filter_textss {
+    padding-left: 0px !important;
+}
+.business_dash_navbar_wrapper li select.job-filter_text {
+    padding-left: 10px !important;
+}
+.business_dash_navbar_wrapper li select.job-filter_text option {
+    background: #fbfbfb !important;
+}
 
 @keyframes pulse-shadow {
 	0% {
@@ -1295,7 +1301,7 @@ input[type="file"] {
     background-color: #fff;
     border-radius: 4px;
     color: #000;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
 }
 
@@ -4092,7 +4098,7 @@ input[type="file"] {
 }
 
 @media (max-width:391px) {
-	.main-job-filter ul li span, .main-job-filter ul span, .main-job-filter ul select {
+	.main-job-filter ul li span, .main-job-filter ul span, .main-job-filter ul select, .business_dash_navbar_wrapper li select.job-filter_text option {
 		font-size: 12px;
 	}
 	.business_dash_navbar_wrapper li select.job-filter_text {
@@ -4101,6 +4107,9 @@ input[type="file"] {
 	select.job-filter_text.any_select_box {
 		padding-right: 30px !important;
 		width: 100px;
+	}
+	.business_dash_navbar_wrapper li select.job-filter_text {
+		padding-left: 3px !important;
 	}
 }
 
@@ -6162,11 +6171,12 @@ span.job-filter_text {
 	border-right: 0px !important;
 }
 .business_table_dashboard tbody tr td:nth-child(1) {
-    border-radius: 0px 0px 0px 8px;
+    /* border-radius: 0px 0px 0px 8px; */
 	border-left: 1px solid #E9E9EA !important;
 }
+
 .business_table_dashboard tbody tr td:last-child {
-	border-radius:0px 0px 8px 0px;
+	/* border-radius:0px 0px 8px 0px; */
 	border-right: 1px solid #E9E9EA !important;
 }
 .business_table_dashboard {
@@ -6243,8 +6253,8 @@ span.job-filter_text {
     font-size: 16px;
     font-family: 'Open Sans';
 }
-.business_dash_tables_wrapper thead th {
-    font-size: 17px;
+.business_dash_tables_wrapper thead th, .business_wrap_name.sorting_1, .business_dash_tables_wrapper tbody td {
+    font-size: 15px;
 }
 .select_status_wra {
     filter: contrast(0.9);
@@ -6267,4 +6277,19 @@ span.job-filter_text {
 }
 .business_dash_navbar_wrapper li select.job-filter_text option {
     color: #000;
+	font-size: 15px;
+}
+.business_dash_navbar_wrapper li select.job-filter_text option, .employes_selct_checkbox option {
+    font-size: 15px;
+	font-family: "Open Sans", sans-serif !important;
+}
+.business-wrapper table.dataTable {
+    display: inline-table;
+    width: 100% !important;
+}
+.business_table_dashboard tbody tr:last-child td:nth-child(1)  {
+    border-radius: 0px 0px 0px 8px !important;
+}
+.business_table_dashboard tbody tr:last-child td:last-child  {
+    border-radius: 0px 0px 8px 0px !important;
 }
