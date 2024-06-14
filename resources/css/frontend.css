@@ -6265,3 +6265,6 @@ span.job-filter_text {
 .business_inner_dash_wrap {
     justify-content: start;
 }
+.business_dash_navbar_wrapper li select.job-filter_text option {
+    color: #000;
+}

@@ -32,7 +32,7 @@
         <script src="/js/custom.js?v=5554631"></script>
         <meta property="og:title" content="{{ config('app.name', 'Unstoppable') }}">
         <!-- please change belowdinheiroagora.com.br/ url on production -->
-        <meta property="og:image" content="https://dinheiroagora.com.br/images/link-logo.png">
+        <!-- <meta property="og:image" content="https://dinheiroagora.com.br/images/link-logo.png"> -->
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
