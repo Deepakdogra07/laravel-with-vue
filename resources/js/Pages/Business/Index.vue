@@ -130,7 +130,7 @@ function filterData(type, event) {
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
-                        <Link>Messages</Link>
+                        <!-- <Link>Messages</Link> -->
                     </div>
 
                     <div class="relative search_bar">
@@ -143,7 +143,7 @@ function filterData(type, event) {
         </div>
         <div class="login-bg-wrapper business_job_details business_inner_dash">
             <div class="container about-width p-0">
-                <div class="filter-status row">
+                <div class="filter-status row business_ad_wrapper">
                     <div class="col-md-8 width_mobile p-0">
                         <div class="d-flex justify-between align-items-center">
                             <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
@@ -175,19 +175,19 @@ function filterData(type, event) {
                         </div>
                     </div>
 
-                    <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job">
+                    <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job p-0">
                         <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add
                         job</Link>
                     </div>
                 </div>
                 <div class="main-job-filter mt-5">
-                    <ul class="d-flex align-items-center flex-wrap pl-0">
+                    <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper business_inner_dash_wrap">
                         <!-- <li>
                             <span>Maybe (2)</span>
                         </li> -->
                         <li>
                             <span>Seniority:
-                                <select class="job-filter_text" @change="filterData('seniority', $event)">
+                                <select class="job-filter_text any_select_box" @change="filterData('seniority', $event)">
                                     <option value="">Select</option>
                                     <option v-for="seniority in seniorities" :value="seniority.id">{{ seniority.name }}
                                     </option>
@@ -213,7 +213,7 @@ function filterData(type, event) {
                         </li>
                         <span>
                             Sort:
-                            <select @change="filterData('sort', $event)" class="job-filter_text">
+                            <select @change="filterData('sort', $event)" class="job-filter_text employes_selct_checkbox">
                                 <option value="asc">Apply date (newest)</option>
                                 <option value="desc">Apply date (oldest)</option>
                             </select>

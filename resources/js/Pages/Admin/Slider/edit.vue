@@ -63,7 +63,7 @@ function submitForm() {
     <AuthenticatedLayout>
         <template #header>
                 <h2 class="font-semibold text-xl text-black-800 leading-tight">Update Slider</h2>
-            <div class="button-container">fff
+            <div class="button-container">
             </div>
             
         </template>

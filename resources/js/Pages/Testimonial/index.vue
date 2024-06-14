@@ -103,10 +103,10 @@ function splitStringIntoChunks(inputString, chunkSize = 80) {
                                       <img :src="`${testimonialRecord.image_link}`">
                                     </div>
                                   </td> -->
-                                  <td v-html="splitStringIntoChunks(testimonialRecord.description)">  </td>
+                                  <td v-html="splitStringIntoChunks(testimonialRecord.description)" style="width:200px">  </td>
 
                                   <td :style="{ color: (testimonialRecord.status == 0) ? 'red' : 'green' }" >
-                                    {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
+                                  {{ (testimonialRecord.status == 0) ?"Inactive" : "Active" }}
                                   </td>
                                   <td>
                                     <div class="d-flex gap-2">

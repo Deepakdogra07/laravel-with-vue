@@ -433,6 +433,52 @@ h2 {
 	object-position: top;
 	border-radius: 50%;
 }
+.business_inner_dash .main-job-filter ul li span {
+    padding-right: 0px;
+    border-radius: 7px;
+}
+.business_dash_tables_wrapper thead {
+    background: #D2D2D580;
+    border: 0px;
+}
+.business_dash_tables_wrapper thead th {
+    padding: 25px 15px !important;
+    font-weight: 600 !important;
+}
+.status_business div:nth-child(1) {
+    color: #495771;
+    font-size: 16px;
+    font-family: 'open sans';
+    font-weight: 500;
+}
+.status_business div:nth-child(2) {
+    color: #495771;
+    font-size: 12px;
+}
+.business_wrap_name {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.business_wrap_name input {
+    color: #087a71 !important;
+}
+
+.business_wrap_name input[type='checkbox']:focus {
+    box-shadow: 1px 1px 0px #000!important;
+    border-color: #097a71 !important;
+}
+.business_dash_tables_wrapper {
+    display: block;
+}
+.business_dash_tables_wrapper .paginate_button.previous::before {
+    border-radius: 4px 4px;
+}
+.business_dash_tables_wrapper th {
+    border: 0px !important;
+}
+
+
+
 
 @keyframes pulse-shadow {
 	0% {
@@ -1572,9 +1618,9 @@ input[type="file"] {
 	}
 }
 
-@media (min-width: 1086px) {
+@media (max-width: 1086px) {
 	.dashboard-home .card h4 {
-		font-size: 14px !important;
+		font-size: 17px !important;
 	}
 }
 
@@ -1615,7 +1661,7 @@ input[type="file"] {
 
 @media (max-width: 992px) {
 	.mobile_dropdown .dropdown-toggle i {
-		font-size: 10px;
+		font-size: 14px;
 		padding-left: 5px;
 		margin-top: 3px;
 	}
@@ -1630,10 +1676,13 @@ input[type="file"] {
 	}
 
 	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle {
-		display: flex-start;
+		display: flex;
 		flex-wrap: nowrap;
+		align-items: start;
 	}
-
+	.mobile_amdin_dropdown button::after {
+		font-size: 19px;
+	}
 	.mobile_amdin_dropdown .dropdown-toggle::after {
 		content: "";
 		display: inline-block;
@@ -1905,6 +1954,7 @@ input[type="file"] {
 	}
 
 }
+
 
 @media (max-width:991px) {
 	.employesss_tabs .filter-status ul li span {
@@ -2195,6 +2245,10 @@ input[type="file"] {
 		padding: 0px 5px !important;
 	}
 
+	.employes_selct_checkbox {
+		font-size: 14px;
+	}
+
 	.main-footer .footer-grid h2 {
 		font-size: 15px !important;
 	}
@@ -2291,9 +2345,6 @@ input[type="file"] {
 		max-width: 100%;
 	}
 
-	.view_job_page .row .col-lg-6:nth-child(2) {
-		padding: 0px;
-	}
 
 	.view_job_page .row .col-lg-6:nth-child(1) {
 		border-right: 0px !important;
@@ -2882,6 +2933,10 @@ input[type="file"] {
 	.skills_input {
 		margin-bottom: 10px;
 	}
+	.business_dash_tables_wrapper thead th, .business_wrap_name, .business_wrap_name tbody td {
+		font-size: 14px !important;
+	}
+
 
 }
 
@@ -3352,23 +3407,10 @@ input[type="file"] {
 		font-size: 15px;
 	}
 
-	.border_index div#DataTables_Table_0_length {
-		padding-bottom: 20px !important;
-		padding-left: 0px !important;
-	}
-
-	.border_index div#DataTables_Table_0_filter {
-		padding-bottom: 20px !important;
-		padding-right: 0px !important;
-	}
-
 	.border_index div#DataTables_Table_0_info {
 		margin-top: -8px !important;
 	}
 
-	.border_index div#DataTables_Table_0_paginate a.paginate_button.current {
-		font-size: 14px !important;
-	}
 
 	.border_index table#DataTables_Table_0 td {
 		text-transform: capitalize;
@@ -3408,7 +3450,6 @@ input[type="file"] {
 	.view_job_page .row .col-lg-6:nth-child(1) {
 		content: "";
 		border-right: 1px solid #ddd;
-		padding-left: 0px;
 	}
 
 	.padding_table div#DataTables_Table_3_filter {
@@ -3433,13 +3474,9 @@ input[type="file"] {
 	}
 
 	.view_job_page .row .col-lg-6:nth-child(2) {
-		padding: 0px;
 		padding-bottom: 13px;
 	}
 
-	.view_job_page .card .card-content {
-		padding: 0px 13px 0px;
-	}
 
 	.jobs_tabss ul .col-md-2:nth-child(1) li.nav-item {
 		margin-right: 10px;
@@ -3862,7 +3899,7 @@ input[type="file"] {
 	}
 
 	.login-bg-wrapper.job-detail-page {
-		padding: 20px 5px;
+		padding: 20px 0px;
 	}
 
 	.Business_details_page {
@@ -3960,7 +3997,11 @@ input[type="file"] {
 
 }
 
-
+@media (max-width:426px) {
+	.add_job_srchhs .button_bs_ryt {
+		margin-top: 45px !important;
+	}
+}
 
 
 @media (max-width:435px) {
@@ -3969,7 +4010,7 @@ input[type="file"] {
 		width: 60%;
 	}
 	.add_job_srchhs .button_bs_ryt {
-		margin-top: 54px;
+		margin-top: 51px;
 	}
 	.add_job_srchhs .search_bar {
 		width: 100%;
@@ -3990,11 +4031,11 @@ input[type="file"] {
 	}
 
 	.srch_responsive input.user-dashboard-search {
-		margin-top: 20px;
+		margin-top: 10px;
 	}
 
 	.srch_responsive .relative i {
-		margin-top: 14px;
+		margin-top: 5px;
 	}
 
 	.button_bs_ryt {
@@ -4048,12 +4089,20 @@ input[type="file"] {
 	.about_uss_wrapper .aboutus-card-outer p {
 		order: 2;
 	}
-
-
-
 }
 
-
+@media (max-width:391px) {
+	.main-job-filter ul li span, .main-job-filter ul span, .main-job-filter ul select {
+		font-size: 12px;
+	}
+	.business_dash_navbar_wrapper li select.job-filter_text {
+		padding-right: 0px !important;
+	}
+	select.job-filter_text.any_select_box {
+		padding-right: 30px !important;
+		width: 100px;
+	}
+}
 
 
 
@@ -4369,13 +4418,15 @@ button.btn.btn-primary {
 .other_data_fields .image_uploading textarea,
 .other_data_fields .categories_sections input,
 .other_data_fields .country_section input,
-.other_data_fields .video_Section input {
+.other_data_fields .video_Section input, .image_uploading[data-v-bef9272d], .country_1_uploading[data-v-bef9272d], .country_2_uploading[data-v-bef9272d], .video_Section[data-v-bef9272d], .country_section[data-v-bef9272d], .categories_sections[data-v-bef9272d] {
 	background: #fff;
 }
 
 .other_data_fields button {
 	background: #060d1a;
 }
+
+
 
 .other_data_fields .image_uploading img {
 	width: 160px;
@@ -4566,7 +4617,6 @@ ul.card_ullist p b {
 .view_job_page .row .col-lg-6:nth-child(1) {
 	content: "";
 	border-right: 1px solid #ddd;
-	padding-left: 0px;
 }
 
 .view_job_page .card-header {
@@ -4580,9 +4630,6 @@ ul.card_ullist p b {
 	border-top: 1px solid #fff;
 }
 
-.view_job_page .card .card-content {
-	padding: 0px 20px 0px;
-}
 
 ul.card_ullist {
 	padding-left: 0px;
@@ -5070,11 +5117,6 @@ li.last_border {
 	padding: 70px 0px;
 }
 
-.sliders_page table.dataTable.no-footer button.btn.btn-primary.btn-sm {
-	width: 27px;
-	padding-left: 8px;
-}
-
 .sliders_page button.btn.btn-danger.btn-sm {
 	width: 27px;
 	padding-left: 7px;
@@ -5084,12 +5126,6 @@ li.last_border {
 .add_sliedrs .mb-4 textarea,
 .add_sliedrs .mb-4 {
 	margin-bottom: 3px !important;
-}
-
-.add_sliedrs label {
-	margin-top: 17px;
-	color: #212529;
-	font-size: 16px;
 }
 
 .inner_admin label {
@@ -5786,11 +5822,6 @@ form.row.edit_customer label,
 	color: #01796f;
 }
 
-.add_customers .padding_remove .dataTables_paginate .paginate_button {
-	color: #fff !important;
-	line-height: 22px;
-}
-
 .add_customer_row {
 	padding: 0px;
 }
@@ -6183,4 +6214,57 @@ span.job-filter_text {
 }
 .forgot_Pass button i {
     padding-left: 8px;
+}
+.business_dash_navbar_wrapper li select.job-filter_text, .employes_selct_checkbox {
+    border: 0px;
+    padding-right: 30px;
+    margin-left: 0px;
+    padding-left: 3px;
+    color: #8b8585;
+    border-radius: 0px 7px 7px 0px;
+}
+.business_inner_dash .main-job-filter ul li {
+    position: relative;
+}
+.dataTables_paginate a.paginate_button.current {
+    height: 37.0px;
+    border-radius: 5px !important;
+    margin: 0px 5px;
+}
+.business_inner_dash .paginate_button.next::before, .business_inner_dash .paginate_button.previous::before{
+	border-radius: 5px !important;
+}
+.business_inner_dash a.paginate_button.current {
+    height: 36px !important;
+}
+.business_dash_tables_wrapper tbody {
+    color: #040F1F;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: 'Open Sans';
+}
+.business_dash_tables_wrapper thead th {
+    font-size: 17px;
+}
+.select_status_wra {
+    filter: contrast(0.9);
+    position: relative;
+    color: #000 !important;
+}
+.business_dash_navbar_wrapper li select:focus, .employes_selct_checkbox:focus {
+    box-shadow: unset !important;
+}
+.employes_selct_checkbox {
+    padding: 8px 30px 10px 10px;
+    border-radius: 7px;
+    margin-left: 10px;
+}
+.business_ad_wrapper {
+    justify-content: space-around;
+}
+.business_inner_dash_wrap {
+    justify-content: start;
+}
+.business_dash_navbar_wrapper li select.job-filter_text option {
+    color: #000;
 }

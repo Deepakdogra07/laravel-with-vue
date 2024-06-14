@@ -49,6 +49,7 @@ class HomeController extends Controller
             'hired' => $hired,
             'rejected' => $rejected,
             ];
+            // dd('gere');
         $jobs = Jobs::where('user_id',$user->id)->select('job_title', 'id')->get(); 
         return Inertia::render('Business/Welcome',compact('footer_data','user','applied_customers','status','jobs'));
     }
