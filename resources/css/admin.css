@@ -217,8 +217,15 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .job_admin_all .dataTables_paginate a.paginate_button.current {
     height: 36px;
 }
-
-
+.padding_remove a.paginate_button.current {
+    padding-top: 6px !important;
+}
+.padding_remove .dataTables_paginate a.paginate_button.current {
+    height: 36.9px;
+}
+.add_testimonial_page {
+    border-bottom: 0px solid transparent !important;
+}
 
 
 
@@ -317,6 +324,9 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	}
 	.View_Detailed_Enquiry_box {
 		width: 100%;
+	}
+	.job_posting_page {
+		padding: 0px 5px;
 	}
 }
 @media (max-width:640px) {
@@ -487,7 +497,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 		height: 25px;
 	}
 	
-}  
+}   
 
 @media (max-width:442px) {
 	.padding_remove .dataTables_filter label input[type="search"] {

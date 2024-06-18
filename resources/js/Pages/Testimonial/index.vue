@@ -77,12 +77,12 @@ function splitStringIntoChunks(inputString, chunkSize = 80) {
             </div>
           <!-- </template> -->
           <div class="craete_pagee">
-          <div class="max-w-7xl mx-auto px-2 testimonial_spacing">
+          <div class="max-w-7xl mx-auto px-2 testimonial_spacing ">
 
               <div class="bg-white shadow-sm sm:rounded-lg shift-u tesstimonials_bgg" style="border: 1px solid #ddd;">
                   <div class="p-6 text-black-900 padding_remove bg_tablee">
                     <div class="">
-                      <DataTable class="table display add_testimonial_page" :options="options" style="border:2px black ;">
+                      <DataTable class="table display add_testimonial_page" :options="options">
                           <thead>
                               <tr>
                                   <th >ID</th>

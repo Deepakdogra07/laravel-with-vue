@@ -35,8 +35,8 @@ const props = defineProps({
                 <h2 class="font-semibold text-xl text-black-800 leading-tight">View Enquiries</h2>
                 
         </template>
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto px-2">
+        <div class="py-12 View_enquires_wrapper">
+            <div class="max-w-7xl mx-auto px-2 View_enquiresinner_wrapper">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 padding_remove  table-responsive">
                         <DataTable class="display" :options="options" style="border:2px black ;width:100%">

@@ -1609,7 +1609,12 @@ input[type="file"] {
 	.main-job-filter ul li span {
 		font-size: 14px;
 	}
-
+	.view_customer_wrapper .col {
+		width: 25% !important;
+		max-width: 25% !important;
+		flex: 1 25% !important;
+		padding: 10px 20px 10px 0px !important;
+	}
 
 
 
@@ -2113,6 +2118,13 @@ input[type="file"] {
 	}
 
 
+	/*customer detail page*/
+	.view_customer_wrapper .col {
+		width: 33.3% !important;
+		max-width: 33.3% !important;
+		flex: 1 33.3% !important;
+		padding: 10px 20px 10px 0px !important;
+	}
 
 }
 
@@ -2946,8 +2958,25 @@ input[type="file"] {
 	.business_dash_tables_wrapper thead th, .business_wrap_name, .business_wrap_name tbody td {
 		font-size: 14px !important;
 	}
-
-
+	.applied-container_wrapper {
+		max-width: 720px !important;
+	}
+	.view_customer_inner {
+		max-width: 720px !important;
+		padding: 50px 20px !important;
+	}
+	.video_image_wrapper .col {
+		width: 50% !important ;
+		max-width: 50% !important;
+		flex: 1 50% !important;
+		padding: 0px 20px 20px 0px !important;
+	}
+	.passport_details {
+		margin-top: 20px;
+	}
+	.video_image_wrapper {
+		padding: 0px !important;
+	}
 }
 
 
@@ -3976,6 +4005,29 @@ input[type="file"] {
 	.previous_next {
 		padding: 0px;
 	}
+
+	.inner_card_wrapper p, .pass_travel_details_wrapper .card-body p {
+		grid-template-columns: 4fr 3fr !important;
+	}
+
+	.view_customer_inner {
+		padding: 26px 20px !important;
+	}
+
+
+	/*576 customer page*/
+	.pass_travel_details_wrapper h2, .video_image_wrapper h2 {
+		font-size: 20px !important;
+	}
+	.video_image_wrapper .col:empty {
+		display: none;
+	}
+	.mobile_none {
+		display: none;
+	}
+	.wrapper_name p {
+		overflow: hidden;
+	}
 }
 
 @media (max-width: 549px) {
@@ -4009,12 +4061,29 @@ input[type="file"] {
 	.business_dashboard_inner .dataTables_length label select {
 		width: 55px !important;
 	}
-
+	.view_customer_wrapper .customer_card {
+		display: block !important;
+	}
+	.video_image_wrapper .column_width {
+		padding: 0px 15px 15px 0px !important;
+	}
+	.video_image_wrapper .column_width {
+    padding: 0px 15px 15px 0px !important;
+}
 }
 
 @media (max-width:426px) {
 	.add_job_srchhs .button_bs_ryt {
 		margin-top: 45px !important;
+	}
+	.video_image_wrapper .column_width {
+		width: 100% !important;
+		max-width: 100% !important;
+		flex: 1 100% !important;
+		padding: 0px 0px 20px 0px !important;
+	}
+	.inner_spacing_wrapper {
+		padding: 20px 20px !important;
 	}
 }
 
@@ -6000,6 +6069,7 @@ label.label_checkbox {
 .recommended_checkbox input.form-control {
     background: #fbfbfb !important;
     border: 1px solid #d2d2d5;
+    height: 42px;
 }
 .recommended_checkbox input, .recommended_checkbox input:focus {
     border: 1px solid #d2d2d5;
@@ -6245,8 +6315,8 @@ span.job-filter_text {
 .business_inner_dash .main-job-filter ul li {
     position: relative;
 }
-.dataTables_paginate a.paginate_button.current {
-    height: 37.0px;
+.business_inner_dash .dataTables_paginate a.paginate_button.current {
+    height: 35px;
     border-radius: 5px !important;
     margin: 0px 5px;
 }
@@ -6277,6 +6347,7 @@ span.job-filter_text {
     padding: 8px 30px 10px 10px;
     border-radius: 7px;
     margin-left: 10px;
+    font-size: 15px;
 }
 .business_ad_wrapper {
     justify-content: space-around;
@@ -6325,3 +6396,110 @@ span.job-filter_text {
 .Applied_job_wrapper .dataTables_paginate {
     padding-bottom: 30px;
 }
+
+/*View Customer page*/
+.view_customer_wrapper .customer_card {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 40px;
+    align-items: center;
+}
+.view_customer_wrapper .card-image img {
+    border-radius: 50%;
+}
+.inner_card_wrapper h1 {
+    font-family: 'Open Sans' !important;
+    font-weight: 700;
+    font-size: 40px !important;
+}
+.inner_card_wrapper p b, .pass_travel_details_wrapper .card-body p b {
+    font-family: 'Philosopher';
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-bottom: 0px !important;
+    color: #0F1016;
+}
+.inner_card_wrapper p, .pass_travel_details_wrapper .card-body p  {
+    margin-bottom: 0px;
+    color: #4A4C56;
+    font-size: 16px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.pass_travel_details_wrapper .card-body p {
+    grid-template-columns: 2fr 3fr;
+    gap: 20px;
+}
+.view_customer_wrapper {
+    background: #f2f2f2;
+}
+.pass_travel_details_wrapper h2, .video_image_wrapper h2 {
+    font-size: 24px !important;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 180px;
+}
+.img_inner_wrapper img {
+    background: #f9f9f9;
+    width: 100%;
+    height: 165px;
+    object-fit: cover;
+    object-position: top;
+	border-radius: 5px 5px 0px 0px;
+}
+.wrapper_name {
+    background: #01796F;
+    padding: 10px;
+    border-radius: 0px 0px 5px 5px;
+}
+.img_inner_wrapper {
+    border-radius: 5px 5px 0px 0px;
+}
+.video_icon {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+.video_icon i {
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    font-size: 32px;
+}
+.inner_spacing_wrapper {
+    padding: 30px 40px 40px 40px;
+    background: #fff;
+    border-radius: 8px;
+}
+.video_image_wrapper .col:nth-child(1) {
+    padding-left: 0px;
+}
+.col-one, .col-two, .col-three {
+    width: 20% !important;
+    flex: 1 20% !important;
+    max-width: 20% !important;
+}
+.pass_travel_details_wrapper {
+    padding: 35px 0px;
+}
+.video_image_wrapper {
+    padding: 10px 0px;
+}
+.icon_eye {
+    padding: 8px  12px;
+}
+
+
+
+
+/* .pass_travel_details_wrapper {
+    border-width: 1px 0px 1px 0px;
+    border-color: #DDDDDD;
+    padding: 40px 0px;
+} */
