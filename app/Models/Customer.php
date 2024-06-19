@@ -41,16 +41,16 @@ class Customer extends Model
         return $this->belongsTo(Jobs::class,'job_id','id');
     }
     public function status(){
-        return $this->belongsTo(CustomerStatus::class,'id');
+        return $this->belongsTo(CustomerStatus::class,'customer_id');
     }
     public function travel_details(){
-        return $this->hasone(CustomerTravelDetails::class,'id');
+        return $this->hasone(CustomerTravelDetails::class,'customer_id');
     }
     public function documents(){
-        return $this->hasone(CustomerDocuments::class,'id');
+        return $this->hasone(CustomerDocuments::class,'customer_id');
     }
     public function employments(){
-        return $this->hasone(CustomerTraining::class,'id');
+        return $this->hasone(CustomerTraining::class,'customer_id');
     }
     
 }

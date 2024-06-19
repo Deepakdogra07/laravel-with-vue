@@ -121,10 +121,10 @@ function getLast_name(name){
                                 
                             </div>
                         </div>
+                        <!-- {{ customer }} -->
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
                                     <video :src="customer?.documents?.dish" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>

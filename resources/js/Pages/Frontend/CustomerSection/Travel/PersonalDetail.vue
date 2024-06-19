@@ -325,7 +325,7 @@ function handleChange(type){
                     </Link>
                 </div>
                 <div class="flex items-center mt-4 login-btn-main">
-                    <PrimaryButton class="forms-btn">
+                    <PrimaryButton class="forms-btn" :disabled="form.processing">
                         Next Step <span> <i class="bi bi-arrow-right"></i></span>
                     </PrimaryButton>
                 </div>

@@ -288,7 +288,7 @@ async function changeStatus(customer_id, job_id, event) {
                     </select>
                 </td>
                 <td>
-                  <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.id)"><i class="fas fa-eye"></i> </Link>
+                  <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
                 </td>
               </tr>
             </tbody>
