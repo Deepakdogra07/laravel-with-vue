@@ -88,6 +88,7 @@ class JobApplicationController extends Controller
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
+        // dd($request->all());
         
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
@@ -100,9 +101,11 @@ class JobApplicationController extends Controller
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
         $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
+        // dd($customer_travel_detail);
         $customer_travel_details = new CustomerTravelDetails();
         $customer_travel_details->fill($customer_travel_detail);
         $customer_travel_details->customer_id = $customer_personal_details->id;
+        $customer_travel_details->purpose_of_stay = $customer_travel_detail['purpose_of_stay'];
         $customer_travel_details->updated_at =null;
         $customer_travel_details->save();
         $password = Str::random(6);

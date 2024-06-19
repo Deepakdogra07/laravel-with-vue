@@ -377,7 +377,7 @@ class BusinessController extends Controller
         }
     }
     public function view_customer($customer_id){
-        $customer = Customer::where('id',$customer_id)->first();
+        $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
         return Inertia::render('Business/ViewCustomer',compact('customer'));
     }
 }
