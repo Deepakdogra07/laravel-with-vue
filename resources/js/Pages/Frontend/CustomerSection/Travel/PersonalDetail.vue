@@ -156,7 +156,7 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">Given Name (s) <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.first_name" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.first_name" :message="props.errors.first_name[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.first_name" :message="props.errors.first_name[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -164,7 +164,7 @@ function handleChange(type){
                                     <span class="label text-label">Surname / family name <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.last_name" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.last_name" :message="props.errors.last_name[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.last_name" :message="props.errors.last_name[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -172,7 +172,7 @@ function handleChange(type){
                                     <span class="label text-label">E-mail address <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" type="email" v-model="form.email"class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.email" :message="props.errors.email[0]" />
+                                    <InputError class="mt-2" v-if="form.errors.email" :message="props.errors.email[0]" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -180,7 +180,7 @@ function handleChange(type){
                                     <span class="label text-label">Confirm E-mail <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.confirm_email"type="email" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -189,7 +189,7 @@ function handleChange(type){
     
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" /> -->
                                      <VueDatePicker v-model="form.date_of_birth" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :max-date="eighteenYearsAgo"   :type="'date'" />
-                                    <InputError class="mt-2" v-if="props.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -207,7 +207,7 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">City of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.city_of_birth" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.city_of_birth" :message="props.errors.city_of_birth[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.city_of_birth" :message="props.errors.city_of_birth[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -240,7 +240,7 @@ function handleChange(type){
                                             </label>
                                         </div>
                                         </div>
-                                    <InputError class="mt-2" v-if="props.errors.gender" :message="props.errors.gender[0]"/>
+                                    <InputError class="mt-2" v-if="form.errors.gender" :message="props.errors.gender[0]"/>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +255,7 @@ function handleChange(type){
                                     <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.passport_number" :message="props.errors.passport_number[0]" />
+                                    <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -263,7 +263,7 @@ function handleChange(type){
                                     <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="props.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
+                                    <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -272,7 +272,7 @@ function handleChange(type){
 
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
                                     <VueDatePicker v-model="form.date_of_expiry" placeholder="Select Start Date" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
-                                    <InputError class="mt-2" v-if="props.errors.date_of_expiry" :message="props.errors.passport_date_of_expiry[0]" />
+                                    <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
                                 </div>
                             </div>
                             <div class="col-md-12">

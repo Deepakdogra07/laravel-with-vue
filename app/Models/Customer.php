@@ -46,5 +46,11 @@ class Customer extends Model
     public function travel_details(){
         return $this->hasone(CustomerTravelDetails::class,'id');
     }
+    public function documents(){
+        return $this->hasone(CustomerDocuments::class,'id');
+    }
+    public function employments(){
+        return $this->hasone(CustomerTraining::class,'id');
+    }
     
 }

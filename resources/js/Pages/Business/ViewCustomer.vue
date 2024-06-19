@@ -9,6 +9,18 @@ const props = defineProps({
         type:Object
     }
 });
+function getLast_name(name){
+    let filename = '';
+    if(name){
+        const lastSlashPosition = name.lastIndexOf('/');
+        if (lastSlashPosition !== -1) {
+            filename = name.substring(lastSlashPosition + 1);
+          } else {
+            filename = 'No Data Available';
+          }
+    }
+    return filename;
+}
 </script>
 
 <template>
@@ -28,10 +40,9 @@ const props = defineProps({
                                 <p><b>Date of Birth</b>{{ customer.date_of_birth }}</p>
                                 <p><b>County of birth</b>{{ customer.country_of_birth }}</p>
                                 <p><b>City of birth</b>{{ customer.city_of_birth }}</p>
-                                <p><b>martial_status</b>{{ customer.martial_status }}</p>
+                                <p><b>martial_status</b>{{ (customer.martial_status) ? 'Married':'Unmarried' }}</p>
                                 <p><b>Country to immigrate</b>{{ customer.migrate_country }}</p>
-                                <p><b>Gender</b>{{ customer.gender }}</p>
-                                <!-- {{ customer.martial_status }} -->
+                                <p><b>Gender</b>{{ (customer.gender == 0) ? 'Male' : 'Female' }}</p>
                             </div>
                     </div>   
                 </div>  
@@ -41,12 +52,11 @@ const props = defineProps({
                             <div class="Travel_details">
                                 <h2>Travel Details</h2>
                                 <div class="card-body">
-                                    <p><b>Purpose of stay</b>Transit</p>
-                                    <p><b>Purpose of stay</b>Other (consultation)</p>
-                                    <p><b>Type of visa</b>Tourist </p>
-                                    <p><b>Date of travel</b>22/07/2024</p>
-                                    <p><b>Passenger nationality </b>Chandigarh, India</p>
-                                    <p><b>Port of arrival</b>Chandigarh, India</p>
+                                    <p><b>Purpose of stay</b>{{ customer?.travel_details?.purpose_of_stay }}</p>
+                                    <p><b>Type of visa</b>{{ customer?.travel_details?.type_of_visa }} </p>
+                                    <p><b>Date of travel</b>{{ customer?.travel_details?.date_of_travel }}</p>
+                                    <p><b>Passenger nationality </b>{{ customer?.travel_details?.passenger_nationality }}</p>
+                                    <p><b>Port of arrival</b>{{ customer?.travel_details?.port_of_arrival }}</p>
                                 </div>
                             </div> 
                         </div>
@@ -54,10 +64,10 @@ const props = defineProps({
                             <div class="Travel_details passport_details">
                                 <h2>Passport details</h2>
                                 <div class="card-body">
-                                    <p><b>Passport number</b>abc5498aaf260</p>
-                                    <p><b>Issuing authority</b>Ministry of external affairs</p>
-                                    <p><b>Citizen of more than one country</b>No </p>
-                                    <p><b>Have you ever obtained an visa using current or previous passport? </b>Yes</p>
+                                    <p><b>Passport number</b>{{ customer?.passport_number }}</p>
+                                    <p><b>Issuing authority</b>{{ customer?.issuing_authority }}</p>
+                                    <p><b>Citizen of more than one country</b>{{ customer.citizen_of_more_than_one_country == 0 ? 'No': 'Yes' }} </p>
+                                    <p><b>Have you ever obtained an visa using current or previous passport? </b>{{ customer.visa_available == 0 ? 'No': 'Yes' }}</p>
                                 </div>
                             </div> 
                         </div>
@@ -69,13 +79,14 @@ const props = defineProps({
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">
+                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                     <video :src="customer?.documents?.kitchen_area" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>
                                     </div>
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
                                 </div>
                                 
                             </div>
@@ -83,13 +94,14 @@ const props = defineProps({
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">
+                                    <!-- <img src="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                    <video :src="customer?.documents?.ingredients" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>
                                     </div>
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.ingredients)"></p>
                                 </div>
                                 
                             </div>
@@ -97,13 +109,14 @@ const props = defineProps({
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">
+                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                    <video :src="customer?.documents?.cooking_tech" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>
                                     </div>
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
                                 </div>
                                 
                             </div>
@@ -111,13 +124,14 @@ const props = defineProps({
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">
+                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                    <video :src="customer?.documents?.dish" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>
                                     </div>
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.dish)"></p>
                                 </div>
                                 
                             </div>
@@ -125,13 +139,14 @@ const props = defineProps({
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">
+                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">/ -->
+                                    <video :src="customer?.documents?.clean_up" controls></video>
                                     <div class="video_icon absolute w-100">
                                         <i class="fas fa-play-circle"></i>
                                     </div>
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.clean_up)"></p>
                                 </div>
                                 
                             </div>
@@ -143,25 +158,9 @@ const props = defineProps({
                     <div class="row">
                         <div class="col column_width">
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.employments?.evidence_self_employment_aus">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col column_width">
-                            <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
-                                <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col column_width">
-                            <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
-                                <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)"></p>
                                 </div>
                             </div>
                         </div>
@@ -173,48 +172,48 @@ const props = defineProps({
                 </div>      
                 <div class="video_image_wrapper">
                     <div class="row">
-                        <div class="col col-one">
+                        <!-- <div class="col col-one">
                             <h2>Passport</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                 <img :src="customer.passport_image" alt=" No image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center">{{ customer.passport_image }}</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col col-two">
                             <h2>Employer statement</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.employments?.employer_statement">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.employer_statement)"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col col-three">
                             <h2>Financial evidence</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.employments?.financial_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.financial_evidence)" ></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col col-four">
                             <h2>Evidence of self-employment</h2>
                                     <div class="img_inner_wrapper">
-                                        <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                        <img :src="customer?.employments?.formal_training_evidence">
                                         <div class="wrapper_name">
-                                            <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                            <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.formal_training_evidence)" ></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col column_width">
                                     <h2 style="visibility: hidden;" class="mobile_none">Evidence of self-employment</h2>
                                     <div class="img_inner_wrapper">
-                                        <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                        <img :src="customer?.employments?.evidence_self_employment">
                                         <div class="wrapper_name">
-                                            <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                            <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -225,27 +224,27 @@ const props = defineProps({
                         <div class="col column_width">
                             <h2>Formal Training</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.documents?.evidence_image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.evidence_image)"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col column_width">
                             <h2>Supporting employee</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.documents?.employment_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col column_width">
                             <h2>Licences</h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <img :src="customer?.documents?.licences">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.licences)"></p>
                                 </div>
                             </div>
                         </div>
@@ -260,9 +259,10 @@ const props = defineProps({
                         <div class="col column_width">
                             <h2>Resume </h2>
                             <div class="img_inner_wrapper">
-                                <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740">
+                                <!-- <img scr="https://img.freepik.com/free-photo/bed-arrangements-still-life_23-2150533025.jpg?t=st=1718704104~exp=1718707704~hmac=88563627312c7e6cd5ec680570142671ec70c1320189a41165936c805097543a&w=740"> -->
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center">Video54842...65.mp4</p>
+                                    
+                                    <p class="mb-0 text-white text-center"><a :href="customer?.documents?.resume" target="_blank" download="resume">Download Resume</a></p>
                                 </div>
                             </div>
                         </div>
