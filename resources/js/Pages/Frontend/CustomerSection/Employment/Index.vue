@@ -258,7 +258,7 @@ function submit_form(){
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-center">
+                        <div class="d-flex justify-between align-items-center buttons_mine">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
