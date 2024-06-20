@@ -2142,6 +2142,9 @@ input[type="file"] {
 	.video_image_wrapper {
 		padding: 0px 0px !important;
 	}
+	.business_wrapper_dash.Business_blank {
+		display: block !important;
+	}
 
 }
 
@@ -6503,8 +6506,9 @@ span.job-filter_text {
     object-fit: cover;
     -o-object-position: top;
     object-position: top;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
     border: 1px solid #ddd0;
+    border-bottom: 0px;
 }
 .wrapper_name {
     background: #01796F;
@@ -6577,6 +6581,33 @@ span.job-filter_text {
     border-radius: 5px;
     margin-top: 10px;
 }
+.travel-section .dp__main .dp__pointer.dp__input_readonly {
+    border: 0px;
+    background: #fbfbfb;
+    padding: 0px 0px 0px 40px;
+}
+.travel-section .natoinality_row .dp__main {
+    padding: 11px;
+}
+.travel-section input:focus, .job_posting_page input:focus {
+    border: 1px solid #ddd!important;
+    box-shadow: unset !important;
+}
+.travel-section .dp__main .dp__pointer.dp__input_readonly:focus{
+	border: 0px solid #ddd!important;
+    box-shadow: unset !important;
+}
+.business_wrapper_dash 
+ .select_status_wra {
+    padding: 8px 10px;
+}
+.Business_blank {
+    display: inline-table !important;
+}
+.buttons_mine .forms-btn span {
+    line-height: 0px;
+}
+
 /* .pass_travel_details_wrapper {
     border-width: 1px 0px 1px 0px;
     border-color: #DDDDDD;
