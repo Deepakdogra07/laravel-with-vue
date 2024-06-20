@@ -119,6 +119,7 @@ function handleChange(type){
     }
 }
 
+
 </script>
  
 <template>
@@ -188,7 +189,7 @@ function handleChange(type){
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" /> -->
-                                     <VueDatePicker v-model="form.date_of_birth" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :max-date="eighteenYearsAgo"   :type="'date'" />
+                                     <VueDatePicker v-model="form.date_of_birth" placeholder="Select date of birth" class="form-control mt-2 " :format="format" :max-date="eighteenYearsAgo"    :type="'date'" />
                                     <InputError class="mt-2" v-if="form.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
@@ -201,6 +202,7 @@ function handleChange(type){
                                         <option selected v-for="country in countries" :value="country.name" v-html="country.name"></option>
                                         <!-- <option>Hello</option> -->
                                     </select>
+                                    <InputError class="mt-2" v-if="form.errors.country_of_birth" :message="props.errors.country_of_birth[0]"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -220,6 +222,7 @@ function handleChange(type){
                                         <option value="1">Unmarried</option>
                                     </select>
                                 </div>
+                                <InputError class="mt-2" v-if="form.errors.martial_status" :message="props.errors.martial_status[0]"/>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-4">
@@ -271,7 +274,7 @@ function handleChange(type){
                                     <span class="label text-label">Passport Date Of Expiry</span>
 
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
-                                    <VueDatePicker v-model="form.date_of_expiry" placeholder="Select Start Date" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
+                                    <VueDatePicker v-model="form.date_of_expiry" placeholder="Select date of expiry" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
                                     <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
                                 </div>
                             </div>
