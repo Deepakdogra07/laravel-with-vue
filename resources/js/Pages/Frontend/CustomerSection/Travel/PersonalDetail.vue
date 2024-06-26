@@ -66,7 +66,7 @@ const form =useForm({
     first_name:props?.already_customer?.first_name,
     last_name:props?.already_customer?.last_name,
     email:props?.already_customer?.email,
-    confirm_email:props?.already_customer?.confirm_email,
+    confirm_email:props?.already_customer?.email,
     date_of_birth:props?.already_customer?.date_of_birth,
     country_of_birth:props?.already_customer?.country_of_birth,
     city_of_birth:props?.already_customer?.city_of_birth,

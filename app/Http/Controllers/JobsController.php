@@ -333,8 +333,7 @@ class JobsController extends Controller
    }
    public function job_for_customer($job_id)
    {
-      $applied_customers = Customer::where('job_id', $job_id)->with('status')->get();
-      // dd($applied_customers->status);
+      $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->join('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->select('customers_personal_details.*','jobs_with_customer_status.status as status')->with('status','statuz')->get();
       $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->count();
       $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->count();
       $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->count();
@@ -349,11 +348,12 @@ class JobsController extends Controller
          'hired' => $hired,
          'rejected' => $rejected,
       ];
+      // dd($status);
       return Inertia::render('Admin/Jobs/ViewCustomers', compact('applied_customers', 'job_id', 'status'));
    }
    public function data_filteration($job_id, $status)
    {
-      $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->leftJoin('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->where('jobs_with_customer_status.status', $status)->with('status')->get();
+      $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->leftJoin('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->where('jobs_with_customer_status.status', $status)->with('status','statuz')->get();
       return response()->json(['applied_customers' => $applied_customers]);
    }
 }
