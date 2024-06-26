@@ -9,7 +9,7 @@
      <div class="col-lg-9 col-md-8 px-0">
        <TopMenu />
 
-       <main class="">
+       <main class="all_subhadings_wrap">
          <div class="px-2" >
            <div class="pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700">
              <slot name="header" />

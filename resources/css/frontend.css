@@ -582,7 +582,10 @@ h2 {
 }
 
 .step-form-back {
-	color: #000 !important;
+    color: #000 !important;
+    line-height: 0px;
+    border-color: #A5A5AB;
+    padding: 12px 15px!important;
 }
 
 .text-lightgreen {
@@ -2414,9 +2417,9 @@ input[type="file"] {
 		padding-top: 15px;
 	}
 
-	.padding_table div#DataTables_Table_1_info {
+	/* .padding_table div#DataTables_Table_1_info {
 		float: left !important;
-	}
+	} */
 
 	.padding_table div#DataTables_Table_1_paginate {
 		float: right !important;
@@ -2786,6 +2789,7 @@ input[type="file"] {
 
 	.edit_customer_page .spacing_mobile {
 		margin-top: 10px !important;
+		padding: 0px 5px !important;
 	}
 
 	.edit_customer_page h2 {
@@ -2832,18 +2836,14 @@ input[type="file"] {
 	}
 
 	.update_hd {
-		padding-left: 5px !important;
-	}
-
-	.col_update {
-		padding: 0px 6px;
+		padding-left: 2px !important;
 	}
 
 	.header_cn {
 		max-width: 720px !important;
 	}
 	.col_update {
-		padding: 0px 7px !important;
+		padding: 0px 4px !important;
 	}
 
 	.col_updates {
@@ -2854,15 +2854,15 @@ input[type="file"] {
 		margin-top: 10px !important;
 	}
 
-	.other_data_fields .container {
-		padding: 0px 5px;
-	}
-
 	.view_enquiry {
 		padding: 0px 5px !important;
 	}
 
 	.create_testimonial_form {
+		padding: 0px 5px;
+	}
+
+	.create_news_wrapper_inner .column_spacing {
 		padding: 0px 5px;
 	}
 
@@ -2999,6 +2999,16 @@ input[type="file"] {
 	}
 	.view_customer_wrapper .card-image img {
 		height: 130px !important;
+	}
+
+	.edit_customer .spacing_x, .edit_customer .button_margin {
+		padding: 0px 5px;
+	}
+	.add_customer_page .configure-switch, .edit_customer_page .configure-switch {
+		margin-top: 10px !important;
+	}
+	.col_update.phn_input {
+		margin-top: 10px !important;
 	}
 }
 
@@ -3389,8 +3399,8 @@ input[type="file"] {
 		margin-bottom: 7px !important;
 	}
 
-	.px-2.testimonial_spacing {
-		padding: 0px !important;
+	.craete_pagee .testimonial_spacing {
+		padding: 0px 4px!important;
 	}
 
 	.pages-heading.d-flex.justify-between.align-items-center.px-2.py-3.text-2xl.font-semibold.text-gray-700 {
@@ -3493,21 +3503,13 @@ input[type="file"] {
 		padding: 0px 2px !important;
 	}
 
-	.view_job_page .card .card-header-title {
-		display: block !important;
-	}
-
 	.view_job_page .card .card-header-title br {
 		display: none;
 	}
 
-	.view_job_page .card-header .card-header-caption {
-		padding-bottom: 1px !important;
-	}
-
 	.view_job_page .card .card-header-title h2,
 	.view_job_page .card .card-header-title h4 {
-		margin-bottom: 5px !important;
+		margin-bottom: 0px !important;
 	}
 
 	.view_job_page ul.card_ullist li {
@@ -4017,9 +4019,6 @@ input[type="file"] {
 		font-size: 14px;
 	}
 
-	.add_customers_inner {
-		padding: 0px 5px !important;
-	}
 
 	.footer_padding {
 		padding: 0px 10px !important;
@@ -4065,6 +4064,11 @@ input[type="file"] {
 	.pass_travel_details_wrapper h2, .video_image_wrapper h2{
 		width: auto !important;
 	}
+	.categories_wrapper .category_tables, .edit_fiedls_sec .inner-edit_field_wrapper, .update_slider_warpper .inner_update, .update_category_inner_wrapper .update_inner {
+		padding-left: 3px !important;
+		padding-right: 3px !important;
+	}
+
 }
 
 @media (max-width: 549px) {
@@ -4710,13 +4714,15 @@ table#DataTables_Table_1 {
 
 .view_job_page .card .card-header-title h2,
 .view_job_page .card .card-header-title h4 {
-	margin-bottom: 5px !important;
+	margin-bottom: 0px !important;
 	font-size: 16px !important;
+	line-height: 0px;
 }
 
 .view_job_page .card .card-header-title {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .view_job_page .card .card-header-title h2 b,
@@ -4763,7 +4769,7 @@ ul.card_ullist p b {
 .view_job_page .card-header .card-header-caption {
 	background: #3c5b6f;
 	color: #fff;
-	padding: 14px 15px 0px 15px;
+	padding: 15px;
 	border-top: 1px solid #fff;
 }
 
@@ -5157,7 +5163,7 @@ li.last_border {
 }
 
 .travel-detail h4 {
-	font-size: 24px !important;
+	font-size: 20px !important;
 }
 
 .travel-detail label {
@@ -5967,9 +5973,7 @@ form.row.edit_customer label,
 	padding: 0px;
 }
 
-a.paginate_button.current {
-	padding-top: 6px !important;
-}
+/* `	 */
 
 .categories_pagea.paginate_button.current {
 	padding-top: 6px !important;
@@ -6606,6 +6610,23 @@ span.job-filter_text {
 }
 .buttons_mine .forms-btn span {
     line-height: 0px;
+}
+.add_customer_page .configure-switch, .edit_customer_page .configure-switch, .col_update .configure-switch {
+    margin-top: 40px;
+}
+.add_category_page .inner_admin .margin_btm, .update_category_inner_wrapper .margin_btm{
+    margin-bottom: 12px !important;
+}
+.create_news_wrapper .create_news_wrapper_inner {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.create_news_wrapper_inner .column_spacing {
+    margin-top: 0px !important;
+    margin-bottom: 20px;
+}
+.side-navbar ul li span.job_space, .dashboard_sidebar ul li span.job_space {
+    margin-left: 22px !important;
 }
 
 /* .pass_travel_details_wrapper {

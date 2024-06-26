@@ -59,13 +59,13 @@ function submitForm() {
       </div>
 
     </template>
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto px-2">
+    <div class="py-12 update_category_inner_wrapper">
+      <div class="max-w-7xl mx-auto px-2 update_inner">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
           <div class="p-6 text-black-900 inner_admin">
             <div class="container">
               <form @submit.prevent="submitForm">
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <input type="hidden" id="categoryId" v-model="category.id">
                   <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category
                     Heading <span style="color: red;"> *</span></label>
@@ -75,7 +75,7 @@ function submitForm() {
                     }}</span>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image <span style="color: red;"> *</span></label>
                   <img :src="category_image" alt="" style="height:100px">
                   <!-- <label for="category_image" class="form-control cursor-pointer mt-2">
@@ -84,7 +84,7 @@ function submitForm() {
                   <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*"
                     class="form-control cursor-pointer mt-2">
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 margin_btm">
                   <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail <span style="color: red;"> *</span></label>
                   <img :src="thumbnail" alt=""
                     style="height:100px;margin-top:10px;">
