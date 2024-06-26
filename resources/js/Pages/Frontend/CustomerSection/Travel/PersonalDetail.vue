@@ -222,8 +222,8 @@ function handleChange(type){
                                         <option value="0">Married</option>
                                         <option value="1">Unmarried</option>
                                     </select>
+                                    <InputError class="mt-2" v-if="form.errors.martial_status" :message="props.errors.martial_status[0]"/>
                                 </div>
-                                <InputError class="mt-2" v-if="form.errors.martial_status" :message="props.errors.martial_status[0]"/>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-4">

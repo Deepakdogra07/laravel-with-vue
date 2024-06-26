@@ -28,7 +28,7 @@ const props = defineProps({
             
         </template>
         <div class="py-12 View_Detailed_Enquiry_box">
-                <div class="px-2">
+                <div class="px-2 view_padding">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up ">
                     <div class="text-black-900">
                     <div class="">
