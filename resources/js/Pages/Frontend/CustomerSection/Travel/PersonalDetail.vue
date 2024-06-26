@@ -152,41 +152,41 @@ function handleChange(type){
             <div class="row mt-4">
                 <div class="col-lg-6 col-12">
                     <div class="container-fluid form-division-right">
-                        <div class="row px-0">
-                            <h2 class="mb-3">Personal Details</h2>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                        <div class="row px-0 justify-content-between">
+                            <h2 class="mb-4">Personal Details</h2>
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Given Name (s) <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.first_name" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.first_name" :message="props.errors.first_name[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Surname / family name <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.last_name" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.last_name" :message="props.errors.last_name[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">E-mail address <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" type="text" v-model="form.email"class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.email" :message="props.errors.email[0]" />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Confirm E-mail <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <TextInput placeholder="---" v-model="form.confirm_email"type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" /> -->
@@ -194,8 +194,8 @@ function handleChange(type){
                                     <InputError class="mt-2" v-if="form.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Country/territory birth</span>
     
                                     <select class="form-select mt-2  Selected_option" :class="select_class?.territory_birth" @change="handleChange('territory_birth')" v-model="form.country_of_birth">
@@ -206,15 +206,15 @@ function handleChange(type){
                                     <InputError class="mt-2" v-if="form.errors.country_of_birth" :message="props.errors.country_of_birth[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">City of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <TextInput placeholder="---" v-model="form.city_of_birth" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.city_of_birth" :message="props.errors.city_of_birth[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Marital status</span>
     
                                     <select class="form-select mt-2 Selected_option" :class="select_class?.martial_status" @change="handleChange('marital_status')" v-model="form.martial_status">
@@ -225,8 +225,8 @@ function handleChange(type){
                                     <InputError class="mt-2" v-if="form.errors.martial_status" :message="props.errors.martial_status[0]"/>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="mb-4">
+                            <div class="col-md-12 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Gender</span>
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
@@ -252,26 +252,26 @@ function handleChange(type){
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="container-fluid form-division-left">
-                        <div class="row px-0">
-                            <h2 class="mb-3">Passport Details</h2>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                        <div class="row px-0 justify-content-between">
+                            <h2 class="mb-4">Passport Details</h2>
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
+                            <div class="col-md-6 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
                                     <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="mb-4">
+                            <div class="col-md-12 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label text-label">Passport Date Of Expiry</span>
 
                                     <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
@@ -279,7 +279,7 @@ function handleChange(type){
                                     <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 column_spacing">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="checkbox" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
@@ -290,8 +290,8 @@ function handleChange(type){
                                         </div>
                                     </div>
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <div class="mb-4">
+                            <div class="col-md-12 mt-4 column_spacing">
+                                <div class="mb-4 margin_btm">
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
