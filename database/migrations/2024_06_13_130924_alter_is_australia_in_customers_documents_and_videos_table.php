@@ -25,10 +25,6 @@ class AlterIsAustraliaInCustomersDocumentsAndVideosTable extends Migration
      */
     public function down()
     {
-        Schema::table('customers_documents_and_videos', function (Blueprint $table) {
-            // Assuming the previous type was boolean, change it back to boolean
-            // Adjust this according to the original data type
-            $table->boolean('is_australia')->change();
-        });
+       
     }
 }

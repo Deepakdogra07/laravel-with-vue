@@ -33,22 +33,13 @@ const props = defineProps({
 const countries =  Country.getAllCountries();
     const form = useForm({
         job_id:props.job_id,
-        purpose_of_stay:props?.already_customer?.travel_details?.purpose_of_stay,
-        type_of_visa:props?.already_customer?.travel_details?.type_of_visa,
-        date_of_travel:props?.already_customer?.travel_details?.date_of_travel,
-        passenger_nationality:props?.already_customer?.travel_details?.passenger_nationality ,
-        port_of_arrival:props?.already_customer?.travel_details?.port_of_arrival,
-        migrate_country:props?.already_customer?.migrate_country
+        purpose_of_stay:props?.already_customer?.travel_details?.purpose_of_stay ?? null,
+        type_of_visa:props?.already_customer?.travel_details?.type_of_visa ?? null,
+        date_of_travel:props?.already_customer?.travel_details?.date_of_travel ?? null,
+        passenger_nationality:props?.already_customer?.travel_details?.passenger_nationality  ?? null,
+        port_of_arrival:props?.already_customer?.travel_details?.port_of_arrival ?? null,
+        migrate_country:props?.already_customer?.migrate_country ?? null
     })
-//     const form = useForm({
-//         job_id:props.job_id,
-//         purpose_of_stay:[],
-//         type_of_visa:[],
-//         date_of_travel:null,
-//         passenger_nationality:null,
-//         port_of_arrival:null,
-//         migrate_country:null
-//     })
 const select_class = ref('');
 const migrate = ref('');
 
@@ -157,7 +148,7 @@ function handleCountryInput(type){
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Port of arrival <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
-                                <TextInput  type="text" class="form-control mt-2" v-model="form.port_of_arrival"/>
+                                <TextInput  type="text" placeholder="Enter Port of arrival" class="form-control mt-2" v-model="form.port_of_arrival"/>
                                     <InputError class="mt-2" :message="form.errors.port_of_arrival"/>
                             </div>
 
