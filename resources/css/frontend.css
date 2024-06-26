@@ -583,9 +583,10 @@ h2 {
 
 .step-form-back {
     color: #000 !important;
-    line-height: 0px;
+    /* line-height: 0px; */
     border-color: #A5A5AB;
-    padding: 12px 15px!important;
+    padding: 9px 15px!important;
+    margin-left: 6px;
 }
 
 .text-lightgreen {
@@ -1449,9 +1450,9 @@ input[type="file"] {
 	padding-left: 30px !important;
 }
 
-.form-division-right {
+/* .form-division-right {
 	padding-right: 30px !important;
-}
+} */
 
 /* travel section css end */
 
@@ -1720,9 +1721,9 @@ input[type="file"] {
 		border-left: .3em solid transparent;
 	}
 
-	.form-division-left {
+	/* .form-division-left {
 		padding-left: 0px !important;
-	}
+	} */
 
 	.form-division-right {
 		padding-right: 0px !important;
@@ -4138,6 +4139,15 @@ input[type="file"] {
 	}
 	.view_customer_wrapper .col-five {
 		margin-top: 0px;
+	}
+	.text-label, .profile_info label span, .update_pass label span {
+		font-size: 14px;
+	}
+	.travel-section .form-division-right .column_spacing, .travel-section .form-division-left .column_spacing{
+		width: 100% !important;
+	}
+	.travel-section .form-division-right .column_spacing .margin_btm, .travel-section .form-division-left .margin_btm{
+		margin-bottom: 10px !important;
 	}
 }
 
@@ -6627,6 +6637,13 @@ span.job-filter_text {
 }
 .side-navbar ul li span.job_space, .dashboard_sidebar ul li span.job_space {
     margin-left: 22px !important;
+}
+.travel-section .form-division-right h2, .travel-section .form-division-left h2 {
+    padding-left: 0px;
+}
+.travel-section .form-division-right .column_spacing, .travel-section .form-division-left .column_spacing {
+    padding: 0px;
+    width: 48%;
 }
 
 /* .pass_travel_details_wrapper {
