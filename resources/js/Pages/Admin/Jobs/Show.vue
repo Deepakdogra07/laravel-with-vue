@@ -26,21 +26,28 @@ const skills = ref(''),
     language = ref(''),
     industry = ref('');
 onMounted(() => {
+    var test = [];
     props.skills.forEach(element => {
         if (props.jobs.skills_id.includes(element.id)) {
-            skills.value += element.name + ',';
+            test.push(element.name)
+            // skills.value += element.name + ',';
         }
     });
+    skills.value = test.join(',');
+    test = [];
     props.languages.forEach(element => {
         if (props.jobs.language_id.includes(element.id)) {
-            language.value += element.name + ',';
+            test.push(element.name)
         }
     });
+    language.value =test.join(',');
+    test = [];
     props.industries.forEach(element => {
         if (props.jobs.industry_id.includes(element.id)) {
-            industry.value += element.name + ',';
+            test.push(element.name)
         }
     });
+    industry.value =test.join(',');
 });
 
 
@@ -49,6 +56,8 @@ function sepratedString(recommended_skills){
     let array = JSON.parse(recommended_skills);
     return array.join(", ");
 }
+
+
 
 
 
@@ -63,7 +72,7 @@ function sepratedString(recommended_skills){
 
         </template>
 
-        <div class="nav-container jobs_tabss">
+        <div class="nav-container ">
             <div class="form-navigation1">
                 <div class="container">
                     <ul class="row nav-underline pl-0 mb-0">
@@ -78,7 +87,7 @@ function sepratedString(recommended_skills){
                             <li class="nav-item">
                                 <Link class="nav-link text-center"
                                     :class="{ 'active': route().current('jobs.show', jobs.id) }"
-                                    :href="route('job_for_customers', jobs.id)">Employees</Link>
+                                    :href="route('job_for_customers', jobs.id)">Applies</Link>
                                 <!-- :class="{ 'active': route().current('register') }"   -->
                             </li>
                         </div>

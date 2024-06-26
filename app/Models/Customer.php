@@ -43,6 +43,10 @@ class Customer extends Model
     public function status(){
         return $this->belongsTo(CustomerStatus::class,'customer_id');
     }
+
+    public function statuz(){
+        return $this->hasOne(CustomerStatus::class,'customer_id');
+    }
     public function travel_details(){
         return $this->hasone(CustomerTravelDetails::class,'customer_id');
     }

@@ -6,6 +6,7 @@ import 'vue3-toastify/dist/index.css';
 import * as countryStateCity from 'country-state-city';
 import moment from 'moment';
 import axios from 'axios';
+import { toast } from 'vue3-toastify';
 
 
 const props = defineProps({
@@ -25,11 +26,11 @@ onMounted(()=>{
     appliedCustomers.value = props.applied_customers;
     refreshDataTable.value++;
 });
-const activeSpan = ref(null);
+const activeSpan = ref(0);
 const setActiveSpan = async (spanNumber) => {
   try {
-    if (activeSpan.value === spanNumber) {
-      activeSpan.value = null;
+    if (activeSpan.value === spanNumber || (spanNumber == 0)) {
+      activeSpan.value = 0;
       location.reload();
     } else {
       const response = await axios.get(`/data-filteration/${props.job_id}/${spanNumber-1}`); 
@@ -49,6 +50,33 @@ const states = countryStateCity.State.getStatesOfCountry('IN');
 function formatDateTime(date){
     return moment(date).format('MMMM DD ');
 }
+
+
+
+async function changeStatus(customer_id, job_id, event) {
+  const newStatus = event.target.value;
+
+  if (newStatus) {
+    try {
+      const response = await axios.post('/change-status', {
+        customer_id: customer_id,
+        job_id: job_id,
+        status: newStatus
+      });
+      navbar_key.value++;
+      toast('Status updated successfully', {
+          autoClose: 2000,
+          theme: 'dark',
+        });
+        refreshDataTable.value++;
+    } catch (error) {
+      toast(error, {
+          autoClose: 2000,
+          theme: 'dark',
+        });
+    }
+  }
+}
 </script>
 
 <template>
@@ -59,7 +87,7 @@ function formatDateTime(date){
             </div>
             
         </template>
-        <div class="nav-container jobs_tabss">
+        <div class="nav-container ">
             <div class="form-navigation1" >
                 <div class="container">
                     <ul class="row nav-underline pl-0 mb-0">
@@ -75,9 +103,9 @@ function formatDateTime(date){
                         <div class="col-lg-2 col-md-3 col-5">
                             <li class="nav-item">
                                 <Link class="nav-link text-center"  
-                                    :class="{ 'active': route().current('jobs-customers',job_id) }"
+                                    :class="{ 'active': route().current('job_for_customers',job_id) }"
                                     :href="route('job_for_customers',job_id)"
-                                >Employees</Link>
+                                >Applies</Link>
                                 <!-- :class="{ 'active': route().current('register') }"   -->
                             </li>
                         </div>
@@ -90,6 +118,10 @@ function formatDateTime(date){
                 <div class="filter-status">
                     <div class="d-flex justify-between">
                         <ul class="d-flex align-items-center flex-wrap pl-0 view_employes_nav_wrapper">
+                            <li>
+                                <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">{{ applied_customers.length }}
+                                    All</span>
+                            </li>
                             <li>
                                 <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
                                     Active</span>
@@ -188,14 +220,23 @@ function formatDateTime(date){
                                         <video src="/images/new-video.mp4" controls></video>
                                     </td> -->
                                     <td >
-                                        <div v-if="customer?.status?.status != 5 " class="employ_all_btn_wrapper">
+                                        <!-- <div v-if="customer?.status?.status != 5 " class="employ_all_btn_wrapper">
                                             <button class="btn btn-sm btn-success employ_btn"><i class="fas fa-check"></i></button>
                                             <button class="btn btn-sm btn-primary employ_btn_mid"><i class="fas fa-question"></i></button>
                                             <button class="btn btn-sm btn-danger employ_btn_bottom"><i class="fas fa-times"></i></button>
                                         </div>
                                         <div v-else>
                                             <span class="text-danger">Rejected</span>
-                                        </div>
+                                        </div> -->
+                                        <!-- {{ customer.statuz }} -->
+                                        <select class="form-control select_status_wrap" style="width:172px;" v-model="customer.status" @change="changeStatus(customer.id,customer.job_id, $event)">
+                                        <option value="0"> Active</option>
+                                        <option value="1"> Awaiting Review</option>
+                                        <option value="2"> Reviewed</option>
+                                        <option value="3"> Contacted</option>
+                                        <option value="4"> Hired</option>
+                                        <option value="5"> Rejected</option>
+                                        </select>
                                     </td>
                                 </tr>
                             </tbody>

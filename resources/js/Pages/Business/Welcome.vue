@@ -56,7 +56,6 @@ async function search_datatable(event){
     if(string.length > 0){
         try {
             const response = await axios.get(route('customer.search',string));
-            // console.log(response,';responseresponseresponse')
             appliedCustomers.value = response.data.applied_customers;
             refreshDataTable.value++;
         } catch (error) {
@@ -69,8 +68,6 @@ async function search_datatable(event){
 const countries = Country.getAllCountries();
 function filterData(type, event) {
   let customers_data = props.applied_customers;
-  // appliedCustomers.value ?? 
-    console.log(customers_data,'customers_data')
     if(type=='location'){
     appliedCustomers.value = customers_data.filter(customer=> customer.customers.migrate_country == event.target.value);
     refreshDataTable.value++;
@@ -79,20 +76,7 @@ function filterData(type, event) {
     appliedCustomers.value = customers_data.filter(jobs=> jobs.job_id == event.target.value);
     refreshDataTable.value++;
   }
-  // if(type=='applied_date'){
-  //   if(event.target.value =='desc'){
-  //     appliedCustomers.value = customers_data.sort(i=>i.created_at);
-  //   }
-  //   else if(event.target.value =='asc'){
-  //      appliedCustomers.value = customers_data.reverse();
-  //   }
-  //   refreshDataTable.value++;
-  // }
-  
-
-
-
-  if (event.target.value == '') {
+   if (event.target.value == '') {
         appliedCustomers.value = customers_data;
         refreshDataTable.value++;
     }
@@ -154,6 +138,10 @@ async function changeStatus(customer_id, job_id, event) {
           <div class="col-md-8 width_mobile p-0">
             <div class="d-flex justify-between align-items-center">
               <ul class="d-flex align-items-center flex-wrap pl-0 business_links" :key="navbar_key">
+                <li>
+                  <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">
+                    All</span>
+                </li>
                 <li>
                   <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
                     Active</span>
