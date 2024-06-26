@@ -146,6 +146,7 @@ function handleChange(type){
                             
                         </div>
                     </div>
+                    <InputError  class="mt-2 ms-5" v-if="form.errors.customer_image" :message="form.errors.customer_image[0]"/>
                 </div>
             </div>
             <div class="row mt-4">
@@ -172,7 +173,7 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">E-mail address <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
-                                    <TextInput placeholder="---" type="email" v-model="form.email"class="form-control mt-2" />
+                                    <TextInput placeholder="---" type="text" v-model="form.email"class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.email" :message="props.errors.email[0]" />
                                 </div>
                             </div>
@@ -180,7 +181,7 @@ function handleChange(type){
                                 <div class="mb-4">
                                     <span class="label text-label">Confirm E-mail <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
-                                    <TextInput placeholder="---" v-model="form.confirm_email"type="email" class="form-control mt-2" />
+                                    <TextInput placeholder="---" v-model="form.confirm_email"type="text" class="form-control mt-2" />
                                     <InputError class="mt-2" v-if="form.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
                                 </div>
                             </div>
@@ -281,9 +282,9 @@ function handleChange(type){
                             <div class="col-md-12">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
-                                            <input class="form-check-input" type="radio" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
-                                                id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
+                                            <input class="form-check-input" type="checkbox" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
+                                                id="citixen">
+                                            <label class="form-check-label" for="citixen">
                                                 I’m a citizen of more than one country
                                             </label>
                                         </div>
@@ -295,15 +296,15 @@ function handleChange(type){
                                     <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="radio" v-model="form.visa_available" value="1"  name="flexRadioDefault4"
-                                                id="flexRadioDefault1">
-                                            <label class="form-check-label font-normal" for="flexRadioDefault1">
+                                                id="flexRadioDe">
+                                            <label class="form-check-label font-normal" for="flexRadioDe">
                                                 Yes
                                             </label>
                                         </div>
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="radio" v-model="form.visa_available" value="0" name="flexRadioDefault4"
-                                                id="flexRadioDefault2" checked>
-                                            <label class="form-check-label font-normal" for="flexRadioDefault2">
+                                                id="flexRadioDe2" checked>
+                                            <label class="form-check-label font-normal" for="flexRadioDe2">
                                                 No
                                             </label>
                                         </div>
@@ -319,8 +320,6 @@ function handleChange(type){
                     </div>
                 </div>
             </div>
-        </form>
-
             <div class="d-flex justify-between align-items-center">
                 <div class="flex items-center mt-4 ">
                     <Link class="forms-btn-transparent step-form-back" href="/travel-details/2">
@@ -328,11 +327,13 @@ function handleChange(type){
                     </Link>
                 </div>
                 <div class="flex items-center mt-4 login-btn-main">
-                    <PrimaryButton class="forms-btn" :disabled="form.processing">
+                    <PrimaryButton class="forms-btn"type="submit" :disabled="form.processing">
                         Next Step <span> <i class="bi bi-arrow-right"></i></span>
                     </PrimaryButton>
                 </div>
             </div>
+        </form>
+
             
         </div>
     </div>

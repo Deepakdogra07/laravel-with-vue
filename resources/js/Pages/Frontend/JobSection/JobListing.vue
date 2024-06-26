@@ -63,7 +63,7 @@ function dateTime(created_at) {
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
                             <div class="col-6 login-btn-main">
-                                <Link class="forms-btn-transparent w-100" :href="`/job-introduction?job_id=${job.id}`">Apply Now <span> <i
+                                <Link class="forms-btn-transparent w-100" :href="route('travel.details',job.id)">Apply Now <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
                         </div>

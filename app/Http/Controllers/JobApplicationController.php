@@ -24,7 +24,9 @@ class JobApplicationController extends Controller
     public function introduction(Request $request)
     {
         $job_id = $request->job_id;
-        return Inertia::render('Frontend/CustomerSection/Introduction/Index', compact('job_id'));
+        $customer_id = $request->customer_id;
+        // dd('here');
+        return Inertia::render('Frontend/CustomerSection/Introduction/Index', compact('job_id','customer_id'));
     }
     public function travel_details($job_id)
     {
@@ -45,7 +47,12 @@ class JobApplicationController extends Controller
             "port_of_arrival" => 'required',
             "migrate_country" => 'required',
         ],[
-            'migrate_country.required' =>'The country to immigrate field is required.'
+            'migrate_country.required' =>'The country to immigrate field is required.',
+            "purpose_of_stay.required" => 'The purpose of stay is required.',
+            "type_of_visa.required" => 'The type of visa is required.',
+            "date_of_travel.required" => 'The date of travel is required.',
+            "passenger_nationality.required" => 'The passenger nationality is required.',
+            "port_of_arrival.required" => 'The port of arrival is required.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
@@ -70,7 +77,7 @@ class JobApplicationController extends Controller
             "customer_image" => 'required',
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" => 'required',
+            "email" => 'required|email',
             "confirm_email" => 'required|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
@@ -80,15 +87,32 @@ class JobApplicationController extends Controller
             "passport_number" => 'required',
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
-            // "citizen_of_more_than_one" => 'required',
-            // "visa_available" => 'required',
+        ],[
+            "purpose_of_stay.required" => "The purpose of stay is required",
+            "type_of_visa.required" => "The type of visa is required",
+            "date_of_travel.required" => "The date of travel is required",
+            "passenger_nationality.required" => "The passenger nationality is required",
+            "port_of_arrival.required" => "The port of arrival is required",
+            "customer_image.required" => "The customer image is required",
+            "first_name.required" => "The first name is required",
+            "last_name.required" => "The last name is required",
+            "email.required" => "The email is required",
+            "email.email" => "The email must be in valid format",
+            "confirm_email.required" => "The confirm email is required",
+            "date_of_birth.required" => "The date of birth is required",
+            "country_of_birth.required" => "The country of birth is required",
+            "city_of_birth.required" => "The city of birth is required",
+            "gender.required" => "The gender is required",
+            "martial_status.required" => "The martial status is required",
+            "passport_number.required" => "The passport number is required",
+            "issuing_authority.required" => "The issuing authority is required",
+            "date_of_expiry.required" => "The date of expiry is required",
         ]);
         if ($validator->fails()) {
             $variable = $request->all();
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-        // dd($request->all());
         
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
@@ -112,7 +136,7 @@ class JobApplicationController extends Controller
         $already_customer = User::where('email',$request->email)->first();
         if(!$already_customer){
             $create_customer = User::create([
-                'name' => $request->first_name.$request->last_name,
+                'name' => $request->email,
                 'email' => $request->email,
                 'password' => Hash::make($password),
                 // 'phone' => $request->mobile_number,
@@ -127,7 +151,8 @@ class JobApplicationController extends Controller
             Customer::where('id',$customer_personal_details->id)->update(['user_id'=>$create_customer->id]);
         }
         
-        return redirect()->route('employment.details',[$request->job_id,$customer_personal_details->id]);
+        // return redirect()->route('employment.details',[$request->job_id,$customer_personal_details->id]);
+        return redirect()->route('job.introduction',[$request->job_id,$customer_personal_details->id]);
 
         
         
@@ -136,69 +161,247 @@ class JobApplicationController extends Controller
         
         return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
+    public function validate_emp_details(Request $request){
+        if(isset($request->step) && $request->step == 1){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+            ],[
+                "employer_statement.required" => 'The employer statement is required.',
+                "employer_statement.max" => 'The employer statement file should not exceed 20 MB.',
+            ]);
+           }elseif(isset($request->step) && $request->step == 2){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+                "financial_evidence" => 'required|max:20480',
+            ],[
+                "financial_evidence.required" => 'The financial evidence is required.',
+                "financial_evidence.max" => 'The financial evidence file should not exceed 20 MB.',
+            ]);
+           }elseif(isset($request->step) && $request->step == 3){
+            $validator = Validator::make($request->all(), [
+                "evidence_self_employment" => 'required|max:20480',
+                "evidence_self_employment_aus" => 'required|max:20480',
+            ],[
+                "evidence_self_employment.required" => 'The self employment  evidence  is required.',
+                "evidence_self_employment_aus.required" => 'The self employment in australia evidence is required.',
+                "evidence_self_employment.max" => 'The  self employment evidence file should not exceed 20 MB.',
+                "evidence_self_employment_aus.max" => 'The self employment in australia evidence file should not exceed 20 MB.',
+            ]);
+            }elseif(isset($request->step) && $request->step == 4){
+            $validator = Validator::make($request->all(), [
+                "formal_training_evidence" => 'required|max:20480',
+            ],[
+                "formal_training_evidence.max" => 'The formal_training_evidence file should not exceed 20 MB.',
+                "formal_training_evidence.required" => 'The formal training evidence is required.',
+            ]);
+           }
+            if ($validator->fails()) {
+                return response()->json(['error'=>$validator->errors(),'step'=>$request->step,'success'=>false]);
+            }elseif(isset($request->step) && $request->step < 4){
+                return response()->json(['success'=>true ,'step'=>$request->step+1]);
+            }
+    }
+
     public function submit_employment_details(Request $request){
-    //    dd($request->all());
-        $validator = Validator::make($request->all(), [
-            "employer_statement" => 'required',
-            "financial_evidence" => 'required',
-            "evidence_self_employment" => 'required',
-            "evidence_self_employment_aus" => 'required',
-            "formal_training_evidence" => 'required',
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator->errors());
+        
+        if(isset($request->step) && $request->step == 1){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+            ],[
+                "employer_statement.required" => 'The employer statement is required.',
+                "employer_statement.max" => 'The employer statement file should not exceed 20 MB.',
+            ]);
+           }elseif(isset($request->step) && $request->step == 2){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+                "financial_evidence" => 'required|max:20480',
+            ],[
+                "financial_evidence.required" => 'The financial evidence is required.',
+                "financial_evidence.max" => 'The financial evidence file should not exceed 20 MB.',
+            ]);
+           }elseif(isset($request->step) && $request->step == 3){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+                "financial_evidence" => 'required|max:20480',
+                "evidence_self_employment" => 'required|max:20480',
+                "evidence_self_employment_aus" => 'required|max:20480',
+            ],[
+                "evidence_self_employment.required" => 'The self employment  evidence  is required.',
+                "evidence_self_employment_aus.required" => 'The self employment in australia evidence is required.',
+                "evidence_self_employment.max" => 'The  self employment evidence file should not exceed 20 MB.',
+                "evidence_self_employment_aus.max" => 'The self employment in australia evidence file should not exceed 20 MB.',
+            ]);
+            
+           }elseif(isset($request->step) && $request->step == 4){
+            $validator = Validator::make($request->all(), [
+                "employer_statement" => 'required|max:20480',
+                "financial_evidence" => 'required|max:20480',
+                "evidence_self_employment" => 'required|max:20480',
+                "evidence_self_employment_aus" => 'required|max:20480',
+                "formal_training_evidence" => 'required|max:20480',
+            ],[
+                "formal_training_evidence.max" => 'The formal_training_evidence file should not exceed 20 MB.',
+                "formal_training_evidence.required" => 'The formal training evidence is required.',
+            ]);
+           }
+           
+            if ($validator->fails()) {
+                return back()->withErrors($validator->errors());
+                // return response()->json(['error'=>$validator->errors()]);
+            }elseif(isset($request->step) && $request->step < 4){
+                return back();
+            }
+       
+        if(isset($request->step) && $request->step == 4){
+            $customer_employments = new CustomerTraining();
+            $customer_employments->fill($request->all());
+            if(isset($request->employer_statement)&& $request->file('employer_statement')){
+                $image = $request->file('employer_statement');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->employer_statement = '/storage/' .$imageName;
+            }
+            if(isset($request->financial_evidence)&& $request->file('financial_evidence')){
+                $image = $request->file('financial_evidence');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->financial_evidence = '/storage/' .$imageName;
+            }
+            if(isset($request->evidence_self_employment)&& $request->file('evidence_self_employment')){
+                $image = $request->file('evidence_self_employment');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->evidence_self_employment = '/storage/' .$imageName;
+            }
+            if(isset($request->evidence_self_employment_aus)&& $request->file('evidence_self_employment_aus')){
+                $image = $request->file('evidence_self_employment_aus');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->evidence_self_employment_aus = '/storage/' .$imageName;
+            }
+            if(isset($request->formal_training_evidence)&& $request->file('formal_training_evidence')){
+                $image = $request->file('formal_training_evidence');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->formal_training_evidence = '/storage/' .$imageName;
+            }
+            $customer_employments->updated_at = null;
+            $customer_employments->save();
+            $job_id = $request->job_id;
+            $customer_id = $customer_employments->customer_id;
         }
-        // $data = insertData('test','/storage/');
-        $customer_employments = new CustomerTraining();
-        $customer_employments->fill($request->all());
-        if(isset($request->employer_statement)&& $request->file('employer_statement')){
-            $image = $request->file('employer_statement');
-            $imageName = insertData($image,'customer/employments/');
-            $customer_employments->employer_statement = '/storage/' .$imageName;
-        }
-        if(isset($request->financial_evidence)&& $request->file('financial_evidence')){
-            $image = $request->file('financial_evidence');
-            $imageName = insertData($image,'customer/employments/');
-            $customer_employments->financial_evidence = '/storage/' .$imageName;
-        }
-        if(isset($request->evidence_self_employment)&& $request->file('evidence_self_employment')){
-            $image = $request->file('evidence_self_employment');
-            $imageName = insertData($image,'customer/employments/');
-            $customer_employments->evidence_self_employment = '/storage/' .$imageName;
-        }
-        if(isset($request->evidence_self_employment_aus)&& $request->file('evidence_self_employment_aus')){
-            $image = $request->file('evidence_self_employment_aus');
-            $imageName = insertData($image,'customer/employments/');
-            $customer_employments->evidence_self_employment_aus = '/storage/' .$imageName;
-        }
-        if(isset($request->formal_training_evidence)&& $request->file('formal_training_evidence')){
-            $image = $request->file('formal_training_evidence');
-            $imageName = insertData($image,'customer/employments/');
-            $customer_employments->formal_training_evidence = '/storage/' .$imageName;
-        }
-        $customer_employments->updated_at = null;
-        $customer_employments->save();
-        $job_id = $request->job_id;
-        $customer_id = $customer_employments->customer_id;
         return redirect()->route('document.details',[$job_id,$customer_id]);
-        // return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
     public function document_details($job_id , $customer_id){
         return Inertia::render('Frontend/CustomerSection/Documents/Index',compact('job_id','customer_id'));
     }
 
+public function validate_customer_documents(Request $request){
+    if(isset($request->step) && $request->step == 1){
+        $validator = Validator::make($request->all(), [
+            'employment_evidence'=> 'required|max:20480',
+        ],[
+            'employment_evidence.required'=> 'The employment evidence is required.',
+            'employment_evidence.max'=> 'The employment evidence file should not exceed 20 MB.',
+        ]);
+    }elseif(isset($request->step) && $request->step == 2){
+        $validator = Validator::make($request->all(), [
+           'licences'=> 'required|max:20480',
+        ],[
+            'licences.required'=> 'The licences is required.',
+            'licences.max'=> 'The licences file should not exceed 20 MB.',
+        ]);
+    }elseif(isset($request->step) && $request->step == 3){
+        $validator = Validator::make($request->all(), [
+           'is_australia'=> 'required|max:20480',
+        ],[
+            'is_australia.required'=> 'The photograph is required.',
+            'is_australia.max'=> 'The photograph file should not exceed 20 MB.',
+        ]);
+    }elseif(isset($request->step) && $request->step == 5){
+        $validator = Validator::make($request->all(), [
+            'kitchen_area'=> 'required|max:20480',
+            'ingredients'=> 'required|max:20480',
+            'cooking_tech'=> 'required|max:20480',
+            'dish'=> 'required|max:20480',
+            'clean_up'=> 'required|max:20480',
+        ],[
+            'kitchen_area.required'=> 'The kitchen area is required.',
+            'ingredients.required'=> 'The ingredients is required.',
+            'cooking_tech.required'=> 'The cooking tech is required.',
+            'dish.required'=> 'The dish is required.',
+            'clean_up.required'=> 'The clean up is required.',
+        ]);
+    }elseif(isset($request->step) && $request->step == 6){
+        $validator = Validator::make($request->all(), [
+            'evidence_image'=> 'required|max:20480',
+        ],[
+            'evidence_image.required'=> 'The evidence image is required.',
+            'evidence_image.max'=> 'The evidence image file should not exceed 20 MB.',
+        ]);
+    }
+    elseif(isset($request->step) && $request->step == 7){
+        $validator = Validator::make($request->all(), [
+           'resume'=> 'required|max:20480',
+        ],[
+            'evidence_image.max'=> 'The evidence image file should not exceed 20 MB.',
+            'evidence_image.required'=> 'The evidence image is required.',
+        ]);
+    }
+    // $validator = Validator::make($request->all(), [
+        
+   
+    //     'evidence_image'=> 'required|max:20480',
+    //     'resume'=> 'required|max:20480',
+        
+    // ],[
+       
+   
+    //    
+    //     'resume.required'=> 'The resume is required.',
+       
+        
+    //     'kitchen_area.max'=> 'The kitchen area file should not exceed 20 MB.',
+    //     'ingredients.max'=> 'The ingredients file should not exceed 20 MB.',
+    //     'cooking_tech.max'=> 'The cooking tech file should not exceed 20 MB.',
+    //     'dish.max'=> 'The dish file should not exceed 20 MB.',
+    //     'clean_up.max'=> 'The clean up file should not exceed 20 MB.',
+    //     
+    //     'resume.max'=> 'The resume file should not exceed 20 MB.',
+    // ]);
+    if ($validator->fails()) {
+        return response()->json(['error'=>$validator->errors(),'step'=>$request->step,'success'=>false]);
+    }elseif(isset($request->step) && ($request->step < 7)){
+        return response()->json(['success'=>true ,'step'=>$request->step+1]);
+    }
+}
+
     public function submit_customers_documents(Request $request){
         $validator = Validator::make($request->all(), [
-            'employment_evidence'=> 'required',
-            'licences'=> 'required',
-            'kitchen_area'=> 'required',
-            'ingredients'=> 'required',
-            'cooking_tech'=> 'required',
-            'dish'=> 'required',
-            'clean_up'=> 'required',
-            'evidence_image'=> 'required',
-            'resume'=> 'required',
-            // 'is_australia'=> 'required'
+            'employment_evidence'=> 'required|max:20480',
+            'licences'=> 'required|max:20480',
+            'kitchen_area'=> 'required|max:20480',
+            'ingredients'=> 'required|max:20480',
+            'cooking_tech'=> 'required|max:20480',
+            'dish'=> 'required|max:20480',
+            'clean_up'=> 'required|max:20480',
+            'evidence_image'=> 'required|max:20480',
+            'resume'=> 'required|max:20480',
+            
+        ],[
+            'employment_evidence.required'=> 'The employment evidence is required.',
+            'licences.required'=> 'The licences is required.',
+            'kitchen_area.required'=> 'The kitchen area is required.',
+            'ingredients.required'=> 'The ingredients is required.',
+            'cooking_tech.required'=> 'The cooking tech is required.',
+            'dish.required'=> 'The dish is required.',
+            'clean_up.required'=> 'The clean up is required.',
+            'evidence_image.required'=> 'The evidence image is required.',
+            'resume.required'=> 'The resume is required.',
+            'employment_evidence.max'=> 'The employment evidence file should not exceed 20 MB.',
+            'licences.max'=> 'The licences file should not exceed 20 MB.',
+            'kitchen_area.max'=> 'The kitchen area file should not exceed 20 MB.',
+            'ingredients.max'=> 'The ingredients file should not exceed 20 MB.',
+            'cooking_tech.max'=> 'The cooking tech file should not exceed 20 MB.',
+            'dish.max'=> 'The dish file should not exceed 20 MB.',
+            'clean_up.max'=> 'The clean up file should not exceed 20 MB.',
+            'evidence_image.max'=> 'The evidence image file should not exceed 20 MB.',
+            'resume.max'=> 'The resume file should not exceed 20 MB.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());

@@ -19,16 +19,16 @@ const props = defineProps({
     customer_id: {
         type: Number,
         default: 0
+    },
+    step:{
+        type:String
+    },
+    errors:{
+        type:Object
     }
 });
 
 
-// const image_src = reactive({
-//     'employer_statement' : null,
-//     'financial_evidence' : null,
-//     'evidence_self_employment' : null,
-//     'formal_training_evidence' : null,
-// });
 const image_name = reactive({
     'employer_statement' : null,
     'financial_evidence' : null,
@@ -47,33 +47,77 @@ const form = useForm({
     evidence_self_employment:null,
     evidence_self_employment_aus:null,
     formal_training_evidence:null,
+    step:1
 });
-
-function show_next_div(div_number) {
-    div_numbers.value = `step-form-${div_number + 1}`
+const errors = ref([]);
+async function show_next_div(div_number) {
+        form.step = div_number;
+        try {
+                const response = await axios.post(route('validate_employment_details'), form, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+        if(response ){
+            if (response.data.success ) {
+                div_numbers.value = `step-form-${response.data.step}`;
+            } else{
+                for (const key in response.data.error) {
+                    if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
+                        const errorMessageArray = response.data.error[key];
+                        props.errors[key] = errorMessageArray[0]                       
+                    }
+                }
+                div_numbers.value = `step-form-${response.data.step}`;
+            }
+        }
+    } catch (error) {
+        console.error('Error form validation:', error);
+        div_numbers.value = `step-form-${div_number}`;
+    }
+    
 }
+
 function previous_div(div_number) {
     div_numbers.value = `step-form-${div_number - 1}`
 }
 
 function show_document(type , event){
-    console.log(type,'123456')
     form[type] = event.target.files[0];
     document[type] = URL.createObjectURL(event.target.files[0]);
     image_name[type] = event.target.files[0].name;
 }
 
 
-function submit_form(){
+async function submit_form(){
+   
+    // axios.post(route('submit_employment_details'),form)
+    // .then(res => {
+    //     if(res.status == 300){
+    //         props.errors.employer_statement = "jhkjhjkhkjh";
+    //     }else{
+    //         show_next_div(res.step)
+    //     }
+    //     console.log(res,"res");
+    //     //
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
+
     form.post(route('submit_employment_details'),{
         onSuccess:() => {
-            toast("Details Saved Successfully!", {
-                autoClose: 2000,
-                theme: 'dark',
-            });
+            if(form.step ==4){
+                toast("Details Saved Successfully!", {
+                    autoClose: 2000,
+                    theme: 'dark',
+                });
+            }
         }
     })
+
 };
+
 
 
 
@@ -83,7 +127,7 @@ function submit_form(){
 
     <SubHeading :data="data"/>
 
-
+    <!--  -->
     <form @submit.prevent="submit_form()">
         <!-------step one----------->
         <div class="login-bg-wrapper steps_form employment-first-form step-form-1 employment_next" v-if="div_numbers == 'step-form-1'">
@@ -164,7 +208,7 @@ function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)" >
                                     <p>{{ image_name.employer_statement }}</p>
-                                    <InputError class="mt-2" :message="form.errors.employer_statement"/>
+                                    <InputError class="mt-2" :message="props.errors.employer_statement"/>
                                 </div>
                             </div>
                         </div>
@@ -174,10 +218,10 @@ function submit_form(){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" id="1" @click="show_next_div(1)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -240,7 +284,7 @@ function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('financial_evidence',$event)">
                                     <p>{{ image_name.financial_evidence }}</p>
-                                    <InputError class="mt-2" :message="form.errors.financial_evidence"/>
+                                    <InputError class="mt-2" :message="props.errors.financial_evidence"/>
                                 </div>
                             </div>
                         </div>
@@ -264,10 +308,10 @@ function submit_form(){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" id="2" @click="show_next_div(2)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                                <p class="forms-btn" id="2" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -333,7 +377,7 @@ function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
                                     <p>{{ image_name.evidence_self_employment }}</p>
-                                    <InputError class="mt-2" :message="form.errors.evidence_self_employment"/>
+                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
                                 </div>
                             </div>
                         </div>
@@ -386,7 +430,7 @@ function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
                                     <p>{{ image_name.evidence_self_employment_aus }}</p>
-                                    <InputError class="mt-2" :message="form.errors.evidence_self_employment_aus"/>
+                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                                 </div>
                             </div>
                         </div>
@@ -398,10 +442,10 @@ function submit_form(){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" id="3" @click="show_next_div(3)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                                <p class="forms-btn" id="3" @click="show_next_div(3)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -456,7 +500,7 @@ function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('formal_training_evidence',$event)">
                                     <p>{{ image_name.formal_training_evidence }}</p>
-                                    <InputError class="mt-2" :message="form.errors.formal_training_evidence"/>
+                                    <InputError class="mt-2" :message="props.errors.formal_training_evidence"/>
                                 </div>
                             </div>
                         </div>

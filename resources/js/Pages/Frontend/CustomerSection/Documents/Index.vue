@@ -22,6 +22,9 @@ const props = defineProps({
         type: Number,
         required: true,
         default: 0
+    },
+    errors:{
+        type:Object
     }
 });
 const countries = Country.getAllCountries()
@@ -42,15 +45,44 @@ const form = useForm({
     clean_up: null,
     evidence_image: null,
     resume: null,
-    is_australia: null
+    is_australia: null,
+    step:null
 });
 const div_numbers = ref(`step-form-1`),
     document = reactive({});
 
-function show_next_div(div_number) {
-    div_numbers.value = `step-form-${div_number + 1}`
+async function show_next_div(div_number) {
+    if(div_number == 4 ){
+        div_numbers.value = `step-form-${div_number+1}`;
+    }else{
+        form.step = div_number;
+            try {
+                    const response = await axios.post(route('validate_customer_documents'), form, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+            if(response ){
+                if (response.data.success ) {
+                    div_numbers.value = `step-form-${response.data.step}`;
+                } else{
+                    for (const key in response.data.error) {
+                        if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
+                            const errorMessageArray = response.data.error[key];
+                            props.errors[key] = errorMessageArray[0]                       
+                        }
+                    }
+                    div_numbers.value = `step-form-${response.data.step}`;
+                }
+            }
+        } catch (error) {
+            console.error('Error form validation:', error);
+            div_numbers.value = `step-form-${div_number}`;
+        }
+    }
+    
 }
-function previous_div(div_number) {
+function previous_div(div_number) {     
     div_numbers.value = `step-form-${div_number - 1}`
 }
 function show_document(type, event) {
@@ -67,7 +99,9 @@ function submit_form() {
         }
     })
 }
-
+// function validateForm(formData){
+// console.log(formData,'formDataformData');
+// }
 
 function upload_image(event){
     image_src.value = URL.createObjectURL(event.target.files[0]);
@@ -123,8 +157,8 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('employment_evidence', $event)">
                                         <p>{{ image_name }}</p>
+                                    <InputError class="mt-2" :message="props.errors.employment_evidence" />
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.employment_evidence" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -133,10 +167,10 @@ function upload_image(event){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" @click="show_next_div(1)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -163,7 +197,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.is_australia" alt="" srcset="">
+                                    <img :src="document.licences" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -174,8 +208,8 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('licences', $event)">
+                                    <InputError class="mt-2" :message="props.errors.licences" />
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.licences" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -184,10 +218,10 @@ function upload_image(event){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" @click="show_next_div(2)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -227,7 +261,7 @@ function upload_image(event){
                         <div class="col-12">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.licences" alt="" srcset="">
+                                    <img :src="document.is_australia" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -238,8 +272,8 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('is_australia', $event)">
+                                    <InputError class="mt-2" :message="props.errors.is_australia" />
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.is_australia" />
                             </div>
                         </div>
                         <div class="d-flex justify-between align-items-center">
@@ -248,10 +282,10 @@ function upload_image(event){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" @click="show_next_div(3)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" @click="show_next_div(3)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -353,46 +387,12 @@ function upload_image(event){
                 <div class="login-bg-wrapper steps_form document-first-form step-form-4 application_guide">
                     <div class="container">
                         <div class="employment-first-form intro_steps intro_top">
-                            <h2>Introduction</h2>
-                            <p class="light-text">When you provide evidence of your workplace skills for the Stage 1
-                                Documentary Evidence Assessment, you
-                                must also provide Video and Photo evidence.</p>
-                            <p class="light-text">This Guideline provides instructions about what types of skills to
-                                capture in your video/photo evidence and how
-                                to record them.</p>
-                            <h2 class="margin_intro">Instructions for video evidence</h2>
-                            <h5 class="take_over">Task overview</h5>
-                            <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
+                            
                             <div class="row mt-4">
-                                <div class="col-md-6 col-12">
-                                    <div class="d-flex gap-3">
-                                        <i class="fa-solid fa-circle-check green-text"></i>
-                                        <p class="light-text">a protein (e.g. meat, fish, tofu)
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <div class="d-flex gap-3">
-                                        <i class="fa-solid fa-circle-check green-text"></i>
-                                        <p class="light-text">a side dish
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-12 fff">
-                                    <div class="d-flex gap-3">
-                                        <i class="fa-solid fa-circle-check green-text"></i>
-                                        <p class="light-text">a sauce.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <p class="light-text">As you prepare your dish, film the following five (5) videos.
-                                        Note the skills you should demonstrate in each
-                                        video</p>
-                                    <h2 class="margin_intro">Video</h2>
-                                    <p class="light-text">Video Skills you should demonstrate in this video </p>
-
-                                </div>
+                                
+                                
+                               
+                                
                                 <div class="d-flex justify-between align-items-center">
                                     <div class="flex items-center mt-4 ">
                                         <PrimaryButton class="forms-btn-transparent step-form-back"
@@ -400,10 +400,10 @@ function upload_image(event){
                                             <span> <i class="bi bi-arrow-left"></i></span> Back
                                         </PrimaryButton>
                                     </div>
-                                    <div class="flex items-center mt-4 login-btn-main">
-                                        <PrimaryButton class="forms-btn" @click="show_next_div(4)">
+                                    <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                                        <p class="forms-btn" @click="show_next_div(4)">
                                             Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                        </PrimaryButton>
+                                        </p>
 
                                     </div>
                                 </div>
@@ -510,7 +510,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('kitchen_area', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.kitchen_area" />
+                                <InputError class="mt-2" :message="props.errors.kitchen_area" />
                             </div>
                         </div>
 
@@ -575,7 +575,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('ingredients', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.ingredients" />
+                                <InputError class="mt-2" :message="props.errors.ingredients" />
                             </div>
                         </div>
 
@@ -627,7 +627,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('cooking_tech', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.cooking_tech" />
+                                <InputError class="mt-2" :message="props.errors.cooking_tech" />
                             </div>
                         </div>
 
@@ -674,7 +674,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.dish" />
+                                <InputError class="mt-2" :message="props.errors.dish" />
                             </div>
                         </div>
 
@@ -721,7 +721,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.clean_up" />
+                                <InputError class="mt-2" :message="props.errors.clean_up" />
                             </div>
                         </div>
 
@@ -731,10 +731,10 @@ function upload_image(event){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" @click="show_next_div(5)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" @click="show_next_div(5)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -839,7 +839,7 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('evidence_image', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.evidence_image" />
+                                <InputError class="mt-2" :message="props.errors.evidence_image" />
                             </div>
                         </div>
 
@@ -864,10 +864,10 @@ function upload_image(event){
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn" @click="show_next_div(6)">
+                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                                <p class="forms-btn" @click="show_next_div(6)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </PrimaryButton>
+                                </p>
                             </div>
                         </div>
                     </div>

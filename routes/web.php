@@ -178,7 +178,7 @@ Route::get('/job-application', function () {
 })->name('job.application');
 
 
-Route::get('/job-introduction', [JobApplicationController::class , 'introduction'])->name('job.introduction');
+Route::get('/job-introduction/{job_id}/{customer_id}', [JobApplicationController::class , 'introduction'])->name('job.introduction');
 
 Route::get('/travel-details/{job_id}',[JobApplicationController::class , 'travel_details'] )->name('travel.details');
 
@@ -187,9 +187,11 @@ Route::match(['get','post'],'/submit-personal-details/{job_id}',[JobApplicationC
 
 
 Route::get('/employment-details/{job_id}/{customer_id}', [JobApplicationController::class,'employment_details'])->name('employment.details');
+Route::post('/validate_employment_details', [JobApplicationController::class,'validate_emp_details'])->name('validate_employment_details');
 Route::post('/submit_employment_details', [JobApplicationController::class,'submit_employment_details'])->name('submit_employment_details');
 
 Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');
+Route::post('/validate_customer_documents', [JobApplicationController::class,'validate_customer_documents'])->name('validate_customer_documents');
 Route::post('/submit_customers_documents', [JobApplicationController::class,'submit_customers_documents'])->name('submit_customers_documents');
 
 

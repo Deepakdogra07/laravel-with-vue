@@ -56,6 +56,7 @@ async function search_datatable(event){
     if(string.length > 0){
         try {
             const response = await axios.get(route('customer.search',string));
+            // console.log(response,';responseresponseresponse')
             appliedCustomers.value = response.data.applied_customers;
             refreshDataTable.value++;
         } catch (error) {

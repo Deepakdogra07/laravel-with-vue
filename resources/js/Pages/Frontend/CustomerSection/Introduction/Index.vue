@@ -13,6 +13,9 @@
    const props = defineProps({
     job_id :{
         type:String
+    },
+    customer_id:{
+        type : String
     }
    })
 </script>
@@ -58,7 +61,7 @@
             <p class="text-margin">It also has to be paid and full-time (or equivalent part-time). Full-time employment is defined as at least 38 hours per week. Part-time employment is counted on a pro rata basis.</p>
             <p class="text-margin">*Formal training is a training that is accredited by the authorised governing body in the country where the qualification was undertaken. It must be in your nominated occupation or an occupation directly related to your nominated occupation.</p>
             <div class="flex items-center justify-end mt-4 login-btn-main">
-                <Link class="forms-btn" :href="route('travel.details',job_id)">
+                <Link class="forms-btn" :href="route('employment.details',[job_id,customer_id])">
                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                 </Link>
             </div>
