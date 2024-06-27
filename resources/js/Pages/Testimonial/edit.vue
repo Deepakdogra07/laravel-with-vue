@@ -48,11 +48,11 @@ function update_all_data(type, event) {
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Create News</h2>
     </template>
 
-    <div class="flex items-center justify-center">
-      <div class="w-full px-2">
+    <div class="flex items-center justify-center create_news_wrapper">
+      <div class="w-full px-2 create_news_wrapper_inner">
         <form @submit.prevent="update" enctype="multipart/form-data">
           <div class="row">
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 column_spacing">
               <label for="name">Name<span class="text-danger"> *</span></label>
               <input id="name" v-model="form.name" placeholder="Enter Name" class="form-control" autocomplete="name" />
               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
@@ -63,14 +63,14 @@ function update_all_data(type, event) {
                                <input id="rating" v-model="form.rating" placeholder="Enter Rating" class="block w-full mt-1" autocomplete="rating"/>
                                <div v-if="errors.rating" class="text-danger">{{ errors.rating }}</div>
                         </div> -->
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 column_spacing">
               <label for="description">Description<span class="text-danger"> *</span></label>
               <textarea id="description" v-model="form.description" placeholder="Enter description"
                 class="form-control"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
             </div>
 
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 column_spacing">
               <label for="content">Content<span class="text-danger"> *</span></label>
               <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
@@ -84,7 +84,7 @@ function update_all_data(type, event) {
               <input type="file" id="logoImage" @change="update_all_data('image', $event)" accept="image/*"
                 class="hidden">
             </div> -->
-            <div class="mt-4 col-md-6">
+            <div class="mt-4 col-md-6 column_spacing">
               <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
               <video :src="form.video" alt="" controls></video>
               <!-- <label for="video" class="form-control mt-2 cursor-pointer">
@@ -92,7 +92,7 @@ function update_all_data(type, event) {
               </label> -->
               <input type="file" id="video" @change="update_all_data('video', $event)" accept="video/*" class="form-control mt-2 cursor-pointer">
             </div>
-            <div class="mt-5 col-md-6">
+            <div class="mt-5 col-md-6 column_spacing">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">

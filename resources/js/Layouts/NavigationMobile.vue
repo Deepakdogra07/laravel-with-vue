@@ -143,7 +143,7 @@
             :active="route().current('jobs.index')"
           >
             <i class="fa-solid fa-tasks"></i>
-            <span class="ml-4">Jobs</span>
+            <span class="ml-4 job_space">Jobs</span>
           </NavLink>
         </li>
         <li
