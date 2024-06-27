@@ -262,6 +262,7 @@ function removeImage(){
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="container-fluid form-division-left">
+
                         <div class="row px-0">
                             <h2 class="mb-3">Passport Details</h2>
                                 <div class="col-md-6">
@@ -271,6 +272,7 @@ function removeImage(){
                                         <TextInput placeholder="---"v-model="form.passport_number" type="text"class="form-control mt-2"  />
                                         <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-4">

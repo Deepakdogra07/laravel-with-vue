@@ -532,10 +532,11 @@ h2 {
 }
 
 .text-label, .profile_info label span, .update_pass label span {
-	color: #4a4c56;
-	font-weight: 600;
-	font-size: 16px;
-	/* margin-bottom: 12px; */
+    color: #4a4c56;
+    font-weight: 600;
+    font-size: 16px;
+    /* margin-bottom: 12px; */
+    text-transform: capitalize;
 }
 
 .form-control,
@@ -1446,9 +1447,9 @@ input[type="file"] {
 	box-shadow: none;
 }
 
-.form-division-left {
+/* .form-division-left {
 	padding-left: 30px !important;
-}
+} */
 
 /* .form-division-right {
 	padding-right: 30px !important;
@@ -3011,6 +3012,9 @@ input[type="file"] {
 	.col_update.phn_input {
 		margin-top: 10px !important;
 	}
+	.single_testimonial .popup-quote-img, .single_testimonial .inner_testimonials_wrapper, .single_testimonial .inner_testimonials_buttons .previous_next {
+		padding: 0px !important;
+	}
 }
 
 
@@ -3114,7 +3118,7 @@ input[type="file"] {
 	}
 
 	.testimonials_width, .about-width, .all-testimonial_width {
-		padding: 0px 15px !important;
+		padding: 0px 5px !important;
 	}
 
 	.contactUs-section {
@@ -4663,7 +4667,7 @@ button.btn.btn-primary {
 }
 
 button.rounded-lg span i::before {
-	content: "\2192";
+	/* content: "\2192"; */
 	font-size: 24px;
 }
 
@@ -5975,13 +5979,13 @@ form.row.edit_customer label,
 	color: #01796f;
 }
 
-.add_customer_row {
+/* .add_customer_row {
 	padding: 0px;
-}
+} */
 
-.add_customer_hd {
+/* .add_customer_hd {
 	padding: 0px;
-}
+} */
 
 /* `	 */
 
@@ -6257,16 +6261,16 @@ label.label_checkbox {
 .business_srccc {
     padding: 20px;
 }
-.login_inner button {
+/* .login_inner button {
     position: relative;
     padding: 13px 36px 13px 19px!important;
-}
+} */
 
-.login_inner button i.bi.bi-arrow-right::before {
+/* .login_inner button i.bi.bi-arrow-right::before {
     position: absolute;
     top: 5px;
-}
-.create_code .login-btn-main button {
+} */
+/* .create_code .login-btn-main button {
     position: relative;
     width: 150px;
 }
@@ -6274,7 +6278,7 @@ label.label_checkbox {
 	position: absolute;
 	top: 6px;
 	right: 20px;
-}
+} */
 .main-outer-section{
     background-color: #F2F2F2;
 }
@@ -6645,9 +6649,74 @@ span.job-filter_text {
     padding: 0px;
     width: 48%;
 }
+.radio_design [type='radio']:checked{
+	background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
 
-/* .pass_travel_details_wrapper {
-    border-width: 1px 0px 1px 0px;
-    border-color: #DDDDDD;
-    padding: 40px 0px;
-} */
+.forms-btn span {
+    line-height: 0px;
+}
+
+.forms-btn span i::before {
+    font-size: 20px !important;
+}
+/*calender design*/
+.dp__action_buttons .dp__action_select, .dp__range_end, .dp__range_start, .dp__active_date{
+	background-color: #01796f !important;
+}
+
+.dp__action_buttons .dp__action_select:hover {
+    background: #09332b !important;
+}
+
+.dp__today, .dp__action_cancel:hover {
+    border: 1px solid #01796f !important;
+}
+.dp__inc_dec_button:hover{
+	color:#01796f !important;
+}
+.dp__action_buttons .dp__action_select, .dp__action_cancel {
+    padding: 13px 10px !important;
+}
+.job_listing_button .prevoius_left::before {
+    content: "\003c" !important;
+    font-weight: 600 !important;
+    font-size: 12px;
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+.job_listing_button .prevoius_left, .job_listing_button a.previous_next_btn:last-child {
+    position: relative;
+    font-size: 0px;
+    background-color: #F2F2F2;
+}
+.job_listing_button a.previous_next_btn:last-child::before {
+    content: "\003E" !important;
+	font-weight: 600 !important;
+    font-size: 12px;
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+.job_listing_button .previous_next_btn.bg-blue-700 {
+    background-color: #1A9882;
+}
+.job_listing_button .previous_next_btn {
+    color: #161721;
+    font-weight: 700;
+    font-size: 14px;
+    background: #f7f7f7;
+}
+.job_listing_button .prevoius_left, .job_listing_button .previous_next_btn.bg-blue-700, .job_listing_button .previous_next_btn {
+    padding: 12px 17px!important;
+    margin: 0px 4px;
+    width: 43px;
+}
+.job_listing_button .hover\:bg-white:hover {
+    background-color: rgb(211 211 211);
+}
