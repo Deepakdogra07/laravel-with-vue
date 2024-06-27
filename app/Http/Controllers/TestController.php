@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jobs;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index(){
-        // insertData('asd','asdas');
+        // dd('here');
+        $data = Jobs::with('currencies','skills')->get();
+        dd($data);
     }
 }

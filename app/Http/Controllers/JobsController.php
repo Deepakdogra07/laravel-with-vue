@@ -341,6 +341,7 @@ class JobsController extends Controller
       $hired = CustomerStatus::where('job_id', $job_id)->where('status', 4)->count();
       $rejected = CustomerStatus::where('job_id', $job_id)->where('status', 5)->count();
       $status = [
+         'all' => count($applied_customers),
          'active' => $active,
          'awaited' => $awaited,
          'reviewed' => $reviewed,

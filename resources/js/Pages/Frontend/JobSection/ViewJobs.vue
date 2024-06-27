@@ -76,8 +76,8 @@ console.log(job_start_date)
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0">{{ created_time }}...</p>
                     </div>
-                    <div class=" col-md-4 view-job-btn mt-4">
-                        <Link :href="`/job-introduction?job_id=${job.id}`" class="forms-btn w-100">Apply Job <span> <i
+                    <div class=" col-md-4 view-job-btn mt-4 ">
+                        <Link :href="route('travel.details',job.id)" class="forms-btn w-100">Apply Job <span> <i
                                 class="bi bi-arrow-right"></i></span></Link>
                     </div>
                 </div>
