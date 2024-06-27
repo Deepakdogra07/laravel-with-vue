@@ -57,7 +57,7 @@ const user = ref(page?.props?.auth?.user)
           <div class="footer-section footer-three">
             <h2 class="text-white relative">Business Segments</h2>
             <ul class="pl-0 listing-gap">
-              <li class="mb-3" v-if="!user ||user?.user_type == 3">
+              <li class="mb-3">
                 <Link href="/job-listing" >For Individuals</Link>
               </li>
               <li class="mb-3">

@@ -1,0 +1,251 @@
+<script setup>
+import GuestLayout from '@/Layouts/GuestLayout.vue';
+import InputError from '@/Components/InputError.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
+import TextInput from '@/Components/TextInput.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
+import Header from '../Frontend/Header.vue'
+import Footer from '../Frontend/Footer.vue'
+import SubHeading from '../Frontend/SubHeading.vue'
+// import '/frontend.css';
+import * as countryStateCity from 'country-state-city';
+import { computed, ref } from 'vue';
+import { toast } from 'vue3-toastify';
+import Swal from 'sweetalert2';
+
+
+const countries = countryStateCity.Country.getAllCountries();
+const states = ref([]);
+const props = defineProps({
+    user :{
+        type:Object
+    }
+});
+
+const form = useForm({
+    user_id : props.user.id,
+    type:'business',
+    company_address : '',
+    company_country : null,
+    company_state : null,
+    company_pin : '',
+    contact_number:'',
+    company_name:props.user.name,
+    contact_department:'',
+    mobile_number:'',
+    company_city:'',
+    company_vat:'',
+    email: props.user.email,
+    checkbox: false,
+});
+const submit = () => {
+    form.post(route('register.customer'), {
+        onSuccess:()=>{
+            toast(`User Updated Successfully.`, {
+            autoClose: 3000,
+            theme: 'dark',
+                });
+        }
+    });
+};
+function select_country(event){
+    // console.log(event,'1234566')
+    states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
+}
+
+
+
+
+</script>
+
+
+<template>
+    <Head title="Register" />
+    <Header class="login-wrapper" />
+    <SubHeading />
+    <div class="login-bg-wrapper create_Account">
+        <div class="container h-100">
+            <h2 class="mb-4 login-texts">Personal & Company Details</h2>
+            <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+                {{ status }}
+            </div> -->
+            <form @submit.prevent="submit">
+                <div class="row">
+                    <div class="col-md-6 col-12 craete_account_col">
+                        <div class="mt-3">
+                            <span class="label text-label">Company name<span style="color:red"> *</span></span>
+                            <TextInput id="name" type="text" placeholder="Enter company name" class="form-control mt-2"
+                                v-model="form.company_name" autofocus autocomplete="name" />
+                            <InputError class="mt-1" :message="form.errors.company_name" />
+                        </div>
+                        <div class="mt-3">
+                            <span class="label text-label">Company Address<span style="color:red"> *</span></span>
+                            <div>
+                                <div class="mb-3">
+                                    <TextInput type="text" v-model="form.company_address" placeholder="Enter street" class="form-control mt-2" />
+                                    <InputError class="mt-1" :message="form.errors.company_address" />
+                                </div>
+                                <div class="postel_code">
+                                    <span class="label text-label">Enter postal code<span style="color:red"> *</span></span>
+                                    <div class="mb-3 margin_top">
+                                    <TextInput type="text" placeholder="Enter postal code" v-model="form.company_pin" class="form-control " />
+                                    <InputError class="mt-1" :message="form.errors.company_pin" />
+                                    </div>
+                                </div>
+                                <!-- v-bind:class = "(selected)?'Selected_option':''" -->
+                                <div class="select_country select_options">
+                                    <span class="label text-label">Select Country<span style="color:red"> *</span></span>
+                                    <div class="mb-3 margin_top">
+                                    <select class="form-select" @change="select_country($event)" aria-label="Default select example" v-model="form.company_country">
+                                        <option selected :value="null" >Select country</option>
+                                        <option v-for="country in countries" :key="country.id" :value="country.isoCode">{{ country.name }}</option>
+                                    </select>
+                                    <InputError class="mt-1" :message="form.errors.company_country" />
+                                    </div>
+                                </div>
+                               
+                                <div class="select_state select_options">
+                                    <span class="label text-label">Select state<span style="color:red"> *</span></span>
+                                    <div class="mb-3 margin_top">
+                                    <select class="form-select"  aria-label="Default select example" v-model="form.company_state">
+                                        <option selected :value="null" >Select state</option>
+                                        <option v-for="state in states"  :value="state.name">{{ state.name }}</option>
+                                    </select>
+                                    <InputError class="mt-1" :message="form.errors.company_state" />
+                                </div>
+                                </div>
+                               
+                                <div class="select_state select_options">
+                                    <span class="label text-label">City<span style="color:red"> *</span></span>
+                                </div>
+                                <div class="mb-3 margin_top">
+                                    <TextInput type="text" v-model="form.company_city" placeholder="Enter city" class="form-control mt-2" />
+                                    <InputError class="mt-1" :message="form.errors.company_city" />
+                                </div>
+                               
+                               
+                               
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-6 col-12 craete_account_cols">
+                        <div class="mt-3">
+                            <span class="label text-label">E-mail<span style="color:red"> *</span></span>
+                            <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
+                                v-model="form.email" autocomplete="username" />
+                            <InputError class="mt-1" :message="form.errors.email" />
+                        </div>
+                        <div class="mt-3">
+                            <span class="label text-label">Mobile<span style="color:red"> *</span></span>
+                            <TextInput type="text" placeholder="Enter your mobile number" class="form-control mt-2"
+                                autofocus autocomplete="name" v-model="form.mobile_number" />
+                            <InputError class="mt-1" :message="form.errors.mobile_number" />
+                        </div>
+                        
+                        <div class="mt-3">
+                            <TextInput  v-model="form.type" type="hidden" />
+                            <span class="label text-label">Company VAT (if applicable)</span>
+                            <TextInput id="name" type="text" placeholder="Enter company VAT" class="form-control mt-2"
+                                v-model="form.company_vat" autofocus autocomplete="name" />
+                            <InputError class="mt-1" :message="form.errors.company_vat" />
+                        </div>
+                        <div class="key_contact">
+                            <span class="label text-label">Key Contact Person<span style="color:red"> *</span></span>
+                            <TextInput id="contact_number" type="text" placeholder="Enter contact person"
+                                class="form-control mt-2" v-model="form.contact_number" />
+                            <InputError class="mt-1" :message="form.errors.contact_number" />
+                        </div>
+                        <div class="mt-3">
+                            <span class="label text-label">Key Contact Person Department<span style="color:red">
+                                    *</span></span>
+                            <TextInput type="text" placeholder="Enter department" class="form-control mt-2"
+                                v-model="form.contact_department" autocomplete="new-contact_department" />
+                            <InputError class="mt-1" :message="form.errors.contact_department" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div>
+                    <InputLabel class="text-blue" for="phone" value="Phone" />
+                    <span class="label text-label">Telephone<span style="color:red"> *</span></span>
+                    <TextInput id="phone" type="text" placeholder="Enter phone" class="form-control mt-2"
+                        v-model="form.phone" autocomplete="phone" />
+                    <InputError class="mt-2" :message="form.errors.phone" />
+                </div> -->
+                <!-- <div class="mt-4">
+                    <span class="label text-label">Password<span style="color:red"> *</span></span>
+                    <TextInput id="password" type="password" placeholder="Enter Password" class="form-control mt-2"
+                        v-model="form.password" autocomplete="new-password" />
+                    <InputError class="mt-2" :message="form.errors.password" />
+
+
+                </div>
+
+                <div class="mt-4">
+                    <InputLabel class="text-blue" for="password_confirmation" value="Confirm Password" />
+                    <span class="label text-label">Confirm Password<span style="color:red">
+                            *</span></span>
+                    <TextInput id="password_confirmation" type="password" placeholder="Confirm Password"
+                        class="form-control mt-2" v-model="form.password_confirmation" autocomplete="new-password" />
+                    <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                </div> -->
+
+
+
+                <!-- <div class="mt-4">
+                <InputLabel class="text-blue" for="address" value="Address" />
+                <span class="label label-default">Endereço<span style="color:red"> *</span></span>
+                <TextInput id="address" type="text" placeholder="Insira o endereço" class="mt-1 block w-full" v-model="form.address"
+                    autocomplete="address" />
+                <InputError class="mt-2" :message="form.errors.address" />
+            </div> -->
+
+                <div class=" mt-4">
+                    <input class="remember-me-check" type="checkbox" value="" id="flexCheckDefault"
+                        v-model="form.checkbox">
+                    <label class="form-check-label text-label pl-2 " for="flexCheckDefault">
+                        I accept the
+                        <a class="text-lightgreen" href="/term-condition" target="_blank">Terms & Conditions</a>
+                        <!-- <span style="color:red"> *</span> -->
+                    </label>
+                    <InputError class="mt-2" :message="form.errors.checkbox" />
+                </div>
+
+                <div class="flex items-center justify-start mt-4 login-btn-main forgot_Pass">
+                    <PrimaryButton class="forms-btn" :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing">
+                        Continue <span> <i class="bi bi-arrow-right"></i></span>
+                    </PrimaryButton>
+                    <Link :href="route('login')"
+                        class=" register-cancel text-sm ml-4 text-gray-900 hover:text-gray-900">
+                    Cancel
+                    </Link>
+                </div>
+            </form>
+        </div>
+    </div>
+    <Footer />
+</template>
+
+
+
+<script>
+
+</script>
+
+
+<style scoped>
+.term-policy-link {
+    color: #000D37;
+    text-decoration: underline !important;
+}
+
+.text-dark-blue {
+    color: #00008b;
+    /* Dark blue color */
+}
+</style>

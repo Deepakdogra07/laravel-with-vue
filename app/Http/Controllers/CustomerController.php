@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Mail\VerifyUser;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\BusinessModal;
 use App\Mail\RegisteredCustomer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -101,6 +102,71 @@ class CustomerController extends Controller
         $customers = User::find($request->id);
         $customers->update(['is_deleted' => 1]);
     }
+    public function createBusiness(){
+        $user = Auth::user();
+        if($user){
+            return Inertia::render('Customer/RegisterBusiness',compact('user'));
+        }else{
+            return redirect()->route('403');
+        }
+    }
 
+
+    public function registerCustomer(Request $request){
+    //    dd($request->all());
+        $user_id = $request->user_id;
+       $validatedData = $request->validate([
+        'type' => 'required',
+        'company_address' => 'required',
+        'company_country' => 'required',
+        'company_state' => 'required',
+        'company_pin' => 'required',
+        'contact_number' => 'required',
+        'company_name' => 'required',
+        'contact_department' => 'required',
+        'mobile_number' => 'required|string|min:8|max:15|regex:/^[0-9]+$/',
+        'email' => 'required|email|unique:users,email,'.$user_id.'|max:255',
+        'company_city'=>'required',
+        'checkbox' => 'accepted',
+    ], [
+        'checkbox.accepted' => 'You must agree to the Terms of Use and Privacy Policy.',
+        'company_address.required'=>"Company address is required.",
+        'company_country.required'=>"Country is required.",
+        'company_state.required'=>"State is required.",
+        'company_city.required'=>"City is required.",
+        'company_pin.required'=>"Postal Code is required.",
+        'company_name.required'=>"Company Name is required.",
+        'mobile_number.required'=>"Mobile Number is required.",
+        'mobile_number.regex'=>"Mobile Number must be a number.",
+        'mobile_number.min'=>"Mobile Number must be at least 8 digits.",
+        'mobile_number.max'=>"Mobile Number must not be more than 15 digits.",
+        'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one digit and one special character.',
+        'email.required' => 'Email is required.',
+        'email.string' => 'The email must be a string.',
+        'email.lowercase' => 'The email must be in lowercase letters.',
+        'email.email' => 'Please enter a valid email address.            ',
+        'email.max' => 'Email must not exceed 255 characters.',
+        'email.unique' => 'The email address is already in use.',
+
+        'contact_department.required' => "Contact department  is required.",
+        'contact_number.required' => "Contact Person  is required.",
+    ]);
+        $user = User::find($request->user_id);
+        $user->user_type = 2;
+        $user->save();
+        $business = new BusinessModal();
+        $business->company_name = $request->company_name; 
+        $business->contact_number = $request->contact_number; 
+        $business->company_address = $request->company_address; 
+        $business->company_country_code = $request->company_country; 
+        $business->company_state = $request->company_state; 
+        $business->company_pin = $request->company_pin; 
+        $business->contact_department = $request->contact_department; 
+        $business->company_vat = $request->company_vat; 
+        $business->company_city = $request->company_city; 
+        $business->user_id = $user_id;
+        $business->save();
+        return redirect()->route('home');
+    }
     
 }
