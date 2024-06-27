@@ -32,7 +32,7 @@ class BusinessController extends Controller
         $jobs = Jobs::where('user_id', Auth::user()->id)->with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->get();   //Get data for particular business
         $footer_data = FooterData::first();
         $positions = Position::all();
-        $industries = Industries::all();
+        $industries = Industries::withname();
         $disciplines = Discipline::all();
         $seniorities = Seniorities::all();
         return Inertia::render('Business/Index', compact('disciplines','industries', 'seniorities','positions', 'jobs', 'footer_data'));
@@ -42,7 +42,7 @@ class BusinessController extends Controller
     {
         $positions = Position::all();
         $skills = Skills::all();
-        $industries = Industries::all();
+        $industries = Industries::withname();
         $disciplines = Discipline::all();
         $seniorities = Seniorities::all();
         $work_experience = Workexperience::all();
@@ -161,7 +161,7 @@ class BusinessController extends Controller
     {
         $positions = Position::all();
         $skills = Skills::all();
-        $industries = Industries::all();
+        $industries = Industries::withname();
         $disciplines = Discipline::all();
         $seniorities = Seniorities::all();
         $work_experience = Workexperience::all();
@@ -287,7 +287,7 @@ class BusinessController extends Controller
         $applied_customers = Customer::where('job_id', $id)->get();
         $languages = Language::select('id', 'language_name as name')->get();
         $skills = Skills::all();
-        $industries = Industries::all();
+        $industries = Industries::withname();
         $created_time = $this->date_Time($job->created_at);
         return Inertia::render('Business/Show', compact('job', 'industries', 'languages', 'skills', 'applied_customers', 'created_time'));
     }

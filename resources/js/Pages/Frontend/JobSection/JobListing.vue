@@ -7,6 +7,9 @@ import { Link } from '@inertiajs/vue3';
 const props = defineProps({
     jobs: {
         type: Array
+    },
+    applied_jobs:{
+        type:Array
     }
 })
 function dateTime(created_at) {
@@ -63,8 +66,11 @@ function dateTime(created_at) {
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
                             <div class="col-6 login-btn-main">
-                                <Link class="forms-btn-transparent w-100" :href="route('travel.details',job.id)">Apply Now <span> <i
+                                <button v-if="applied_jobs.length > 0 && applied_jobs.indexOf(job.id)" class="forms-btn-transparent w-100">Already Applied
+                                </button>
+                                <Link v-else class="forms-btn-transparent w-100" :href="route('travel.details',job.id)" >Apply Now <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
+                                    
                             </div>
                         </div>
                     </div>
