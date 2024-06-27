@@ -48,14 +48,14 @@ function dateTime(created_at) {
                         <p class="mb-0" v-html="dateTime(job?.created_at)"></p>
                     </div>
                     <div class="card-img">
-                        <Link><img :src="job.job_image" alt=""></Link>
+                        <Link :href="`/view-job/${job.id}`"><img :src="job.job_image" alt=""></Link>
                     </div>
                     <div class="cards-content">
-                        <h2>{{ job?.job_title }}</h2>
+                        <Link :href="`/view-job/${job.id}`"><h2>{{ job?.job_title }}</h2></Link>
                         <p class="my-3 listing_txt"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
                             Chandigarh, India</p>
                         <div class="cards-bio">
-                            <p>{{ job?.posting_summary }}</p>
+                            <Link :href="`/view-job/${job.id}`"><p>{{ job?.posting_summary }}</p></Link>
                         </div>
                         <div class="row mt-3 buttons_div">
                             <div class=" col-6 login-btn-main">
@@ -71,13 +71,13 @@ function dateTime(created_at) {
                 </div>
             </div>
             <div v-if="jobs.links.length > 3" >
-                <div class="d-flex justify-content-end w-100 mt-3">
-                    <div class="flex  mt-2 mb-1"  >
+                <div class="d-flex justify-content-center w-100 mt-3 job_listing_button">
+                    <div class="flex  mt-2 mb-1 job_listing_inner">
                         <template v-for="(link, p) in jobs.links" :key="p">
-                            <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded"
+                            <div v-if="link.url === null" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 rounded prevoius_left"
                                 v-html="link.label" />
                             <Link v-else
-                                class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500"
+                                class="mr-1 mb-1 px-4 py-3 text-sm leading-4 rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500 previous_next_btn"
                                 :class="{ 'bg-blue-700 text-white': link.active }" :href="link.url" v-html="link.label" />
                         </template>
                     </div>
