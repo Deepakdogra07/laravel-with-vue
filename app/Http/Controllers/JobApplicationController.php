@@ -47,7 +47,7 @@ class JobApplicationController extends Controller
             "port_of_arrival" => 'required',
             "migrate_country" => 'required',
         ],[
-            'migrate_country.required' =>'Country to immigrate field is required.',
+            'migrate_country.required' =>'Country to immigrate  is required.',
             "purpose_of_stay.required" => 'Purpose of stay is required.',
             "type_of_visa.required" => 'Type of visa is required.',
             "date_of_travel.required" => 'Date of travel is required.',
