@@ -9,5 +9,9 @@ class Industries extends Model
 {
     use HasFactory;
 
-    protected $table = "industries";
+    protected $table = "categories";
+
+    public static function withname(){
+        return self::select('id', 'category_heading as name')->get();
+    }
 }

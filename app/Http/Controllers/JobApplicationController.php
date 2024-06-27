@@ -77,8 +77,8 @@ class JobApplicationController extends Controller
             "customer_image" => 'required|max:20480',
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" => 'required|email',
-            "confirm_email" => 'required|same:email',
+            "email" => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email',
+            "confirm_email" => 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
             "city_of_birth" => 'required',
@@ -88,54 +88,37 @@ class JobApplicationController extends Controller
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
         ],[
-            "purpose_of_stay.required" => "Purpose of stay is required",
-            "type_of_visa.required" => "Type of visa is required",
-            "date_of_travel.required" => "Date of travel is required",
-            "passenger_nationality.required" => "Passenger nationality is required",
-            "port_of_arrival.required" => "Port of arrival is required",
-            "customer_image.required" => "Passport image is required",
+            "purpose_of_stay.required" => "Purpose of stay is required.",
+            "type_of_visa.required" => "Type of visa is required.",
+            "date_of_travel.required" => "Date of travel is required.",
+            "passenger_nationality.required" => "Passenger nationality is required.",
+            "port_of_arrival.required" => "Port of arrival is required.",
+            "customer_image.required" => "Passport image is required.",
             "customer_image.max" => "Passport image should not be more than 20MB.",
-            "first_name.required" => "First name is required",
-            "last_name.required" => "Last name is required",
+            "first_name.required" => "First name is required.",
+            "last_name.required" => "Last name is required.",
             "email.required" => "Email is required",
             "email.email" => "Email is invalid.",
-            "confirm_email.required" => "Confirm email is required",
-            "date_of_birth.required" => "Date of birth is required",
-            "country_of_birth.required" => "Country of birth is required",
-            "city_of_birth.required" => "City of birth is required",
-            "gender.required" => "Gender is required",
-            "martial_status.required" => "Martial status is required",
-            "passport_number.required" => "Passport is required",
-            "issuing_authority.required" => "Issuing authority is required",
-            "date_of_expiry.required" => "Date of expiry is required",
+            "email.regex" => "Email is invalid.",
+            "email.unique" => "Email already exists.",
+            "confirm_email.required" => "Confirm email is required.",
+            "confirm_email.regex" => "Confirm email is invalid.",
+            "date_of_birth.required" => "Date of birth is required.",
+            "country_of_birth.required" => "Country of birth is required.",
+            "city_of_birth.required" => "City of birth is required.",
+            "gender.required" => "Gender is required.",
+            "martial_status.required" => "Martial status is required.",
+            "passport_number.required" => "Passport is required.",
+            "issuing_authority.required" => "Issuing authority is required.",
+            "date_of_expiry.required" => "Date of expiry is required.",
         ]);
         if ($validator->fails()) {
             $variable = $request->all();
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-        
-        $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
-        $customer_personal_details = new Customer();
-        $customer_personal_details->fill($customer_personal_detail);
-        if(isset($request->customer_image)&& $request->file('customer_image')){
-            $image = $request->file('customer_image');
-            $imageName = insertData($image,'customer/personal/');
-            $customer_personal_details->customer_image = '/storage/' .$imageName;
-        }
-        $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
-        $customer_personal_details->save();
-        $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
-        // dd($customer_travel_detail);
-        $customer_travel_details = new CustomerTravelDetails();
-        $customer_travel_details->fill($customer_travel_detail);
-        $customer_travel_details->customer_id = $customer_personal_details->id;
-        $customer_travel_details->purpose_of_stay = $customer_travel_detail['purpose_of_stay'];
-        $customer_travel_details->updated_at =null;
-        $customer_travel_details->save();
+
         $password = Str::random(6);
-        $already_customer = User::where('email',$request->email)->first();
-        if(!$already_customer){
             $create_customer = User::create([
                 'name' => $request->email,
                 'email' => $request->email,
@@ -144,15 +127,34 @@ class JobApplicationController extends Controller
                 'user_type' => "3",
                 'status' => 1,
             ]);
-            Customer::where('id',$customer_personal_details->id)->update(['user_id'=>$create_customer->id]);
             Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
             Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
-        }else{
-            $create_customer  = $already_customer;
-            Customer::where('id',$customer_personal_details->id)->update(['user_id'=>$create_customer->id]);
+        $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
+        $customer_personal_details = new Customer();
+        $customer_personal_details->fill($customer_personal_detail);
+        if(isset($request->customer_image)&& $request->file('customer_image')){
+            $image = $request->file('customer_image');
+            $imageName = insertData($image,'customer/personal/');
+            $customer_personal_details->customer_image = '/storage/' .$imageName;
         }
+        $customer_personal_details->user_id = $create_customer->id;
+        $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
+        $customer_personal_details->save();
+        $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
+        $customer_travel_details = new CustomerTravelDetails();
+        $customer_travel_details->fill($customer_travel_detail);
+        $customer_travel_details->customer_id = $customer_personal_details->id;
+        $customer_travel_details->purpose_of_stay = $customer_travel_detail['purpose_of_stay'];
+        $customer_travel_details->updated_at =null;
+        $customer_travel_details->save();
+       
         
-        // return redirect()->route('employment.details',[$request->job_id,$customer_personal_details->id]);
+        $status = new CustomerStatus();
+        $status->job_id = $customer_personal_details->job_id;
+        $status->customer_id = $customer_personal_details->customer_id;
+        $status->status = 0;
+        $status->save();
+
         return redirect()->route('job.introduction',[$request->job_id,$customer_personal_details->id]);
 
         
@@ -443,11 +445,7 @@ public function validate_customer_documents(Request $request){
 
         $customer->save();
 
-        $status = new CustomerStatus();
-        $status->job_id = $customer->job_id;
-        $status->customer_id = $customer->customer_id;
-        $status->status = 0;
-        $status->save();
+        
         
 
         return redirect()->route('home');

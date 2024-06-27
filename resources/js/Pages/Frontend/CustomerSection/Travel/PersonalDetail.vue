@@ -75,9 +75,6 @@ const form =useForm({
     passport_number:props?.already_customer?.passport_number ?? null,
    issuing_authority:props?.already_customer?.issuing_authority ?? null,
    date_of_expiry:props?.already_customer?.date_of_expiry ?? null,
-    //  passport_number:[],
-    //  issuing_authority:[],
-    //  date_of_expiry:[],
     citizen_of_more_than_one:null,
     visa_available:props?.already_customer?.visa_available ?? null,
 });
@@ -120,35 +117,12 @@ function handleChange(type){
         select_class.value.martial_status = 'Selected_option';
     }
 }
-const add_item = ref(0),
-appended_item = ref('');
-function changeCitizen(event){
-    if(event.target.checked == true){
-        add_item.value++;
-    }else{
-        add_item.value =0;
-    }
-}
 
-function addPassport(){
-    
-    const elements = document.getElementsByClassName('passport_details');
-    let appendedHtml = '';
-    for (let i = 0; i < elements.length; i++) {
-        appendedHtml += elements[i].innerHTML;
-    }
-    appended_item.value = appendedHtml;
-}
 
-function passport(type,event){
-    if(type =='number'){
-        form.passport_number.push(event.target.value);
-    }else if(type =='issue'){
-        form.issuing_authority.push(event.target.value);
-    }else if(type =='expiry'){
-        form.date_of_expiry.push(event.target.value);
-    }
-    return;
+function removeImage(){
+    form.customer_image = null;
+    image_name.value ='';
+    image_src.value ='';
 }
 
 </script>
@@ -161,9 +135,14 @@ function passport(type,event){
             <form @submit.prevent="submitData()">
             <div class="row">
                 <div class="col-lg-7 col-12">
-                    <div class="file-inputs mt-3 relative">
+                    <div v-if="image_src" width="250px">
+                        <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
+                        <img :src="image_src" alt="" srcset=""width="600px" height="300px" >
+                        <p>{{ image_name }}</p>
+
+                    </div>
+                    <div v-else class="file-inputs mt-3 relative">
                         <div class="dotted-bg">
-                            <img :src="image_src" alt="" srcset="">
                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                 fill="none">
                                 <path
@@ -173,7 +152,7 @@ function passport(type,event){
                             <h2 class="choose-para">Upload Passport And Prefill Information</h2>
                             <p class="file-type">Max size 20MB</p>
                             <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*" >
-                            <p>{{ image_name }}</p>
+                            
                             
                         </div>
                     </div>
@@ -285,12 +264,11 @@ function passport(type,event){
                     <div class="container-fluid form-division-left">
                         <div class="row px-0">
                             <h2 class="mb-3">Passport Details</h2>
-                            <div class="passport_details">
                                 <div class="col-md-6">
                                     <div class="mb-4">
                                         <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                         <!-- v-model="form.passport_number"  -->
-                                        <TextInput placeholder="---" type="text" v-model="form.passport_number"class="form-control mt-2"  @change="passport('number',$event)"/>
+                                        <TextInput placeholder="---"v-model="form.passport_number" type="text"class="form-control mt-2"  />
                                         <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
                                     </div>
                                 </div>
@@ -298,7 +276,7 @@ function passport(type,event){
                                     <div class="mb-4">
                                         <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                         <!-- v-model="form.issuing_authority" -->
-                                        <TextInput placeholder="---" type="text" v-model="form.issuing_authority" class="form-control mt-2" @change="passport('issue',$event)" />
+                                        <TextInput placeholder="---"v-model="form.issuing_authority" type="text"  class="form-control mt-2" />
                                         <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                     </div>
                                 </div>
@@ -307,29 +285,21 @@ function passport(type,event){
                                         <span class="label text-label">Passport Date Of Expiry</span>
                                         <!-- v-model="form.date_of_expiry" -->
                                         <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
-                                        <VueDatePicker v-model="form.date_of_expiry" placeholder="Select date of expiry" class="form-control mt-2  " @change="passport('expiry',$event)" :format="format1" :min-date="today"   :type="'date'" />
+                                        <VueDatePicker v-model="form.date_of_expiry"  placeholder="Select date of expiry" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
                                         <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
                                     </div>
                                 </div>
-                            </div>
                             <div class="col-md-12">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="checkbox" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
-                                                id="citixen" @click="changeCitizen($event)">
+                                                id="citixen" >
                                             <label class="form-check-label" for="citixen">
                                                 I’m a citizen of more than one country
                                             </label>
                                         </div>
-                                        <div>
-                                            <p v-if="add_item > 0"><p @click="addPassport()" class="btn btn-sm btn-success">Add Passport</p></p>
-                                        </div>
                                     </div>
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <p v-html="appended_item"></p>
-                            </div>
-
                             <div class="col-md-12 mt-4">
                                 <div class="mb-4">
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>

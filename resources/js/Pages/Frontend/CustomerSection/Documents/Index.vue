@@ -65,7 +65,6 @@ async function show_next_div(div_number) {
             if(response ){
                 if (response.data.success ) {
                     div_numbers.value = `step-form-${response.data.step}`;
-                    window.scrollTo(0,0);
                 } else{
                     for (const key in response.data.error) {
                         if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
@@ -75,6 +74,7 @@ async function show_next_div(div_number) {
                     }
                     div_numbers.value = `step-form-${response.data.step}`;
                 }
+                window.scrollTo(0,0);
             }
         } catch (error) {
             console.error('Error form validation:', error);

@@ -21,6 +21,7 @@ use App\Models\Workexperience;
 use App\Models\CustomerTraining;
 use App\Models\CustomerDocuments;
 use Illuminate\Contracts\Queue\Job;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerTravelDetails;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +37,7 @@ class JobsController extends Controller
    {
       $positions = Position::all();
       $skills = Skills::all();
-      $industries = Industries::all();
+      $industries = Industries::withname();
       $disciplines = Discipline::all();
       $seniorities = Seniorities::all();
       $work_experience = Workexperience::all();
@@ -157,7 +158,7 @@ class JobsController extends Controller
    {
       $positions = Position::all();
       $skills = Skills::all();
-      $industries = Industries::all();
+      $industries = Industries::withname();
       $disciplines = Discipline::all();
       $seniorities = Seniorities::all();
       $work_experience = Workexperience::all();
@@ -287,7 +288,7 @@ class JobsController extends Controller
 
       $languages = Language::select('id', 'language_name as name')->get();
       $skills = Skills::all();
-      $industries = Industries::all();
+      $industries = Industries::withname();
       $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby')->where('id', $id)->first();
 
 
@@ -297,8 +298,9 @@ class JobsController extends Controller
    public function job_listing()
    {
       $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->paginate(3);
-      // dd($jobs);
-      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs'));
+      $user = Auth::user();
+      $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
+      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs'));
    }
 
    public function view_job($id)
@@ -307,7 +309,7 @@ class JobsController extends Controller
       $languages = Language::select('id', 'language_name as name')->get();
       $skills = Skills::all();
       $created_time = $this->date_Time($job->created_at);
-      $industries = Industries::all();
+      $industries = Industries::withname();
       return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','industries', 'languages', 'skills', 'created_time'));
    }
 
