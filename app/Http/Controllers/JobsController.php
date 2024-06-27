@@ -23,6 +23,7 @@ use App\Models\CustomerDocuments;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerTravelDetails;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -295,12 +296,28 @@ class JobsController extends Controller
       return Inertia::render('Admin/Jobs/Show', compact('jobs','industries','skills','languages'));
    }
 
-   public function job_listing()
+   public function job_listing(Request $request)
    {
-      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest()->paginate(3);
+      
       $user = Auth::user();
+      $industry = '';
+      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest();
+      if($user && $user->user_type < 3){
+         $jobs = $jobs->where('user_id' ,'!=',$user->id);
+      }
+      if($request->industry){
+         $jobs = $jobs->whereJsonContains('industry_id' ,$request->industry);
+         $industry  = Industries::where('id',$request->industry)->pluck('category_heading')->first();
+      }
+      if($request->country){
+         $jobs = $jobs->where('job_country' ,$request->country);
+         $industry = $request->country;
+      }
+      $jobs = $jobs->paginate(3);
+      // $jobs = $jobs->get();
+      // dd($jobs);
       $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
-      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs'));
+      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs','industry'));
    }
 
    public function view_job($id)

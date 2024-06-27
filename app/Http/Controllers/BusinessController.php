@@ -136,9 +136,9 @@ class BusinessController extends Controller
             }
             $skills = json_encode($skills);
             $languages = json_encode($languages);
-            $industries = json_encode($industry);
+            $industries = json_encode($industries);
             $job = new Jobs();
-            $job->fill($request->except('skills_id'));
+            $job->fill($request->except('skills_id','industry_id'));
             $job->skills_id = $skills;
             $job->industry_id = $industries;
             $job->language_id = $languages;
@@ -167,6 +167,10 @@ class BusinessController extends Controller
         $work_experience = Workexperience::all();
         $currencies = Currency::all();
         $job = Jobs::where('id', $id)->first();
+        $checkexists = checkexists($job);
+        if($checkexists == false){
+            return redirect()->route('403');
+        }
         $languages = Language::select('id', 'language_name as name')->get();
         return Inertia::render('Business/Edit', compact('positions', 'currencies', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
     }
@@ -284,6 +288,10 @@ class BusinessController extends Controller
     public function show($id)
     {
         $job = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'createdby', 'business')->where('id', $id)->first();
+        $checkexists = checkexists($job);
+        if($checkexists == false){
+            return redirect()->route('403');
+        }
         $applied_customers = Customer::where('job_id', $id)->get();
         $languages = Language::select('id', 'language_name as name')->get();
         $skills = Skills::all();
@@ -345,7 +353,6 @@ class BusinessController extends Controller
         $job_id = Jobs::where('user_id',$user_id)->pluck('id')->toArray();
         
         $applied_customers = JobStatus::where('status',$status)->whereIn('job_id',$job_id)->with('customers','jobs')->get();
-        // dd($applied_customers);
         return response()->json(['applied_customers' => $applied_customers]);
     }
     public function customer_search($string)

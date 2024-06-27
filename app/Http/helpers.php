@@ -13,4 +13,15 @@ if (!function_exists('insertData')) {
 }
 
 
+if(!function_exists('checkexists')){
+    function checkexists($data){
+        if($data){
+            return true;
+        }else{
+            return  false;
+        }
+    }
+}
+
+
 ?>

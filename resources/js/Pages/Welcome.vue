@@ -106,7 +106,7 @@ onMounted(() => {
             <div class="slider-profile-img">
               <img :src="`${category.thumbnail}` " alt="">
             </div>
-            <p class="mb-0">{{ category.category_heading }}</p>
+            <p ><Link class="mb-0" :href="`/job-listing?industry=${category.id}`" style="color:#fff;">{{ category.category_heading }}</Link></p>
           </div>
         </div>
 
@@ -124,14 +124,14 @@ onMounted(() => {
         <div class="country-content content-left relative">
           <img class="left-img" :src="logo.country_1_image" alt="">
           <div class="country-names country_hd">
-            <h3>{{ logo.country_1_name }}</h3>
+            <Link :href="`job-listing?country=${logo.country_1_name}`"> <h3>{{ logo.country_1_name }}</h3></Link>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
           <img class="right-img" :src="logo.country_2_image" alt="">
           <div class="country-names country_hd">
-            <h3>{{ logo.country_2_name }}</h3>
+            <Link :href="`job-listing?country=${logo.country_2_name}`"> <h3>{{ logo.country_2_name }}</h3></Link>
             <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>

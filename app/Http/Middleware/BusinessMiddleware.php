@@ -20,6 +20,6 @@ class BusinessMiddleware
         if (Auth::check() && Auth::user()->user_type <= 2 ) {
             return $next($request);
         }
-        return redirect()->route('403');
+        return redirect()->route('create.business');
     }
 }

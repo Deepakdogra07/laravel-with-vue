@@ -173,7 +173,7 @@ function TriggerButton(type, event) {
             Home
             </Link>
           </li>
-          <li class="nav-item" v-if="!$page.props.auth.user || $page?.props?.auth?.user?.user_type == 3">
+          <li class="nav-item" >
             <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">
             For Individuals</Link>
           </li>
@@ -206,7 +206,7 @@ function TriggerButton(type, event) {
                 Home
                 </Link>
               </li>
-              <li class="nav-item" v-if="!$page.props.auth.user || $page?.props?.auth?.user?.user_type == 3">
+              <li class="nav-item">
                 <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">
                 For Individuals</Link>
               </li>

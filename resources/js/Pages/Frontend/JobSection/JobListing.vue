@@ -10,6 +10,9 @@ const props = defineProps({
     },
     applied_jobs:{
         type:Array
+    },
+    industry:{
+        type:String
     }
 })
 function dateTime(created_at) {
@@ -43,9 +46,14 @@ function dateTime(created_at) {
     <SubHeading />
     <div class="login-bg-wrapper list_of_jobs">
         <div class="container about-width">
-
-            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3" >
-                <div class="job-listing-cards relative" v-if="jobs.data.length > 0" v-for="(job) in jobs.data" :key="job.id">
+            <div class="industryFilter" v-if="industry">
+                <span class="industry-data">
+                    {{ industry }}
+                   <Link :href="route('job.listing')" class="text-dark"><i class="fas fa-times"></i></Link>
+                </span>
+            </div>
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3  mt-2" v-if="jobs.data.length > 0"  >
+                <div class="job-listing-cards relative" v-for="(job) in jobs.data" :key="job.id">
                     <div class="update-time absolute top-4 right-4">
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0" v-html="dateTime(job?.created_at)"></p>
@@ -76,6 +84,13 @@ function dateTime(created_at) {
                     </div>
                 </div>
             </div>
+            <div v-else class="login-bg-wrapper 403_error_main">
+                <div class="container">
+                    <div   class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3 403_page_top" >
+                        <h1 style="text-align: center;color: #09332B;"> No Records Found</h1>
+                    </div>
+                </div>
+            </div>
             <div v-if="jobs.links.length > 3" >
                 <div class="d-flex justify-content-center w-100 mt-3 job_listing_button">
                     <div class="flex  mt-2 mb-1 job_listing_inner">
@@ -93,3 +108,15 @@ function dateTime(created_at) {
     </div>
     <Footer />
 </template>
+
+<style scoped>
+.industry-data{
+    border: 1px solid #09332b;
+    border-radius: 8px;
+    padding: 8px 20px 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: fit-content;
+}
+</style>

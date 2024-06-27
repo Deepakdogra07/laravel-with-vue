@@ -78,7 +78,8 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
     Route::get('/customers/edit-customer/{id}', [CustomerController::class, 'edit'])->name('customers.edit-customer');
     Route::put('/customers/update-customer/{id}', [CustomerController::class, 'update'])->name('customers.update-customer');
     Route::get('/customers/delete-customer/{id}', [CustomerController::class, 'delete'])->name('customers.delete-customer');
-
+    
+    
     Route::get('/edit-home-page', [EditHomePageController::class, 'index'])->name('edit-home-page');
     Route::get('/home-page/create', [EditHomePageController::class, 'create'])->name('home-page.create');
     Route::post('/home-page/store', [EditHomePageController::class, 'store'])->name('home-page.store');
@@ -128,6 +129,11 @@ Route::middleware(['auth', 'business'])->group(function () {
     Route::get('view_customer/{customer_id}',[BusinessController::class,'view_customer'])->name('view_customer');
     
 });
+
+// Customer
+
+Route::get('create-business', [CustomerController::class,'createBusiness'])->name("create.business");
+Route::post('register.customer', [CustomerController::class,'registerCustomer'])->name("register.customer");
 
 
 
