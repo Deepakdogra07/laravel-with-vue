@@ -323,11 +323,17 @@ class JobsController extends Controller
    public function view_job($id)
    {
       $job = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills', 'business')->where('id', $id)->first();
+      $checkexists = checkexists($job);
+        if($checkexists == false){
+            return redirect()->route('403');
+        }
+        $user = Auth::user();
       $languages = Language::select('id', 'language_name as name')->get();
       $skills = Skills::all();
       $created_time = $this->date_Time($job->created_at);
       $industries = Industries::withname();
-      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','industries', 'languages', 'skills', 'created_time'));
+      $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
+      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','industries', 'languages', 'skills', 'created_time','applied_jobs'));
    }
 
 

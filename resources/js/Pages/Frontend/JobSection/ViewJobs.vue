@@ -21,6 +21,9 @@ const props = defineProps({
     },
     industries:{
         type:Array
+    },
+    applied_jobs:{
+        type:Array
     }
 })
 function job_description(description){
@@ -77,8 +80,12 @@ console.log(job_start_date)
                         <p class="mb-0">{{ created_time }}...</p>
                     </div>
                     <div class=" col-md-4 view-job-btn mt-4 ">
-                        <Link :href="route('travel.details',job.id)" class="forms-btn w-100">Apply Job <span> <i
-                                class="bi bi-arrow-right"></i></span></Link>
+                        <button v-if="applied_jobs.length > 0 && applied_jobs.indexOf(job.id)" class="forms-btn-transparent w-100" disabled>Already Applied
+                                </button>
+                                <Link v-else class="forms-btn-transparent w-100" :href="route('travel.details',job.id)" >Apply Now <span> <i
+                                        class="bi bi-arrow-right"></i></span></Link>
+                        <!-- <Link :href="route('travel.details',job.id)" class="forms-btn w-100">Apply Job <span> <i
+                                class="bi bi-arrow-right"></i></span></Link> -->
                     </div>
                 </div>
             </div>
