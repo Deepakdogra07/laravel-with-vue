@@ -87,22 +87,22 @@ async function changeStatus(customer_id, job_id, event) {
             </div>
             
         </template>
-        <div class="nav-container ">
-            <div class="form-navigation1" >
-                <div class="container">
+        <div class="nav-container">
+            <div class="form-navigation1 view_employee_tabs_wrapper" >
+                <div class="container container_full">
                     <ul class="row nav-underline pl-0 mb-0">
-                        <div class="col-md-2 col-3">
+                        <div class="col-md-2 col-3 p-0 col_width">
                             <li class="nav-item">
-                                <Link class="nav-link text-center" 
+                                <Link class="nav-link text-center view_link_tab" 
                                     aria-current="page" 
                                     :class="{ 'active': route().current('jobs.show',job_id) }"
                                     :href="route('jobs.show',job_id)"
                                 >View Job</Link>
                             </li>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-5">
+                        <div class="col-lg-2 col-md-3 col-5 p-0 col_width">
                             <li class="nav-item">
-                                <Link class="nav-link text-center"  
+                                <Link class="nav-link text-center view_link_tab"  
                                     :class="{ 'active': route().current('job_for_customers',job_id) }"
                                     :href="route('job_for_customers',job_id)"
                                 >Applies</Link>
@@ -174,8 +174,8 @@ async function changeStatus(customer_id, job_id, event) {
             </div>
             <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->
-                    <div class="p-6 text-black-1024 padding_remove padding_table">
-                        <DataTable class="display employ_table" :key="refreshDataTable" >
+                    <div class="p-6 text-black-1024 padding_remove padding_table View_applies_wrapper">
+                        <DataTable class="display view_employ_table" :key="refreshDataTable" >
                             <thead>
                                 <tr>
                                     <th>Name</th>

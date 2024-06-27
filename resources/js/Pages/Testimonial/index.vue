@@ -67,7 +67,7 @@ function splitStringIntoChunks(inputString, chunkSize = 80) {
 <template>
     <AuthenticatedLayout>
           <!-- <template #header> -->
-            <div class="pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700 testimonial_row">
+            <div class="testimonails_hd pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700 testimonial_row">
               <h2 class="font-semibold text-xl text-gray-800 leading-tight">Testimonials</h2>
               <div class="button-container">
                     <Link :href="route('testimonial.create')">

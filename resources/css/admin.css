@@ -84,13 +84,15 @@ table.dataTable td img {
 	color: #ffffff !important;
 }
 
-.padding_remove .dataTables_paginate  a.paginate_button.previous::before,
-.padding_remove .dataTables_paginate a.paginate_button.previous::before,
-.employesss_tabs a.paginate_button.previous::before {
-	content: "\003c" !important;
-	background: #6c6b6b;
-	color: #fff;
-	border-radius: 0px;
+.padding_remove .dataTables_paginate  a.paginate_button.previous::before, .padding_remove .dataTables_paginate a.paginate_button.previous::before, .employesss_tabs a.paginate_button.previous::before {
+    content: "\003c" !important;
+    background: #6c6b6b;
+    color: #fff;
+    border-radius: 0px;
+    font-family: 'FontAwesome' !important;
+    font-weight: 100 !important;
+    font-size: 12px;
+    padding: 12px 10px 11px 10px;
 }
 
 .padding_remove .dataTables_paginate {
@@ -128,17 +130,11 @@ table.dataTable td img {
 	background: #6c6b6b;
 	color: #fff;
 	border-radius: 0px;
+	font-family: 'FontAwesome' !important;
+    font-weight: 100 !important;
+	padding: 12px 10px 11px 10px;
+	font-size: 12px;
 }
-
-/* .category_tables a.paginate_button.current, .categories_inner a.paginate_button.current, .job_admin_all a.paginate_button.current{
-    padding-top: 8px !important;
-    padding-bottom: 6px !important;
-} */
-
-/* .job_admin_all a.paginate_button.current{
-    padding-top: 8px !important;
-    padding-bottom: 6px !important;
-} */
 
 .categories_inner a.paginate_button.current{
     padding-top: 7px !important;
@@ -174,9 +170,6 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     color: #212529;
     font-size: 16px;
 	margin-top: 17px;
-}
-.dataTables_paginate a.paginate_button.current {
-    height: 37.0px;
 }
 .add_customers .padding_remove .dataTables_paginate .paginate_button {
 	color: #fff !important;
@@ -214,17 +207,50 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	white-space: wrap;
 	display: block;
 }
-.job_admin_all .dataTables_paginate a.paginate_button.current {
-    height: 36px;
-}
-.padding_remove a.paginate_button.current {
-    padding-top: 6px !important;
-}
-.padding_remove .dataTables_paginate a.paginate_button.current {
-    height: 36.9px;
-}
 .add_testimonial_page {
     border-bottom: 0px solid transparent !important;
+}
+.wrapper_other_fields {
+    padding: 0px 9px;
+}
+.view_job_page .card .card-header-title p {
+    margin-bottom: 0px;
+}
+.view_link_tab {
+    background: #3c5b6f;
+    color: #fff !important;
+    padding: 10px !important;
+    margin-right: 13px;
+}
+.view_link_tab.active {
+    background: #060d1a;
+}
+.view_employee_tabs_wrapper {
+    margin-bottom: 12px;
+}
+.view_employ_table {
+    margin-bottom: 0px !important;
+}
+/* .paginate_button.previous::before, .paginate_button.next::before {
+    padding: 6px 12px 13px 12px !important;
+    line-height: 0px !important;
+    font-size: 20px !important;
+} */
+/* .paginate_button.current {
+    padding: 9px 15px 8px 15px !important;
+} */
+.padding_remove .paginate_button.previous::before{
+	content: "\F284" !important;
+}
+
+
+.View_applies_wrapper {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.View_applies_wrapper .dataTables_paginate{
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 
@@ -243,7 +269,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 }
 @media (max-width:991px) {
 	.View_Detailed_Enquiry_box {
-		width: 70%;
+		width: 70% !important;
 	}
 }
 
@@ -310,9 +336,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 		font-size: 12px;
 		padding-top: 4px !important;
 	}
-	.View_Detailed_Enquiry_box {
-		width: 80%;
-	}
+
 }
 
 @media (max-width:767px){
@@ -323,12 +347,48 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 		max-width: 1120px;
 	}
 	.View_Detailed_Enquiry_box {
-		width: 100%;
+		width: 100% !important;
 	}
 	.job_posting_page {
 		padding: 0px 5px;
 	}
+	.other_data_fields .container {
+		padding: 0px 5px;
+		max-width: 100%;
+	}
+	.certifiacte-wrapper-col {
+		padding: 0px;
+	}
+	.all_subhadings_wrap .pages-heading, .add_customers .add_customers_inner, .add_customers .add_customers_inner, .categories_page .categories_inner, .View_enquires_wrapper .View_enquiresinner_wrapper, .View_Detailed_Enquiry_box .view_padding, .border_index.job_admin_all, .all_subhadings_wrap .view_job_page {
+		padding-left: 3px !important;
+		padding-right: 3px !important;
+	}
+
+	.add_customer_page .configure-switch, .edit_customer_page .configure-switch, .col_update .configure-switch {
+		margin-top: 20px;
+	}
+	.view_employee_tabs_wrapper .container_full {
+		max-width: 100%;
+		padding: 0px 5px;
+	}
+	.view_job_page .bg_mine {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.View_applies_wrapper {
+		margin-top: 20px;
+	}
+	.employesss_tabs_dd {
+		padding: 0px 5px;
+	}
+	.view_employ_table th{
+		white-space: nowrap;
+	}
+	/* .padding_remove.View_applies_wrapper .dataTables_wrapper .dataTables_info{
+		float: unset !important;
+	} */
 }
+
 @media (max-width:640px) {
 	.padding_remove .dataTables_filter {
 		padding-top: 0px !important;
@@ -391,6 +451,17 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	.requirement_wrapper p {
 		margin-bottom: 15px !important;
 	}
+	.view_detailed_header {
+		padding: 20px !important;
+		background: #3c5b6f !important;
+	}
+	.view_employee_tabs_wrapper .col_width {
+		width: 35%;
+	}
+	.view_job_wrapper{
+		padding-left: 3px !important;
+		padding-right: 3px !important;
+	}
 }
 
 @media (max-width:522px){
@@ -430,6 +501,19 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	}
 }
 
+
+@media (max-width:400px){
+	.view_job_page .card .card-header-title {
+		display: block;
+	}
+	.view_job_page .card .card-header-title h2 {
+		margin-bottom: 20px !important;
+		margin-top: 10px;
+	}
+	.view_job_page .card .card-header-title p {
+		margin-top: 12px !important;
+	}
+}
 
 @media (max-width:496px) {
     .padding_remove .dataTables_filter label, .padding_remove .dataTables_filter {

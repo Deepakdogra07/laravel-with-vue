@@ -72,21 +72,21 @@ function sepratedString(recommended_skills){
 
         </template>
 
-        <div class="nav-container ">
-            <div class="form-navigation1">
-                <div class="container">
+        <div class="nav-container spacing_equal">
+            <div class="form-navigation1 view_employee_tabs_wrapper">
+                <div class="container container_full">
                     <ul class="row nav-underline pl-0 mb-0">
-                        <div class="col-md-2 col-3">
+                        <div class="col-md-2 col-3 p-0 col_width">
                             <li class="nav-item">
-                                <Link class="nav-link text-center" aria-current="page"
+                                <Link class="nav-link text-center view_link_tab" aria-current="page"
                                     :class="{ 'active': route().current('jobs.show', jobs.id) }"
                                     :href="route('jobs.show', jobs.id)">View Job</Link>
                             </li>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-5">
+                        <div class="col-lg-2 col-md-3 col-5 p-0 col_width">
                             <li class="nav-item">
-                                <Link class="nav-link text-center"
-                                    :class="{ 'active': route().current('jobs.show', jobs.id) }"
+                                <Link class="nav-link text-center view_link_tab"
+                                    :class="{ 'active': route().current('job_for_customers', jobs.id) }"
                                     :href="route('job_for_customers', jobs.id)">Applies</Link>
                                 <!-- :class="{ 'active': route().current('register') }"   -->
                             </li>
@@ -98,7 +98,7 @@ function sepratedString(recommended_skills){
 
         <div class="py-12 spacing_sshhow">
             <div class="max-w-7xl mx-auto px-2 view_job_page">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
+                <div class="bg-white bg_mine overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 view_job_wrapper">
                         <div class="container">
                             <div class="card">
