@@ -283,7 +283,6 @@ function passport(type,event){
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="container-fluid form-division-left">
-
                         <div class="row px-0 justify-content-between">
                             <h2 class="mb-4">Passport Details</h2>
                             <div class="col-md-6 column_spacing">
