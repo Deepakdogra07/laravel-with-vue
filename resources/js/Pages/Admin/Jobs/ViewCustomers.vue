@@ -119,7 +119,7 @@ async function changeStatus(customer_id, job_id, event) {
                     <div class="d-flex justify-between">
                         <ul class="d-flex align-items-center flex-wrap pl-0 view_employes_nav_wrapper">
                             <li>
-                                <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">{{ applied_customers.length }}
+                                <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">{{ status.all }}
                                     All</span>
                             </li>
                             <li>

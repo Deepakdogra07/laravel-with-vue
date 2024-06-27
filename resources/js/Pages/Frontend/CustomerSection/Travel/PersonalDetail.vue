@@ -62,23 +62,25 @@ const form =useForm({
     purpose_of_stay:props.variable.purpose_of_stay,
     type_of_visa:props.variable.type_of_visa,
     migrate_country:props.variable.migrate_country,
-    customer_image : props?.already_customer?.customer_image,
-    first_name:props?.already_customer?.first_name,
-    last_name:props?.already_customer?.last_name,
-    email:props?.already_customer?.email,
-    confirm_email:props?.already_customer?.email,
-    date_of_birth:props?.already_customer?.date_of_birth,
-    country_of_birth:props?.already_customer?.country_of_birth,
-    city_of_birth:props?.already_customer?.city_of_birth,
-    gender:props?.already_customer?.gender,
-    martial_status:props?.already_customer?.martial_status,
-    passport_number:props?.already_customer?.passport_number,
-    issuing_authority:props?.already_customer?.issuing_authority,
-    date_of_expiry:props?.already_customer?.date_of_expiry,
+    customer_image : props?.already_customer?.customer_image ?? null,
+    first_name:props?.already_customer?.first_name ?? null,
+    last_name:props?.already_customer?.last_name ?? null,
+    email:props?.already_customer?.email ?? null,
+    confirm_email:props?.already_customer?.email ?? null,
+    date_of_birth:props?.already_customer?.date_of_birth ?? null,
+    country_of_birth:props?.already_customer?.country_of_birth ?? null,
+    city_of_birth:props?.already_customer?.city_of_birth ?? null,
+    gender:props?.already_customer?.gender ?? null,
+    martial_status:props?.already_customer?.martial_status ?? null,
+    passport_number:props?.already_customer?.passport_number ?? null,
+   issuing_authority:props?.already_customer?.issuing_authority ?? null,
+   date_of_expiry:props?.already_customer?.date_of_expiry ?? null,
+    //  passport_number:[],
+    //  issuing_authority:[],
+    //  date_of_expiry:[],
     citizen_of_more_than_one:null,
-    visa_available:props?.already_customer?.visa_available,
+    visa_available:props?.already_customer?.visa_available ?? null,
 });
-
 function upload_image(event){
     form.customer_image = event.target.files[0];
     image_src.value = URL.createObjectURL(event.target.files[0]);
@@ -118,7 +120,36 @@ function handleChange(type){
         select_class.value.martial_status = 'Selected_option';
     }
 }
+const add_item = ref(0),
+appended_item = ref('');
+function changeCitizen(event){
+    if(event.target.checked == true){
+        add_item.value++;
+    }else{
+        add_item.value =0;
+    }
+}
 
+function addPassport(){
+    
+    const elements = document.getElementsByClassName('passport_details');
+    let appendedHtml = '';
+    for (let i = 0; i < elements.length; i++) {
+        appendedHtml += elements[i].innerHTML;
+    }
+    appended_item.value = appendedHtml;
+}
+
+function passport(type,event){
+    if(type =='number'){
+        form.passport_number.push(event.target.value);
+    }else if(type =='issue'){
+        form.issuing_authority.push(event.target.value);
+    }else if(type =='expiry'){
+        form.date_of_expiry.push(event.target.value);
+    }
+    return;
+}
 
 </script>
  
@@ -254,42 +285,51 @@ function handleChange(type){
                     <div class="container-fluid form-division-left">
                         <div class="row px-0">
                             <h2 class="mb-3">Passport Details</h2>
-                            <div class="col-md-6">
-                                <div class="mb-4">
-                                    <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
-
-                                    <TextInput placeholder="---" v-model="form.passport_number" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
+                            <div class="passport_details">
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
+                                        <!-- v-model="form.passport_number"  -->
+                                        <TextInput placeholder="---" type="text" v-model="form.passport_number"class="form-control mt-2"  @change="passport('number',$event)"/>
+                                        <InputError class="mt-2" v-if="form.errors.passport_number" :message="props.errors.passport_number[0]" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-4">
-                                    <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
-
-                                    <TextInput placeholder="---" v-model="form.issuing_authority" type="text" class="form-control mt-2" />
-                                    <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
+                                        <!-- v-model="form.issuing_authority" -->
+                                        <TextInput placeholder="---" type="text" v-model="form.issuing_authority" class="form-control mt-2" @change="passport('issue',$event)" />
+                                        <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-4">
-                                    <span class="label text-label">Passport Date Of Expiry</span>
-
-                                    <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
-                                    <VueDatePicker v-model="form.date_of_expiry" placeholder="Select date of expiry" class="form-control mt-2  " :format="format1" :min-date="today"   :type="'date'" />
-                                    <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
+                                <div class="col-md-12">
+                                    <div class="mb-4">
+                                        <span class="label text-label">Passport Date Of Expiry</span>
+                                        <!-- v-model="form.date_of_expiry" -->
+                                        <!-- <TextInput placeholder="---"v-model="form.date_of_expiry"  type="date" class="form-control mt-2" /> -->
+                                        <VueDatePicker v-model="form.date_of_expiry" placeholder="Select date of expiry" class="form-control mt-2  " @change="passport('expiry',$event)" :format="format1" :min-date="today"   :type="'date'" />
+                                        <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="checkbox" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
-                                                id="citixen">
+                                                id="citixen" @click="changeCitizen($event)">
                                             <label class="form-check-label" for="citixen">
                                                 I’m a citizen of more than one country
                                             </label>
                                         </div>
+                                        <div>
+                                            <p v-if="add_item > 0"><p @click="addPassport()" class="btn btn-sm btn-success">Add Passport</p></p>
+                                        </div>
                                     </div>
                             </div>
+                            <div class="col-md-12 mt-4">
+                                <p v-html="appended_item"></p>
+                            </div>
+
                             <div class="col-md-12 mt-4">
                                 <div class="mb-4">
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>

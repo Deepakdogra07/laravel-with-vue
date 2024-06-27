@@ -35,10 +35,10 @@ onMounted(() => {
   appliedCustomers.value = props.applied_customers;
   refreshDataTable.value++;
 });
-const activeSpan = ref(null);
+const activeSpan = ref(0);
 const setActiveSpan = async (spanNumber) => {
   try {
-    if (activeSpan.value === spanNumber) {
+    if (activeSpan.value === spanNumber || (spanNumber == 0)) {
       activeSpan.value = null;
       location.reload();
     } else {
@@ -139,7 +139,7 @@ async function changeStatus(customer_id, job_id, event) {
             <div class="d-flex justify-between align-items-center">
               <ul class="d-flex align-items-center flex-wrap pl-0 business_links" :key="navbar_key">
                 <li>
-                  <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">
+                  <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">{{ status.all }}
                     All</span>
                 </li>
                 <li>
