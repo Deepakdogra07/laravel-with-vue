@@ -33,7 +33,7 @@ class HomeController extends Controller
         $footer_data = FooterData::first();
         $user = Auth::user();
         $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
-        $applied_customers = JobStatus::whereIn('job_id',$jobs_created)->with('customers','jobs')->latest()->get();
+        $applied_customers = JobStatus::whereIn('job_id',$jobs_created)->with('customers','jobs','customers.travel_details')->latest()->get();
         $active = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 0)->count();
         $awaited = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 1)->count();
         $reviewed = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 2)->count();

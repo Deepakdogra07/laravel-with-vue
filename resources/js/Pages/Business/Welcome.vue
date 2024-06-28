@@ -122,6 +122,7 @@ async function changeStatus(customer_id, job_id, event) {
           <div class="d-flex gap-5 align-items-center srch_navbar">
             <Link :href="route('business-jobs.index')">Jobs</Link>
             <Link class='active-nav'>Employee</Link>
+            <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
             <!-- <Link>Messages</Link> -->
           </div>
 
@@ -229,9 +230,8 @@ async function changeStatus(customer_id, job_id, event) {
                 <!-- <th>Apply Date</th> -->
                 <th>Country to Immigrate</th>
                 <th>Profile</th>
-                <th>Visa Status</th>
-                <th>Experience Summary</th>
-                <th>Videos</th>
+                <th>Visa Purpose</th>
+                <th>Country of Birth</th>
                 <th>Intersts</th>
                 <th>View </th>
               </tr>
@@ -239,7 +239,7 @@ async function changeStatus(customer_id, job_id, event) {
             <tbody>
               <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
                 <td class="business_wrap_name">
-                  <input type="checkbox">
+                  <!-- <input type="checkbox"> -->
                   {{ customer?.customers?.first_name }}
                 </td>
                 <td> {{ customer?.jobs?.job_title }}</td>
@@ -258,12 +258,8 @@ async function changeStatus(customer_id, job_id, event) {
                   {{ customer?.customers?.migrate_country }}
                 </td>
                 <td> <img :src="customer?.customers?.customer_image" alt=""></td>
-                <td> {{ 'Student' }}</td>
-                <td>
-                  {{ '2 Years' }}
-                </td>
-                <td>
-                </td>
+                <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
+                <td v-html="customer?.customers?.country_of_birth"></td>
                 <td>
 
                     <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">

@@ -539,3 +539,7 @@ function handleChange(type){
     </div>
     <Footer />
 </template>
+<style scoped>
+
+
+</style>

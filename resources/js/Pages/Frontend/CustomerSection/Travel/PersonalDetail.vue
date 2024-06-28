@@ -13,6 +13,7 @@ import { ref } from 'vue';
 import { Country } from 'country-state-city';
 import '@vuepic/vue-datepicker/dist/main.css'; 
 import VueDatePicker from '@vuepic/vue-datepicker'; 
+import { stringify } from 'postcss';
 
 const today = new Date();
 const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
@@ -46,6 +47,10 @@ const props = defineProps({
     },
     already_customer:{
         type:Object
+    },
+     user_email:{
+        type:String,
+        default:null
     }
 
 })
@@ -65,8 +70,8 @@ const form =useForm({
     customer_image : props?.already_customer?.customer_image ?? null,
     first_name:props?.already_customer?.first_name ?? null,
     last_name:props?.already_customer?.last_name ?? null,
-    email:props?.already_customer?.email ?? null,
-    confirm_email:props?.already_customer?.email ?? null,
+    email:props?.already_customer?.email ?? props.user_email,
+    confirm_email:props?.already_customer?.email ?? props.user_email,
     date_of_birth:props?.already_customer?.date_of_birth ?? null,
     country_of_birth:props?.already_customer?.country_of_birth ?? null,
     city_of_birth:props?.already_customer?.city_of_birth ?? null,

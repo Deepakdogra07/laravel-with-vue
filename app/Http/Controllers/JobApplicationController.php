@@ -59,15 +59,15 @@ class JobApplicationController extends Controller
         }
         $variable = ($request->all());
         $user_id = Auth::user()->id ?? '';
+        $user_email = Auth::user()->email ?? null;
         $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
-        return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable','already_customer'));
+        return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable','already_customer','user_email'));
     }
     public function submit_personal_details(Request $request,$job_id)
     {
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
-        // dd($request->all());
         $validator = Validator::make($request->all(), [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',
@@ -128,8 +128,8 @@ class JobApplicationController extends Controller
                 'user_type' => "3",
                 'status' => 1,
             ]);
-            Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
-            Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
+            // Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
+            // Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
         $customer_personal_details->fill($customer_personal_detail);
@@ -152,7 +152,7 @@ class JobApplicationController extends Controller
         
         $status = new CustomerStatus();
         $status->job_id = $customer_personal_details->job_id;
-        $status->customer_id = $customer_personal_details->customer_id;
+        $status->customer_id = $customer_personal_details->id;
         $status->status = 0;
         $status->save();
 
@@ -255,12 +255,7 @@ class JobApplicationController extends Controller
            
             if ($validator->fails()) {
                 return back()->withErrors($validator->errors());
-                // return response()->json(['error'=>$validator->errors()]);
-            }elseif(isset($request->step) && $request->step < 4){
-                return back();
             }
-       
-        if(isset($request->step) && $request->step == 4){
             $customer_employments = new CustomerTraining();
             $customer_employments->fill($request->all());
             if(isset($request->employer_statement)&& $request->file('employer_statement')){
@@ -292,7 +287,6 @@ class JobApplicationController extends Controller
             $customer_employments->save();
             $job_id = $request->job_id;
             $customer_id = $customer_employments->customer_id;
-        }
         return redirect()->route('document.details',[$job_id,$customer_id]);
     }
     public function document_details($job_id , $customer_id){
