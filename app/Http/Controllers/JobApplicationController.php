@@ -118,18 +118,22 @@ class JobApplicationController extends Controller
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-
-        $password = Str::random(6);
-            $create_customer = User::create([
-                'name' => $request->email,
-                'email' => $request->email,
-                'password' => Hash::make($password),
-                // 'phone' => $request->mobile_number,
-                'user_type' => "3",
-                'status' => 1,
-            ]);
-            // Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
-            // Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
+        $user = Auth::user();
+        if($user){
+            $create_customer = $user; 
+        }else{
+            $password = Str::random(6);
+                $create_customer = User::create([
+                    'name' => $request->email,
+                    'email' => $request->email,
+                    'password' => Hash::make($password),
+                    // 'phone' => $request->mobile_number,
+                    'user_type' => "3",
+                    'status' => 1,
+                ]);
+                // Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
+                // Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
+        }
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         $customer_personal_details = new Customer();
         $customer_personal_details->fill($customer_personal_detail);
@@ -162,7 +166,6 @@ class JobApplicationController extends Controller
         
     }
     public function employment_details($job_id,$customer_id){
-        
         return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
     public function validate_emp_details(Request $request){
@@ -320,11 +323,11 @@ public function validate_customer_documents(Request $request){
         ]);
     }elseif(isset($request->step) && $request->step == 5){
         $validator = Validator::make($request->all(), [
-            'kitchen_area'=> 'required|mimes:mp4,avi|max:20480',
-            'ingredients'=> 'required|mimes:mp4,avi|max:20480',
-            'cooking_tech'=> 'required|mimes:mp4,avi|max:20480',
-            'dish'=> 'required|mimes:mp4,avi|max:20480',
-            'clean_up'=> 'required|mimes:mp4,avi|max:20480',
+            'kitchen_area'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
+            'ingredients'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
+            'cooking_tech'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
+            'dish'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
+            'clean_up'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
         ],[
             'kitchen_area.required'=> 'Kitchen area is required.',
             'ingredients.required'=> 'Ingredients is required.',
@@ -338,11 +341,11 @@ public function validate_customer_documents(Request $request){
             'dish.max'=> 'Dish file should not exceed 20 MB.',
             'clean_up.max'=> 'Clean up file should not exceed 20 MB.',
 
-            'kitchen_area.mimes'=> 'Kitchen area should be in jpg,jpeg,png,pdf,docx format.',
-            'ingredients.mimes'=> 'Ingredients should be in jpg,jpeg,png,pdf,docx format.',
-            'cooking_tech.mimes'=> 'Cooking tech should be in jpg,jpeg,png,pdf,docx format.',
-            'dish.mimes'=> 'Dish should be in jpg,jpeg,png,pdf,docx format.',
-            'clean_up.mimes'=> 'Clean up should be in jpg,jpeg,png,pdf,docx format.',
+            'kitchen_area.mimes'=> 'Kitchen area should be in .mp4,.mov or .ogg format.',
+            'ingredients.mimes'=> 'Ingredients should be in .mp4,.mov or .ogg format.',
+            'cooking_tech.mimes'=> 'Cooking tech should be in .mp4,.mov or .ogg format.',
+            'dish.mimes'=> 'Dish should be in .mp4,.mov or .ogg format.',
+            'clean_up.mimes'=> 'Clean up should be in .mp4,.mov or .ogg format.',
 
 
         ]);
