@@ -482,9 +482,17 @@ h2 {
 }
 .business_dash_navbar_wrapper li select.job-filter_text {
     padding-left: 10px !important;
+    cursor: pointer;
 }
 .business_dash_navbar_wrapper li select.job-filter_text option {
     background: #fbfbfb !important;
+}
+.search_bar [type='search']:focus {
+    border-color: #000 !important;
+    box-shadow: 0px 0px 1px 1px #01796f;
+}
+.search_bar input::-webkit-search-cancel-button {
+    cursor: pointer;
 }
 
 @keyframes pulse-shadow {
@@ -570,6 +578,7 @@ h2 {
     color: #fff;
     font-weight: 600 !important;
     font-size: 16px;
+	justify-content: center;
 }
 
 .forms-btn {
@@ -584,11 +593,12 @@ h2 {
 
 .step-form-back {
     color: #000 !important;
-    padding: 12px 20px!important;
-    margin-left: 6px;
+    padding: 15px 20px!important;
+    /* margin-left: 6px; */
     font-size: 16px;
     font-weight: 600 !important;
     border-color: #A5A5AB !important;
+	line-height: 0px;
 }
 .step-form-back:hover {
     border-color: #01796f !important;
@@ -599,7 +609,9 @@ h2 {
 	text-decoration: underline !important;
 	font-weight: 500;
 }
-
+.employment-first-form h3.spacing_hd {
+    padding: 0px;
+}
 .remember-me {
 	font-weight: 500;
 }
@@ -715,7 +727,10 @@ h2 {
     width: 100%;
     height: 300px;
     border-radius: 10px;
-    padding-right: 30px;
+}
+
+.business_dash_table thead th:last-child {
+    cursor: default !important;
 }
 
 .view-main-image img {
@@ -730,8 +745,9 @@ h2 {
 	justify-content: center;
 }
 
-.job-detail-page h2 {
-	font-size: 35px;
+.job-detail-page .view-main-images h2 {
+    font-size: 40px !important;
+    font-weight: 700 !important;
 }
 
 .job-detail-content {
@@ -1960,6 +1976,10 @@ input[type="file"] {
 		bottom: 46px;
 	}
 
+	.main-header .navbar-expand-lg .navbar-collapse{
+		display: none !important;
+	}
+
 	.main-header .mobile_amdin_dropdown button::after {
 		display: none;
 	}
@@ -2135,6 +2155,12 @@ input[type="file"] {
 		justify-content: start ;
 	}
 
+	.view-job-btn {
+		width: 50%;
+	}
+
+
+
 
 	/*customer detail page*/
 	.view_customer_wrapper .col {
@@ -2156,7 +2182,20 @@ input[type="file"] {
 		display: block !important;
 	}
 	.travel-section .login-btn-main {
-		padding: 0px 12px !important;
+		padding: 0px!important;
+	}
+
+	/*step form*/
+	.Pass_column {
+		padding-left: 0px !important;
+	}
+
+	.personal_column {
+		padding-right: 0px !important;
+	}
+
+	.travel-section .form-division-left h2 {
+		padding-left: 10px !important;
 	}
 
 }
@@ -2488,15 +2527,15 @@ input[type="file"] {
 		padding: 0px;
 	}
 
-	.step-form-3 p {
+	/* .step-form-3 p {
 		margin: 0px !important;
 		line-height: 28px !important;
-	}
+	} */
 
-	.step-form-3 p {
+	/* .step-form-3 p {
 		margin: 0px !important;
 		line-height: 28px !important;
-	}
+	} */
 
 	.determine_job h6 {
 		line-height: 34px;
@@ -2538,6 +2577,7 @@ input[type="file"] {
 
 	.travel-section .login-btn-main {
 		padding: 0px !important;
+		margin: 20px 0px !important;
 	}
 
 	.row.mt-5.travel_row {
@@ -3032,6 +3072,38 @@ input[type="file"] {
 		max-width: 720px;
 	}
 
+	.travel_width {
+		margin-top: 20px;
+		padding: 20px 0px;
+	}
+
+	.form-division-left {
+		padding: 0px 10px !important;
+	}
+
+	.close_image_wrapper {
+		margin-bottom: 10px;
+	}
+
+	.job-detail-page .view-main-images h2, .job-detail-page .view-main-images p{
+		padding-left: 0px;
+	}
+
+	.job-detail-page .view-main-images .update-time, .job-detail-page .view-main-images .view-job-btn {
+		margin-left: 0px;;
+	}
+
+	.job-detail-page .about-width {
+		padding: 0px!important;
+	}
+
+	.employ_width_wrap {
+		max-width: 720px !important;
+	}
+
+	.step-form-back {
+		padding: 17px 20px!important;
+	}
 }
 
 
@@ -3210,6 +3282,26 @@ input[type="file"] {
 		margin: 0px;
 	}
 
+	.travel-section .form-division-left h2 {
+		padding-left: 0px !important;
+	}
+
+	.form-division-left .flex.login-btn-main {
+		padding: 0px !important; 
+	}
+
+	.travel_width {
+		padding: 20px 15px !important;
+	}
+
+	.form-division-left {
+		padding: 0px 0px !important;
+	}
+
+	.step-form-back {
+		margin-left: 0px;
+	}
+
 	.main-footer ul.pl-0.listing-gap li {
 		margin-bottom: 5px !important;
 	}
@@ -3341,6 +3433,10 @@ input[type="file"] {
 	} */
 	.custom-popover .modal-dialog {
 		width: 95% !important;
+	}
+
+	.business_inner_dash .main-job-filter ul li span {
+		padding-left: 7px;
 	}
 
 	.popup-quote-img img {
@@ -3604,9 +3700,9 @@ input[type="file"] {
 		margin-top: 0px !important;
 	}
 
-	.step-form-3 p {
+	/* .step-form-3 p {
 		margin: 0px 0px !important;
-	}
+	} */
 
 	.determine_job h6 {
 		margin-bottom: 15px !important;
@@ -4097,17 +4193,26 @@ input[type="file"] {
 		padding-top: 0px !important;
 	}
 
+	.job-detail-page .about-width {
+		padding: 0px 15px !important;
+	}
+
 }
 
 @media (max-width: 549px) {
 	.search_bar {
 		width: 100%;
 	}
+	
 }
 
 @media screen and (min-device-width: 427px) and (max-device-width: 500px) {
 	.srch_navbar {
-		width: 50%;
+		width: 70%;
+	}
+
+	.job-list-search a {
+		font-size: 13px;
 	}
 	
 	.search_bar {
@@ -4148,6 +4253,9 @@ input[type="file"] {
 	}
 	.view_customer_wrapper .column_width:nth-child(2), .view_customer_wrapper .column_width:nth-child(4){
 		padding-right: 0px !important;
+	}
+	.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
+		padding-right: 76px !important;
 	}
 }
 
@@ -4234,7 +4342,12 @@ input[type="file"] {
 	.footer-one, .footer-three, .footer-two, .footer-four, .footer-five{
 		width: 100% !important;
 	}
-
+	.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
+		padding-right: 0px !important;
+	}
+	.business_dash_navbar_wrapper li select.job-filter_text, .employes_selct_checkbox {
+		padding-right: 10px !important;
+	}
 }
 
 @media (max-width:412px) {
@@ -4694,6 +4807,10 @@ button.rounded-lg span i::before {
 	font-size: 20px;
 }
 
+.step-form-back i {
+    font-size: 20px;
+}
+
 .mt-4 .start_input {
 	margin-top: 10px !important;
 }
@@ -4974,9 +5091,9 @@ header.shadow-md .container {
 	margin: 10px 0px;
 }
 
-.step-form-3 p {
+/* .step-form-3 p {
 	margin: 13px 0px 32px;
-}
+} */
 
 .step-form-3 h3 {
 	font-size: 23px;
@@ -5007,8 +5124,8 @@ h2.spacing_hd {
 }
 
 .employment-first-form h2 {
-	font-size: 35px !important;
-	line-height: 54.47px;
+    font-size: 35px !important;
+    line-height: 43.47px;
 }
 
 .employment-first-form .file-inputs h2 {
@@ -5242,7 +5359,7 @@ li.last_border {
 
 .job-detail-page .view-main-image img {
 	border: 0px !important;
-	border-radius: 0px !important;
+	border-radius: 10px !important;
 }
 
 .job-detail-page .company-section {
@@ -5682,9 +5799,9 @@ span.video_txt {
     padding-left: 10px;
     line-height: 19px;
 }
-.application_guide button.step-form-back span {
+/* .application_guide button.step-form-back span {
 	transform: rotate(180deg);
-}
+} */
 .buttons_div .login-btn-main {
     line-height: 20px;
 }
@@ -6407,6 +6524,8 @@ span.job-filter_text {
     border-radius: 7px;
     margin-left: 10px;
     font-size: 15px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 .business_ad_wrapper {
     justify-content: space-around;
@@ -6455,6 +6574,13 @@ span.job-filter_text {
 .Applied_job_wrapper .dataTables_paginate {
     padding-bottom: 30px;
 }
+.applied_job {
+    display: block;
+}
+
+.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
+    padding-right: 87px;
+}
 
 /*View Customer page*/
 .view_customer_wrapper .customer_card {
@@ -6473,6 +6599,8 @@ span.job-filter_text {
     font-weight: 700;
     font-size: 40px !important;
     margin-bottom: 20px;
+    color: #0F1016;
+    opacity: 80%;
 }
 
 
@@ -6495,17 +6623,19 @@ span.job-filter_text {
 .pass_travel_details_wrapper .card-body p {
     grid-template-columns: 2fr 3fr;
     gap: 20px;
+    line-height: 26px;
 }
 .view_customer_wrapper {
     background: #f2f2f2;
 }
 .pass_travel_details_wrapper h2, .video_image_wrapper h2 {
-    font-size: 20px !important;
+    font-size: 22px !important;
     font-weight: 800;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     width: 180px;
+    margin-bottom: 10px;
 }
 .img_inner_wrapper img {
     background: #f9f9f9;
@@ -6589,6 +6719,7 @@ span.job-filter_text {
 .resume_btn {
     border-radius: 5px;
     margin-top: 10px;
+	cursor: pointer;
 }
 .travel-section .dp__main .dp__pointer.dp__input_readonly {
     border: 0px;
@@ -6737,7 +6868,12 @@ span.job-filter_text {
 .travel_row .login-btn-main {
     margin: 0px 10px;
 }
-
+.job-listing-cards .forms-btn {
+    border: 0px;
+}
+.employment-first-form h2.spacing_hd {
+    padding: 0px;
+}
 
 /*Close image*/
 
@@ -6752,4 +6888,18 @@ span.job-filter_text {
 .close_image_name {
     font-size: 14px;
     display: none;
+}
+
+/*step Form*/
+.employ_padding {
+    padding: 0px 10px 0px 0px;
+}
+
+.form-division-left .login-btn-main {
+    padding: 0px 8px !important;
+}
+
+/*customer detail */
+.view_customer_inner .inner_card_wrapper p {
+    line-height: 26px;
 }

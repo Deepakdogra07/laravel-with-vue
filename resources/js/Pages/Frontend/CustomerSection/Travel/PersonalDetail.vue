@@ -160,7 +160,7 @@ function removeImage(){
                             
                         </div>
                     </div>
-                    <InputError  class="mt-2 ms-5" v-if="form.errors.customer_image" :message="form.errors.customer_image[0]"/>
+                    <InputError  class="mt-2" v-if="form.errors.customer_image" :message="form.errors.customer_image[0]"/>
                 </div>
             </div>
             <div class="row mt-4">

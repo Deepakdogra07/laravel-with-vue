@@ -78,7 +78,7 @@ table.dataTable td img {
 .paginate_button.current {
 	font-size: 15px !important;
 	font-weight: 500 !important;
-	border-radius: 0px !important;
+	border-radius: 5px !important;
 	border: none !important;
 	background-color: #01796F !important;
 	color: #ffffff !important;
@@ -88,11 +88,11 @@ table.dataTable td img {
     content: "\003c" !important;
     background: #6c6b6b;
     color: #fff;
-    border-radius: 0px;
+    border-radius: 5px;
     font-family: 'FontAwesome' !important;
     font-weight: 100 !important;
     font-size: 12px;
-    padding: 12px 10px 11px 10px;
+    padding: 12px 13px 11px 13px;
 }
 
 .padding_remove .dataTables_paginate {
@@ -129,10 +129,10 @@ table.dataTable td img {
 	content: "\003E" !important;
 	background: #6c6b6b;
 	color: #fff;
-	border-radius: 0px;
+	border-radius: 5px;
 	font-family: 'FontAwesome' !important;
     font-weight: 100 !important;
-	padding: 12px 10px 11px 10px;
+	padding: 12px 13px 11px 13px;
 	font-size: 12px;
 }
 
@@ -252,7 +252,9 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     margin-top: 10px;
     margin-bottom: 25px;
 }
-
+.view_employ_table {
+    display: block;
+}
 
 
 @media (max-width:1238px) {
@@ -335,6 +337,9 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	.padding_remove .dataTables_length {
 		font-size: 12px;
 		padding-top: 4px !important;
+	}
+	.admin_box {
+		height: 510px;
 	}
 
 }
