@@ -56,7 +56,10 @@ class HomeController extends Controller
 
     public function customer_dash(){
         $footer_data = FooterData::first();
-        $applied_jobs = Customer::where('user_id',Auth::user()->id)->with('jobs','status','jobs.business')->get();
+       
+        $applied_jobs = JobStatus::whereHas('customers', function ($query) {
+            $query->where('user_id',Auth::user()->id); 
+        })->with('customers','jobs','jobs.business','customers.travel_details')->latest()->get();
         return Inertia::render('Customer/Welcome',compact('footer_data','applied_jobs'));
     }
     

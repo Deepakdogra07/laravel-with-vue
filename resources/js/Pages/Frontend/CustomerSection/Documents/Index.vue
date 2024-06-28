@@ -93,7 +93,7 @@ function show_document(type, event) {
 function submit_form() {
     form.post(route('submit_customers_documents'), {
         onSuccess: () => {
-            toast("Details Saved Successfully!", {
+            toast("Job Applied Successfully!", {
                 autoClose: 2000,
                 theme: 'dark',
             });

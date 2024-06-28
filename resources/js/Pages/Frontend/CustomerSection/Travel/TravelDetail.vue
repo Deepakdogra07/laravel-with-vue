@@ -117,7 +117,7 @@ function handleCountryInput(type){
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                     <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <!-- <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/> -->
-                                    <VueDatePicker v-model="form.date_of_travel" placeholder="Select Date of travel" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks"   :type="'date'"
+                                    <VueDatePicker v-model="form.date_of_travel" placeholder="Select Date of travel" class="form-control mt-2  " :format="format" :min-date="today" prevent-min-max-navigation :type="'date'"
                                     />
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
                                 </div>

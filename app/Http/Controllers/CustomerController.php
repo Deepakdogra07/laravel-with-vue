@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Mail\VerifyUser;
+use App\Models\Customer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BusinessModal;
@@ -167,6 +168,11 @@ class CustomerController extends Controller
         $business->user_id = $user_id;
         $business->save();
         return redirect()->route('home');
+    }
+
+    public function view_customer($customer_id){
+        $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
+        return Inertia::render('Business/ViewCustomer',compact('customer'));
     }
     
 }

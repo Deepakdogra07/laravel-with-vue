@@ -376,7 +376,6 @@ class BusinessController extends Controller
     }
 
     public function change_status(Request $request){
-        // dd($request->all());
          $data = JobStatus::where(['customer_id'=>$request->customer_id,'job_id'=>$request->job_id])->update(['status'=>$request->status]);
         if($data){
             return response()->json(['success'=>true]);
