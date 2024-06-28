@@ -280,7 +280,7 @@ class JobsController extends Controller
    }
    public function destroy($id)
    {
-      Customer::where('job_id',$id)->forceDelete();
+      // Customer::where('job_id',$id)->forceDelete();
       $job = Jobs::findOrFail($id);
       $job->forceDelete();
       return to_route('jobs.index');
@@ -315,9 +315,8 @@ class JobsController extends Controller
          $industry = $request->country;
       }
       $jobs = $jobs->paginate(3);
-      // $jobs = $jobs->get();
-      // dd($jobs);
       $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
+      // dd($applied_jobs);
       return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs','industry'));
    }
 

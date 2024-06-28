@@ -30,7 +30,7 @@ const form = useForm({
     company_state : null,
     company_pin : '',
     contact_number:'',
-    company_name:props.user.name,
+    company_name:null,
     contact_department:'',
     mobile_number:'',
     company_city:'',
@@ -134,7 +134,7 @@ function select_country(event){
                         <div class="mt-3">
                             <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                             <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
-                                v-model="form.email" autocomplete="username" />
+                                v-model="form.email" autocomplete="username" readonly/>
                             <InputError class="mt-1" :message="form.errors.email" />
                         </div>
                         <div class="mt-3">

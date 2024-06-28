@@ -130,7 +130,7 @@ function filterData(type, event) {
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
-                        <!-- <Link>Messages</Link> -->
+                        <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
                     </div>
 
                     <div class="relative search_bar">
