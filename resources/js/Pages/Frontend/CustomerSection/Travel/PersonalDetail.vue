@@ -135,16 +135,15 @@ function removeImage(){
 <template>
     <Header />
     <SubHeading :job_id="form.job_id"/>
-    <div class="login-bg-wrapper travel-section s">
-        <div class="container">
+    <div class="login-bg-wrapper travel-section">
+        <div class="container travel_width">
             <form @submit.prevent="submitData()">
             <div class="row">
-                <div class="col-lg-7 col-12">
-                    <div v-if="image_src" width="250px">
-                        <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
-                        <img :src="image_src" alt="" srcset=""width="600px" height="300px" >
-                        <p>{{ image_name }}</p>
-
+                <div class="col-lg-6 col-12">
+                    <div v-if="image_src" width="250px" class="close_image_wrapper">
+                        <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark"  @click="removeImage()"><i class="fas fa-times"></i></p>
+                        <img :src="image_src" alt="" srcset=""width="200px" height="200px" ></div>
+                        <p class="mt-2 close_image_name">{{ image_name }}</p>
                     </div>
                     <div v-else class="file-inputs mt-3 relative">
                         <div class="dotted-bg">
@@ -165,7 +164,7 @@ function removeImage(){
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 personal_column">
                     <div class="container-fluid form-division-right">
                         <div class="row px-0 justify-content-between">
                             <h2 class="mb-4">Personal Details</h2>
@@ -265,11 +264,11 @@ function removeImage(){
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 Pass_column">
                     <div class="container-fluid form-division-left">
 
                         <div class="row px-0">
-                            <h2 class="mb-3">Passport Details</h2>
+                            <h2 class="mb-4">Passport Details</h2>
                                 <div class="col-md-6">
                                     <div class="mb-4">
                                         <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
@@ -308,7 +307,7 @@ function removeImage(){
                                     </div>
                             </div>
 
-                            <div class="col-md-12 mt-4 column_spacing">
+                            <div class="col-md-12 mt-4">
                                 <div class="mb-4 margin_btm">
 
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>

@@ -172,7 +172,7 @@ function handleChange(type){
     <Head title="Job Application Form" />
     <Header class="login-wrapper" />
     <SubHeading />
-    <div class="login-bg-wrapper create_space create_code">
+    <div class="login-bg-wrapper create_space create_code Arrow_align">
         <div class="about-us-bg-wrapper">
             <div class="container about-width">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -539,7 +539,3 @@ function handleChange(type){
     </div>
     <Footer />
 </template>
-<style scoped>
-
-
-</style>

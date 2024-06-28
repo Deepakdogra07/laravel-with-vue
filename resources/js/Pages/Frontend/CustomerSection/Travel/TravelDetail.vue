@@ -62,57 +62,65 @@ function handleCountryInput(type){
     <Header />
     <SubHeading :job_id="form.job_id"/>
     <div class="login-bg-wrapper travel-section">
-        <div class="container">
+        <div class="container travel_width">
             <form @submit.prevent="submitform()">
                 <div class="travel-detail mb-5">
-                    <h2 class="mb-3">Travel details</h2>
-                    <h4 class="mb-3">Purpose of stay <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
-                    <label class="flex items-center mb-2">
-                        <TextInput type="radio"  class="remember-me-check" value="Tourism" v-model="form.purpose_of_stay" />
-                        <span class="ml-2 cursor-pointer remember-me">Tourism</span>
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <TextInput type="radio" class="remember-me-check" value="Business" v-model="form.purpose_of_stay"/>
-                        <span class="ml-2 cursor-pointer remember-me">Business</span>
-                    </label>
-                    <label class="flex items-center mb-2">
-                        <TextInput type="radio" class="remember-me-check" value="Transit" v-model="form.purpose_of_stay"/>
-                        <span class="ml-2 cursor-pointer remember-me">Transit</span>
-                    </label>
-                    <InputError  class="mt-2" :message="form.errors.purpose_of_stay"/>
+                    <div class="inner_travel_wrapper">
+                        <h2 class="mb-3">Travel details</h2>
+                        <h4 class="mb-3">Purpose of stay <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
+                        <label class="flex items-center mb-2">
+                            <TextInput type="radio"  class="remember-me-check" value="Tourism" v-model="form.purpose_of_stay" />
+                            <span class="ml-2 cursor-pointer remember-me">Tourism</span>
+                        </label>
+                        <label class="flex items-center mb-2">
+                            <TextInput type="radio" class="remember-me-check" value="Business" v-model="form.purpose_of_stay"/>
+                            <span class="ml-2 cursor-pointer remember-me">Business</span>
+                        </label>
+                        <label class="flex items-center mb-2">
+                            <TextInput type="radio" class="remember-me-check" value="Transit" v-model="form.purpose_of_stay"/>
+                            <span class="ml-2 cursor-pointer remember-me">Transit</span>
+                        </label>
+                        <InputError  class="mt-2" :message="form.errors.purpose_of_stay"/>
+                    </div>
                 </div>
                 <div class="row mt-5 travel_row">
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-6 col-12 p-0">
                         <div class="travel-detail">
                             <h4 class="mb-3">Traditional visa <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
-                            <label class="flex items-center mb-2">
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="skilled_visa(individual)"   v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (individual)</span>
                             </label>
-                            <label class="flex items-center mb-2">
+                            </div>
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="skilled_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (consultation)</span>
                             </label>
-                            <label class="flex items-center mb-2">
+                            </div>
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="relative_option_visa"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Relative Option Visa</span>
                             </label>
-                            <label class="flex items-center mb-2">
+                            </div>
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="partner_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Partner Visa (consultation)</span>
                             </label>
-                            <label class="flex items-center mb-2">
+                            </div>
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="investor_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Investor Visa (consultation)</span>
                             </label>
-                            <label class="flex items-center mb-2">
+                            </div>
+                            <div class="flex items-center"><label class="flex items-center mb-2">
                                 <TextInput type="radio" class="remember-me-check" value="other(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Other (consultation)</span>
                             </label>
+                            </div>
                         </div>
                         <InputError  class="mt-2" :message="form.errors.type_of_visa"/>
                     </div>
-                    <div class="col-md-6 col-12 travel-form-main">
+                    <div class="col-md-6 col-12 travel-form-main p-0">
                             <div class="col-md-12 natoinality_row mt-4 row">
                                 <div class="col-md-6 col-12 mt-4 spacinf_rigght">
                                     <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
