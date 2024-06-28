@@ -105,14 +105,7 @@ Route::middleware(['admin:1', 'auth', 'check_user_status'])->group(function () {
     Route::post('jobs/updates/{id}',[JobsController::class,'update'])->name('jobs.updates');
     Route::get('jobs-customers/{jobId}',[JobsController::class, 'job_for_customer'])->name('job_for_customers');
     
-    // Route::get('/pages/view/{id}', [PagesController::class, 'viewPages'])->name('pages.view-pages');
-    // Route::get('/pages/edit/{id}', [PagesController::class, 'editPages'])->name('pages.edit-pages');
-    // Route::put('/pages/update/{id}', [PagesController::class, 'updatePages'])->name('pages.update-pages');
-    // Route::get('/pages/delete/{id}', [PagesController::class, 'deletePages'])->name('pages.delete-pages');
-
-
-    // Route::get('/pages/details', [PagesController::class, 'details'])->name('pages.add-details');
-    // Route::post('/pages/details', [PagesController::class, 'detailSave'])->name('pages.details-save');
+    Route::get('view_applied_customer/{customer_id}/{job_id}',[JobsController::class,'view_applied_customer'])->name('view_applied_customer');
 
 
 });
@@ -135,7 +128,7 @@ Route::middleware(['auth', 'business'])->group(function () {
 
 Route::get('create-business', [CustomerController::class,'createBusiness'])->name("create.business");
 Route::post('register.customer', [CustomerController::class,'registerCustomer'])->name("register.customer");
-
+Route::get('view-customer-data/{customer_id}',[CustomerController::class,'view_customer'])->name('view_customer_data');
 
 
 Route::get('data-filteration/{job_id}/{status}',[JobsController::class,'data_filteration'])->name('data-filteration');

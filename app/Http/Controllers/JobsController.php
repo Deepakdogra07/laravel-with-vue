@@ -11,6 +11,7 @@ use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Language;
 use App\Models\Position;
+use App\Models\JobStatus;
 use App\Models\Discipline;
 use App\Models\Industries;
 use App\Models\VideoIntro;
@@ -21,9 +22,9 @@ use App\Models\Workexperience;
 use App\Models\CustomerTraining;
 use App\Models\CustomerDocuments;
 use Illuminate\Contracts\Queue\Job;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerTravelDetails;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -358,13 +359,15 @@ class JobsController extends Controller
    }
    public function job_for_customer($job_id)
    {
-      $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->join('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->select('customers_personal_details.*','jobs_with_customer_status.status as status')->with('status','statuz')->get();
+      // $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->join('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->select('customers_personal_details.*','jobs_with_customer_status.status as status')->with('status','statuz')->get();
+      $applied_customers =  JobStatus::where('job_id',$job_id)->with('customers','jobs','customers.travel_details')->latest()->get();
       $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->count();
       $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->count();
       $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->count();
       $contacted = CustomerStatus::where('job_id', $job_id)->where('status', 3)->count();
       $hired = CustomerStatus::where('job_id', $job_id)->where('status', 4)->count();
       $rejected = CustomerStatus::where('job_id', $job_id)->where('status', 5)->count();
+      // dd($applied_customers);
       $status = [
          'all' => count($applied_customers),
          'active' => $active,
@@ -379,7 +382,11 @@ class JobsController extends Controller
    }
    public function data_filteration($job_id, $status)
    {
-      $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->leftJoin('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->where('jobs_with_customer_status.status', $status)->with('status','statuz')->get();
+      $applied_customers = JobStatus::where('status',$status)->where('job_id',$job_id)->with('customers','jobs','customers.travel_details')->get();
       return response()->json(['applied_customers' => $applied_customers]);
+   }
+   public function view_applied_customer($customer_id,$job_id = null){
+      $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
+      return Inertia::render('Admin/Jobs/ViewAppliedCustomer',compact('customer','job_id'));
    }
 }

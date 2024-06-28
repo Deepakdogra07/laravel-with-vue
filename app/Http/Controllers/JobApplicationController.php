@@ -68,7 +68,9 @@ class JobApplicationController extends Controller
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
-        $validator = Validator::make($request->all(), [
+        $user = Auth::user();
+        // $validator = Validator::make($request->all(), [
+        $rule = [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',
             "date_of_travel" => 'required',
@@ -77,7 +79,6 @@ class JobApplicationController extends Controller
             "customer_image" => 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480',
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" => 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email',
             "confirm_email" => 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
@@ -87,7 +88,15 @@ class JobApplicationController extends Controller
             "passport_number" => 'required',
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
-        ],[
+        ];
+        if(!$user){
+            $rule ["email"]= 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email';
+            $messages[ "email.required"] = "Email is required";
+            $messages["email.regex"] = "Email is invalid.";
+            $messages["email.unique"] = "Email already exists.";
+            $messages["email.email"] = "Email is invalid.";   
+        }
+        $messages = [
             "purpose_of_stay.required" => "Purpose of stay is required.",
             "type_of_visa.required" => "Type of visa is required.",
             "date_of_travel.required" => "Date of travel is required.",
@@ -98,10 +107,6 @@ class JobApplicationController extends Controller
             "customer_image.mimes" => "Passport image should be in jpg,jpeg,png,pdf,docx format.",
             "first_name.required" => "First name is required.",
             "last_name.required" => "Last name is required.",
-            "email.required" => "Email is required",
-            "email.email" => "Email is invalid.",
-            "email.regex" => "Email is invalid.",
-            "email.unique" => "Email already exists.",
             "confirm_email.required" => "Confirm email is required.",
             "confirm_email.regex" => "Confirm email is invalid.",
             "date_of_birth.required" => "Date of birth is required.",
@@ -112,13 +117,15 @@ class JobApplicationController extends Controller
             "passport_number.required" => "Passport is required.",
             "issuing_authority.required" => "Issuing authority is required.",
             "date_of_expiry.required" => "Date of expiry is required.",
-        ]);
+        ];
+        
+        $validator = Validator::make($request->all(), $rule,$messages);
         if ($validator->fails()) {
             $variable = $request->all();
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-        $user = Auth::user();
+        
         if($user){
             $create_customer = $user; 
         }else{

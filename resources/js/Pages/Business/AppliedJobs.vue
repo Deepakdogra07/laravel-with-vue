@@ -34,10 +34,10 @@ const props = defineProps({
             </div>
         </div>
         <div class="Applied_job_wrapper">
-            <div class="container applied-container_wrapper">
+            <div class="container applied-container_wrapper table-responsive ">
                 <h3 class="pt-3 heading_applied" style="font-family: 'open sans' !important; font-size: 23px;">Applied
                     Jobs:</h3>
-                <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner">
+                <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner table-responsive">
                     <DataTable
                         class="display applied_job business_table business_dash_table business_table_dashboard job-data-table"
                         :key="refreshDataTable">
