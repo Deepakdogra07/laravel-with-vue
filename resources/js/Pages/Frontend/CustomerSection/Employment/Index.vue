@@ -136,12 +136,12 @@ async function submit_form(){
             <div class="container">
                 <!-- 1 -->
                 <div class="employment-first-form ">
-                    <p class="light-text">You must provide official employment evidence to demonstrate that you meet the
+                    <p class="light-text px-2">You must provide official employment evidence to demonstrate that you meet the
                         minimum
                         employment experience requirements for your nominated occupation.Each period of employment
                         submitted for
                         assessment must be supported by the following two forms of evidence:</p>
-                    <h2>1. An employer statement that includes all the following details:</h2>
+                    <h2 class="px-2">1. An employer statement that includes all the following details:</h2>
                     <div class="row mt-4">
                         <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">
@@ -210,17 +210,17 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)" >
                                     <p>{{ image_name.employer_statement }}</p>
-                                    <InputError class="mt-2" :message="props.errors.employer_statement"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.employer_statement"/>
                         </div>
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start mt-4">
+                            <div class="flex items-center">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-center login-btn-main" style="cursor:pointer;">
                                 <p class="forms-btn" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -286,9 +286,9 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('financial_evidence',$event)">
                                     <p>{{ image_name.financial_evidence }}</p>
-                                    <InputError class="mt-2" :message="props.errors.financial_evidence"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.financial_evidence"/>
                         </div>
 
                         <div class="col-12">
@@ -379,9 +379,9 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
                                     <p>{{ image_name.evidence_self_employment }}</p>
-                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
                         </div>
 
                         <h3 class="spacing_hd">3.2 Evidence of self-employment undertaken in Australia:</h3>
@@ -432,9 +432,9 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
                                     <p>{{ image_name.evidence_self_employment_aus }}</p>
-                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                         </div>
 
 
@@ -472,6 +472,11 @@ async function submit_form(){
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a qualification certificate or statementof completion</p>
                             </div>
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">a full academic transcript or other documents that include the
+                                    start and end date of training and details of the program of study</p>
+                            </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">
@@ -479,13 +484,6 @@ async function submit_form(){
                                 <p class="light-text">apprenticeship documents, such as the contract of apprenticeship,
                                     journal or any other relevant document from the employer, governing body or training
                                     institution relating to the apprenticeship (if applicable). </p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12 margin_minus">
-                            <div class="d-flex gap-3">
-                                <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text">a full academic transcript or other documents that include the
-                                    start and end date of training and details of the program of study</p>
                             </div>
                         </div>
                         <div class="col-12">
@@ -502,9 +500,9 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('formal_training_evidence',$event)">
                                     <p>{{ image_name.formal_training_evidence }}</p>
-                                    <InputError class="mt-2" :message="props.errors.formal_training_evidence"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.formal_training_evidence"/>
                         </div>
 
                         <h2 class="spacing_hd">Formal training does not include: </h2>
@@ -514,19 +512,17 @@ async function submit_form(){
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> short courses</p>
                             </div>
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text"> training that lacks official recognition by the relevant
+                                    educational authorities in the country where it was undertaken.</p>
+                            </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">qualifications where most of the training was not directly related
                                     to your nominated occupation</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="d-flex gap-3">
-                                <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text"> training that lacks official recognition by the relevant
-                                    educational authorities in the country where it was undertaken.</p>
                             </div>
                         </div>
 

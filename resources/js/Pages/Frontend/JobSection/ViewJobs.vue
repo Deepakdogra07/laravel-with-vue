@@ -67,19 +67,19 @@ console.log(job_start_date)
     <div class="login-bg-wrapper job-detail-page">
         <div class="container about-width">
             <div class="row align-items-center">
-                <div class="col-md-5 p-0">
+                <div class="col-md-5">
                     <div class="view-main-image">
                         <img :src="job.job_image" alt="">
                     </div>
                 </div>
-                <div class="col-md-7 p-0">
-                    <h2 class="semibold mb-3">{{ props.job.job_title }}</h2>
-                    <p class="my-3 text_job"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }}, {{ job?.job_country }}</p>
-                    <div class="update-time mt-3 " style="display: inline-flex;">
+                <div class="col-md-7">
+                    <h2 class="semibold mb-3 pl-2">{{ props.job.job_title }}</h2>
+                    <p class="my-3 text_job pl-2"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span> {{ job?.city }}, {{ job?.job_country }}</p>
+                    <div class="update-time mt-3 ml-2" style="display: inline-flex;">
                         <i class="bi bi-clock-fill"></i>
                         <p class="mb-0">{{ created_time }}...</p>
                     </div>
-                    <div class=" col-md-4 view-job-btn mt-4 ">
+                    <div class="col-md-4 view-job-btn mt-4 ml-2">
                         <button v-if="applied_jobs.length > 0 && applied_jobs.indexOf(job.id)" class="forms-btn-transparent w-100" disabled>Already Applied
                                 </button>
                                 <Link v-else class="forms-btn-transparent w-100" :href="route('travel.details',job.id)" >Apply Now <span> <i
