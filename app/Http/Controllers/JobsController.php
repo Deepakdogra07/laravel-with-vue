@@ -280,6 +280,7 @@ class JobsController extends Controller
    }
    public function destroy($id)
    {
+      Customer::where('job_id',$id)->forceDelete();
       $job = Jobs::findOrFail($id);
       $job->forceDelete();
       return to_route('jobs.index');
