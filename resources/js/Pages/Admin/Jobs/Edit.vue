@@ -226,7 +226,7 @@ function checked_event(event) {
                                         <span class="label text-label">Position type<span style="color:red">
                                                 *</span></span>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  select_options mt-2"
+                                            <select class="form-select  Selected_option mt-2"
                                                 :class="select_class?.position_type"
                                                 @change="handleChange('position_type')"
                                                 aria-label="Default select example" v-model="form.position_id">
@@ -241,7 +241,7 @@ function checked_event(event) {
                                     <div class="mt-4">
                                         <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options"
+                                            <select class="form-select  mt-2 Selected_option"
                                                 :class="select_class?.seniority" @change="handleChange('seniority')"
                                                 aria-label="Default select example" v-model="form.seniority_id">
                                                 <option selected :value="null">Select Seniority</option>
@@ -255,7 +255,7 @@ function checked_event(event) {
                                     <div class="mt-4">
                                         <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options"
+                                            <select class="form-select  mt-2 Selected_option"
                                                 :class="select_class?.discipline" @change="handleChange('discipline')"
                                                 aria-label="Default select example" v-model="form.discipline_id">
                                                 <option selected :value="null">Select Type</option>
@@ -270,7 +270,7 @@ function checked_event(event) {
                                         <span class="label text-label">Overall Work Experience<span
                                                 class="text-danger">*</span></span>
                                         <div class="eye-icon-div skills_input">
-                                            <select class="form-select  select_options mt-2"
+                                            <select class="form-select  Selected_option mt-2"
                                                 :class="select_class?.work_exp" @change="handleChange('work_exp')"
                                                 aria-label="Default select example" v-model="form.work_experience_id">
                                                 <option selected :value="null">Select Type</option>
