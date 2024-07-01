@@ -368,13 +368,13 @@ class JobsController extends Controller
    public function job_for_customer($job_id)
    {
       // $applied_customers = Customer::where('customers_personal_details.job_id', $job_id)->join('jobs_with_customer_status', 'jobs_with_customer_status.customer_id', 'customers_personal_details.id')->select('customers_personal_details.*','jobs_with_customer_status.status as status')->with('status','statuz')->get();
-      $applied_customers =  JobStatus::where('job_id',$job_id)->with('customers','jobs','customers.travel_details')->latest()->get();
-      $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->count();
-      $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->count();
-      $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->count();
-      $contacted = CustomerStatus::where('job_id', $job_id)->where('status', 3)->count();
-      $hired = CustomerStatus::where('job_id', $job_id)->where('status', 4)->count();
-      $rejected = CustomerStatus::where('job_id', $job_id)->where('status', 5)->count();
+      $applied_customers =  JobStatus::where('job_id',$job_id)->whereHas('customers',function($query){$query->where('submitted',1);})->with('customers','jobs','customers.travel_details')->latest()->get();
+      $active = JobStatus::where('job_id', $job_id)->where('status', 0)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
+      $awaited = JobStatus::where('job_id', $job_id)->where('status', 1)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
+      $reviewed = JobStatus::where('job_id', $job_id)->where('status', 2)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
+      $contacted = JobStatus::where('job_id', $job_id)->where('status', 3)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
+      $hired = JobStatus::where('job_id', $job_id)->where('status', 4)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
+      $rejected = JobStatus::where('job_id', $job_id)->where('status', 5)->whereHas('customers',function($query){$query->where('submitted',1);})->count();
       // dd($applied_customers);
       $status = [
          'all' => count($applied_customers),
@@ -390,7 +390,7 @@ class JobsController extends Controller
    }
    public function data_filteration($job_id, $status)
    {
-      $applied_customers = JobStatus::where('status',$status)->where('job_id',$job_id)->with('customers','jobs','customers.travel_details')->get();
+      $applied_customers = JobStatus::where('status',$status)->where('job_id',$job_id)->whereHas('customers',function($query){$query->where('submitted',1);})->with('customers','jobs','customers.travel_details')->get();
       return response()->json(['applied_customers' => $applied_customers]);
    }
    public function view_applied_customer($customer_id,$job_id = null){
