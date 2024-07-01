@@ -79,6 +79,7 @@ class JobApplicationController extends Controller
             "customer_image" => 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480',
             "first_name" => 'required',
             "last_name" => 'required',
+            "email" =>'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
             "confirm_email" => 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
@@ -89,13 +90,13 @@ class JobApplicationController extends Controller
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
         ];
-        if(!$user){
-            $rule ["email"]= 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email';
-            $messages[ "email.required"] = "Email is required";
-            $messages["email.regex"] = "Email is invalid.";
-            $messages["email.unique"] = "Email already exists.";
-            $messages["email.email"] = "Email is invalid.";   
-        }
+        // if(!$user){
+        //     $rule ["email"]= 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email';
+        //     $messages[ "email.required"] = "Email is required";
+        //     $messages["email.regex"] = "Email is invalid.";
+        //     $messages["email.unique"] = "Email already exists.";
+        //     $messages["email.email"] = "Email is invalid.";   
+        // }
         $messages = [
             "purpose_of_stay.required" => "Purpose of stay is required.",
             "type_of_visa.required" => "Type of visa is required.",
@@ -107,6 +108,9 @@ class JobApplicationController extends Controller
             "customer_image.mimes" => "Passport image should be in jpg,jpeg,png,pdf,docx format.",
             "first_name.required" => "First name is required.",
             "last_name.required" => "Last name is required.",
+            "email.required" =>"Email is required",
+            "email.regex" => "Email is invalid.",
+            "email.email" => "Email is invalid.",
             "confirm_email.required" => "Confirm email is required.",
             "confirm_email.regex" => "Confirm email is invalid.",
             "date_of_birth.required" => "Date of birth is required.",
@@ -125,10 +129,11 @@ class JobApplicationController extends Controller
             $errors = $validator->errors();
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
-        
+        $user = User::where('email',$request->email)->first();
         if($user){
             $create_customer = $user; 
         }else{
+            
             $password = Str::random(6);
                 $create_customer = User::create([
                     'name' => $request->email,
@@ -142,7 +147,16 @@ class JobApplicationController extends Controller
                 // Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
         }
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
-        $customer_personal_details = new Customer();
+        if($user){
+            $customer_personal_details = Customer::where(['user_id'=>$user->id, 'submitted'=>0])->first();
+            $customer_travel_details = CustomerTravelDetails::where('customer_id',$customer_personal_details->id)->first();
+            $status = CustomerStatus::where('customer_id',$customer_personal_details->id)->first();
+        }else{
+            $customer_personal_details = new Customer();
+            $customer_travel_details = new CustomerTravelDetails();
+            $status = new CustomerStatus();
+        }
+         // Personal Details Code
         $customer_personal_details->fill($customer_personal_detail);
         if(isset($request->customer_image)&& $request->file('customer_image')){
             $image = $request->file('customer_image');
@@ -153,15 +167,13 @@ class JobApplicationController extends Controller
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
         $customer_travel_detail = $request->only('date_of_travel','passenger_nationality','migrate_country','purpose_of_stay','type_of_visa','port_of_arrival','job_id');
-        $customer_travel_details = new CustomerTravelDetails();
+        // Travel Details Code
         $customer_travel_details->fill($customer_travel_detail);
         $customer_travel_details->customer_id = $customer_personal_details->id;
         $customer_travel_details->purpose_of_stay = $customer_travel_detail['purpose_of_stay'];
         $customer_travel_details->updated_at =null;
         $customer_travel_details->save();
-       
-        
-        $status = new CustomerStatus();
+        // Status Code
         $status->job_id = $customer_personal_details->job_id;
         $status->customer_id = $customer_personal_details->id;
         $status->status = 0;
@@ -266,7 +278,10 @@ class JobApplicationController extends Controller
             if ($validator->fails()) {
                 return back()->withErrors($validator->errors());
             }
-            $customer_employments = new CustomerTraining();
+            $customer_employments = CustomerTraining::where(['job_id'=>$request->job_id,'customer_id'=>$request->customer_id])->first();
+            if(!$customer_employments){
+                $customer_employments = new CustomerTraining();
+            }
             $customer_employments->fill($request->all());
             if(isset($request->employer_statement)&& $request->file('employer_statement')){
                 $image = $request->file('employer_statement');
@@ -470,6 +485,9 @@ public function validate_customer_documents(Request $request){
             $customer->is_australia = '/storage/' .$imageName;
         }
         $customer->save();
+        $customer_personal_details = Customer::findOrFail($customer->customer_id);
+        $customer_personal_details->submitted = 1;
+        $customer_personal_details->save();
         return redirect()->route('home');
     }
 }

@@ -34,6 +34,7 @@ const image_name = reactive({
     'financial_evidence' : null,
     'evidence_self_employment' : null,
     'formal_training_evidence' : null,
+    'evidence_self_employment_aus':null
 });
 
 const div_numbers = ref(`step-form-1`),
@@ -91,22 +92,7 @@ function show_document(type , event){
 }
 
 
-async function submit_form(){
-   
-    // axios.post(route('submit_employment_details'),form)
-    // .then(res => {
-    //     if(res.status == 300){
-    //         props.errors.employer_statement = "jhkjhjkhkjh";
-    //     }else{
-    //         show_next_div(res.step)
-    //     }
-    //     console.log(res,"res");
-    //     //
-    // })
-    // .catch(error => {
-    //     console.error('Error:', error);
-    // });
-
+function submit_form(){
     form.post(route('submit_employment_details'),{
         onSuccess:() => {
             if(form.step ==4){
@@ -121,7 +107,11 @@ async function submit_form(){
 };
 
 
-
+function removeImage(type){
+    form[type] = null;
+    document[type] = null;
+    image_name[type] = null;
+}
 
 </script>
 <template>
@@ -129,7 +119,6 @@ async function submit_form(){
 
     <SubHeading :data="data"/>
 
-    <!--  -->
     <form @submit.prevent="submit_form()">
         <!-------step one----------->
         <div class="login-bg-wrapper steps_form employment-first-form step-form-1 employment_next" v-if="div_numbers == 'step-form-1'">
@@ -196,10 +185,14 @@ async function submit_form(){
                                     manager, supervisor or human resources department representative.</p>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="file-inputs mt-3 relative">
+                        <div v-if="document.employer_statement" class="mt-3 relative">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('employer_statement')"><i class="fas fa-times"></i></p>
+                            <img :src="document.employer_statement" alt="" srcset="" width="250px">
+                            <p>{{ image_name.employer_statement }}</p>
+                        </div>
+                        <div v-else class="col-12">
+                            <div  class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.employer_statement" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -209,10 +202,9 @@ async function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)" >
-                                    <p>{{ image_name.employer_statement }}</p>
-                                    <InputError class="mt-2" :message="props.errors.employer_statement"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.employer_statement"/>
                         </div>
                         <div class="d-flex justify-between align-items-center">
                             <div class="flex items-center mt-4 ">
@@ -273,9 +265,13 @@ async function submit_form(){
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.financial_evidence" class="mt-3 relative">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
+                            <img :src="document.financial_evidence" alt="" srcset="" width="250px">
+                            <p>{{ image_name.financial_evidence }}</p>
+                        </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.financial_evidence" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -285,10 +281,9 @@ async function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('financial_evidence',$event)">
-                                    <p>{{ image_name.financial_evidence }}</p>
-                                    <InputError class="mt-2" :message="props.errors.financial_evidence"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.financial_evidence"/>
                         </div>
 
                         <div class="col-12">
@@ -366,9 +361,13 @@ async function submit_form(){
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.evidence_self_employment" class="mt-3 relative">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
+                            <img :src="document.evidence_self_employment" alt="" srcset="" width="250px">
+                            <p>{{ image_name.evidence_self_employment }}</p>
+                        </div>
+                            <div  v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.evidence_self_employment" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -378,10 +377,9 @@ async function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
-                                    <p>{{ image_name.evidence_self_employment }}</p>
-                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
                         </div>
 
                         <h3 class="spacing_hd">3.2 Evidence of self-employment undertaken in Australia:</h3>
@@ -419,6 +417,11 @@ async function submit_form(){
                         </div>
 
                         <div class="col-12 employment_next">
+                                <div v-if="document.evidence_self_employment_aus" class="mt-3 relative">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('evidence_self_employment_aus_aus')"><i class="fas fa-times"></i></p>
+                            <img :src="document.evidence_self_employment_aus" alt="" srcset="" width="250px">
+                            <p>{{ image_name.evidence_self_employment_aus }}</p>
+                        </div>
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.evidence_self_employment_aus" alt="" srcset="">
@@ -431,10 +434,9 @@ async function submit_form(){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
-                                    <p>{{ image_name.evidence_self_employment_aus }}</p>
-                                    <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                         </div>
 
 
@@ -489,7 +491,12 @@ async function submit_form(){
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.formal_training_evidence" class="mt-3 relative">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('formal_training_evidence_aus')"><i class="fas fa-times"></i></p>
+                            <img :src="document.formal_training_evidence" alt="" srcset="" width="250px">
+                            <p>{{ image_name.formal_training_evidence }}</p>
+                        </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.formal_training_evidence" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -502,9 +509,9 @@ async function submit_form(){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('formal_training_evidence',$event)">
                                     <p>{{ image_name.formal_training_evidence }}</p>
-                                    <InputError class="mt-2" :message="props.errors.formal_training_evidence"/>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.formal_training_evidence"/>
                         </div>
 
                         <h2 class="spacing_hd">Formal training does not include: </h2>

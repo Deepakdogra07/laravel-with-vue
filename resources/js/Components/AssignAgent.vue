@@ -9,43 +9,13 @@ const selectedAgent = ref(null);
 const props = defineProps(['leadId', 'close']);
 
 const emit = defineEmits(['close']);
-axios.get('/assignAgent')
-  .then(response => {
-    // console.log(response.data);
-    users.value = response.data;
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+
 
 const form = useForm({
   agent: null,
 });
 
-const submit = () => {
-  const formData = selectedAgent.value;
-  const leadId = props.leadId;
 
-  const toast = useToast();
-  const url = `/assignAgentSave/${formData}/${leadId}`;
-
-  form.post(url, {
-    agent_id: formData,
-    id: leadId,
-  }, {
-    onSuccess: (response) => {
-      console.log(response);
-      toast.success('Assign Agent Added Successfully');
-
-    },
-    onError: (errors) => {
-      toast.error('Validation Error: Please check your inputs');
-    },
-  });
-  close();
-
-
-};
 const close = () => {
   emit('close');
 };

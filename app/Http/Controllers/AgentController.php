@@ -21,7 +21,7 @@ class AgentController extends Controller
     public function index()
     {
         $authUser = Auth::user();
-        $customers = User::where('user_type', '=', '2')->get();
+        $customers = User::where('user_type', '2')->latest()->get();
         return Inertia::render('Admin/Business/Index', ['customers' => $customers,'authUser'=>$authUser]);
     }
     public function create()

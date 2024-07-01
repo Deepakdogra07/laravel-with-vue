@@ -68,6 +68,8 @@ async function search_datatable(event){
 const countries = Country.getAllCountries();
 function filterData(type, event) {
   let customers_data = props.applied_customers;
+  if(event.target.value != ''){
+
     if(type=='location'){
     appliedCustomers.value = customers_data.filter(customer=> customer.customers.migrate_country == event.target.value);
     refreshDataTable.value++;
@@ -76,10 +78,18 @@ function filterData(type, event) {
     appliedCustomers.value = customers_data.filter(jobs=> jobs.job_id == event.target.value);
     refreshDataTable.value++;
   }
-   if (event.target.value == '') {
-        appliedCustomers.value = customers_data;
-        refreshDataTable.value++;
+  if(type == 'applied_date'){
+    if(event.target.value == 'desc'){
+      appliedCustomers.value = customers_data.sort((a, b) => b.job_id - a.job_id);
+    }else{
+      appliedCustomers.value = customers_data.sort((a, b) => a.job_id - b.job_id);
     }
+  }
+  }else{
+    appliedCustomers.value = customers_data;
+    refreshDataTable.value++;
+  }
+  
 }
 const navbar_key = ref(0);
 async function changeStatus(customer_id, job_id, event) {
@@ -220,7 +230,7 @@ async function changeStatus(customer_id, job_id, event) {
             </li>
           </ul>
         </div>
-        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
+        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
           <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
             <thead>
               <tr>
@@ -231,6 +241,7 @@ async function changeStatus(customer_id, job_id, event) {
                 <th>Country to Immigrate</th>
                 <th>Profile</th>
                 <th>Visa Purpose</th>
+                <th>Visa Type</th>
                 <th>Country of Birth</th>
                 <th>Intersts</th>
                 <th>View </th>
@@ -259,6 +270,7 @@ async function changeStatus(customer_id, job_id, event) {
                 </td>
                 <td> <img :src="customer?.customers?.customer_image" alt=""></td>
                 <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
+                <td v-html="customer?.customers?.travel_details?.type_of_visa"> </td>
                 <td v-html="customer?.customers?.country_of_birth"></td>
                 <td>
 
