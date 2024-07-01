@@ -29,8 +29,6 @@ const props = defineProps({
 });
 const countries = Country.getAllCountries()
 
-const image_src = ref('')
-const image_name = ref('')
 
 
 const form = useForm({
@@ -49,7 +47,8 @@ const form = useForm({
     step:null
 });
 const div_numbers = ref(`step-form-1`),
-    document = reactive({});
+    document = reactive({}),
+    image_name = reactive({});
 
 async function show_next_div(div_number) {
     if(div_number == 4 ){
@@ -104,11 +103,12 @@ function submit_form() {
 // console.log(formData,'formDataformData');
 // }
 
-function upload_image(event){
-    image_src.value = URL.createObjectURL(event.target.files[0]);
-    image_name.value = event.target.files[0].name;
-    
+function removeImage(type){
+    form[type] = null;
+    document[type] = null;
+    image_name[type] = null;
 }
+
 
 </script>
 <template>
@@ -143,10 +143,15 @@ function upload_image(event){
                                 <p class="light-text">Offer, appointment and/or relieving letters.</p>
                             </div>
                         </div>
-                        <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
-                                <div class="dotted-bg">
-                                    <img :src="document.employment_evidence" alt="" srcset="">
+
+                        <div class="col-12">
+                            <div v-if="document.employment_evidence" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
+                                <img :src="document.employment_evidence" alt="" srcset="" width="250px">
+                                <p>{{ image_name.employment_evidence }}</p>
+                            </div>
+                            <div v-else class="file-inputs mt-3 relative">
+                                <div  class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -157,9 +162,9 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('employment_evidence', $event)">
-                                        <p>{{ image_name }}</p>
+
                                 </div>
-                               
+
                             </div>
                             <InputError class="mt-2" :message="props.errors.employment_evidence" />
                         </div>
@@ -196,8 +201,14 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.licences" class="mt-3 relative">
+                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.licences" alt="" srcset="" width="250px">
+                                    <p>{{ image_name.licences }}</p>
+                                </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.licences" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -210,9 +221,11 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('licences', $event)">
+
+                                    </div>
                                 </div>
-                            </div>
-                            <InputError class="mt-2" :message="props.errors.licences" />
+                                <InputError class="mt-2" :message="props.errors.licences" />
+
                         </div>
                         <div class="d-flex justify-between align-items-start p-0">
                             <div class="flex items-start mt-4 ">
@@ -260,8 +273,14 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.is_australia" class="mt-3 relative">
+                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('is_australia')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.is_australia" alt="" srcset="" width="250px">
+                                    <p>{{ image_name.is_australia }}</p>
+                                </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.is_australia" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -274,9 +293,10 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('is_australia', $event)">
+
+                                    </div>
                                 </div>
-                            </div>
-                            <InputError class="mt-2" :message="props.errors.is_australia" />
+                                <InputError class="mt-2" :message="props.errors.is_australia" />
                         </div>
                         <div class="d-flex justify-between align-items-start p-0">
                             <div class="flex items-start mt-4">
@@ -488,10 +508,16 @@ function upload_image(event){
                             </div>
                         </div>
 
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
-                                <div class="dotted-bg">
+                            <div v-if="document.kitchen_area" class="mt-3 relative">
+                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('kitchen_area')"><i class="fas fa-times"></i></p>
                                     <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video>
+                                    <p>{{ image_name.kitchen_area }}</p>
+                                </div>
+                            <div v-else class="file-inputs mt-3 relative">
+                                <div class="dotted-bg">
+                                    
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -553,10 +579,15 @@ function upload_image(event){
                             </div>
                         </div>
 
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
-                                <div class="dotted-bg">
+                            <div v-if="document.ingredients" class="mt-3 relative">
+                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('ingredients')"><i class="fas fa-times"></i></p>
                                     <video :src="document.ingredients" controls v-if="document.ingredients"></video>
+                                    <p>{{ image_name.ingredients }}</p>
+                                </div>
+                            <div v-else class="file-inputs mt-3 relative">
+                                <div class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -605,10 +636,15 @@ function upload_image(event){
                             </div>
                         </div>
 
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.cooking_tech" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('cooking_tech')"><i class="fas fa-times"></i></p>
+                                <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video>
+                                <p>{{ image_name.cooking_tech }}</p>
+                            </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -652,10 +688,15 @@ function upload_image(event){
                             </div>
                         </div>
 
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.dish" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('dish')"><i class="fas fa-times"></i></p>
+                                <video :src="document.dish" controls v-if="document.dish"></video>
+                                <p>{{ image_name.dish }}</p>
+                            </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <video :src="document.dish" controls v-if="document.dish"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -699,8 +740,14 @@ function upload_image(event){
                             </div>
                         </div>
 
+
                         <div class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.clean_up" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('clean_up')"><i class="fas fa-times"></i></p>
+                                <video :src="document.clean_up" controls v-if="document.clean_up"></video>
+                                <p>{{ image_name.clean_up }}</p>
+                            </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.clean_up" controls v-if="document.clean_up"></video>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -818,8 +865,14 @@ function upload_image(event){
                     </div>
 
                     <div class="row mt-4">
+
                         <div class="col-12 p-0">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="document.evidence_image" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('evidence_image')"><i class="fas fa-times"></i></p>
+                                <img :src="document.evidence_image" alt="" srcset="" width="250px">
+                                <p>{{ image_name.evidence_image }}</p>
+                            </div>
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.evidence_image" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -903,7 +956,12 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
+
                         <div class="col-12 p-0">
+                            <div v-if="document.resume" class="mt-3 relative">
+                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
+                                <p>{{ image_name.resume }}</p>
+                            </div>
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.resume" alt="" srcset="">

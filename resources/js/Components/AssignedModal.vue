@@ -15,13 +15,6 @@ const form = useForm({
 });
 
 
-axios.get('/assignAgent')
-  .then(response => {
-    users.value = response.data;
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
 
 const emit = defineEmits(['close']);
 
@@ -52,29 +45,6 @@ onMounted(()=>{
 //   close();
 // };
 
-const submitForm = async () => {
-    // alert(loanId);
-    const customerId = props.customerId;
-    const toast = useToast();
-    const url = `/storeAssignAgent/${customerId}`;
-    form.post(url, {
-        onStart: () => {
-            form.pending = true;
-        },
-        onSuccess: (response) => {
-            toast.success('Agent assigned Successfully');
-            setTimeout(() => {
-             window.location.reload();
-       }, 1500);
-        },
-        onError: (errors) => {
-            toast.error('Validation Error: Some error occured');
-        },
-        onFinish: () => {
-            form.pending = false;
-        },
-    });
-};
 
 watch(
   () => props.show,

@@ -3,7 +3,9 @@ import 'vue3-toastify/dist/index.css';
 import Header from '@/Pages/Frontend/Header.vue'
 import Footer from '@/Pages/Frontend/Footer.vue'
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
-
+import { Link } from '@inertiajs/vue3';
+import { reactive, ref } from 'vue';
+import fslightbox from 'fslightbox';
 const props = defineProps({
     customer:{
         type:Object
@@ -21,11 +23,34 @@ function getLast_name(name){
     }
     return filename;
 }
+
+
+const lightbox = reactive({
+      toggler: false,
+      sources: []
+    });
+function toggler(type,source){
+    lightbox.toggler = type;
+    lightbox.sources = [source];
+}
+
+
 </script>
 
 <template>
     <Header />
     <SubHeading :job_id ="job_id"/>
+    <div class="container">
+        <div class="container about-width">
+                <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
+                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                        <Link :href="route('business-jobs.index')">Jobs</Link>
+                        <Link :href="route('business-dash')" class='active-nav'>Employees</Link>
+                        <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
+                    </div>
+                </div>
+            </div>
+    </div>
     <section class="view_customer_wrapper">
         <div class="container py-12 view_customer_inner">
             <div class="inner_spacing_wrapper">
@@ -184,7 +209,7 @@ function getLast_name(name){
                         <div class="col col-two">
                             <h2>Employer statement</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.employer_statement">
+                                <img :src="customer?.employments?.employer_statement" @click="toggler('employer_statement',customer?.employments?.employer_statement)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.employer_statement)"></p>
                                 </div>
@@ -254,6 +279,12 @@ function getLast_name(name){
                         </div>
                     </div>
                 </div>
+
+
+                <fslightbox
+                    :toggler="lightbox.toggler"
+                    :sources="lightbox.sources"
+                    />
                 <div class="video_image_wrapper bg-white resume_div">
                     <div class="row">
                         <div class="col column_width">

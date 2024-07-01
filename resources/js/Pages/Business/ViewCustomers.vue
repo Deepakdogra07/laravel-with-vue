@@ -16,70 +16,71 @@ const props = defineProps({
     applied_customers: {
         type: Array
     },
-    job_id:{
-        type:String
+    job_id: {
+        type: String
     }
 });
 const appliedCustomers = ref([]);
 const refreshDataTable = ref(0);
-onMounted(()=>{
+onMounted(() => {
     appliedCustomers.value = props.applied_customers;
     refreshDataTable.value++;
 });
 console.log(appliedCustomers);
 const activeSpan = ref(null);
 const setActiveSpan = async (spanNumber) => {
-  try {
-    if (activeSpan.value === spanNumber) {
-      activeSpan.value = null;
-      location.reload();
-    } else {
-      const response = await axios.get(`/data-filteration/${props.job_id}/${spanNumber-1}`); 
-      appliedCustomers.value = response.data.applied_customers;
-      refreshDataTable.value++;
-      activeSpan.value = spanNumber;
+    try {
+        if (activeSpan.value === spanNumber) {
+            activeSpan.value = null;
+            location.reload();
+        } else {
+            const response = await axios.get(`/data-filteration/${props.job_id}/${spanNumber - 1}`);
+            appliedCustomers.value = response.data.applied_customers;
+            refreshDataTable.value++;
+            activeSpan.value = spanNumber;
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
 };
 
 
 
-   
+
 const states = countryStateCity.State.getStatesOfCountry('IN');
 
-function formatDateTime(date){
+function formatDateTime(date) {
     return moment(date).format('MMMM DD ');
 }
 </script>
 
 <template>
     <Header />
-    <SubHeading :job_id ="job_id"/>
-       <div class="py-12">
-            <div class="container">
-                
-                <div class="container about-width">
+    <SubHeading :job_id="job_id" />
+    <div class="py-12">
+        <div class="container">
+
+            <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
-                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
+                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job
+                        </Link>
                     </div>
                     <div class="d-flex gap-5 align-items-center srch_navbar">
-                       
-                        <Link :href="route('business-jobs.index')" >Jobs</Link>
+                        <Link :href="route('business-jobs.index')">Jobs</Link>
                         <Link :href="route('business-dash')" class='active-nav'>Employees</Link>
-                    </div> 
-                    
+                        <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
+                    </div>
+
                     <div class="relative search_bar">
                         <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
                         <input type="search" class="user-dashboard-search" placeholder="Search employee">
                     </div>
                 </div>
             </div>
-                <div class="filter-status">
-                    <div class="d-flex justify-between">
-                         <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
+            <div class="filter-status">
+                <div class="d-flex justify-between">
+                    <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
                                         Active</span>
@@ -105,107 +106,111 @@ function formatDateTime(date){
                                 </li>
                                 
                             </ul> -->
-                    </div>
-                </div>
-                <div class="main-job-filter mt-5">
-                    <ul class="d-flex align-items-center flex-wrap pl-0">
-                        <li>
-                            <span>Yes (2)</span>
-                        </li>
-                        <li>
-                            <span>Maybe (2)</span>
-                        </li>
-                        <li>
-                            <span>Expiring (2)</span>
-                        </li>
-                        <li>
-                            <span>Assessment: Any <i class="bi bi-chevron-down pl-3"></i></span>
-                        </li>
-                        <li>
-                            <span>Location: Any <i class="bi bi-chevron-down pl-3"></i></span>
-                        </li>
-                        <li>
-                            <span>Sort: Apply date (newest) <i class="bi bi-chevron-down pl-3"></i></span>
-                        </li>
-                    </ul>
                 </div>
             </div>
-            <!-- <div class="max-w-7xl mx-auto px-2">
+            <div class="main-job-filter mt-5">
+                <ul class="d-flex align-items-center flex-wrap pl-0">
+                    <li>
+                        <span>Yes (2)</span>
+                    </li>
+                    <li>
+                        <span>Maybe (2)</span>
+                    </li>
+                    <li>
+                        <span>Expiring (2)</span>
+                    </li>
+                    <li>
+                        <span>Assessment: Any <i class="bi bi-chevron-down pl-3"></i></span>
+                    </li>
+                    <li>
+                        <span>Location: Any <i class="bi bi-chevron-down pl-3"></i></span>
+                    </li>
+                    <li>
+                        <span>Sort: Apply date (newest) <i class="bi bi-chevron-down pl-3"></i></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="max-w-7xl mx-auto px-2">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;"> -->
-                    <div class="p-6 text-black-1024">
-                        <DataTable class="display" :key="refreshDataTable"  style="border:2px black ;width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Status</th>
-                                    <th>Country to Immigrate</th>
-                                    <th>Profile</th>
-                                    <th>Visa Status</th>
-                                    <th>Experience Summary</th>
-                                    <!-- <th>Videos</th> -->
-                                    <th>Intersts</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
-                                    <td>
-                                        {{ customer?.first_name }}
-                                    </td>
+        <div class="p-6 text-black-1024">
+            <DataTable class="display" :key="refreshDataTable" style="border:2px black ;width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Country to Immigrate</th>
+                        <th>Profile</th>
+                        <th>Visa Status</th>
+                        <th>Experience Summary</th>
+                        <!-- <th>Videos</th> -->
+                        <th>Intersts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
+                        <td>
+                            {{ customer?.first_name }}
+                        </td>
 
-                                    <td>
-                                        <div v-if="customer?.status?.status ==0" style="color:green">Active </div>
-                                        <div v-if="customer?.status?.status ==1" style="color:green">Awaiting Review </div>
-                                        <div v-if="customer?.status?.status ==2" style="color:green">Reviewed </div>
-                                        <div v-if="customer?.status?.status ==3" style="color:green">Contacted </div>
-                                        <div v-if="customer?.status?.status ==4" style="color:green">Hired </div>
-                                        <div v-if="customer?.status?.status ==5" style="color:red">Rejected </div>
-                                        <div>{{ formatDateTime(customer?.status?.created_at) }}</div>
-                                    </td>
-                                    <td>
-                                        {{ customer?.migrate_country }}
-                                    </td>
-                                    <td> <img :src="customer?.customer_image" alt=""></td>
-                                    <td> {{ 'Student'}}</td>
-                                   
-                                    <td>
-                                        {{ '2 Years' }}
-                                    </td>
-                                    <!-- <td>
+                        <td>
+                            <div v-if="customer?.status?.status == 0" style="color:green">Active </div>
+                            <div v-if="customer?.status?.status == 1" style="color:green">Awaiting Review </div>
+                            <div v-if="customer?.status?.status == 2" style="color:green">Reviewed </div>
+                            <div v-if="customer?.status?.status == 3" style="color:green">Contacted </div>
+                            <div v-if="customer?.status?.status == 4" style="color:green">Hired </div>
+                            <div v-if="customer?.status?.status == 5" style="color:red">Rejected </div>
+                            <div>{{ formatDateTime(customer?.status?.created_at) }}</div>
+                        </td>
+                        <td>
+                            {{ customer?.migrate_country }}
+                        </td>
+                        <td> <img :src="customer?.customer_image" alt=""></td>
+                        <td> {{ 'Student' }}</td>
+
+                        <td>
+                            {{ '2 Years' }}
+                        </td>
+                        <!-- <td>
                                         <video src="/images/new-video.mp4" controls></video>
                                     </td> -->
-                                    <td >
-                                        <div v-if="customer?.status?.status != 5">
-                                            <button class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-                                            <button class="btn btn-sm btn-primary"><i class="fas fa-question"></i></button>
-                                            <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
-                                        </div>
-                                        <div v-else>
-                                            <span class="text-danger">Rejected</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </DataTable>
-                                           
-                    </div>
-                <!-- </div>
-            </div> -->
+                        <td>
+                            <div v-if="customer?.status?.status != 5">
+                                <button class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-sm btn-primary"><i class="fas fa-question"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div v-else>
+                                <span class="text-danger">Rejected</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </DataTable>
+
         </div>
-        <Footer/>
+        <!-- </div>
+            </div> -->
+    </div>
+    <Footer />
 </template>
 
 <style scoped>
-.success{
-    color:green;
+.success {
+    color: green;
 }
-.main-outer-section{
+
+.main-outer-section {
     background-color: #F2F2F2;
 }
+
 .active-filter {
-    color: #1A9882; /* Change color as per your requirement */
+    color: #1A9882;
+    /* Change color as per your requirement */
     border-bottom: 2px solid #1A9882;
 }
-.text-danger{
-    color:red;
+
+.text-danger {
+    color: red;
 }
 </style>

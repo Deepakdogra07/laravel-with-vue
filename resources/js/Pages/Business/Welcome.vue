@@ -68,6 +68,8 @@ async function search_datatable(event){
 const countries = Country.getAllCountries();
 function filterData(type, event) {
   let customers_data = props.applied_customers;
+  if(event.target.value != ''){
+
     if(type=='location'){
     appliedCustomers.value = customers_data.filter(customer=> customer.customers.migrate_country == event.target.value);
     refreshDataTable.value++;
@@ -76,10 +78,18 @@ function filterData(type, event) {
     appliedCustomers.value = customers_data.filter(jobs=> jobs.job_id == event.target.value);
     refreshDataTable.value++;
   }
-   if (event.target.value == '') {
-        appliedCustomers.value = customers_data;
-        refreshDataTable.value++;
+  if(type == 'applied_date'){
+    if(event.target.value == 'desc'){
+      appliedCustomers.value = customers_data.sort((a, b) => b.job_id - a.job_id);
+    }else{
+      appliedCustomers.value = customers_data.sort((a, b) => a.job_id - b.job_id);
     }
+  }
+  }else{
+    appliedCustomers.value = customers_data;
+    refreshDataTable.value++;
+  }
+  
 }
 const navbar_key = ref(0);
 async function changeStatus(customer_id, job_id, event) {
@@ -220,48 +230,51 @@ async function changeStatus(customer_id, job_id, event) {
             </li>
           </ul>
         </div>
-        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
-          <div class="table_overflow">
-            <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Job Title</th>
-                  <th>Status</th>
-                  <!-- <th>Apply Date</th> -->
-                  <th>Country to Immigrate</th>
-                  <th>Profile</th>
-                  <th>Visa Purpose</th>
-                  <th>Country of Birth</th>
-                  <th>Intersts</th>
-                  <th>View </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
-                  <td class="business_wrap_name">
-                    <!-- <input type="checkbox"> -->
-                    {{ customer?.customers?.first_name }}
-                  </td>
-                  <td> {{ customer?.jobs?.job_title }}</td>
 
-                  <td class="status_business">
-                    <div v-if="customer?.status == 0" style="color:">Active </div>
-                    <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
-                    <div v-if="customer?.status == 2" style="color:">Reviewed </div>
-                    <div v-if="customer?.status == 3" style="color:">Contacted </div>
-                    <div v-if="customer?.status == 4" style="color:">Hired </div>
-                    <div v-if="customer?.status == 5" style="color:red">Rejected </div>
-                    <div>{{ formatDateTime(customer?.created_at) }}</div>
-                  </td>
-                  <!-- <td> <div>{{ formatDateTime(customer?.created_at) }}</div></td> -->
-                  <td>
-                    {{ customer?.customers?.migrate_country }}
-                  </td>
-                  <td> <img :src="customer?.customers?.customer_image" alt=""></td>
-                  <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
-                  <td v-html="customer?.customers?.country_of_birth"></td>
-                  <td>
+        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
+          <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Job Title</th>
+                <th>Status</th>
+                <!-- <th>Apply Date</th> -->
+                <th>Country to Immigrate</th>
+                <th>Profile</th>
+                <th>Visa Purpose</th>
+                <th>Visa Type</th>
+                <th>Country of Birth</th>
+                <th>Intersts</th>
+                <th>View </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
+                <td class="business_wrap_name">
+                  <!-- <input type="checkbox"> -->
+                  {{ customer?.customers?.first_name }}
+                </td>
+                <td> {{ customer?.jobs?.job_title }}</td>
+
+                <td class="status_business">
+                  <div v-if="customer?.status == 0" style="color:">Active </div>
+                  <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
+                  <div v-if="customer?.status == 2" style="color:">Reviewed </div>
+                  <div v-if="customer?.status == 3" style="color:">Contacted </div>
+                  <div v-if="customer?.status == 4" style="color:">Hired </div>
+                  <div v-if="customer?.status == 5" style="color:red">Rejected </div>
+                  <div>{{ formatDateTime(customer?.created_at) }}</div>
+                </td>
+                <!-- <td> <div>{{ formatDateTime(customer?.created_at) }}</div></td> -->
+                <td>
+                  {{ customer?.customers?.migrate_country }}
+                </td>
+                <td> <img :src="customer?.customers?.customer_image" alt=""></td>
+                <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
+                <td v-html="customer?.customers?.travel_details?.type_of_visa"> </td>
+                <td v-html="customer?.customers?.country_of_birth"></td>
+                <td>
+
 
                       <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
 

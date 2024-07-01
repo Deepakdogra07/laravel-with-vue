@@ -64,7 +64,7 @@ const submit = () => {
             <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
             <TextInput id="email" type="email" placeholder="Enter email" class="form-control" :value="form.email"
-              v-model="form.email" autocomplete="email" readonly />
+              v-model="form.email" autocomplete="email"  />
             <InputError class="mt-2" :message="errors.email" />
           </div>
 

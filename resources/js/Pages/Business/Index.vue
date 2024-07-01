@@ -41,14 +41,7 @@ const deletejob = async (id) => {
                 title: 'Success',
                 text: 'Job Deleted Successfully',
             });
-            // location.reload();
-        } else {
-            Swal.fire({
-                icon: 'info',
-                title: 'Canceled',
-                text: 'Deletion canceled.',
-            });
-        }
+        } 
     } catch (error) {
         Swal.fire({
             icon: 'error',
@@ -97,11 +90,11 @@ function filterData(type, event) {
         refreshDataTable.value++;
     }
     if (type == 'sort') {
-        if (event.target.value == 'asc') {
-            totaljobs.value = total_jobs.sort();
-        } else if (event.target.value == 'desc') {
-            totaljobs.value = total_jobs.reverse();
-        }
+        if(event.target.value == 'desc'){
+            totaljobs.value = total_jobs.sort((a, b) => b.job_id - a.job_id);
+            }else{
+                totaljobs.value = total_jobs.sort((a, b) => a.job_id - b.job_id);
+            }
         refreshDataTable.value++;
     }
 

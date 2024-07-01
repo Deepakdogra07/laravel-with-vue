@@ -64,7 +64,7 @@ const props = defineProps({
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Categories</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Businesses</h2>
             <div class="button-container">
                 <Link :href="route('business-listing.create')">
                 <button class="btn btn-info">Add Employer</button>
