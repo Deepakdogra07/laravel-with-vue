@@ -33,14 +33,28 @@ class HomeController extends Controller
         $footer_data = FooterData::first();
         $user = Auth::user();
         $jobs_created = Jobs::where('user_id',$user->id)->pluck('id')->toArray(); 
-        $applied_customers = JobStatus::whereIn('job_id',$jobs_created)->with('customers','jobs','customers.travel_details')->latest()->get();
-        $active = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 0)->count();
-        $awaited = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 1)->count();
-        $reviewed = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 2)->count();
-        $contacted = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 3)->count();
-        $hired = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 4)->count();
+        $applied_customers = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->with('customers','jobs','customers.travel_details')->latest()->get();
+        $active = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 0)->count();
+        $awaited = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 1)->count();
+        $reviewed = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 2)->count();
+        $contacted = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 3)->count();
+        $hired = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 4)->count();
         // dd($hired);
-        $rejected = CustomerStatus::whereIn('job_id',$jobs_created)->where('status', 5)->count();
+        $rejected = JobStatus::whereIn('job_id',$jobs_created)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->where('status', 5)->count();
         $status = [
             'all' => count($applied_customers),
             'active' => $active,

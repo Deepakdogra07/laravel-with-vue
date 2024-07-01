@@ -134,8 +134,8 @@ const active_checkbox =ref({
 
 
 const countries = countryStateCity.Country.getAllCountries(),
-image_name = ref(''),
-image = ref('');
+image_name = ref(form.job_image),
+image = ref(form.job_image);
 
 function selectFile(event){
     form.job_image = event.target.files[0]
@@ -154,22 +154,6 @@ const submit = () => {
       },
     });
 };
-
-
-
-
-
-// function select_skill(skill){
-//     let index = form.skills_id.findIndex(s => s.id === skill.id);
-//     if(index !== -1){
-//         form.skills_id.splice(index,1);
-//     }else{
-//         index = props.skills.findIndex(s => s.id === skill.id);
-//         if(index >0){
-//             form.skills_id.push(skill);
-//         }
-//     }   
-// }
 function checked_event(event){
     if(event.target.checked){
         form.recommended_skills.push(event.target.value);
@@ -181,7 +165,12 @@ const  select_class = ref('');
 function handleChange(){
         select_class.value = 'Selected_option';
 }
-console.log(select_class,'selected_class')
+
+function removeImage(){
+    form.job_image = null;
+    image_name.value ='';
+    image.value ='';
+}
 </script>
 
 <template>
@@ -556,11 +545,14 @@ console.log(select_class,'selected_class')
                                 <InputError class="mt-2" :message="form.errors.job_country" />
                             </div>
                         </div>
-
-                        <div class="col-12 mt-4 file_upload edit_space">
+                        <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
+                            <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
+                            <img :src="image" alt="" srcset="">
+                            <p>{{ image_name }}</p>
+                        </div>
+                        <div v-else class="col-12 mt-4 file_upload edit_space">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="image" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -570,7 +562,7 @@ console.log(select_class,'selected_class')
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
-                                    <p>{{ image_name }}</p>
+                                   
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>

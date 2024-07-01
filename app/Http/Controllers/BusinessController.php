@@ -305,8 +305,17 @@ class BusinessController extends Controller
     public function destroy($id)
     {
         $job = Jobs::findOrFail($id);
+        JobStatus::where('job_id', $id)->each(function ($jobStatus) {
+            $jobStatus->customers()->each(function ($customer) {
+                $customer->travel_details()->forceDelete();            
+                $customer->documents()->forceDelete();
+                $customer->employments()->forceDelete();
+                $customer->forceDelete();
+            });
+            $jobStatus->forceDelete();
+        });
         $job->forceDelete();
-        return to_route('jobs.index');
+        return to_route('business-jobs.index');
     }
     private function date_Time($created_at)
     {
@@ -330,13 +339,27 @@ class BusinessController extends Controller
 
     public function job_for_customer($job_id)
     {
-        $applied_customers = JobStatus::whereIn('job_id',$job_id)->with('customers')->get();
-        $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->count();
-        $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->count();
-        $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->count();
-        $contacted = CustomerStatus::where('job_id', $job_id)->where('status', 3)->count();
-        $hired = CustomerStatus::where('job_id', $job_id)->where('status', 4)->count();
-        $rejected = CustomerStatus::where('job_id', $job_id)->where('status', 5)->count();
+        $applied_customers = JobStatus::whereIn('job_id',$job_id)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->with('customers')->get();
+        $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
+        $awaited = CustomerStatus::where('job_id', $job_id)->where('status', 1)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
+        $reviewed = CustomerStatus::where('job_id', $job_id)->where('status', 2)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
+        $contacted = CustomerStatus::where('job_id', $job_id)->where('status', 3)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
+        $hired = CustomerStatus::where('job_id', $job_id)->where('status', 4)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
+        $rejected = CustomerStatus::where('job_id', $job_id)->where('status', 5)->whereHas('customers', function ($query) {
+            $query->where('submitted',1); 
+        })->count();
         $status = [
             'active' => $active,
             'awaited' => $awaited,
@@ -351,8 +374,9 @@ class BusinessController extends Controller
     {
         $user_id = Auth::user()->id;
         $job_id = Jobs::where('user_id',$user_id)->pluck('id')->toArray();
-        
-        $applied_customers = JobStatus::where('status',$status)->whereIn('job_id',$job_id)->with('customers','jobs')->get();
+        $applied_customers = JobStatus::where('status',$status)->whereIn('job_id',$job_id)->whereHas('customers',function($query){
+            $query->where('submitted',1);
+        })->with('customers','jobs')->get();
         return response()->json(['applied_customers' => $applied_customers]);
     }
     public function customer_search($string)
@@ -362,7 +386,7 @@ class BusinessController extends Controller
         
         $applied_customers = JobStatus::whereIn('jobs_with_customer_status.job_id',$job_id)
         ->whereHas('customers', function ($query) use ($string) {
-            $query->where('first_name', 'like', "%{$string}%");
+            $query->where('first_name', 'like', "%{$string}%")->where('submitted',1);
         })
         ->orwhereHas('jobs', function ($query) use ($string) {
             $query->where('job_title', 'like', "%{$string}%");
