@@ -124,13 +124,13 @@ function removeImage(type){
         <div class="login-bg-wrapper steps_form employment-first-form step-form-1 employment_next" v-if="div_numbers == 'step-form-1'">
             <div class="container">
                 <!-- 1 -->
-                <div class="employment-first-form ">
-                    <p class="light-text">You must provide official employment evidence to demonstrate that you meet the
+                <div class="employment-first-form">
+                    <p class="light-text px-2">You must provide official employment evidence to demonstrate that you meet the
                         minimum
                         employment experience requirements for your nominated occupation.Each period of employment
                         submitted for
                         assessment must be supported by the following two forms of evidence:</p>
-                    <h2>1. An employer statement that includes all the following details:</h2>
+                    <h2 class="px-2">1. An employer statement that includes all the following details:</h2>
                     <div class="row mt-4">
                         <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">
@@ -202,17 +202,18 @@ function removeImage(type){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('employer_statement',$event)" >
+
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.employer_statement"/>
                         </div>
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start mt-4">
+                            <div class="flex items-center">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-center login-btn-main" style="cursor:pointer;">
                                 <p class="forms-btn" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -234,7 +235,7 @@ function removeImage(type){
                     <h2>2. Financial evidence including at least 2 of the following items per year of employment
                         claimed:</h2>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">official government tax records such as income statements, payment
@@ -243,21 +244,21 @@ function removeImage(type){
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">three pay slips listing the names of the employer and employee
                                     (pay slips should be from the start, middle and end of each year claimed)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">superannuation (pension) documents citing the names of the
                                     employer and employee</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">bank statements clearly showing the employer’s name and income
@@ -281,6 +282,7 @@ function removeImage(type){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('financial_evidence',$event)">
+
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.financial_evidence"/>
@@ -299,7 +301,7 @@ function removeImage(type){
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-center buttons_mine">
+                        <div class="d-flex justify-between align-items-start buttons_mine">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
@@ -321,52 +323,56 @@ function removeImage(type){
 
         <!-------step three----------->
         <div class="login-bg-wrapper steps_form employment-first-form step-form-3 application_guide" v-if="div_numbers == 'step-form-3'">
-            <div class="container">
+            <div class="container employ_width_wrap">
                 <!-- 1 -->
                 <div class="employment-first-form">
-                    <h2>3 Evidence of self-employment</h2>
+                    <h2 class="mb-3">3 Evidence of self-employment</h2>
                     <p class="light-text">If you are, or have been, self-employed, you must provide the following
                         evidence for each year of self-employment claimed:</p>
                     <h3>3.1 Evidence of self-employment not undertaken in Australia:</h3>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">business registration documents
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">annual business returns</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">relevant occupation or business licences</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a statement from a registered/certified accountant</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">taxation documents citing the name of the business.</p>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div v-if="document.evidence_self_employment" class="mt-3 relative">
                             <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
                             <img :src="document.evidence_self_employment" alt="" srcset="" width="250px">
                             <p>{{ image_name.evidence_self_employment }}</p>
                         </div>
-                            <div  v-else class="file-inputs mt-3 relative">
+
+                        <div  v-else  class="col-12 employ_padding">
+                            <div class="file-inputs mt-3 relative">
+
                                 <div class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
@@ -377,6 +383,7 @@ function removeImage(type){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
+
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.evidence_self_employment"/>
@@ -384,37 +391,38 @@ function removeImage(type){
 
                         <h3 class="spacing_hd">3.2 Evidence of self-employment undertaken in Australia:</h3>
 
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">your Australian Business Number (ABN)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a payment summary information statement</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a Business Activity Statement (BAS)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a Notice of Assessment from the Australian Taxation Office (ATO)
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a statement from a registered/certified accountant. </p>
                             </div>
                         </div>
+
 
                         <div class="col-12 employment_next">
                                 <div v-if="document.evidence_self_employment_aus" class="mt-3 relative">
@@ -422,6 +430,7 @@ function removeImage(type){
                             <img :src="document.evidence_self_employment_aus" alt="" srcset="" width="250px">
                             <p>{{ image_name.evidence_self_employment_aus }}</p>
                         </div>
+                        <div v-else class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.evidence_self_employment_aus" alt="" srcset="">
@@ -434,19 +443,20 @@ function removeImage(type){
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
+
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start employ_padding">
+                            <div class="flex align-items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(3)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                            <div class="flex align-items-start mt-4 login-btn-main" style="cursor:pointer">
                                 <p class="forms-btn" id="3" @click="show_next_div(3)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -469,13 +479,18 @@ function removeImage(type){
                     <p class="light-text">If you have completed formal training related to your trade, you must submit
                         official evidence including:</p>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a qualification certificate or statementof completion</p>
                             </div>
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">a full academic transcript or other documents that include the
+                                    start and end date of training and details of the program of study</p>
+                            </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">apprenticeship documents, such as the contract of apprenticeship,
@@ -483,20 +498,16 @@ function removeImage(type){
                                     institution relating to the apprenticeship (if applicable). </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12 margin_minus">
-                            <div class="d-flex gap-3">
-                                <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text">a full academic transcript or other documents that include the
-                                    start and end date of training and details of the program of study</p>
-                            </div>
-                        </div>
-                        <div class="col-12">
+
+                        <div class="col-12 employ_padding">
                             <div v-if="document.formal_training_evidence" class="mt-3 relative">
                             <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('formal_training_evidence_aus')"><i class="fas fa-times"></i></p>
                             <img :src="document.formal_training_evidence" alt="" srcset="" width="250px">
                             <p>{{ image_name.formal_training_evidence }}</p>
                         </div>
+  
                             <div v-else class="file-inputs mt-3 relative">
+
                                 <div class="dotted-bg">
                                     <img :src="document.formal_training_evidence" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -516,28 +527,26 @@ function removeImage(type){
 
                         <h2 class="spacing_hd">Formal training does not include: </h2>
 
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> short courses</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="d-flex gap-3">
-                                <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text">qualifications where most of the training was not directly related
-                                    to your nominated occupation</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> training that lacks official recognition by the relevant
                                     educational authorities in the country where it was undertaken.</p>
                             </div>
                         </div>
+                        <div class="col-md-6 col-12 employ_padding">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">qualifications where most of the training was not directly related
+                                    to your nominated occupation</p>
+                            </div>
+                        </div>
 
-                        <div class="d-flex justify-between align-items-center">
+                        <div class="d-flex justify-between align-items-center employ_padding">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(4)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back

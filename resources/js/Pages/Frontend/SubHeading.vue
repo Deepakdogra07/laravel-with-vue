@@ -66,16 +66,16 @@ const props=defineProps({
         </div>
 
         <div class="form-navigation" v-else-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">
-            <div class="container">
+            <div class="container employ_width_wrap">
                 <ul class="row nav-underline pl-0 mb-0">
-                    <div class="col-md-2 col-4">
+                    <div class="col-md-2 col-4 p-0">
                         <li class="nav-item">
                             <Link href="/job-introduction" class="nav-link text-center" 
                                 :class="{ 'active': route().current('job.introduction') }" 
                             >Introduction</Link>
                         </li>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-4">
+                    <div class="col-lg-2 col-md-3 col-4 p-0">
                         <li class="nav-item">
                             <Link :href="`/employment-details/${job_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('employment.details') }"  
@@ -93,16 +93,15 @@ const props=defineProps({
             </div>
         </div>
 
-        <div class="form-navigation" v-else-if="route().current('travel.details') || route().current('personal.details')">
-            
-            <div class="container">
+        <div class="form-navigation" v-else-if="route().current('travel.details') || route().current('personal.details')">      
+            <div class="container conatiner-width">
                 <ul class="row nav-underline pl-0 mb-0">
-                    <div class="col-lg-2 col-md-3 col-5">
+                    <div class="col-lg-2 col-md-3 col-5 p-0">
                         <li class="nav-item">
                             <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details </Link>
                         </li>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-5">
+                    <div class="col-lg-2 col-md-3 col-5 p-0">
                         <li class="nav-item">
                             <Link :href="`/personal-details/${job_id}`"  class="nav-link text-center"  :class="{ 'active': route().current('personal.details') }">Personal details</Link>
                         </li>

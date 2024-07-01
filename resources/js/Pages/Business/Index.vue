@@ -136,9 +136,9 @@ function filterData(type, event) {
         </div>
         <div class="login-bg-wrapper business_job_details business_inner_dash">
             <div class="container about-width p-0">
-                <div class="filter-status row business_ad_wrapper">
-                    <div class="col-md-8 width_mobile p-0">
-                        <div class="d-flex justify-between align-items-center">
+                <!-- <div class="filter-status row business_ad_wrapper"> -->
+                    <!-- <div class="col-md-8 width_mobile p-0">
+                        <div class="d-flex justify-between align-items-center"> -->
                             <!-- <ul class="d-flex align-items-center flex-wrap pl-0 business_links">
                                <li class="active_menu">
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">17
@@ -165,37 +165,20 @@ function filterData(type, event) {
                                 </li>
                                 
                             </ul> -->
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
 
-                    <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job p-0">
+                    <!-- <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job p-0">
                         <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add
                         job</Link>
-                    </div>
-                </div>
-                <div class="main-job-filter mt-5">
-                    <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper business_inner_dash_wrap">
+                    </div> -->
+                <!-- </div> -->
+                <div class="main-job-filter">
+                    <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper business_inner_dash_wrap justify-content-between">
                         <!-- <li>
                             <span>Maybe (2)</span>
                         </li> -->
-                        <li>
-                            <span>Seniority:
-                                <select class="job-filter_text any_select_box" @change="filterData('seniority', $event)">
-                                    <option value="">Select</option>
-                                    <option v-for="seniority in seniorities" :value="seniority.id">{{ seniority.name }}
-                                    </option>
-                                </select>
-                            </span>
-                        </li>
-                        <li>
-                            <span>Positions:
-                                <select class="job-filter_text" @change="filterData('position', $event)">
-                                    <option value="">Select</option>
-                                    <option v-for="postion in positions" :value="postion.id">{{ postion.name }}</option>
-                                </select>
-                            </span>
-                        </li>
-                        <li>
+                        <li class="location_Select">
                             <span>Location:
                                 <select @change="filterData('location', $event)" class="job-filter_text">
                                     <option value="">Any</option>
@@ -204,6 +187,33 @@ function filterData(type, event) {
                                 </select>
                             </span>
                         </li>
+
+                        <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job p-0">
+                        <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add
+                        job</Link>
+                    </div>
+                              
+                    </ul>
+                    <ul class="d-flex align-items-center justify-content-between flex-wrap pl-0 business_dash_navbar_wrapper business_inner_dash_wrap">
+                        <div class="d-flex">
+                            <li>
+                                <span>Seniority:
+                                    <select class="job-filter_text any_select_box" @change="filterData('seniority', $event)">
+                                        <option value="">Select</option>
+                                        <option v-for="seniority in seniorities" :value="seniority.id">{{ seniority.name }}
+                                        </option>
+                                    </select>
+                                </span>
+                            </li>
+                            <li class="ml-3">
+                                <span>Positions:
+                                    <select class="job-filter_text" @change="filterData('position', $event)">
+                                        <option value="">Select</option>
+                                        <option v-for="postion in positions" :value="postion.id">{{ postion.name }}</option>
+                                    </select>
+                                </span>
+                            </li>
+                        </div>
                         <span>
                             Sort:
                             <select @change="filterData('sort', $event)" class="job-filter_text employes_selct_checkbox">
@@ -213,7 +223,7 @@ function filterData(type, event) {
                         </span>
                     </ul>
                 </div>
-                <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
+                <div class="main-job-filter mt-4 spacing_nine business_tablesss_inner">
                     <DataTable :key="refreshDataTable"
                         class="display job-data-table business_table business_dash_table business_table_dashboard"
                         :options="options" style="border:2px black ;width:100%">

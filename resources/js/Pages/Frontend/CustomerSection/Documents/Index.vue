@@ -123,7 +123,7 @@ function removeImage(type){
                         skills, knowledge and experience, in addition to the mandatory employment documents:</p>
                     <h2>1. Supporting employment evidence:</h2>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 checkbox_icon">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">Employment contract listing your job title, salary and other
