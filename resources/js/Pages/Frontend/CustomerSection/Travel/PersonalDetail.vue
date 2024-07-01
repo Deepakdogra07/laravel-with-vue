@@ -72,7 +72,7 @@ const form =useForm({
     last_name:props?.already_customer?.last_name ?? null,
     email:props?.already_customer?.email ?? props.user_email,
     confirm_email:props?.already_customer?.email ?? props.user_email,
-    date_of_birth:props?.already_customer?.date_of_birth ?? null,
+    date_of_birth:props?.already_customer?.date_of_birth ?? eighteenYearsAgo,
     country_of_birth:props?.already_customer?.country_of_birth ?? null,
     city_of_birth:props?.already_customer?.city_of_birth ?? null,
     gender:props?.already_customer?.gender ?? null,
@@ -202,9 +202,7 @@ function removeImage(){
                             <div class="col-md-6 column_spacing">
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
-    
-                                    <!-- <TextInput placeholder="---"v-model="form.date_of_birth" type="date" class="form-control mt-2" /> -->
-                                     <VueDatePicker v-model="form.date_of_birth" placeholder="Select date of birth" class="form-control mt-2 "  :format="format" :max-date="eighteenYearsAgo"  />
+                                     <VueDatePicker v-model="form.date_of_birth" placeholder="Select date of birth" class="form-control mt-2 " v-bind:clearable="false" :format="format" :max-date="eighteenYearsAgo" :initial-date="eighteenYearsAgo" />
                                     <InputError class="mt-2" v-if="form.errors.date_of_birth" :message="props.errors.date_of_birth[0]"/>
                                 </div>
                             </div>
