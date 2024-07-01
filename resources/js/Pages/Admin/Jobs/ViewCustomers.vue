@@ -117,7 +117,7 @@ async function changeStatus(customer_id, job_id, event) {
                 </div>
             </div>
         </div>
-        <div class="py-12 employesss_tabs employesss_tabs_dd">
+        <div class="py-12 employesss_tabs employesss_tabs_dd admin_appy_table">
             <div class="container">
                 <div class="filter-status">
                     <div class="d-flex justify-between">

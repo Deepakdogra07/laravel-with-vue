@@ -230,6 +230,7 @@ async function changeStatus(customer_id, job_id, event) {
             </li>
           </ul>
         </div>
+
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
           <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
             <thead>
@@ -274,22 +275,24 @@ async function changeStatus(customer_id, job_id, event) {
                 <td v-html="customer?.customers?.country_of_birth"></td>
                 <td>
 
-                    <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
 
-                      <option value="0"> Active</option>
-                      <option value="1"> Awaiting Review</option>
-                      <option value="2"> Reviewed</option>
-                      <option value="3"> Contacted</option>
-                      <option value="4"> Hired</option>
-                      <option value="5"> Rejected</option>
-                    </select>
-                </td>
-                <td>
-                  <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
-                </td>
-              </tr>
-            </tbody>
-          </DataTable>
+                      <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
+
+                        <option value="0"> Active</option>
+                        <option value="1"> Awaiting Review</option>
+                        <option value="2"> Reviewed</option>
+                        <option value="3"> Contacted</option>
+                        <option value="4"> Hired</option>
+                        <option value="5"> Rejected</option>
+                      </select>
+                  </td>
+                  <td>
+                    <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </DataTable>
+          </div>
         </div>
       </div>
     </div>
