@@ -117,13 +117,13 @@ function upload_image(event){
     <form @submit.prevent="submit_form()">
         <!------step one----->
         <div class="login-bg-wrapper steps_form document-first-form step-form-1 application_guide" v-if="div_numbers == 'step-form-1'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="employment-first-form">
                     <p class="light-text">The following documents can be submitted as supporting evidence of your
                         skills, knowledge and experience, in addition to the mandatory employment documents:</p>
                     <h2>1. Supporting employment evidence:</h2>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12 checkbox_icon">
+                        <div class="col-md-6 col-12 checkbox_icon employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">Employment contract listing your job title, salary and other
@@ -131,19 +131,19 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> Position description outlining duties performed</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">Offer, appointment and/or relieving letters.</p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.employment_evidence" alt="" srcset="">
@@ -158,17 +158,18 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('employment_evidence', $event)">
                                         <p>{{ image_name }}</p>
-                                    <InputError class="mt-2" :message="props.errors.employment_evidence" />
                                 </div>
+                               
                             </div>
+                            <InputError class="mt-2" :message="props.errors.employment_evidence" />
                         </div>
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start p-0">
+                            <div class="flex align-items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex align-items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -181,13 +182,13 @@ function upload_image(event){
 
         <!------step two----->
         <div class="login-bg-wrapper steps_form document-first-form step-form-2 application_guide" v-if="div_numbers == 'step-form-2'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="employment-first-form">
                     <p class="light-text">The following documents can be submitted as supporting evidence of your
                         skills, knowledge and experience, in addition to the mandatory employment documents:</p>
                     <h2>2. Licences:</h2>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">You should submit evidence of any licences you hold that are
@@ -195,7 +196,7 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.licences" alt="" srcset="">
@@ -209,17 +210,17 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('licences', $event)">
-                                    <InputError class="mt-2" :message="props.errors.licences" />
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.licences" />
                         </div>
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start p-0">
+                            <div class="flex items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -232,19 +233,19 @@ function upload_image(event){
 
         <!------step three----->
         <div class="login-bg-wrapper steps_form document-first-form step-form-3 application_guide" v-if="div_numbers == 'step-form-3'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="employment-first-form">
                     <h2>3. Photographs and videos</h2>
-                    <p class="light-text">Photos and videos of you performing work tasks maybe provided if they:</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                    <p class="light-text mt-3">Photos and videos of you performing work tasks maybe provided if they:</p>
+                    <div class="row mt-2">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">clearly show it is you doing the work,not somebody else
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">include a description of what you are doingand why
@@ -252,14 +253,14 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">show that you are performing tasks in a safe working manner.
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.is_australia" alt="" srcset="">
@@ -273,17 +274,17 @@ function upload_image(event){
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('is_australia', $event)">
-                                    <InputError class="mt-2" :message="props.errors.is_australia" />
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.is_australia" />
                         </div>
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start p-0">
+                            <div class="flex items-start mt-4">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(3)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(3)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -295,19 +296,19 @@ function upload_image(event){
         </div>
 
         <Section class="determine_job step-form-4" v-if="div_numbers == 'step-form-4'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="inner_determine">
                     <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate
                         III in Engineering – Toolmaking Trade’.</h6>
                     <h2>3.1 Determine job requirements</h2>
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>1.1 Follow standard operating procedures (SOPs)</li>
                                 <li>1.2 Comply with work health and safety (WHS) requirements at all times</li>
                             </ul>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>1.3 Use appropriate personal protective equipment (PPE) in accordance with SOPs</li>
                                 <li>1.4 Identify job requirements from specifications, sketches, job sheets or
@@ -317,7 +318,7 @@ function upload_image(event){
                     </div>
                     <h2>3.2 Perform precision measurement</h2>
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>2.1 Select appropriate precision equipment to achieve specified outcomes</li>
                                 <li>2.2 Check the accuracy of the selected measuring equipment for where appropriate
@@ -325,7 +326,7 @@ function upload_image(event){
                                 <li>2.3 Use correct and appropriate measuring techniques for the measurement task </li>
                             </ul>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>2.4 Take measurements to the finest graduation of instrument in an accurate manner
                                 </li>
@@ -335,7 +336,7 @@ function upload_image(event){
                     </div>
                     <h2>3.3 Maintain precision equipment</h2>
                     <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>3.1 Set measuring equipment to specifications using manufacturer guidelines or
                                     procedures and techniques</li>
@@ -343,7 +344,7 @@ function upload_image(event){
                                     techniques according to manufacturer’s specifications or SOPs</li>
                             </ul>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>3.3 Store equipment to manufacturer’s specifications or SOPs </li>
                             </ul>
@@ -351,28 +352,28 @@ function upload_image(event){
                     </div>
                     <h6>For this unit, our AI Engine would be looking for evidence that you can</h6>
                     <div class="row">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">identify the requirements of the job from drawings or instructions
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">et up and adjust measuring equipment to required accuracy and
                                     specifications</p>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-12">
+                        </div> 
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> use appropriate personal protective equipment and follow standard
                                     operating procedures</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> licences held.</p>
@@ -386,22 +387,17 @@ function upload_image(event){
 
                 <!------step five----->
                 <div class="login-bg-wrapper steps_form document-first-form step-form-4 application_guide">
-                    <div class="container">
-                        <div class="employment-first-form intro_steps intro_top">
-                            
+                    <div class="container p-0 width_content">
+                        <div class="employment-first-form intro_steps intro_top">            
                             <div class="row mt-4">
-                                
-                                
-                               
-                                
-                                <div class="d-flex justify-between align-items-center">
-                                    <div class="flex items-center mt-4 ">
+                                <div class="d-flex justify-between align-items-start p-0">
+                                    <div class="flex items-start mt-4 ">
                                         <PrimaryButton class="forms-btn-transparent step-form-back"
                                             @click="previous_div(4)">
                                             <span> <i class="bi bi-arrow-left"></i></span> Back
                                         </PrimaryButton>
                                     </div>
-                                    <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                                    <div class="flex items-start mt-4" style="cursor:pointer">
                                         <p class="forms-btn" @click="show_next_div(4)">
                                             Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                         </p>
@@ -430,38 +426,34 @@ function upload_image(event){
                     <h5 class="take_over">Task overview</h5>
                     <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a protein (e.g. meat, fish, tofu)
                                 </p>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-12">
+                            <div class="d-flex gap-3">
+                                <i class="fa-solid fa-circle-check green-text"></i>
+                                <p class="light-text">a sauce.
+                                </p>
+                            </div>
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a side dish
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
-                            <div class="d-flex gap-3">
-                                <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text">a sauce.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <p class="light-text">As you prepare your dish, film the following five (5) videos. Note the
                                 skills you should demonstrate in each
                                 video</p>
                             <h2 class="margin_intro">Video</h2>
                             <p class="light-text">Video Skills you should demonstrate in this video </p>
                         </div>
-                        <div class="prepare_kitchen">
+                        <div class="prepare_kitchen p-0">
                             <h2 class="margin_intro">1 - Prepare kitchen area</h2>
                             <div class="row">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Visually checking work areas and equipment are hygienic
@@ -469,7 +461,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Selecting appropriate equipment based on recipe
@@ -477,7 +469,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Assembling equipment according to manufacturer's
@@ -485,7 +477,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">• Visually checking work areas and equipment are hygienic
@@ -496,7 +488,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video>
@@ -511,15 +503,15 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('kitchen_area', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.kitchen_area" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.kitchen_area" />
                         </div>
 
                         <!------intro_two----->
-                        <div class="employment-first-form intro_steps">
+                        <div class="employment-first-form intro_steps employ_padding ">
                             <h2>2 - Prepare ingredients</h2>
                             <div class="row mt-4">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Identifying and selecting ingredients based on recipe
@@ -527,14 +519,14 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Visually checking ingredients for quality and freshness
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Sorting ingredients in the order they will be used during
@@ -542,7 +534,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Using equipment (e.g. scales) to accurately measure and
@@ -550,7 +542,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Cutting ingredients to the required size and shape,
@@ -561,7 +553,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.ingredients" controls v-if="document.ingredients"></video>
@@ -576,15 +568,15 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('ingredients', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.ingredients" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.ingredients" />
                         </div>
 
                         <!------intro_three----->
-                        <div class="employment-first-form intro_steps">
+                        <div class="employment-first-form intro_steps employ_padding">
                             <h2>3 - Demonstrate cooking techniques</h2>
                             <div class="row mt-4">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Using appropriate cooking methods to prepare the dish and
@@ -593,7 +585,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Handling and operating food preparation equipment safely,
@@ -602,7 +594,7 @@ function upload_image(event){
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Reviewing the dish and making quality adjustments (e.g.
@@ -613,7 +605,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video>
@@ -628,29 +620,29 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('cooking_tech', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.cooking_tech" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.cooking_tech" />
                         </div>
 
                         <!------intro_four----->
-                        <div class="employment-first-form intro_steps">
+                        <div class="employment-first-form intro_steps employ_padding">
                             <h2>4 - Present dish </h2>
                             <div class="row mt-4">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Using appropriate dishware and garnishes to enhance the
                                             visual appeal of the dish</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Arranging the dish in a visually pleasing way, ensuring
                                             the plate is free of drips</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Serving an appropriate portion size
@@ -660,7 +652,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.dish" controls v-if="document.dish"></video>
@@ -675,28 +667,28 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.dish" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.dish" />
                         </div>
 
                         <!------intro_five----->
-                        <div class="employment-first-form intro_steps">
+                        <div class="employment-first-form intro_steps employ_padding">
                             <h2>5 - Clean up</h2>
                             <div class="row mt-4">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Cleaning and sanitising the work area (including benches,
                                             appliances and equipment) </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Storing prepared food in appropriate containers</p>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
                                         <p class="light-text">Labelling food containers with description and date of
@@ -707,7 +699,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <video :src="document.clean_up" controls v-if="document.clean_up"></video>
@@ -722,17 +714,17 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.clean_up" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.clean_up" />
                         </div>
 
-                        <div class="d-flex justify-between align-items-center">
+                        <div class="d-flex justify-between align-items-center p-0">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(5)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-center mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(5)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -745,7 +737,7 @@ function upload_image(event){
 
         <!------step six----->
         <div class="login-bg-wrapper steps_form document-first-form step-form-6 application_guide" v-if="div_numbers == 'step-form-6'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="employment-first-form instructions">
                     <h2>Instructions for photo evidence</h2>
                     <p class="light-text">In addition to submitting videos, you must at least twenty (20) photos
@@ -798,9 +790,17 @@ function upload_image(event){
                     <div class="employment-first-form">
                         <h2>The photos you submit must:</h2>
                         <div class="row mt-4">
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-6 col-12 employ_padding">
                                 <div class="d-flex gap-3">
                                     <p class="light-text">clearly show it is you doing the work, not somebody else
+                                    </p>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <p class="light-text">show that you are performing tasks safely
+                                    </p>
+                                </div>
+                                <div class="d-flex gap-3">
+                                    <p class="light-text">When you save and name each photo file:
                                     </p>
                                 </div>
                             </div>
@@ -812,20 +812,13 @@ function upload_image(event){
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="d-flex gap-3">
-                                    <p class="light-text">show that you are performing tasks safely
-                                    </p>
-                                </div>
-                                <div class="d-flex gap-3">
-                                    <p class="light-text">When you save and name each photo file:
-                                    </p>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
 
                     <div class="row mt-4">
-                        <div class="col-12">
+                        <div class="col-12 p-0">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.evidence_image" alt="" srcset="">
@@ -840,11 +833,11 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('evidence_image', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="props.errors.evidence_image" />
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_image" />
                         </div>
 
-                        <div class="file_size">
+                        <div class="file_size employ_padding">
                             <h2>File size for each photo must not exceed 5 MB</h2>
                             <p class="light-text">Photo file formats accepted include:</p>
                             <ul class="img_format">
@@ -859,13 +852,13 @@ function upload_image(event){
                                 your application.</p>
                         </div>
 
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start p-0">
+                            <div class="flex items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(6)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(6)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -878,7 +871,7 @@ function upload_image(event){
 
         <!------step seven----->
         <div class="login-bg-wrapper steps_form document-first-form step-form-7 application_guide" v-if="div_numbers == 'step-form-7'">
-            <div class="container">
+            <div class="container width_content">
                 <div class="employment-first-form steps_55">
                     <h2>4. Resumé / CV</h2>
                     <div class="row">
@@ -910,7 +903,7 @@ function upload_image(event){
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 p-0">
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
                                     <img :src="document.resume" alt="" srcset="">
@@ -925,16 +918,16 @@ function upload_image(event){
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('resume', $event)">
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.resume" />
                             </div>
+                            <InputError class="mt-2" :message="form.errors.resume" />
                         </div>
 
-                        <div class="documents_bottom">
+                        <div class="documents_bottom p-0">
                             <p class="light-text">At the end of this document we have provided a checklist that will
                                 help you ensure you have all the evidence we need.</p>
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 p-0">
                             <div class="employ_note">
                                 <h2>IMPORTANT:</h2>
                                 <p>All employment and training documents must be high quality colour scans of the
@@ -943,7 +936,7 @@ function upload_image(event){
                             </div>
                         </div>
 
-                        <div class="documents_bottom">
+                        <div class="documents_bottom p-0">
                             <p class="light-text">An assessor will review your documents to ensure that they meet the
                                 employment and training requirements for your nominated occupation and indicate that you
                                 have the necessary skills, knowledge and experience in your trade.</p>
@@ -954,20 +947,20 @@ function upload_image(event){
 
                             <p class="light-text">To see all the units of competency for a qualification relevant to
                                 your occupation, download the Fact Sheet for your trade from: <a
-                                    href="#">https://www.vetassess.
+                                    href="#" >https://www.vetassess.
                                     com.au/skills-assessment-for-migration/tradeoccupations/guides-and-factsheets.</a>
                             </p>
 
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-center">
-                            <div class="flex items-center mt-4 ">
+                        <div class="d-flex justify-between align-items-start p-0">
+                            <div class="flex items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(7)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main">
+                            <div class="flex items-start mt-4">
                                 <PrimaryButton class="forms-btn" type="submit">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>

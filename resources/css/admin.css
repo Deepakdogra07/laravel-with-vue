@@ -111,14 +111,14 @@ table.dataTable td img {
 	content: "\003c" !important;
 	background: #6c6b6b;
 	color: #fff;
-	border-radius: 0;
+	border-radius: 5px;
 }
 
 .add_customers_inner .padding_remove .dataTables_paginate a.paginate_button.next::before {
 	content: "\003e" !important;
 	background: #6c6b6b;
 	color: #fff;
-	border-radius: 0;
+	border-radius: 5px;
 }
 
 .add_customers a.paginate_button {
@@ -231,19 +231,9 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .view_employ_table {
     margin-bottom: 0px !important;
 }
-/* .paginate_button.previous::before, .paginate_button.next::before {
-    padding: 6px 12px 13px 12px !important;
-    line-height: 0px !important;
-    font-size: 20px !important;
-} */
-/* .paginate_button.current {
-    padding: 9px 15px 8px 15px !important;
-} */
 .padding_remove .paginate_button.previous::before{
 	content: "\F284" !important;
 }
-
-
 .View_applies_wrapper {
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -255,23 +245,80 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .view_employ_table {
     display: block;
 }
-
+.admin_appy_table select {
+    line-height: 15px;
+}
+.Admin_view_employ  .card-image img{
+	border-radius: 50%;
+    height: 200px;
+    object-fit: cover;
+	width: 200px;
+}
+.Admin_view_employ .video_image_wrapper .column_mine_width, .Admin_view_employ  .inner_spacing_wrappers {
+	padding: 0px !important;
+}
+.Admin_view_employ .column_mine_width {
+    width: 18% !important;
+    flex: 1 18% !important;
+    max-width: 18% !important;
+}
+.Admin_view_employ .video_image_wrapper,.Admin_view_employ .customer_card {
+	padding: 20px 13px;
+}
+.Admin_view_employ .pass_travel_details_wrapper{
+	margin: 0px 13px;
+	padding: 20px 0px !important;
+}
+.Admin_view_employ .pass_travel_details_wrapper {
+    padding-top: 40px;
+}
+.resume_btn:hover{
+	background-color: #060d1a;
+}
 
 @media (max-width:1238px) {
 	.add_testimonial_page {
 		display: block !important;
 	}
+
+}
+@media (max-width:1199px) {
+	.Travel_details {
+		margin-bottom: 20px;
+	}
+	.video_image_wrapper h2 {
+		width: 130px;
+	}
 }
 
+@media (max-width:1100px) {
+	.video_image_wrapper h2 {
+		width: 130px;
+	}
+}
 
 @media (max-width:1024px) {
 	.dashboard-home .card-header h4 {
 		font-size: 16px !important;
 	}
+
 }
 @media (max-width:991px) {
 	.View_Detailed_Enquiry_box {
 		width: 70% !important;
+	}
+	.Admin_view_employ .column_mine_width {
+		width: 23% !important;
+		flex: 1 23% !important;
+		max-width: 23% !important;
+		margin-bottom: 15px;
+	}
+	.Admin_view_employ .video_image_wrapper {
+		padding: 20px 13px!important; 
+	}
+	.Admin_view_employ  .card-image img {
+		height: 150px;
+		width: 150px;
 	}
 }
 
@@ -389,9 +436,23 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	.view_employ_table th{
 		white-space: nowrap;
 	}
-	/* .padding_remove.View_applies_wrapper .dataTables_wrapper .dataTables_info{
-		float: unset !important;
-	} */
+	.admin_profile .remove_paddingss {
+		padding: 0px 5px;
+	}
+	.Admin_view_employ .video_image_wrapper,.Admin_view_employ .customer_card, .Admin_view_employ .video_image_wrapper {
+		padding: 20px 0px !important;
+	}
+	.Admin_view_employ, .Admin_view_employ .pass_travel_details_wrapper {
+		padding: 0px !important;
+		margin: 0px !important;
+	}
+	.width_contents{
+		max-width: 740px !important;
+	}
+	.Travel_details {
+		margin-top: 20px;
+	}
+	
 }
 
 @media (max-width:640px) {
@@ -466,6 +527,37 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	.view_job_wrapper{
 		padding-left: 3px !important;
 		padding-right: 3px !important;
+	}
+	.Admin_view_employ {
+		padding: 0px 5px !important;
+	}
+	.Admin_view_employ  .card-image img {
+		height: 110px;
+		width: 110px;
+	}
+	.Admin_view_employ .customer_card {
+		gap: 15px;
+	}
+	
+	.Admin_view_employ .column_mine_width {
+		width: 50% !important;
+		flex: 1 50% !important;
+		max-width: 50% !important;
+		margin-bottom: 15px;
+	}
+	.Admin_view_employ .col.column_mine_width {
+		padding: 0px 15px 0px 0px!important;
+	}
+	.row_start_content {
+		justify-content: start !important;
+	}
+
+	.video_image_wrapper h2 {
+		font-size: 16px !important;
+	}
+
+	.col_hd_blnk {
+		margin-top: 29px !important;
 	}
 }
 
@@ -634,7 +726,11 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 		flex-wrap: nowrap;
 		width: 100% !important;
 	}
+}
 
-
-
+@media (max-width:400px){
+	.Admin_view_employ  .card-image img {
+		height: 90px;
+		width: 90px;
+	}
 }

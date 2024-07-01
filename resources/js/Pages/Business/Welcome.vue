@@ -221,63 +221,65 @@ async function changeStatus(customer_id, job_id, event) {
           </ul>
         </div>
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner">
-          <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Job Title</th>
-                <th>Status</th>
-                <!-- <th>Apply Date</th> -->
-                <th>Country to Immigrate</th>
-                <th>Profile</th>
-                <th>Visa Purpose</th>
-                <th>Country of Birth</th>
-                <th>Intersts</th>
-                <th>View </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
-                <td class="business_wrap_name">
-                  <!-- <input type="checkbox"> -->
-                  {{ customer?.customers?.first_name }}
-                </td>
-                <td> {{ customer?.jobs?.job_title }}</td>
+          <div class="table_overflow">
+            <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Job Title</th>
+                  <th>Status</th>
+                  <!-- <th>Apply Date</th> -->
+                  <th>Country to Immigrate</th>
+                  <th>Profile</th>
+                  <th>Visa Purpose</th>
+                  <th>Country of Birth</th>
+                  <th>Intersts</th>
+                  <th>View </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
+                  <td class="business_wrap_name">
+                    <!-- <input type="checkbox"> -->
+                    {{ customer?.customers?.first_name }}
+                  </td>
+                  <td> {{ customer?.jobs?.job_title }}</td>
 
-                <td class="status_business">
-                  <div v-if="customer?.status == 0" style="color:">Active </div>
-                  <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
-                  <div v-if="customer?.status == 2" style="color:">Reviewed </div>
-                  <div v-if="customer?.status == 3" style="color:">Contacted </div>
-                  <div v-if="customer?.status == 4" style="color:">Hired </div>
-                  <div v-if="customer?.status == 5" style="color:red">Rejected </div>
-                  <div>{{ formatDateTime(customer?.created_at) }}</div>
-                </td>
-                <!-- <td> <div>{{ formatDateTime(customer?.created_at) }}</div></td> -->
-                <td>
-                  {{ customer?.customers?.migrate_country }}
-                </td>
-                <td> <img :src="customer?.customers?.customer_image" alt=""></td>
-                <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
-                <td v-html="customer?.customers?.country_of_birth"></td>
-                <td>
+                  <td class="status_business">
+                    <div v-if="customer?.status == 0" style="color:">Active </div>
+                    <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
+                    <div v-if="customer?.status == 2" style="color:">Reviewed </div>
+                    <div v-if="customer?.status == 3" style="color:">Contacted </div>
+                    <div v-if="customer?.status == 4" style="color:">Hired </div>
+                    <div v-if="customer?.status == 5" style="color:red">Rejected </div>
+                    <div>{{ formatDateTime(customer?.created_at) }}</div>
+                  </td>
+                  <!-- <td> <div>{{ formatDateTime(customer?.created_at) }}</div></td> -->
+                  <td>
+                    {{ customer?.customers?.migrate_country }}
+                  </td>
+                  <td> <img :src="customer?.customers?.customer_image" alt=""></td>
+                  <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
+                  <td v-html="customer?.customers?.country_of_birth"></td>
+                  <td>
 
-                    <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
+                      <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
 
-                      <option value="0"> Active</option>
-                      <option value="1"> Awaiting Review</option>
-                      <option value="2"> Reviewed</option>
-                      <option value="3"> Contacted</option>
-                      <option value="4"> Hired</option>
-                      <option value="5"> Rejected</option>
-                    </select>
-                </td>
-                <td>
-                  <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
-                </td>
-              </tr>
-            </tbody>
-          </DataTable>
+                        <option value="0"> Active</option>
+                        <option value="1"> Awaiting Review</option>
+                        <option value="2"> Reviewed</option>
+                        <option value="3"> Contacted</option>
+                        <option value="4"> Hired</option>
+                        <option value="5"> Rejected</option>
+                      </select>
+                  </td>
+                  <td>
+                    <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
+                  </td>
+                </tr>
+              </tbody>
+            </DataTable>
+          </div>
         </div>
       </div>
     </div>
