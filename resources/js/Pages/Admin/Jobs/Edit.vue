@@ -426,7 +426,7 @@ function checked_event(event) {
                                     <div class="mt-4">
                                         <span class="label text-label">Currency</span>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options"
+                                            <select class="form-select  mt-2 select_options Selected_option"
                                                 :class="select_class?.Currency" @change="handleChange('Currency')"
                                                 aria-label="Default select example" v-model="form.currency_id">
                                                 <option selected :value="null">Select Currency</option>
@@ -572,7 +572,7 @@ function checked_event(event) {
                                     <div class="mt-4">
                                         <span class="label text-label">Country<span style="color:red"> *</span></span>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options"
+                                            <select class="form-select  mt-2 select_options Selected_option"
                                                 :class="select_class?.select_country"
                                                 @change="handleChange('select_country')"
                                                 aria-label="Default select example" v-model="form.job_country">

@@ -471,6 +471,7 @@ function removeImage(type){
 
             </div>
         </div>
+        </div></div>
 
         <!-------step four----------->
         <div class="login-bg-wrapper steps_form employment-first-form step-form-4 application_guide" v-if="div_numbers == 'step-form-4'">

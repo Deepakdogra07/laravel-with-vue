@@ -3476,6 +3476,14 @@ input[type="file"] {
 		transform: translate(-52%, -50px) !important;
 	}
 
+	#business_apply_modal .modal-dialog{
+		left: 0;
+        transform: unset !important;
+        right: 0;
+        top: 0;
+        bottom: 0;
+	}
+
 	.custom-popover .modal-dialog {
 		top: 20%;
 	}
@@ -5730,7 +5738,7 @@ ul.details_lists {
 }
 
 .job-listing-cards .cards-bio {
-	margin-bottom: 70px;
+	margin-bottom: 85px;
 }
 
 .recommended_text {
@@ -6485,6 +6493,7 @@ span.job-filter_text {
 .list_of_jobs .buttons_div .forms-btn, .list_of_jobs .buttons_div .forms-btn-transparent {
     display: inline-block;
     text-align: center;
+	font-size: 14px;
 }
 .list_of_jobs .buttons_div a.forms-btn i {
     font-size: 19px;
@@ -6601,7 +6610,10 @@ span.job-filter_text {
 .Applied_job_wrapper .dataTables_paginate {
     padding-bottom: 30px;
 }
-
+.view_employ_table {
+    display: inline-table !important;
+    white-space: wrap !important;
+}
 .business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
     padding-right: 87px;
 }
