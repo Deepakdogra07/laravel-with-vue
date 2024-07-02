@@ -490,9 +490,9 @@ public function validate_customer_documents(Request $request){
         $customer_personal_details->submitted = 1;
         $customer_personal_details->save();
         // return response()->json(['redirect_url' => route('processTransaction')]);
-        return back()->with(['success'=>true]);
+        // return back()->with(['success'=>true]);
         // dd('here');
-        // return redirect()->route('home');
+        return redirect()->route('home');
         // return redirect()->route('processTransaction');
     }
 }
