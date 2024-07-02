@@ -61,12 +61,12 @@ function getLast_name(name) {
                 </div>
             </div>
         </div>
-        <div class="py-12 employesss_tabs employesss_tabs_dd">
-            <div class="container">
-                <div class="inner_spacing_wrapper">
-                    <div class="customer_card pb-4">
+        <div class="py-12 employesss_tabs_dd Admin_view_employ">
+            <div class="container-fluid p-0 width_contents">
+                <div class="inner_spacing_wrappers">
+                    <div class="customer_card pb-5">
                         <div class="card-image">
-                            <img :src="customer.customer_image" alt="" width="450px">
+                            <img :src="customer.customer_image" alt="" width="150px;">
                         </div>
                         <div class="inner_card_wrapper">
                             <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
@@ -114,95 +114,98 @@ function getLast_name(name) {
                         </div>
                     </div>
                     <div class="video_image_wrapper pt-5 mbile_padding">
-                        <h2>Videos</h2>
-                        <div class="row">
-                            <div class="col column_width">
-                                <div class="img_inner_wrapper ">
-                                    <div class="img_overlay relative">
-                                        <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
-                                        <video :src="customer?.documents?.kitchen_area" controls></video>
-                                        <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
-                                    </div>
-                                    <div class="wrapper_name">
-                                        <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
-                                    </div>
+                        <h2 class="px-1">Videos</h2>
+                            <div class="">
+                                <div class="row justify-content-between row_start_content">
+                                <div class="col column_width column_mine_width">
+                                    <div class="img_inner_wrapper ">
+                                        <div class="img_overlay relative">
+                                            <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                            <video :src="customer?.documents?.kitchen_area" controls></video>
+                                            <!-- <div class="video_icon absolute w-100">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div> -->
+                                        </div>
+                                        <div class="wrapper_name">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
+                                        </div>
 
+                                    </div>
+                                </div>
+                                <div class="col column_width column_mine_width">
+                                    <div class="img_inner_wrapper ">
+                                        <div class="img_overlay relative">
+                                            <!-- <img src="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                            <video :src="customer?.documents?.ingredients" controls></video>
+                                            <!-- <div class="video_icon absolute w-100">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div> -->
+                                        </div>
+                                        <div class="wrapper_name">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.documents?.ingredients)"></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col column_width column_mine_width">
+                                    <div class="img_inner_wrapper ">
+                                        <div class="img_overlay relative">
+                                            <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
+                                            <video :src="customer?.documents?.cooking_tech" controls></video>
+                                            <!-- <div class="video_icon absolute w-100">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div> -->
+                                        </div>
+                                        <div class="wrapper_name">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- {{ customer }} -->
+                                <div class="col column_width column_mine_width">
+                                    <div class="img_inner_wrapper ">
+                                        <div class="img_overlay relative">
+                                            <video :src="customer?.documents?.dish" controls></video>
+                                            <!-- <div class="video_icon absolute w-100">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div> -->
+                                        </div>
+                                        <div class="wrapper_name">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.documents?.dish)">
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col column_width column_mine_width">
+                                    <div class="img_inner_wrapper ">
+                                        <div class="img_overlay relative">
+                                            <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">/ -->
+                                            <video :src="customer?.documents?.clean_up" controls></video>
+                                            <!-- <div class="video_icon absolute w-100">
+                                            <i class="fas fa-play-circle"></i>
+                                        </div> -->
+                                        </div>
+                                        <div class="wrapper_name">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.documents?.clean_up)"></p>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
-                                <div class="img_inner_wrapper ">
-                                    <div class="img_overlay relative">
-                                        <!-- <img src="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
-                                        <video :src="customer?.documents?.ingredients" controls></video>
-                                        <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
-                                    </div>
-                                    <div class="wrapper_name">
-                                        <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.ingredients)"></p>
-                                    </div>
-
-                                </div>
                             </div>
-                            <div class="col column_width">
-                                <div class="img_inner_wrapper ">
-                                    <div class="img_overlay relative">
-                                        <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png"> -->
-                                        <video :src="customer?.documents?.cooking_tech" controls></video>
-                                        <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
-                                    </div>
-                                    <div class="wrapper_name">
-                                        <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- {{ customer }} -->
-                            <div class="col column_width">
-                                <div class="img_inner_wrapper ">
-                                    <div class="img_overlay relative">
-                                        <video :src="customer?.documents?.dish" controls></video>
-                                        <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
-                                    </div>
-                                    <div class="wrapper_name">
-                                        <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.dish)">
-                                        </p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col column_width">
-                                <div class="img_inner_wrapper ">
-                                    <div class="img_overlay relative">
-                                        <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">/ -->
-                                        <video :src="customer?.documents?.clean_up" controls></video>
-                                        <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
-                                    </div>
-                                    <div class="wrapper_name">
-                                        <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.clean_up)"></p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                           
                     </div>
                     <div class="video_image_wrapper">
-                        <h2>Image</h2>
-                        <div class="row">
-                            <div class="col column_width">
+                        <h2 class="px-1">Image</h2>
+                        <div class="row justify-content-between row_start_content">
+                            <div class="col column_width column_mine_width">
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.evidence_self_employment_aus">
                                     <div class="wrapper_name">
@@ -212,14 +215,14 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
                         </div>
                     </div>
                     <div class="video_image_wrapper">
-                        <div class="row">
+                        <div class="row justify-content-between">
                             <!-- <div class="col col-one">
                             <h2>Passport</h2>
                             <div class="img_inner_wrapper">
@@ -229,7 +232,7 @@ function getLast_name(name) {
                                 </div>
                             </div>
                         </div> -->
-                            <div class="col col-two">
+                            <div class="col col-two column_mine_width">
                                 <h2>Employer statement</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.employer_statement">
@@ -239,7 +242,7 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-three">
+                            <div class="col col-three column_mine_width">
                                 <h2>Financial evidence</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.financial_evidence">
@@ -249,7 +252,7 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col col-four text-full-block">
+                            <div class="col col-four text-full-block column_mine_width">
                                 <h2>Evidence of self-employment</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.formal_training_evidence">
@@ -259,7 +262,7 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width col-five">
+                            <div class="col column_width col-five column_mine_width col_hd_blnk">
                                 <h2 style="visibility: hidden;" class="mobile_none">Evidence of self-employment</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.evidence_self_employment">
@@ -269,11 +272,12 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="col col-three column_mine_width"></div>
                         </div>
                     </div>
                     <div class="video_image_wrapper">
-                        <div class="row">
-                            <div class="col column_width">
+                        <div class="row justify-content-between row_start_content">
+                            <div class="col column_width column_mine_width">
                                 <h2>Formal Training</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.documents?.evidence_image">
@@ -283,7 +287,7 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                                 <h2>Supporting employee</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.documents?.employment_evidence">
@@ -293,7 +297,7 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                                 <h2>Licences</h2>
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.documents?.licences">
@@ -303,15 +307,15 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
                         </div>
                     </div>
                     <div class="video_image_wrapper bg-white resume_div">
-                        <div class="row">
-                            <div class="col column_width">
+                        <div class="row justify-content-between row_start_content">
+                            <div class="col column_width column_mine_width">
                                 <h2>Resume </h2>
                                 <div class="img_inner_wrapper">
                                     <div class="wrapper_name resume_btn">
@@ -321,13 +325,13 @@ function getLast_name(name) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
-                            <div class="col column_width">
+                            <div class="col column_width column_mine_width">
                             </div>
                         </div>
                     </div>

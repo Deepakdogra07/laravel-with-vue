@@ -234,6 +234,7 @@ async function changeStatus(customer_id, job_id, event) {
             </li>
           </ul>
         </div>
+
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
           <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank"
             :key="refreshDataTable">
@@ -278,6 +279,7 @@ async function changeStatus(customer_id, job_id, event) {
                 <td v-html="customer?.customers?.travel_details?.type_of_visa"> </td>
                 <td v-html="customer?.customers?.country_of_birth"></td>
                 <td>
+
 
                   <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status"
                     @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">

@@ -23,32 +23,32 @@
 <template>
     <Header />
     <SubHeading :job_id ="job_id" />
-    <div class="login-bg-wrapper contactUs-section job_intro">
-        <div class="container">
+    <div class="login-bg-wrapper job_intro">
+        <div class="container width_content">
             <p class="text-margin">When you apply for a Trade Skills Assessment, the first step in the process will be a Documentary Evidence Assessment. The documentary evidence is a collection of your employment and training documents that prove you have the skills and knowledge needed to work in your trade in Australia.</p>
             <p class="text-margin">This guide contains information about the types of evidence you need to provide so that your application is decision ready. Presenting your evidence correctly will enable our assessors to make a fair and accurate assessment decision.</p>
             <p class="text-margin">Some forms of evidence are mandatory – you must provide them.Other forms of evidence are not compulsory, but you can submit them to support your application.</p>
             <p class="text-margin">Your evidence needs to demonstrate that you meet the minimum employment experience requirement for your nominated occupation:</p>
             <div class="row mt-5">
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 employ_padding">
                     <div class="d-flex gap-3">
                         <i class="fa-solid fa-circle-check green-text"></i>
                         <p class="light-text">Licensed Trades with no formal training – 6 years’ employment experience.</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 employ_padding">
                     <div class="d-flex gap-3">
                         <i class="fa-solid fa-circle-check green-text"></i>
                         <p class="light-text">Non-licensed Trades with no formal training – 5 years’ employment experience</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 employ_padding">
                     <div class="d-flex gap-3">
                         <i class="fa-solid fa-circle-check green-text"></i>
                         <p class="light-text">Licensed Trades with relevant formal training* – 4 years’ employment experience</p>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
+                <div class="col-md-6 col-12 employ_padding">
                     <div class="d-flex gap-3">
                         <i class="fa-solid fa-circle-check green-text"></i>
                         <p class="light-text">Non-licensed Trades with relevant formal training* – 3 years’ employment experience</p>

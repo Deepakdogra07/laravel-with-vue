@@ -121,20 +121,22 @@ function removeImage(type) {
 
     <form @submit.prevent="submit_form()">
         <!-------step one----------->
+
         <div class="login-bg-wrapper steps_form employment-first-form step-form-1 employment_next"
             v-if="div_numbers == 'step-form-1'">
-            <div class="container">
+            <div class="container width_content">
                 <!-- 1 -->
                 <div class="employment-first-form">
-                    <p class="light-text px-2">You must provide official employment evidence to demonstrate that you
+                    <p class="light-text  mobile_padding">You must provide official employment evidence to demonstrate that you
                         meet the
+
                         minimum
                         employment experience requirements for your nominated occupation.Each period of employment
                         submitted for
                         assessment must be supported by the following two forms of evidence:</p>
-                    <h2 class="px-2">1. An employer statement that includes all the following details:</h2>
+                    <h2 class="mobile_padding ">1. An employer statement that includes all the following details:</h2>
                     <div class="row mt-4">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">your exact employment period (start and finish dates, including
@@ -144,38 +146,38 @@ function removeImage(type) {
                             </div>
 
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">the nature of your employment (full-time,part-time, casual)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">your normal hours of work</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">your job title(s)</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">a detailed description of the tasks that you perform</p>
                             </div>
                         </div>
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text">the name and address of the business on official business
                                     letterhead</p>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
                                 <p class="light-text"> the name, position, contact details (business phone number and
@@ -193,8 +195,10 @@ function removeImage(type) {
                             <img :src="document.employer_statement" alt="" srcset="" width="250px">
                             <p>{{ image_name.employer_statement }}</p>
                         </div>
-                        <div v-else class="col-12">
+
+                        <div v-else class="col-12  p-0">
                             <div class="file-inputs mt-3 relative">
+
                                 <div class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
@@ -211,13 +215,13 @@ function removeImage(type) {
                             </div>
                             <InputError class="mt-2" :message="props.errors.employer_statement" />
                         </div>
-                        <div class="d-flex justify-between align-items-start mt-4">
-                            <div class="flex items-center">
+                        <div class="d-flex justify-between align-items-start mt-4 p-0">
+                            <div class="flex items-start">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center login-btn-main" style="cursor:pointer;">
+                            <div class="flex items-start" style="cursor:pointer;">
                                 <p class="forms-btn" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -232,9 +236,11 @@ function removeImage(type) {
         </div>
 
         <!-------step two----------->
+
         <div class="login-bg-wrapper steps_form employment-first-form step-form-2 application_guide"
             v-if="div_numbers == 'step-form-2'">
-            <div class="container">
+            <div class="container width_content">
+
                 <!-- 1 -->
                 <div class="employment-first-form">
                     <h2>2. Financial evidence including at least 2 of the following items per year of employment
@@ -270,7 +276,8 @@ function removeImage(type) {
                                     deposited (please highlight relevant deposits).</p>
                             </div>
                         </div>
-                        <div class="col-12">
+
+                        <div class="col-12 p-0">
                             <div v-if="document.financial_evidence" class="mt-3 relative">
                                 <p class="btn btn-sm btn-danger justify-content-end" style="float:right;"
                                     @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
@@ -295,7 +302,7 @@ function removeImage(type) {
                             <InputError class="mt-2" :message="props.errors.financial_evidence" />
                         </div>
 
-                        <div class="col-12">
+                        <div class="col-12 p-0">
                             <div class="employ_note">
                                 <h2>Please Note —</h2>
                                 <p>We cannot accept statutory declarations (affidavits) about your employment experience
@@ -308,13 +315,13 @@ function removeImage(type) {
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-start buttons_mine">
+                        <div class="d-flex justify-between align-items-start buttons_mine p-0">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-center mt-4 login-btn-main" style="cursor:pointer">
+                            <div class="flex items-start mt-4" style="cursor:pointer">
                                 <p class="forms-btn" id="2" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -490,9 +497,11 @@ function removeImage(type) {
 
 
         <!-------step four----------->
+
         <div class="login-bg-wrapper steps_form employment-first-form step-form-4 application_guide"
             v-if="div_numbers == 'step-form-4'">
-            <div class="container">
+            <div class="container widthcontent">
+
                 <!-- 1 -->
                 <div class="employment-first-form">
                     <h2>4 Formal Training Evidence</h2>
@@ -574,7 +583,7 @@ function removeImage(type) {
                             </div>
                         </div>
 
-                        <div class="d-flex justify-between align-items-center employ_padding">
+                        <div class="d-flex justify-between align-items-center p-0">
                             <div class="flex items-center mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(4)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
