@@ -38,18 +38,12 @@ const props = defineProps({
                     text: 'Employer Deleted Successfully',
                 });
                 location.reload();
-            } else {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Canceled',
-                    text: 'Deletion canceled.',
-                });
             }
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Error Deleting Employer. Please try again.',
+                text: 'Error Deleting Business. Please try again.',
             });
         }
     };
@@ -67,7 +61,7 @@ const props = defineProps({
                 <h2 class="font-semibold text-xl text-black-800 leading-tight">Businesses</h2>
             <div class="button-container">
                 <Link :href="route('business-listing.create')">
-                <button class="btn btn-info">Add Employer</button>
+                <button class="btn btn-info">Add Business</button>
                 </Link>
             </div>
             

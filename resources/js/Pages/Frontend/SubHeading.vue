@@ -36,7 +36,7 @@ const props=defineProps({
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('term.condition')">Terms and Conditions</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.show',job_id)">View Job</h1>
-                
+                <h1 class="mb-0" v-if="route().current('create.business')">Register Business</h1>
             </div>
         </div>
     </div>

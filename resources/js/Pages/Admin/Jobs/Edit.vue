@@ -112,15 +112,14 @@ onMounted(() => {
 })
 
 const countries = countryStateCity.Country.getAllCountries(),
-    image_name = ref(''),
-    image = ref('');
+    image_name = ref(form.job_image),
+    image = ref(form.job_image);
 
 
 function selectFile(event) {
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
     image_name.value =event.target.files[0].name;
-    console.log(image)
 }
     const active_checkbox =ref({
         documentation:'',
@@ -197,6 +196,11 @@ function checked_event(event) {
     } else {
         form.recommended_skills.splice(event.target.value, 1);
     }
+}
+function removeImage(){
+    form.job_image = null;
+    image.value = null;
+    image_name.value =null;
 }
 </script>
 <template>
@@ -572,10 +576,10 @@ function checked_event(event) {
                                     <div class="mt-4">
                                         <span class="label text-label">Country<span style="color:red"> *</span></span>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options Selected_option"
+                                            <select class="form-select  mt-2 Selected_option"
                                                 :class="select_class?.select_country"
                                                 @change="handleChange('select_country')"
-                                                aria-label="Default select example" v-model="form.job_country">
+                                                aria-label="Default select example " v-model="form.job_country">
                                                 <option selected :value="null">Select Country</option>
                                                 <option v-for="country in countries" :key="country.id"
                                                     :value="country.name">{{
@@ -587,9 +591,15 @@ function checked_event(event) {
                                 </div>
 
                                 <div class="col-12 mt-4 file_upload">
-                                    <div class="file-inputs mt-3 relative">
+                                    <div v-if="image_name" >
+                                        <div class="col-md-12">
+                                            <p class="btn btn-danger" @click="removeImage()"><i class="fas fa-times"></i></p>
+                                            <img :src="image" alt="" width="250px">
+                                            <p>{{ image_name }}</p>
+                                        </div>
+                                    </div>
+                                    <div v-else class="file-inputs mt-3 relative">
                                         <div class="dotted-bg">
-                                            <img :src="image" alt="" srcset="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                                 viewBox="0 0 80 80" fill="none">
                                                 <path
@@ -600,7 +610,7 @@ function checked_event(event) {
                                             <p class="file-type">Max size 20MB</p>
                                             <input class="upload" type="file" id="banner"
                                                 @change="selectFile($event)" />
-                                                <p>{{ image_name }}</p>
+                                              
                                         </div>
                                     </div>
                                     <InputError class="mt-2" :message="form.errors.job_image" />

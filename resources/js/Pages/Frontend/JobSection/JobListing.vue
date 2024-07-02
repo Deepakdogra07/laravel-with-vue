@@ -15,6 +15,7 @@ const props = defineProps({
         type:String
     }
 })
+
 function dateTime(created_at) {
     const currentDateTime = new Date();
     const jobCreatedAt = new Date(created_at);
@@ -52,6 +53,7 @@ function dateTime(created_at) {
                    <Link :href="route('job.listing')" class="text-dark"><i class="fas fa-times"></i></Link>
                 </span>
             </div>
+            
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3  mt-2" v-if="jobs.data.length > 0"  >
                 <div class="job-listing-cards relative" v-for="(job) in jobs.data" :key="job.id">
                     <div class="update-time absolute top-4 right-4">

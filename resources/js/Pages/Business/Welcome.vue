@@ -21,8 +21,8 @@ const props = defineProps({
   status: {
     type: Array
   },
-  jobs:{
-    type:Array
+  jobs: {
+    type: Array
   }
 });
 function formatDateTime(date) {
@@ -51,45 +51,45 @@ const setActiveSpan = async (spanNumber) => {
     console.error('Error:', error);
   }
 };
-async function search_datatable(event){
-    let string = event.target.value;
-    if(string.length > 0){
-        try {
-            const response = await axios.get(route('customer.search',string));
-            appliedCustomers.value = response.data.applied_customers;
-            refreshDataTable.value++;
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }else{
-      location.reload();
+async function search_datatable(event) {
+  let string = event.target.value;
+  if (string.length > 0) {
+    try {
+      const response = await axios.get(route('customer.search', string));
+      appliedCustomers.value = response.data.applied_customers;
+      refreshDataTable.value++;
+    } catch (error) {
+      console.error('Error:', error);
     }
+  } else {
+    location.reload();
+  }
 }
 const countries = Country.getAllCountries();
 function filterData(type, event) {
   let customers_data = props.applied_customers;
-  if(event.target.value != ''){
+  if (event.target.value != '') {
 
-    if(type=='location'){
-    appliedCustomers.value = customers_data.filter(customer=> customer.customers.migrate_country == event.target.value);
-    refreshDataTable.value++;
-  }
-  if(type=='job_title'){
-    appliedCustomers.value = customers_data.filter(jobs=> jobs.job_id == event.target.value);
-    refreshDataTable.value++;
-  }
-  if(type == 'applied_date'){
-    if(event.target.value == 'desc'){
-      appliedCustomers.value = customers_data.sort((a, b) => b.job_id - a.job_id);
-    }else{
-      appliedCustomers.value = customers_data.sort((a, b) => a.job_id - b.job_id);
+    if (type == 'location') {
+      appliedCustomers.value = customers_data.filter(customer => customer.customers.migrate_country == event.target.value);
+      refreshDataTable.value++;
     }
-  }
-  }else{
+    if (type == 'job_title') {
+      appliedCustomers.value = customers_data.filter(jobs => jobs.job_id == event.target.value);
+      refreshDataTable.value++;
+    }
+    if (type == 'applied_date') {
+      if (event.target.value == 'desc') {
+        appliedCustomers.value = customers_data.sort((a, b) => b.job_id - a.job_id);
+      } else {
+        appliedCustomers.value = customers_data.sort((a, b) => a.job_id - b.job_id);
+      }
+    }
+  } else {
     appliedCustomers.value = customers_data;
     refreshDataTable.value++;
   }
-  
+
 }
 const navbar_key = ref(0);
 async function changeStatus(customer_id, job_id, event) {
@@ -104,15 +104,18 @@ async function changeStatus(customer_id, job_id, event) {
       });
       navbar_key.value++;
       toast('Status updated successfully', {
-          autoClose: 2000,
-          theme: 'dark',
-        });
-        refreshDataTable.value++;
+        autoClose: 2000,
+        theme: 'dark',
+      });
+      refreshDataTable.value++;
+      setTimeout(() => {
+        location.reload();
+      }, 3000);
     } catch (error) {
       toast(error, {
-          autoClose: 2000,
-          theme: 'dark',
-        });
+        autoClose: 2000,
+        theme: 'dark',
+      });
     }
   }
 }
@@ -138,7 +141,8 @@ async function changeStatus(customer_id, job_id, event) {
 
           <div class="relative search_bar">
             <i class="bi bi-search absolute top-[50%] left-[15px] translate-y-[-50%]"></i>
-            <input type="search" class="user-dashboard-search" @input="search_datatable($event)" placeholder="Search employee">
+            <input type="search" class="user-dashboard-search" @input="search_datatable($event)"
+              placeholder="Search employee">
           </div>
         </div>
       </div>
@@ -198,41 +202,42 @@ async function changeStatus(customer_id, job_id, event) {
             </li> -->
             <li>
               <span>Job:
-                  <select class="job-filter_text any_select_box" @change="filterData('job_title',$event)">
-                    <option value=""> Any</option>
-                    <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
-                  </select>
+                <select class="job-filter_text any_select_box" @change="filterData('job_title', $event)">
+                  <option value=""> Any</option>
+                  <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
+                </select>
               </span>
             </li>
             <!-- <li>
               <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
             </li> -->
             <li class="business_location_list">
-                            <span>
-                              Location:
-                                <select @change="filterData('location', $event)" class="job-filter_text">
-                                    <option value="" class="any_option">Any</option>
-                                    <option v-for="country in countries" :value="country.name">{{
-                                        country.name }}</option>
-                                </select>
-                            </span>
-                        </li>
+              <span>
+                Location:
+                <select @change="filterData('location', $event)" class="job-filter_text">
+                  <option value="" class="any_option">Any</option>
+                  <option v-for="country in countries" :value="country.name">{{
+                    country.name }}</option>
+                </select>
+              </span>
+            </li>
             <li>
               <span>Sort:
-                  <span class="job-filter_textss">
-                    <select class="job-filter_text" @change="filterData('applied_date',$event)">
-                      <option value="">Any</option>
-                      <option value="desc">Apply Date(newest)</option>
-                      <option value="asc">Apply Date(oldest)</option>
-                    </select>
-                  </span>
+                <span class="job-filter_textss">
+                  <select class="job-filter_text" @change="filterData('applied_date', $event)">
+                    <option value="">Any</option>
+                    <option value="desc">Apply Date(newest)</option>
+                    <option value="asc">Apply Date(oldest)</option>
+                  </select>
+                </span>
               </span>
             </li>
           </ul>
         </div>
 
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
-          <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank" :key="refreshDataTable">
+          <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank"
+            :key="refreshDataTable">
             <thead>
               <tr>
                 <th>Name</th>
@@ -276,26 +281,28 @@ async function changeStatus(customer_id, job_id, event) {
                 <td>
 
 
-                      <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
+                  <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status"
+                    @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
 
-                        <option value="0"> Active</option>
-                        <option value="1"> Awaiting Review</option>
-                        <option value="2"> Reviewed</option>
-                        <option value="3"> Contacted</option>
-                        <option value="4"> Hired</option>
-                        <option value="5"> Rejected</option>
-                      </select>
-                  </td>
-                  <td>
-                    <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i> </Link>
-                  </td>
-                </tr>
-              </tbody>
-            </DataTable>
-          </div>
+                    <option value="0"> Active</option>
+                    <option value="1"> Awaiting Review</option>
+                    <option value="2"> Reviewed</option>
+                    <option value="3"> Contacted</option>
+                    <option value="4"> Hired</option>
+                    <option value="5"> Rejected</option>
+                  </select>
+                </td>
+                <td>
+                  <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer', customer.customer_id)"><i
+                    class="fas fa-eye"></i> </Link>
+                </td>
+              </tr>
+            </tbody>
+          </DataTable>
         </div>
       </div>
     </div>
+  </div>
   <Footer :footer_data="footer_data" />
 
 </template>

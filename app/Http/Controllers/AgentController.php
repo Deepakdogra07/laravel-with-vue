@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 
-use App\Mail\VerifyUser;
+use App\Models\Jobs;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Leads;
+use App\Mail\VerifyUser;
+use App\Models\JobStatus;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\RegisteredAgent;
-use Illuminate\Auth\Notifications\VerifyEmail;
+use App\Models\BusinessModal;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Notifications\VerifyEmail;
 
 class AgentController extends Controller
 {
@@ -93,9 +96,22 @@ class AgentController extends Controller
         return to_route('business-listing.index');
     }
 
-    public function delete(Request $request)
+    public function destroy($id)
     {
-        $customers = User::find($request->id);
-        $customers->update(['is_deleted' => 1]);
+        $customer = User::find($id);
+        $jobs_id = Jobs::where('user_id',$customer->id)->pluck('id');
+        JobStatus::whereIn('job_id', $jobs_id)->each(function ($jobStatus) {
+            $jobStatus->customers()->each(function ($customer) {
+                $customer->travel_details()->forceDelete();            
+                $customer->documents()->forceDelete();
+                $customer->employments()->forceDelete();
+                $customer->forceDelete();
+            });
+            $jobStatus->forceDelete();
+        });
+        Jobs::whereIn('id',$jobs_id)->forceDelete();
+        BusinessModal::where('user_id',$customer->id)->forceDelete();
+        $customer->forceDelete();
+
     }
 }

@@ -34,15 +34,9 @@ const testimonialDelete = async (id) => {
       });
         setTimeout(() => {
           window.location.reload();
-       }, 1000);
+       }, 3000);
 
-    } else {
-      Swal.fire({
-        icon: 'info',
-        title: 'Canceled',
-        text: 'Deletion canceled.',
-      });
-    }
+    } 
   } catch (error) {
     Swal.fire({
       icon: 'error',

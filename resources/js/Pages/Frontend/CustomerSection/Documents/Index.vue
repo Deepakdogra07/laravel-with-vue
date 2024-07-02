@@ -96,8 +96,25 @@ function submit_form() {
                 autoClose: 2000,
                 theme: 'dark',
             });
+            // setTimeout(() => {
+            window.location.href = route('processTransaction');
+        // }, 2000)
         }
     })
+    // axios.post(route('submit_customers_documents'),form)
+    // .then(response => {
+    //     toast("Job Applied Successfully!", {
+    //         autoClose: 2000,
+    //         theme: 'dark',
+    //     });
+        
+    //     // Wait for the toast to close before redirecting
+    //     // setTimeout(() => {
+    //     //     window.location.href = response.data.redirect_url;
+    //     // }, 2000); // 2000 milliseconds = 2 seconds
+    // }).catch(error => {
+    //     console.error('There was an error!', error);
+    // });
 }
 // function validateForm(formData){
 // console.log(formData,'formDataformData');
@@ -960,11 +977,11 @@ function removeImage(type){
                         <div class="col-12 p-0">
                             <div v-if="document.resume" class="mt-3 relative">
                                 <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
+                                <img :src="document.resume" alt="" srcset="">
                                 <p class="close_image_name">{{ image_name.resume }}</p>
                             </div>
-                            <div class="file-inputs mt-3 relative">
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.resume" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -1020,7 +1037,7 @@ function removeImage(type){
                             </div>
                             <div class="flex items-start mt-4">
                                 <PrimaryButton class="forms-btn" type="submit">
-                                    Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                                    Pay Fee and Submit Application
                                 </PrimaryButton>
                             </div>
                         </div>
