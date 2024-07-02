@@ -3,18 +3,20 @@
 namespace App\Http\Controllers;
 
 
-use App\Mail\VerifyUser;
+use App\Models\Jobs;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Leads;
+use App\Mail\VerifyUser;
+use App\Models\JobStatus;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\RegisteredAgent;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Notifications\VerifyEmail;
 
 class AgentController extends Controller
 {
@@ -93,9 +95,21 @@ class AgentController extends Controller
         return to_route('business-listing.index');
     }
 
-    public function delete(Request $request)
+    public function destroy($id)
     {
-        $customers = User::find($request->id);
-        $customers->update(['is_deleted' => 1]);
+        // dd($request->all());
+        $customer = User::find($id);
+        Jobs::where('user_id',$customer->id)->forceDelete();
+        JobStatus::where('customer_id', $customer->id)->each(function ($jobStatus) {
+            $jobStatus->customers()->each(function ($customer) {
+                $customer->travel_details()->forceDelete();            
+                $customer->documents()->forceDelete();
+                $customer->employments()->forceDelete();
+                $customer->forceDelete();
+            });
+            $jobStatus->forceDelete();
+        });
+        $customer->forceDelete();
+
     }
 }

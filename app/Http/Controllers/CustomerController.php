@@ -7,6 +7,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use App\Mail\VerifyUser;
 use App\Models\Customer;
+use App\Models\JobStatus;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BusinessModal;
@@ -20,11 +21,9 @@ class CustomerController extends Controller
     public function index()
     {
         $authUser = Auth::user();
-        if ($authUser->user_type == 1) {
-        $customers = User::where('user_type', '=', '3')->where('is_deleted',null)->get();
-        }elseif($authUser->user_type == 2){
-            $customers = User::where('user_type', '=', '3')->where('is_deleted', null)->get();
-        }
+        // if ($authUser->user_type == 1) {
+        $customers = User::where('user_type', '=', '3')->latest()->get();
+        // }
 
         return Inertia::render('Customers/Index', ['customers' => $customers,'authUser'=>$authUser]);
     }
@@ -101,7 +100,16 @@ class CustomerController extends Controller
     public function delete(Request $request)
     {
         $customers = User::find($request->id);
-        $customers->update(['is_deleted' => 1]);
+        JobStatus::where('customer_id', $request->id)->each(function ($jobStatus) {
+            $jobStatus->customers()->each(function ($customer) {
+                $customer->travel_details()->forceDelete();            
+                $customer->documents()->forceDelete();
+                $customer->employments()->forceDelete();
+                $customer->forceDelete();
+            });
+            $jobStatus->forceDelete();
+        });
+        $customers->forceDelete();
     }
     public function createBusiness(){
         $user = Auth::user();
