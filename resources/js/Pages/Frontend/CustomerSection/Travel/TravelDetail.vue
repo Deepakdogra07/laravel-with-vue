@@ -115,7 +115,7 @@ function handleCountryInput(type){
                     </div>
                     <div class="col-md-6 col-12 travel-form-main p-0">
                             <div class="col-md-12 natoinality_row row">
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 calender_input">
                                     <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <!-- <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/> -->
                                     <VueDatePicker v-model="form.date_of_travel" placeholder="Select Date of travel" class="form-control mt-2  " :format="format" :min-date="today" prevent-min-max-navigation :type="'date'"
@@ -174,6 +174,5 @@ function handleCountryInput(type){
 input[type='radio']:checked{
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
 }
-
 
 </style>
