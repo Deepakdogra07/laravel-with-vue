@@ -146,12 +146,12 @@ function removeImage(type){
 
                         <div class="col-12">
                             <div v-if="document.employment_evidence" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
-                                <img :src="document.employment_evidence" alt="" srcset="" width="250px">
-                                <p>{{ image_name.employment_evidence }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
+                                <img :src="document.employment_evidence" alt="" srcset="" width="250px"></div>
+                                <p class="close_image_name">{{ image_name.employment_evidence }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
-                                <div  class="dotted-bg">
+                                <div class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -204,9 +204,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.licences" class="mt-3 relative">
-                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.licences" alt="" srcset="" width="250px">
-                                    <p>{{ image_name.licences }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.licences" alt="" srcset="" width="250px"></div>
+                                    <p class="close_image_name">{{ image_name.licences }}</p>
                                 </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -276,9 +276,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.is_australia" class="mt-3 relative">
-                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('is_australia')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.is_australia" alt="" srcset="" width="250px">
-                                    <p>{{ image_name.is_australia }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('is_australia')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.is_australia" alt="" srcset="" width="250px"></div>
+                                    <p class="close_image_name">{{ image_name.is_australia }}</p>
                                 </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -511,9 +511,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.kitchen_area" class="mt-3 relative">
-                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('kitchen_area')"><i class="fas fa-times"></i></p>
-                                    <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video>
-                                    <p>{{ image_name.kitchen_area }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('kitchen_area')"><i class="fas fa-times"></i></p>
+                                    <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video></div>
+                                    <p class="close_image_name">{{ image_name.kitchen_area }}</p>
                                 </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -524,8 +524,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Video</h2>
+                                    <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('kitchen_area', $event)" accept="video/*">
                                 </div>
@@ -582,9 +582,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.ingredients" class="mt-3 relative">
-                                    <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('ingredients')"><i class="fas fa-times"></i></p>
-                                    <video :src="document.ingredients" controls v-if="document.ingredients"></video>
-                                    <p>{{ image_name.ingredients }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('ingredients')"><i class="fas fa-times"></i></p>
+                                    <video :src="document.ingredients" controls v-if="document.ingredients"></video></div>
+                                    <p class="close_image_name">{{ image_name.ingredients }}</p>
                                 </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -594,8 +594,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Video</h2>
+                                    <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('ingredients', $event)" accept="video/*">
                                 </div>
@@ -639,9 +639,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.cooking_tech" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('cooking_tech')"><i class="fas fa-times"></i></p>
-                                <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video>
-                                <p>{{ image_name.cooking_tech }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('cooking_tech')"><i class="fas fa-times"></i></p>
+                                <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video></div>
+                                <p class="close_image_name">{{ image_name.cooking_tech }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -651,8 +651,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Video</h2>
+                                    <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('cooking_tech', $event)" accept="video/*">
                                 </div>
@@ -691,9 +691,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.dish" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('dish')"><i class="fas fa-times"></i></p>
-                                <video :src="document.dish" controls v-if="document.dish"></video>
-                                <p>{{ image_name.dish }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('dish')"><i class="fas fa-times"></i></p>
+                                <video :src="document.dish" controls v-if="document.dish"></video></div>
+                                <p class="close_image_name">{{ image_name.dish }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -703,8 +703,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Video</h2>
+                                    <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)" accept="video/*">
                                 </div>
@@ -743,9 +743,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.clean_up" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('clean_up')"><i class="fas fa-times"></i></p>
-                                <video :src="document.clean_up" controls v-if="document.clean_up"></video>
-                                <p>{{ image_name.clean_up }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('clean_up')"><i class="fas fa-times"></i></p>
+                                <video :src="document.clean_up" controls v-if="document.clean_up"></video></div>
+                                <p class="close_image_name">{{ image_name.clean_up }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -756,8 +756,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Video</h2>
+                                    <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
@@ -868,9 +868,9 @@ function removeImage(type){
 
                         <div class="col-12 p-0">
                             <div v-if="document.evidence_image" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('evidence_image')"><i class="fas fa-times"></i></p>
-                                <img :src="document.evidence_image" alt="" srcset="" width="250px">
-                                <p>{{ image_name.evidence_image }}</p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_image')"><i class="fas fa-times"></i></p>
+                                <img :src="document.evidence_image" alt="" srcset="" width="250px"></div>
+                                <p class="close_image_name">{{ image_name.evidence_image }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
@@ -959,8 +959,8 @@ function removeImage(type){
 
                         <div class="col-12 p-0">
                             <div v-if="document.resume" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
-                                <p>{{ image_name.resume }}</p>
+                                <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
+                                <p class="close_image_name">{{ image_name.resume }}</p>
                             </div>
                             <div class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">

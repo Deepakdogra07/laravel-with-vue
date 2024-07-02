@@ -25,13 +25,13 @@ const props=defineProps({
             <div class="container subheading_cn">
                 <h1 class="mb-0" v-if="route().current('login') || route().current('password.request')  ">Welcome to Login</h1>
                 <h1 class="mb-0" v-if="route().current('password.reset') ">Reset Password</h1>
-                <h1 class="mb-0" v-if="route().current('job.listing') || route().current('view.job')"> Jobs Details </h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('job.listing') || route().current('view.job')"> Jobs Details </h1>
                 <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
-                <h1 class="mb-0" v-if="route().current('contact.us')">Contact us</h1>
-                <h1 class="mb-0" v-if="route().current('about.us')">About us</h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('contact.us')">Contact us</h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('about.us')">About us</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.create')">Job Posting</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.edit',job_id)">Edit Job Posting</h1>
-                <h1 class="mb-0" v-if="route().current('testimonial.main') || route().current('show.testimonial',testimonial_id)">Testimonial</h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('testimonial.main') || route().current('show.testimonial',testimonial_id)">Testimonial</h1>
                 <h1 class="mb-0" v-if="route().current('job.introduction') || route().current('employment.details') || route().current('document.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('travel.details') || route().current('personal.details')">Your Application Guide</h1>
                 <h1 class="mb-0" v-if="route().current('term.condition')">Terms and Conditions</h1>

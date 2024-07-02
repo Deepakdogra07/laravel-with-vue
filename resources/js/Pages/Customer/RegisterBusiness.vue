@@ -63,7 +63,7 @@ function select_country(event){
     <Head title="Register" />
     <Header class="login-wrapper" />
     <SubHeading />
-    <div class="login-bg-wrapper create_Account">
+    <div class="login-bg-wrapper create_Account customer_login">
         <div class="container h-100">
             <h2 class="mb-4 login-texts">Personal & Company Details</h2>
             <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">

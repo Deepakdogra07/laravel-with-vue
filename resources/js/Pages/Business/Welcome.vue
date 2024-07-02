@@ -296,8 +296,6 @@ async function changeStatus(customer_id, job_id, event) {
         </div>
       </div>
     </div>
-  </div>
-
   <Footer :footer_data="footer_data" />
 
 </template>
