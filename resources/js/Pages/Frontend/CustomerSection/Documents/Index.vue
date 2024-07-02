@@ -96,8 +96,25 @@ function submit_form() {
                 autoClose: 2000,
                 theme: 'dark',
             });
+            // setTimeout(() => {
+            window.location.href = route('processTransaction');
+        // }, 2000)
         }
     })
+    // axios.post(route('submit_customers_documents'),form)
+    // .then(response => {
+    //     toast("Job Applied Successfully!", {
+    //         autoClose: 2000,
+    //         theme: 'dark',
+    //     });
+        
+    //     // Wait for the toast to close before redirecting
+    //     // setTimeout(() => {
+    //     //     window.location.href = response.data.redirect_url;
+    //     // }, 2000); // 2000 milliseconds = 2 seconds
+    // }).catch(error => {
+    //     console.error('There was an error!', error);
+    // });
 }
 // function validateForm(formData){
 // console.log(formData,'formDataformData');

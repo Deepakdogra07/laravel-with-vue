@@ -131,7 +131,7 @@ class JobsController extends Controller
             $languages[] = $language['id'];
          }
          foreach ($request->industry_id as $industry) {
-            $industries[] = $industry['id'];
+            $industries[] = (int)$industry['id'];
          }
          //   dd($industries);
          $skills = json_encode($skills);
@@ -250,7 +250,7 @@ class JobsController extends Controller
             $languages[] = $language['id'];
          }
          foreach ($request->industry_id as $industry) {
-            $industries[] = $industry['id'];
+            $industries[] = (int)$industry['id'];
          }
          //   dd($request->all());
          $skills = json_encode($skills);
@@ -311,21 +311,25 @@ class JobsController extends Controller
       
       $user = Auth::user();
       $industry = '';
-      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills')->latest();
+      $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills');
+      
       if($user && $user->user_type < 3){
          $jobs = $jobs->where('user_id' ,'!=',$user->id);
       }
       if($request->industry){
-         $jobs = $jobs->whereJsonContains('industry_id' ,$request->industry);
+         $industry = $request->industry;
+         $jobs = $jobs->whereJsonContains('industry_id', (int)$request->industry);
+        
          $industry  = Industries::where('id',$request->industry)->pluck('category_heading')->first();
       }
       if($request->country){
          $jobs = $jobs->where('job_country' ,$request->country);
          $industry = $request->country;
       }
-      $jobs = $jobs->paginate(3);
+      // $jobs = $jobs->get();
+      // dd($jobs);
+      $jobs = $jobs->paginate(9);
       $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
-      // dd($applied_jobs);
       return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs','industry'));
    }
 
