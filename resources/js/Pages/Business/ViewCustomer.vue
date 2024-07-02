@@ -56,7 +56,8 @@ function toggler(type,source){
             <div class="inner_spacing_wrapper">
                 <div class="customer_card pb-4">
                     <div class="card-image">
-                        <img :src="customer.customer_image" alt="" width="450px">
+                        <img :src="customer.customer_image" alt="" width="450px" >
+                        
                     </div>
                     <div class="inner_card_wrapper">
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
@@ -111,7 +112,7 @@ function toggler(type,source){
                                     </div> -->
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
+                                    <a :href="customer?.documents?.kitchen_area" target="_blank" download="kitchenArea"> <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.documents?.kitchen_area)"></p></a>
                                 </div>
                                 
                             </div>
@@ -126,7 +127,9 @@ function toggler(type,source){
                                     </div> -->
                                 </div>
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.ingredients)"></p>
+                                    <a :href="customer?.documents?.ingredients" target="_blank" download="ingredients">
+                                        <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.documents?.ingredients)"></p>
+                                    </a> 
                                 </div>
                                 
                             </div>
@@ -141,7 +144,9 @@ function toggler(type,source){
                                     </div> -->
                                 </div>
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.cooking_tech" target="_blank" download="cookingTechnique">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
+                                    </a>
                                 </div>
                                 
                             </div>
@@ -156,7 +161,9 @@ function toggler(type,source){
                                     </div> -->
                                 </div>
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.dish"  target="_blank" download="dish">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.dish)"></p>
+                                    </a>
                                 </div>
                                 
                             </div>
@@ -164,14 +171,12 @@ function toggler(type,source){
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
-                                    <!-- <img scr="http://127.0.0.1:8000/storage/categories/664722250a432_1715937829_.png">/ -->
                                     <video :src="customer?.documents?.clean_up" controls></video>
-                                    <!-- <div class="video_icon absolute w-100">
-                                        <i class="fas fa-play-circle"></i>
-                                    </div> -->
                                 </div>
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.cleanup"  target="_blank" download="cleanup">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.clean_up)"></p>
+                                    </a>
                                 </div>
                                 
                             </div>
@@ -185,7 +190,9 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.evidence_self_employment_aus">
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.evidence_self_employment_aus" target="_blank" download="ausSelf">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)"></p>
+                                </a>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +218,9 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.employer_statement" @click="toggler('employer_statement',customer?.employments?.employer_statement)">
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.employer_statement" target="_blank" download="EmployerStatement">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.employer_statement)"></p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +229,9 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.financial_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.financial_evidence)" ></p>
+                                    <a :href="customer?.documents?.employer_statement" target="_blank" download="FinancialEvidence">
+                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.financial_evidence)" ></p>
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +240,9 @@ function toggler(type,source){
                                     <div class="img_inner_wrapper">
                                         <img :src="customer?.employments?.formal_training_evidence">
                                         <div class="wrapper_name">
-                                            <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.formal_training_evidence)" ></p>
+                                    <a :href="customer?.documents?.formal_training_evidence" target="_blank" download="TrainingEvidence">
+                                            <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.employments?.formal_training_evidence)" ></p>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -238,7 +251,9 @@ function toggler(type,source){
                                     <div class="img_inner_wrapper">
                                         <img :src="customer?.employments?.evidence_self_employment">
                                         <div class="wrapper_name">
-                                            <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                    <a :href="customer?.documents?.evidence_self_employment" target="_blank" download="SelfEmploymentEvidence">
+                                        <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                        </a>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +266,9 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.evidence_image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.evidence_image)"></p>
+                                    <a :href="customer?.documents?.evidence_image" target="_blank" download="Evidence">
+                                        <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.documents?.evidence_image)"></p>
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +277,10 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.employment_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                    <a :href="customer?.documents?.employment_evidence" target="_blank" download="EmploymentEvidence">
+                                        <p class="mb-0 text-white text-center"  v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                        </a>
+
                                 </div>
                             </div>
                         </div>
@@ -269,7 +289,9 @@ function toggler(type,source){
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.licences">
                                 <div class="wrapper_name">
+                                    <a :href="customer?.documents?.licences" target="_blank" download="Licence">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.licences)"></p>
+                                    </a>
                                 </div>
                             </div>
                         </div>

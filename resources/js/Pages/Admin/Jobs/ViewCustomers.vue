@@ -70,6 +70,9 @@ async function changeStatus(customer_id, job_id, event) {
                     theme: 'dark',
                 });
                 refreshDataTable.value++;
+                setTimeout(() => {
+                    location.reload();
+                },3000);
             }else{
                 toast('Status not updated/', {
                     autoClose: 2000,
