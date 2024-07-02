@@ -72,7 +72,7 @@ class HomeController extends Controller
         $footer_data = FooterData::first();
        
         $applied_jobs = JobStatus::whereHas('customers', function ($query) {
-            $query->where('user_id',Auth::user()->id); 
+            $query->where('user_id',Auth::user()->id)->where('submitted',1); 
         })->with('customers','jobs','jobs.business','customers.travel_details')->latest()->get();
         return Inertia::render('Customer/Welcome',compact('footer_data','applied_jobs'));
     }
