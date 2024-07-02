@@ -130,6 +130,9 @@ class JobApplicationController extends Controller
             return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail',compact('errors','variable'));
         }
         $user = User::where('email',$request->email)->first();
+        if(!$user){
+            $user = Auth::user();
+        }
         if($user){
             $create_customer = $user; 
         }else{
