@@ -17,7 +17,6 @@ const props = defineProps({
         type:Number
     }
 });
-console.log(props);
 
 
 </script>
@@ -62,8 +61,8 @@ console.log(props);
             </div>
             <div class="row mt-3">
                 <div class="previous_next"> 
-                    <Link class="btn btn-secondary previous_btn" :href="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
-                    <Link class="btn btn-success next_btn" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
+                    <Link class="btn btn-secondary previous_btn" :href="previous" v-if="previous" > <i class="fa-solid fa-arrow-left"></i>Previous</Link>
+                    <Link class="btn btn-success next_btn" v-if="next" style="float:right;" :href="next"  > Next<i class="fa-solid fa-arrow-right"></i></Link>
                 </div>
             </div>
         </div>

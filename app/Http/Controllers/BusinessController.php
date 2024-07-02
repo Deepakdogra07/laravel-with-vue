@@ -132,7 +132,7 @@ class BusinessController extends Controller
                 $languages[] = $language['id'];
             }
             foreach ($request->industry_id as $industry) {
-                $industries[] = $industry['id'];
+                $industries[] = (int)$industry['id'];
             }
             $skills = json_encode($skills);
             $languages = json_encode($languages);
@@ -255,7 +255,7 @@ class BusinessController extends Controller
                 $languages[] = $language['id'];
             }
             foreach ($request->industry_id as $industry) {
-                $industries[] = $industry['id'];
+                $industries[] = (int)$industry['id'];
             }
             $skills = json_encode($skills);
             $industries = json_encode($industries);

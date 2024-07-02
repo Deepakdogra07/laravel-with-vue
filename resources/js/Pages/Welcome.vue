@@ -125,14 +125,14 @@ onMounted(() => {
           <img class="left-img" :src="logo.country_1_image" alt="">
           <div class="country-names country_hd">
             <Link :href="`job-listing?country=${logo.country_1_name}`"> <h3>{{ logo.country_1_name }}</h3></Link>
-            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+            <Link :href="`job-listing?country=${logo.country_1_name}`" href="">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
           <img class="right-img" :src="logo.country_2_image" alt="">
           <div class="country-names country_hd">
             <Link :href="`job-listing?country=${logo.country_2_name}`"> <h3>{{ logo.country_2_name }}</h3></Link>
-            <Link href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+            <Link :href="`job-listing?country=${logo.country_2_name}`">Learn More <i class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
       </div>
