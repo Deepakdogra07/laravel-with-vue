@@ -488,6 +488,6 @@ public function validate_customer_documents(Request $request){
         $customer_personal_details = Customer::findOrFail($customer->customer_id);
         $customer_personal_details->submitted = 1;
         $customer_personal_details->save();
-        return redirect()->route('home');
+        return redirect()->route('processTransaction');
     }
 }

@@ -12,6 +12,7 @@ use App\Models\JobStatus;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\RegisteredAgent;
+use App\Models\BusinessModal;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -97,10 +98,9 @@ class AgentController extends Controller
 
     public function destroy($id)
     {
-        // dd($request->all());
         $customer = User::find($id);
-        Jobs::where('user_id',$customer->id)->forceDelete();
-        JobStatus::where('customer_id', $customer->id)->each(function ($jobStatus) {
+        $jobs_id = Jobs::where('user_id',$customer->id)->pluck('id');
+        JobStatus::whereIn('job_id', $jobs_id)->each(function ($jobStatus) {
             $jobStatus->customers()->each(function ($customer) {
                 $customer->travel_details()->forceDelete();            
                 $customer->documents()->forceDelete();
@@ -109,6 +109,8 @@ class AgentController extends Controller
             });
             $jobStatus->forceDelete();
         });
+        Jobs::whereIn('id',$jobs_id)->forceDelete();
+        BusinessModal::where('user_id',$customer->id)->forceDelete();
         $customer->forceDelete();
 
     }

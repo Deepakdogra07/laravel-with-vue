@@ -953,11 +953,11 @@ function removeImage(type){
                         <div class="col-12">
                             <div v-if="document.resume" class="mt-3 relative">
                                 <p class="btn btn-sm btn-danger justify-content-end" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
+                                <img :src="document.resume" alt="" srcset="">
                                 <p>{{ image_name.resume }}</p>
                             </div>
-                            <div class="file-inputs mt-3 relative">
+                            <div v-else class="file-inputs mt-3 relative">
                                 <div class="dotted-bg">
-                                    <img :src="document.resume" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
                                         <path
@@ -1013,7 +1013,7 @@ function removeImage(type){
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
                                 <PrimaryButton class="forms-btn" type="submit">
-                                    Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                                    Pay Fee and Submit Application
                                 </PrimaryButton>
                             </div>
                         </div>
