@@ -63,7 +63,7 @@ function select_country(event){
     <Head title="Register" />
     <Header class="login-wrapper" />
     <SubHeading />
-    <div class="login-bg-wrapper create_Account customer_login">
+    <div class="login-bg-wrapper create_Account customer_login customer_apply">
         <div class="container h-100">
             <h2 class="mb-4 login-texts">Personal & Company Details</h2>
             <!-- <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
@@ -130,7 +130,7 @@ function select_country(event){
                         </div>
                         
                     </div>
-                    <div class="col-md-6 col-12 craete_account_cols">
+                    <div class="col-md-6 col-12 craete_account_cols pr-0">
                         <div class="mt-3">
                             <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                             <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"

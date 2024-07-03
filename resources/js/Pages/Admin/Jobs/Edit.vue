@@ -593,9 +593,9 @@ function removeImage(){
                                 <div class="col-12 mt-4 file_upload">
                                     <div v-if="image_name" >
                                         <div class="col-md-12">
-                                            <p class="btn btn-danger" @click="removeImage()"><i class="fas fa-times"></i></p>
-                                            <img :src="image" alt="" width="250px">
-                                            <p>{{ image_name }}</p>
+                                            <div class="d-flex align-items-start all_image_close"><p class="btn btn-danger justify-content-end close_mark" @click="removeImage()"><i class="fas fa-times"></i></p>
+                                            <img :src="image" alt="" width="250px"></div>
+                                            <p class="close_image_name">{{ image_name }}</p>
                                         </div>
                                     </div>
                                     <div v-else class="file-inputs mt-3 relative">

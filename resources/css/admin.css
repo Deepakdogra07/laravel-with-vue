@@ -281,6 +281,9 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     width: 100%;
     object-fit: cover;
 }
+.resume_btn a {
+    color: #fff;
+}
 
 @media (max-width:1238px) {
 	.add_testimonial_page {
