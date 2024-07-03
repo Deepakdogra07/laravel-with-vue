@@ -3,7 +3,8 @@ import { Head, Link } from '@inertiajs/vue3';
 import Header from '../Pages/Frontend/Header.vue';
 import Footer from '../Pages/Frontend/Footer.vue';
 import { onMounted } from 'vue';
-import { useToast } from 'vue-toastify';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const props = defineProps({
   sliders: {
@@ -17,9 +18,20 @@ const props = defineProps({
   },
   footer_data: {
     type: Object
+  },
+  message: {
+    type: String,
+    default: null
   }
 });
 
+if (props.message) {
+  toast(`${props.message}`, {
+    autoClose: 2000,
+    theme: 'dark',
+  }
+  );
+}
 
 const slickFn = () => {
   $('#home_banner').slick({
@@ -81,7 +93,7 @@ onMounted(() => {
     </div>
     <div class="unstoppable-spaces-top unstoppable_second">
       <div class="unstoppable-middle">
-        <img :src="`${logo.logo_image}`" alt="" >
+        <img :src="`${logo.logo_image}`" alt="">
       </div>
       <div class="unstopable-log mt-2">
         <div class="container text-center">
@@ -101,18 +113,21 @@ onMounted(() => {
     <div class=" container-fluid px-0 mt-4">
       <div id="welcome_slider_" class="welcome-section">
         <div class="image_for_Card " v-for="(category) in categories" :key="category.id">
-          <img :src=" category.category_image" alt="">
+          <img :src="category.category_image" alt="">
           <div class="slider-profile-name d-flex gap-3 align-items-center">
             <div class="slider-profile-img">
-              <img :src="`${category.thumbnail}` " alt="">
+              <img :src="`${category.thumbnail}`" alt="">
             </div>
-            <p ><Link class="mb-0" :href="`/job-listing?industry=${category.id}`" style="color:#fff;">{{ category.category_heading }}</Link></p>
+            <p>
+              <Link class="mb-0" :href="`/job-listing?industry=${category.id}`" style="color:#fff;">{{
+                category.category_heading }}</Link>
+            </p>
           </div>
         </div>
 
       </div>
     </div>
-  <!-- </div> -->
+    <!-- </div> -->
   </div>
 
   <div class="unstoppable-spaces-top countries-section">
@@ -124,15 +139,21 @@ onMounted(() => {
         <div class="country-content content-left relative">
           <img class="left-img" :src="logo.country_1_image" alt="">
           <div class="country-names country_hd">
-            <Link :href="`job-listing?country=${logo.country_1_name}`"> <h3>{{ logo.country_1_name }}</h3></Link>
-            <Link :href="`job-listing?country=${logo.country_1_name}`" href="">Learn More <i class="bi bi-arrow-right"></i></Link>
+            <Link :href="`job-listing?country=${logo.country_1_name}`">
+            <h3>{{ logo.country_1_name }}</h3>
+            </Link>
+            <Link :href="`job-listing?country=${logo.country_1_name}`" href="">Learn More <i
+              class="bi bi-arrow-right"></i></Link>
           </div>
         </div>
         <div class="country-content content-right relative">
           <img class="right-img" :src="logo.country_2_image" alt="">
           <div class="country-names country_hd">
-            <Link :href="`job-listing?country=${logo.country_2_name}`"> <h3>{{ logo.country_2_name }}</h3></Link>
-            <Link :href="`job-listing?country=${logo.country_2_name}`">Learn More <i class="bi bi-arrow-right"></i></Link>
+            <Link :href="`job-listing?country=${logo.country_2_name}`">
+            <h3>{{ logo.country_2_name }}</h3>
+            </Link>
+            <Link :href="`job-listing?country=${logo.country_2_name}`">Learn More <i class="bi bi-arrow-right"></i>
+            </Link>
           </div>
         </div>
       </div>
