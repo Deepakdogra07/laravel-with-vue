@@ -43,7 +43,7 @@ const props = defineProps({
                         :key="refreshDataTable">
                         <thead>
                             <tr>
-                                <th>Position Applied For</th>
+                                <th>Title of Job</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Country to Immigrate</th>
