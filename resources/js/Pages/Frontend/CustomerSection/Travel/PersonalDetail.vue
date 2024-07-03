@@ -187,10 +187,12 @@ function removeImage(){
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">E-mail address <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     
-                                    <div class="email_icon">
-                                        <TextInput placeholder="---" type="text" v-model="form.email"class="form-control mt-2" />
+                                    <div class="email_icons">
+                                        <div class="email_icon">
+                                            <TextInput placeholder="---" type="text" v-model="form.email"class="form-control mt-2" /> 
+                                            <span class="icon_mail"><i class="far fa-envelope"></i></span>
+                                        </div>
                                         <InputError class="mt-2" v-if="form.errors.email" :message="props.errors.email[0]" />
-                                        <span class="icon_mail"><i class="far fa-envelope"></i></span>
                                     </div>
                                 </div>
                             </div>
@@ -198,10 +200,12 @@ function removeImage(){
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">Confirm E-mail <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
     
-                                    <div class="email_icon">
-                                        <TextInput placeholder="---" v-model="form.confirm_email"type="text" class="form-control mt-2" />
+                                    <div class="email_icons">
+                                        <div class="email_icon">
+                                            <TextInput placeholder="---" v-model="form.confirm_email"type="text" class="form-control mt-2" />
+                                            <span class="icon_mail"><i class="far fa-envelope"></i></span>
+                                        </div>
                                         <InputError class="mt-2" v-if="form.errors.confirm_email" :message="props.errors.confirm_email[0]"/>
-                                        <span class="icon_mail"><i class="far fa-envelope"></i></span>
                                     </div>
                                 </div>
                             </div>
