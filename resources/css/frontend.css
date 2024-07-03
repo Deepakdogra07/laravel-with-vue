@@ -569,7 +569,7 @@ h2 {
 }
 
 .forms-btn, .forms-btn-transparent {
-    padding: 15px 17px !important;
+    padding: 16px 17px !important;
     border-radius: 8px;
     display: flex;
     border: 1px solid #01796f;
@@ -591,6 +591,7 @@ h2 {
 	background-color: transparent;
 }
 
+/*step Form */
 .step-form-back {
     color: #000 !important;
     padding: 15px 20px!important;
@@ -604,6 +605,32 @@ h2 {
     border-color: #01796f !important;
 	color: #017b73 !important;
 }
+.steps_form .forms-btn {
+    line-height: 0px;
+}
+.all_image_close img {
+    width: 400px;
+    height: 260px;
+    object-fit: fill;
+}
+.natoinality_row .calender_input .dp--menu-wrapper, .calender_wrapper .dp--menu-wrapper{
+    width: 100%;
+    left: 0 !important;
+    right: 0 !important;
+    top: 47px !important;
+}
+.calender_wrappers .dp--menu-wrapper{
+    left: -6px !important;
+	top: 47px !important;
+	width: 100%;
+}
+.steps_form .forms-btn:hover {
+    background: #09332b;
+}
+.natoinality_row .input_margin {
+    padding: 0px 9px; 
+}
+
 .text-lightgreen {
 	color: #01796f;
 	text-decoration: underline !important;
@@ -905,6 +932,10 @@ h2 {
 	position: relative;
 }
 
+.subheading_cn .banner_hd {
+    padding: 20px 0px;
+}
+
 .testimonial-content {
 	box-shadow: 0px 4px 10px 0px #00000014;
 	border: 1px solid #a7eade;
@@ -950,14 +981,16 @@ h2 {
 	-webkit-box-orient: vertical;
 } */
 .testimonial-content p {
-	display: block;
-	width: 100%;
-	word-wrap: break-word;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 6;
-	-webkit-box-orient: vertical;
+    display: block;
+    width: 100%;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    font-size: 15px !important;
+    color: #4A4C56;
 }
 
 .testimonial-section .testimonial {
@@ -1215,7 +1248,17 @@ section.testimonials_page .modal-body {
 }
 
 .file-inputs h2 {
-	font-family: "Open Sans", sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
+    color: #4A4C56;
+}
+
+.list_job_category{
+	line-height: 1.24em;
+	border:0px !important;
+}
+
+.list_job_category i {
+    color: #fff;
 }
 
 .file-inputs .dotted-bg {
@@ -3476,6 +3519,14 @@ input[type="file"] {
 		transform: translate(-52%, -50px) !important;
 	}
 
+	#business_apply_modal .modal-dialog{
+		left: 0;
+        transform: unset !important;
+        right: 0;
+        top: 0;
+        bottom: 0;
+	}
+
 	.custom-popover .modal-dialog {
 		top: 20%;
 	}
@@ -5730,7 +5781,7 @@ ul.details_lists {
 }
 
 .job-listing-cards .cards-bio {
-	margin-bottom: 70px;
+	margin-bottom: 85px;
 }
 
 .recommended_text {
@@ -6485,6 +6536,7 @@ span.job-filter_text {
 .list_of_jobs .buttons_div .forms-btn, .list_of_jobs .buttons_div .forms-btn-transparent {
     display: inline-block;
     text-align: center;
+	font-size: 14px;
 }
 .list_of_jobs .buttons_div a.forms-btn i {
     font-size: 19px;
@@ -6494,13 +6546,6 @@ span.job-filter_text {
 .list_of_jobs .buttons_div a.forms-btn i::before, .list_of_jobs .buttons_div .login-btn-main a i::before {
     position: relative;
     top: 3px;
-}
-.forgot_Pass button {
-    display: inline-block;
-}
-.forgot_Pass button {
-    display: inline-block;
-    padding-top: 7px !important;
 }
 .forgot_Pass button i {
     padding-left: 8px;
@@ -6601,7 +6646,10 @@ span.job-filter_text {
 .Applied_job_wrapper .dataTables_paginate {
     padding-bottom: 30px;
 }
-
+.view_employ_table {
+    display: inline-table !important;
+    white-space: wrap !important;
+}
 .business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
     padding-right: 87px;
 }
@@ -6751,7 +6799,24 @@ span.job-filter_text {
     background: #fbfbfb;
     padding: 0px 0px 0px 40px;
 }
+/* .travel-section .dp__main .dp__pointer.dp__input_readonly.dp__input_focus{
+	padding-left: 40px;
+} */
+/* .calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+    right: 0;
+    left: 208px;
+    position: absolute;
+    color: #383e44;
+}
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon{
+	left: 0px !important;
+    position: absolute;
+    color: #383e44;
+} */
 
+.travel-section .dp__input_focus{
+	padding-left: 40px;
+}
 .travel-section .natoinality_row .dp__main {
     padding: 11px;
 }
@@ -6826,16 +6891,17 @@ span.job-filter_text {
 .dp__action_buttons .dp__action_select, .dp__action_cancel {
     padding: 13px 10px !important;
 }
-/* .calender_input .dp__main.dp__theme_light {
+.calender_input .dp__main.dp__theme_light {
     position: relative;
 }
-.calender_input .dp__main.dp__theme_light[data-datepicker-instance=""] .dp__icon {
+.calender_input .dp__main.dp__theme_light[data-datepicker-instance=""] .dp__input_readonly .dp__icon {
     position: absolute;
     left: 86%;
 }
-.calender_input  .dp__main.dp__theme_light[data-datepicker-instance=""] .dp__clear_icon {
+.calender_input  .dp__main.dp__theme_light[data-datepicker-instance=""] .dp__input_readonly .dp__clear_icon {
     left: 0px !important;
-} */
+} 
+
 /* .job_listing_button .prevoius_left::before {
     content: "\003c" !important;
     font-weight: 600 !important;
@@ -6845,7 +6911,7 @@ span.job-filter_text {
     left: 50%;
     transform: translate(-50%, -50%);
     top: 50%;
-} */
+}  */
 
 /*Job Listing*/
 .job_listing_button .prevoius_left, .job_listing_button a.previous_next_btn:last-child {
@@ -6866,7 +6932,7 @@ span.job-filter_text {
     left: 50%;
     transform: translate(-50%, -50%);
     top: 50%;
-} */
+}  */
 .job_listing_button .previous_next_btn.bg-blue-700 {
     background-color: #1A9882;
 }
@@ -6882,10 +6948,13 @@ span.job-filter_text {
     /* width: 43px; */
 	font-size: 14px;
 }
+/* .job_listing_button .prevoius_left{
+	font-size: 0px;
+} */
 .job_listing_button .hover\:bg-white:hover {
     background-color: rgb(211 211 211);
 }
-.job_posting_page .multiselect--above .multiselect__select {
+.job_posting_page .multiselect--above .multiselect__select, .add-job-form-section .multiselect--above .multiselect__select{
     top: 14%;
     transform: translate(-15%);
     padding: 0px !important;
@@ -6893,7 +6962,7 @@ span.job-filter_text {
 .job-listing-cards .login-btn-main {
     padding: 0px 8px !important;
 }
-.Arrow_align .multiselect__select {
+.Arrow_align .multiselect__select, .add-job-form-section .multiselect__select{
     top: 44% !important;
     padding: 0px !important;
     z-index: 1 !important;
@@ -6970,3 +7039,9 @@ span.job-filter_text {
   color:#09332b !important;
 }
 
+.slider-profile-name p {
+    margin-bottom: 0px;
+}
+.customer_login #email {
+    background: #e3e3e3;
+}

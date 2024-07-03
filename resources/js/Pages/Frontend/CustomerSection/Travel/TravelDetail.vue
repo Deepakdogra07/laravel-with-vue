@@ -115,14 +115,14 @@ function handleCountryInput(type){
                     </div>
                     <div class="col-md-6 col-12 travel-form-main p-0">
                             <div class="col-md-12 natoinality_row row">
-                                <div class="col-md-6 col-12 calender_input">
+                                <div class="col-md-6 col-12 calender_input input_margin">
                                     <span class="label text-label">Planned date of travel <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                     <!-- <TextInput id="email" type="date" class="form-control mt-2" v-model="form.date_of_travel"/> -->
                                     <VueDatePicker v-model="form.date_of_travel" placeholder="Select Date of travel" class="form-control mt-2  " :format="format" :min-date="today" prevent-min-max-navigation :type="'date'"
                                     />
                                     <InputError class="mt-2" :message="form.errors.date_of_travel"/>
                                 </div>
-                                <div class="col-md-6 col-12">
+                                <div class="col-md-6 col-12 input_margin">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Passenger nationality <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
@@ -134,7 +134,7 @@ function handleCountryInput(type){
                             </div>
                             </div>
                             <div class="row natoinality_row">
-                                <div class="col-md-6 col-12 mt-4 spacinf_rigght">
+                                <div class="col-md-6 col-12 mt-4 spacinf_rigght input_margin">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Country To Immigrate <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 
@@ -144,7 +144,7 @@ function handleCountryInput(type){
                                 </select>
                                 <InputError class="mt-2" :message="form.errors.migrate_country"/>
                             </div>
-                            <div class="col-md-6 col-12 mt-4">
+                            <div class="col-md-6 col-12 mt-4 input_margin">
                                 <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                                 <span class="label text-label">Port of arrival <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
 

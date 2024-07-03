@@ -154,7 +154,7 @@ function removeImage(){
                                     stroke="#01796F" stroke-width="4"></path>
                             </svg>
                             <h2 class="choose-para">Upload Passport And Prefill Information</h2>
-                            <p class="file-type">Max size 20MB</p>
+                            <p class="file-type ">Max size 20MB</p>
                             <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*" >
                             
                             
@@ -205,7 +205,7 @@ function removeImage(){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 column_spacing">
+                            <div class="col-md-6 column_spacing calender_wrappers">
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                      <VueDatePicker v-model="form.date_of_birth" placeholder="Select date of birth" class="form-control mt-2 " v-bind:clearable="false" :format="format" :max-date="eighteenYearsAgo" :initial-date="eighteenYearsAgo" />
@@ -290,7 +290,7 @@ function removeImage(){
                                         <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 calender_wrapper">
                                     <div class="mb-4">
                                         <span class="label text-label">Passport Date Of Expiry</span>
                                         <!-- v-model="form.date_of_expiry" -->

@@ -261,6 +261,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     width: 18% !important;
     flex: 1 18% !important;
     max-width: 18% !important;
+	cursor: pointer;
 }
 .Admin_view_employ .video_image_wrapper,.Admin_view_employ .customer_card {
 	padding: 20px 13px;
@@ -274,6 +275,11 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 }
 .resume_btn:hover{
 	background-color: #060d1a;
+}
+#business_apply_modal img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
 }
 
 @media (max-width:1238px) {
@@ -300,6 +306,10 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 @media (max-width:1024px) {
 	.dashboard-home .card-header h4 {
 		font-size: 16px !important;
+	}
+	.view_employ_table {
+		display: block !important; 
+		white-space: nowrap !important; 
 	}
 
 }

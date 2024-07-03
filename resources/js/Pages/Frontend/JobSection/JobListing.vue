@@ -48,7 +48,7 @@ function dateTime(created_at) {
     <div class="login-bg-wrapper list_of_jobs">
         <div class="container about-width">
             <div class="industryFilter" v-if="industry">
-                <span class="industry-data">
+                <span class="industry-data list_job_category forms-btn mb-4">
                     {{ industry }}
                    <Link :href="route('job.listing')" class="text-dark"><i class="fas fa-times"></i></Link>
                 </span>

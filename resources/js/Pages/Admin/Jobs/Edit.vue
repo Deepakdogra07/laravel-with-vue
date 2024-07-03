@@ -430,7 +430,7 @@ function removeImage(){
                                     <div class="mt-4">
                                         <span class="label text-label">Currency</span>
                                         <div class="eye-icon-div">
-                                            <select class="form-select  mt-2 select_options"
+                                            <select class="form-select  mt-2 select_options Selected_option"
                                                 :class="select_class?.Currency" @change="handleChange('Currency')"
                                                 aria-label="Default select example" v-model="form.currency_id">
                                                 <option selected :value="null">Select Currency</option>

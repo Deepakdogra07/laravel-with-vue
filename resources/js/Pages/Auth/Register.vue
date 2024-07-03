@@ -78,7 +78,7 @@ const togglePasswordVisibility = () => {
     <SubHeading />
     <div class="login-bg-wrapper create_Account">
         <div class="container h-100">
-            <h2 class="mb-4 login-texts">Personal & Company Details</h2>
+            <h2 class="mb-1 login-texts">Personal & Company Details</h2>
             <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
                 {{ status }}
             </div>
