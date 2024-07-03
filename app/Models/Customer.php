@@ -56,5 +56,8 @@ class Customer extends Model
     public function employments(){
         return $this->hasone(CustomerTraining::class,'customer_id');
     }
+    public function transactions(){
+        return $this->hasone(Transactions::class,'customer_id');
+    }
     
 }

@@ -97,7 +97,7 @@ function submit_form() {
                 theme: 'dark',
             });
             // setTimeout(() => {
-            window.location.href = route('processTransaction');
+            window.location.href = route('processTransaction',props.customer_id);
         // }, 2000)
         }
     })
