@@ -20,6 +20,10 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        // dd($request->all());
+        $message = session('message');
+        session()->forget('message');
+        session()->forget('success');
         $sliders = Slider::all();
         $logo = Logo::first();
         $categories = Category::where('status',1)->get();
@@ -27,7 +31,7 @@ class HomeController extends Controller
         if(!$footer_data){
             return redirect()->route('login');
         }
-        return Inertia::render('Welcome',compact('sliders',"logo","categories","footer_data"));
+        return Inertia::render('Welcome',compact('sliders',"logo","categories","footer_data",'message'));
     }
     public function business_dash(){
         $footer_data = FooterData::first();

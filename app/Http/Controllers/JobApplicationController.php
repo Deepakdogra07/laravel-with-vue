@@ -18,9 +18,16 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\CustomerTravelDetails;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\PayPalController;
+
 
 class JobApplicationController extends Controller
 {
+    public $paypal;
+
+    public function __construct(){
+        $this->paypal = new PayPalController();
+    }
     public function introduction(Request $request)
     {
         $job_id = $request->job_id;
@@ -69,6 +76,7 @@ class JobApplicationController extends Controller
             return to_route('travel.details', $job_id);
         }
         $user = Auth::user();
+        // dd($request->all());
         // $validator = Validator::make($request->all(), [
         $rule = [
             "purpose_of_stay" => 'required',
@@ -76,7 +84,6 @@ class JobApplicationController extends Controller
             "date_of_travel" => 'required',
             "passenger_nationality" => 'required',
             "port_of_arrival" => 'required',
-            "customer_image" => 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480',
             "first_name" => 'required',
             "last_name" => 'required',
             "email" =>'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
@@ -90,13 +97,12 @@ class JobApplicationController extends Controller
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
         ];
-        // if(!$user){
-        //     $rule ["email"]= 'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|unique:users,email';
-        //     $messages[ "email.required"] = "Email is required";
-        //     $messages["email.regex"] = "Email is invalid.";
-        //     $messages["email.unique"] = "Email already exists.";
-        //     $messages["email.email"] = "Email is invalid.";   
-        // }
+        if($request->file('customer_image')){
+            $rule ["customer_image" ]= 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480';
+            $messages[ "customer_image.required"] = "Passport image is required.";
+            $messages["customer_image.max"] = "Passport image should not be more than 20MB.";
+            $messages["customer_image.mimes"] = "Passport image should be in jpg,jpeg,png,pdf,docx format.";   
+        }
         $messages = [
             "purpose_of_stay.required" => "Purpose of stay is required.",
             "type_of_visa.required" => "Type of visa is required.",
@@ -146,14 +152,20 @@ class JobApplicationController extends Controller
                     'user_type' => "3",
                     'status' => 1,
                 ]);
-                // Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
-                // Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
+                Mail::to($create_customer->email)->send(new RegisteredCustomer($create_customer->name, $create_customer->email, $password, $create_customer->name));
+                Mail::to($create_customer->email)->send(new VerifyUser($create_customer->id , $create_customer->name, $create_customer->email, $password, $create_customer->name));
         }
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         if($user){
             $customer_personal_details = Customer::where(['user_id'=>$user->id, 'submitted'=>0])->first();
-            $customer_travel_details = CustomerTravelDetails::where('customer_id',$customer_personal_details->id)->first();
-            $status = CustomerStatus::where('customer_id',$customer_personal_details->id)->first();
+            if(!$customer_personal_details){
+                $customer_personal_details = new Customer();
+                $customer_travel_details = new CustomerTravelDetails();
+                $status = new CustomerStatus();
+            }else{
+                $customer_travel_details = CustomerTravelDetails::where('customer_id',$customer_personal_details->id)->first();
+                $status = CustomerStatus::where('customer_id',$customer_personal_details->id)->first();
+            }
         }else{
             $customer_personal_details = new Customer();
             $customer_travel_details = new CustomerTravelDetails();
@@ -166,6 +178,8 @@ class JobApplicationController extends Controller
             $imageName = insertData($image,'customer/personal/');
             $customer_personal_details->customer_image = '/storage/' .$imageName;
         }
+        $citizen = (isset($request->citizen_of_more_than_one)) ? 1 : 0;
+        $customer_personal_details->citizen_of_more_than_one_country = $citizen;
         $customer_personal_details->user_id = $create_customer->id;
         $customer_personal_details->visa_available = isset($request->visa_available)? 1:0;
         $customer_personal_details->save();
@@ -490,12 +504,15 @@ public function validate_customer_documents(Request $request){
         }
         $customer->save();
         $customer_personal_details = Customer::findOrFail($customer->customer_id);
-        $customer_personal_details->submitted = 1;
-        $customer_personal_details->save();
+        // $customer_personal_details->submitted = 1;
+        // $customer_personal_details->save();
         // return response()->json(['redirect_url' => route('processTransaction')]);
-        // return back()->with(['success'=>true]);
+        return back()->with(['success'=>true,'customer_id'=>$customer_personal_details->id]);
+        // $data = $this->paypal->processTransaction();
+        // dd($data );
+        // 'customer_id'->$customer_personal_details->id
         // dd('here');
-        return redirect()->route('home');
+        // return redirect()->route('home');
         // return redirect()->route('processTransaction');
     }
 }

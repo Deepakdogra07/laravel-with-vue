@@ -329,7 +329,8 @@ class JobsController extends Controller
       // $jobs = $jobs->get();
       // dd($jobs);
       $jobs = $jobs->paginate(9);
-      $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
+      $applied_jobs = Customer::where(['user_id'=>$user?->id,'submitted'=>1])->with('status')->pluck('job_id')->toArray();
+      // dd($applied_jobs);
       return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs','industry'));
    }
 
