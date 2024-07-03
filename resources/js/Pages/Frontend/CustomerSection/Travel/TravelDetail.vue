@@ -43,6 +43,12 @@ const countries =  Country.getAllCountries();
 const select_class = ref('');
 const migrate = ref('');
 
+if(form.passenger_nationality){
+    select_class.value = 'Selected_option' ;
+}
+if(form.migrate_country){
+    migrate.value = 'Selected_option' ;
+}
 
 function submitform(){
     form.post(route('personal.details',form.job_id));
@@ -61,7 +67,7 @@ function handleCountryInput(type){
 <template>
     <Header />
     <SubHeading :job_id="form.job_id"/>
-    <div class="login-bg-wrapper travel-section">
+    <div class="login-bg-wrapper travel-section ffg">
         <div class="container travel_width">
             <form @submit.prevent="submitform()">
                 <div class="travel-detail mb-5">

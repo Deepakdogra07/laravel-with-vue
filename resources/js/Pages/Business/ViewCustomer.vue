@@ -39,8 +39,8 @@ function toggler(type,source){
 
 <template>
     <Header />
-    <SubHeading :job_id ="job_id"/>
-    <div class="container">
+    <!-- <SubHeading :job_id ="job_id"/> -->
+    <div class="job-list-search srch_responsive business_srccc view_customer_listings">
         <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="d-flex gap-5 align-items-center srch_navbar">
@@ -63,12 +63,12 @@ function toggler(type,source){
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
                             <div class="card-body">
                                 <!-- <h2>Other Details:</h2> -->
-                                <p><b>Date of Birth</b>{{ customer.date_of_birth }}</p>
-                                <p><b>County of birth</b>{{ customer.country_of_birth }}</p>
-                                <p><b>City of birth</b>{{ customer.city_of_birth }}</p>
-                                <p><b>martial_status</b>{{ (customer.martial_status) ? 'Married':'Unmarried' }}</p>
-                                <p><b>Country to immigrate</b>{{ customer.migrate_country }}</p>
-                                <p><b>Gender</b>{{ (customer.gender == 0) ? 'Male' : 'Female' }}</p>
+                                <p><b>Date of Birth</b><span class="travel_inner">{{ customer.date_of_birth }}</span></p>
+                                <p><b>County of birth</b><span class="travel_inner">{{ customer.country_of_birth }}</span></p>
+                                <p><b>City of birth</b><span class="travel_inner">{{ customer.city_of_birth }}</span></p>
+                                <p><b>martial_status</b><span class="travel_inner">{{ (customer.martial_status) ? 'Married':'Unmarried' }}</span></p>
+                                <p><b>Country to immigrate</b><span class="travel_inner">{{ customer.migrate_country }}</span></p>
+                                <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female' }}</span></p>
                             </div>
                     </div>   
                 </div>  
@@ -78,11 +78,11 @@ function toggler(type,source){
                             <div class="Travel_details">
                                 <h2>Travel Details</h2>
                                 <div class="card-body">
-                                    <p><b>Purpose of stay</b>{{ customer?.travel_details?.purpose_of_stay }}</p>
-                                    <p><b>Type of visa</b>{{ customer?.travel_details?.type_of_visa }} </p>
-                                    <p><b>Date of travel</b>{{ customer?.travel_details?.date_of_travel }}</p>
-                                    <p><b>Passenger nationality </b>{{ customer?.travel_details?.passenger_nationality }}</p>
-                                    <p><b>Port of arrival</b>{{ customer?.travel_details?.port_of_arrival }}</p>
+                                    <p><b>Purpose of stay</b><span class="travel_inner">{{ customer?.travel_details?.purpose_of_stay }}</span></p>
+                                    <p><b>Type of visa</b><span class="travel_inner">{{ customer?.travel_details?.type_of_visa }}</span></p>
+                                    <p><b>Date of travel</b><span class="travel_inner">{{ customer?.travel_details?.date_of_travel }}</span></p>
+                                    <p><b>Passenger nationality </b><span class="travel_inner">{{ customer?.travel_details?.passenger_nationality }}</span></p>
+                                    <p><b>Port of arrival</b><span class="travel_inner">{{ customer?.travel_details?.port_of_arrival }}</span></p>
                                 </div>
                             </div> 
                         </div>
@@ -90,10 +90,10 @@ function toggler(type,source){
                             <div class="Travel_details passport_details">
                                 <h2>Passport details</h2>
                                 <div class="card-body">
-                                    <p><b>Passport number</b>{{ customer?.passport_number }}</p>
-                                    <p><b>Issuing authority</b>{{ customer?.issuing_authority }}</p>
-                                    <p><b>Citizen of more than one country</b>{{ customer.citizen_of_more_than_one_country == 0 ? 'No': 'Yes' }} </p>
-                                    <p><b>Have you ever obtained an visa using current or previous passport? </b>{{ customer.visa_available == 0 ? 'No': 'Yes' }}</p>
+                                    <p><b>Passport number</b><span class="travel_inner">{{ customer?.passport_number }}</span></p>
+                                    <p><b>Issuing authority</b><span class="travel_inner">{{ customer?.issuing_authority }}</span></p>
+                                    <p><b>Citizen of more than one country</b><span class="travel_inner">{{ customer.citizen_of_more_than_one_country == 0 ? 'No': 'Yes' }} </span></p>
+                                    <p><b>Have you ever obtained an visa using current or previous passport? </b><span class="travel_inner">{{ customer.visa_available == 0 ? 'No': 'Yes' }}</span></p>
                                 </div>
                             </div> 
                         </div>

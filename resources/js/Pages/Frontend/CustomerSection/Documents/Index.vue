@@ -121,6 +121,7 @@ function submit_form() {
 // }
 
 function removeImage(type){
+    // alert(type)
     form[type] = null;
     document[type] = null;
     image_name[type] = null;
@@ -291,7 +292,7 @@ function removeImage(type){
                             </div>
                         </div>
 
-                        <div class="col-12 employ_padding">
+                        <!-- <div class="col-12 employ_padding">
                             <div v-if="document.is_australia" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('is_australia')"><i class="fas fa-times"></i></p>
                                     <img :src="document.is_australia" alt="" srcset="" width="250px"></div>
@@ -314,25 +315,11 @@ function removeImage(type){
                                     </div>
                                 </div>
                                 <InputError class="mt-2" :message="props.errors.is_australia" />
-                        </div>
-                        <div class="d-flex justify-between align-items-start p-0">
-                            <div class="flex items-start mt-4">
-                                <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(3)">
-                                    <span> <i class="bi bi-arrow-left"></i></span> Back
-                                </PrimaryButton>
-                            </div>
-                            <div class="flex items-start mt-4" style="cursor:pointer;">
-                                <p class="forms-btn" @click="show_next_div(3)">
-                                    Next Step <span> <i class="bi bi-arrow-right"></i></span>
-                                </p>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        </div>
-
-        <Section class="determine_job step-form-4" v-if="div_numbers == 'step-form-4'">
+            <Section class="determine_job step-form-3 mt-4">
             <div class="container width_content">
                 <div class="inner_determine">
                     <h6>For example, below is a unit of competency taken from the qualification ‘MEM31519 Certificate
@@ -342,12 +329,12 @@ function removeImage(type){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>1.1 Follow standard operating procedures (SOPs)</li>
-                                <li>1.2 Comply with work health and safety (WHS) requirements at all times</li>
+                                <li>1.3 Use appropriate personal protective equipment (PPE) in accordance with SOPs</li>
                             </ul>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
-                                <li>1.3 Use appropriate personal protective equipment (PPE) in accordance with SOPs</li>
+                                <li>1.2 Comply with work health and safety (WHS) requirements at all times</li>
                                 <li>1.4 Identify job requirements from specifications, sketches, job sheets or
                                     workinstructions</li>
                             </ul>
@@ -358,16 +345,18 @@ function removeImage(type){
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
                                 <li>2.1 Select appropriate precision equipment to achieve specified outcomes</li>
-                                <li>2.2 Check the accuracy of the selected measuring equipment for where appropriate
-                                </li>
+                                
                                 <li>2.3 Use correct and appropriate measuring techniques for the measurement task </li>
+                                <li>2.5 Interpret readings and measurements</li>
                             </ul>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
+                                <li>2.2 Check the accuracy of the selected measuring equipment for where appropriate
+                                </li>
                                 <li>2.4 Take measurements to the finest graduation of instrument in an accurate manner
                                 </li>
-                                <li>2.5 Interpret readings and measurements</li>
+                              
                             </ul>
                         </div>
                     </div>
@@ -377,13 +366,14 @@ function removeImage(type){
                             <ul class="job_ul">
                                 <li>3.1 Set measuring equipment to specifications using manufacturer guidelines or
                                     procedures and techniques</li>
-                                <li>3.2 Adjust and maintain measuring equipment to required accuracy using appropriate
-                                    techniques according to manufacturer’s specifications or SOPs</li>
+                                    <li>3.3 Store equipment to manufacturer’s specifications or SOPs </li>
                             </ul>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 employ_padding">
                             <ul class="job_ul">
-                                <li>3.3 Store equipment to manufacturer’s specifications or SOPs </li>
+                                <li>3.2 Adjust and maintain measuring equipment to required accuracy using appropriate
+                                    techniques according to manufacturer’s specifications or SOPs</li>
+                               
                             </ul>
                         </div>
                     </div>
@@ -418,10 +408,28 @@ function removeImage(type){
                         </div>
                     </div>
                 </div>
+            </div>
+            </Section>
+            <div class="button_end_grey">
+                <div class="container container-width">
+                    <div class="d-flex justify-between align-items-start p-0">
+                        <div class="flex items-start mt-4">
+                            <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(3)">
+                                <span> <i class="bi bi-arrow-left"></i></span> Back
+                            </PrimaryButton>
+                        </div>
+                        <div class="flex items-start mt-4" style="cursor:pointer;">
+                            <p class="forms-btn" @click="show_next_div(4)">
+                            Next Step <span> <i class="bi bi-arrow-right"></i></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-
-
+        <Section class="determine_job step-form-4" v-if="div_numbers == 'step-form-4'">
+            <div class="container width_content">
                 <!------step five----->
                 <div class="login-bg-wrapper steps_form document-first-form step-form-4 application_guide">
                     <div class="container p-0 width_content">
@@ -452,13 +460,15 @@ function removeImage(type){
         <div class="login-bg-wrapper steps_form document-first-form step-form-5 application_guide" v-if="div_numbers == 'step-form-5'">
             <div class="container">
                 <div class="employment-first-form intro_steps intro_top">
-                    <h2>Introduction</h2>
-                    <p class="light-text">When you provide evidence of your workplace skills for the Stage 1 Documentary
-                        Evidence Assessment, you
-                        must also provide Video and Photo evidence.</p>
-                    <p class="light-text">This Guideline provides instructions about what types of skills to capture in
-                        your video/photo evidence and how
-                        to record them.</p>
+                    <div class="intro_inner">
+                        <h2>Introduction</h2>
+                        <p class="light-text">When you provide evidence of your workplace skills for the Stage 1 Documentary
+                            Evidence Assessment, you
+                            must also provide Video and Photo evidence.</p>
+                        <p class="light-text">This Guideline provides instructions about what types of skills to capture in
+                            your video/photo evidence and how
+                            to record them.</p>
+                    </div>
                     <h2 class="margin_intro">Instructions for video evidence</h2>
                     <h5 class="take_over">Task overview</h5>
                     <p class="light-text">Prepare and present one (1) main dish consisting of:</p>
@@ -517,7 +527,7 @@ function removeImage(type){
                                 <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
                                         <i class="fa-solid fa-circle-check green-text"></i>
-                                        <p class="light-text">• Visually checking work areas and equipment are hygienic
+                                        <p class="light-text">Visually checking work areas and equipment are hygienic
                                             and safe to use
                                         </p>
                                     </div>
@@ -528,7 +538,9 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.kitchen_area" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('kitchen_area')"><i class="fas fa-times"></i></p>
+                                <div class="d-flex align-items-start all_image_close">
+                                    <!-- close_mark -->
+                                    <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right; z-index:1;" @click="removeImage('kitchen_area')"><i class="fas fa-times"></i></p>
                                     <video :src="document.kitchen_area" controls v-if="document.kitchen_area"></video></div>
                                     <p class="close_image_name">{{ image_name.kitchen_area }}</p>
                                 </div>
@@ -599,7 +611,7 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.ingredients" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('ingredients')"><i class="fas fa-times"></i></p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right; z-index:1;" @click="removeImage('ingredients')"><i class="fas fa-times"></i></p>
                                     <video :src="document.ingredients" controls v-if="document.ingredients"></video></div>
                                     <p class="close_image_name">{{ image_name.ingredients }}</p>
                                 </div>
@@ -656,7 +668,7 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.cooking_tech" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('cooking_tech')"><i class="fas fa-times"></i></p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right; z-index:1;" @click="removeImage('cooking_tech')"><i class="fas fa-times"></i></p>
                                 <video :src="document.cooking_tech" controls v-if="document.cooking_tech"></video></div>
                                 <p class="close_image_name">{{ image_name.cooking_tech }}</p>
                             </div>
@@ -708,7 +720,7 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.dish" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('dish')"><i class="fas fa-times"></i></p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right; z-index:1;" @click="removeImage('dish')"><i class="fas fa-times"></i></p>
                                 <video :src="document.dish" controls v-if="document.dish"></video></div>
                                 <p class="close_image_name">{{ image_name.dish }}</p>
                             </div>
@@ -760,7 +772,7 @@ function removeImage(type){
 
                         <div class="col-12 employ_padding">
                             <div v-if="document.clean_up" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('clean_up')"><i class="fas fa-times"></i></p>
+                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right; z-index:1;" @click="removeImage('clean_up')"><i class="fas fa-times"></i></p>
                                 <video :src="document.clean_up" controls v-if="document.clean_up"></video></div>
                                 <p class="close_image_name">{{ image_name.clean_up }}</p>
                             </div>
@@ -898,8 +910,8 @@ function removeImage(type){
                                             d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
-                                    <h2 class="choose-para">Upload Document Or Scan Document </h2>
-                                    <p class="file-type">Max size 20MB</p>
+                                    <h2 class="choose-para">Upload Photo</h2>
+                                    <p class="file-type">Max size 5MB</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('evidence_image', $event)">
                                 </div>
@@ -976,8 +988,9 @@ function removeImage(type){
 
                         <div class="col-12 p-0">
                             <div v-if="document.resume" class="mt-3 relative">
-                                <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
-                                <img :src="document.resume" alt="" srcset="">
+                                <div class="d-flex align-items-start all_image_close">
+                                    <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.resume" alt="" srcset=""></div>
                                 <p class="close_image_name">{{ image_name.resume }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -1036,7 +1049,7 @@ function removeImage(type){
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start mt-4">
-                                <PrimaryButton class="forms-btn" type="submit">
+                                <PrimaryButton class="forms-btn" style="line-height: 20px;" type="submit">
                                     Pay Fee and Submit Application
                                 </PrimaryButton>
                             </div>

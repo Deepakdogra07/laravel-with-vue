@@ -377,8 +377,10 @@ function removeImage(type) {
 
                         <div class="col-12">
                             <div v-if="document.evidence_self_employment" class="mt-3 relative">
-                                <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
-                            <img :src="document.evidence_self_employment" alt="" srcset="" width="250px"></div>
+                                    <div class="d-flex align-items-start all_image_close">
+                                        <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
+                                    <img :src="document.evidence_self_employment" alt="" srcset="" width="250px">
+                                    </div>
                             <p class="close_image_name">{{ image_name.evidence_self_employment }}</p>
                         </div>
 
@@ -402,7 +404,8 @@ function removeImage(type) {
 
                             <h3 class="spacing_hd">3.2 Evidence of self-employment undertaken in Australia:</h3>
 
-                            <div class="col-md-6 col-12 employ_padding">
+                            <div class="row">
+                                <div class="col-md-6 col-12 employ_padding">
                                 <div class="d-flex gap-3">
                                     <i class="fa-solid fa-circle-check green-text"></i>
                                     <p class="light-text">your Australian Business Number (ABN)</p>
@@ -434,6 +437,9 @@ function removeImage(type) {
                                     <p class="light-text">a statement from a registered/certified accountant. </p>
                                 </div>
                             </div>
+                            </div>
+
+                            
 
 
                             <div class="col-12 employment_next">

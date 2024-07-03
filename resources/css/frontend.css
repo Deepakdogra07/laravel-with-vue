@@ -548,7 +548,8 @@ h2 {
 }
 
 .form-control,
-.form-select {
+.form-select, .customer_apply .form-control,
+.customer_apply .form-select{
 	border: 1px solid #d2d2d5;
 	background-color: #fbfbfb;
 	padding: 12px 10px;
@@ -568,17 +569,21 @@ h2 {
 	color: #a5a5ab;
 }
 
-.forms-btn, .forms-btn-transparent {
+.forms-btn, .forms-btn-transparent, .customer_apply .forms-btn, .customer_apply .forms-btn-transparent{
     padding: 16px 17px !important;
     border-radius: 8px;
     display: flex;
-    border: 1px solid #01796f;
+    border: 1px solid #01796f ;
     align-items: center;
     gap: 12px;
     color: #fff;
     font-weight: 600 !important;
     font-size: 16px;
 	justify-content: center;
+}
+
+.customer_apply .forms-btn, .customer_apply .forms-btn-transparent{
+	background-color: #01796F;;
 }
 
 .forms-btn {
@@ -608,6 +613,7 @@ h2 {
 .steps_form .forms-btn {
     line-height: 0px;
 }
+
 .all_image_close img {
     width: 400px;
     height: 260px;
@@ -2058,8 +2064,13 @@ input[type="file"] {
 	}
 
 	.button_bs_ryt {
-		top: 25px !important;
+		top: -2px !important;
 	}
+
+	.add_job_srchhs .business_btn_adds {
+		padding: 10px 24px !important;
+	}
+
 
 	.mobile_amdin_dropdown ul.dropdown-menu {
 		right: 0 !important;
@@ -3164,6 +3175,23 @@ input[type="file"] {
 	.mobile_padding{
 		padding: 0px !important;
 	}
+	.view_customer_wrapper .view_customer_inner {
+		padding: 25px 0px!important;
+	}
+	.view_customer_wrapper .inner_card_wrapper b, .view_customer_wrapper  .inner_card_wrapper .travel_inner{
+		width: 50%;
+	}
+	.view_customer_wrapper  .inner_card_wrapper .travel_inner {
+		padding-left: 10px;
+	}
+	.view_customer_wrapper p {
+		display: flex !important;
+		justify-content: start;
+		gap: 0px !important;
+		flex-wrap: wrap;
+		width: 100% !important;
+		word-break: break-all;
+	}
 }
 
 
@@ -3200,6 +3228,9 @@ input[type="file"] {
 	}
 	.add_job_srchhs .button_bs_ryt{
 		margin-top: 0px;
+	}
+	.view_customer_wrapper .view_customer_inner {
+		padding: 25px 18px!important;
 	}
 }
 
@@ -3253,9 +3284,9 @@ input[type="file"] {
 		top: 55px;
 	}
 
-	.button_bs_ryt {
+	/* .button_bs_ryt {
 		top: 7px !important;
-	}
+	} */
 
 	.file-inputs {
 		padding: 10px 15px;
@@ -4271,12 +4302,29 @@ input[type="file"] {
 	.job-detail-page .about-width {
 		padding: 0px 15px !important;
 	}
+	.view_customer_listings .srch_navbar {
+		padding-left: 13px !important;
+	}
 
 }
 
-@media (max-width: 549px) {
+@media (max-width:549px) {
 	.search_bar {
 		width: 100%;
+	}
+	.Travel_details .card-body p, .view_customer_wrapper p {
+		display: flex !important;
+		justify-content: start;
+		gap: 0px !important;
+		flex-wrap: wrap;
+		width: 100% !important;
+		word-break: break-all;
+	}
+	.Travel_details .card-body b, .Travel_details .card-body .travel_inner{
+		width: 50%;
+	}
+	.Travel_details .card-body .travel_inner {
+		padding-left: 10px;
 	}
 	
 }
@@ -5213,7 +5261,11 @@ h2.spacing_hd {
 
 .determine_job {
 	background: #F6F6F6;
-	padding: 60px 0px;
+	padding: 50px 0px;
+}
+
+.intro_inner p {
+    margin-bottom: 10px;
 }
 
 .determine_job h6 {
@@ -5258,7 +5310,14 @@ ul.job_ul li::before {
 }
 
 .intro_top p {
-	margin-bottom: 3px;
+	margin-bottom: 10px;
+}
+
+.all_image_close video {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
 h2.margin_intro {
@@ -5275,9 +5334,10 @@ h5.take_over {
 }
 
 .submit_dishes {
-	border: 1px solid #E9E9EA;
-	border-radius: 20px;
-	margin-bottom: 30px;
+    border: 1px solid #E9E9EA;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 h5.bg_grey {
@@ -6086,11 +6146,11 @@ form.row.edit_customer label,
 }
 
 .craete_account_col {
-	padding-left: 0px;
+	padding-left: 0px !important;
 }
 
 .craete_account_cols {
-	padding-right: 0px;
+	padding-right: 0px !important;
 }
 
 .login_Col {
@@ -7044,4 +7104,17 @@ span.job-filter_text {
 }
 .customer_login #email {
     background: #e3e3e3;
+}
+
+/*View Customer*/
+.view_customer_listings {
+    padding: 30px 0px;
+}
+.view_customer_listings .srch_navbar {
+    padding-left: 5px;
+}
+
+/*Customer Apply*/
+.customer_apply h2 {
+    font-weight: 700;
 }

@@ -6,6 +6,11 @@ const props=defineProps({
         required:true,
         default:0
     },
+    customer_id:{
+        type:Number,
+        required:true,
+        default:0
+    },
     data:{
         type:Object,
         required:true,
@@ -77,8 +82,9 @@ const props=defineProps({
                     </div>
                     <div class="col-lg-2 col-md-3 col-4 p-0">
                         <li class="nav-item">
-                            <Link :href="`/employment-details/${job_id}`" class="nav-link text-center"  
-                                :class="{ 'active': route().current('employment.details') }"  
+                            <Link :href="`/employment.details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
+                                :class="{ 'active': route().current('employment.details') }"
+                           
                             >Employment</Link>
                         </li>
                     </div>

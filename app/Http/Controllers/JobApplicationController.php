@@ -201,8 +201,8 @@ class JobApplicationController extends Controller
         
         
     }
-    public function employment_details($job_id,$customer_id){
-        return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
+    public function employment_details($job_id,$customer_id = null){
+            return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
     }
     public function validate_emp_details(Request $request){
         if(isset($request->step) && $request->step == 1){

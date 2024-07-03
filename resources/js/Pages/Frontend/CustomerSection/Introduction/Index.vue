@@ -18,11 +18,12 @@
         type : String
     }
    })
+  const data = { job_id: props.job_id, customer_id: props.customer_id };
+// console.log(props.job_id,props.customer_id);
 </script>
-
 <template>
     <Header />
-    <SubHeading :job_id ="job_id" />
+    <SubHeading :data ="data" />
     <div class="login-bg-wrapper job_intro">
         <div class="container width_content">
             <p class="text-margin">When you apply for a Trade Skills Assessment, the first step in the process will be a Documentary Evidence Assessment. The documentary evidence is a collection of your employment and training documents that prove you have the skills and knowledge needed to work in your trade in Australia.</p>
