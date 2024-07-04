@@ -112,7 +112,7 @@ function TriggerButton(type, event) {
                 <div class="dropdown mobile_amdin_dropdown mobile_dropdown">
                   <button class="btn btn-secondary dropdown-toggle" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false"> 
-                      {{ $page.props.auth.user.name }} <i class="fas fa-sort-down"></i>
+                      <p class="mb-0"><span class="btn_mail">{{ $page.props.auth.user.name }}</span><i class="fas fa-sort-down"></i></p>
                   </button>
                     <ul class="dropdown-menu" v-show="admin_hover">
                       <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>
@@ -175,8 +175,14 @@ function TriggerButton(type, event) {
           </li>
           <li class="nav-item" >
             <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">
+            Jobs</Link>
+          </li>
+          <li class="nav-item" >
+            <Link class="nav-link" :href="route('customer-dash')"
+            :class="{ 'active-nav': route().current() == 'customer-dash' }">
             For Individuals</Link>
           </li>
+
           <li class="nav-item">
             <!-- v-if="$page?.props?.auth?.user?.user_type == 2" -->
             <Link class="nav-link" :href="route('business-jobs.index')"

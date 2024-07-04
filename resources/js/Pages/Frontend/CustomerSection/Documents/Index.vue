@@ -92,10 +92,10 @@ function show_document(type, event) {
 function submit_form() {
     form.post(route('submit_customers_documents'), {
         onSuccess: () => {
-            toast("Job Applied Successfully!", {
-                autoClose: 2000,
-                theme: 'dark',
-            });
+            // toast("Job Applied Successfully!", {
+            //     autoClose: 2000,
+            //     theme: 'dark',
+            // });
             // setTimeout(() => {
             window.location.href = route('processTransaction',props.customer_id);
         // }, 2000)

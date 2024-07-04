@@ -72,6 +72,7 @@ function getLast_name(name) {
                             <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
                             <div class="card-body">
                                 <!-- <h2>Other Details:</h2> -->
+                                <p><b>Email</b><span class="travel_inner">{{ customer.email }}</span></p>
                                 <p><b>Date of Birth</b>{{ customer.date_of_birth }}</p>
                                 <p><b>County of birth</b>{{ customer.country_of_birth }}</p>
                                 <p><b>City of birth</b>{{ customer.city_of_birth }}</p>
@@ -216,6 +217,7 @@ function getLast_name(name) {
                                 </div>
                             </div>
                             <div class="col column_width column_mine_width">
+                               
                             </div>
                             <div class="col column_width column_mine_width">
                             </div>

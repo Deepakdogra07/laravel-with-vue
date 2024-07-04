@@ -13,6 +13,7 @@ const props = defineProps({
     applied_jobs: {
         type: Array
     }
+
 });
 
 

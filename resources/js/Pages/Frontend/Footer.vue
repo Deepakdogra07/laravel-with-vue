@@ -49,6 +49,9 @@ const user = ref(page?.props?.auth?.user)
                 <Link href="/testimonials">Our Testimonials</Link>
               </li>
               <li class="mb-3">
+                <Link href="/job-listing" >Jobs</Link>
+              </li>
+              <li class="mb-3">
                 <Link href="/contact-us">Contact us</Link>
               </li>
             </ul>
@@ -58,7 +61,7 @@ const user = ref(page?.props?.auth?.user)
             <h2 class="text-white relative">Business Segments</h2>
             <ul class="pl-0 listing-gap">
               <li class="mb-3">
-                <Link href="/job-listing" >For Individuals</Link>
+                <Link :href="route('customer-dash')" >For Individuals</Link>
               </li>
               <li class="mb-3">
                 <!-- v-if="user?.user_type == 2" -->
