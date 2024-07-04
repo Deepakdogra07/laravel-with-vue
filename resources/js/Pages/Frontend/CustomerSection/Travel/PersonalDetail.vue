@@ -337,11 +337,11 @@ function removeImage(){
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex items-center login-btn-main">
+                            <!-- <div class="flex items-center login-btn-main">
                                 <PrimaryButton class="forms-btn" type="submit" :disabled="form.processing">
                                     Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -352,11 +352,11 @@ function removeImage(){
                         <span> <i class="bi bi-arrow-left"></i></span>  Back 
                     </Link>
                 </div>
-                <!-- <div class="flex items-center mt-4 login-btn-main">
+             <div class="flex items-center mt-4 login-btn-main">
                     <PrimaryButton class="forms-btn"type="submit" :disabled="form.processing">
                         Next Step <span> <i class="bi bi-arrow-right"></i></span>
                     </PrimaryButton>
-                </div> -->
+                </div>
             </div>
         </form>
 
