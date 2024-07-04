@@ -73,6 +73,9 @@ class HomeController extends Controller
     }
 
     public function customer_dash(){
+        if(Auth::user()->user_type < 3){
+            return redirect()->route('business-dash');
+        }
         $footer_data = FooterData::first();
        
         $applied_jobs = JobStatus::whereHas('customers', function ($query) {

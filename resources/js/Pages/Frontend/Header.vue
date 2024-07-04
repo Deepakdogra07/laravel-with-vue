@@ -175,8 +175,14 @@ function TriggerButton(type, event) {
           </li>
           <li class="nav-item" >
             <Link class="nav-link" :class="{ 'active-nav': route().current() == 'job.listing' }" href="/job-listing">
+            Jobs</Link>
+          </li>
+          <li class="nav-item" >
+            <Link class="nav-link" :href="route('customer-dash')"
+            :class="{ 'active-nav': route().current() == 'customer-dash' }">
             For Individuals</Link>
           </li>
+
           <li class="nav-item">
             <!-- v-if="$page?.props?.auth?.user?.user_type == 2" -->
             <Link class="nav-link" :href="route('business-jobs.index')"
