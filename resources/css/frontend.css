@@ -76,8 +76,12 @@ h2 {
 	border: 1px solid #fff;
 	border-radius: 8px;
 	color: #070707 !important;
-	padding: 8px 20px;
+	padding: 10px 30px;
 	transition: 0.3s;
+}
+
+.web-banner .main-btn {
+    padding: 13px 30px;
 }
 
 .main-btn:hover {
@@ -200,7 +204,7 @@ h2 {
 }
 
 .listing-gap {
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .web-banner img {
@@ -441,6 +445,11 @@ h2 {
     background: #D2D2D580;
     border: 0px;
 }
+.business_tablesss_inner.table-responsive {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 .business_dash_tables_wrapper thead th {
     padding: 25px 15px !important;
     font-weight: 600 !important;
@@ -786,7 +795,7 @@ h2 {
 .job-detail-content {
 	background-color: #f2f2f2;
 	border-radius: 10px;
-	padding: 20px;
+	padding: 20px 10px;
 }
 
 .job-detail-content p,
@@ -2139,7 +2148,7 @@ input[type="file"] {
 	}
 
 	.button_bs_ryt {
-		margin-top: 7px;
+		margin-top: 2px;
 	}
 
 	.spacing_nine {
@@ -2250,6 +2259,10 @@ input[type="file"] {
 
 	.travel-section .form-division-left h2 {
 		padding-left: 10px !important;
+	}
+
+	.job-detail-page .view-main-images .view-job-btn {
+		width: 60%;
 	}
 
 }
@@ -3142,7 +3155,7 @@ input[type="file"] {
 
 	.travel_width {
 		margin-top: 20px;
-		padding: 20px 0px;
+		padding: 20px 15px;
 	}
 
 	.form-division-left {
@@ -3176,8 +3189,6 @@ input[type="file"] {
 		padding: 0px !important;
 	}
 
-
-	
 	.view_customer_wrapper .view_customer_inner {
 		padding: 25px 0px!important;
 	}
@@ -3194,6 +3205,12 @@ input[type="file"] {
 		flex-wrap: wrap;
 		width: 100% !important;
 		word-break: break-all;
+	}
+	.travel-form-main .input_margin {
+		padding: 5px 0px;
+	}
+	.job-detail-page .view-main-images .view-job-btn {
+		width: 40%;
 	}
 }
 
@@ -3338,6 +3355,10 @@ input[type="file"] {
 
 	.main-footer .footer-grid h2 {
 		font-size: 13px !important;
+	}
+
+	.job-detail-page .view-main-images .view-job-btn {
+		width: 60%;
 	}
 
 	div#welcome_slider_ .image_for_Card {
@@ -4308,6 +4329,11 @@ input[type="file"] {
 	.view_customer_listings .srch_navbar {
 		padding-left: 13px !important;
 	}
+	.job-detail-page .view-main-images h2 {
+		font-size: 30px !important;
+		margin: 0px;
+	}
+
 
 }
 
@@ -4330,6 +4356,12 @@ input[type="file"] {
 		padding-left: 10px;
 	}
 	
+}
+
+@media (max-width:500px){
+	.employes_selct_checkbox.sorting_select {
+		padding: 8px 70px 8px 10px;
+	}
 }
 
 @media screen and (min-device-width: 427px) and (max-device-width: 500px) {
@@ -4382,6 +4414,15 @@ input[type="file"] {
 	}
 	.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
 		padding-right: 76px !important;
+	}
+
+	.sorting_apply, .sorting_apply span {
+		width: 96%;
+		display: block;
+	}
+	.sorting_apply .sorting_select {
+		width: 90%;
+		padding: 0px;
 	}
 }
 
@@ -4456,6 +4497,9 @@ input[type="file"] {
 	}
 	.business_table {
 		margin-top: 20px !important;
+	}
+	.sorting_apply .sorting_select {
+		width: 88%;
 	}
 
 }
@@ -4935,6 +4979,10 @@ button.rounded-lg span i::before {
 
 .step-form-back i {
     font-size: 20px;
+}
+
+.travel_width {
+    padding: 0px;
 }
 
 .mt-4 .start_input {
@@ -5563,6 +5611,10 @@ li.last_border {
 	padding-top: 0px;
 }
 
+.text_small {
+    text-transform: none;
+}
+
 .main-footer h2 {
 	font-size: 20px !important;
 }
@@ -5844,7 +5896,7 @@ ul.details_lists {
 }
 
 .job-listing-cards .cards-bio {
-	margin-bottom: 85px;
+	margin-bottom: 68px;
 }
 
 .recommended_text {
@@ -6624,7 +6676,7 @@ span.job-filter_text {
 .business_inner_dash .main-job-filter ul li {
     position: relative;
 }
-.business_inner_dash .dataTables_paginate a.paginate_button.current {
+.business_inner_dash .dataTables_paginate a.paginate_button.current, .Applied_job_wrapper  a.paginate_button.current {
     height: 35px;
     border-radius: 5px !important;
     margin: 0px 5px;
@@ -6653,7 +6705,7 @@ span.job-filter_text {
     box-shadow: unset !important;
 }
 .employes_selct_checkbox {
-    padding: 8px 30px 10px 10px;
+    padding: 8px 30px 8px 10px;
     border-radius: 7px;
     margin-left: 10px;
     font-size: 15px;
@@ -6857,32 +6909,7 @@ span.job-filter_text {
     margin-top: 10px;
 	cursor: pointer;
 }
-.travel-section .dp__main .dp__pointer.dp__input_readonly {
-    border: 0px;
-    background: #fbfbfb;
-    padding: 0px 0px 0px 40px;
-}
-/* .travel-section .dp__main .dp__pointer.dp__input_readonly.dp__input_focus{
-	padding-left: 40px;
-} */
-/* .calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
-    right: 0;
-    left: 208px;
-    position: absolute;
-    color: #383e44;
-}
-.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon{
-	left: 0px !important;
-    position: absolute;
-    color: #383e44;
-} */
 
-.travel-section .dp__input_focus{
-	padding-left: 40px;
-}
-.travel-section .natoinality_row .dp__main {
-    padding: 11px;
-}
 .travel-section input:focus, .job_posting_page input:focus {
     border: 1px solid #ddd!important;
     box-shadow: unset !important;
@@ -6964,6 +6991,45 @@ span.job-filter_text {
 .calender_input  .dp__main.dp__theme_light[data-datepicker-instance=""] .dp__input_readonly .dp__clear_icon {
     left: 0px !important;
 } 
+
+.travel-section .dp__main .dp__pointer.dp__input_readonly {
+    border: 0px;
+    background: #fbfbfb;
+    padding: 0px 0px 0px 40px;
+}
+
+.travel-section .dp__main .dp__pointer.dp__input_readonly {
+    border: 0px;
+    background: #fbfbfb;
+    padding: 0px 0px 0px 40px;
+} 
+
+/* .travel-section .dp__main .dp__pointer.dp__input_readonly.dp__input_focus{
+	padding-left: 40px;
+}
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+    right: 0;
+    left: 208px;
+    position: absolute;
+    color: #383e44;
+}
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon{
+	left: 0px !important;
+    position: absolute;
+    color: #383e44;
+} */
+
+.travel-section .dp__input_focus{
+	padding-left: 40px;
+}
+.travel-section .natoinality_row .dp__main {
+    padding: 11px;
+}
+/* .natoinality_row .calender_input .dp__input_wrap {
+    padding-left: 40px;
+} */
+
+/*end calender
 
 /* .job_listing_button .prevoius_left::before {
     content: "\003c" !important;
@@ -7093,6 +7159,14 @@ span.job-filter_text {
     padding: 0px 8px !important;
 }
 
+.travel-section .form-division-left h2 {
+    padding-left: 10px;
+}
+
+.email_icon .icon_mail i {
+    color: #959595;
+}
+
 /*customer detail */
 .view_customer_inner .inner_card_wrapper p {
     line-height: 26px;
@@ -7111,7 +7185,7 @@ span.job-filter_text {
 
 /*View Customer*/
 .view_customer_listings {
-    padding: 30px 0px;
+    padding: 32px 0px;
 }
 .view_customer_listings .srch_navbar {
     padding-left: 5px;

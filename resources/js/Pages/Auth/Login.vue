@@ -69,7 +69,7 @@ const submit = () => {
                     <form @submit.prevent="submit">
                         <div class="mt-4">
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
-                            <span class="label text-label">E-mail or Username<span style="color:red"> *</span></span>
+                            <span class="label text-label text_small">E-mail or Username<span style="color:red"> *</span></span>
 
                             <TextInput id="email" type="text" placeholder="Enter your e-mail or username" class="form-control mt-2"
 

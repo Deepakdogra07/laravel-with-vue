@@ -36,7 +36,7 @@ class LoginRequest extends FormRequest
     {
         
         return [
-            'email.required' => 'Email is required.',
+            'email.required' => 'Email / Username is required.',
             // 'email.email' => 'Email must be valid.',
             'password.required' => 'Password is required.',
         ];

@@ -346,17 +346,17 @@ function removeImage(){
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-between align-items-center">
+            <div class="d-flex justify-between align-items-center mx-2">
                 <div class="flex items-center mt-4 ">
                     <Link class="forms-btn-transparent step-form-back" href="/travel-details/2">
                         <span> <i class="bi bi-arrow-left"></i></span>  Back 
                     </Link>
                 </div>
-                <div class="flex items-center mt-4 login-btn-main">
+                <!-- <div class="flex items-center mt-4 login-btn-main">
                     <PrimaryButton class="forms-btn"type="submit" :disabled="form.processing">
                         Next Step <span> <i class="bi bi-arrow-right"></i></span>
                     </PrimaryButton>
-                </div>
+                </div> -->
             </div>
         </form>
 
