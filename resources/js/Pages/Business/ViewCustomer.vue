@@ -9,6 +9,10 @@ import fslightbox from 'fslightbox';
 const props = defineProps({
     customer:{
         type:Object
+    },
+    user_type:{
+        type:Number,
+        default:0
     }
 });
 function getLast_name(name){
@@ -39,9 +43,9 @@ function toggler(type,source){
 
 <template>
     <Header />
-    <!-- <SubHeading :job_id ="job_id"/> -->
-    <div class="job-list-search srch_responsive business_srccc view_customer_listings">
-        <div class="container about-width">
+    <div v-if="user_type < 3 ">
+        <div class="job-list-search srch_responsive business_srccc view_customer_listings">
+            <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link :href="route('business-jobs.index')">Jobs</Link>
@@ -49,8 +53,12 @@ function toggler(type,source){
                         <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
                     </div>
                 </div>
+                 </div>
+                </div>
             </div>
-    </div>
+            <div v-else>
+                <SubHeading :customer_id="customer.id"/>        
+     </div>
     <section class="view_customer_wrapper">
         <div class="container py-12 view_customer_inner">
             <div class="inner_spacing_wrapper">

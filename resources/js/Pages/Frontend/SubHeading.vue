@@ -42,7 +42,8 @@ const props=defineProps({
                 <h1 class="mb-0 banner_hd" v-if="route().current('term.condition')">Terms and Conditions</h1>
                 <h1 class="mb-0" v-if="route().current('business-jobs.show',job_id)">View Job</h1>
                 <h1 class="mb-0 banner_hd" v-if="route().current('create.business')">Register Business</h1>
-                <h1 class="mb-0 banner_hd" v-if="route().current('view_customer_data',customer_id)">View Applied Job</h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('view_customer_data',customer_id)">Application Details</h1>
+
             </div>
         </div>
     </div>
