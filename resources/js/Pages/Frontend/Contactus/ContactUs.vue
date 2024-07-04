@@ -40,7 +40,7 @@ function submitForm(){
             <div class="row">
                 <div class="col-md-4">
                     <div class="contactus-sidebar">
-                        <h2 class="text-white mb-4">Contact Info</h2>
+                        <h2 class="text-white">Contact Info</h2>
                         <ul class="pl-0 listing-gap">
                             <li class="mb-3">
                                 <a href="tel:+1300 779 462"><i class="bi bi-telephone-fill pr-2"></i> +1300 779 462</a>

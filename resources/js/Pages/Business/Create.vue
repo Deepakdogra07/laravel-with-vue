@@ -306,7 +306,7 @@ function handleChange(type){
                             <div class="mt-4 Remote Work_label spacing_tab">
                                 <label class="flex items-center">
                                     <!-- <Checkbox class="remember-me-check" name="remember" /> -->
-                                    <span class="label text-label">Remote Work</span>
+                                    <span class="label text-label">Work Type</span>
                                 </label>
                                 <div class="d-flex align-items-center mt-3 gap-4 remote_work">
                                     <div class="d-flex align-items-center">

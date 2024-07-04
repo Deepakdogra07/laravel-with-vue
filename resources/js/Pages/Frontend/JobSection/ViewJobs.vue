@@ -65,7 +65,7 @@ console.log(job_start_date)
     <Header />
     <SubHeading />
     <div class="login-bg-wrapper job-detail-page">
-        <div class="container about-width">
+        <div class="container about-width p-0">
             <div class="row align-items-start">
                 <div class="col-md-5">
                     <div class="view-main-image">
@@ -93,26 +93,26 @@ console.log(job_start_date)
             </div>
 
             <div class="job-detail-content job_details_cnt mt-4">
-                <div class="container">
+                <div class="container p-0">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="Details">
                                 <h2>Details</h2>
                                 <ul class="details_lists pl-0">
-                                    <li><b>Position type:</b> <span>{{ job?.position?.name }}</span></li>
-                                    <li><b>Seniority:</b><span>{{ job?.seniority?.name }}</span></li>
-                                    <li><b>Discipline:</b><span>{{ job?.discipline?.name }}</span></li>
-                                    <li><b>Overall work experience:</b><span>{{ job?.work_experience?.experience }}</span></li>
-                                    <li><b>Skills:</b><span>{{ skills }}</span></li>
-                                    <li><b>Languages:</b><span>{{ language }}</span></li>
-                                    <li><b>City:</b><span>{{ job.city }}</span></li>
-                                    <li><b>Postal Code:</b><span>{{ job.pin_code }}</span></li>
-                                    <li><b>Remote Work:</b><span>{{ (job.remote_work !=0) ? job.remote_work:'No' }}</span></li>
-                                    <li><b>Industry:</b><span>{{ industry }}</span></li>
-                                    <li><b>Segment:</b><span>{{ job.segment }}</span></li>
-                                    <li><b>Positions:</b><span>{{ job.positions }}</span></li>
-                                    <li><b>Min and Max Salary:</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
-                                    <li><b>Start Date:</b><span>{{ job_start_date }}</span></li>
+                                    <li><b>Position type</b> <span>{{ job?.position?.name }}</span></li>
+                                    <li><b>Seniority</b><span>{{ job?.seniority?.name }}</span></li>
+                                    <li><b>Discipline</b><span>{{ job?.discipline?.name }}</span></li>
+                                    <li><b>Overall work experience</b><span>{{ job?.work_experience?.experience }}</span></li>
+                                    <li><b>Skills</b><span>{{ skills }}</span></li>
+                                    <li><b>Languages</b><span>{{ language }}</span></li>
+                                    <li><b>City</b><span>{{ job.city }}</span></li>
+                                    <li><b>Postal Code</b><span>{{ job.pin_code }}</span></li>
+                                    <li><b>Remote Work</b><span>{{ (job.remote_work !=0) ? job.remote_work:'No' }}</span></li>
+                                    <li><b>Industry</b><span>{{ industry }}</span></li>
+                                    <li><b>Segment</b><span>{{ job.segment }}</span></li>
+                                    <li><b>Positions</b><span>{{ job.positions }}</span></li>
+                                    <li><b>Minimum and Maximum Salary</b><span>{{ job.min_pay_range }} - {{ job.max_pay_range }}</span></li>
+                                    <li><b>Start Date</b><span>{{ job_start_date }}</span></li>
                                 </ul>
                             </div>
                             <div class="job_col2">

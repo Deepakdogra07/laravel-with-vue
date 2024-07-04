@@ -72,12 +72,11 @@ class JobApplicationController extends Controller
     }
     public function submit_personal_details(Request $request,$job_id)
     {
+        // dd($request->all());
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
         $user = Auth::user();
-        // dd($request->all());
-        // $validator = Validator::make($request->all(), [
         $rule = [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',
@@ -157,7 +156,7 @@ class JobApplicationController extends Controller
         }
         $customer_personal_detail = $request->except('date_of_travel','customer_image','passenger_nationality','purpose_of_stay','type_of_visa','port_of_arrival');
         if($user){
-            $customer_personal_details = Customer::where(['user_id'=>$user->id, 'submitted'=>0])->first();
+            $customer_personal_details = Customer::where(['user_id'=>$user->id, 'submitted'=>0,'job_id'=>$request->job_id])->first();
             if(!$customer_personal_details){
                 $customer_personal_details = new Customer();
                 $customer_travel_details = new CustomerTravelDetails();

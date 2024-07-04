@@ -214,13 +214,15 @@ function filterData(type, event) {
                                 </span>
                             </li>
                         </div>
-                        <span>
-                            Sort:
-                            <select @change="filterData('sort', $event)" class="job-filter_text employes_selct_checkbox">
-                                <option value="asc">Apply date (newest)</option>
-                                <option value="desc">Apply date (oldest)</option>
-                            </select>
-                        </span>
+                        <li class="sorting_apply">
+                            <span>
+                                Sort:
+                                <select @change="filterData('sort', $event)" class="job-filter_text employes_selct_checkbox sorting_select">
+                                    <option value="asc">Apply date (newest)</option>
+                                    <option value="desc">Apply date (oldest)</option>
+                                </select>
+                            </span>
+                        </li>
                     </ul>
                 </div>
                 <div class="main-job-filter mt-4 spacing_nine business_tablesss_inner">
