@@ -454,6 +454,12 @@ h2 {
     padding: 25px 15px !important;
     font-weight: 600 !important;
 }
+.pass_travel_details_wrapper .card-body p b {
+    line-height: 19px;
+}
+.pass_travel_details_wrapper .Travel_details.passport_details p b {
+    margin-bottom: 10px !important;
+}
 .status_business div:nth-child(1) {
     color: #495771;
     font-size: 15px;
@@ -471,6 +477,12 @@ h2 {
 .business_wrap_name input {
     color: #087a71 !important;
     margin-right: 10px;
+}
+
+.business_table.business_dash_table{
+	overflow-x: scroll;
+    white-space: nowrap !important;
+    /* display: inline-block; */
 }
 
 .business_wrap_name input[type='checkbox']:focus {
@@ -1773,6 +1785,11 @@ input[type="file"] {
 		margin-top: 3px;
 	}
 
+	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle p {
+		display: flex;
+		align-items: flex-start;
+	}
+
 	.create_space input.form-control,
 	.create_space select.form-select {
 	font-size: 13px;
@@ -1786,6 +1803,7 @@ input[type="file"] {
 		display: flex;
 		flex-wrap: nowrap;
 		align-items: start;
+		position: relative;
 	}
 	.mobile_amdin_dropdown button::after {
 		font-size: 19px;
@@ -3212,6 +3230,9 @@ input[type="file"] {
 	.job-detail-page .view-main-images .view-job-btn {
 		width: 40%;
 	}
+	.business_inner_dash .main-job-filter ul li span.block_cnt {
+		margin-left: 0px;
+	}
 }
 
 
@@ -4334,6 +4355,27 @@ input[type="file"] {
 		margin: 0px;
 	}
 
+	.business_dash_navbar_wrapper li select.job-filter_text {
+		width: 70%;
+	}
+
+	.business_dash_navbar_wrapper.business_inner_dash_wrap, .business_inner_dash_wrap .flex-content {
+		display: block !important;
+	}
+	.business_inner_dash_wrap li, .business_inner_dash_wrap li .block_cnt {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0px;
+	}
+	.mobile_dropdown button.dropdown-toggle .btn_mail {
+		width: 100px !important;
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
 
 }
 
@@ -4412,18 +4454,11 @@ input[type="file"] {
 	.view_customer_wrapper .column_width:nth-child(2), .view_customer_wrapper .column_width:nth-child(4){
 		padding-right: 0px !important;
 	}
-	.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
-		padding-right: 76px !important;
+
+	.mobile_dropdown button.dropdown-toggle .btn_mail {
+		width: 70px !important;
 	}
 
-	.sorting_apply, .sorting_apply span {
-		width: 96%;
-		display: block;
-	}
-	.sorting_apply .sorting_select {
-		width: 90%;
-		padding: 0px;
-	}
 }
 
 @media (max-width:426px) {
@@ -4460,7 +4495,7 @@ input[type="file"] {
 		width: 60%;
 	}
 	.add_job_srchhs .button_bs_ryt {
-		margin-top: 51px;
+		margin-top: 48px;
 	}
 	.add_job_srchhs .search_bar {
 		width: 100%;
@@ -4498,9 +4533,6 @@ input[type="file"] {
 	.business_table {
 		margin-top: 20px !important;
 	}
-	.sorting_apply .sorting_select {
-		width: 88%;
-	}
 
 }
 
@@ -4515,9 +4547,9 @@ input[type="file"] {
 	.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
 		padding-right: 0px !important;
 	}
-	.business_dash_navbar_wrapper li select.job-filter_text, .employes_selct_checkbox {
+	/* .business_dash_navbar_wrapper li select.job-filter_text, .employes_selct_checkbox {
 		padding-right: 10px !important;
-	}
+	} */
 }
 
 @media (max-width:412px) {
@@ -4553,16 +4585,10 @@ input[type="file"] {
 	.main-job-filter ul li span, .main-job-filter ul span, .main-job-filter ul select, .business_dash_navbar_wrapper li select.job-filter_text option {
 		font-size: 12px;
 	}
-	.business_dash_navbar_wrapper li select.job-filter_text {
-		padding-right: 0px !important;
-	}
-	select.job-filter_text.any_select_box {
+	/* select.job-filter_text.any_select_box {
 		padding-right: 30px !important;
 		width: 100px;
-	}
-	.business_dash_navbar_wrapper li select.job-filter_text {
-		padding-left: 3px !important;
-	}
+	} */
 }
 
 
@@ -6765,9 +6791,9 @@ span.job-filter_text {
     display: inline-table !important;
     white-space: wrap !important;
 }
-.business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
+/* .business_inner_dash .main-job-filter ul li.location_Select .job-filter_text {
     padding-right: 87px;
-}
+} */
 
 /*View Customer page*/
 .view_customer_wrapper .customer_card, .Admin_view_employ .customer_card {
@@ -6842,6 +6868,10 @@ span.job-filter_text {
     padding: 10px;
     border-radius: 0px 0px 5px 5px;
 }
+.text_over_flow .wrapper_name{
+	display: flex;
+	align-items: center;
+}
 .img_inner_wrapper {
     border-radius: 5px 5px 0px 0px;
 }
@@ -6888,6 +6918,7 @@ span.job-filter_text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 13px;
 }
 .video_image_wrapper .column_width video {
     width: 100%;
@@ -6901,13 +6932,18 @@ span.job-filter_text {
 .view_customer_wrapper .column_width a {
     color: #fff;
 }
-.view_customer_wrapper .column_width a:hover {
+/* .view_customer_wrapper .column_width a:hover {
     color: #1fe7d6;
-}
+} */
 .resume_btn {
     border-radius: 5px;
     margin-top: 10px;
 	cursor: pointer;
+	justify-content: center;
+}
+
+.resume_btn p {
+    margin-right: 0px !important;
 }
 
 .travel-section input:focus, .job_posting_page input:focus {
@@ -7195,3 +7231,5 @@ span.job-filter_text {
 .customer_apply h2 {
     font-weight: 700;
 }
+
+

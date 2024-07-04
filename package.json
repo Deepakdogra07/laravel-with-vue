@@ -25,7 +25,7 @@
         "@vueform/toggle": "^2.1.4",
         "@vuepic/vue-datepicker": "^8.6.0",
         "@vueup/vue-quill": "^1.0.0-alpha.40",
-        "bootstrap": "^5.3.0-alpha1",
+        "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3",
         "country-state-city": "^3.2.1",
         "currency-list": "^1.0.8",
