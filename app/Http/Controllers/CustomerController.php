@@ -179,8 +179,9 @@ class CustomerController extends Controller
     }
 
     public function view_customer($customer_id){
+        $user_type = Auth::user()->user_type;
         $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
-        return Inertia::render('Business/ViewCustomer',compact('customer'));
+        return Inertia::render('Business/ViewCustomer',compact('customer','user_type'));
     }
     
 }

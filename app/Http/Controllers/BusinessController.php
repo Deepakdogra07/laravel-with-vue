@@ -408,14 +408,15 @@ class BusinessController extends Controller
         }
     }
     public function view_customer($customer_id){
+        $user_type = Auth::user()->user_type;
         $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments','transactions')->first();
-        return Inertia::render('Business/ViewCustomer',compact('customer'));
+        return Inertia::render('Business/ViewCustomer',compact('customer','user_type'));
     }
     public function applied_business_jobs(){
         $footer_data = FooterData::first();
         $user = Auth::user();
         $applied_jobs = JobStatus::whereHas('customers', function ($query) use ($user){
-            $query->where('user_id',$user->id); 
+            $query->where('user_id',$user->id)->where('submitted',1); 
         })->with('customers','jobs','jobs.business')->latest()->get();
         return Inertia::render('Business/AppliedJobs',compact('footer_data','applied_jobs'));
     }
