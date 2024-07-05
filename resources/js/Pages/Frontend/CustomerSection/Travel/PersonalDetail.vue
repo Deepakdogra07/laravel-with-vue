@@ -209,7 +209,7 @@ function removeImage(){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 column_spacing calender_wrappers">
+                            <div class="col-md-6 column_spacing calender_wrappers calender_">
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">Date of birth <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                      <VueDatePicker v-model="form.date_of_birth" placeholder="Select date of birth" class="form-control mt-2 " v-bind:clearable="false" :format="format" :max-date="eighteenYearsAgo" :initial-date="eighteenYearsAgo" />

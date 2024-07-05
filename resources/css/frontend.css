@@ -203,8 +203,8 @@ h2 {
 	gap: 24px;
 }
 
-.listing-gap {
-	margin-top: 27px;
+.listing-gap, .home_certificate_row {
+	margin-top: 27px !important;
 }
 
 .web-banner img {
@@ -694,7 +694,6 @@ h2 {
 .natoinality_row .input_margin {
 	padding: 0px 9px;
 }
-
 .text-lightgreen {
 	color: #01796f;
 	text-decoration: underline !important;
@@ -1774,6 +1773,9 @@ input[type="file"] {
 		align-items: start !important;
 	}
 
+	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+		left: 170px !important;
+	}
 
 }
 
@@ -2167,6 +2169,9 @@ input[type="file"] {
 		padding: 10px 24px !important;
 	}
 
+	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+		left: 288px !important;
+	}
 
 	.mobile_amdin_dropdown ul.dropdown-menu {
 		right: 0 !important;
@@ -2215,7 +2220,7 @@ input[type="file"] {
 
 
 	.admin_profile label span,
-	.update_pass label span {
+	.update_pass label span, .business_profile_front_end span{
 		font-size: 14px !important;
 	}
 
@@ -3361,6 +3366,10 @@ input[type="file"] {
 	.business_inner_dash .main-job-filter ul li span.block_cnt {
 		margin-left: 0px;
 	}
+
+	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+		left: 664px !important;
+	}
 }
 
 
@@ -3461,6 +3470,10 @@ input[type="file"] {
 @media (max-width: 576px) {
 	ul.dropdown-menu.toggler_menu {
 		top: 55px;
+	}
+
+	.business_profile_front_end .col_width {
+		width: 100% !important;
 	}
 
 	/* .button_bs_ryt {
@@ -4493,6 +4506,10 @@ input[type="file"] {
 		font-size: 20px !important;
 	}
 
+	.customer_listing_wrpa .srch_navbar, .customer_listing_wrpa_front .about-width {
+		padding: 0px 0px !important;
+	}
+
 	.pass_travel_details_wrapper h2,
 	.video_image_wrapper h2 {
 		width: auto !important;
@@ -4552,7 +4569,9 @@ input[type="file"] {
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-
+	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+		left: 494px !important;
+	}
 
 }
 
@@ -7481,29 +7500,24 @@ span.job-filter_text {
 .travel-section .dp__main .dp__pointer.dp__input_readonly {
 	border: 0px;
 	background: #fbfbfb;
-	padding: 0px 0px 0px 40px;
+	padding: 0px 0px 0px 0px;
 }
 
-.travel-section .dp__main .dp__pointer.dp__input_readonly {
-	border: 0px;
-	background: #fbfbfb;
-	padding: 0px 0px 0px 40px;
-}
-
-/* .travel-section .dp__main .dp__pointer.dp__input_readonly.dp__input_focus{
-	padding-left: 40px;
-}
-.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons{
     right: 0;
     left: 208px;
     position: absolute;
     color: #383e44;
 }
-.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon{
-	left: 0px !important;
+.calender_wrapper .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons{
+	left:300px;
+}
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon {
+    right: 0px !important;
     position: absolute;
     color: #383e44;
-} */
+    background: #fbfbfb;
+}
 
 .travel-section .dp__input_focus {
 	padding-left: 40px;
@@ -7678,8 +7692,8 @@ span.job-filter_text {
 	padding-left: 10px;
 }
 
-.email_icon .icon_mail i {
-	color: #959595;
+.email_icon .icon_mail i, .dp__input_icon, .dp__clear_icon {
+	color: #383e44 !important;
 }
 
 /*customer detail */
@@ -7714,3 +7728,13 @@ span.job-filter_text {
 	font-weight: 700;
 }
 
+.business_profile_front_end .col_width {
+    width: 49%;
+}
+.admins_boxx button{
+	background: #01796f;
+    border: 0px !important;
+    padding: 10px 30px !important;
+    line-height: 23px;
+    font-size: 17px;
+}
