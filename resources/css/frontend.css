@@ -1196,7 +1196,7 @@ section.testimonials_page .modal-body {
 /* About Us page css start */
 
 .aboutus-card-outer {
-	padding-left: 80px;
+	padding-left: 90px;
 	position: relative;
 }
 
@@ -1210,7 +1210,7 @@ section.testimonials_page .modal-body {
 .about-profile {
 	position: absolute;
 	top: 40%;
-	left: -11px;
+	left: 0px;
 	transform: translateY(-50%);
 	width: 150px;
 	height: 150px;
@@ -1714,7 +1714,11 @@ input[type="file"] {
 
 @media (max-width:1199px) {
 	.abt_cards_one {
-		height: 540px;
+		height: 540px !important;
+	}
+
+	.aboutcard_align .about-us-cards{
+		height: 380px !important;
 	}
 
 	.job-listing-cards a.forms-btn,
@@ -3476,6 +3480,10 @@ input[type="file"] {
 		width: 100% !important;
 	}
 
+	.about_uss_wrapper .about-width {
+		padding: 0px 15px !important;
+	}
+
 	/* .button_bs_ryt {
 		top: 7px !important;
 	} */
@@ -3498,8 +3506,7 @@ input[type="file"] {
 	}
 
 	.testimonials_width,
-	.about-width,
-	.all-testimonial_width {
+	.about-width {
 		padding: 0px 5px !important;
 	}
 
@@ -7212,7 +7219,7 @@ span.job-filter_text {
 .view_customer_wrapper .card-image img {
 	border-radius: 50%;
 	height: 250px;
-	object-fit: cover;
+	object-fit: fill;
 	width: 250px;
 }
 
