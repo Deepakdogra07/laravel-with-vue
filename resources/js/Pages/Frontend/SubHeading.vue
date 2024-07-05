@@ -30,7 +30,7 @@ const props=defineProps({
             <div class="container subheading_cn">
                 <h1 class="mb-0" v-if="route().current('login') || route().current('password.request')  ">Welcome to Login</h1>
                 <h1 class="mb-0" v-if="route().current('password.reset') ">Reset Password</h1>
-                <h1 class="mb-0 banner_hd" v-if="route().current('job.listing') || route().current('view.job')"> Jobs Details </h1>
+                <h1 class="mb-0 banner_hd" v-if="route().current('job.listing') || route().current('view.job')"> Jobs Listing </h1>
                 <h1 class="mb-0" v-if="route().current('register')">Create New Account For Business</h1>
                 <h1 class="mb-0 banner_hd" v-if="route().current('contact.us')">Contact us</h1>
                 <h1 class="mb-0 banner_hd" v-if="route().current('about.us')">About us</h1>
