@@ -202,7 +202,11 @@ Route::get('testing',[TestController::class,'index']);
 
 // Paypal Routes
 
+Route::get('send-transaction-email/{customer_id}', [PayPalController::class, 'send_email'])->name('send.transaction.email');
 // Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction/{customer_id}', [PayPalController::class, 'processTransaction'])->name('processTransaction');
 Route::get('success-transaction/{customer_id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction/{customer_id}', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
+
+Route::get('/download-zip/{customer_id}', [HomeController::class, 'downloadZip'])->name('downloadZip');

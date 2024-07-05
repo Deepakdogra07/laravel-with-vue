@@ -11,7 +11,7 @@ const props = defineProps({
         type: Array
     }
 });
-console.log(props.jobs,'1234567890-');
+console.log(props.jobs, '1234567890-');
 onMounted(() => {
     console.log(props.msg, 'props.msg');
     if (props.msg != null) {
@@ -57,25 +57,24 @@ const deletejob = async (id) => {
         });
     }
 };
-const  options= {columnDefs: [{
-            targets: 5, 
-            orderable: false 
-          }
-        ]
-      };
-
+const options = {
+    columnDefs: [{
+        targets: 5,
+        orderable: false
+    }]
+};
 </script>
 
 <template>
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-black-800 leading-tight">Jobs</h2>
-            <div class="button-container">
-                <Link :href="route('jobs.create')">
-                <button class="btn btn-info">Add Job</button>
-                </Link>
-            </div>
-        </template>
+                    <h2 class="font-semibold text-xl text-black-800 leading-tight">Jobs</h2>
+                    <div class="button-container">
+                        <Link :href="route('jobs.create')">
+                        <button class="btn btn-info">Add Job</button>
+                        </Link>
+                    </div>
+</template>
         <div class="py-12 jobs_Admin_wrap">
             <div class="max-w-7xl mx-auto px-2 padding_remove border_index job_admin_all">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd !important;">
@@ -85,6 +84,7 @@ const  options= {columnDefs: [{
                                 <tr>
                                     <th>ID</th>
                                     <th>Job Title</th>
+                                    <th>Job Thumbnail</th>
                                     <th>Positions</th>
                                     <th>Seniority</th>
                                     <th>Created By</th>
@@ -96,6 +96,9 @@ const  options= {columnDefs: [{
                                     <td>{{ index + 1 }}</td>
                                     <td>
                                         {{ job?.job_title }}
+                                    </td>
+                                    <td>
+                                        <img :src="job.job_image" alt="Job Thumbnail" width="100px">
                                     </td>
                                     <td> {{ job?.position?.name }}</td>
                                     <td>
@@ -126,4 +129,6 @@ const  options= {columnDefs: [{
     </AuthenticatedLayout>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

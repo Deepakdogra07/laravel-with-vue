@@ -1,11 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Mail\Transaction;
+use App\Models\User;
+use Inertia\Inertia;
 use App\Models\Customer;
+use App\Models\Jobs;
 use App\Models\JobStatus;
 use App\Models\Transactions;
-use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PayPalController extends Controller
@@ -26,10 +30,11 @@ class PayPalController extends Controller
      */
     public function processTransaction($customer_id)
     {
-        // dd('paypal');
+        if(Transactions::where('customer_id',$customer_id)->exists()){
+            return redirect()->route('home')->with(['success'=>false,'message'=>'Order Already Paid.']);
+        }
         $amount = '20.00';
         $country = 'AUD';
-        // $customer = $customer_id;
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -54,7 +59,6 @@ class PayPalController extends Controller
                     return redirect()->away($links['href']);
                 }
             }
-            // return response()->json(['success'=>false,'message'=>'Something went wrong.']);
             return redirect()->route('home')->with(['success'=>false]);
         } else {
             return redirect()->route('home');
@@ -71,9 +75,6 @@ class PayPalController extends Controller
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);  
-        if(Transactions::where('customer_id',$customer_id)->exists()){
-            return redirect()->route('home')->with(['success'=>false,'message'=>'Order Already Paid.']);
-        }
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $transaction = Transactions::create([
                 'customer_id' =>$customer_id,
@@ -84,7 +85,11 @@ class PayPalController extends Controller
             $customer_personal_details = Customer::findOrFail($customer_id);
             $customer_personal_details->submitted = 1;
             $customer_personal_details->save();
-            return redirect()->route('home')->with(['success'=>true,'message'=>'Payment Added .']);
+            $user = User::where('id',$customer_personal_details->user_id)->first();
+            $job = Jobs::where('id',$customer_personal_details->job_id)->pluck('job_title')->first();
+            $jobstatus = JobStatus::where('customer_id',$customer_personal_details->id)->pluck('status')->first();
+            Mail::to($user->email)->send(new Transaction($user->id , $user->name, $user->email,$transaction->transaction_id,$job,$jobstatus,$transaction->transaction_status));
+            return redirect()->route('home')->with(['success'=>true,'message'=>'Job Applied Successfully.']);
         } else {
             return redirect()->route('home')->with(['success'=>false,'message'=>'Order Already Paid.']);
         }
@@ -99,4 +104,6 @@ class PayPalController extends Controller
     {
         return redirect()->route('home')->with(['success'=>false,'message'=>'You Cancelled the transaction.']);
     }
+
+    
 }

@@ -24,6 +24,9 @@ const props = defineProps({
     },
     applied_jobs:{
         type:Array
+    },
+    user:{
+        type:Object,
     }
 })
 function job_description(description){
@@ -80,7 +83,7 @@ console.log(job_start_date)
                             <i class="bi bi-clock-fill"></i>
                             <p class="mb-0">{{ created_time }}...</p>
                         </div>
-                        <div class="col-md-4 view-job-btn mt-4 ml-2">
+                        <div class="col-md-4 view-job-btn mt-4 ml-2" v-if="user?.id != job.user_id">
                             <button v-if="applied_jobs.length > 0 && applied_jobs.includes(job.id)" class="forms-btn-transparent w-100" disabled>Already Applied
                                     </button>
                                     <Link v-else class="forms-btn w-100" :href="route('travel.details',job.id)" >Apply Now <span> <i

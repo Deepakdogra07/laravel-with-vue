@@ -13,6 +13,9 @@ const props = defineProps({
     },
     industry:{
         type:String
+    },
+    user:{
+        type:Object
     }
 })
 
@@ -75,7 +78,8 @@ function dateTime(created_at) {
                                 <Link :href="`/view-job/${job.id}`" class="forms-btn w-100">View Job <span> <i
                                         class="bi bi-arrow-right"></i></span></Link>
                             </div>
-                            <div class="col-6 login-btn-main">
+                            <div class="col-6 login-btn-main" v-if="user?.id != job.user_id">
+                                
                                 <button v-if="applied_jobs.length > 0 && applied_jobs.includes(job.id)" disabled class="forms-btn-transparent w-100">Already Applied
                                 </button>
                                 <Link v-else class="forms-btn-transparent w-100" :href="route('travel.details',job.id)" >Apply Now <span> <i

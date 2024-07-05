@@ -58,13 +58,7 @@ const deleteCustomer = async (id) => {
                 text: 'Customer Deleted Successfully',
             });
             location.reload();
-        } else {
-            Swal.fire({
-                icon: 'info',
-                title: 'Canceled',
-                text: 'Deletion canceled.',
-            });
-        }
+        } 
     } catch (error) {
         Swal.fire({
             icon: 'error',
@@ -87,6 +81,28 @@ const  options= {columnDefs: [{
           }
         ]
       };
+
+
+      
+function get_date(dateString) {
+    const date = new Date(dateString);
+    function pad(num) {
+        return num < 10 ? '0' + num : num;
+    }
+
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const year = date.getFullYear();
+    let hours = date.getHours();
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = pad(hours);
+    const formattedDate = `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    return formattedDate;
+}
 </script>
 
 <template>
@@ -110,6 +126,7 @@ const  options= {columnDefs: [{
                                     <th>Customer Name</th>
                                     <th>Email</th>
                                     <th>Status</th>
+                                    <th>Date Registered</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -121,6 +138,8 @@ const  options= {columnDefs: [{
                                     <td :class="{ 'active': customer.status == 1, 'inactive': customer.status == 0 }">
                                         {{ customer.status == 1 ? 'Active' : 'Inactive' }}
                                     </td>
+                                    <td v-html="get_date(customer.created_at)"></td>
+
                                     <td>
                                         <!-- <button class="btn btn-info btn-sm" @click="viewCustomer(customer.id)"><i class="fas fa-edit"></i>  </button> -->
                                         <button v-if="authUser.user_type == 1" class="btn btn-primary btn-sm"

@@ -76,6 +76,7 @@ async function search_data(event) {
 
 const countries = Country.getAllCountries();
 function filterData(type, event) {
+    totaljobs.value = props.jobs;
     let total_jobs = totaljobs.value;
     if (type == 'seniority') {
         totaljobs.value = total_jobs.filter(target => target.seniority_id == event.target.value);
@@ -90,10 +91,11 @@ function filterData(type, event) {
         refreshDataTable.value++;
     }
     if (type == 'sort') {
+        console.log(event.target.value);
         if(event.target.value == 'desc'){
-            totaljobs.value = total_jobs.sort((a, b) => b.job_id - a.job_id);
+                totaljobs.value = total_jobs.sort((a, b) => b.id - a.id);
             }else{
-                totaljobs.value = total_jobs.sort((a, b) => a.job_id - b.job_id);
+                totaljobs.value = total_jobs.sort((a, b) => a.id - b.id);
             }
         refreshDataTable.value++;
     }
@@ -233,6 +235,7 @@ function filterData(type, event) {
                             <tr class="th-row">
                                 <th>S.No</th>
                                 <th>Job Title</th>
+                                <th>Job Thumbnail</th>
                                 <th>Positions</th>
                                 <th>Seniority</th>
                                 <th class="sorting_icon">Actions</th>
@@ -244,6 +247,9 @@ function filterData(type, event) {
                                 <td>
                                     {{ job?.job_title }}
                                 </td>
+                                <td>
+                                        <img :src="job.job_image" alt="Job Thumbnail" width="100px">
+                                    </td>
                                 <td> {{ job?.position?.name }}</td>
                                 <td>
                                     {{ job?.seniority?.name }}

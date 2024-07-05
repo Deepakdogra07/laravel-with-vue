@@ -95,22 +95,30 @@ class JobApplicationController extends Controller
             "passport_number" => 'required',
             "issuing_authority" => 'required',
             "date_of_expiry" => 'required',
+            "customer_image"=>'required',
+            "passport_image"=>'required',
+
         ];
         if($request->file('customer_image')){
             $rule ["customer_image" ]= 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480';
-            $messages[ "customer_image.required"] = "Passport image is required.";
-            $messages["customer_image.max"] = "Passport image should not be more than 20MB.";
-            $messages["customer_image.mimes"] = "Passport image should be in jpg,jpeg,png,pdf,docx format.";   
+            $messages[ "customer_image.required"] = "Customer image is required.";
+            $messages["customer_image.max"] = "Customer image should not be more than 20MB.";
+            $messages["customer_image.mimes"] = "Customer image should be in jpg,jpeg,png,pdf,docx format.";   
+        }
+        if($request->file('passport_image')){
+            $rule ["passport_image" ]= 'required|mimes:jpg,jpeg,png,pdf,docx|max:20480';
+            $messages[ "passport_image.required"] = "Passport image is required.";
+            $messages["passport_image.max"] = "Passport image should not be more than 20MB.";
+            $messages["passport_image.mimes"] = "Passport image should be in jpg,jpeg,png,pdf,docx format.";   
         }
         $messages = [
+            'customer_image.required' =>  "Customer image is required.",
+            'passport_image.required' =>  "Passport image is required.",
             "purpose_of_stay.required" => "Purpose of stay is required.",
             "type_of_visa.required" => "Type of visa is required.",
             "date_of_travel.required" => "Date of travel is required.",
             "passenger_nationality.required" => "Passenger nationality is required.",
             "port_of_arrival.required" => "Port of arrival is required.",
-            "customer_image.required" => "Passport image is required.",
-            "customer_image.max" => "Passport image should not be more than 20MB.",
-            "customer_image.mimes" => "Passport image should be in jpg,jpeg,png,pdf,docx format.",
             "first_name.required" => "First name is required.",
             "last_name.required" => "Last name is required.",
             "email.required" =>"Email is required",
@@ -174,6 +182,11 @@ class JobApplicationController extends Controller
         $customer_personal_details->fill($customer_personal_detail);
         if(isset($request->customer_image)&& $request->file('customer_image')){
             $image = $request->file('customer_image');
+            $imageName = insertData($image,'customer/personal/');
+            $customer_personal_details->customer_image = '/storage/' .$imageName;
+        }
+        if(isset($request->passport_image)&& $request->file('passport_image')){
+            $image = $request->file('passport_image');
             $imageName = insertData($image,'customer/personal/');
             $customer_personal_details->customer_image = '/storage/' .$imageName;
         }
