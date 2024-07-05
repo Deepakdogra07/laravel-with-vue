@@ -222,7 +222,7 @@ async function changeStatus(customer_id, job_id, event) {
               </span>
             </li>
             <li>
-              <span>Sort:
+              <span class="sort_nav">Sort:
                 <span class="job-filter_textss">
                   <select class="job-filter_text" @change="filterData('applied_date', $event)">
                     <option value="">Any</option>

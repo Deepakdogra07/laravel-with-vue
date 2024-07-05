@@ -1777,9 +1777,6 @@ input[type="file"] {
 		align-items: start !important;
 	}
 
-	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
-		left: 170px !important;
-	}
 
 }
 
@@ -2173,9 +2170,6 @@ input[type="file"] {
 		padding: 10px 24px !important;
 	}
 
-	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
-		left: 288px !important;
-	}
 
 	.mobile_amdin_dropdown ul.dropdown-menu {
 		right: 0 !important;
@@ -3371,9 +3365,6 @@ input[type="file"] {
 		margin-left: 0px;
 	}
 
-	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
-		left: 664px !important;
-	}
 }
 
 
@@ -3481,7 +3472,11 @@ input[type="file"] {
 	}
 
 	.about_uss_wrapper .about-width {
-		padding: 0px 15px !important;
+		padding: 0px 13px !important;
+	}
+
+	.internationa_partners .container{
+		padding: 0px;
 	}
 
 	/* .button_bs_ryt {
@@ -3744,7 +3739,7 @@ input[type="file"] {
 	}
 
 	.business_inner_dash .main-job-filter ul li span {
-		padding-left: 14px;
+		padding-left: 14px !important;
 	}
 
 	.popup-quote-img img {
@@ -3900,6 +3895,7 @@ input[type="file"] {
 	.file_upload {
 		padding: 0px;
 	}
+	
 
 	.file_upload .dotted-bg {
 		text-align: center;
@@ -4513,7 +4509,7 @@ input[type="file"] {
 		font-size: 20px !important;
 	}
 
-	.customer_listing_wrpa .srch_navbar, .customer_listing_wrpa_front .about-width {
+	.customer_listing_wrpa .d-flex.srch_navbar, .customer_listing_wrpa_front .d-flex.about-width {
 		padding: 0px 0px !important;
 	}
 
@@ -4557,27 +4553,26 @@ input[type="file"] {
 	}
 
 	.business_dash_navbar_wrapper.business_inner_dash_wrap,
-	.business_inner_dash_wrap .flex-content {
+	.business_inner_dash_wrap .flex-content, .business_dash_navbar_wrapper {
 		display: block !important;
 	}
 
 	.business_inner_dash_wrap li,
-	.business_inner_dash_wrap li .block_cnt {
+	.business_inner_dash_wrap li .block_cnt, .business_dash_navbar_wrapper li, .business_dash_navbar_wrapper li span,.business_dash_navbar_wrapper li span.sort-nav {
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0px;
+		padding: 0px !important;
 	}
-
+	.business_dash_navbar_wrapper li .job-filter_textss{
+		display: contents !important;
+	}
 	.mobile_dropdown button.dropdown-toggle .btn_mail {
 		width: 100px !important;
 		display: inline-block;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}
-	.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons {
-		left: 494px !important;
 	}
 
 }
@@ -5199,7 +5194,8 @@ button.btn.btn-primary {
 }
 
 .testimonial_spacing {
-	padding: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
 .create_space {
@@ -6357,7 +6353,7 @@ span.video_txt {
 .job_posting_page input.dp__pointer.dp__input_readonly.dp__input.dp__input_icon_pad.dp__input_reg {
     border: 0px !important;
     background: transparent;
-    padding: 0px 0px 0px 40px;
+    padding: 0px 0px 0px 0px;
 }
 
 .job_posting_page .dp__main.dp__theme_light.form-control.mt-2 {
@@ -7510,21 +7506,23 @@ span.job-filter_text {
 	padding: 0px 0px 0px 0px;
 }
 
-.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons{
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons,  .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons{
     right: 0;
-    left: 208px;
+    left: 0;
     position: absolute;
     color: #383e44;
+	margin-left: auto;
+	padding: 0px;
 }
-.calender_wrapper .dp__main.dp__theme_light .dp__input_wrap .dp__input_icons{
-	left:300px;
-}
-.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon {
+.calender_input .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon,  .dp__main.dp__theme_light .dp__input_wrap .dp__clear_icon {
     right: 0px !important;
     position: absolute;
     color: #383e44;
     background: #fbfbfb;
+	margin-left: auto;
+	padding: 0px;
 }
+
 
 .travel-section .dp__input_focus {
 	padding-left: 40px;

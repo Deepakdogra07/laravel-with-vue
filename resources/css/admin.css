@@ -297,13 +297,15 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     padding-left: 10px !important;
     padding-right: 10px !important;
 }
-.all_subhadings_wrap div.pages-heading:not(:has(*)) {
+/* .all_subhadings_wrap div.pages-heading:not(:has(*)) {
     display: none !important;
-}
+} */
 .categories_wrapper,.add_customers, .categories_page, .jobs_Admin_wrap {
     padding-top: 43px;
 }
-
+.testimonails_hd {
+    margin-top: -32px;
+}
 
 @media (max-width:1238px) {
 	.add_testimonial_page {
@@ -596,6 +598,10 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	}
 	.view_Job_table .card-header-caption P {
 		margin-bottom: 0px!important;
+	}
+
+	.testimonails_hd {
+		margin-top: -19px;
 	}
 
 }
