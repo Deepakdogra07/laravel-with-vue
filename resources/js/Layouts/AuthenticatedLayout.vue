@@ -6,12 +6,12 @@
        <NavigationMobile />
      </div>
 
-     <div class="col-lg-9 col-md-8 px-0">
+     <div class="col-lg-9 col-md-8 px-0 dashboard_home_ryt">
        <TopMenu />
 
        <main class="all_subhadings_wrap">
          <div class="px-2" >
-           <div class="pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700">
+           <div class="pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700 empty_hd">
              <slot name="header" />
            </div>
            <slot />

@@ -61,10 +61,10 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Categories</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Industry</h2>
             <div class="button-container">
                 <Link :href="route('category.create')">
-                <button class="btn btn-info">Add Category</button>
+                <button class="btn btn-info">Add Industry</button>
                 </Link>
             </div>
             
@@ -78,8 +78,8 @@ function getImageUrl(imageName) {
                                 <tr>
                                     <th>S.No.</th>
                                     <th>Thumbnail</th>
-                                    <th>Category Heading</th>
-                                    <th>Category Image</th>
+                                    <th>Category Industry</th>
+                                    <th>Category Industry</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
