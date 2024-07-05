@@ -67,9 +67,9 @@ async function search_datatable(event) {
 }
 const countries = Country.getAllCountries();
 function filterData(type, event) {
+  
   let customers_data = props.applied_customers;
   if (event.target.value != '') {
-
     if (type == 'location') {
       appliedCustomers.value = customers_data.filter(customer => customer.customers.migrate_country == event.target.value);
       refreshDataTable.value++;
@@ -80,13 +80,13 @@ function filterData(type, event) {
     }
     if (type == 'applied_date') {
       if (event.target.value == 'desc') {
-        appliedCustomers.value = customers_data.sort((a, b) => b.job_id - a.job_id);
+        appliedCustomers.value = customers_data.sort((a, b) => b.id - a.id);
       } else {
-        appliedCustomers.value = customers_data.sort((a, b) => a.job_id - b.job_id);
+        appliedCustomers.value = customers_data.sort((a, b) => a.id - b.id);
       }
     }
   } else {
-    appliedCustomers.value = customers_data;
+    appliedCustomers.value = props.applied_customers;
     refreshDataTable.value++;
   }
 

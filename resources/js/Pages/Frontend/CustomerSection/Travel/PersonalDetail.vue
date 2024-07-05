@@ -56,7 +56,9 @@ const props = defineProps({
 })
 const countries = Country.getAllCountries(),
 image_src = ref(''),
-image_name = ref('');
+image_name = ref(''),
+image_src1 = ref(''),
+image_name1 = ref('');
 
 
 const form =useForm({
@@ -78,8 +80,9 @@ const form =useForm({
     gender:props?.already_customer?.gender ?? null,
     martial_status:props?.already_customer?.martial_status ?? null,
     passport_number:props?.already_customer?.passport_number ?? null,
-   issuing_authority:props?.already_customer?.issuing_authority ?? null,
-   date_of_expiry:props?.already_customer?.date_of_expiry ?? null,
+    passport_image:props?.already_customer?.passport_image ?? null,
+    issuing_authority:props?.already_customer?.issuing_authority ?? null,
+    date_of_expiry:props?.already_customer?.date_of_expiry ?? null,
     citizen_of_more_than_one:null,
     visa_available:props?.already_customer?.visa_available ?? null,
 });
@@ -89,10 +92,19 @@ function upload_image(event){
     image_name.value = event.target.files[0].name;
     
 }
+function upload_image1(event){
+    form.passport_image = event.target.files[0];
+    image_src1.value = URL.createObjectURL(event.target.files[0]);
+    image_name1.value = event.target.files[0].name;
+    
+}
 if(form.customer_image){
-    console.log(form.customer_image,123)
     image_src.value = form.customer_image;
     image_name.value = form.customer_image;
+}
+if(form.passport_image){
+    image_src1.value = form.passport_image;
+    image_name1.value = form.passport_image;
 }
 
 const submitData = () => {
@@ -129,7 +141,11 @@ function removeImage(){
     image_name.value ='';
     image_src.value ='';
 }
-
+function removeImage1(){
+    form.passport_image = null;
+    image_name1.value ='';
+    image_src1.value ='';
+}
 </script>
  
 <template>
@@ -153,7 +169,7 @@ function removeImage(){
                                     d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
                                     stroke="#01796F" stroke-width="4"></path>
                             </svg>
-                            <h2 class="choose-para">Upload Passport And Prefill Information</h2>
+                            <h2 class="choose-para">Upload Customer Image </h2>
                             <p class="file-type ">Max size 20MB</p>
                             <input class="upload" type="file" @change="upload_image($event)"id="banner" accept="image/*" >
                             
@@ -161,6 +177,29 @@ function removeImage(){
                         </div>
                     </div>
                     <InputError  class="mt-2" v-if="form.errors.customer_image" :message="form.errors.customer_image[0]"/>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div v-if="image_src1" width="250px" class="close_image_wrapper">
+                        <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark"  @click="removeImage1()"><i class="fas fa-times"></i></p>
+                        <img :src="image_src1" alt="" srcset=""width="200px" height="200px" ></div>
+                        <p class="mt-2 close_image_name">{{ image_name1 }}</p>
+                    </div>
+                    <div v-else class="file-inputs mt-3 relative">
+                        <div class="dotted-bg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
+                                fill="none">
+                                <path
+                                    d="M54.0774 47.7783L54.0771 47.7778L43.0478 32.5166C43.047 32.5155 43.0463 32.5145 43.0455 32.5134C41.5448 30.4238 38.4396 30.4235 36.9386 32.5128C36.9377 32.5141 36.9368 32.5153 36.9359 32.5166L25.9066 47.7778L25.9062 47.7783C24.1017 50.2769 25.8784 53.7609 28.9661 53.7609H32.6383V67.1046H15.4721C8.09988 66.6655 2 59.6549 2 51.908C2 46.6514 4.84793 42.0611 9.08693 39.5752L10.5322 38.7276L9.951 37.1562C9.59374 36.1903 9.40499 35.1506 9.40499 34.0412C9.40499 29.0159 13.4626 24.9583 18.4879 24.9583C19.5794 24.9583 20.6192 25.1465 21.5866 25.5043L23.3067 26.1405L24.0892 24.4818C27.3185 17.6362 34.28 12.8951 42.3688 12.8945C52.8366 12.9101 61.4659 20.9279 62.4473 31.143L62.5934 32.664L64.0993 32.9228C71.9373 34.2702 78 41.5883 78 49.9301C78 58.8106 71.0858 66.4598 62.4369 67.1046H47.3453V53.7609H51.0176C54.0719 53.7609 55.8919 50.2907 54.0774 47.7783Z"
+                                    stroke="#01796F" stroke-width="4"></path>
+                            </svg>
+                            <h2 class="choose-para">Upload Passport and Prefill information </h2>
+                            <p class="file-type ">Max size 20MB</p>
+                            <input class="upload" type="file" @change="upload_image1($event)"id="banner" accept="image/*" >
+                            
+                            
+                        </div>
+                    </div>
+                    <InputError  class="mt-2" v-if="form.errors.passport_image" :message="form.errors.passport_image[0]"/>
                 </div>
             </div>
             <div class="row mt-4">
@@ -272,6 +311,7 @@ function removeImage(){
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-6 col-12 Pass_column">
                     <div class="container-fluid form-division-left">
 

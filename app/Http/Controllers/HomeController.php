@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use ZipArchive;
 use App\Models\Jobs;
 use App\Models\Logo;
 use Inertia\Inertia;
@@ -14,7 +15,9 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Models\CustomerStatus;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -83,5 +86,55 @@ class HomeController extends Controller
         })->with('customers','jobs','jobs.business','customers.travel_details')->latest()->get();
         return Inertia::render('Customer/Welcome',compact('footer_data','applied_jobs'));
     }
+
+    public function downloadZip($customer_id){
+        try{
+
+            $zip = new ZipArchive;
+            $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
+            $fileName = "$customer->first_name$customer->last_name.zip";
+    
+            if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
+            {
+                
+                $files = [
+                    'customer_image' => $customer->customer_image, 
+                    'passport_image' => $customer->passport_image, 
+                    'employer_statement' => $customer->employments->employer_statement, 
+                    'financial_evidence' => $customer->employments->financial_evidence, 
+                    'evidence_self_employment' => $customer->employments->evidence_self_employment, 
+                    'self_employment_aus' => $customer->employments->evidence_self_employment_aus, 
+                    'formal_training_evidence' => $customer->employments->formal_training_evidence, 
+                    'employment_evidence' => $customer->documents->employment_evidence, 
+                    'licences' => $customer->documents->licences, 
+                    'kitchen_area' => $customer->documents->kitchen_area, 
+                    'ingredients' => $customer->documents->ingredients, 
+                    'cooking_tech' => $customer->documents->cooking_tech, 
+                    'clean_up' => $customer->documents->clean_up, 
+                    'evidence_image' => $customer->documents->evidence_image, 
+                    'resume' => $customer->documents->resume, 
+                    'is_australia' => $customer->documents->is_australia, 
+                ];
+                    foreach ($files as $type => $filePath) {
+                        // Check if the file exists
+                        $absolutePath = public_path($filePath);
+                        if (file_exists($absolutePath) && is_file($filePath)) {
+                            $zip->addFile($absolutePath, $type);
+                        }
+                    }
+                $zip->close();
+            }
+    
+            
+                return response()->download($filePath)->deleteFileAfterSend(true);
+            
+        }catch(\Exception $e){
+            // return response()->json(['error'=>$e->getMessage()]);
+            return redirect()->back()->with(['msg'=>$e->getMessage()]);
+        }
+    }
+    // return response()->json(['error' => 'Unable to create ZIP file'], 500);
+
+    
     
 }

@@ -78,7 +78,8 @@ function toggler(type,source){
                                 <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female' }}</span></p>
                             </div>
                     </div>   
-                </div>  
+                </div> 
+                <Link :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm"> Download</Link>
                 <div class="pass_travel_details_wrapper border-top border-bottom">
                     <div class="row">
                         <div class="col-xl-6 xol-lg-6 col-md-12 col-sm-12 p-0">

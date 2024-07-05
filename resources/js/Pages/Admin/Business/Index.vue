@@ -12,65 +12,86 @@ const props = defineProps({
     },
 });
 // console.log(props.customers);
-    // Edit category
-    const editbusiness= async(id) =>{
-        router.get(route('business-listing.edit',id));
-    };
-    
-    // Delete category
-    const deletebusiness = async (id) => {
-        const { value: confirmed } = await Swal.fire({
-            title: 'Are you sure?',
-            text: 'You want to Delete Employer Record?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
-        });
+// Edit category
+const editbusiness = async (id) => {
+    router.get(route('business-listing.edit', id));
+};
 
-        try {
-            if (confirmed) {
-                router.delete(route('business-listing.destroy',id));
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: 'Employer Deleted Successfully',
-                });
-                location.reload();
-            }
-        } catch (error) {
+// Delete category
+const deletebusiness = async (id) => {
+    const { value: confirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'You want to Delete Employer Record?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!'
+    });
+
+    try {
+        if (confirmed) {
+            router.delete(route('business-listing.destroy', id));
             Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error Deleting Business. Please try again.',
+                icon: 'success',
+                title: 'Success',
+                text: 'Employer Deleted Successfully',
             });
+            location.reload();
         }
-    };
-    const  options= {columnDefs: [{
-            targets: 4, 
-            orderable: false 
-          }
-        ]
-      };
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error Deleting Business. Please try again.',
+        });
+    }
+};
+const options = {
+    columnDefs: [{
+        targets: 4,
+        orderable: false
+    }
+    ]
+};
+
+function get_date(dateString) {
+    const date = new Date(dateString);
+    function pad(num) {
+        return num < 10 ? '0' + num : num;
+    }
+
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const year = date.getFullYear();
+    let hours = date.getHours();
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    hours = pad(hours);
+    const formattedDate = `${month}/${day}/${year} ${hours}:${minutes}:${seconds}${ampm}`;
+    return formattedDate;
+}
 </script>
 
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Businesses</h2>
+            <h2 class="font-semibold text-xl text-black-800 leading-tight">Businesses</h2>
             <div class="button-container">
                 <Link :href="route('business-listing.create')">
                 <button class="btn btn-info">Add Business</button>
                 </Link>
             </div>
-            
+
         </template>
         <div class="py-12 categories_page">
             <div class="max-w-7xl mx-auto px-2 categories_inner">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 padding_remove  table-responsive">
-                        <DataTable class="display"  style="border:2px black ;width:100%">
+                        <DataTable class="display" style="border:2px black ;width:100%">
                             <thead>
                                 <tr>
                                     <th>S.No.</th>
@@ -78,14 +99,15 @@ const props = defineProps({
                                     <th>Email</th>
                                     <!-- <th>test</th> -->
                                     <th>Status</th>
+                                    <th>Date Registered</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              
-                                <tr v-for="(customer,index) in customers" :key="customer.id">
-                                    <td >{{ index+1 }}</td>
-                                    <td >
+
+                                <tr v-for="(customer, index) in customers" :key="customer.id">
+                                    <td>{{ index + 1 }}</td>
+                                    <td>
                                         <p v-html="customer.name"></p>
                                     </td>
                                     <td>{{ customer.email }}</td>
@@ -93,16 +115,19 @@ const props = defineProps({
                                         <img :src="getImageUrl(customer.category_image)" alt="" srcset="" style="width:100px">
                                         </td> -->
                                     <td :style="{ color: (customer.status == 0) ? 'red' : 'green' }">
-                                        {{ (customer.status == 0) ?"Inactive" : "Active" }}
+                                        {{ (customer.status == 0) ? "Inactive" : "Active" }}
+                                    </td>
+                                    <td v-html="get_date(customer.created_at)">
+
                                     </td>
                                     <td>
                                         &nbsp;
-                                        <button class="btn btn-primary btn-sm" @click="editbusiness(customer.id)"
-                                           ><i class="fas fa-edit" ></i></button>
+                                        <button class="btn btn-primary btn-sm" @click="editbusiness(customer.id)"><i
+                                                class="fas fa-edit"></i></button>
                                         &nbsp;
-                                        <button class="btn btn-danger btn-sm" @click="deletebusiness(customer.id)"
-                                            ><i class="fas fa-trash" ></i></button>
-                                   </td> 
+                                        <button class="btn btn-danger btn-sm" @click="deletebusiness(customer.id)"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </DataTable>
@@ -113,6 +138,4 @@ const props = defineProps({
     </AuthenticatedLayout>
 </template>
 
-<style scoped>
-  
-</style>
+<style scoped></style>

@@ -45,12 +45,20 @@ const props = defineProps({
     },
     currencies: {
         type: Array
+    },
+    employers:{
+        type:Array
+    },
+    employer_id:{
+        type:Number,
+        default:null
     }
 
 });
 
 
 const form = useForm({
+    employer:props.employer_id,
     id: props.job.id,
     job_title: props.job.job_title,
     job_image: props.job.job_image,
@@ -557,17 +565,18 @@ function removeImage(){
 
                                     <!-- </div> -->
                                 </div>
-                                <div class="col-md-6 d-none">
+                                <div class="col-md-6 ">
 
-                                    <!-- <div class="mt-4   ">
-                                <span class="label text-label">Details of the Job<span style="color:red">
-                                        *</span></span>
+                                    <div class="mt-4   ">
+                                <span class="label text-label">Assign Employer</span>
                                 <div class="eye-icon-div">
-                                    <textarea id="details" rows="5" type="text" v-model="form.detail"
-                                        placeholder="Enter Details of the Job" class="form-control mt-2" />
+                                    <select v-model="form.employer" class="form-control">
+                                        <option value="" selected>Select</option>
+                                        <option v-for="(employer) in employers" 
+                                            :value="employer.id"> {{ employer.name }} </option>
+                                    </select>
                                 </div>
-                                <InputError class="mt-2" :message="form.errors.detail" />
-                            </div> -->
+                            </div>
 
 
                                 </div>

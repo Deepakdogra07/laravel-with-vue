@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use App\Models\Jobs;
+use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Skills;
 use App\Rules\MaxWords;
@@ -45,7 +46,8 @@ class JobsController extends Controller
       $work_experience = Workexperience::all();
       $currencies = Currency::all();
       $languages = Language::select('id', 'language_name as name')->get();
-      return Inertia::render('Admin/Jobs/Create', compact('languages', 'currencies', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
+      $employers = User::where('user_type',2)->get();
+      return Inertia::render('Admin/Jobs/Create', compact('languages','employers', 'currencies', 'positions', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience'));
    }
    public function store(Request $request)
    {
@@ -148,7 +150,11 @@ class JobsController extends Controller
             $imageName = insertData($image,'jobs/');
             $job->job_image = '/storage/' . $imageName;
          }
-         $job->user_id = auth()->user()->id;
+         if($request->employer){
+            $job->user_id = $request->employer;
+         }else{
+            $job->user_id = auth()->user()->id;
+         }
 
          $job->save();
       } catch (\Exception $e) {
@@ -167,10 +173,16 @@ class JobsController extends Controller
       $job = Jobs::where('id', $id)->first();
       $currencies = Currency::all();
       $languages = Language::select('id', 'language_name as name')->get();
-      return Inertia::render('Admin/Jobs/Edit', compact('positions', 'currencies', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
+      $employers = User::where('user_type',2)->get();
+      $employer_id = null;
+      if(Auth::user()->id != $job->user_id){
+         $employer_id = $job->user_id;
+      }
+      return Inertia::render('Admin/Jobs/Edit', compact('positions', 'employer_id','currencies','employers', 'languages', 'skills', 'industries', 'disciplines', 'seniorities', 'work_experience', 'job'));
    }
    public function update($id, Request $request)
    {
+     
       $rules = [
          "job_title" => 'required',
          "job_image" => 'required|max:20480',
@@ -272,7 +284,11 @@ class JobsController extends Controller
             $imageName = insertData($image,'jobs/');
             $job->job_image = '/storage/' . $imageName;
          }
-         $job->user_id = auth()->user()->id;
+         if($request->employer){
+            $job->user_id = $request->employer;
+         }else{
+            $job->user_id = auth()->user()->id;
+         }
          $job->update();
       } catch (\Exception $e) {
          return back()->withErrors(['success' => false, 'message' => $e->getMessage()]);
@@ -313,9 +329,9 @@ class JobsController extends Controller
       $industry = '';
       $jobs = Jobs::with('position', 'work_experience', 'discipline', 'industry', 'seniority', 'skills');
       
-      if($user && $user->user_type < 3){
-         $jobs = $jobs->where('user_id' ,'!=',$user->id);
-      }
+      // if($user && $user->user_type < 3){
+      //    $jobs = $jobs->where('user_id' ,'!=',$user->id);
+      // }
       if($request->industry){
          $industry = $request->industry;
          $jobs = $jobs->whereJsonContains('industry_id', (int)$request->industry);
@@ -331,7 +347,7 @@ class JobsController extends Controller
       $jobs = $jobs->paginate(9);
       $applied_jobs = Customer::where(['user_id'=>$user?->id,'submitted'=>1])->with('status')->pluck('job_id')->toArray();
       // dd($applied_jobs);
-      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','applied_jobs','industry'));
+      return Inertia::render('Frontend/JobSection/JobListing', compact('jobs','user','applied_jobs','industry'));
    }
 
    public function view_job($id)
@@ -347,7 +363,8 @@ class JobsController extends Controller
       $created_time = $this->date_Time($job->created_at);
       $industries = Industries::withname();
       $applied_jobs = Customer::where('user_id',$user?->id)->with('status')->pluck('job_id')->toArray();
-      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','industries', 'languages', 'skills', 'created_time','applied_jobs'));
+      $user = Auth::user();
+      return Inertia::render('Frontend/JobSection/ViewJobs', compact('job','user','industries', 'languages', 'skills', 'created_time','applied_jobs'));
    }
 
 
