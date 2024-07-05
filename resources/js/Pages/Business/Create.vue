@@ -176,7 +176,7 @@ function handleChange(type){
         <div class="about-us-bg-wrapper">
             <div class="container about-width">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
-                    <div class="row add-job-form-section job_posting_page">
+                    <div class="row add-job-form-section job_posting_page job_posting_frontend">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="mt-4 spacing_tab">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>

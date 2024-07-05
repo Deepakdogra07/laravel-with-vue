@@ -99,7 +99,7 @@ function sepratedString(recommended_skills){
         <div class="py-12 spacing_sshhow">
             <div class="max-w-7xl mx-auto px-2 view_job_page">
                 <div class="bg-white bg_mine overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
-                    <div class="p-6 text-black-900 view_job_wrapper">
+                    <div class="p-6 text-black-900 view_Job_table">
                         <div class="container">
                             <div class="card">
                                 <div class="card-header">

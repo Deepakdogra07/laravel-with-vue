@@ -14,7 +14,6 @@
            <div class="pages-heading d-flex justify-between align-items-center px-2 py-3 text-2xl font-semibold text-gray-700">
              <slot name="header" />
            </div>
-
            <slot />
          </div>
        </main>

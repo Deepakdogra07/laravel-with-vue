@@ -89,7 +89,7 @@ const user = ref(page?.props?.auth?.user)
 
           <div class="footer-section footer-five">
             <h2 class="text-white relative">Registration</h2>
-              <div class="row mt-5">
+              <div class="row home_certificate_row">
                   <div v-for="(image, index) in JSON.parse(footer.certificate_images)"
                       :key="index" class="col-md-6 col-4  mb-2 certificate_ftr">
                       <img class="certificate-img" :src="image" alt="">

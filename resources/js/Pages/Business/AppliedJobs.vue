@@ -23,7 +23,7 @@ const props = defineProps({
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <div class="job-list-search srch_responsive business_srccc view_customer_listings">
+        <div class="job-list-search srch_responsive business_srccc view_customer_listings customer_listing_wrpa">
             <div class="container aboutt-width ">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative src_bar">
                     <div class="d-flex gap-5 align-items-center srch_navbar">
@@ -36,7 +36,7 @@ const props = defineProps({
         </div>
         <div class="Applied_job_wrapper ">
             <div class="container applied-container_wrapper">
-                <h3 class="pt-3 heading_applied" style="font-family: 'open sans' !important; font-size: 23px;">Applied
+                <h3 class="heading_applied" style="font-family: 'open sans' !important; font-size: 23px;">Applied
                     Jobs:</h3>
                 <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner table-responsive">
                     <DataTable

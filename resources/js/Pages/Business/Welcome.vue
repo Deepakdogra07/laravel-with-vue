@@ -126,7 +126,7 @@ async function changeStatus(customer_id, job_id, event) {
 
 
   <div class="main-outer-section">
-    <div class="job-list-search srch_responsive business_srccc">
+    <div class="job-list-search srch_responsive business_srccc customer_listing_wrpa">
       <div class="container aboutt-width ">
         <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative src_bar">
           <!-- <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
@@ -147,7 +147,7 @@ async function changeStatus(customer_id, job_id, event) {
         </div>
       </div>
     </div>
-    <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper">
+    <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper customer_listing_wrpa_front">
       <div class="container about-width p-0">
         <div class="filter-status row">
           <div class="col-md-8 width_mobile p-0">
@@ -193,7 +193,7 @@ async function changeStatus(customer_id, job_id, event) {
                     </div> -->
         </div>
         <div class="main-job-filter mt-4">
-          <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper">
+          <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper ">
             <!-- <li>
               <span>Yes (2)</span>
             </li>
@@ -235,8 +235,8 @@ async function changeStatus(customer_id, job_id, event) {
           </ul>
         </div>
 
-        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive">
-          <DataTable class="display business_dash_tables_wrapper business_wrapper_dash Business_blank"
+        <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive applied_main-wrap">
+          <DataTable class="display business_dash_tables_wrapper applied_frontend_table "
             :key="refreshDataTable">
             <thead>
               <tr>

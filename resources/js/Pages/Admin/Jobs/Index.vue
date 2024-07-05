@@ -76,7 +76,7 @@ const  options= {columnDefs: [{
                 </Link>
             </div>
         </template>
-        <div class="py-12">
+        <div class="py-12 jobs_Admin_wrap">
             <div class="max-w-7xl mx-auto px-2 padding_remove border_index job_admin_all">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd !important;">
                     <div class=" text-black-900 padding_remove  table-responsive">
