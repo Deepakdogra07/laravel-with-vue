@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
@@ -88,32 +90,36 @@ class HomeController extends Controller
     }
 
     public function downloadZip($customer_id){
-        // try{
+        try{
 
             $zip = new ZipArchive;
             $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
-            $fileName = "$customer->first_name$customer->last_name.zip";
+            $fileName = "{$customer->first_name}_{$customer->last_name}.zip";
     
             if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE)
             {
+                $headers = [
+                    'Content-Type' => 'application/zip',
+                    'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+                ];
                 
                 $files = [
-                    'customer_image' => $customer->customer_image, 
-                    'passport_image' => $customer->passport_image, 
-                    'employer_statement' => $customer->employments->employer_statement, 
-                    'financial_evidence' => $customer->employments->financial_evidence, 
-                    'evidence_self_employment' => $customer->employments->evidence_self_employment, 
-                    'self_employment_aus' => $customer->employments->evidence_self_employment_aus, 
-                    'formal_training_evidence' => $customer->employments->formal_training_evidence, 
-                    'employment_evidence' => $customer->documents->employment_evidence, 
-                    'licences' => $customer->documents->licences, 
-                    'kitchen_area' => $customer->documents->kitchen_area, 
-                    'ingredients' => $customer->documents->ingredients, 
-                    'cooking_tech' => $customer->documents->cooking_tech, 
-                    'clean_up' => $customer->documents->clean_up, 
-                    'evidence_image' => $customer->documents->evidence_image, 
-                    'resume' => $customer->documents->resume, 
-                    'is_australia' => $customer->documents->is_australia, 
+                    'customer_image' => $customer?->customer_image, 
+                    'passport_image' => $customer?->passport_image, 
+                    'employer_statement' => $customer?->employments?->employer_statement, 
+                    'financial_evidence' => $customer?->employments?->financial_evidence, 
+                    'evidence_self_employment' => $customer?->employments?->evidence_self_employment, 
+                    'self_employment_aus' => $customer?->employments?->evidence_self_employment_aus, 
+                    'formal_training_evidence' => $customer?->employments?->formal_training_evidence, 
+                    'employment_evidence' => $customer?->documents?->employment_evidence, 
+                    'licences' => $customer?->documents?->licences, 
+                    'kitchen_area' => $customer?->documents?->kitchen_area, 
+                    'ingredients' => $customer?->documents?->ingredients, 
+                    'cooking_tech' => $customer?->documents?->cooking_tech, 
+                    'clean_up' => $customer?->documents?->clean_up, 
+                    'evidence_image' => $customer?->documents?->evidence_image, 
+                    'resume' => $customer?->documents?->resume, 
+                    'is_australia' => $customer?->documents?->is_australia, 
                 ];
                     foreach ($files as $type => $filePath) {
                         // Check if the file exists
@@ -123,19 +129,19 @@ class HomeController extends Controller
                             echo"$type => $absolutePath <br>";
                         }
                     }
-                    // dd($files);
-                $zip->close();
+                    
+                    $zip->close();
+                    return response()->download(public_path($fileName))->deleteFileAfterSend(true);
+                    
             }
     
             
-                return response()->download($filePath);
             
-        // }catch(\Exception $e){
-        //     // return response()->json(['error'=>$e->getMessage()]);
-        //     return redirect()->back()->with(['msg'=>$e->getMessage()]);
-        // }
+        }catch(\Exception $e){
+            // return response()->json(['error'=>$e->getMessage()]);
+            return redirect()->back()->with(['msg'=>$e->getMessage()]);
+        }
     }
-    // return response()->json(['error' => 'Unable to create ZIP file'], 500);
 
     
     

@@ -26,7 +26,6 @@ onMounted(() => {
     appliedCustomers.value = props.applied_customers;
     refreshDataTable.value++;
 });
-console.log(appliedCustomers);
 const activeSpan = ref(null);
 const setActiveSpan = async (spanNumber) => {
     try {

@@ -95,7 +95,9 @@ function job_description(description){
     </div> -->
 
     <div class="login-bg-wrapper job-detail-page Business_details_page">
+      
         <div class="container">
+            <Link :href="route('business-jobs.index')" class="btn btn-success"><i class="fas fa-arrow-left pr-2"></i>Back</Link>
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <div class="view-main-image">

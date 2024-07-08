@@ -4,7 +4,7 @@ import Header from '@/Pages/Frontend/Header.vue'
 import Footer from '@/Pages/Frontend/Footer.vue'
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import fslightbox from 'fslightbox';
 import moment from 'moment';
 const props = defineProps({
@@ -14,6 +14,10 @@ const props = defineProps({
     user_type:{
         type:Number,
         default:0
+    },
+    industries:{
+        type:Array,
+        default:null
     }
 });
 function getLast_name(name){
@@ -41,12 +45,19 @@ function toggler(type,source){
 function formatDateTime(date) {
     return moment(date).format('MMMM-DD-YYYY');
 }
+const industry = ref('');
+onMounted(()=>{
+    if(props.industries.length > 0){
+        industry.value = props.industries.join(',');
+    }
+});
+
 
 </script>
 
 <template>
     <Header />
-    <div v-if="user_type < 3 ">
+    <div v-if="user_type < 3 && (user_type != 0) ">
         <div class="job-list-search srch_responsive business_srccc view_customer_listings">
             <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
@@ -60,9 +71,13 @@ function formatDateTime(date) {
                 </div>
             </div>
             <div v-else>
-                <SubHeading :customer_id="customer.id"/>        
+                <SubHeading :customer_id="customer.id"/>   
+
      </div>
     <section class="view_customer_wrapper">
+        <div v-if="user_type == 3 ">
+            <Link :href="route('customer-dash')" class="btn btn-success"><i class="fas fa-arrow-left pr-2"></i>Back</Link>
+        </div>
         <div class="container py-12 view_customer_inner">
             <div class="inner_spacing_wrapper">
                 <div class="customer_card pb-4">
@@ -80,6 +95,8 @@ function formatDateTime(date) {
                                 <p><b>Country to immigrate</b><span class="travel_inner">{{ customer.migrate_country }}</span></p>
                                 <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female' }}</span></p>
                                 <p><b>Applied Date</b><span class="travel_inner">{{ formatDateTime(customer.created_at) }}</span></p>
+                                <p><b>Industry</b><span class="travel_inner">{{ industry}} </span></p>
+                                <p><b>Business</b><span class="travel_inner">{{ customer?.jobs?.business?.company_name}} </span></p>
                             </div>
                     </div>   
                 </div> 
@@ -111,7 +128,7 @@ function formatDateTime(date) {
                         </div>
                     </div>
                 </div> 
-                <Link :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm" style="float:right;"> Download all Media</Link>
+                <a :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm" style="float:right;" > Download all Media</a>
                 <div class="video_image_wrapper pt-5 mbile_padding">
                     <h2>Videos</h2>
                     <div class="row">
@@ -220,10 +237,10 @@ function formatDateTime(date) {
                         <div class="col column_width column_mine_width">
                                 <H2>Passport</H2>
                                 <div class="img_inner_wrapper">
-                                <img :src="customer?.customer_image">
+                                <img :src="customer?.passport_image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.customer_image)"></p>
-                                    <a :href="customer?.customer_image" target="_blank" download="passport">
+                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.passport_image)"></p>
+                                    <a :href="customer?.passport_image" target="_blank" download="passport">
                                     <img src="/images/download-icon.svg" alt="download" class="download-icon" >
                                     </a>
                                 </div>
