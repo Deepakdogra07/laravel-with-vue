@@ -44,7 +44,7 @@ const props = defineProps({
                         :key="refreshDataTable">
                         <thead>
                             <tr>
-                                <th>Title of Job</th>
+                               <th>Title of Job</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Country to Immigrate</th>
@@ -55,7 +55,7 @@ const props = defineProps({
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="customer in applied_jobs">
+                            <div class="overlap_hidden_white"><tr v-for="customer in applied_jobs">
                                 <td v-html="customer?.jobs?.job_title"></td>
                                 <td v-html="customer?.customers?.first_name + ' ' + customer?.customers?.last_name">
                                 </td>
@@ -74,7 +74,7 @@ const props = defineProps({
                                 <td>
                                     <Link class="btn btn-sm btn-success" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i></Link>
                                 </td>
-                            </tr>
+                            </tr></div>
                         </tbody>
                     </DataTable>
                 </div>

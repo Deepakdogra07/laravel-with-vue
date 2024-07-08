@@ -390,6 +390,10 @@ function formatDateTime(date) {
     object-fit: fill;
     width: 37px;
 }
+.download-icon:hover {
+    transform: scale(1.2);
+    transition: all .10s;
+}
 .resume_btn .download-icon{
     width: 20px;
 }

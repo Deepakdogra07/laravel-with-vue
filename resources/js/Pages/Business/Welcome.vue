@@ -236,7 +236,7 @@ async function changeStatus(customer_id, job_id, event) {
         </div>
 
         <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive applied_main-wrap">
-          <DataTable class="display business_dash_tables_wrapper applied_frontend_table "
+          <DataTable class="display business_dash_tables_wrapper applied_frontend_table"
             :key="refreshDataTable">
             <thead>
               <tr>
