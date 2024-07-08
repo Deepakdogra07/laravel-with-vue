@@ -55,7 +55,7 @@ table.dataTable td img {
 	width: 100px !important;
 	height: 60px !important;
 	max-width: 100px !important;
-    object-fit: cover;
+    object-fit: contain;
     object-position: top;
 }
 
