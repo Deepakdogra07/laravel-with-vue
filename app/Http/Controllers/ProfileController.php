@@ -92,6 +92,41 @@ class ProfileController extends Controller
 
     public function update_business(Request $request): RedirectResponse
     {
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'company_name' => 'required',
+            'company_address' => 'required',
+            'contact_number' => 'required',
+            'company_country_code' => 'required',
+            'company_state' => 'required',
+            'company_pin' => 'required',
+            
+        ], [
+            'checkbox.accepted' => 'You must agree to the Terms of Use and Privacy Policy.',
+            'company_address.required'=>"Company address is required.",
+            'company_country_code.required'=>"Country is required.",
+            'company_state.required'=>"State is required.",
+            'company_city.required'=>"City is required.",
+            'company_pin.required'=>"Postal Code is required.",
+            // 'company_pin.min'=>"Postal Code should be atleast 4 digits.",
+            // 'company_pin.max'=>"Postal Code should not more than 10 digits.",
+            'company_name.required'=>"Company Name is required.",
+            'mobile_number.required'=>"Mobile Number is required.",
+            'mobile_number.regex'=>"Mobile Number must be a number.",
+            'mobile_number.min'=>"Mobile Number must be at least 8 digits.",
+            'mobile_number.max'=>"Mobile Number must not be more than 15 digits.",
+            'password.regex'=>'The password must contain at least one uppercase letter, one lowercase letter, one digit and one special character.',
+            'email.required' => 'Email is required.',
+            'email.string' => 'The email must be a string.',
+            'email.lowercase' => 'The email must be in lowercase letters.',
+            'email.email' => 'Please enter a valid email address.            ',
+            'email.max' => 'Email must not exceed 255 characters.',
+            'email.unique' => 'The email address is already in use.',
+
+            'contact_department.required' => "Contact department  is required.",
+            'contact_number.required' => "Contact Person  is required",
+
+        ]);
         $business = BusinessModal::findOrFail($request->id);
         if($business){
             $data = $request->except('id','user_id');

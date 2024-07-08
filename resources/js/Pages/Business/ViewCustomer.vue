@@ -6,6 +6,7 @@ import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
 import { reactive, ref } from 'vue';
 import fslightbox from 'fslightbox';
+import moment from 'moment';
 const props = defineProps({
     customer:{
         type:Object
@@ -37,7 +38,9 @@ function toggler(type,source){
     lightbox.toggler = type;
     lightbox.sources = [source];
 }
-
+function formatDateTime(date) {
+    return moment(date).format('MMMM-DD-YYYY');
+}
 
 </script>
 
@@ -70,16 +73,17 @@ function toggler(type,source){
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
                             <div class="card-body">
                                 <!-- <h2>Other Details:</h2> -->
-                                <p><b>Date of Birth</b><span class="travel_inner">{{ customer.date_of_birth }}</span></p>
+                                <p><b>Date of Birth</b><span class="travel_inner">{{ formatDateTime(customer.date_of_birth) }}</span></p>
                                 <p><b>County of birth</b><span class="travel_inner">{{ customer.country_of_birth }}</span></p>
                                 <p><b>City of birth</b><span class="travel_inner">{{ customer.city_of_birth }}</span></p>
                                 <p><b>martial_status</b><span class="travel_inner">{{ (customer.martial_status) ? 'Married':'Unmarried' }}</span></p>
                                 <p><b>Country to immigrate</b><span class="travel_inner">{{ customer.migrate_country }}</span></p>
                                 <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female' }}</span></p>
+                                <p><b>Applied Date</b><span class="travel_inner">{{ formatDateTime(customer.created_at) }}</span></p>
                             </div>
                     </div>   
                 </div> 
-                <Link :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm"> Download</Link>
+               
                 <div class="pass_travel_details_wrapper border-top border-bottom">
                     <div class="row">
                         <div class="col-xl-6 xol-lg-6 col-md-12 col-sm-12 p-0">
@@ -107,6 +111,7 @@ function toggler(type,source){
                         </div>
                     </div>
                 </div> 
+                <Link :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm" style="float:right;"> Download all Media</Link>
                 <div class="video_image_wrapper pt-5 mbile_padding">
                     <h2>Videos</h2>
                     <div class="row">
