@@ -374,11 +374,11 @@ public function validate_customer_documents(Request $request){
         ]);
     }elseif(isset($request->step) && $request->step == 5){
         $validator = Validator::make($request->all(), [
-            'kitchen_area'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
-            'ingredients'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
-            'cooking_tech'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
-            'dish'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
-            'clean_up'=> 'required|mimes:mp4,mov,ogg,qt|max:20480',
+            'kitchen_area'=> 'required|mimes:mp4,mov,ogg,qt|max:102400',
+            'ingredients'=> 'required|mimes:mp4,mov,ogg,qt|max:102400',
+            'cooking_tech'=> 'required|mimes:mp4,mov,ogg,qt|max:102400',
+            'dish'=> 'required|mimes:mp4,mov,ogg,qt|max:102400',
+            'clean_up'=> 'required|mimes:mp4,mov,ogg,qt|max:102400',
         ],[
             'kitchen_area.required'=> 'Kitchen area is required.',
             'ingredients.required'=> 'Ingredients is required.',
@@ -386,11 +386,11 @@ public function validate_customer_documents(Request $request){
             'dish.required'=> 'Dish is required.',
             'clean_up.required'=> 'Clean up is required.',
 
-            'kitchen_area.max'=> 'Kitchen area file should not exceed 20 MB.',
-            'ingredients.max'=> 'Ingredients file should not exceed 20 MB.',
-            'cooking_tech.max'=> 'Cooking tech file should not exceed 20 MB.',
-            'dish.max'=> 'Dish file should not exceed 20 MB.',
-            'clean_up.max'=> 'Clean up file should not exceed 20 MB.',
+            'kitchen_area.max'=> 'Kitchen area file should not exceed 100 MB.',
+            'ingredients.max'=> 'Ingredients file should not exceed 100 MB.',
+            'cooking_tech.max'=> 'Cooking tech file should not exceed 100 MB.',
+            'dish.max'=> 'Dish file should not exceed 100 MB.',
+            'clean_up.max'=> 'Clean up file should not exceed 100 MB.',
 
             'kitchen_area.mimes'=> 'Kitchen area should be in .mp4,.mov or .ogg format.',
             'ingredients.mimes'=> 'Ingredients should be in .mp4,.mov or .ogg format.',
@@ -429,11 +429,11 @@ public function validate_customer_documents(Request $request){
         $validator = Validator::make($request->all(), [
             'employment_evidence'=> 'required|max:20480',
             'licences'=> 'required|max:20480',
-            'kitchen_area'=> 'required|max:20480',
-            'ingredients'=> 'required|max:20480',
-            'cooking_tech'=> 'required|max:20480',
-            'dish'=> 'required|max:20480',
-            'clean_up'=> 'required|max:20480',
+            'kitchen_area'=> 'required|max:102400',
+            'ingredients'=> 'required|max:102400',
+            'cooking_tech'=> 'required|max:102400',
+            'dish'=> 'required|max:102400',
+            'clean_up'=> 'required|max:102400',
             'evidence_image'=> 'required|max:20480',
             'resume'=> 'required|max:20480',
             
@@ -449,11 +449,11 @@ public function validate_customer_documents(Request $request){
             'resume.required'=> 'Resume is required.',
             'employment_evidence.max'=> 'Employment evidence file should not exceed 20 MB.',
             'licences.max'=> 'Licences file should not exceed 20 MB.',
-            'kitchen_area.max'=> 'Kitchen area file should not exceed 20 MB.',
-            'ingredients.max'=> 'Ingredients file should not exceed 20 MB.',
-            'cooking_tech.max'=> 'Cooking tech file should not exceed 20 MB.',
-            'dish.max'=> 'Dish file should not exceed 20 MB.',
-            'clean_up.max'=> 'Clean up file should not exceed 20 MB.',
+            'kitchen_area.max'=> 'Kitchen area file should not exceed 100 MB.',
+            'ingredients.max'=> 'Ingredients file should not exceed 100 MB.',
+            'cooking_tech.max'=> 'Cooking tech file should not exceed 100 MB.',
+            'dish.max'=> 'Dish file should not exceed 100 MB.',
+            'clean_up.max'=> 'Clean up file should not exceed 100 MB.',
             'evidence_image.max'=> 'Evidence image file should not exceed 20 MB.',
             'resume.max'=> 'Resume file should not exceed 20 MB.',
         ]);

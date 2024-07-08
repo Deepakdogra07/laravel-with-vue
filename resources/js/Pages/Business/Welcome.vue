@@ -79,11 +79,13 @@ function filterData(type, event) {
       refreshDataTable.value++;
     }
     if (type == 'applied_date') {
-      if (event.target.value == 'desc') {
-        appliedCustomers.value = customers_data.sort((a, b) => b.id - a.id);
-      } else {
-        appliedCustomers.value = customers_data.sort((a, b) => a.id - b.id);
-      }
+      if(event.target.value == 'desc'){
+                appliedCustomers.value = customers_data.sort((a, b) => b.id - a.id);
+                refreshDataTable.value++;
+            }else{
+                appliedCustomers.value = customers_data.sort((a, b) => a.id - b.id);
+                refreshDataTable.value++;
+            }
     }
   } else {
     appliedCustomers.value = props.applied_customers;
