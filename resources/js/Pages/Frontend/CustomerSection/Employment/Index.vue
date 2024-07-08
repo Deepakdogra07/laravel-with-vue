@@ -482,6 +482,7 @@ function removeImage(type) {
                                     </div>
                                 </div>
                             </div>
+                            <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                         </div>
 
                         <!-- 2 -->

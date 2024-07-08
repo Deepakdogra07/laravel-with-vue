@@ -63,59 +63,78 @@ const countries = Country.getAllCountries();
 
 
         <form class="mt-6 space-y-6 " @submit.prevent="submit2()">
-            <div class="profile_input">
-                <InputLabel for="name" value="Company Name" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_name"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_name" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="Contact Person" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_number"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.contact_number" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="Company Address" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_address"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_address" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="Country" />
-                <!-- <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_country_code"  autofocus autocomplete="name"/> -->
-                 <select class='form-control' v-model="form.company_country_code">
-                    <option value=""> Select Country</option>
-                    <option v-for="country  in countries" :value="country.isoCode">{{ country.name}}</option>
-                 </select>
-                <InputError class="mt-2" :message="form.errors.company_country_code" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="State" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_state"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_state" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="City" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_city"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_city" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="PIN" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_pin"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_pin" />
-            </div>
-            <div class="profile_input">
-                <InputLabel for="name" value="Contact Department" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_department"  autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.contact_department" />
-            </div>
 
-            <div class="profile_input">
-                <InputLabel for="name" value="Company VAT" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_vat" autofocus autocomplete="name"/>
-                <InputError class="mt-2" :message="form.errors.company_vat" />
-            </div>
-
+                <div class="row justify-content-between business_profile_front_end">
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                        <InputLabel for="name" value="Company Name" />
+                        <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_name"  autofocus autocomplete="name"/>
+                        <InputError class="mt-2" :message="form.errors.company_name" />
+                    </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="Contact Person" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_number"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.contact_number" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width" >
+                        <div class="profile_input">
+                            <InputLabel for="name" value="Company Address" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_address"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.company_address" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="Country" />
+                            <!-- <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_country_code"  autofocus autocomplete="name"/> -->
+                            <select class='form-control mt-1' v-model="form.company_country_code">
+                                <option value=""> Select Country</option>
+                                <option v-for="country  in countries" :value="country.isoCode">{{ country.name}}</option>
+                            </select>
+                            <InputError class="mt-2" :message="form.errors.company_country_code" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="State" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_state"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.company_state" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="City" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_city"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.company_city" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="PIN" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_pin"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.company_pin" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="Contact Department" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_department"  autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.contact_department" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
+                        <div class="profile_input">
+                            <InputLabel for="name" value="Company VAT" />
+                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_vat" autofocus autocomplete="name"/>
+                            <InputError class="mt-2" :message="form.errors.company_vat" />
+                        </div>
+                    </div>
+                </div>
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing" >Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing" class="form-btn" >Save</PrimaryButton>
                 <!-- <Link @click="submit2" class="btn btn-primary">Save  </Link> -->
 
                 <Transition
