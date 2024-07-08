@@ -12,7 +12,7 @@ const user = ref(page?.props?.auth?.user)
 <template>
   <div class="container-fluid">
     <div class="main-footer">
-      <div class="container">
+      <div class="container about-width">
         <div class="footer-grid">
           
           <div class="footer-section footer-one">
@@ -102,7 +102,7 @@ const user = ref(page?.props?.auth?.user)
   </div>
   <div class="container-fluid">
     <div class="bottom-footer">
-      <div class="container footer_padding">
+      <div class="container footer_padding about-width">
 
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-3 col-md-3 col-sm-12 remove_padding_footer">
