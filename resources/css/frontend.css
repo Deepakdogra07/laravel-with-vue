@@ -433,6 +433,9 @@ h2 {
 	font-weight: 700 !important;
 	font-size: 22px;
 }
+.slider-profile-name p:Hover{
+	color:#1a9882;
+}
 
 .slider-profile-name .slider-profile-img img {
 	width: 100%;
@@ -782,7 +785,7 @@ h2 {
 .card-img img {
 	width: 100%;
 	height: 100%;
-	object-fit: fill;
+	object-fit: contain;
 	object-position: center;
 	border-radius: 10px;
 }
@@ -838,7 +841,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	border-radius: 10px;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
 }
 
@@ -1798,7 +1801,7 @@ input[type="file"] {
 
 	.main-header .navbar-nav li a {
 		padding: 5px;
-		font-size: 13px;
+		font-size: 14px;
 	}
 
 }
@@ -2777,6 +2780,10 @@ input[type="file"] {
 		margin-top: 20px !important;
 	}
 
+	.subheading_cn .banner_hd {
+		padding: 10px 0px 25px 0px;
+	}
+
 	.step-form-4 p.light-text,
 	h2.spacing_hd {
 		margin: 3px 0px;
@@ -3351,7 +3358,7 @@ input[type="file"] {
 	}
 
 	.personal_column .all_image_close img, .Pass_column_upload.all_image_close img {
-		margin: 10px 0px;
+		margin-bottom: 10px;
 	}
 
 	.mobile_padding {
@@ -3503,6 +3510,10 @@ input[type="file"] {
 @media (max-width: 576px) {
 	ul.dropdown-menu.toggler_menu {
 		top: 55px;
+	}
+
+	.customer_listing_wrpa_front li.business_location_list {
+		margin: 12px 0px;
 	}
 
 	.business_profile_front_end .col_width {
@@ -4372,7 +4383,7 @@ input[type="file"] {
 		font-size: 26px !important;
 		margin-bottom: 0px;
 		line-height: 22px !important;
-		margin-top: 20px;
+		margin-top: 40px;
 	}
 
 	.category-section {
@@ -4756,6 +4767,14 @@ input[type="file"] {
 	.travel-section .form-division-left .margin_btm {
 		margin-bottom: 10px !important;
 	}
+
+	.end_form_part {
+		display: block !important;
+	}
+
+	.end_form_part .width_full {
+		width: 100%;
+	}
 }
 
 
@@ -4766,7 +4785,7 @@ input[type="file"] {
 	}
 
 	.add_job_srchhs .button_bs_ryt {
-		margin-top: 48px;
+		margin-top: 69px;
 	}
 
 	.add_job_srchhs .search_bar {
@@ -5881,8 +5900,8 @@ li.last_border {
 }
 
 .job-detail-page .view-main-image img {
-	border: 0px !important;
-	border-radius: 10px !important;
+    border: 1px solid #f9f9f9 !important;
+    border-radius: 10px !important;
 }
 
 .job-detail-page .company-section {
@@ -6009,7 +6028,7 @@ li.last_border {
 }
 
 .main-header.login-wrapper .main-btn {
-	padding: 8px 35px 8px 35px;
+	padding: 10px 30px 10px 30px;
 	text-transform: capitalize;
 }
 
@@ -6764,6 +6783,10 @@ label.label_checkbox {
     color: #000;
     font-size: 14px;
     padding-top: 10px;
+}
+
+.mobile_amdin_dropdown ul li:last-child a {
+    padding-bottom: 10px;
 }
 
 .arrow_label .multiselect__select::before {
@@ -7809,4 +7832,11 @@ span.job-filter_text {
 
 .applied_frontend_table .icon_eye{
     padding: 11px 14px;
+}
+.welcom_hd {
+    text-transform: none;
+}
+
+.main-header a:focus {
+    color: #fff;
 }

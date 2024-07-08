@@ -1042,14 +1042,14 @@ function removeImage(type){
                         </div>
 
 
-                        <div class="d-flex justify-between align-items-start p-0">
+                        <div class="d-flex justify-between align-items-start p-0 end_form_part">
                             <div class="flex items-start mt-4 ">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(7)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start mt-4">
-                                <PrimaryButton class="forms-btn" style="line-height: 20px;" type="submit">
+                                <PrimaryButton class="forms-btn width_full" style="line-height: 20px;" type="submit">
                                     Pay Fee and Submit Application
                                 </PrimaryButton>
                             </div>

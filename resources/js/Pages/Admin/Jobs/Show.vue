@@ -107,9 +107,9 @@ function sepratedString(recommended_skills){
                                         <div class="card-header-title">
                                             <h2><b>Job Title :</b>{{ jobs?.job_title }}</h2>
                                             <br>
-                                            <h4><b>Positions :</b>{{ jobs?.positions }}</h4>
+                                            <h4><b>Position :</b>{{ jobs?.positions }}</h4>
                                             <br>
-                                            <p><b>Positions Type :</b>{{ jobs?.position?.name }}</p>
+                                            <p><b>Position Type :</b>{{ jobs?.position?.name }}</p>
                                         </div>
                                     </div>
                                     <div class="card-content">
