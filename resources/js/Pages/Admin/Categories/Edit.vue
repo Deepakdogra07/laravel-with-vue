@@ -27,7 +27,7 @@ function submitForm() {
     // Post data 
     form.post(route('category.updated',form.id),{
       onSuccess: () => {
-        toast("Categories Updated Successfully", {
+        toast("industries Updated Successfully", {
           autoClose: 2000,
           theme: 'dark',
         }
@@ -54,7 +54,7 @@ function submitForm() {
 <template>
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-black-800 leading-tight">Update Category</h2>
+      <h2 class="font-semibold text-xl text-black-800 leading-tight">Update Industry</h2>
       <div class="button-container">
       </div>
 
@@ -67,7 +67,7 @@ function submitForm() {
               <form @submit.prevent="submitForm">
                 <div class="mb-4 margin_btm">
                   <input type="hidden" id="categoryId" v-model="category.id">
-                  <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category
+                  <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Industry
                     Heading <span style="color: red;"> *</span></label>
                   <input type="text" id="categoryHeading" v-model="form.category_heading"
                     class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
@@ -76,7 +76,7 @@ function submitForm() {
                 </div>
 
                 <div class="mb-4 margin_btm">
-                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Category Image <span style="color: red;"> *</span></label>
+                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Industry Image <span style="color: red;"> *</span></label>
                   <img :src="category_image" alt="" style="height:100px">
                   <!-- <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}

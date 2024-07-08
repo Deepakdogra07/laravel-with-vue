@@ -32,7 +32,7 @@ function submitForm() {
   // Post data 
   router.post(route('category.store'), formData,{
       onSuccess: () => {
-        toast("Categories Updated Successfully", {
+        toast("industries Updated Successfully", {
           autoClose: 2000,
           theme: 'dark',
         }

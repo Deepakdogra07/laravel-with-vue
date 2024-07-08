@@ -21,7 +21,7 @@ const props = defineProps({
     const deletecategory = async (id) => {
         const { value: confirmed } = await Swal.fire({
             title: 'Are you sure?',
-            text: 'You want to Delete Category Record?',
+            text: 'You want to Delete Industry Record?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
@@ -61,7 +61,7 @@ function getImageUrl(imageName) {
 <template>
     <AuthenticatedLayout>
         <template #header>
-                <h2 class="font-semibold text-xl text-black-800 leading-tight">Industry</h2>
+                <h2 class="font-semibold text-xl text-black-800 leading-tight">Industries</h2>
             <div class="button-container">
                 <Link :href="route('category.create')">
                 <button class="btn btn-info">Add Industry</button>
@@ -78,8 +78,8 @@ function getImageUrl(imageName) {
                                 <tr>
                                     <th>S.No.</th>
                                     <th>Thumbnail</th>
-                                    <th>Category Industry</th>
-                                    <th>Category Industry</th>
+                                    <th>Industry Heading</th>
+                                    <th>Industry Image</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
