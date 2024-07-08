@@ -88,7 +88,7 @@ class HomeController extends Controller
     }
 
     public function downloadZip($customer_id){
-        try{
+        // try{
 
             $zip = new ZipArchive;
             $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments')->first();
@@ -118,20 +118,22 @@ class HomeController extends Controller
                     foreach ($files as $type => $filePath) {
                         // Check if the file exists
                         $absolutePath = public_path($filePath);
-                        if (file_exists($absolutePath) && is_file($filePath)) {
+                        if (file_exists($absolutePath) && !empty($filePath)) {
                             $zip->addFile($absolutePath, $type);
+                            echo"$type => $absolutePath <br>";
                         }
                     }
+                    // dd($files);
                 $zip->close();
             }
     
             
-                return response()->download($filePath)->deleteFileAfterSend(true);
+                return response()->download($filePath);
             
-        }catch(\Exception $e){
-            // return response()->json(['error'=>$e->getMessage()]);
-            return redirect()->back()->with(['msg'=>$e->getMessage()]);
-        }
+        // }catch(\Exception $e){
+        //     // return response()->json(['error'=>$e->getMessage()]);
+        //     return redirect()->back()->with(['msg'=>$e->getMessage()]);
+        // }
     }
     // return response()->json(['error' => 'Unable to create ZIP file'], 500);
 

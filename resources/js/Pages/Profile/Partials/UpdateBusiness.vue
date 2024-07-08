@@ -65,22 +65,22 @@ const countries = Country.getAllCountries();
         <form class="mt-6 space-y-6 " @submit.prevent="submit2()">
             <div class="profile_input">
                 <InputLabel for="name" value="Company Name" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_name" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_name"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.company_name" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="Contact Person" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_number" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_number"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.contact_number" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="Company Address" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_address" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_address"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.company_address" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="Country" />
-                <!-- <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_country_code" required autofocus autocomplete="name"/> -->
+                <!-- <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_country_code"  autofocus autocomplete="name"/> -->
                  <select class='form-control' v-model="form.company_country_code">
                     <option value=""> Select Country</option>
                     <option v-for="country  in countries" :value="country.isoCode">{{ country.name}}</option>
@@ -89,22 +89,22 @@ const countries = Country.getAllCountries();
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="State" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_state" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_state"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.company_state" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="City" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_city" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_city"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.company_city" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="PIN" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_pin" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_pin"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.company_pin" />
             </div>
             <div class="profile_input">
                 <InputLabel for="name" value="Contact Department" />
-                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_department" required autofocus autocomplete="name"/>
+                <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_department"  autofocus autocomplete="name"/>
                 <InputError class="mt-2" :message="form.errors.contact_department" />
             </div>
 
