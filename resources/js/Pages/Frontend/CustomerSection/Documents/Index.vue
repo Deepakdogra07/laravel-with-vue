@@ -554,7 +554,7 @@ function removeImage(type){
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('kitchen_area', $event)" accept="video/*">
                                 </div>
@@ -624,7 +624,7 @@ function removeImage(type){
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('ingredients', $event)" accept="video/*">
                                 </div>
@@ -681,7 +681,7 @@ function removeImage(type){
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('cooking_tech', $event)" accept="video/*">
                                 </div>
@@ -733,7 +733,7 @@ function removeImage(type){
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)" accept="video/*">
                                 </div>
@@ -786,7 +786,7 @@ function removeImage(type){
                                             stroke="#01796F" stroke-width="4"></path>
                                     </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
