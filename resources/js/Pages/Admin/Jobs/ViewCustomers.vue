@@ -203,7 +203,7 @@ async function changeStatus(customer_id, job_id, event) {
                                 <th>Profile</th>
                                 <th>Visa Purpose</th>
                                 <th>Country of Birth</th>
-                                <th>Intersts</th>
+                                <th>Actions</th>
                                 <th>View </th>
                             </tr>
                         </thead>

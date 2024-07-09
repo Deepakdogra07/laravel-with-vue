@@ -258,13 +258,6 @@ class JobApplicationController extends Controller
             if ($validator->fails()) {
                 return response()->json(['error'=>$validator->errors(),'step'=>$request->step,'success'=>false]);
             }elseif(isset($request->step) && $request->step < 4){
-                // if(isset($request->step) && $request->step == 1){
-                //     if(isset($request->employer_statement)&& $request->file('employer_statement')){
-                //         $image = $request->file('employer_statement');
-                //         $imageName = insertData($image,'customer/employments/');
-                //         $customer_employments->employer_statement = '/storage/' .$imageName;
-                //     }
-                // }
                 return response()->json(['success'=>true ,'step'=>$request->step+1]);
             }
     }
@@ -405,8 +398,6 @@ public function validate_customer_documents(Request $request){
             'cooking_tech.mimes'=> 'Cooking tech should be in .mp4,.mov or .ogg format.',
             'dish.mimes'=> 'Dish should be in .mp4,.mov or .ogg format.',
             'clean_up.mimes'=> 'Clean up should be in .mp4,.mov or .ogg format.',
-
-
         ]);
     }elseif(isset($request->step) && $request->step == 6){
         $validator = Validator::make($request->all(), [
@@ -535,4 +526,109 @@ public function validate_customer_documents(Request $request){
         // return redirect()->route('home');
         // return redirect()->route('processTransaction');
     }
+
+    public function submit_customers_data(Request $request){
+        
+           
+                $customer_employments = CustomerTraining::where(['job_id'=>$request->job_id,'customer_id'=>$request->customer_id])->first();
+            if(!$customer_employments){
+                $customer_employments = new CustomerTraining();
+            }
+            $customer_employments->fill($request->all());
+            if(isset($request->employer_statement)&& $request->file('employer_statement')){
+                $image = $request->file('employer_statement');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->employer_statement = '/storage/' .$imageName;
+            }
+          
+           
+            if(isset($request->financial_evidence)&& $request->file('financial_evidence')){
+                $image = $request->file('financial_evidence');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->financial_evidence = '/storage/' .$imageName;
+            }
+            
+           
+            if(isset($request->evidence_self_employment)&& $request->file('evidence_self_employment')){
+                $image = $request->file('evidence_self_employment');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->evidence_self_employment = '/storage/' .$imageName;
+            }
+            
+            if(isset($request->employer_statement)&& $request->file('employer_statement')){
+                $image = $request->file('employer_statement');
+                $imageName = insertData($image,'customer/employments/');
+                $customer_employments->employer_statement = '/storage/' .$imageName;
+            }
+            $customer_employments->save();
+            return response()->json(['success'=>true ]);            
+    }
+
+
+    public function submit_customer_doc(Request $request){
+        $customer_personal_details = null;
+
+        $customer = CustomerDocuments::where(['job_id'=>$request->job_id,'customer_id'=>$request->customer_id])->first();
+        if(!$customer){
+            $customer = new CustomerDocuments();
+        }
+        $customer->job_id = $request->job_id;
+        $customer->customer_id = $request->customer_id;
+        if(isset($request->employment_evidence)&& $request->file('employment_evidence')){
+            $image = $request->file('employment_evidence');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->employment_evidence = '/storage/' .$imageName;
+        }
+        if(isset($request->licences)&& $request->file('licences')){
+            $image = $request->file('licences');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->licences = '/storage/' .$imageName;
+        }
+        if(isset($request->kitchen_area)&& $request->file('kitchen_area')){
+            $image = $request->file('kitchen_area');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->kitchen_area = '/storage/' .$imageName;
+        }
+        if(isset($request->cooking_tech)&& $request->file('cooking_tech')){
+            $image = $request->file('cooking_tech');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->cooking_tech = '/storage/' .$imageName;
+        }
+        if(isset($request->ingredients)&& $request->file('ingredients')){
+            $image = $request->file('ingredients');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->ingredients = '/storage/' .$imageName;
+        }
+        if(isset($request->dish)&& $request->file('dish')){
+            $image = $request->file('dish');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->dish = '/storage/' .$imageName;
+        }
+        if(isset($request->clean_up)&& $request->file('clean_up')){
+            $image = $request->file('clean_up');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->clean_up = '/storage/' .$imageName;
+        }
+        if(isset($request->evidence_image)&& $request->file('evidence_image')){
+            $image = $request->file('evidence_image');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->evidence_image = '/storage/' .$imageName;
+        }
+        if(isset($request->resume)&& $request->file('resume')){
+            $image = $request->file('resume');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->resume = '/storage/' .$imageName;
+            $customer_personal_details = Customer::findOrFail($customer->customer_id);
+        }
+        if(isset($request->is_australia)&& $request->file('is_australia')){
+            $image = $request->file('is_australia');
+            $imageName = insertData($image,'customer/documents/');
+            $customer->is_australia = '/storage/' .$imageName;
+        }
+        $customer->save();
+           
+        return back()->with(['success'=>true,'customer_id'=>$customer_personal_details?->id]);
+
+    
+}
 }

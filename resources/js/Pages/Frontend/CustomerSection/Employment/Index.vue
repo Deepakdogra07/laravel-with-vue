@@ -51,33 +51,35 @@ const form = useForm({
     step: 1
 });
 const errors = ref([]);
-async function show_next_div(div_number) {
-    form.step = div_number;
-    try {
-        const response = await axios.post(route('validate_employment_details'), form, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        if (response) {
-            if (response.data.success) {
-                div_numbers.value = `step-form-${response.data.step}`;
-            } else {
-                for (const key in response.data.error) {
-                    if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
-                        const errorMessageArray = response.data.error[key];
-                        props.errors[key] = errorMessageArray[0]
-                    }
-                }
-                div_numbers.value = `step-form-${response.data.step}`;
-            }
-            window.scrollTo(0, 0);
-        }
-    } catch (error) {
-        console.error('Error form validation:', error);
-        div_numbers.value = `step-form-${div_number}`;
+ function show_next_div(div_number) {
+    form.step = div_number+1;
+    div_numbers.value = `step-form-${form.step}`;
+    window.scrollTo(0, 0);
+    // try {
+    //     const response = await axios.post(route('validate_employment_details'), form, {
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data'
+    //         }
+    //     });
+    //     if (response) {
+    //         if (response.data.success) {
+    //             div_numbers.value = `step-form-${response.data.step}`;
+    //         } else {
+    //             for (const key in response.data.error) {
+    //                 if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
+    //                     const errorMessageArray = response.data.error[key];
+    //                     props.errors[key] = errorMessageArray[0]
+    //                 }
+    //             }
+    //             div_numbers.value = `step-form-${response.data.step}`;
+    //         }
+    //         window.scrollTo(0, 0);
+    //     }
+    // } catch (error) {
+    //     console.error('Error form validation:', error);
+    //     div_numbers.value = `step-form-${div_number}`;
 
-    }
+    // }
 
 }
 
@@ -89,22 +91,49 @@ function show_document(type, event) {
     form[type] = event.target.files[0];
     document[type] = URL.createObjectURL(event.target.files[0]);
     image_name[type] = event.target.files[0].name;
+    submit_Document(form.step)
 }
 
 
 function submit_form() {
-    form.post(route('submit_employment_details'), {
-        onSuccess: () => {
-            if (form.step == 4) {
-                toast("Details Saved Successfully!", {
-                    autoClose: 2000,
-                    theme: 'dark',
-                });
-            }
-        }
-    })
+    // form.post(route('submit_employment_details'), {
+    //     onSuccess: () => {
+    //         if (form.step == 4) {
+    //             toast("Details Saved Successfully!", {
+    //                 autoClose: 2000,
+    //                 theme: 'dark',
+    //             });
+    //         }
+    //     }
+    // })
+    window.location.href = route('document.details',[job_id,customer_id]);
 
 };
+
+async function submit_Document(step){
+    try {
+        const response = await axios.post(route('submit_customers_data'), form, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        if (response) {
+            if (!response.data.success) {
+                for (const key in response.data.error) {
+                    if (Object.prototype.hasOwnProperty.call(response.data.error, key)) {
+                        const errorMessageArray = response.data.error[key];
+                        props.errors[key] = errorMessageArray[0]
+                    }
+                }
+                
+            }
+            
+        }
+    } catch (error) {
+        console.error('Error form validation:', error);
+        form.step = `step-form-${step}`;
+    }
+}
 
 
 function removeImage(type) {
@@ -206,12 +235,12 @@ function removeImage(type) {
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('employer_statement', $event)">
+                                        @change="show_document('employer_statement', $event)" >
 
                                 </div>
                             </div>
-                            <InputError class="mt-2" :message="props.errors.employer_statement" />
                         </div>
+                        <InputError class="mt-2" :message="props.errors.employer_statement" />
                         <div class="d-flex justify-between align-items-start mt-4 p-0">
                             <div class="flex items-start">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
