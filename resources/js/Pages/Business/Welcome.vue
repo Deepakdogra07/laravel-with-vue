@@ -83,7 +83,9 @@ function filterData(type, event) {
                 appliedCustomers.value = customers_data.sort((a, b) => b.id - a.id);
                 refreshDataTable.value++;
             }else{
-                appliedCustomers.value = customers_data.sort((a, b) => a.id - b.id);
+                appliedCustomers.value = customers_data.sort((a, b) => 
+                a.id - b.id
+              );
                 refreshDataTable.value++;
             }
     }

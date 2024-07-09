@@ -409,7 +409,7 @@ class BusinessController extends Controller
     }
     public function view_customer($customer_id){
         $user_type = Auth::user()->user_type;
-        $customer = Customer::where('id',$customer_id)->with('travel_details','documents','employments','transactions','jobs','jobs.business')->first();
+        $customer = Customer::where('id',$customer_id)->with('travel_details','status','documents','employments','transactions','jobs','jobs.business')->first();
         $industry_id = json_decode($customer->jobs->industry_id);
         $industries = Industries::WhereIn('id',$industry_id)->pluck('category_heading')->toArray();
         return Inertia::render('Business/ViewCustomer',compact('customer','user_type','industries'));

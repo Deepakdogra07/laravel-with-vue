@@ -41,7 +41,7 @@ class Customer extends Model
         return $this->belongsTo(Jobs::class,'job_id','id');
     }
     public function status(){
-        return $this->belongsTo(CustomerStatus::class,'customer_id');
+        return $this->hasOne(JobStatus::class,'customer_id');
     }
 
     public function statuz(){
