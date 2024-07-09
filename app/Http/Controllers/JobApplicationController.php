@@ -178,6 +178,7 @@ class JobApplicationController extends Controller
             $customer_travel_details = new CustomerTravelDetails();
             $status = new CustomerStatus();
         }
+        // dd($request->all);
          // Personal Details Code
         $customer_personal_details->fill($customer_personal_detail);
         if(isset($request->customer_image)&& $request->file('customer_image')){
@@ -187,8 +188,8 @@ class JobApplicationController extends Controller
         }
         if(isset($request->passport_image)&& $request->file('passport_image')){
             $image = $request->file('passport_image');
-            $imageName = insertData($image,'customer/personal/');
-            $customer_personal_details->customer_image = '/storage/' .$imageName;
+            $imageName = insertData($image,'customer/passport/');
+            $customer_personal_details->passport_image = '/storage/' .$imageName;
         }
         $citizen = (isset($request->citizen_of_more_than_one)) ? 1 : 0;
         $customer_personal_details->citizen_of_more_than_one_country = $citizen;
@@ -257,6 +258,13 @@ class JobApplicationController extends Controller
             if ($validator->fails()) {
                 return response()->json(['error'=>$validator->errors(),'step'=>$request->step,'success'=>false]);
             }elseif(isset($request->step) && $request->step < 4){
+                // if(isset($request->step) && $request->step == 1){
+                //     if(isset($request->employer_statement)&& $request->file('employer_statement')){
+                //         $image = $request->file('employer_statement');
+                //         $imageName = insertData($image,'customer/employments/');
+                //         $customer_employments->employer_statement = '/storage/' .$imageName;
+                //     }
+                // }
                 return response()->json(['success'=>true ,'step'=>$request->step+1]);
             }
     }

@@ -4,9 +4,10 @@ import Header from '@/Pages/Frontend/Header.vue'
 import Footer from '@/Pages/Frontend/Footer.vue'
 import SubHeading from '@/Pages/Frontend/SubHeading.vue'
 import { Link } from '@inertiajs/vue3';
-import { onMounted, reactive, ref } from 'vue';
-import fslightbox from 'fslightbox';
+import { onMounted, reactive, ref } from 'vue'; 
 import moment from 'moment';
+import Modal from '@/Components/Modal.vue';
+
 const props = defineProps({
     customer:{
         type:Object
@@ -25,7 +26,7 @@ function getLast_name(name){
     if(name){
         const lastSlashPosition = name.lastIndexOf('/');
         if (lastSlashPosition !== -1) {
-            filename = name.substring(lastSlashPosition + 1);
+            filename = name.substring(lastSlashPosition + 1);   
           } else {
             filename = 'No Data Available';
           }
@@ -86,6 +87,15 @@ onMounted(()=>{
                     </div>
                     <div class="inner_card_wrapper">
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
+                        <div class="status" style="float:right">
+                            <b>Status:</b>
+                            <p v-if="customer?.status?.status == 0" style="color:green">Active </p>
+                            <p v-if="customer?.status?.status == 1" style="color:green">Awaiting Review </p>
+                            <p v-if="customer?.status?.status == 2" style="color:green">Reviewed </p>
+                            <p v-if="customer?.status?.status == 3" style="color:green">Contacted </p>
+                            <p v-if="customer?.status?.status == 4" style="color:green">Hired </p>
+                            <p v-if="customer?.status?.status == 5" style="color:red">Rejected </p>
+                        </div>
                             <div class="card-body">
                                 <!-- <h2>Other Details:</h2> -->
                                 <p><b>Date of Birth</b><span class="travel_inner">{{ formatDateTime(customer.date_of_birth) }}</span></p>
@@ -218,7 +228,8 @@ onMounted(()=>{
                     <div class="row">
                         <div class="col column_width">
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.evidence_self_employment_aus">
+                                <img :src="customer?.employments?.evidence_self_employment_aus" >
+                                <Modal :imagesrc="customer?.employments?.evidence_self_employment_aus"></Modal>
                                 <div class="wrapper_name">
                                     <a :href="customer?.documents?.evidence_self_employment_aus" target="_blank" download="ausSelf">
                                     <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)"></p>
@@ -352,10 +363,6 @@ onMounted(()=>{
                 </div>
 
 
-                <fslightbox
-                    :toggler="lightbox.toggler"
-                    :sources="lightbox.sources"
-                    />
                 <div class="video_image_wrapper bg-white resume_div text_over_flow">
                     <div class="row">
                         <div class="col column_width">

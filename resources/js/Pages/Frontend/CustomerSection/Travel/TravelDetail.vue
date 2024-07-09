@@ -173,7 +173,8 @@ function handleChange(type) {
 
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
-                                <PrimaryButton class="forms-btn">
+                                <img src="/images/loader.gif"  v-if="form.processing">
+                                <PrimaryButton class="forms-btn" v-else>
                                     Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>

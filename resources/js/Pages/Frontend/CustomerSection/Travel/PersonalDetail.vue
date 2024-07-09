@@ -393,7 +393,8 @@ function removeImage1(){
                     </Link>
                 </div>
              <div class="flex items-center mt-4 login-btn-main">
-                    <PrimaryButton class="forms-btn"type="submit" :disabled="form.processing">
+                <img src="/images/loader.gif"  v-if="form.processing">
+                    <PrimaryButton class="forms-btn"type="submit" v-else>
                         Next Step <span> <i class="bi bi-arrow-right"></i></span>
                     </PrimaryButton>
                 </div>
