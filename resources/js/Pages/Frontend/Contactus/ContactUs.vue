@@ -65,17 +65,17 @@ function submitForm(){
                         <form @submit.prevent="submitForm">
                             <div class="mt-4">
                                 <span class="label text-label">Name<span style="color:red"> *</span></span>
-                                <TextInput type="text" name="user_name" v-model="form.user_name" placeholder="Enter your name" class="form-control mt-2" />
+                                <TextInput type="text" name="user_name" v-model="form.user_name" placeholder="Enter name" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_name" />
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Email<span style="color:red"> *</span></span>
-                                <TextInput type="text"name="user_email" v-model="form.user_email" placeholder="Enter your email" class="form-control mt-2" />
+                                <TextInput type="text"name="user_email" v-model="form.user_email" placeholder="Enter email" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_email" />
                             </div>
                             <div class="mt-4">
                                 <span class="label text-label">Mobile<span style="color:red"> *</span></span>
-                                <TextInput type="text"name="user_mobile" v-model="form.user_mobile" placeholder="Enter your mobile number" class="form-control mt-2" />
+                                <TextInput type="text"name="user_mobile" v-model="form.user_mobile" placeholder="Enter mobile number" class="form-control mt-2" />
                                 <InputError class="mt-2" :message="form.errors.user_mobile" />
                             </div>
                             <div class="mt-4">

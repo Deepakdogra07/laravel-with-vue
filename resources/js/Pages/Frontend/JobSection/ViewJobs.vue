@@ -68,8 +68,8 @@ console.log(job_start_date)
     <Header />
     <SubHeading />
     <div class="login-bg-wrapper job-detail-page">
-        <div class="container about-width p-0">
-            <Link :href="route('job.listing')" class="btn btn-success"><i class="fas fa-arrow-left pr-2"></i>Back</Link>
+        <div class="container about-width p-0 business_job_wrap">
+            <p class="mb-0" style="display:inline-block;"><Link :href="route('job.listing')" class="step-form-back forms-btn-transparent mb-4"><i class="bi bi-arrow-left"></i>Back</Link></p>
             <div class="row align-items-start">
                 <div class="col-md-5">
                     <div class="view-main-image">
@@ -97,7 +97,7 @@ console.log(job_start_date)
             </div>
 
             <div class="job-detail-content job_details_cnt mt-4">
-                <div class="container p-0">
+                <div class="container p-0 Details_wrap_z">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="Details">
@@ -123,7 +123,7 @@ console.log(job_start_date)
                                 <h2 class="mb-2 semibold">Details of the job</h2>
                                 <div v-html="job_description(job.job_description)"></div>
                                 <div class="conditions">
-                                <h2>Posting Summary:</h2>
+                                <h2 class="mb-2 semibold">Posting Summary:</h2>
                                 <div v-html="(job.posting_summary)"></div>
                             </div>
                             </div>

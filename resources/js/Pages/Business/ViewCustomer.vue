@@ -76,10 +76,10 @@ onMounted(()=>{
 
      </div>
     <section class="view_customer_wrapper">
-        <div v-if="user_type == 3 ">
-            <Link :href="route('customer-dash')" class="btn btn-success"><i class="fas fa-arrow-left pr-2"></i>Back</Link>
-        </div>
         <div class="container py-12 view_customer_inner">
+            <div v-if="user_type == 3 ">
+            <p class="mb-0" style="display: inline-block;"><Link :href="route('customer-dash')" class="step-form-back forms-btn-transparent mb-4 btn_customer"><i class="bi bi-arrow-left"></i>Back</Link></p>
+        </div>
             <div class="inner_spacing_wrapper">
                 <div class="customer_card pb-4">
                     <div class="card-image">
@@ -138,9 +138,11 @@ onMounted(()=>{
                         </div>
                     </div>
                 </div> 
-                <a :href="route('downloadZip',customer.id)" class="btn btn-primary btn-sm" style="float:right;" > Download all Media</a>
                 <div class="video_image_wrapper pt-5 mbile_padding">
-                    <h2>Videos</h2>
+                    <div class="row justify-content-between multiple_download">
+                        <h2>Videos</h2>
+                        <a :href="route('downloadZip',customer.id)" class="theme_button green_bg mb-4"> Download all Media</a>
+                    </div>
                     <div class="row">
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
@@ -408,11 +410,13 @@ onMounted(()=>{
 .text-danger{
     color:red;
 }
-.download-icon{
+.download-icon {
     height: 29px;
     background: transparent;
+    -o-object-fit: fill;
     object-fit: fill;
-    width: 37px;
+    width: 24px;
+    max-width: 23px;
 }
 .download-icon:hover {
     transform: scale(1.2);

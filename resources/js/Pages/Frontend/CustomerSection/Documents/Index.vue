@@ -1049,10 +1049,11 @@ function removeImage(type){
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start mt-4">
-
-                                <img src="/images/loader.gif"  v-if="form.processing">
+                                <PrimaryButton  class="forms-btn"  v-if="form.processing" :disabled="form.processing">
+                                    Submitting....
+                                    <img src="/images/loader.gif" style="width:20px; height:20px;">
+                                </PrimaryButton>
                                 <PrimaryButton class="forms-btn width_full" style="line-height: 20px;" type="submit" v-else>
-
                                     Pay Fee and Submit Application
                                 </PrimaryButton>
                             </div>

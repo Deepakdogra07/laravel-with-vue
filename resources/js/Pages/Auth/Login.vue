@@ -71,7 +71,7 @@ const submit = () => {
                             <!-- <InputLabel class="text-blue" for="email" value="Email" /> -->
                             <span class="label text-label text_small">E-mail or Username<span style="color:red"> *</span></span>
 
-                            <TextInput id="email" type="text" placeholder="Enter your e-mail or username" class="form-control mt-2"
+                            <TextInput id="email" type="text" placeholder="Enter e-mail or username" class="form-control mt-2"
 
                                 v-model="form.email" autofocus/>
                                 <InputError class="mt-2" :message="form.errors.email" />
@@ -84,7 +84,7 @@ const submit = () => {
                         <div class="mt-4">
                             <span class="label text-label">Password<span style="color:red"> *</span></span>
                             <div class="eye-icon-div relative">
-                                <TextInput id="password" :type="passwordFieldType" placeholder="Enter your Password"
+                                <TextInput id="password" :type="passwordFieldType" placeholder="Enter Password"
                                     class="form-control mt-2" v-model="form.password"/>
                                 <span class="absolute top-[50%] right-[20px] translate-y-[-50%]" style="cursor:pointer;" @click="togglePasswordVisibility">
                                     <i :class="eyeIconClass"></i>

@@ -68,21 +68,21 @@ const countries = Country.getAllCountries();
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                         <InputLabel for="name" value="Company Name" />
-                        <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_name"  autofocus autocomplete="name"/>
+                        <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter company name" v-model="form.company_name"  autofocus autocomplete="name"/>
                         <InputError class="mt-2" :message="form.errors.company_name" />
                     </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="Contact Person" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_number"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter contact person" v-model="form.contact_number"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.contact_number" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width" >
                         <div class="profile_input">
                             <InputLabel for="name" value="Company Address" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_address"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter company address" v-model="form.company_address"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_address" />
                         </div>
                     </div>
@@ -100,35 +100,35 @@ const countries = Country.getAllCountries();
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="State" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_state"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter state" v-model="form.company_state"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_state" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="City" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_city"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter city" v-model="form.company_city"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_city" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="PIN" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_pin"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter pin" v-model="form.company_pin"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_pin" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="Contact Department" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.contact_department"  autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter contact department" v-model="form.contact_department"  autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.contact_department" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
                             <InputLabel for="name" value="Company VAT" />
-                            <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_vat" autofocus autocomplete="name"/>
+                            <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter company VAT" v-model="form.company_vat" autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_vat" />
                         </div>
                     </div>

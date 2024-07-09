@@ -137,7 +137,7 @@ function filterData(type, event) {
             </div>
         </div>
         <div class="login-bg-wrapper business_job_details business_inner_dash customer_listing_wrpa_front">
-            <div class="container about-width p-0">
+            <div class="container about-width p-0 business_job">
                 <!-- <div class="filter-status row business_ad_wrapper"> -->
                     <!-- <div class="col-md-8 width_mobile p-0">
                         <div class="d-flex justify-between align-items-center"> -->

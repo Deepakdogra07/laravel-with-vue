@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
+use App\Mail\Transaction;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     public function index(){
-        // dd('here');
-        $data = Jobs::with('currencies','skills')->get();
-        dd($data);
+        Mail::to('alkavisionvivante@gmail.com')->send(new Transaction('2' , 'alka', 'alkavisionvivante@gmail.com','tdgdfgfgdf','1','0','SUCCED'));
     }
 }

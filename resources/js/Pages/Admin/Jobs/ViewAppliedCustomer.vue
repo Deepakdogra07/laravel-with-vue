@@ -386,11 +386,13 @@ function getLast_name(name) {
 .text-danger {
     color: red;
 }
-.download-icon{
+.download-icon {
     height: 29px;
     background: transparent;
+    -o-object-fit: fill;
     object-fit: fill;
-    width: 37px;
+    width: 24px;
+    max-width: 23px;
 }
 .download-icon:hover {
     transform: scale(1.2);
