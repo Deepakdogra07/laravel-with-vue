@@ -99,6 +99,9 @@ function selectFile(event) {
 
 
 const submit = () => {
+    if(form.job_description =='<p><br></p>'){
+        form.job_description = null;
+    }
     form.post(route('business-jobs.store'),
         {
             onSuccess: () => {
@@ -164,7 +167,11 @@ function handleChange(type){
 //     }   
 // }
 
-
+function removeImage(){
+    form.job_image = null;
+    image_name.value ='';
+    image.value ='';
+}
 </script>
 
 <template>
@@ -450,7 +457,12 @@ function handleChange(type){
                         </div>
                         <!------end------>     
                         <div class="col-12 mt-4 file_upload">
-                            <div class="file-inputs mt-3 relative">
+                            <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
+                            <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
+                            <img :src="image" alt="" srcset="">,</div>
+                            <p class="close_image_name">{{ image_name }}</p>
+                        </div>
+                            <div class="file-inputs mt-3 relative" v-else>
                                 <div class="dotted-bg">
                                     <img :src="image" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"

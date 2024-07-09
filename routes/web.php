@@ -195,6 +195,8 @@ Route::post('/submit_employment_details', [JobApplicationController::class,'subm
 Route::get('/document-details/{job_id}/{customer_id}',[JobApplicationController::class,'document_details'])->name('document.details');
 Route::post('/validate_customer_documents', [JobApplicationController::class,'validate_customer_documents'])->name('validate_customer_documents');
 Route::post('/submit_customers_documents', [JobApplicationController::class,'submit_customers_documents'])->name('submit_customers_documents');
+Route::post('/submit_customers_data', [JobApplicationController::class,'submit_customers_data'])->name('submit_customers_data');
+Route::post('/submit_customer_doc', [JobApplicationController::class,'submit_customer_doc'])->name('submit_customer_doc');
 
 
 Route::get('testing',[TestController::class,'index']);
