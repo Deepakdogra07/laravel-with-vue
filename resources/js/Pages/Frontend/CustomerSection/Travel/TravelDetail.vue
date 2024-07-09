@@ -173,7 +173,10 @@ function handleChange(type) {
 
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
-                                <img src="/images/loader.gif"  v-if="form.processing">
+                                <PrimaryButton  class="forms-btn"  v-if="form.processing" :disabled="form.processing">
+                                    Submitting....
+                                    <img src="/images/loader.gif" style="width:20px; height:20px;">
+                                </PrimaryButton>
                                 <PrimaryButton class="forms-btn" v-else>
                                     Continue <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>

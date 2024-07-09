@@ -219,7 +219,6 @@ function removeImage(type) {
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start" style="cursor:pointer;">
-
                                 <p class="forms-btn" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
@@ -587,7 +586,10 @@ function removeImage(type) {
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-center mt-4 login-btn-main">
-                                <img src="/images/loader.gif"  v-if="form.processing">
+                                <PrimaryButton  class="forms-btn"  v-if="form.processing" :disabled="form.processing">
+                                    Submitting....
+                                    <img src="/images/loader.gif" style="width:20px; height:20px;">
+                                </PrimaryButton>
                                 <PrimaryButton class="forms-btn" id="4" type="submit" v-else>
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>

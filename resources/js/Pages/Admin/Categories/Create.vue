@@ -32,7 +32,7 @@ function submitForm() {
   // Post data 
   router.post(route('category.store'), formData,{
       onSuccess: () => {
-        toast("industries Updated Successfully", {
+        toast("Industry updated successfully", {
           autoClose: 2000,
           theme: 'dark',
         }
@@ -67,7 +67,7 @@ function handleFileInput1(event) {
             <div class="container">
               <form @submit.prevent="submitForm">
                 <div class="mb-4 margin_btm">
-                  <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Category
+                  <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Industry
                     Heading <span style="color: red;"> *</span></label>
                   <input type="text" id="categoryHeading" v-model="form.category_heading"
                     class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
@@ -75,7 +75,7 @@ function handleFileInput1(event) {
                     }}</span>
                 </div>
                 <div class="mb-4 margin_btm">
-                  <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Category Image <span style="color: red;"> *</span></label>
+                  <label for="categoryImage" class="block text-gray-700 text-sm font-bold mb-2">Industry Image <span style="color: red;"> *</span></label>
                   <input type="file" id="categoryImage" @change="handleFileInput" accept="image/*" class="form-control">
                   <img v-bind:src="rul1" alt="" class="mt-2">
                   <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image

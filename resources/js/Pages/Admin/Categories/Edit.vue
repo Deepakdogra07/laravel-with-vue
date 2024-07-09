@@ -27,7 +27,7 @@ function submitForm() {
     // Post data 
     form.post(route('category.updated',form.id),{
       onSuccess: () => {
-        toast("industries Updated Successfully", {
+        toast("Industry updated successfully", {
           autoClose: 2000,
           theme: 'dark',
         }
