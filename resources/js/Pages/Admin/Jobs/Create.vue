@@ -171,11 +171,11 @@ function handleChange(type){
     </template>
 
     <div class="flex items-center justify-center row_width_100">
-        <div class="login-bg-wrapper create_space create_code sdff">
+        <div class="login-bg-wrapper create_space create_code">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
-                    <div class="row add-job-form-section job_posting_page">
+                    <div class="row add-job-form-section job_posting_page admin_job">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="">
                                 <span class="label text-label">Job Title<span style="color:red"> *</span></span>
@@ -504,10 +504,10 @@ function handleChange(type){
                         </div>
                         <div class="col-md-6 ">
                             
-                            <div class="mt-4   ">
+                            <div class="mt-4">
                                 <span class="label text-label">Assign Employer</span>
                                 <div class="eye-icon-div">
-                                    <select v-model="form.employer" class="form-control">
+                                    <select v-model="form.employer" class="form-control mt-2">
                                         <option value="" selected>Select</option>
                                         <option v-for="(employer) in employers" 
                                             :value="employer.id"> {{ employer.name }} </option>
@@ -540,7 +540,10 @@ function handleChange(type){
                             <div class="flex items-center justify-center mt-4 login-btn-main">
 
                                 <PrimaryButton type="submit" class="forms-btn" :disabled="form.processing">
-                                    Apply Now <span> <i class="bi bi-arrow-right"></i></span>
+                                    Apply Now 
+                                    <!-- <span> 
+                                        <i class="bi bi-arrow-right"></i>
+                                    </span> -->
                                 </PrimaryButton>
                             </div>
                         </div>

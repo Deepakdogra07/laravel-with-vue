@@ -49,7 +49,7 @@ function dateTime(created_at) {
     <Header />
     <SubHeading />
     <div class="login-bg-wrapper list_of_jobs">
-        <div class="container about-width">
+        <div class="container width_content">
             <div class="industryFilter" v-if="industry">
                 <span class="industry-data list_job_category forms-btn mb-4">
                     {{ industry }}
@@ -64,11 +64,15 @@ function dateTime(created_at) {
                         <p class="mb-0" v-html="dateTime(job?.created_at)"></p>
                     </div>
                     <div class="card-img">
-                        <Link :href="`/view-job/${job.id}`"><img :src="job.job_image" alt=""></Link>
+                        <Link :href="`/view-job/${job.id}`">
+                            <img :src="job.job_image" alt="">
+                            <!-- <img src="/images/testing.jpg"> -->
+                        </Link>
+                        
                     </div>
                     <div class="cards-content">
                         <Link :href="`/view-job/${job.id}`"><h2>{{ job?.job_title }}</h2></Link>
-                        <p class="my-3 listing_txt"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
+                        <p class=" mt-2 mb-3 listing_txt"><span class="text-red"><i class="bi bi-geo-alt-fill pr-1"></i></span>
                             Chandigarh, India</p>
                         <div class="cards-bio">
                             <Link :href="`/view-job/${job.id}`"><p>{{ job?.posting_summary }}</p></Link>

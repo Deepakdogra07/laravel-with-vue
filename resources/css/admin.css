@@ -55,7 +55,7 @@ table.dataTable td img {
 	width: 100px !important;
 	height: 60px !important;
 	max-width: 100px !important;
-    object-fit: cover;
+    object-fit: contain;
     object-position: top;
 }
 
@@ -154,7 +154,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     box-shadow: 0 0 0 .25rem rgb(60 91 111 / 8%) !important;
 }
 .inner_admin input, .inner_admin textarea {
-    background: transparent;
+    background: #fbfbfb;
 }
 .pages-heading .btn:first-child:active {
     background: #141E46;
@@ -293,9 +293,13 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     padding-left: 8px !important;
 	padding-right: 8px !important;
 }
-.view_job_page {
+.view_wrap.view_job_page {
     padding-left: 10px !important;
     padding-right: 10px !important;
+}
+.view_employee_tabs_wrapper .nav-item {
+    margin-right: 12px;
+	width: 100%;
 }
 /* .all_subhadings_wrap div.pages-heading:not(:has(*)) {
     display: none !important;
@@ -306,6 +310,44 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .testimonails_hd {
     margin-top: -32px;
 }
+.admin_appy_table .icon_eye{
+    padding: 9px 13px;
+}
+.admin_job .multiselect__tags {
+    padding-bottom: 9px !important;
+    padding-top: 9px !important;
+    font-size: 16px;
+    border-radius: 8px;
+	padding-left: 10px;
+}
+.admin_job span.multiselect__tag {
+    margin-bottom: -1px;
+}
+.categories_inner .dataTables_paginate .paginate_button[data-dt-idx="1"], .categories_inner .dataTables_paginate .paginate_button[data-dt-idx="0"] {
+    background: #087a71 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+	border: 0px;
+}
+
+.categories_inner .dataTables_paginate .paginate_button:hover{
+	border: 0px;
+}
+
+.admin_job .multiselect__tags .multiselect__placeholder {
+    margin-bottom: 0px;
+}
+
+.wrapper_other_fields input, .wrapper_other_fields textarea, .admin_job input, .admin_job select, .admin_job textarea, .admin_job .eye-icon-div, .add_sliedrs input, .add_sliedrs textarea {
+    background: #fbfbfb !important;
+}
+
+.wrapper_other_fields input:focus, .wrapper_other_fields textarea:focus{
+	border-color: #dee2e6;
+	box-shadow: 0px 0px 0px 1px #dee2e6;
+}
+
+
 
 @media (max-width:1238px) {
 	.add_testimonial_page {

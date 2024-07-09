@@ -60,7 +60,7 @@
                 <template #icon>
                   <i class="fa-solid fa-slider"></i>
                 </template>
-                <span class="text-white">Industry</span>
+                <span class="text-white">Industries</span>
               </NavLink>
             </li>
              <li class="relative px-6 py-3">

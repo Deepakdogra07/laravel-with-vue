@@ -71,9 +71,9 @@ import CustomPagination from '@/Components/CustomPagination.vue';
             </div>
             <div class="container-fluid">
                 <div class="about-us-bg about_us_section">
-                    <div class="container">
+                    <div class="container about-width">
                         <div class="row">
-                            <div class="col-lg-6 col-md-8">
+                            <div class="col-lg-6 col-md-8 about_col">
                                 <h2 class="mb-3 text-white">We Speak the Language of Immigration.</h2>
                                 <div class="mt-4">
                                     <Link class="main-btn" :href="route('contact.us')">Contact Us</Link>
@@ -84,7 +84,7 @@ import CustomPagination from '@/Components/CustomPagination.vue';
                 </div>
             </div>
             <div class="login-bg-wrapper pb-0 internationa_partners">
-                <div class="container">
+                <div class="container internaionl_wrapper about-width">
                     <h1 class="mb-2 text-blue text-center">Our International Partners</h1>
                     <div class="grid lg:grid-cols-2 grid-cols-1 gap-5 about-section-cards login-bg-wrapper">
                         <div class="aboutus-card-outer">

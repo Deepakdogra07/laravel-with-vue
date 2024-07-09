@@ -155,7 +155,7 @@ function removeImage1(){
         <div class="container travel_width">
             <form @submit.prevent="submitData()">
             <div class="row">
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 personal_column">
                     <div v-if="image_src" width="250px" class="close_image_wrapper">
                         <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark"  @click="removeImage()"><i class="fas fa-times"></i></p>
                         <img :src="image_src" alt="" srcset=""width="200px" height="200px" ></div>
@@ -178,7 +178,7 @@ function removeImage1(){
                     </div>
                     <InputError  class="mt-2" v-if="form.errors.customer_image" :message="form.errors.customer_image[0]"/>
                 </div>
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12 Pass_column_upload">
                     <div v-if="image_src1" width="250px" class="close_image_wrapper">
                         <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark"  @click="removeImage1()"><i class="fas fa-times"></i></p>
                         <img :src="image_src1" alt="" srcset=""width="200px" height="200px" ></div>
@@ -386,7 +386,7 @@ function removeImage1(){
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-between align-items-center mx-2">
+            <div class="d-flex justify-between align-items-start mx-2">
                 <div class="flex items-center mt-4 ">
                     <Link class="forms-btn-transparent step-form-back" href="/travel-details/2">
                         <span> <i class="bi bi-arrow-left"></i></span>  Back 

@@ -203,8 +203,12 @@ h2 {
 	gap: 24px;
 }
 
-.listing-gap, .home_certificate_row {
+.listing-gap {
 	margin-top: 27px !important;
+}
+
+.home_certificate_row{
+	margin-top: 32px !important;
 }
 
 .web-banner img {
@@ -429,6 +433,9 @@ h2 {
 	font-weight: 700 !important;
 	font-size: 22px;
 }
+.slider-profile-name p:Hover{
+	color:#1a9882;
+}
 
 .slider-profile-name .slider-profile-img img {
 	width: 100%;
@@ -448,15 +455,16 @@ h2 {
 	border: 0px;
 }
 
-/* .business_tablesss_inner.table-responsive {
-    overflow-x: scroll;
-    overflow-y: hidden;
-} */
-
 .business_dash_tables_wrapper thead th {
 	padding: 25px 15px !important;
 	font-weight: 600 !important;
 }
+
+/* .business_tablesss_inner thead th:last-child, .business_tablesss_inner tbody tr td:last-child {
+    position: sticky !important;
+    right: 0;
+    z-index: 1;
+} */
 
 .pass_travel_details_wrapper .card-body p b {
 	line-height: 19px;
@@ -605,9 +613,13 @@ h2 {
 }
 
 .form-control::placeholder,
-.form-select::placeholder {
+.form-select::placeholder, .admin_job input::placeholder, .admin_job select, .admin_job textarea::placeholder, .admin_job .eye-icon-div{
 	color: #a5a5ab;
 }
+
+/* .admin_job .eye-icon-div{
+	background-color: #fbfbfb !important;
+} */
 
 .forms-btn,
 .forms-btn-transparent,
@@ -773,7 +785,7 @@ h2 {
 .card-img img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
 	border-radius: 10px;
 }
@@ -829,7 +841,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	border-radius: 10px;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
 }
 
@@ -1196,7 +1208,7 @@ section.testimonials_page .modal-body {
 /* About Us page css start */
 
 .aboutus-card-outer {
-	padding-left: 90px;
+	padding-left: 100px;
 	position: relative;
 }
 
@@ -1210,7 +1222,7 @@ section.testimonials_page .modal-body {
 .about-profile {
 	position: absolute;
 	top: 40%;
-	left: 0px;
+	left: 8px;
 	transform: translateY(-50%);
 	width: 150px;
 	height: 150px;
@@ -1448,6 +1460,7 @@ input[type="file"] {
 	cursor: pointer;
 }
 
+
 /* job listing pages css end */
 
 /* Data table css start */
@@ -1484,13 +1497,22 @@ input[type="file"] {
 }
 
 .main-job-filter .job-data-table th:first-child,
-.main-job-filter .job-data-table tbody tr td:first-child {
+.main-job-filter .job-data-table tbody tr td:first-child{
 	width: 15% !important;
+}
+.main-job-filter .display.applied_frontend_table{
+	white-space: nowrap !important;
+	display: inline-block;
+}
+.main-job-filter .applied_frontend_table th:first-child,
+.main-job-filter .applied_frontend_table tbody tr td:first-child, .main-job-filter .applied_frontend_table tbody tr td, .main-job-filter .applied_frontend_table th {
+	width: 25% !important;
 }
 
 .main-job-filter .job-data-table tbody tr td {
 	width: 30% !important;
 }
+
 
 .main-job-filter tbody {
 	background-color: #fff !important;
@@ -1777,6 +1799,10 @@ input[type="file"] {
 		align-items: start !important;
 	}
 
+	.main-header .navbar-nav li a {
+		padding: 5px;
+		font-size: 14px;
+	}
 
 }
 
@@ -2593,7 +2619,7 @@ input[type="file"] {
 	}
 
 	.create_Account .margin_top {
-		margin-top: 0px;
+		margin-top: 7px;
 	}
 
 	.contactUs-section .row .col-md-8 {
@@ -2752,6 +2778,10 @@ input[type="file"] {
 
 	h2.margin_intro {
 		margin-top: 20px !important;
+	}
+
+	.subheading_cn .banner_hd {
+		padding: 10px 0px 25px 0px;
 	}
 
 	.step-form-4 p.light-text,
@@ -3324,7 +3354,11 @@ input[type="file"] {
 	}
 
 	.step-form-back {
-		padding: 17px 20px !important;
+		padding: 15px 20px !important;
+	}
+
+	.personal_column .all_image_close img, .Pass_column_upload.all_image_close img {
+		margin-bottom: 10px;
 	}
 
 	.mobile_padding {
@@ -3365,6 +3399,14 @@ input[type="file"] {
 		margin-left: 0px;
 	}
 
+	.jobs_hd{
+		padding: 0px 10px;
+	}
+
+	.about-profile {
+		left: -3px;
+	}
+
 }
 
 
@@ -3388,7 +3430,7 @@ input[type="file"] {
 
 	.testimonials_width,
 	.about-width,
-	.all-testimonial_width {
+	.all-testimonial_width{
 		padding: 0px 15px !important;
 	}
 
@@ -3404,7 +3446,7 @@ input[type="file"] {
 @media (max-width:700px) {
 	.add_job_srchhs .search_bar {
 		width: 100%;
-		margin-top: 20px;
+		margin-top: 5px;
 	}
 
 	.add_job_srchhs .button_bs_ryt {
@@ -3413,6 +3455,9 @@ input[type="file"] {
 
 	.view_customer_wrapper .view_customer_inner {
 		padding: 25px 18px !important;
+	}
+	.customer_listing_wrpa .srch_navbar a{
+		padding: 10px 0px;
 	}
 }
 
@@ -3467,6 +3512,10 @@ input[type="file"] {
 		top: 55px;
 	}
 
+	.customer_listing_wrpa_front li.business_location_list {
+		margin: 12px 0px;
+	}
+
 	.business_profile_front_end .col_width {
 		width: 100% !important;
 	}
@@ -3475,9 +3524,9 @@ input[type="file"] {
 		padding: 0px 13px !important;
 	}
 
-	.internationa_partners .container{
-		padding: 0px;
-	}
+	/* .internationa_partners .container{
+		padding: 0px 15px;
+	} */
 
 	/* .button_bs_ryt {
 		top: 7px !important;
@@ -3507,6 +3556,14 @@ input[type="file"] {
 
 	.contactUs-section {
 		padding-top: 10px !important
+	}
+
+	.main-footer .about-width{
+		padding: 0px 15px !important;
+	}
+
+	.bottom-footer .about-width{
+		padding: 0px 5px !important;
 	}
 
 	div#DataTables_Table_0_info {
@@ -4326,7 +4383,7 @@ input[type="file"] {
 		font-size: 26px !important;
 		margin-bottom: 0px;
 		line-height: 22px !important;
-		margin-top: 20px;
+		margin-top: 40px;
 	}
 
 	.category-section {
@@ -4668,6 +4725,9 @@ input[type="file"] {
 	.mobile_dropdown button.dropdown-toggle .btn_mail {
 		width: 70px !important;
 	}
+	.personal_column .text-label{
+		font-size: 14px;
+	}
 
 }
 
@@ -4707,6 +4767,14 @@ input[type="file"] {
 	.travel-section .form-division-left .margin_btm {
 		margin-bottom: 10px !important;
 	}
+
+	.end_form_part {
+		display: block !important;
+	}
+
+	.end_form_part .width_full {
+		width: 100%;
+	}
 }
 
 
@@ -4717,7 +4785,7 @@ input[type="file"] {
 	}
 
 	.add_job_srchhs .button_bs_ryt {
-		margin-top: 48px;
+		margin-top: 69px;
 	}
 
 	.add_job_srchhs .search_bar {
@@ -4826,9 +4894,6 @@ input[type="file"] {
 		width: 100px;
 	} */
 }
-
-
-
 
 /* @media (max-width: 375px){
 	.main-header .main-btn {
@@ -5189,14 +5254,22 @@ button.btn.btn-primary {
 	margin-top: 10px;
 }
 
+.admin_job button {
+    background: #3c5b6f;
+    padding: 10px 20px !important;
+    justify-content: center !important;
+    align-items: center;
+    font-weight: 700 !important;
+}
+
 .add_sliedrs .text-black-900 .mb-4:nth-child(2) {
 	margin-bottom: 10px !important;
 }
-
+/* 
 .testimonial_spacing {
 	padding-left: 0px !important;
 	padding-right: 0px !important;
-}
+} */
 
 .create_space {
 	padding-top: 0px;
@@ -5497,11 +5570,11 @@ ul.card_ullist {
 	margin-top: 6px;
 	padding-top: 6px;
 }
-
+/* 
 .create_space input.form-control,
 .create_space select.form-select {
 	padding: 7px 10px;
-}
+} */
 
 .create_space .file-inputs.mt-3.relative {
 	margin-top: 0px !important;
@@ -5798,7 +5871,7 @@ li.last_border {
 
 .edits_fields .bg-white input,
 .edits_fields .bg-white textarea {
-	background: #fff;
+	background: #fbfbfb;
 	padding: 8px 12px !important;
 }
 
@@ -5827,8 +5900,8 @@ li.last_border {
 }
 
 .job-detail-page .view-main-image img {
-	border: 0px !important;
-	border-radius: 10px !important;
+    border: 1px solid #f9f9f9 !important;
+    border-radius: 10px !important;
 }
 
 .job-detail-page .company-section {
@@ -5955,7 +6028,7 @@ li.last_border {
 }
 
 .main-header.login-wrapper .main-btn {
-	padding: 8px 35px 8px 35px;
+	padding: 10px 30px 10px 30px;
 	text-transform: capitalize;
 }
 
@@ -6358,6 +6431,7 @@ span.video_txt {
 
 .job_posting_page .dp__main.dp__theme_light.form-control.mt-2 {
 	padding: 0px;
+	background-color: #fbfbfb;
 }
 
 .new-job-description .ql-toolbar.ql-snow {
@@ -6706,8 +6780,13 @@ label.label_checkbox {
 }
 
 .mobile_amdin_dropdown ul li a {
-	color: #000;
-	font-size: 14px;
+    color: #000;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.mobile_amdin_dropdown ul li:last-child a {
+    padding-bottom: 10px;
 }
 
 .arrow_label .multiselect__select::before {
@@ -7635,6 +7714,9 @@ span.job-filter_text {
 .Pass_column {
 	padding-left: 23px;
 }
+.Pass_column_upload{
+	padding-left: 32px;
+}
 
 .email_icon {
 	position: relative;
@@ -7677,6 +7759,7 @@ span.job-filter_text {
 .close_mark {
 	margin-left: -28px;
 	margin-top: 0px;
+	z-index: 999;
 }
 
 .close_image_name {
@@ -7742,4 +7825,18 @@ span.job-filter_text {
     padding: 10px 30px !important;
     line-height: 23px;
     font-size: 17px;
+}
+.about_col {
+    padding: 0px 5px;
+}
+
+.applied_frontend_table .icon_eye{
+    padding: 11px 14px;
+}
+.welcom_hd {
+    text-transform: none;
+}
+
+.main-header a:focus {
+    color: #fff;
 }
