@@ -2422,13 +2422,13 @@ input[type="file"] {
 
 @media (max-width:981px) {
 	.update_pass .remove_paddings {
-		width: 100%;
+		width: 49%;
 		margin-bottom: 10px;
 		padding: 0px;
 	}
 
 	.update_pass .remove_padding {
-		width: 100%;
+		width: 49%;
 	}
 
 	.admin_box {
@@ -4502,9 +4502,14 @@ input[type="file"] {
 	}
 
 	/*Mobile view job PAge*/
-	.job_details_cnt .Details b,
-	.job_details_cnt .Details span {
+	.job_details_cnt .Details b, .job_details_cnt .Details span {
 		width: 100% !important;
+		margin-right: 10px;
+	}
+
+	.job_details_cnt .Details b {
+		line-height: 16px;
+		margin-bottom: 12px;
 	}
 
 	.compnay_box_inner {
@@ -6616,13 +6621,13 @@ form.row.edit_customer label,
 }
 
 .profile_info a.btn.btn-primary:hover,
-.update_pass button.rounded-lg:hover {
+.update_pass button.rounded-lg:hover, .admins_boxx button:hover {
 	background: #09332b;
 	border-color: #09332b !important;
 }
 
 .profile_info a.btn.btn-primary::after,
-.update_pass button.rounded-lg::after {
+.update_pass button.rounded-lg::after, .admins_boxx button::after {
 	content: "\2192";
 	padding-left: 8px;
 	font-size: 19px;
@@ -7892,7 +7897,7 @@ span.job-filter_text {
 .admins_boxx button{
 	background: #01796f;
     border: 0px !important;
-    padding: 10px 30px !important;
+    padding: 12px 30px !important;
     line-height: 23px;
     font-size: 17px;
 }
