@@ -437,13 +437,17 @@ onMounted(() => {
     color: red;
 }
 
-.download-icon {
+.download-icon[data-v-b3931f86] {
     height: 29px;
     background: transparent;
     -o-object-fit: fill;
     object-fit: fill;
     width: 24px;
     max-width: 23px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .download-icon:hover {
