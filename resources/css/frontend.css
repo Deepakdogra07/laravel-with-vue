@@ -6325,12 +6325,14 @@ li.last_border {
 }
 
 .job_details_cnt .Details b {
-	font-family: 'Philosopher';
-	font-weight: 700;
-	font-size: 16px;
-	color: #0F1016;
-	display: flex;
-	width: 37%;
+    font-family: 'Philosopher';
+    font-weight: 700;
+    font-size: 16px;
+    color: #0F1016;
+    display: flex;
+    width: 37%;
+    line-height: 17px;
+    margin-bottom: 13px;
 }
 
 .job_details_cnt .Details span {
