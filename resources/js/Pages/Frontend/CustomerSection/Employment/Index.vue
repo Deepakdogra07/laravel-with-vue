@@ -106,7 +106,8 @@ function submit_form() {
     //         }
     //     }
     // })
-    window.location.href = route('document.details',[job_id,customer_id]);
+    console.log(props.job_id, props.customer_id)
+    window.location.href = route('document.details',[props.job_id,props.customer_id]);
 
 };
 
