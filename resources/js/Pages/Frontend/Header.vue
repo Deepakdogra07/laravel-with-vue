@@ -245,9 +245,10 @@ function TriggerButton(type, event) {
         <div class="login-section-desk">
           <div class="login-section-desk" v-if="$page.props.auth.user">
             <div class="dropdown mobile_amdin_dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
+                  <button class="btn btn-secondary dropdown-toggle desktop_btn" @click="TriggerButton('admin_hover', $event)" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                      {{ $page.props.auth.user.name }}
+                      <p class="mb-0"><span class="btn_mail">{{ $page.props.auth.user.name }}</span><i class="fas fa-sort-down"></i></p>
+                      
                   </button>
                     <ul class="dropdown-menu" v-show="admin_hover">
                       <li><Link class="dropdown-item" :href="route('dashboard')"> Dashboard </Link></li>

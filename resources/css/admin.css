@@ -397,6 +397,10 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 		height: 150px;
 		width: 150px;
 	}
+	.admin_box {
+		height: auto;
+		margin-bottom: 20px;
+	} 
 }
 
 @media (max-width:992px) {
@@ -461,9 +465,6 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	.padding_remove .dataTables_length {
 		font-size: 12px;
 		padding-top: 4px !important;
-	}
-	.admin_box {
-		height: 510px;
 	}
 
 }

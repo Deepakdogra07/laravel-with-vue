@@ -69,7 +69,7 @@ function copyReferralCode() {
 
         <div class="admin_profile">
           <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 remove_paddingss">
+            <div class="col-lg-6 col-md-12 col-sm-12 remove_paddingss">
               <div class="p-4 sm:p-8 bg-white shadows sm:rounded-lg admin_box">
             <UpdateProfileInformationForm
                 :must-verify-email="mustVerifyEmail"
@@ -78,7 +78,7 @@ function copyReferralCode() {
             />
           </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 remove_paddingss">
+          <div class="col-lg-6 col-md-12 col-sm-12 remove_paddingss">
             <div class="p-4 sm:p-8 bg-white shadows sm:rounded-lg admin_box">
             <UpdatePasswordForm class="max-w-xl" />
           </div>

@@ -180,24 +180,14 @@ function filterData(type, event) {
                         <!-- <li>
                             <span>Maybe (2)</span>
                         </li> -->
-                        <li class="location_Select">
-                            <span class="block_cnt">Location:
-                                <select @change="filterData('location', $event)" class="job-filter_text">
-                                    <option value="">Any</option>
-                                    <option v-for="country in countries" :value="country.name">{{
-                                        country.name }}</option>
-                                </select>
-                            </span>
-                        </li>
 
-                        <div class="col-md-3 login-section-desk text-end width_mobileS business_btn_job p-0">
+                        <div class="col-md-12 login-section-desk text-end width_mobileS business_btn_job p-0">
                         <Link class="btn btn-sm btn-success business_btn_adds" :href="route('business-jobs.create')">Add
                         job</Link>
                     </div>
                               
                     </ul>
                     <ul class="d-flex align-items-center justify-content-between flex-wrap pl-0 business_dash_navbar_wrapper business_inner_dash_wrap width_business">
-                        <div class="d-flex flex-content align-items-center">
                             <li>
                                 <span class="block_cnt">Seniority:
                                     <select class="job-filter_text any_select_box" @change="filterData('seniority', $event)">
@@ -207,7 +197,7 @@ function filterData(type, event) {
                                     </select>
                                 </span>
                             </li>
-                            <li class="my-3">
+                            <li class="my-3 margin_list">
                                 <span class="block_cnt ml-2">Positions:
                                     <select class="job-filter_text" @change="filterData('position', $event)">
                                         <option value="">Select</option>
@@ -215,7 +205,17 @@ function filterData(type, event) {
                                     </select>
                                 </span>
                             </li>
-                        </div>
+
+                        <li class="location_Select my-3 margin_list">
+                            <span class="block_cnt">Location:
+                                <select @change="filterData('location', $event)" class="job-filter_text">
+                                    <option value="">Any</option>
+                                    <option v-for="country in countries" :value="country.name">{{
+                                        country.name }}</option>
+                                </select>
+                            </span>
+                        </li>
+
                         <li class="sorting_apply">
                             <span class="block_cnt">
                                 Sort:
@@ -229,7 +229,7 @@ function filterData(type, event) {
                 </div>
                 <div class="main-job-filter spacing_nine business_tablesss_inner">
                     <DataTable :key="refreshDataTable"
-                        class="display job-data-table business_table business_dash_table business_table_dashboard"
+                        class="display job-data-table business_table business_dash_table business_table_dashboard fixed_actions"
                         :options="options" style="border:2px black ;width:100%">
                         <thead>
                             <tr class="th-row">

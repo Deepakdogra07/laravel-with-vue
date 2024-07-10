@@ -86,13 +86,13 @@ onMounted(() => {
     
     </div>
     
-    <section class="view_customer_wrapper">
+    <section class="view_customer_wrapper back_button_wrap">
         <div class="container py-12 view_customer_inner">
-            <div v-if="user_type == 3 ">
+            <!-- <div v-if="user_type == 3 ">
                 <p class="mb-0" style="display: inline-block;">
                     <Link :href="route('customer-dash')" class="step-form-back forms-btn-transparent mb-4 btn_customer"><i class="bi bi-arrow-left"></i>Back</Link>
                 </p>
-            </div>
+            </div> -->
             <div class="inner_spacing_wrapper">
                 <div class="customer_card pb-4">
                     <div class="card-image">

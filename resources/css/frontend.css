@@ -455,15 +455,30 @@ h2 {
 	border: 0px;
 }
 
-.business_dash_tables_wrapper thead th {
+.business_dash_tables_wrapper thead th, .main-job-filter .job-data-table th {
 	padding: 25px 15px !important;
-	font-weight: 600 !important;
 }
 
-/* .business_tablesss_inner thead th:last-child, .business_tablesss_inner tbody tr td:last-child {
+.main-job-filter .display.applied_frontend_table thead th[aria-label="View : activate to sort column ascending"], .main-job-filter .display.applied_frontend_table tbody td.view{
     position: sticky !important;
     right: 0;
-    z-index: 1;
+}
+
+.main-job-filter .display.applied_frontend_table tbody td.status, .main-job-filter .display.applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"]{
+	position: sticky !important;
+    right: 68px;
+}
+
+.main-job-filter .display.applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"], .main-job-filter .display.applied_frontend_table thead th[aria-label="View : activate to sort column ascending"]{
+	background-color: #e2e2e4;
+}
+
+.main-job-filter .display.applied_frontend_table tbody td.status, .main-job-filter .display.applied_frontend_table tbody td.view{
+	background-color: #fff;
+}
+
+/* .main-job-filter .display.applied_frontend_table tbody td.status {
+    padding-right: 75px !important;
 } */
 
 .pass_travel_details_wrapper .card-body p b {
@@ -644,7 +659,7 @@ h2 {
 	display: inline-block;
 	width: auto !important;
 }
-.step-form-back.forms-btn-transparent {
+.back_button_wrap .step-form-back.forms-btn-transparent {
     display: flex;
     width: auto !important;
     margin: 0px 14px;
@@ -652,7 +667,7 @@ h2 {
 }
 
 .customer_apply .forms-btn,
-.customer_apply .forms-btn-transparent, .green_bg {
+.customer_apply .forms-btn-transparent, .multiple_download .theme_button.green_bg {
 	background-color: #01796F;
 }
 
@@ -1344,11 +1359,10 @@ section.testimonials_page .modal-body {
 
 .list_job_category {
 	line-height: 1.24em;
-	border: 0px !important;
 }
 
 .list_job_category i {
-	color: #fff;
+    color: #5a5a5a;
 }
 
 .file-inputs .dotted-bg {
@@ -1507,6 +1521,7 @@ input[type="file"] {
 	font-weight: 500 !important;
 	color: #000 !important;
 	width: 30% !important;
+	font-weight: 600;
 }
 
 .main-job-filter .job-data-table th:first-child,
@@ -1517,7 +1532,13 @@ input[type="file"] {
 	white-space: nowrap !important;
 	display: inline-block;
 }
-.main-job-filter .applied_frontend_table th:first-child, .main-job-filter .applied_frontend_table tbody tr td:first-child, .main-job-filter .applied_frontend_table tbody tr td, .main-job-filter .applied_frontend_table th, .customer_applied.applied_job tbody tr td, .customer_applied.applied_job th:first-child, .customer_applied.applied_job tbody tr td:first-child{
+.main-job-filter .applied_frontend_table th:first-child, 
+.main-job-filter .applied_frontend_table tbody tr td:first-child, 
+.main-job-filter .applied_frontend_table tbody tr td, 
+.main-job-filter .applied_frontend_table th, 
+.customer_applied.applied_job tbody tr td, 
+.customer_applied.applied_job th:first-child, 
+.customer_applied.applied_job tbody tr td:first-child{
     width: 25% !important;
     padding: 25px 15px !important;
 }
@@ -1821,8 +1842,16 @@ input[type="file"] {
 		font-size: 14px;
 	}
 
-	.theme_button, .step-form-back.forms-btn-transparent {
+	.theme_button, .back_button_wrap .step-form-back.forms-btn-transparent {
 		margin: 0px 10px;
+	}
+
+	.business_inner_dash_wrap {
+		justify-content: flex-start !important;
+	}
+
+	.business_inner_dash_wrap li {
+		margin: 0px !important;
 	}
 
 }
@@ -1844,6 +1873,10 @@ input[type="file"] {
 @media (max-width: 1086px) {
 	.dashboard-home .card h4 {
 		font-size: 17px !important;
+	}
+	.mobile_amdin_dropdown ul.dropdown-menu {
+		right: 0 !important;
+		left: unset !important;
 	}
 }
 
@@ -1883,17 +1916,6 @@ input[type="file"] {
 }
 
 @media (max-width: 992px) {
-	.mobile_dropdown .dropdown-toggle i {
-		font-size: 14px;
-		padding-left: 5px;
-		margin-top: 3px;
-	}
-
-	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle p {
-		display: flex;
-		align-items: flex-start;
-	}
-
 	.create_space input.form-control,
 	.create_space select.form-select {
 		font-size: 13px;
@@ -2223,12 +2245,6 @@ input[type="file"] {
 		padding: 10px 24px !important;
 	}
 
-
-	.mobile_amdin_dropdown ul.dropdown-menu {
-		right: 0 !important;
-		left: unset !important;
-	}
-
 	.employesss_tabs {
 		padding-top: 10px;
 	}
@@ -2336,7 +2352,7 @@ input[type="file"] {
 	}
 
 	.navbar_toggler_tab button {
-		padding: 7px 13px !important;
+		padding: 6px 13px !important;
 	}
 
 
@@ -2458,6 +2474,12 @@ input[type="file"] {
 
 	.country-content img {
 		height: 290px;
+	}
+}
+
+@media (max-width:820px) {
+	.admin_box {
+		height: 490px;
 	}
 }
 
@@ -2636,11 +2658,6 @@ input[type="file"] {
 	.country-names {
 		bottom: 20px;
 		left: 20px;
-	}
-
-	.admin_box {
-		height: auto !important;
-		margin-bottom: 20px;
 	}
 
 	.remove_paddingss {
@@ -3583,7 +3600,7 @@ input[type="file"] {
 		top: 7px !important;
 	} */
 
-	.theme_button, .step-form-back.forms-btn-transparent {
+	.theme_button, .back_button_wrap .step-form-back.forms-btn-transparent {
 		margin: 0px 0px;
 	}
 
@@ -4603,6 +4620,10 @@ input[type="file"] {
 	.business_job_wrap .forms-btn-transparent {
 		justify-content: center;
 		width: auto !important;
+	}
+
+	.business_inner_dash_wrap li.margin_list {
+		margin: 13px 0px!important;
 	}
 
 	/*576 customer page*/
@@ -5980,7 +6001,7 @@ li.last_border {
 }
 
 .job-detail-page .view-main-image img {
-    border: 1px solid #f9f9f9 !important;
+    /* border: 1px solid #f9f9f9 !important; */
     border-radius: 10px !important;
 }
 
@@ -6622,6 +6643,11 @@ form.row.edit_customer label,
 	background: #3c5b6f;
 }
 
+.admin_profile .profile_info a.btn.btn-primary:hover,
+.admin_profile .update_pass button.rounded-lg:hover {
+	background: #060d1a;
+}
+
 .profile_info a.btn.btn-primary:hover,
 .update_pass button.rounded-lg:hover, .admins_boxx button:hover {
 	background: #09332b;
@@ -7257,7 +7283,7 @@ span.job-filter_text {
 
 .business_dash_tables_wrapper thead th,
 .business_wrap_name.sorting_1,
-.business_dash_tables_wrapper tbody td {
+.business_dash_tables_wrapper tbody td, .applied_job.business_table th, .applied_job.business_table th td, .main-job-filter .job-data-table th {
 	font-size: 15px;
 }
 
@@ -7938,3 +7964,94 @@ span.job-filter_text {
 .business_job_wrap .job_details_cnt {
     margin: 0px 13px !important;
 }
+
+/*header*/
+.mobile_amdin_dropdown .desktop_btn p .btn_mail {
+    width: 70px !important;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+.mobile_amdin_dropdown .desktop_btn::after {
+	display: none;
+}
+.mobile_dropdown .dropdown-toggle i, .mobile_amdin_dropdown .desktop_btn i {
+	font-size: 14px;
+	padding-left: 5px;
+	margin-top: 3px;
+}
+.mobile_dropdown button.btn.btn-secondary.dropdown-toggle p, .mobile_amdin_dropdown .desktop_btn p {
+	display: flex;
+	align-items: flex-start;
+}
+.applied_frontend_table thead th[aria-label="Profile: activate to sort column ascending"], .applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"], .applied_frontend_table thead th[aria-label="View : activate to sort column ascending"] {
+    cursor: default !important;
+}
+
+/*subheading*/
+.sub-heading-section h1 {
+    font-weight: 700;
+}
+
+body::-webkit-scrollbar {
+	width: 1em;
+  }
+   
+  body::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  body::-webkit-scrollbar-thumb {
+	background-color: darkgrey;
+	outline: 1px solid slategrey;
+  }
+
+  .applied_frontend_table::-webkit-scrollbar {
+    width: 12px;
+	height: 8px;
+}
+
+table.display::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0); 
+}
+
+table.display::-webkit-scrollbar-thumb {
+    background: #c1c1c1; 
+    -webkit-box-shadow: inset 0 0 6px #c1c1c1; 
+}
+
+
+
+
+
+
+
+
+
+
+/* .search_bar input[type = 'search']::-webkit-search-cancel-button{
+	color: green;
+	 background-color: #0000;
+	-webkit-appearance: none;	 
+	height: 8px;
+	width: 8px;
+	position: absolute;
+	right: 0; 
+	border-radius: 50%;
+	position: relative;
+	border-left: 1px solid #000;
+	border-bottom:1px solid #000;
+	transform:rotate(-45deg);
+	top: -3px;
+} */
+/* .search_bar input[type = 'search']::-webkit-search-cancel-button:after{
+	content: "✖️";
+	color: green;
+	outline: 1px solid red;
+	border: 1px solid red;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	tranform: translate(-50%, -50%);
+} */
