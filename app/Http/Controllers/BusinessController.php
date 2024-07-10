@@ -52,7 +52,7 @@ class BusinessController extends Controller
     }
     public function store(Request $request)
     {
-// dd($request->all());
+        // dd($request->all());
         $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
@@ -176,6 +176,7 @@ class BusinessController extends Controller
     }
     public function update($id, Request $request)
     {
+        
         $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',

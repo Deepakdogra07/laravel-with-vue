@@ -143,7 +143,7 @@ function formatDateTime(date) {
                         <th>Visa Status</th>
                         <th>Experience Summary</th>
                         <!-- <th>Videos</th> -->
-                        <th>Intersts</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

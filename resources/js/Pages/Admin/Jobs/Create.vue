@@ -99,6 +99,9 @@ function checked_event(event){
     }
 }
 const submit = () => {
+    if(form.job_description =='<p><br></p>'){
+        form.job_description = null;
+    }
     form.post(route('jobs.store'),
     {
       onSuccess: () => {

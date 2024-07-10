@@ -136,7 +136,9 @@ function selectFile(event) {
         technical:''
     });
 const submit = () => {
-    console.log(form, '123')
+    if(form.job_description =='<p><br></p>'){
+        form.job_description = null;
+    }
     form.post(route('jobs.updates', form.id), {
         onSuccess: () => {
             toast("Job Updated Successfully!", {

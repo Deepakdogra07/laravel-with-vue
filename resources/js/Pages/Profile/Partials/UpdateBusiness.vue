@@ -49,7 +49,9 @@ const submit2 = () => {
         },
     });
 };
+const class_ = ref('Selected_option');
 const countries = Country.getAllCountries();
+
 </script>
 <template>
     <section class="profile_info">
@@ -90,7 +92,7 @@ const countries = Country.getAllCountries();
                         <div class="profile_input">
                             <InputLabel for="name" value="Country" />
                             <!-- <TextInput  type="text" class="mt-1 block w-full" v-model="form.company_country_code"  autofocus autocomplete="name"/> -->
-                            <select class='form-control mt-1' v-model="form.company_country_code">
+                            <select class='form-control mt-1' v-model="form.company_country_code" :class="class_">
                                 <option value=""> Select Country</option>
                                 <option v-for="country  in countries" :value="country.isoCode">{{ country.name}}</option>
                             </select>
