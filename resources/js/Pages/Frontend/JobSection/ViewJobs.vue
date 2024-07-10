@@ -67,9 +67,9 @@ console.log(job_start_date)
 <template>
     <Header />
     <SubHeading />
-    <div class="login-bg-wrapper job-detail-page">
+    <div class="login-bg-wrapper job-detail-page back_button_wrap">
         <div class="container about-width p-0 business_job_wrap">
-            <p class="mb-0" style="display:inline-block;"><Link :href="route('job.listing')" class="step-form-back forms-btn-transparent mb-4"><i class="bi bi-arrow-left"></i>Back</Link></p>
+            <!-- <p class="mb-0" style="display:inline-block;"><Link :href="route('job.listing')" class="step-form-back forms-btn-transparent mb-4"><i class="bi bi-arrow-left"></i>Back</Link></p> -->
             <div class="row align-items-start">
                 <div class="col-md-5">
                     <div class="view-main-image">

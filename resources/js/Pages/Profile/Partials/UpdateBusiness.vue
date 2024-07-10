@@ -136,7 +136,7 @@ const countries = Country.getAllCountries();
                     </div>
                 </div>
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing" class="form-btn" >Save </PrimaryButton>
+                <PrimaryButton :disabled="form.processing" class="form-btn" >Save</PrimaryButton>
                 <!-- <Link @click="submit2" class="btn btn-primary">Save  </Link> -->
 
                 <Transition

@@ -94,10 +94,10 @@ function job_description(description){
         </div>
     </div> -->
 
-    <div class="login-bg-wrapper job-detail-page Business_details_page">
+    <div class="login-bg-wrapper job-detail-page Business_details_page back_button_wrap">
       
         <div class="container business_wrap_cnt">
-            <p class="mb-0" style="display: inline-block;"><Link :href="route('business-jobs.index')" class="step-form-back forms-btn-transparent mb-4"><i class="bi bi-arrow-left"></i>Back</Link></p>
+            <!-- <p class="mb-0" style="display: inline-block;"><Link :href="route('business-jobs.index')" class="step-form-back forms-btn-transparent mb-4"><i class="bi bi-arrow-left"></i>Back</Link></p> -->
             <div class="row align-items-center">
                 <div class="col-md-5">
                     <div class="view-main-image">

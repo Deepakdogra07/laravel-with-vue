@@ -51,7 +51,7 @@ function dateTime(created_at) {
     <div class="login-bg-wrapper list_of_jobs">
         <div class="container width_content">
             <div class="industryFilter" v-if="industry">
-                <span class="industry-data list_job_category forms-btn mb-4">
+                <span class="industry-data list_job_category forms-btn-transparent mb-4">
                     {{ industry }}
                    <Link :href="route('job.listing')" class="text-dark"><i class="fas fa-times"></i></Link>
                 </span>
@@ -120,13 +120,15 @@ function dateTime(created_at) {
 </template>
 
 <style scoped>
-.industry-data{
-    border: 1px solid #09332b;
+.industry-data {
+    border: 1px solid #01796f;
     border-radius: 8px;
-    padding: 8px 20px 8px 20px;
+    padding: 8px 15px 8px 15px !important;
     display: flex;
     align-items: center;
     gap: 20px;
+    width: -moz-fit-content;
     width: fit-content;
+    font-size: 14px;
 }
 </style>
