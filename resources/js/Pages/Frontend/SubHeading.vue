@@ -79,24 +79,34 @@ const props=defineProps({
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-md-2 col-4 p-0">
                         <li class="nav-item">
-                            <Link href="/job-introduction" class="nav-link text-center" 
+                            <!-- <Link href="/job-introduction" class="nav-link text-center" 
                                 :class="{ 'active': route().current('job.introduction') }" 
-                            >Introduction</Link>
+                            >Introduction</Link> -->
+                            <p class="nav-link text-center mb-0" 
+                                :class="{ 'active': route().current('job.introduction') }" 
+                            >Introduction</p>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-4 p-0">
                         <li class="nav-item">
-                            <Link :href="`/employment.details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
+                            <!-- <Link :href="`/employment.details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('employment.details') }"
-                           
-                            >Employment</Link>
+                            >Employment</Link> -->
+
+                            <p class="nav-link text-center mb-0"  
+                                :class="{ 'active': route().current('employment.details') }"
+                            >Employment</p>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-4">
                         <li class="nav-item">
-                            <Link :href="`/document-details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
+                            <!-- <Link :href="`/document-details/${data?.job_id}/${data?.customer_id}`" class="nav-link text-center"  
                                 :class="{ 'active': route().current('document.details') }"  
-                            >Document</Link>
+                            >Document</Link> -->
+
+                            <p class="nav-link text-center mb-0"  
+                                :class="{ 'active': route().current('document.details') }"  
+                            >Document</p>
                         </li>
                     </div>
                 </ul>
@@ -108,12 +118,16 @@ const props=defineProps({
                 <ul class="row nav-underline pl-0 mb-0">
                     <div class="col-lg-2 col-md-3 col-5 p-0">
                         <li class="nav-item">
-                            <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details </Link>
+                            <!-- <Link :href="`/travel-details/${job_id}`" class="nav-link text-center" :class="{ 'active': route().current('travel.details') }">Travel details </Link> -->
+
+                            <p class="nav-link text-center mb-0" :class="{ 'active': route().current('travel.details') }">Travel details </p>
                         </li>
                     </div>
                     <div class="col-lg-2 col-md-3 col-5 p-0">
                         <li class="nav-item">
-                            <Link :href="`/personal-details/${job_id}`"  class="nav-link text-center"  :class="{ 'active': route().current('personal.details') }">Personal details</Link>
+                            <!-- <Link :href="`/personal-details/${job_id}`"  class="nav-link text-center"  :class="{ 'active': route().current('personal.details') }">Personal details</Link> -->
+
+                            <p class="nav-link text-center mb-0"  :class="{ 'active': route().current('personal.details') }">Personal details</p>
                         </li>
                     </div>
                 </ul>

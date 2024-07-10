@@ -100,14 +100,19 @@ onMounted(() => {
                     </div>
                     <div class="inner_card_wrapper">
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
-                        <div class="status" style="float:right">
-                            <b>Status:</b>
-                            <p v-if="customer?.status?.status == 0" style="color:green">Active </p>
-                            <p v-if="customer?.status?.status == 1" style="color:green">Awaiting Review </p>
-                            <p v-if="customer?.status?.status == 2" style="color:green">Reviewed </p>
-                            <p v-if="customer?.status?.status == 3" style="color:green">Contacted </p>
-                            <p v-if="customer?.status?.status == 4" style="color:green">Hired </p>
-                            <p v-if="customer?.status?.status == 5" style="color:red">Rejected </p>
+                        <div class="status">
+                            <!-- <b>Status:</b> -->
+                            <p class="status_condition" v-if="customer?.status?.status == 0" style=" background-color:#008000; color:#fff; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600!important; font-size: 13px;">Active </p>
+
+                            <p class="status_condition" v-if="customer?.status?.status == 1" style=" background-color:#ffa500; color:#fff; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px;">Awaiting Review </p>
+
+                            <p class="status_condition" v-if="customer?.status?.status == 2" style=" background-color:#002F63; color:#fff; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px;">Reviewed </p>
+
+                            <p class="status_condition" v-if="customer?.status?.status == 3" style="background-color:#111154; color:#fff; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px;">Contacted </p>
+
+                            <p class="status_condition" v-if="customer?.status?.status == 4" style=" background-color:#198754; color:#fff; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px;">Hired </p>
+
+                            <p class="status_condition" v-if="customer?.status?.status == 5" style=" background-color:#ff0000; color:#fff; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:40px;">Rejected </p>
                         </div>
                         <div class="card-body">
                             <!-- <h2>Other Details:</h2> -->
@@ -418,7 +423,6 @@ onMounted(() => {
 .success {
     color: green;
 }
-
 .main-outer-section {
     background-color: #F2F2F2;
 }

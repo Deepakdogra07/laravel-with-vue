@@ -387,11 +387,11 @@ function removeImage1(){
                 </div>
             </div>
             <div class="d-flex justify-between align-items-start mx-2 back_button_wrapss">
-                <!-- <div class="flex items-center mt-4 ">
+                <div class="flex items-center mt-4 ">
                     <p class="mb-0" style="display:inline-block;"><Link class="forms-btn-transparent step-form-back forms-btn-transparent mb-4" href="/travel-details/2">
                         <span> <i class="bi bi-arrow-left"></i></span>  Back 
                     </Link></p>
-                </div> -->
+                </div>
              <div class="flex items-center mt-4 login-btn-main">
                 <PrimaryButton  class="forms-btn"  v-if="form.processing" :disabled="form.processing">
                     Submitting....

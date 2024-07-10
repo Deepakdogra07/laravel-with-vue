@@ -8,6 +8,7 @@ import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import Footer from "../../Frontend/Footer.vue";
 import { Country } from 'country-state-city';
+import { ref } from 'vue';
 
 const props = defineProps({
     mustVerifyEmail: {
