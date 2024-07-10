@@ -393,6 +393,10 @@ function getLast_name(name) {
     object-fit: fill;
     width: 24px;
     max-width: 23px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .download-icon:hover {
     transform: scale(1.2);

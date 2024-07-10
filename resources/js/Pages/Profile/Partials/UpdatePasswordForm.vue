@@ -74,7 +74,7 @@ const updatePassword = () => {
             </div>
 
             <div class="update_pass_div">
-                <div class="row justify-content-between">
+                <div class="row justify-content-between align-items-start">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 remove_paddings">
                         <div class="new_pass ">
                             <InputLabel for="password" value="New Password" />
