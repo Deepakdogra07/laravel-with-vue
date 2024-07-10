@@ -86,17 +86,35 @@ const form =useForm({
     citizen_of_more_than_one:null,
     visa_available:props?.already_customer?.visa_available ?? null,
 });
+
+function handleImageError(file){
+    let err=false;
+    const maxSize = 20 * 1024 * 1024; 
+    if (!file.type.startsWith('image/')) {
+        toast.error('Please upload an image file.');
+        err=true;
+    }else if (file.size > maxSize) {
+        toast.error('The image size should not exceed 20MB.');
+        err=true;
+    }
+    return err;
+}
 function upload_image(event){
-    form.customer_image = event.target.files[0];
-    image_src.value = URL.createObjectURL(event.target.files[0]);
-    image_name.value = event.target.files[0].name;
+    if(!handleImageError(event.target.files[0])){
+        form.customer_image = event.target.files[0];
+        image_src.value = URL.createObjectURL(event.target.files[0]);
+        image_name.value = event.target.files[0].name;
+        form.errors.customer_image=null;
+    }
     
 }
 function upload_image1(event){
-    form.passport_image = event.target.files[0];
-    image_src1.value = URL.createObjectURL(event.target.files[0]);
-    image_name1.value = event.target.files[0].name;
-    
+    if(!handleImageError(event.target.files[0])){
+        form.passport_image = event.target.files[0];
+        image_src1.value = URL.createObjectURL(event.target.files[0]);
+        image_name1.value = event.target.files[0].name;
+         form.errors.passport_image=null;
+    }
 }
 if(form.customer_image){
     image_src.value = form.customer_image;
