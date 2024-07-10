@@ -471,7 +471,7 @@ h2 {
 
 .applied_frontend_table thead th[aria-label="Profile: activate to sort column ascending"],
 .applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"],
-.applied_frontend_table thead th[aria-label="View : activate to sort column ascending"], .business_table_dashboard th[aria-label="Job Thumbnail: activate to sort column ascending"], .main-job-filter .display.applied_frontend_table thead th:nth-child(9), .main-job-filter .display.applied_frontend_table thead th:last-child{
+.applied_frontend_table thead th[aria-label="View : activate to sort column ascending"], .business_table_dashboard th[aria-label="Job Thumbnail: activate to sort column ascending"], .main-job-filter .display.applied_frontend_table thead th:nth-child(9), .main-job-filter .display.applied_frontend_table thead th:last-child, .business_table_dashboard th[aria-label="Job Thumbnail: activate to sort column descending"]{
 	cursor: default !important;
 }
 
