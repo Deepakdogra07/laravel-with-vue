@@ -87,11 +87,63 @@ function previous_div(div_number) {
     div_numbers.value = `step-form-${div_number - 1}`
 }
 
-function show_document(type, event) {
-    form[type] = event.target.files[0];
-    document[type] = URL.createObjectURL(event.target.files[0]);
-    image_name[type] = event.target.files[0].name;
-    submit_Document(form.step)
+// function show_document(type, event) {
+//     form[type] = event.target.files[0];
+//     document[type] = URL.createObjectURL(event.target.files[0]);
+//     image_name[type] = event.target.files[0].name;
+//     submit_Document(form.step)
+// }
+
+function show_document(stype, event,type,size) {
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
+        'application/pdf'
+    ];
+    if ((type==='image') && !file.type.startsWith('image/')) {
+        toast.error('Please upload an image file.');
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
+        toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
+    }else if (type==='video') {
+        if(!file.type.startsWith('video/')){
+            toast.error('Please upload an video file.');
+        }else{
+            const video = window.document.createElement('video');
+            video.preload = 'metadata';
+
+            video.onloadedmetadata = function() {
+                window.URL.revokeObjectURL(video.src);
+
+                const duration = video.duration;
+                console.log(duration);
+                const minDuration = 5 * 60;
+                const maxDuration = 10 * 60;
+
+                if (duration < minDuration || duration > maxDuration) {
+                    toast.error('The video should be between 5 to 10 minutes.');
+                    window.document.body.removeChild(video);
+                }else{
+                    form[stype] = file;
+                    document[stype] = URL.createObjectURL(file);
+                    props.errors[stype]=null;
+                    submit_Document(form.step)
+                }
+            }
+
+            video.src = URL.createObjectURL(file);
+        }
+    }else if ((type!=='video') && (file.size > maxSize)) {
+        toast.error('The image size should not exceed 20MB.');
+    }else{
+        form[stype] = file;
+        document[stype] = URL.createObjectURL(file);
+        props.errors[stype]=null;
+        submit_Document(form.step)
+    }
 }
 
 
@@ -221,7 +273,8 @@ function removeImage(type) {
                         </div>
                         <div v-if="document.employer_statement" class="mt-3 relative">
                             <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('employer_statement')"><i class="fas fa-times"></i></p>
-                            <img :src="document.employer_statement" alt="" srcset="" width="250px" class="close_image_wrapper"></div>
+                                <img v-if="form.employer_statement.type.startsWith('image/')" :src="document.employer_statement" alt="" srcset="" width="250px"/>
+                                <p v-else><b>{{form.employer_statement.name}}</b> file uploaded!</p></div>
                             <p class="close_image_name">{{ image_name.employer_statement }}</p>
                         </div>
                         <div v-else class="col-12 p-0">
@@ -236,7 +289,7 @@ function removeImage(type) {
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('employer_statement', $event)" >
+                                        @change="show_document('employer_statement',$event ,'doc',20)" >
 
                                 </div>
                             </div>
@@ -307,7 +360,8 @@ function removeImage(type) {
                         <div class="col-12 p-0">
                             <div v-if="document.financial_evidence" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
-                            <img :src="document.financial_evidence" alt="" srcset="" width="250px"></div>
+                                    <img v-if="form.financial_evidence.type.startsWith('image/')" :src="document.financial_evidence" alt="" srcset="" width="250px"/>
+                                    <p v-else><b>{{form.financial_evidence.name}}</b> file uploaded!</p></div>
                             <p class="close_image_name">{{ image_name.financial_evidence }}</p>
                         </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -321,7 +375,7 @@ function removeImage(type) {
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('financial_evidence', $event)">
+                                        @change="show_document('financial_evidence',$event ,'doc',20)">
 
                                 </div>
                             </div>
@@ -409,7 +463,8 @@ function removeImage(type) {
                             <div v-if="document.evidence_self_employment" class="mt-3 relative">
                                     <div class="d-flex align-items-start all_image_close">
                                         <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.evidence_self_employment" alt="" srcset="" width="250px">
+                                        <img v-if="form.evidence_self_employment.type.startsWith('image/')" :src="document.evidence_self_employment" alt="" srcset="" width="250px"/>
+                                        <p v-else><b>{{form.evidence_self_employment.name}}</b> file uploaded!</p>
                                     </div>
                             <p class="close_image_name">{{ image_name.evidence_self_employment }}</p>
                         </div>
@@ -425,7 +480,7 @@ function removeImage(type) {
                                     </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment',$event ,'doc',20)">
 
                                     </div>
                                 </div>
@@ -475,7 +530,8 @@ function removeImage(type) {
                             <div class="col-12 employment_next">
                                 <div v-if="document.evidence_self_employment_aus" class="mt-3 relative">
                                     <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment_aus')"><i class="fas fa-times"></i></p>
-                            <img :src="document.evidence_self_employment_aus" alt="" srcset="" width="250px"></div>
+                                        <img v-if="form.evidence_self_employment_aus.type.startsWith('image/')" :src="document.evidence_self_employment_aus" alt="" srcset="" width="250px"/>
+                                        <p v-else><b>{{form.evidence_self_employment_aus.name}}</b> file uploaded!</p></div>
                             <p class="close_image_name">{{ image_name.evidence_self_employment_aus }}</p>
                         </div>
                         <div v-else class="col-12 employ_padding">
@@ -490,7 +546,7 @@ function removeImage(type) {
                                     </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_self_employment_aus',$event ,'doc',20)">
 
                                         </div>
                                     </div>
@@ -563,7 +619,8 @@ function removeImage(type) {
                         <div class="col-12 employ_padding">
                             <div v-if="document.formal_training_evidence" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('formal_training_evidence')"><i class="fas fa-times"></i></p>
-                            <img :src="document.formal_training_evidence" alt="" srcset="" width="250px"></div>
+                                    <img v-if="form.formal_training_evidence.type.startsWith('image/')" :src="document.formal_training_evidence" alt="" srcset="" width="250px"/>
+                                    <p v-else><b>{{form.formal_training_evidence.name}}</b> file uploaded!</p></div>
                             <p class="close_image_name">{{ image_name.formal_training_evidence }}</p>
                         </div>
   
@@ -580,7 +637,7 @@ function removeImage(type) {
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('formal_training_evidence', $event)">
+                                        @change="show_document('formal_training_evidence',$event ,'doc',20)">
                                     <p>{{ image_name.formal_training_evidence }}</p>
                                 </div>
                             </div>

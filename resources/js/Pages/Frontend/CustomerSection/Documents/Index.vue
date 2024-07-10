@@ -88,12 +88,62 @@ function previous_div(div_number) {
     div_numbers.value = `step-form-${div_number - 1}`
 }
 
-function show_document(type, event) {
-    form[type] = event.target.files[0];
-    document[type] = URL.createObjectURL(event.target.files[0]);
-    submit_Document()
-}
+// function show_document(type, event) {
+//     form[type] = event.target.files[0];
+//     document[type] = URL.createObjectURL(event.target.files[0]);
+//     submit_Document()
+// }
+function show_document(stype, event,type,size) {
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
+        'application/pdf'
+    ];
+    if ((type==='image') && !file.type.startsWith('image/')) {
+        toast.error('Please upload an image file.');
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
+        toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
+        // if(!file.type.startsWith('video/')){
+            toast.error('Please upload an video file.');
+        // }else{
+        //     const video = window.document.createElement('video');
+        //     video.preload = 'metadata';
 
+        //     video.onloadedmetadata = function() {
+        //         window.URL.revokeObjectURL(video.src);
+
+        //         const duration = video.duration;
+        //         console.log(duration);
+        //         const minDuration = 5 * 60;
+        //         const maxDuration = 10 * 60;
+
+        //         if (duration < minDuration || duration > maxDuration) {
+        //             toast.error('The video should be between 5 to 10 minutes.');
+        //             window.document.body.removeChild(video);
+        //         }else{
+        //             form[stype] = file;
+        //             document[stype] = URL.createObjectURL(file);
+        //             props.errors[stype]=null;
+        //             submit_Document()
+        //         }
+        //     }
+
+        //     video.src = URL.createObjectURL(file);
+        // }
+    }else if (file.size > maxSize) {
+        toast.error(`The image size should not exceed ${size}MB.`);
+    }else{
+        form[stype] = file;
+        document[stype] = URL.createObjectURL(file);
+        props.errors[stype]=null;
+        submit_Document()
+    }
+}
 function submit_form() {
     // form.post(route('submit_customers_documents'), {
     //     onSuccess: () => {
@@ -172,7 +222,8 @@ async function submit_Document(){
                             <div v-if="document.employment_evidence" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.employment_evidence" alt="" srcset="" width="250px"></div>
+                                    <img v-if="form.employment_evidence.type.startsWith('image/')" :src="document.employment_evidence" alt="" srcset="" width="250px"/>
+                                    <p v-else><b>{{form.employment_evidence.name}}</b> file uploaded!</p></div>
                                 <p class="close_image_name">{{ image_name.employment_evidence }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -184,7 +235,7 @@ async function submit_Document(){
                                             </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('employment_evidence', $event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('employment_evidence', $event,'doc',20)">
     
                                 </div>
     
@@ -227,7 +278,8 @@ async function submit_Document(){
                             <div v-if="document.licences" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.licences" alt="" srcset="" width="250px"></div>
+                                    <img v-if="form.licences.type.startsWith('image/')" :src="document.licences" alt="" srcset="" width="250px"/>
+                                    <p v-else><b>{{form.licences.name}}</b> file uploaded!</p></div>
                                 <p class="close_image_name">{{ image_name.licences }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -240,7 +292,7 @@ async function submit_Document(){
                                             </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('licences', $event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('licences', $event,'doc',20)">
     
                                 </div>
                             </div>
@@ -541,8 +593,8 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 100mb</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('kitchen_area', $event)" accept="video/*">
+                                    <p class="file-type">Max Size 100mb</p>
+                                    <input class="upload" type="file" id="banner" @change="show_document('kitchen_area', $event,'video',100)" accept="video/*">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.kitchen_area" />
@@ -606,8 +658,8 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 100mb</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('ingredients', $event)" accept="video/*">
+                                    <p class="file-type">Max Size 100mb</p>
+                                    <input class="upload" type="file" id="banner" @change="show_document('ingredients', $event,'video',100)" accept="video/*">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.ingredients" />
@@ -657,8 +709,8 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 100mb</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('cooking_tech', $event)" accept="video/*">
+                                    <p class="file-type">Max Size 100mb</p>
+                                    <input class="upload" type="file" id="banner" @change="show_document('cooking_tech', $event,'video',100)" accept="video/*">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.cooking_tech" />
@@ -709,8 +761,8 @@ async function submit_Document(){
                                     <!-- <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner"
                                         @change="show_document('dish', $event)" accept="video/*"> -->
-                                    <p class="file-type">limit 100mb</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('dish', $event)" accept="video/*">
+                                    <p class="file-type">Max Size 100mb</p>
+                                    <input class="upload" type="file" id="banner" @change="show_document('dish', $event,'video',100)" accept="video/*">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.dish" />
@@ -759,8 +811,8 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 100mb</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('clean_up', $event)" accept="video/*">
+                                    <p class="file-type">Max Size 100mb</p>
+                                    <input class="upload" type="file" id="banner" @change="show_document('clean_up', $event,'video',100)" accept="video/*">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.clean_up" />
@@ -880,7 +932,7 @@ async function submit_Document(){
                                             </svg>
                                     <h2 class="choose-para">Upload Photo</h2>
                                     <p class="file-type">Max size 5MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_image', $event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('evidence_image', $event,'image',5)">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.evidence_image" />
@@ -955,7 +1007,8 @@ async function submit_Document(){
                             <div v-if="document.resume" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('resume')"><i class="fas fa-times"></i></p>
-                                    <img :src="document.resume" alt="" srcset=""></div>
+                                    <img v-if="form.resume.type.startsWith('image/')" :src="document.resume" alt="" srcset="" width="250px"/>
+                                    <p v-else><b>{{form.resume.name}}</b> file uploaded!</p></div>
                                 <p class="close_image_name">{{ image_name.resume }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -967,7 +1020,7 @@ async function submit_Document(){
                                             </svg>
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="show_document('resume', $event)">
+                                    <input class="upload" type="file" id="banner" @change="show_document('resume', $event,'doc',20)">
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.resume" />
