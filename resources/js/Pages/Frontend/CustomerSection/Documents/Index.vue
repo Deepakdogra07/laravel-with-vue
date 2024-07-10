@@ -541,8 +541,14 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
+<<<<<<< HEAD
+                                    <p class="file-type">limit 100mb</p>
+                                    <input class="upload" type="file" id="banner"
+                                        @change="show_document('kitchen_area', $event)" accept="video/*">
+=======
                                     <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('kitchen_area', $event)" accept="video/*">
+>>>>>>> ee379fabd6775b914e9465a16d50afa82b2d3952
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.kitchen_area" />
@@ -606,8 +612,14 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
+<<<<<<< HEAD
+                                    <p class="file-type">limit 100mb</p>
+                                    <input class="upload" type="file" id="banner"
+                                        @change="show_document('ingredients', $event)" accept="video/*">
+=======
                                     <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('ingredients', $event)" accept="video/*">
+>>>>>>> ee379fabd6775b914e9465a16d50afa82b2d3952
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.ingredients" />
@@ -657,8 +669,14 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
+<<<<<<< HEAD
+                                    <p class="file-type">limit 100mb</p>
+                                    <input class="upload" type="file" id="banner"
+                                        @change="show_document('cooking_tech', $event)" accept="video/*">
+=======
                                     <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('cooking_tech', $event)" accept="video/*">
+>>>>>>> ee379fabd6775b914e9465a16d50afa82b2d3952
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.cooking_tech" />
@@ -706,8 +724,14 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
+<<<<<<< HEAD
+                                    <p class="file-type">limit 100mb</p>
+                                    <input class="upload" type="file" id="banner"
+                                        @change="show_document('dish', $event)" accept="video/*">
+=======
                                     <p class="file-type">limit 5-10 minutes</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('dish', $event)" accept="video/*">
+>>>>>>> ee379fabd6775b914e9465a16d50afa82b2d3952
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="props.errors.dish" />
@@ -756,7 +780,7 @@ async function submit_Document(){
                                                     stroke="#01796F" stroke-width="4"></path>
                                             </svg>
                                     <h2 class="choose-para">Upload Video</h2>
-                                    <p class="file-type">limit 5-10 minutes</p>
+                                    <p class="file-type">limit 100mb</p>
                                     <input class="upload" type="file" id="banner" @change="show_document('clean_up', $event)" accept="video/*">
                                 </div>
                             </div>

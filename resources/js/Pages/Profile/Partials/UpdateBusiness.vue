@@ -129,14 +129,14 @@ const countries = Country.getAllCountries();
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 p-0 col_width">
                         <div class="profile_input">
-                            <InputLabel for="name" value="Company VAT" />
+                            <InputLabel for="name" value="Company VAT (If Applicable)" />
                             <TextInput  type="text" class="mt-1 block w-full" placeholder="Enter company VAT" v-model="form.company_vat" autofocus autocomplete="name"/>
                             <InputError class="mt-2" :message="form.errors.company_vat" />
                         </div>
                     </div>
                 </div>
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing" class="form-btn" >Save</PrimaryButton>
+                <PrimaryButton :disabled="form.processing" class="form-btn" >Save </PrimaryButton>
                 <!-- <Link @click="submit2" class="btn btn-primary">Save  </Link> -->
 
                 <Transition
