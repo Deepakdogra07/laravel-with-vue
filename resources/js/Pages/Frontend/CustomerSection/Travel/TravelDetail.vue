@@ -87,15 +87,15 @@ function handleChange(type) {
                         <h2 class="mb-3">Travel details</h2>
                         <h4 class="mb-3">Purpose of stay <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                         <div class="flex items-center"><label class="flex items-center mb-2">
-                            <TextInput type="radio"  class="remember-me-check" name="remember1" value="Tourism" v-model="form.purpose_of_stay" />
+                            <TextInput type="radio"  class="remember-me-check" name="remember1" value="Tourism" v-model="form.purpose_of_stay"  :checked="form.purpose_of_stay == 'Tourism'" />
                             <span class="ml-2 cursor-pointer remember-me">Tourism</span>
                         </label></div>
                         <div class="flex items-center"><label class="flex items-center mb-2">
-                            <TextInput type="radio" class="remember-me-check" name="remember1" value="Business" v-model="form.purpose_of_stay"/>
+                            <TextInput :checked="form.purpose_of_stay == 'Business'" type="radio" class="remember-me-check" name="remember1" value="Business" v-model="form.purpose_of_stay"/>
                             <span class="ml-2 cursor-pointer remember-me">Business</span>
                         </label></div>
                         <div class="flex items-center"><label class="flex items-center mb-2">
-                            <TextInput type="radio" class="remember-me-check" name="remember1" value="Transit" v-model="form.purpose_of_stay"/>
+                            <TextInput :checked="form.purpose_of_stay == 'Transit'" type="radio" class="remember-me-check" name="remember1" value="Transit" v-model="form.purpose_of_stay"/>
                             <span class="ml-2 cursor-pointer remember-me">Transit</span>
                         </label></div>
                         <InputError  class="mt-2" :message="form.errors.purpose_of_stay"/>
@@ -106,27 +106,27 @@ function handleChange(type) {
                         <div class="travel-detail">
                             <h4 class="mb-3">Traditional visa <span data-v-ef3b84b0="" style="color: red;"> *</span></h4>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(individual)"   v-model="form.type_of_visa" />
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(individual)"  :checked="form.type_of_visa == 'skilled_visa(individual)'"   v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (individual)</span>
                             </label></div>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa" />
+                                <TextInput type="radio" :checked="form.type_of_visa == 'skilled_visa(consultation)'" class="remember-me-check" name="remember" value="skilled_visa(consultation)"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Skilled Visa (consultation)</span>
                             </label></div>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="relative_option_visa"  v-model="form.type_of_visa" />
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="relative_option_visa" :checked="form.type_of_visa == 'relative_option_visa'"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Relative Option Visa</span>
                             </label></div>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="partner_visa(consultation)"  v-model="form.type_of_visa" />
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="partner_visa(consultation)"  :checked="form.type_of_visa == 'partner_visa(consultation)'"   v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Partner Visa (consultation)</span>
                             </label></div>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="investor_visa(consultation)"  v-model="form.type_of_visa" />
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="investor_visa(consultation)" :checked="form.type_of_visa == 'investor_visa(consultation)'"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Investor Visa (consultation)</span>
                             </label></div>
                             <div class="flex items-center"><label class="flex items-center mb-2">
-                                <TextInput type="radio" class="remember-me-check" name="remember" value="other(consultation)"  v-model="form.type_of_visa" />
+                                <TextInput type="radio" class="remember-me-check" name="remember" value="other(consultation)" :checked="form.type_of_visa == 'other(consultation)'"  v-model="form.type_of_visa" />
                                 <span class="ml-2 cursor-pointer remember-me">Other (consultation)</span>
                             </label></div>
                         </div>
