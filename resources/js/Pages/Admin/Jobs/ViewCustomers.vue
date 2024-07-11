@@ -100,7 +100,7 @@ async function changeStatus(customer_id, job_id, event) {
         <div class="nav-container">
             <div class="form-navigation1 view_employee_tabs_wrapper">
                 <div class="container container_full">
-                    <ul class="row nav-underline pl-0 mb-0">
+                    <ul class="row nav-underline pl-0 mb-0 admin_tabs">
                         <div class="col-md-2 col-3 p-0 col_width">
                             <li class="nav-item">
                                 <Link class="nav-link text-center view_link_tab" aria-current="page"
@@ -215,7 +215,8 @@ async function changeStatus(customer_id, job_id, event) {
                                 </td>
                                 <td> {{ customer?.jobs?.job_title }}</td>
 
-                                <td class="status_business">
+                                <td class="-">
+                                    
                                     <div v-if="customer?.status == 0" style="color:">Active </div>
                                     <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
                                     <div v-if="customer?.status == 2" style="color:">Reviewed </div>

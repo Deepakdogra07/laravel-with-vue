@@ -51,10 +51,29 @@ const form = useForm({
     step: 1
 });
 const errors = ref([]);
+
  function show_next_div(div_number) {
-    form.step = div_number+1;
-    div_numbers.value = `step-form-${form.step}`;
-    window.scrollTo(0, 0);
+    if((div_number===1) && !form.employer_statement){
+        props.errors['employer_statement'] = 'Employer statement is required!'
+    }
+    else if((div_number===2) && !form.financial_evidence){
+        props.errors['financial_evidence'] = 'Financial evidence is required!'
+    }
+    else if((div_number===3) && !form.evidence_self_employment && !form.evidence_self_employment){
+        props.errors['evidence_self_employment'] = 'Evidence self employment is required!'
+        props.errors['evidence_self_employment_aus'] = 'Evidence self employment aus is required!'
+    }
+    else if((div_number===3) && !form.evidence_self_employment_aus){
+        props.errors['evidence_self_employment_aus'] = 'Evidence self employment aus is required!'
+    }
+    else if((div_number===4) && !form.formal_training_evidence){
+        props.errors['formal_training_evidence'] = 'Formal training evidence is required!'
+    }
+    else{
+        form.step = div_number+1;
+        div_numbers.value = `step-form-${form.step}`;
+        window.scrollTo(0, 0);
+    }
     // try {
     //     const response = await axios.post(route('validate_employment_details'), form, {
     //         headers: {
@@ -108,36 +127,10 @@ function show_document(stype, event,type,size) {
         toast.error('Please upload an image file.');
     }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
         toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
-    }else if (type==='video') {
-        if(!file.type.startsWith('video/')){
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
             toast.error('Please upload an video file.');
-        }else{
-            const video = window.document.createElement('video');
-            video.preload = 'metadata';
-
-            video.onloadedmetadata = function() {
-                window.URL.revokeObjectURL(video.src);
-
-                const duration = video.duration;
-                console.log(duration);
-                const minDuration = 5 * 60;
-                const maxDuration = 10 * 60;
-
-                if (duration < minDuration || duration > maxDuration) {
-                    toast.error('The video should be between 5 to 10 minutes.');
-                    window.document.body.removeChild(video);
-                }else{
-                    form[stype] = file;
-                    document[stype] = URL.createObjectURL(file);
-                    props.errors[stype]=null;
-                    submit_Document(form.step)
-                }
-            }
-
-            video.src = URL.createObjectURL(file);
-        }
-    }else if ((type!=='video') && (file.size > maxSize)) {
-        toast.error('The image size should not exceed 20MB.');
+    }else if (file.size > maxSize) {
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
     }else{
         form[stype] = file;
         document[stype] = URL.createObjectURL(file);
@@ -146,8 +139,10 @@ function show_document(stype, event,type,size) {
     }
 }
 
-
 function submit_form() {
+    if(!form.formal_training_evidence){
+        props.errors['formal_training_evidence'] = 'Formal training evidence aus is required!'
+    }else{
     // form.post(route('submit_employment_details'), {
     //     onSuccess: () => {
     //         if (form.step == 4) {
@@ -158,9 +153,9 @@ function submit_form() {
     //         }
     //     }
     // })
-    console.log(props.job_id, props.customer_id)
-    window.location.href = route('document.details',[props.job_id,props.customer_id]);
-
+        console.log(props.job_id, props.customer_id)
+        window.location.href = route('document.details',[props.job_id,props.customer_id]);
+    }
 };
 
 async function submit_Document(step){
@@ -278,7 +273,7 @@ function removeImage(type) {
                             <p class="close_image_name">{{ image_name.employer_statement }}</p>
                         </div>
                         <div v-else class="col-12 p-0">
-                            <div  class="file-inputs mt-3 relative">
+                            <div  class="file-inputs mt-3 relative mb-0">
                                 <div class="dotted-bg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
                                         fill="none">
@@ -289,12 +284,12 @@ function removeImage(type) {
                                     <h2 class="choose-para">Upload Document Or Scan Document </h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <input class="upload" type="file" id="banner"
-                                        @change="show_document('employer_statement',$event ,'doc',20)" >
+                                     @change="show_document('employer_statement',$event ,'doc',20)" >
 
                                 </div>
                             </div>
                         </div>
-                        <InputError class="mt-2" :message="props.errors.employer_statement" />
+                        <InputError class="mt-2" style="padding-left:0px;" :message="props.errors.employer_statement" />
                         <div class="d-flex justify-between align-items-start mt-4 p-0">
                             <div class="flex items-start">
                                 <PrimaryButton class="forms-btn-transparent step-form-back">
@@ -464,7 +459,7 @@ function removeImage(type) {
                                     <div class="d-flex align-items-start all_image_close">
                                         <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
                                         <img v-if="form.evidence_self_employment.type.startsWith('image/')" :src="document.evidence_self_employment" alt="" srcset="" width="250px"/>
-                                        <p v-else><b>{{form.evidence_self_employment.name}}</b> file uploaded!</p>
+                                        <p class="doc_txt" v-else><b>{{form.evidence_self_employment.name}}</b> file uploaded!</p>
                                     </div>
                             <p class="close_image_name">{{ image_name.evidence_self_employment }}</p>
                         </div>
@@ -568,7 +563,6 @@ function removeImage(type) {
                                     </div>
                                 </div>
                             </div>
-                            <InputError class="mt-2" :message="props.errors.evidence_self_employment_aus"/>
                         </div>
 
                         <!-- 2 -->

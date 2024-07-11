@@ -55,7 +55,7 @@ function handleFileInput1(event) {
 <template>
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-black-800 leading-tight">Add Category </h2>
+      <h2 class="font-semibold text-xl text-black-800 leading-tight">Add Industries </h2>
       <div class="button-container">
       </div>
 

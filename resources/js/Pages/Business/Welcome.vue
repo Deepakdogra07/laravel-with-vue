@@ -127,6 +127,34 @@ async function changeStatus(customer_id, job_id, event) {
 }
 </script>
 
+
+<script>
+export default {
+  methods: {
+    search_data(event) {
+      const input = event.target;
+      const clearButton = input.nextElementSibling;
+
+      if (input.value) {
+        clearButton.style.display = 'block';
+      } else {
+        clearButton.style.display = 'none';
+      }
+    },
+    clearSearch(event) {
+      const input = event.target.previousElementSibling;
+      input.value = '';
+      input.focus();
+      event.target.style.display = 'none';
+      // Optionally, you can trigger the search_data method to update the search results
+      this.search_data({ target: input });
+    }
+  }
+};
+</script>
+
+
+
 <template>
     <Header :logo_image="footer_data.logo_image" />
     
@@ -152,8 +180,8 @@ async function changeStatus(customer_id, job_id, event) {
                 </div>
             </div>
         </div>
-        <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper customer_listing_wrpa_front">
-            <div class="container about-width p-0 business_jobs">
+        <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper customer_listing_wrpa_front manage_space">
+            <div class="container about-width p-0 business_jobs" style="padding:0px !important">
                 <div class="filter-status row">
                     <div class="col-md-8 width_mobile p-0">
                         <div class="d-flex justify-between align-items-center">
@@ -266,12 +294,17 @@ async function changeStatus(customer_id, job_id, event) {
                                 <td> {{ customer?.jobs?.job_title }}</td>
     
                                 <td class="status_business">
-                                    <div v-if="customer?.status == 0" style="color:">Active </div>
-                                    <div v-if="customer?.status == 1" style="color:">Awaiting Review </div>
-                                    <div v-if="customer?.status == 2" style="color:">Reviewed </div>
-                                    <div v-if="customer?.status == 3" style="color:">Contacted </div>
-                                    <div v-if="customer?.status == 4" style="color:">Hired </div>
-                                    <div v-if="customer?.status == 5" style="color:red">Rejected </div>
+                                    <div v-if="customer?.status == 0" style="background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000; text-align:center;">Active </div>
+
+                                    <div v-if="customer?.status == 1" style="background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500; text-align:center;">Awaiting Review </div>
+
+                                    <div v-if="customer?.status == 2" style="background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63; text-align:center;">Reviewed </div>
+
+                                    <div v-if="customer?.status == 3" style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154; text-align:center;">Contacted </div>
+
+                                    <div v-if="customer?.status == 4" style="background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:40px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754; text-align:center;">Hired </div>
+
+                                    <div v-if="customer?.status == 5" style="background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000; text-align:center;">Rejected </div>
                                     <div>{{ formatDateTime(customer?.created_at) }}</div>
                                 </td>
                                 <!-- <td> <div>{{ formatDateTime(customer?.created_at) }}</div></td> -->

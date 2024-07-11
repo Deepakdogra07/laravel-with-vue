@@ -57,10 +57,10 @@ class BusinessController extends Controller
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" => ['required', new MaxWords(30)],
+            "posting_summary" => ['required', new MaxWords(2000)],
             // "detail" => ['required', new MaxWords(30)],
-            "conditions" => ['required', new MaxWords(30)],
-            "requirements" => ['required', new MaxWords(30)],
+            "conditions" => ['required', new MaxWords(2000)],
+            "requirements" => ['required', new MaxWords(2000)],
             "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
@@ -159,6 +159,7 @@ class BusinessController extends Controller
     }
     public function edit($id)
     {
+        // dd("SFKJBHHJBF ");
         $positions = Position::all();
         $skills = Skills::all();
         $industries = Industries::withname();
@@ -181,10 +182,10 @@ class BusinessController extends Controller
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" => ['required', new MaxWords(30)],
+            "posting_summary" => ['required', new MaxWords(2000)],
             // "detail" => ['required', new MaxWords(30)],
-            "conditions" => ['required', new MaxWords(30)],
-            "requirements" => ['required', new MaxWords(30)],
+            "conditions" => ['required', new MaxWords(2000)],
+            "requirements" => ['required', new MaxWords(2000)],
             "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
@@ -424,3 +425,7 @@ class BusinessController extends Controller
         return Inertia::render('Business/AppliedJobs',compact('footer_data','applied_jobs'));
     }
 }
+
+
+
+
