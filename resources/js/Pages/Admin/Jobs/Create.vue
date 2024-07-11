@@ -432,7 +432,7 @@ function handleChange(type){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.posting_summary" />
                             </div>
-                            <div class="mt-4 spacing_btm new-job-description">
+                            <div class="mt-4 spacing_btm new-job-description editor_font">
                                 <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
                                 <div class="eye-icon-div mt-2">
                                     <QuillEditor contentType="html" toolbar="essential"
@@ -511,6 +511,7 @@ function handleChange(type){
                                 <span class="label text-label">Assign Employer</span>
                                 <div class="eye-icon-div">
                                     <select v-model="form.employer" class="form-control mt-2">
+                                        <!-- <option>Select</option> -->
                                         <option value="" selected>Select</option>
                                         <option v-for="(employer) in employers" 
                                             :value="employer.id"> {{ employer.name }} </option>

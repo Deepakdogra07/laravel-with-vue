@@ -30,7 +30,6 @@ const props = defineProps({
 const countries = Country.getAllCountries()
 
 
-
 const form = useForm({
     job_id: props.job_id,
     customer_id: props.customer_id,
@@ -52,9 +51,27 @@ const div_numbers = ref(`step-form-1`),
 
 function show_next_div(div_number) {
     // if (div_number == 4) {
-        div_numbers.value = `step-form-${div_number+1}`;
-        form.step = div_number;
+        if((div_number===1) && !form.employment_evidence){
+            props.errors['employment_evidence'] = 'Supporting employment evidence is required!'
+        }else if((div_number===2) && !form.licences){
+            props.errors['licences'] = 'licences is required!'
+        }else if((div_number===5) && (!form.kitchen_area ||  !form.ingredients || !form.cooking_tech || !form.dish || !form.clean_up)){
+            props.errors['kitchen_area'] = !form.kitchen_area?'Kitchen area is required!':null;
+            props.errors['ingredients'] = !form.ingredients?'Ingredients is required!':null;
+            props.errors['cooking_tech'] = !form.cooking_tech?'Cooking tech employment aus is required!':null;
+            props.errors['dish'] = !form.dish?'Dish is required!':null;
+            props.errors['clean_up'] = !form.clean_up?'clean up is required!':null;
+        }else if((div_number===6) && !form.evidence_image){
+            props.errors['evidence_image'] = 'Evidence image is required!'
+        }else{
+            form.step = div_number+1;
+            div_numbers.value = `step-form-${form.step}`;
+        }
         window.scrollTo(0, 0);
+
+        // div_numbers.value = `step-form-${div_number+1}`;
+        // form.step = div_number;
+        // window.scrollTo(0, 0);
     // } else {
     //     try {
     //         const response = await axios.post(route('validate_customer_documents'), form, {
@@ -108,35 +125,9 @@ function show_document(stype, event,type,size) {
     }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
         toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
     }else if ((type==='video') && (!file.type.startsWith('video/'))) {
-        // if(!file.type.startsWith('video/')){
             toast.error('Please upload an video file.');
-        // }else{
-        //     const video = window.document.createElement('video');
-        //     video.preload = 'metadata';
-
-        //     video.onloadedmetadata = function() {
-        //         window.URL.revokeObjectURL(video.src);
-
-        //         const duration = video.duration;
-        //         console.log(duration);
-        //         const minDuration = 5 * 60;
-        //         const maxDuration = 10 * 60;
-
-        //         if (duration < minDuration || duration > maxDuration) {
-        //             toast.error('The video should be between 5 to 10 minutes.');
-        //             window.document.body.removeChild(video);
-        //         }else{
-        //             form[stype] = file;
-        //             document[stype] = URL.createObjectURL(file);
-        //             props.errors[stype]=null;
-        //             submit_Document()
-        //         }
-        //     }
-
-        //     video.src = URL.createObjectURL(file);
-        // }
     }else if (file.size > maxSize) {
-        toast.error(`The image size should not exceed ${size}MB.`);
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
     }else{
         form[stype] = file;
         document[stype] = URL.createObjectURL(file);
@@ -145,12 +136,16 @@ function show_document(stype, event,type,size) {
     }
 }
 function submit_form() {
-    // form.post(route('submit_customers_documents'), {
-    //     onSuccess: () => {
-    //         window.location.href = route('processTransaction', props.customer_id);
-    //     }
-    // })
-    window.location.href = route('processTransaction',props.customer_id);
+    if(!form.resume){
+        props.errors['resume'] = 'Resume is required!'
+    }else{
+        form.post(route('submit_customers_documents'), {
+            onSuccess: () => {
+                window.location.href = route('processTransaction', props.customer_id);
+            }
+        })
+       // window.location.href = route('processTransaction',props.customer_id);
+    }
 }
 
 function removeImage(type) {
@@ -218,7 +213,7 @@ async function submit_Document(){
                             </div>
                         </div>
     
-                        <div class="col-12">
+                        <div class="col-12 p-0">
                             <div v-if="document.employment_evidence" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
@@ -938,7 +933,7 @@ async function submit_Document(){
                             <InputError class="mt-2" :message="props.errors.evidence_image" />
                         </div>
     
-                        <div class="file_size employ_padding">
+                        <div class="file_size employ_padding mt-3">
                             <h2>File size for each photo must not exceed 5 MB</h2>
                             <p class="light-text">Photo file formats accepted include:</p>
                             <ul class="img_format">
@@ -1023,7 +1018,7 @@ async function submit_Document(){
                                     <input class="upload" type="file" id="banner" @change="show_document('resume', $event,'doc',20)">
                                 </div>
                             </div>
-                            <InputError class="mt-2" :message="form.errors.resume" />
+                            <InputError class="mt-2" :message="props.errors.resume" />
                         </div>
     
                         <div class="documents_bottom p-0">

@@ -220,7 +220,7 @@ function removeImage(){
         </template>
 
         <div class="flex items-center justify-center row_width_100">
-            <div class="login-bg-wrapper create_space create_code update_wrapper">
+            <div class="login-bg-wrapper create_space create_code update_wrapper Arrow_align ">
                 <div class="about-us-bg-wrapper">
                     <div class="container">
                         <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -573,7 +573,8 @@ function removeImage(){
                                 <span class="label text-label">Assign Employer</span>
                                 <div class="eye-icon-div">
                                     <select v-model="form.employer" class="form-control mt-2">
-                                        <option value="" selected>Select</option>
+                                        <option selected :value="null">Select Type</option>
+                                        <!-- <option value="" selected>Select</option> -->
                                         <option v-for="(employer) in employers" 
                                             :value="employer.id"> {{ employer.name }} </option>
                                     </select>

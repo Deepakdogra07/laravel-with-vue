@@ -182,7 +182,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 }
 .view_job_page .details_job h2 {
     font-size: 22px !important;
-    color: #3c5b6f;
+    color: #000;
     font-weight: 600;
 }
 .view_job_end_wrapper {
@@ -226,6 +226,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .view_link_tab:hover {
     background: #060d1a !important;
     border-color: #060d1a !important;
+    /* font-weight: 700; */
 }
 .view_link_tab.active {
     background: #060d1a;
@@ -339,13 +340,29 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 }
 
 .wrapper_other_fields input, .wrapper_other_fields textarea, .admin_job input, .admin_job select, .admin_job textarea, .admin_job .eye-icon-div, .add_sliedrs input, .add_sliedrs textarea {
-    background: #fbfbfb !important;
+    background-color: #fbfbfb !important;
 }
 
 .wrapper_other_fields input:focus, .wrapper_other_fields textarea:focus{
 	border-color: #dee2e6;
 	box-shadow: 0px 0px 0px 1px #dee2e6;
 }
+
+.editor_font .ql-snow.ql-toolbar button, .editor_font .ql-snow .ql-toolbar button{
+	padding: 3px 5px !important;
+}
+
+.admin_tabs li a.active {
+    background-color: #060d1a !important;
+}
+
+
+
+
+
+
+
+
 
 
 

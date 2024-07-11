@@ -399,8 +399,8 @@ function getLast_name(name) {
     transform: translateY(-50%);
 }
 .download-icon:hover {
-    transform: scale(1.2);
-    transition: all .10s;
+    top: 25px;
+    transition: all .30s;
 }
 .resume_btn .download-icon{
     width: 20px;

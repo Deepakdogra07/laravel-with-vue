@@ -119,11 +119,11 @@ console.log(job_start_date)
                                     <li><b>Start Date</b><span>{{ job_start_date }}</span></li>
                                 </ul>
                             </div>
-                            <div class="job_col2">
+                            <div class="job_col2 business_job_editor">
                                 <h2 class="mb-2 semibold">Details of the job</h2>
                                 <div v-html="job_description(job.job_description)"></div>
                                 <div class="conditions">
-                                <h2 class="mb-2 semibold">Posting Summary:</h2>
+                                <h2 class="mb-2 semibold mt-4">Posting Summary:</h2>
                                 <div v-html="(job.posting_summary)"></div>
                             </div>
                             </div>
