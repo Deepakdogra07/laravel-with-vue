@@ -289,7 +289,7 @@ export default {
                             <tr v-for="(customer, index) in appliedCustomers" :key="customer.id">
                                 <td class="business_wrap_name">
                                     <!-- <input type="checkbox"> -->
-                                    {{ customer?.customers?.first_name }}
+                                    {{ customer?.customers?.first_name }} {{ customer?.customers?.last_name }}
                                 </td>
                                 <td> {{ customer?.jobs?.job_title }}</td>
     
@@ -313,7 +313,7 @@ export default {
                                 </td>
                                 <td> <img :src="customer?.customers?.customer_image" alt=""></td>
                                 <td v-html="customer?.customers?.travel_details?.purpose_of_stay"> </td>
-                                <td v-html="customer?.customers?.travel_details?.type_of_visa"> </td>
+                                <td v-html="(customer?.customers?.travel_details?.type_of_visa).replace('_',' ')"> </td>
                                 <td v-html="customer?.customers?.country_of_birth"></td>
                                 <td class="status">
                                     <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
