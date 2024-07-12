@@ -85,29 +85,30 @@ const form = useForm({
     recommended_skills: [],
 });
 
-function selectFile(stype, event, type, size) {
-    let file = event.target.files[0];
-    const maxSize = size * 1024 * 1024;
-    const allowedFormats = [
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'image/jpeg',
-        'image/png',
+
+function selectFile(stype,event,type,size){
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
         'application/pdf'
     ];
-    if ((type === 'image') && !file.type.startsWith('image/')) {
+    if ((type==='image') && !file.type.startsWith('image/')) {
         toast.error('Please upload an image file.');
-    } else if ((type === 'doc') && !allowedFormats.includes(file.type)) {
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
         toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
-    } else if ((type === 'video') && (!file.type.startsWith('video/'))) {
-        toast.error('Please upload an video file.');
-    } else if (file.size > maxSize) {
-        toast.error(`The ${type === 'image' ? 'image' : type === 'video' ? 'video' : 'document'} size should not exceed ${size}MB.`);
-    } else {
-        form[stype] = event.target.files[0]
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
+            toast.error('Please upload an video file.');
+    }else if (file.size > maxSize) {
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
+    }else{
+        form[stype] = file;
         image.value = URL.createObjectURL(file);
-        image_name.value = event.target.files[0].name;
-        form.errors[stype] = null;
+        image_name.value =file.name;
+        form.errors[stype]=null
     }
 }
 
@@ -186,6 +187,12 @@ function handleChange(type) {
 //         }
 //     }   
 // }
+
+function removeImage(){
+    form.job_image = null;
+    image_name.value ='';
+    image.value ='';
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -570,7 +577,6 @@ function handleChange(type) {
                                             </select>
                                         </div>
                                     </div>
-
 
                                 </div>
 

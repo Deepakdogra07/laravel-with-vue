@@ -140,19 +140,19 @@ function show_document(stype, event, type, size) {
 }
 
 function submit_form() {
-    if (!form.formal_training_evidence) {
-        props.errors['formal_training_evidence'] = 'Formal training evidence aus is required!'
-    } else {
-        // form.post(route('submit_employment_details'), {
-        //     onSuccess: () => {
-        //         if (form.step == 4) {
-        //             toast("Details Saved Successfully!", {
-        //                 autoClose: 2000,
-        //                 theme: 'dark',
-        //             });
-        //         }
-        //     }
-        // })
+    if(!form.formal_training_evidence){
+        props.errors['formal_training_evidence'] = 'Formal training evidence is required!'
+    }else{
+    // form.post(route('submit_employment_details'), {
+    //     onSuccess: () => {
+    //         if (form.step == 4) {
+    //             toast("Details Saved Successfully!", {
+    //                 autoClose: 2000,
+    //                 theme: 'dark',
+    //             });
+    //         }
+    //     }
+    // })
         console.log(props.job_id, props.customer_id)
         window.location.href = route('document.details', [props.job_id, props.customer_id]);
     }
@@ -276,7 +276,12 @@ function removeImage(type) {
                                     @click="removeImage('employer_statement')"><i class="fas fa-times"></i></p>
                                 <img v-if="form.employer_statement.type.startsWith('image/')"
                                     :src="document.employer_statement" alt="" srcset="" width="250px" />
-                                <p v-else><b>{{ form.employer_statement.name }}</b> file uploaded!</p>
+                               <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p>
                             </div>
                             <p class="close_image_name">{{ image_name.employer_statement }}</p>
                         </div>
@@ -367,7 +372,12 @@ function removeImage(type) {
                                         @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
                                     <img v-if="form.financial_evidence.type.startsWith('image/')"
                                         :src="document.financial_evidence" alt="" srcset="" width="250px" />
-                                    <p v-else><b>{{ form.financial_evidence.name }}</b> file uploaded!</p>
+                                    <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p>
                                 </div>
                                 <p class="close_image_name">{{ image_name.financial_evidence }}</p>
                             </div>
@@ -474,8 +484,12 @@ function removeImage(type) {
                                     </p>
                                     <img v-if="form.evidence_self_employment.type.startsWith('image/')"
                                         :src="document.evidence_self_employment" alt="" srcset="" width="250px" />
-                                    <p class="doc_txt" v-else><b>{{ form.evidence_self_employment.name }}</b> file
-                                        uploaded!</p>
+                                   <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p>
                                 </div>
                                 <p class="close_image_name">{{ image_name.evidence_self_employment }}</p>
                             </div>
@@ -548,7 +562,12 @@ function removeImage(type) {
                                         <img v-if="form.evidence_self_employment_aus.type.startsWith('image/')"
                                             :src="document.evidence_self_employment_aus" alt="" srcset=""
                                             width="250px" />
-                                        <p v-else><b>{{ form.evidence_self_employment_aus.name }}</b> file uploaded!</p>
+                                         <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p>
                                     </div>
                                     <p class="close_image_name">{{ image_name.evidence_self_employment_aus }}</p>
                                 </div>
@@ -642,7 +661,12 @@ function removeImage(type) {
                                     </p>
                                     <img v-if="form.formal_training_evidence.type.startsWith('image/')"
                                         :src="document.formal_training_evidence" alt="" srcset="" width="250px" />
-                                    <p v-else><b>{{ form.formal_training_evidence.name }}</b> file uploaded!</p>
+                                     <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p>
                                 </div>
                                 <p class="close_image_name">{{ image_name.formal_training_evidence }}</p>
                             </div>

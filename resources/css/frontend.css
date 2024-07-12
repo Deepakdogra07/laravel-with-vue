@@ -487,7 +487,7 @@ h2 {
 .main-job-filter .display.applied_frontend_table tbody td.status,
 .main-job-filter .display.applied_frontend_table thead th:nth-child(9) {
 	position: sticky !important;
-	right: 67px;
+	right: 68px;
 	background-color: #e2e2e4;
 }
 
@@ -1396,6 +1396,7 @@ section.testimonials_page .modal-body {
 .file-inputs h2 {
 	font-family: "Open Sans", sans-serif !important;
 	color: #4A4C56;
+	font-weight: 700;
 }
 
 .list_job_category {
@@ -1585,6 +1586,10 @@ input[type="file"] {
 .customer_applied.applied_job tbody tr td:first-child {
 	width: 25% !important;
 	padding: 25px 15px !important;
+}
+
+.main-job-filter .display.applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"]{
+	padding: 25px 17px !important;
 }
 
 .main-job-filter .job-data-table tbody tr td {
@@ -2400,6 +2405,11 @@ input[type="file"] {
 
 	.navbar_toggler_tab button {
 		padding: 6px 13px !important;
+		line-height: 21px;
+	}
+
+	.mobile_dropdown button.btn.btn-secondary.dropdown-toggle{
+		padding: 6px 13px !important;
 	}
 
 
@@ -2425,7 +2435,7 @@ input[type="file"] {
 	}
 
 	.add_job_srchhs .srch_responsives {
-		justify-content: space-between;
+		justify-content: flex-start;
 	}
 
 	.view-job-btn {
@@ -2632,10 +2642,6 @@ input[type="file"] {
 		padding: 0px 5px;
 	}
 
-	.manage_space {
-		padding-left: 35px !important;
-		padding-right: 35px !important;
-	}
 
 	.buttons_mine .forms-btn,
 	.employ_padding .forms-btn {
@@ -3553,10 +3559,6 @@ input[type="file"] {
 		padding: 0px 15px !important;
 	}
 
-	.aboutt-width {
-		padding: 0px !important;
-	}
-
 	.business_inner_dash .about-width {
 		padding: 0px 15px !important;
 	}
@@ -3632,6 +3634,7 @@ input[type="file"] {
 		top: 55px;
 	}
 
+
 	.business_job_wrap .job-detail-content.job_details_cnt {
 		margin: 30px 3px !important;
 	}
@@ -3640,7 +3643,12 @@ input[type="file"] {
 		max-width: 720px;
 	}
 
-	.business_wrap_cnt {
+	.business_wrap_cnt .job_details_cnt {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.job-detail-page .business_wrap_cnt {
 		padding: 0px 13px !important;
 		max-width: 100% !important;
 	}
@@ -3752,10 +3760,6 @@ input[type="file"] {
 
 	.job-listing-cards .cards-content {
 		padding: 10px 0px 0px;
-	}
-
-	.business_srccc {
-		padding: 20px 15px !important;
 	}
 
 	.list_of_jobs {
@@ -4693,9 +4697,24 @@ input[type="file"] {
 		margin: 13px 0px !important;
 	}
 
-	.manage_space {
-		padding-left: 0px !important;
-		padding-right: 0px !important;
+	.add_job_srchhs .srch_responsives .relative.search_bar {
+		margin-top: 20px;
+	}
+
+	.add_job_srchhs .srch_responsives .srch_navbar {
+		margin-top: 10px;
+	}
+
+	.applied-container_wrapper {
+		padding: 0px 15px;
+	}
+
+	.main-job-filter .display.applied_frontend_table tbody td.status, .main-job-filter .display.applied_frontend_table thead th:nth-child(9), .main-job-filter .display.applied_frontend_table thead th:last-child, .main-job-filter .display.applied_frontend_table tbody td.view{
+		position: unset !important;
+	}
+
+	.aboutt-width {
+		padding: 0px 20px !important;
 	}
 
 	/*576 customer page*/
@@ -4953,10 +4972,28 @@ input[type="file"] {
 
 	.end_form_part .width_full {
 		width: 100%;
+		justify-content: center;
 	}
 
 	.customer_listing_wrpa .button_bs_ryt {
 		margin-top: 65px !important;
+	}
+
+	.end_form_part .step-form-back {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.end_form_part .step-form-back i {
+		padding-right: 7px;
+	}
+
+	.doc_btn {
+		margin-top: 15px !important;
+	}
+
+	.add_job_srchhs .srch_responsives .relative.search_bar {
+		margin-top: 12px !important;
 	}
 }
 
@@ -4978,6 +5015,8 @@ input[type="file"] {
 
 	.business_srccc .business_btn_adds {
 		padding: 12px 24px !important;
+		z-index: 11111;
+		position: relative;
 	}
 }
 
@@ -7197,9 +7236,7 @@ label.label_checkbox {
 	top: 24px;
 }
 
-.business_srccc {
-	padding: 20px;
-}
+
 
 /* .login_inner button {
     position: relative;
@@ -8156,10 +8193,42 @@ P.status_condition {
     border-color: #0000 !important;
 }
 
-.manage_space {
-    padding-left: 120px;
-    padding-right: 120px;
+.doc_txt {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
 }
+
+.doc_txt {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background: #f5f5f5;
+    padding: 20px 20px 20px 10px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.txt_over {
+    width: 270px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0px 13px;
+}
+
+.txt_over p {
+    color: #01796f;
+    margin-bottom: 0px;
+}
+
+.doc_txt svg.doc_img.bi.bi-file-earmark-text {
+    color: #808080;
+}
+
+
+
+
+
+
 
 /* .search_bar input[type='search']::-webkit-search-cancel-button {
 	color: green;
