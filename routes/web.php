@@ -183,6 +183,7 @@ Route::get('/job-application', function () {
 Route::get('/job-introduction/{job_id}/{customer_id}', [JobApplicationController::class , 'introduction'])->name('job.introduction');
 
 Route::get('/travel-details/{job_id}',[JobApplicationController::class , 'travel_details'] )->name('travel.details');
+Route::get('/get-travel-details/{customer_id}',[JobApplicationController::class , 'get_travel_details'] )->name('session.travel.details');
 
 Route::match(['get','post'],'/personal-details/{job_id}',[JobApplicationController::class , 'personal_details'])->name('personal.details');
 Route::match(['get','post'],'/submit-personal-details/{job_id}',[JobApplicationController::class , 'submit_personal_details'] )->name('submit_personal_details');

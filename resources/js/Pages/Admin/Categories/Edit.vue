@@ -14,40 +14,40 @@ const props = defineProps({
 });
 
 const form = useForm({
-  id:props.category.id,
+  id: props.category.id,
   category_heading: props.category.category_heading,
   category_image: props.category.category_image,
   thumbnail: props.category.thumbnail,
   status: props.category.status,
 })
 const category_image = ref(form.category_image),
-thumbnail= ref(form.thumbnail);
+  thumbnail = ref(form.thumbnail);
 
 function submitForm() {
-    // Post data 
-    form.post(route('category.updated',form.id),{
-      onSuccess: () => {
-        toast("Industry updated successfully", {
-          autoClose: 2000,
-          theme: 'dark',
-        }
-        );
-      },
-    });
-  }
-  
- 
-  function updateThumbnailName(type,event) {
-       if(type == 'image'){
-        form.category_image = event.target.files[0];
-        var category= event.target.files[0];
-        category_image.value = URL.createObjectURL(category);
-      }else if(type == 'thumbnailimage'){
-        form.thumbnail = event.target.files[0];
-        var thumb  = event.target.files[0];
-        thumbnail.value = URL.createObjectURL(thumb);
+  // Post data 
+  form.post(route('category.updated', form.id), {
+    onSuccess: () => {
+      toast("Industry updated successfully", {
+        autoClose: 2000,
+        theme: 'dark',
       }
-    }
+      );
+    },
+  });
+}
+
+
+function updateThumbnailName(type, event) {
+  if (type == 'image') {
+    form.category_image = event.target.files[0];
+    var category = event.target.files[0];
+    category_image.value = URL.createObjectURL(category);
+  } else if (type == 'thumbnailimage') {
+    form.thumbnail = event.target.files[0];
+    var thumb = event.target.files[0];
+    thumbnail.value = URL.createObjectURL(thumb);
+  }
+}
 
 </script>
 
@@ -76,37 +76,42 @@ function submitForm() {
                 </div>
 
                 <div class="mb-4 margin_btm">
-                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Industry Image <span style="color: red;"> *</span></label>
+                  <label for="categoryimage" class="block text-gray-700 text-sm font-bold mb-2">Industry Image <span
+                      style="color: red;"> *</span></label>
                   <img :src="category_image" alt="" style="height:100px">
                   <!-- <label for="category_image" class="form-control cursor-pointer mt-2">
                     {{ form.category_image ? 'Change File' : 'Upload File' }}
                   </label> -->
                   <input type="file" id="category_image" @change="updateThumbnailName('image', $event)" accept="image/*"
                     class="form-control cursor-pointer mt-2">
+                  <span v-if="props.errors.category_image" class="error-message">{{ props.errors.category_image
+                    }}</span>
                 </div>
                 <div class="mb-4 margin_btm">
-                  <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail <span style="color: red;"> *</span></label>
-                  <img :src="thumbnail" alt=""
-                    style="height:100px;margin-top:10px;">
+                  <label for="categoryThumbnail" class="block text-gray-700 text-sm font-bold mb-2">Thumbnail <span
+                      style="color: red;"> *</span></label>
+                  <img :src="thumbnail" alt="" style="height:100px;margin-top:10px;">
                   <!-- <label for="thumbnail" class="form-control mt-2">
                     {{ form.thumbnail ? 'Change File' : 'Upload File' }}
                   </label> -->
                   <input type="file" id="thumbnail" @change="updateThumbnailName('thumbnailimage', $event)"
                     accept="image/*" class="form-control cursor-pointer mt-2 ">
+                  <span v-if="props.errors.thumbnail" class="error-message">{{ props.errors.thumbnail
+                    }}</span>
                 </div>
 
-                  <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
+                <!-- <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status</label> -->
 
-                  <div class="configure-switch d-flex align-items-center gap-3">
-                    <div class="d-flex">
-                      <input type="checkbox" v-model="form.status" id="flexSwitchCheckDefaultApply" :true-value="1" :false-value="0"
-                    name="status"/>
-                      <label for="flexSwitchCheckDefaultApply"></label>
-                    </div>
-                    <p class="mb-0 semibold">Status</p>
+                <div class="configure-switch d-flex align-items-center gap-3">
+                  <div class="d-flex">
+                    <input type="checkbox" v-model="form.status" id="flexSwitchCheckDefaultApply" :true-value="1"
+                      :false-value="0" name="status" />
+                    <label for="flexSwitchCheckDefaultApply"></label>
                   </div>
+                  <p class="mb-0 semibold">Status</p>
+                </div>
 
-                  <!-- <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0"
+                <!-- <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0"
                     name="status" class="mr-2 form-check-input">
                   <label for="status" class="form-check-label text-gray-700 text-sm font-bold mb-2">Status</label> -->
                 <button type="submit"

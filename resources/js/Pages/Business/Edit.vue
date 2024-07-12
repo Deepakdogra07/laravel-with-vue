@@ -8,7 +8,7 @@ import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import { ref,onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { toast } from 'vue3-toastify';
 import '@@/frontend.css';
 import '@@/multiselect.css';
@@ -17,162 +17,163 @@ import Multiselect from 'vue-multiselect';
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
-import '@vuepic/vue-datepicker/dist/main.css'; 
-import VueDatePicker from '@vuepic/vue-datepicker'; 
+import '@vuepic/vue-datepicker/dist/main.css';
+import VueDatePicker from '@vuepic/vue-datepicker';
 
 const today = new Date();
 const format = (date) => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  var month1 = (month <=9) ?`0${month}`:month;
-  form.job_start_date = `${year}-${month1}-${day}`;
-  return `${year}/${month1}/${day}`;
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    var month1 = (month <= 9) ? `0${month}` : month;
+    form.job_start_date = `${year}-${month1}-${day}`;
+    return `${year}/${month1}/${day}`;
 }
 
 
 
 
 const props = defineProps({
-  seniorities: {
-    type: Array
-  },
-  positions: {
-    type: Array
-  },
-  work_experience: {
-    type: Array
-  },
-  skills: {
-    type: Array
-  },
-  industries: {
-    type: Array
-  },
-  disciplines: {
-    type: Array
-  },
-  job: {
-    type: Object
-  },
-  languages:{
-    type:Array
-  },
-  currencies:{
-    type:Array
-  }
+    seniorities: {
+        type: Array
+    },
+    positions: {
+        type: Array
+    },
+    work_experience: {
+        type: Array
+    },
+    skills: {
+        type: Array
+    },
+    industries: {
+        type: Array
+    },
+    disciplines: {
+        type: Array
+    },
+    job: {
+        type: Object
+    },
+    languages: {
+        type: Array
+    },
+    currencies: {
+        type: Array
+    }
 
 });
 
 
 const form = useForm({
-  id: props.job.id,
-  job_title: props.job.job_title,
-  job_image: props.job.job_image,
-  job_description: props.job.job_description,
-  detail: props.job.detail,
-  conditions: props.job.conditions,
-  requirements: props.job.requirements,
-  language_id : [],
-  posting_summary: props.job.posting_summary,
-//   job_description: props.job.job_description,
-  position_id: props.job.position_id,
-  seniority_id: props.job.seniority_id,
-  discipline_id: props.job.discipline_id,
-  work_experience_id: props.job.work_experience_id,
-  skills_id: [],
-  remote_work: props.job.remote_work,
-  industry_id: [],
-  segment: props.job.segment,
-  positions: props.job.positions,
-  pin_code: props.job.pin_code,
-  state: props.job.state,
-  min_pay_range: props.job.min_pay_range,
-  max_pay_range: props.job.max_pay_range,
-  job_start_date: props.job.job_start_date,
-  city: props.job.city,
-  job_country: props.job.job_country,
-  currency_id:props.job.currency_id,
-  recommended_skills: JSON.parse(props.job.recommended_skills)
+    id: props.job.id,
+    job_title: props.job.job_title,
+    job_image: props.job.job_image,
+    job_description: props.job.job_description,
+    detail: props.job.detail,
+    conditions: props.job.conditions,
+    requirements: props.job.requirements,
+    language_id: [],
+    posting_summary: props.job.posting_summary,
+    //   job_description: props.job.job_description,
+    position_id: props.job.position_id,
+    seniority_id: props.job.seniority_id,
+    discipline_id: props.job.discipline_id,
+    work_experience_id: props.job.work_experience_id,
+    skills_id: [],
+    remote_work: props.job.remote_work,
+    industry_id: [],
+    segment: props.job.segment,
+    positions: props.job.positions,
+    pin_code: props.job.pin_code,
+    state: props.job.state,
+    min_pay_range: props.job.min_pay_range,
+    max_pay_range: props.job.max_pay_range,
+    job_start_date: props.job.job_start_date,
+    city: props.job.city,
+    job_country: props.job.job_country,
+    currency_id: props.job.currency_id,
+    // recommended_skills: JSON.parse(props.job.recommended_skills)
+    recommended_skills: props.job.recommended_skills
 });
-onMounted( () => {
+onMounted(() => {
     props.skills.forEach(element => {
-        if(props.job.skills_id.includes(element.id)){
+        if (props.job.skills_id.includes(element.id)) {
             form.skills_id.push(element);
         }
     });
     // form.recommended_skills = JSON.parse(props.job.recommended_skills);
     props.languages.forEach(element => {
-        if(props.job.language_id.includes(element.id)){
+        if (props.job.language_id.includes(element.id)) {
             form.language_id.push(element);
         }
     });
     props.industries.forEach(element => {
-        if(props.job.industry_id.includes(element.id)){
+        if (props.job.industry_id.includes(element.id)) {
             form.industry_id.push(element);
         }
     });
-    if(form.recommended_skills.includes('documentation')){
+    if (form.recommended_skills.includes('documentation')) {
         active_checkbox.value.documentation = 'active-checkbox';
     }
-    if(form.recommended_skills.includes('technical')){
+    if (form.recommended_skills.includes('technical')) {
         active_checkbox.value.technical = 'active-checkbox';
     }
-    if(form.recommended_skills.includes('electrician')){
+    if (form.recommended_skills.includes('electrician')) {
         active_checkbox.value.electrician = 'active-checkbox';
     }
-    if(form.recommended_skills.includes('mechanical')){
+    if (form.recommended_skills.includes('mechanical')) {
         active_checkbox.value.mechanical = 'active-checkbox';
     }
 })
-const active_checkbox =ref({
-        documentation:'',
-        mechanical:'',
-        electrician:'',
-        technical:''
-    });
+const active_checkbox = ref({
+    documentation: '',
+    mechanical: '',
+    electrician: '',
+    technical: ''
+});
 
 
 const countries = countryStateCity.Country.getAllCountries(),
-image_name = ref(form.job_image),
-image = ref(form.job_image);
+    image_name = ref(form.job_image),
+    image = ref(form.job_image);
 
-function selectFile(event){
+function selectFile(event) {
     form.job_image = event.target.files[0]
     image.value = URL.createObjectURL(form.job_image);
-    image_name.value =event.target.files[0].name;
+    image_name.value = event.target.files[0].name;
 }
 
 const submit = () => {
-    if(form.job_description =='<p><br></p>'){
+    if (form.job_description == '<p><br></p>') {
         form.job_description = null;
     }
-    form.post(route('business-jobs.updates',form.id), {
-      onSuccess: () => {
-        toast("Job Updated Successfully!", {
-          autoClose: 2000,
-          theme: 'dark',
-        }
-        );
-      },
+    form.post(route('business-jobs.updates', form.id), {
+        onSuccess: () => {
+            toast("Job Updated Successfully!", {
+                autoClose: 2000,
+                theme: 'dark',
+            }
+            );
+        },
     });
 };
-function checked_event(event){
-    if(event.target.checked){
+function checked_event(event) {
+    if (event.target.checked) {
         form.recommended_skills.push(event.target.value);
-    }else{
-        form.recommended_skills.splice(event.target.value,1);
+    } else {
+        form.recommended_skills.splice(event.target.value, 1);
     }
 }
-const  select_class = ref('');
-function handleChange(){
-        select_class.value = 'Selected_option';
+const select_class = ref('');
+function handleChange() {
+    select_class.value = 'Selected_option';
 }
 
-function removeImage(){
+function removeImage() {
     form.job_image = null;
-    image_name.value ='';
-    image.value ='';
+    image_name.value = '';
+    image.value = '';
 }
 </script>
 
@@ -199,8 +200,8 @@ function removeImage(){
                             <div class="mt-4 edit_space">
                                 <span class="label text-label">Position type<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select   mt-2 Selected_option " aria-label="Default select example"
-                                        v-model="form.position_id">
+                                    <select class="form-select   mt-2 Selected_option "
+                                        aria-label="Default select example" v-model="form.position_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in positions" :key="index"
                                             :value="position.id">{{ position.name }}
@@ -212,8 +213,8 @@ function removeImage(){
                             <div class="mt-4 edit_space">
                                 <label for="Seniority">Seniority<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 Selected_option "  aria-label="Default select example"
-                                        v-model="form.seniority_id" >
+                                    <select class="form-select  mt-2 Selected_option "
+                                        aria-label="Default select example" v-model="form.seniority_id">
                                         <option selected :value="null">Select Seniority</option>
                                         <option v-for="(position, index) in seniorities" :key="index"
                                             :value="position.id">{{
@@ -225,8 +226,8 @@ function removeImage(){
                             <div class="mt-4 edit_space">
                                 <label for="discipline">Discipline<span class="text-danger"> *</span></label>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2  Selected_option" aria-label="Default select example"
-                                        v-model="form.discipline_id">
+                                    <select class="form-select  mt-2  Selected_option"
+                                        aria-label="Default select example" v-model="form.discipline_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in disciplines" :key="index"
                                             :value="position.id">{{ position.name }}
@@ -236,11 +237,11 @@ function removeImage(){
                                 <InputError class="mt-2" :message="form.errors.discipline_id" />
                             </div>
                             <div class="mt-4 arrow_label edit_space">
-                                <span class="label text-label">Overall Work Experience<span
-                                        class="text-danger"> *</span></span>
+                                <span class="label text-label">Overall Work Experience<span class="text-danger">
+                                        *</span></span>
                                 <div class="eye-icon-div skills_input">
-                                    <select class="form-select   mt-2 Selected_option"  aria-label="Default select example"
-                                        v-model="form.work_experience_id">
+                                    <select class="form-select   mt-2 Selected_option"
+                                        aria-label="Default select example" v-model="form.work_experience_id">
                                         <option selected :value="null">Select Type</option>
                                         <option v-for="(position, index) in work_experience" :key="index"
                                             :value="position.id">{{
@@ -259,49 +260,43 @@ function removeImage(){
                                     <InputError class="mt-2" :message="form.errors.skills_id" />
                                 </div>
                                 <div class="mt-4 edit_space job_recommenrded__iin">
-                                            <label class="label text-label recommended_text">Recommended Skills</label>
-                                            <ul class="job_recommenrded_skills pl-0">
-                                                <div class="recommended_checkbox" :class = "active_checkbox.documentation">
-                                                    <!--  -->
-                                                    <TextInput type="checkbox" @click="checked_event($event)"
-                                                        :checked="form.recommended_skills.includes('documentation')"
-                                                        
-                                                        class="recommended_checkbox" value="documentation"
-                                                        id="documents-1" />
-                                                    <label class="label_checkbox" for="documents-1">
-                                                        Documentation</label>
-                                                </div>
-                                                <div class="recommended_checkbox" :class = "active_checkbox.mechanical">
-                                                    <TextInput type="checkbox" @click="checked_event($event)"
-                                                        :checked="form.recommended_skills.includes('mechanical')"
-                                                        class="recommended_checkbox" value="mechanical"
-
-                                                        id="documents-2" />
-                                                    <label class="label_checkbox" for="documents-2"> Mechanical </label>
-                                                </div>
-                                                <div class="recommended_checkbox" :class = "active_checkbox.technical" >
-                                                    <TextInput type="checkbox" @click="checked_event($event)"
-                                                        :checked="form.recommended_skills.includes('technical')"
-                                                        class="recommended_checkbox" value="technical"
-                                                        id="documents-3" />
-                                                    <label class="label_checkbox" for="documents-3"> Technical</label>
-                                                </div>
-                                                <div class="recommended_checkbox" :class = "active_checkbox.electrician">
-                                                    <TextInput type="checkbox" @click="checked_event($event)"
-                                                        :checked="form.recommended_skills.includes('electrician')"
-                                                        class="recommended_checkbox" value="electrician"
-                                                        id="documents-4" />
-                                                    <label class="label_checkbox" for="documents-4"> Electrician
-                                                    </label>
-                                                </div>
-                                                <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
-                                                <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
-                                                <!-- </li> -->
-                                            </ul>
+                                    <label class="label text-label recommended_text">Recommended Skills</label>
+                                    <ul class="job_recommenrded_skills pl-0">
+                                        <div class="recommended_checkbox" :class="active_checkbox.documentation">
+                                            <!--  -->
+                                            <TextInput type="checkbox" @click="checked_event($event)"
+                                                :checked="form.recommended_skills.includes('documentation')"
+                                                class="recommended_checkbox" value="documentation" id="documents-1" />
+                                            <label class="label_checkbox" for="documents-1">
+                                                Documentation</label>
                                         </div>
+                                        <div class="recommended_checkbox" :class="active_checkbox.mechanical">
+                                            <TextInput type="checkbox" @click="checked_event($event)"
+                                                :checked="form.recommended_skills.includes('mechanical')"
+                                                class="recommended_checkbox" value="mechanical" id="documents-2" />
+                                            <label class="label_checkbox" for="documents-2"> Mechanical </label>
+                                        </div>
+                                        <div class="recommended_checkbox" :class="active_checkbox.technical">
+                                            <TextInput type="checkbox" @click="checked_event($event)"
+                                                :checked="form.recommended_skills.includes('technical')"
+                                                class="recommended_checkbox" value="technical" id="documents-3" />
+                                            <label class="label_checkbox" for="documents-3"> Technical</label>
+                                        </div>
+                                        <div class="recommended_checkbox" :class="active_checkbox.electrician">
+                                            <TextInput type="checkbox" @click="checked_event($event)"
+                                                :checked="form.recommended_skills.includes('electrician')"
+                                                class="recommended_checkbox" value="electrician" id="documents-4" />
+                                            <label class="label_checkbox" for="documents-4"> Electrician
+                                            </label>
+                                        </div>
+                                        <!--  <li v-for="(skill,key )  in skills.slice(4)" :key="key" > -->
+                                        <!-- <span  @click="select_skill(skill)">{{ skill.name }}</span>  -->
+                                        <!-- </li> -->
+                                    </ul>
+                                </div>
                                 <InputError class="mt-2" :message="form.errors.recommended_skills" />
-                               
-                            </div> 
+
+                            </div>
                             <div class="mt-4 arrow_label edit_space">
                                 <span class="label text-label">Languages<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div language_input mt-2">
@@ -400,8 +395,10 @@ function removeImage(){
                             <div class="mt-4 edit_space">
                                 <span class="label text-label">Currency</span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2" :class="[select_class, { 'Selected_option': form.currency_id }]" aria-label="Default select example" @change="handleChange()"
-                                        v-model="form.currency_id" >
+                                    <select class="form-select  mt-2"
+                                        :class="[select_class, { 'Selected_option': form.currency_id }]"
+                                        aria-label="Default select example" @change="handleChange()"
+                                        v-model="form.currency_id">
                                         <option selected :value="null">Select Currency</option>
                                         <option v-for="(position, index) in currencies" :key="index"
                                             :value="position.id"> {{ position.country }} ({{
@@ -433,7 +430,9 @@ function removeImage(){
                                 <div class="eye-icon-div">
                                     <!-- <TextInput type="date" id="start_Date" v-model="form.job_start_date"
                                         placeholder="Enter Start Date" class="form-control mt-2  " /> -->
-                                        <VueDatePicker v-model="form.job_start_date" placeholder="Select Start Date" class="form-control mt-2  " :format="format" :min-date="today" :max-date="futureTwoWeeks" />
+                                    <VueDatePicker v-model="form.job_start_date" placeholder="Select Start Date"
+                                        class="form-control mt-2  " :format="format" :min-date="today"
+                                        :max-date="futureTwoWeeks" />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.job_start_date" />
                             </div>
@@ -447,7 +446,8 @@ function removeImage(){
                                 <InputError class="mt-2" :message="form.errors.posting_summary" />
                             </div>
                             <div class="mt-4 edit_space spacing_btm new-job-description">
-                                <label for="job_description">Details of the Job <span class="text-danger">*</span></label>
+                                <label for="job_description">Details of the Job <span
+                                        class="text-danger">*</span></label>
                                 <div class="eye-icon-div mt-2 textarea_font">
                                     <QuillEditor contentType="html" toolbar="essential"
                                         v-model:content="form.job_description" placeholder="Enter Details of the Job" />
@@ -480,13 +480,13 @@ function removeImage(){
 
 
 
-                <!------end------>
+                        <!------end------>
 
                         <div class="col-md-6 d-none">
-                            
+
                             <!-- <div class="col-md-6"> -->
-                            
-                            
+
+
                             <div class="mt-4 edit_space">
                                 <span class="label text-label">City<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
@@ -495,7 +495,7 @@ function removeImage(){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.city" />
                                 <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
-                            </div> 
+                            </div>
                             <div class="mt-4 edit_space">
                                 <span class="label text-label">Zip Code</span>
                                 <div class="eye-icon-div">
@@ -515,12 +515,12 @@ function removeImage(){
                                     </div>
                                 </div> -->
                             </div>
-                            
-                            
+
+
                             <!-- </div> -->
                         </div>
                         <div class="col-md-6 d-none">
-                            
+
                             <!-- <div class="mt-4   ">
                                 <span class="label text-label">Details of the Job<span style="color:red">
                                         *</span></span>
@@ -530,16 +530,16 @@ function removeImage(){
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.detail" />
                             </div> -->
-                            
-                            
+
+
                         </div>
 
                         <div class="col-md-6 country_input ">
                             <div class="mt-4 edit_space">
                                 <span class="label text-label">Country<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
-                                    <select class="form-select  mt-2 Selected_option" aria-label="Default select example"
-                                        v-model="form.job_country" >
+                                    <select class="form-select  mt-2 Selected_option"
+                                        aria-label="Default select example" v-model="form.job_country">
                                         <option selected :value="null">Select Country</option>
                                         <option v-for="country in countries" :key="country.id" :value="country.name">{{
                                             country.name }}</option>
@@ -549,8 +549,11 @@ function removeImage(){
                             </div>
                         </div>
                         <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
-                            <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
-                            <img :src="image" alt="" srcset="">,</div>
+                            <div class="d-flex align-items-start all_image_close">
+                                <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
+                                    @click="removeImage()"><i class="fas fa-times"></i></p>
+                                <img :src="image" alt="" srcset="">,
+                            </div>
                             <p class="close_image_name">{{ image_name }}</p>
                         </div>
                         <div v-else class="col-12 mt-4 file_upload edit_space">
@@ -564,11 +567,12 @@ function removeImage(){
                                     </svg>
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
-                                   
+                                    <input class="upload" type="file" id="banner" @change="selectFile($event)"
+                                        accept="image/*" />
+
                                 </div>
                             </div>
-                            <InputError class="mt-2" :message="form.errors.job_image"/>
+                            <InputError class="mt-2" :message="form.errors.job_image" />
                         </div>
                         <div class="col-12 ">
                             <div class="flex items-center justify-center mt-4 login-btn-main">
