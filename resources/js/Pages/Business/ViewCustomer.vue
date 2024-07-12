@@ -21,11 +21,11 @@ const props = defineProps({
         default: null
     },
     methods: {
-    openModal(imageSrc) {
-      this.currentImage = imageSrc;
-      this.showModal = true;
+        openModal(imageSrc) {
+            this.currentImage = imageSrc;
+            this.showModal = true;
+        }
     }
-  }
 });
 
 
@@ -68,7 +68,7 @@ onMounted(() => {
 
 <template>
     <Header />
-    <div v-if="user_type < 3 && (user_type != 0) ">
+    <div v-if="user_type < 3 && (user_type != 0)">
         <div class="job-list-search srch_responsive business_srccc view_customer_listings">
             <div class="container about-width">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative">
@@ -83,9 +83,9 @@ onMounted(() => {
     </div>
     <div v-else>
         <SubHeading :customer_id="customer.id" />
-    
+
     </div>
-    
+
     <section class="view_customer_wrapper back_button_wrap">
 
 
@@ -105,44 +105,69 @@ onMounted(() => {
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
                         <div class="status">
                             <!-- <b>Status:</b> -->
-                            <p class="status_condition" v-if="customer?.status?.status == 0" style=" background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000;">Active </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 0"
+                                style=" background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000;">
+                                Active </p>
 
-                            <p class="status_condition" v-if="customer?.status?.status == 1" style=" background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500;">Awaiting Review </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 1"
+                                style=" background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500;">
+                                Awaiting Review </p>
 
-                            <p class="status_condition" v-if="customer?.status?.status == 2" style=" background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63;">Reviewed </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 2"
+                                style=" background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63;">
+                                Reviewed </p>
 
-                            <p class="status_condition" v-if="customer?.status?.status == 3" style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154;">Contacted </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 3"
+                                style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154;">
+                                Contacted </p>
 
-                            <p class="status_condition" v-if="customer?.status?.status == 4" style=" background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754;">Hired </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 4"
+                                style=" background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754;">
+                                Hired </p>
 
-                            <p class="status_condition" v-if="customer?.status?.status == 5" style=" background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000;">Rejected </p>
+                            <p class="status_condition" v-if="customer?.status?.status == 5"
+                                style=" background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000;">
+                                Rejected </p>
                         </div>
                         <div class="card-body">
                             <!-- <h2>Other Details:</h2> -->
-                            <p><b>Date of Birth</b><span class="travel_inner">{{ formatDateTime(customer.date_of_birth) }}</span></p>
-                            <p><b>County of birth</b><span class="travel_inner">{{ customer.country_of_birth }}</span></p>
+                            <p><b> email</b><span class="travel_inner">{{ customer.email }}</span></p>
+                            <p><b>Date of Birth</b><span class="travel_inner">{{ formatDateTime(customer.date_of_birth)
+                                    }}</span></p>
+                            <p><b>County of birth</b><span class="travel_inner">{{ customer.country_of_birth }}</span>
+                            </p>
                             <p><b>City of birth</b><span class="travel_inner">{{ customer.city_of_birth }}</span></p>
-                            <p><b>martial_status</b><span class="travel_inner">{{ (customer.martial_status) ? 'Married':'Unmarried' }}</span></p>
-                            <p><b>Country to immigrate</b><span class="travel_inner">{{ customer.migrate_country }}</span></p>
-                            <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female' }}</span></p>
-                            <p><b>Applied Date</b><span class="travel_inner">{{ formatDateTime(customer.created_at) }}</span></p>
-                            <p><b>Industry</b><span class="travel_inner">{{ industry}} </span></p>
-                            <p><b>Business</b><span class="travel_inner">{{ customer?.jobs?.business?.company_name}} </span></p>
+                            <p><b>martial_status</b><span class="travel_inner">{{ (customer.martial_status) ?
+                                'Married' : 'Unmarried' }}</span></p>
+                            <p><b>Country to immigrate</b><span class="travel_inner">{{ customer.migrate_country
+                                    }}</span></p>
+                            <p><b>Gender</b><span class="travel_inner">{{ (customer.gender == 0) ? 'Male' : 'Female'
+                                    }}</span></p>
+                            <p><b>Applied Date</b><span class="travel_inner">{{ formatDateTime(customer.created_at)
+                                    }}</span></p>
+                            <p><b>Industry</b><span class="travel_inner">{{ industry }} </span></p>
+                            <p><b>Business</b><span class="travel_inner">{{ customer?.jobs?.business?.company_name }}
+                                </span></p>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="pass_travel_details_wrapper border-top border-bottom">
                     <div class="row">
                         <div class="col-xl-6 xol-lg-6 col-md-12 col-sm-12 p-0">
                             <div class="Travel_details">
                                 <h2>Travel Details</h2>
                                 <div class="card-body">
-                                    <p><b>Purpose of stay</b><span class="travel_inner">{{ customer?.travel_details?.purpose_of_stay }}</span></p>
-                                    <p><b>Type of visa</b><span class="travel_inner">{{ customer?.travel_details?.type_of_visa }}</span></p>
-                                    <p><b>Date of travel</b><span class="travel_inner">{{ customer?.travel_details?.date_of_travel }}</span></p>
-                                    <p><b>Passenger nationality </b><span class="travel_inner">{{ customer?.travel_details?.passenger_nationality }}</span></p>
-                                    <p><b>Port of arrival</b><span class="travel_inner">{{ customer?.travel_details?.port_of_arrival }}</span></p>
+                                    <p><b>Purpose of stay</b><span class="travel_inner">{{
+                                        customer?.travel_details?.purpose_of_stay }}</span></p>
+                                    <p><b>Type of visa</b><span class="travel_inner">{{
+                                        customer?.travel_details?.type_of_visa }}</span></p>
+                                    <p><b>Date of travel</b><span class="travel_inner">{{
+                                        customer?.travel_details?.date_of_travel }}</span></p>
+                                    <p><b>Passenger nationality </b><span class="travel_inner">{{
+                                        customer?.travel_details?.passenger_nationality }}</span></p>
+                                    <p><b>Port of arrival</b><span class="travel_inner">{{
+                                        customer?.travel_details?.port_of_arrival }}</span></p>
                                 </div>
                             </div>
                         </div>
@@ -150,10 +175,16 @@ onMounted(() => {
                             <div class="Travel_details passport_details">
                                 <h2>Passport details</h2>
                                 <div class="card-body">
-                                    <p><b>Passport number</b><span class="travel_inner">{{ customer?.passport_number }}</span></p>
-                                    <p><b>Issuing authority</b><span class="travel_inner">{{ customer?.issuing_authority }}</span></p>
-                                    <p><b>Citizen of more than one country</b><span class="travel_inner">{{ customer.citizen_of_more_than_one_country == 0 ? 'No': 'Yes' }} </span></p>
-                                    <p><b>Have you ever obtained an visa using current or previous passport? </b><span class="travel_inner">{{ customer.visa_available == 0 ? 'No': 'Yes' }}</span></p>
+                                    <p><b>Passport number</b><span class="travel_inner">{{ customer?.passport_number
+                                            }}</span></p>
+                                    <p><b>Issuing authority</b><span class="travel_inner">{{ customer?.issuing_authority
+                                            }}</span></p>
+                                    <p><b>Citizen of more than one country</b><span class="travel_inner">{{
+                                        customer.citizen_of_more_than_one_country == 0 ? 'No' : 'Yes' }} </span></p>
+                                    <p><b>Have you ever obtained an visa using current or previous passport? </b><span
+                                            class="travel_inner">{{ customer.visa_available == 0 ? 'No' : 'Yes'
+                                            }}</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +193,8 @@ onMounted(() => {
                 <div class="video_image_wrapper pt-5 mbile_padding">
                     <div class="row justify-content-between multiple_download">
                         <h2>Videos</h2>
-                        <a :href="route('downloadZip',customer.id)" class="theme_button green_bg mb-4"> Download all Media</a>
+                        <a :href="route('downloadZip', customer.id)" class="theme_button green_bg mb-4"> Download all
+                            Media</a>
                     </div>
                     <div class="row">
                         <div class="col column_width">
@@ -176,10 +208,11 @@ onMounted(() => {
                                 </div>
                                 <div class="wrapper_name">
                                     <a :href="customer?.documents?.kitchen_area" target="_blank" download="kitchenArea">
-                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
+                                        <p class="mb-0 text-white text-center"
+                                            v-html="getLast_name(customer?.documents?.kitchen_area)"></p>
                                     </a>
                                 </div>
-    
+
                             </div>
                         </div>
                         <div class="col column_width">
@@ -193,10 +226,11 @@ onMounted(() => {
                                 </div>
                                 <div class="wrapper_name">
                                     <a :href="customer?.documents?.ingredients" target="_blank" download="ingredients">
-                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.ingredients)"></p>
+                                        <p class="mb-0 text-white text-center"
+                                            v-html="getLast_name(customer?.documents?.ingredients)"></p>
                                     </a>
                                 </div>
-    
+
                             </div>
                         </div>
                         <div class="col column_width">
@@ -209,11 +243,13 @@ onMounted(() => {
                                                     </div> -->
                                 </div>
                                 <div class="wrapper_name">
-                                    <a :href="customer?.documents?.cooking_tech" target="_blank" download="cookingTechnique">
-                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
+                                    <a :href="customer?.documents?.cooking_tech" target="_blank"
+                                        download="cookingTechnique">
+                                        <p class="mb-0 text-white text-center"
+                                            v-html="getLast_name(customer?.documents?.cooking_tech)"></p>
                                     </a>
                                 </div>
-    
+
                             </div>
                         </div>
                         <!-- {{ customer }} -->
@@ -227,10 +263,11 @@ onMounted(() => {
                                 </div>
                                 <div class="wrapper_name">
                                     <a :href="customer?.documents?.dish" target="_blank" download="dish">
-                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.dish)"></p>
+                                        <p class="mb-0 text-white text-center"
+                                            v-html="getLast_name(customer?.documents?.dish)"></p>
                                     </a>
                                 </div>
-    
+
                             </div>
                         </div>
                         <div class="col column_width">
@@ -240,10 +277,11 @@ onMounted(() => {
                                 </div>
                                 <div class="wrapper_name">
                                     <a :href="customer?.documents?.cleanup" target="_blank" download="cleanup">
-                                        <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.clean_up)"></p>
+                                        <p class="mb-0 text-white text-center"
+                                            v-html="getLast_name(customer?.documents?.clean_up)"></p>
                                     </a>
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
@@ -251,14 +289,18 @@ onMounted(() => {
                 <div class="video_image_wrapper ">
                     <h2>Image</h2>
                     <div class="row">
-                        <a href="javascript:void(0)" @click="openModal(customer.employments.evidence_self_employment_aus)">
+                        <a href="javascript:void(0)"
+                            @click="openModal(customer.employments.evidence_self_employment_aus)">
                             <div class="col column_width">
                                 <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.evidence_self_employment_aus">
                                     <Modal :imagesrc="customer?.employments?.evidence_self_employment_aus"></Modal>
                                     <div class="wrapper_name">
-                                        <a :href="customer?.documents?.evidence_self_employment_aus" target="_blank" download="ausSelf">
-                                            <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)"></p>
+                                        <a :href="customer?.documents?.evidence_self_employment_aus" target="_blank"
+                                            download="ausSelf">
+                                            <p class="mb-0 text-white text-center"
+                                                v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)">
+                                            </p>
                                         </a>
                                     </div>
                                 </div>
@@ -278,10 +320,11 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.passport_image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.passport_image)"></p>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.passport_image)"></p>
                                     <a :href="customer?.passport_image" target="_blank" download="passport">
-                                                    <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                    </a>
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -297,12 +340,15 @@ onMounted(() => {
                         <div class="col col-two">
                             <h2>Employer statement</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.employer_statement" @click="toggler('employer_statement',customer?.employments?.employer_statement)">
+                                <img :src="customer?.employments?.employer_statement"
+                                    @click="toggler('employer_statement', customer?.employments?.employer_statement)">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.employer_statement)"></p>
-                                    <a :href="customer?.employments?.employer_statement" target="_blank" download="EmployerStatement">
-                                                    <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                    </a>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.employments?.employer_statement)"></p>
+                                    <a :href="customer?.employments?.employer_statement" target="_blank"
+                                        download="EmployerStatement">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -311,10 +357,12 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.financial_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
-                                    <a :href="customer?.employments?.financial_evidence" target="_blank" download="FinancialEvidence">
-                                                        <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                        </a>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
+                                    <a :href="customer?.employments?.financial_evidence" target="_blank"
+                                        download="FinancialEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -323,10 +371,12 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.formal_training_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
-                                    <a :href="customer?.employments?.formal_training_evidence" target="_blank" download="TrainingEvidence">
-                                                                <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                            </a>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
+                                    <a :href="customer?.employments?.formal_training_evidence" target="_blank"
+                                        download="TrainingEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -335,10 +385,12 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.evidence_self_employment">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
-                                    <a :href="customer?.employments?.evidence_self_employment" target="_blank" download="SelfEmploymentEvidence">
-                                                        <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                        </a>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                    <a :href="customer?.employments?.evidence_self_employment" target="_blank"
+                                        download="SelfEmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -351,10 +403,11 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.evidence_image">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.evidence_image)"></p>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.documents?.evidence_image)"></p>
                                     <a :href="customer?.documents?.evidence_image" target="_blank" download="Evidence">
-                                                        <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                        </a>
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -363,11 +416,13 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.employment_evidence">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
-                                    <a :href="customer?.documents?.employment_evidence" target="_blank" download="EmploymentEvidence">
-                                                            <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                    </a>
-    
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                    <a :href="customer?.documents?.employment_evidence" target="_blank"
+                                        download="EmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
@@ -376,10 +431,11 @@ onMounted(() => {
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.documents?.licences">
                                 <div class="wrapper_name">
-                                    <p class="mb-0 text-white text-center" v-html="getLast_name(customer?.documents?.licences)"></p>
+                                    <p class="mb-0 text-white text-center"
+                                        v-html="getLast_name(customer?.documents?.licences)"></p>
                                     <a :href="customer?.documents?.licences" target="_blank" download="Licence">
-                                                    <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                    </a>
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -389,8 +445,8 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
-    
-    
+
+
                 <div class="video_image_wrapper bg-white resume_div text_over_flow">
                     <div class="row">
                         <div class="col column_width">
@@ -400,8 +456,8 @@ onMounted(() => {
                                 <div class="wrapper_name resume_btn">
                                     <p class="mb-0 text-white text-center">Download Resume </p>
                                     <a :href="customer?.documents?.resume" target="_blank" download="resume">
-                                                        <img src="/images/download-icon.svg" alt="download" class="download-icon" >
-                                                    </a>
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -418,14 +474,15 @@ onMounted(() => {
             </div>
         </div>
     </section>
-    
-    <Footer/>
+
+    <Footer />
 </template>
 
 <style scoped>
 .success {
     color: green;
 }
+
 .main-outer-section {
     background-color: #F2F2F2;
 }

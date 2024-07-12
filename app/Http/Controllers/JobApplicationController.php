@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CustomerDocuments;
 use App\Models\CustomerStatus;
 use App\Models\CustomerTraining;
+
 use App\Models\User;
 use Inertia\Inertia;
 use App\Mail\VerifyUser;
@@ -19,6 +20,7 @@ use App\Models\CustomerTravelDetails;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\PayPalController;
+use Illuminate\Support\Facades\Session ;
 
 
 class JobApplicationController extends Controller
@@ -37,15 +39,35 @@ class JobApplicationController extends Controller
     }
     public function travel_details($job_id)
     {
-        $user_id = Auth::user()->id ?? '';
+        $user_id;
+        if(Session::get('customer_id')){
+            $user_id = Session::get('customer_id');
+        }
+        else{
+            $user_id = Auth::user()->id ?? '';
+        }
+        
+       
         $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
+        
         return Inertia::render('Frontend/CustomerSection/Travel/TravelDetail', compact('job_id','already_customer'));
+    }
+
+    public function get_travel_details($customer_id){
+        $data = CustomerTravelDetails::where('customer_id',$customer_id)->first();
+        if($data){
+            return Response()->json([
+                'travel_details' => $data
+            ]);
+        }
     }
     public function personal_details(Request $request,$job_id)
     {
+       
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
+        
         $validator = Validator::make($request->all(), [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',
@@ -65,7 +87,15 @@ class JobApplicationController extends Controller
             return back()->withErrors($validator->errors());
         }
         $variable = ($request->all());
-        $user_id = Auth::user()->id ?? '';
+        $user_id ;
+        $user_id;
+        if(Session::get('customer_id')){
+            $user_id = Session::get('customer_id');
+        }
+        else{
+            $user_id = Auth::user()->id ?? '';
+        }
+       
         $user_email = Auth::user()->email ?? null;
         $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
         return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable','already_customer','user_email'));
@@ -85,7 +115,7 @@ class JobApplicationController extends Controller
             "port_of_arrival" => 'required',
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" =>'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
+            "email" =>'required|email|unique:users|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
             "confirm_email" => 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
@@ -208,7 +238,7 @@ class JobApplicationController extends Controller
         $status->customer_id = $customer_personal_details->id;
         $status->status = 0;
         $status->save();
-
+        Session::put('customer_id', $customer_personal_details->id);
         return redirect()->route('job.introduction',[$request->job_id,$customer_personal_details->id]);
 
         

@@ -26,6 +26,11 @@ class CategoriesController extends Controller
                   'category_image' => 'required|image',
                   'category_heading' => 'required',
                   'thumbnail' => 'required|image',
+            ], [
+                  'category_image.required' => 'Industry image is required.',
+                  'category_heading.required' => 'Industry heading is required.',
+                  'thumbnail.required' => 'Industry thumbnail is required.',
+
             ]);
             if ($validator->fails()) {
                   return redirect()->back()->withErrors($validator)->withInput();
@@ -60,6 +65,11 @@ class CategoriesController extends Controller
                   'category_image' => 'required',
                   'category_heading' => 'required',
                   'thumbnail' => 'required',
+            ], [
+                  'category_image.required' => 'Industry image is required.',
+                  'category_heading.required' => 'Industry heading is required.',
+                  'thumbnail.required' => 'Industry thumbnail is required.',
+
             ]);
             if ($validator->fails()) {
                   return redirect()->back()->withErrors($validator)->withInput();

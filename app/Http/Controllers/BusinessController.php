@@ -57,10 +57,10 @@ class BusinessController extends Controller
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" => ['required', new MaxWords(2000)],
+            "posting_summary" => 'required|string|max:2000',
             // "detail" => ['required', new MaxWords(30)],
-            "conditions" => ['required', new MaxWords(2000)],
-            "requirements" => ['required', new MaxWords(2000)],
+            "conditions" => 'required|string|max:2000',
+            "requirements" => 'required|string|max:2000',
             "language_id" => 'required',
             "position_id" => 'required',
             "seniority_id" => 'required',
@@ -177,12 +177,12 @@ class BusinessController extends Controller
     }
     public function update($id, Request $request)
     {
-        
+       
         $rules = [
             "job_title" => 'required',
             "job_image" => 'required|max:20480',
             "job_description" => 'required',
-            "posting_summary" => 'required|string|max:2000',
+            "posting_summary" => 'required|max:2000',
             // "detail" => ['required', new MaxWords(30)],
             "conditions" => 'required|string|max:2000',
             "requirements" => 'required|string|max:2000',
@@ -226,26 +226,28 @@ class BusinessController extends Controller
             'recommended_skills.required' => 'Please select atlease one of the recommended skills.'
    
         ];
-        if (isset($request->min_pay_range)  || isset($request->max_pay_range) || isset($request->currency_id)) {
-            $rules = [
-                'min_pay_range' => 'required|numeric|gt:0',
-                'max_pay_range' => 'required|numeric|gt:' . $request->min_pay_range,
-                'currency_id' => 'required',
-            ];
-            $messages = [
-                'min_pay_range.required' => 'Minimum salary is required.',
-                'min_pay_range.numeric' => 'Minimum salary must be number.',
-                'max_pay_range.numeric' => 'Maximum salary must be number.',
-                'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
-                'max_pay_range.required' => 'Maximum salary is required.',
-                'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
-                'currency_id.required' => 'Currency is required.',
-            ];
-         }
+        // if (isset($request->min_pay_range)  || isset($request->max_pay_range) || isset($request->currency_id)) {
+        //     $rules = [
+        //         'min_pay_range' => 'required|numeric|gt:0',
+        //         'max_pay_range' => 'required|numeric|gt:' . $request->min_pay_range,
+        //         'currency_id' => 'required',
+        //     ];
+        //     $messages = [
+        //         'min_pay_range.required' => 'Minimum salary is required.',
+        //         'min_pay_range.numeric' => 'Minimum salary must be number.',
+        //         'max_pay_range.numeric' => 'Maximum salary must be number.',
+        //         'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
+        //         'max_pay_range.required' => 'Maximum salary is required.',
+        //         'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
+        //         'currency_id.required' => 'Currency is required.',
+        //     ];
+        //  }
         $validate = Validator::make($request->all(), $rules, $messages);
         if ($validate->fails()) {
+            // die('wehvfjwef');
             return back()->withErrors($validate->errors())->withInput();
         }
+        // die("hell");
         try {
             $skills = [];
             $languages = [];
@@ -425,7 +427,3 @@ class BusinessController extends Controller
         return Inertia::render('Business/AppliedJobs',compact('footer_data','applied_jobs'));
     }
 }
-
-
-
-
