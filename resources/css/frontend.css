@@ -5015,6 +5015,8 @@ input[type="file"] {
 
 	.business_srccc .business_btn_adds {
 		padding: 12px 24px !important;
+		z-index: 11111;
+		position: relative;
 	}
 }
 
