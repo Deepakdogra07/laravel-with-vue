@@ -550,7 +550,7 @@ function removeImage(){
                         </div>
                         <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
                             <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
-                            <img :src="image" alt="" srcset="">,</div>
+                            <img :src="image" alt="" srcset=""></div>
                             <p class="close_image_name">{{ image_name }}</p>
                         </div>
                         <div v-else class="col-12 mt-4 file_upload edit_space">

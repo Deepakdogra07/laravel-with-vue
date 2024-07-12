@@ -23,7 +23,7 @@ const props = defineProps({
         <Header :logo_image="footer_data.logo_image" />
         <div class="Applied_job_wrapper">
           <div class="container applied-container_wrapper">
-              <h3 class="pt-3 heading_applied" style="font-family: 'open sans' !important; font-size: 23px;">Applied Jobs:</h3>
+              <h3 class="pt-3 heading_applied" style="font-family: 'open sans' !important; font-size: 23px; font-weight:700;">Applied Jobs:</h3>
               <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner tabel-responsive">
             <DataTable class="customer_applied display applied_job business_table business_dash_table business_table_dashboard job-data-table" :key="refreshDataTable">
               <thead>

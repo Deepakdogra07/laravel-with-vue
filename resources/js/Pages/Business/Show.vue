@@ -118,7 +118,7 @@ function job_description(description){
                 </div>
             </div>
 
-            <div class="job-detail-content job_details_cnt mt-4">
+            <div class="job-detail-content job_details_cnt mt-4 ml-2 mr-2">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">

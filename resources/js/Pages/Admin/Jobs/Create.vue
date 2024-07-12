@@ -84,11 +84,30 @@ const form = useForm({
   recommended_skills:[],
 });
 
-function selectFile(event){
-    form.job_image = event.target.files[0]
-    image.value = URL.createObjectURL(form.job_image);
-    image_name.value =event.target.files[0].name;
-    console.log(image)
+function selectFile(stype,event,type,size){
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
+        'application/pdf'
+    ];
+    if ((type==='image') && !file.type.startsWith('image/')) {
+        toast.error('Please upload an image file.');
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
+        toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
+            toast.error('Please upload an video file.');
+    }else if (file.size > maxSize) {
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
+    }else{
+        form[stype] = file;
+        image.value = URL.createObjectURL(file);
+        image_name.value =file.name;
+        form.errors[stype]=null
+    }
 }
 
 function checked_event(event){
@@ -166,6 +185,12 @@ function handleChange(type){
 //         }
 //     }   
 // }
+
+function removeImage(){
+    form.job_image = null;
+    image_name.value ='';
+    image.value ='';
+}
 </script>
 <template>
   <AuthenticatedLayout>
@@ -174,7 +199,7 @@ function handleChange(type){
     </template>
 
     <div class="flex items-center justify-center row_width_100">
-        <div class="login-bg-wrapper create_space create_code">
+        <div class="login-bg-wrapper create_space create_code ">
         <div class="about-us-bg-wrapper">
             <div class="container">
                 <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -522,8 +547,14 @@ function handleChange(type){
                             
                         </div>
 
-                        <div class="col-12 mt-4 file_upload">
-                            <div class="file-inputs mt-3 relative">
+                        <div class="col-12 mt-4 file_upload ">
+                            <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
+                            <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
+                            <img :src="image" alt="" srcset=""></div>
+                            <p class="close_image_name">{{ image_name }}</p>
+                            </div>
+
+                            <div class="file-inputs mt-3 relative" v-else>
                                 <div class="dotted-bg">
                                     <img :src="image" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -534,8 +565,9 @@ function handleChange(type){
                                     </svg>
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" />
-                                    <p>{{ image_name }}</p>
+                                    <input class="upload" type="file" id="banner" @change="selectFile('job_image',$event,'image',20)" accept="image/*" />
+                                    <p v-html="image_name"></p>
+                                    <!-- <p>{{ image_name }}</p> -->
                                 </div>
                             </div>
                             <InputError class="mt-2" :message="form.errors.job_image"/>
