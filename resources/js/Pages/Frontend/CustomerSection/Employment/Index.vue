@@ -330,9 +330,10 @@ function removeImage(type) {
                         <InputError class="mt-2" style="padding-left:0px;" :message="props.errors.employer_statement" />
                         <div class="d-flex justify-between align-items-start mt-4 p-0">
                             <div class="flex items-start">
-                                <PrimaryButton class="forms-btn-transparent step-form-back">
-                                    <span> <i class="bi bi-arrow-left"></i></span> Back
-                                </PrimaryButton>
+                                <Link class=" forms-btn-transparent step-form-back"
+                                    :href="route('job.introduction', [job_id, customer_id])">
+                                Back <span> <i class="bi bi-arrow-right"></i></span>
+                                </Link>
                             </div>
                             <div class="flex items-start" style="cursor:pointer;">
                                 <p class="forms-btn" id="1" @click="show_next_div(1)">

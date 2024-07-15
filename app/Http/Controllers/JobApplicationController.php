@@ -39,20 +39,21 @@ class JobApplicationController extends Controller
     }
     public function travel_details($job_id)
     {
-        
+        // dd(session());
         // if((!Auth::user())){
         //     Session::forget('customer_id');
         // }
         $user_id;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
+            $already_customer = Customer::where('id',$user_id)->with('travel_details')->first();
         }
         else{
             $user_id = Auth::user()->id ?? '';
+            $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
         }
-        
+        // dd($user_id);
        
-        $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
         
         return Inertia::render('Frontend/CustomerSection/Travel/TravelDetail', compact('job_id','already_customer'));
     }
