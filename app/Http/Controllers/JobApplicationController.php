@@ -43,7 +43,7 @@ class JobApplicationController extends Controller
         // if((!Auth::user())){
         //     Session::forget('customer_id');
         // }
-        $user_id;
+        $user_id = null;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
             $already_customer = Customer::where('id',$user_id)->with('travel_details')->first();
@@ -86,7 +86,7 @@ class JobApplicationController extends Controller
         }
         $variable = ($request->all());
        
-        $user_id;
+        $user_id = null;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
         }
@@ -296,7 +296,7 @@ class JobApplicationController extends Controller
     }
     public function employment_details($job_id,$customer_id = null){
         // dd($customer_id);
-        $user_id;
+        $user_id = null;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
         }
@@ -304,8 +304,7 @@ class JobApplicationController extends Controller
             $user_id = Auth::user()->id ?? '';
         }
             $already_customer = CustomerTraining::where('customer_id',$user_id)->first();
-            // dd($already_customer);
-            
+           
             return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id','already_customer'));
     }
     public function validate_emp_details(Request $request){
@@ -436,7 +435,7 @@ class JobApplicationController extends Controller
         return redirect()->route('document.details',[$job_id,$customer_id]);
     }
     public function document_details($job_id , $customer_id){
-        $user_id;
+        $user_id = null;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
         }
