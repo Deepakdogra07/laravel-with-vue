@@ -124,8 +124,8 @@ function handleVideoInput2(event) {
               </div> -->
             </div>
 
-            <div class="mt-4 col-md-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="mt-4 col-md-12 main-admin">
+              <button type="submit" class="btn btn-primary mine">Submit</button>
             </div>
             <div></div><br>
           </div>

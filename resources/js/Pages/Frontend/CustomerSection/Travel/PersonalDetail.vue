@@ -224,7 +224,7 @@ function removeImage1(){
                 <div class="col-lg-6 col-12 personal_column">
                     <div class="container-fluid form-division-right">
                         <div class="row px-0 justify-content-between">
-                            <h2 class="mb-4">Personal Details</h2>
+                            <h2 class="mb-4 mobile_txt">Personal Details</h2>
                             <div class="col-md-6 column_spacing">
                                 <div class="mb-4 margin_btm">
                                     <span class="label text-label">Given Name (s) <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
@@ -333,9 +333,9 @@ function removeImage1(){
                 <div class="col-lg-6 col-12 Pass_column">
                     <div class="container-fluid form-division-left">
 
-                        <div class="row px-0">
-                            <h2 class="mb-4">Passport Details</h2>
-                                <div class="col-md-6">
+                        <div class="row px-0 justify-content-between">
+                            <h2 class="mb-4" style="padding:0px !important; ">Passport Details</h2>
+                                <div class="col-md-6 column_spacing">
                                     <div class="mb-4">
                                         <span class="label text-label">Passport Number <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                         <!-- v-model="form.passport_number"  -->
@@ -344,7 +344,7 @@ function removeImage1(){
                                     </div>
 
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 column_spacing">
                                     <div class="mb-4">
                                         <span class="label text-label">Issuing Authority <span data-v-ef3b84b0="" style="color: red;"> *</span></span>
                                         <!-- v-model="form.issuing_authority" -->
@@ -352,7 +352,7 @@ function removeImage1(){
                                         <InputError class="mt-2" v-if="form.errors.issuing_authority" :message="props.errors.issuing_authority[0]" />
                                     </div>
                                 </div>
-                                <div class="col-md-12 calender_wrapper">
+                                <div class="col-md-12 calender_wrapper p-0">
                                     <div class="mb-4">
                                         <span class="label text-label">Passport Date Of Expiry</span>
                                         <!-- v-model="form.date_of_expiry" -->
@@ -361,7 +361,7 @@ function removeImage1(){
                                         <InputError class="mt-2" v-if="form.errors.date_of_expiry" :message="props.errors.date_of_expiry[0]" />
                                     </div>
                                 </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 p-0">
                                 <div class="d-flex gap-4 mt-2">
                                         <div class="form-check new-radio-btns">
                                             <input class="form-check-input" type="checkbox" value="1" v-model="form.citizen_of_more_than_one" name="flexRadioDefault2"
@@ -373,7 +373,7 @@ function removeImage1(){
                                     </div>
                             </div>
 
-                            <div class="col-md-12 mt-4">
+                            <div class="col-md-12 mt-4 p-0">
                                 <div class="mb-4 margin_btm">
 
                                     <span class="label">Have you ever obtained an visa using current or previous passport?</span>

@@ -91,10 +91,32 @@ const form = useForm({
     recommended_skills:[],
 });
 
-function selectFile(event) {
-    form.job_image = event.target.files[0]
-    image.value = URL.createObjectURL(form.job_image);
-    image_name.value = event.target.files[0].name;
+function selectFile(stype,event,type,size) {
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
+        'application/pdf'
+    ];
+    if ((type==='image') && !file.type.startsWith('image/')) {
+        toast.error('Please upload an image file.');
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
+        toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
+            toast.error('Please upload an video file.');
+    }else if (file.size > maxSize) {
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
+    }else{ form[stype] = file;
+        image.value = URL.createObjectURL(file);
+        image_name.value =file.name;
+        form.errors[stype]=null
+    // form.job_image = event.target.files[0]
+    // image.value = URL.createObjectURL(form.job_image);
+    // image_name.value = event.target.files[0].name;
+    }
 }
 
 
@@ -455,13 +477,13 @@ function removeImage(){
                                 <InputError class="mt-2" :message="form.errors.requirements" />
                             </div>
                         </div>
-                        <!------end------>     
+                        <!------end------>    
                         <div class="col-12 mt-4 file_upload">
                             <div v-if="form.job_image" class="col-11 mt-4 file_upload edit_space">
                             <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage()"><i class="fas fa-times"></i></p>
-                            <img :src="image" alt="" srcset="">,</div>
+                            <img :src="image" alt="" srcset=""></div>
                             <p class="close_image_name">{{ image_name }}</p>
-                        </div>
+                            </div>
                             <div class="file-inputs mt-3 relative" v-else>
                                 <div class="dotted-bg">
                                     <img :src="image" alt="" srcset="">
@@ -474,7 +496,7 @@ function removeImage(){
                                     <h2 class="choose-para">Upload a thumbnail of the job</h2>
                                     <p class="file-type">Max size 20MB</p>
                                     <!-- class="upload" -->
-                                    <input class="upload" type="file" id="banner" @change="selectFile($event)" accept="image/*" />
+                                    <input class="upload" type="file" id="banner" @change="selectFile('$job_image',$event,'image',20)" accept="image/*" />
                                     <p v-html="image_name"></p>
                                 </div>
                             </div>
@@ -493,10 +515,7 @@ function removeImage(){
 
 
                         <div class="col-md-6 d-none">
-                            
                             <!-- <div class="col-md-6"> -->
-                            
-                            
                             <div class="mt-4">
                                 <span class="label text-label">City<span style="color:red"> *</span></span>
                                 <div class="eye-icon-div">
