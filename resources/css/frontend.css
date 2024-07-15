@@ -1904,6 +1904,10 @@ input[type="file"] {
 		margin: 0px !important;
 	}
 
+	.add-job-form-section .form-control{
+		font-size: 15px;
+	}
+
 }
 
 @media (max-width:1117px) {
@@ -1957,6 +1961,9 @@ input[type="file"] {
 		line-height: 47.4px !important;
 	}
 
+
+	
+
 	.internationa_partners .about-us-cards,
 	.aboutcard_align .about-us-cards {
 		height: auto !important;
@@ -1967,7 +1974,7 @@ input[type="file"] {
 
 	.create_space input.form-control,
 	.create_space select.form-select {
-		font-size: 13px;
+		font-size: 15px;
 	}
 
 	.business_table {
@@ -2008,6 +2015,16 @@ input[type="file"] {
 	.footer-section a {
 		font-size: 13px;
 	}
+
+	.business_btn_job {
+		display: block !important;
+	}
+
+	.add_job_srchhs .business_btn_adds{
+		display: none !important;
+	}
+		
+	
 
 	.footer-section ul li {
 		margin-bottom: 8px !important;
@@ -2642,6 +2659,7 @@ input[type="file"] {
 		padding: 0px 5px;
 	}
 
+	
 
 	.buttons_mine .forms-btn,
 	.employ_padding .forms-btn {
@@ -4715,6 +4733,14 @@ input[type="file"] {
 
 	.aboutt-width {
 		padding: 0px 20px !important;
+	}
+
+	.business_btn_job {
+		display: none !important;
+	}
+
+	.add_job_srchhs .business_btn_adds{
+		display: block !important;
 	}
 
 	/*576 customer page*/
