@@ -122,7 +122,7 @@ function filterData(type, event) {
                         <Link class="btn btn-sm btn-success text-white business_btn_adds"
                             :href="route('business-jobs.create')">Add job</Link>
                     </div>
-                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                    <div class="d-flex gap-5 align-items-center srch_navbar admin_dash">
                         <Link class='active-nav'>Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
                         <Link :href="route('applied-business-jobs')">Applied Jobs</Link>
