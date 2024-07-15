@@ -181,7 +181,7 @@ export default {
             </div>
         </div>
         <div class="login-bg-wrapper business_job_details business_inner_dash business-wrapper">
-            <div class="container about-width p-0 business_jobs">
+            <div class="container about-width business_jobs">
                 <div class="filter-status row">
                     <div class="col-md-8 width_mobile p-0">
                         <div class="d-flex justify-between align-items-center">

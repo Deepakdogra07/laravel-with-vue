@@ -106,27 +106,27 @@ onMounted(() => {
                         <div class="status">
                             <!-- <b>Status:</b> -->
                             <p class="status_condition" v-if="customer?.status?.status == 0"
-                                style=" background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000;">
+                                style=" background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:30px; font-weight: 600!important; font-size: 13px; border:1px solid #008000;">
                                 Active </p>
 
                             <p class="status_condition" v-if="customer?.status?.status == 1"
-                                style=" background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500;">
+                                style=" background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:30px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500;">
                                 Awaiting Review </p>
 
                             <p class="status_condition" v-if="customer?.status?.status == 2"
-                                style=" background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63;">
+                                style=" background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:30px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63;">
                                 Reviewed </p>
 
                             <p class="status_condition" v-if="customer?.status?.status == 3"
-                                style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154;">
+                                style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:30px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154;">
                                 Contacted </p>
 
                             <p class="status_condition" v-if="customer?.status?.status == 4"
-                                style=" background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754;">
+                                style=" background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:30px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754;">
                                 Hired </p>
 
                             <p class="status_condition" v-if="customer?.status?.status == 5"
-                                style=" background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000;">
+                                style=" background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:30px; border:1px solid #FF0000;">
                                 Rejected </p>
                         </div>
                         <div class="card-body">

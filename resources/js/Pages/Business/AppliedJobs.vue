@@ -26,7 +26,7 @@ const props = defineProps({
         <div class="job-list-search srch_responsive business_srccc view_customer_listings customer_listing_wrpa">
             <div class="container aboutt-width ">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative src_bar">
-                    <div class="d-flex gap-5 align-items-center srch_navbar">
+                    <div class="d-flex gap-5 align-items-center srch_navbar" style="padding:0px !important;">
                         <Link :href="route('business-jobs.index')">Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
                         <Link class='active-nav' :href="route('applied-business-jobs')">Applied Jobs</Link>
