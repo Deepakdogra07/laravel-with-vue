@@ -19,7 +19,8 @@
                               </div>
                         </div>
                         <div class="email-section" style="background-color: #f0f0f0;">
-                            <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #09332B;"><span><img class="email-logo" src="{{ url('/images/unstoppable-bw.png') }}" alt="" style="width: 150px;"></span></h2>
+                            <!-- <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #09332B;"><span><img class="email-logo" src="{{ url('/images/unstoppable-bw.png') }}" alt="" style="width: 150px;"></span></h2> -->
+                            <h2 style="margin: 0; text-align: center; padding: 10px 0; background-color: #09332B;"><span><img class="email-logo" src="{{ url('https://unstoppable.dev.visionvivante.com/images/web-logo.png') }}" alt="" style="width: 150px;"></span></h2>
                             <div class="email-content" style="color: rgb(0, 0, 0); padding: 20px;">
                                 <h3 style="margin-top: 0;">Your account was created by {{ $creator }}.</h3>
                                 <div class="email-detail-content">

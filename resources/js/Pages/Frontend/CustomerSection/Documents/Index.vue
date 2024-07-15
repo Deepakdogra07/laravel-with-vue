@@ -284,12 +284,16 @@ async function submit_Document() {
                         <div class="col-12 employ_padding">
                             <div v-if="document.licences" class="mt-3 relative">
                                 <div class="d-flex align-items-start all_image_close">
-                                    <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
-                                        @click="removeImage('licences')"><i class="fas fa-times"></i></p>
-                                    <img v-if="form.licences.type.startsWith('image/')" :src="document.licences" alt=""
-                                        srcset="" width="250px" />
-                                    <p v-else><b>{{ form.licences.name }}</b> file uploaded!</p>
-                                </div>
+
+                                    <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
+                                    <img v-if="form.licences.type.startsWith('image/')" :src="document.licences" alt="" srcset="" width="250px"/>
+                                    <p class="doc_txt" style="width:400px" v-else>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="doc_img bi bi-file-earmark-text" viewBox="0 0 16 16">
+                                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                                    </svg>
+                                    <div class="txt_over"><b>{{form.employer_statement.name}}</b><p>file uploaded!</p></div></p></div>
+
                                 <p class="close_image_name">{{ image_name.licences }}</p>
                             </div>
                             <div v-else class="file-inputs mt-3 relative">
@@ -311,12 +315,15 @@ async function submit_Document() {
                             <InputError class="mt-2" :message="props.errors.licences" />
 
                         </div>
-                        <div class="d-flex justify-between align-items-start p-0">
-                            <div class="flex items-start mt-4 ">
-                                <Link class=" forms-btn-transparent step-form-back"
-                                    :href="route('job.introduction', [job_id, customer_id])">
-                                Back <span> <i class="bi bi-arrow-right"></i></span>
-                                </Link>
+                        <div class="d-flex justify-content-between align-items-start p-0">
+
+                            
+
+                            <div class="flex items-start mt-4">
+                                <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
+                                    <span> <i class="bi bi-arrow-left"></i></span> Back
+                                </PrimaryButton>
+
                             </div>
                             <div class="flex items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(2)">
@@ -641,7 +648,7 @@ async function submit_Document() {
 
                         <!------intro_two----->
                         <div class="employment-first-form intro_steps employ_padding ">
-                            <h2>2 - Prepare ingredients</h2>
+                            <h2 class="" style="margin-top:18px !important;">2 - Prepare ingredients</h2>
                             <div class="row mt-4">
                                 <div class="col-md-6 col-12 employ_padding">
                                     <div class="d-flex gap-3">
@@ -714,7 +721,7 @@ async function submit_Document() {
                         </div>
 
                         <!------intro_three----->
-                        <div class="employment-first-form intro_steps employ_padding">
+                        <div class="employment-first-form intro_steps employ_padding mt-3">
                             <h2>3 - Demonstrate cooking techniques</h2>
                             <div class="row mt-4">
                                 <div class="col-md-6 col-12 employ_padding">
@@ -773,7 +780,7 @@ async function submit_Document() {
                         </div>
 
                         <!------intro_four----->
-                        <div class="employment-first-form intro_steps employ_padding">
+                        <div class="employment-first-form intro_steps employ_padding mt-3">
                             <h2>4 - Present dish </h2>
                             <div class="row mt-4">
                                 <div class="col-md-6 col-12 employ_padding">
@@ -832,7 +839,7 @@ async function submit_Document() {
                         </div>
 
                         <!------intro_five----->
-                        <div class="employment-first-form intro_steps employ_padding">
+                        <div class="employment-first-form intro_steps employ_padding mt-3">
                             <h2>5 - Clean up</h2>
                             <div class="row mt-4">
                                 <div class="col-md-6 col-12 employ_padding">
@@ -1148,12 +1155,12 @@ async function submit_Document() {
 
 
                         <div class="d-flex justify-between align-items-start p-0 end_form_part">
-                            <div class="flex items-start mt-4 ">
+                            <div class="flex items-start mt-4 doc_btn">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(7)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
                             </div>
-                            <div class="flex items-start mt-4">
+                            <div class="flex items-start mt-4 doc_btn">
                                 <PrimaryButton class="forms-btn" v-if="form.processing" :disabled="form.processing">
                                     Submitting....
                                     <img src="/images/loader.gif" style="width:20px; height:20px;">

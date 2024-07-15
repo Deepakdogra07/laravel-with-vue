@@ -85,29 +85,30 @@ const form = useForm({
     recommended_skills: [],
 });
 
-function selectFile(stype, event, type, size) {
-    let file = event.target.files[0];
-    const maxSize = size * 1024 * 1024;
-    const allowedFormats = [
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'image/jpeg',
-        'image/png',
+
+function selectFile(stype,event,type,size){
+    let file=event.target.files[0];
+    const maxSize = size * 1024 * 1024; 
+     const allowedFormats = [
+        'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+        'image/jpeg', 
+        'image/png', 
         'application/pdf'
     ];
-    if ((type === 'image') && !file.type.startsWith('image/')) {
+    if ((type==='image') && !file.type.startsWith('image/')) {
         toast.error('Please upload an image file.');
-    } else if ((type === 'doc') && !allowedFormats.includes(file.type)) {
+    }else if ((type==='doc') && !allowedFormats.includes(file.type)) {
         toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
-    } else if ((type === 'video') && (!file.type.startsWith('video/'))) {
-        toast.error('Please upload an video file.');
-    } else if (file.size > maxSize) {
-        toast.error(`The ${type === 'image' ? 'image' : type === 'video' ? 'video' : 'document'} size should not exceed ${size}MB.`);
-    } else {
-        form[stype] = event.target.files[0]
+    }else if ((type==='video') && (!file.type.startsWith('video/'))) {
+            toast.error('Please upload an video file.');
+    }else if (file.size > maxSize) {
+        toast.error(`The ${type==='image'?'image':type==='video'?'video':'document'} size should not exceed ${size}MB.`);
+    }else{
+        form[stype] = file;
         image.value = URL.createObjectURL(file);
-        image_name.value = event.target.files[0].name;
-        form.errors[stype] = null;
+        image_name.value =file.name;
+        form.errors[stype]=null
     }
 }
 
@@ -149,6 +150,8 @@ const select_class = ref({
     position_type: '',
     select_country: '',
     currency: '',
+    assign_employ: '',
+
 });
 function handleChange(type) {
     if (type == "discipline") {
@@ -169,6 +172,9 @@ function handleChange(type) {
     if (type == "Currency") {
         select_class.value.Currency = 'Selected_option';
     }
+    if (type == "assign_employ") {
+        select_class.value.assign_employ = 'Selected_option';
+    }
 }
 // selectRecommendedSkill(skillName) {
 //             const skill = this.props.skills.find(s => s.name === skillName);
@@ -186,6 +192,12 @@ function handleChange(type) {
 //         }
 //     }   
 // }
+
+function removeImage(){
+    form.job_image = null;
+    image_name.value ='';
+    image.value ='';
+}
 </script>
 <template>
     <AuthenticatedLayout>
@@ -194,7 +206,7 @@ function handleChange(type) {
         </template>
 
         <div class="flex items-center justify-center row_width_100">
-            <div class="login-bg-wrapper create_space create_code">
+            <div class="login-bg-wrapper create_space create_code Arrow_align">
                 <div class="about-us-bg-wrapper">
                     <div class="container">
                         <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -557,20 +569,19 @@ function handleChange(type) {
                                     <!-- </div> -->
                                 </div>
                                 <div class="col-md-6 ">
-
                                     <div class="mt-4">
                                         <span class="label text-label">Assign Employer</span>
                                         <div class="eye-icon-div">
-                                            <select v-model="form.employer" class="form-control mt-2">
-                                                <!-- <option>Select</option> -->
-                                                <option value="" selected>Select</option>
+                                            <select class="form-select form-control mt-2 select_options" :class="select_class?.assign_employ"
+                                                @change="handleChange('assign_employ')"
+                                                aria-label="Default select example" v-model="form.employer" >
+                                                <option selected :value="null">Select</option>
                                                 <option v-for="(employer) in employers" :value="employer.id"> {{
                                                     employer.name
                                                     }} </option>
                                             </select>
                                         </div>
                                     </div>
-
 
                                 </div>
 
