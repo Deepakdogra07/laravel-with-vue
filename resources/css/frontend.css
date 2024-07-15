@@ -8299,6 +8299,14 @@ P.status_condition {
     box-shadow: unset;
 }
 
+.upload_file {
+    margin-left: 0px !IMPORTANT;
+    padding-left: 0px;
+}
+
+
+
+
 
 
 

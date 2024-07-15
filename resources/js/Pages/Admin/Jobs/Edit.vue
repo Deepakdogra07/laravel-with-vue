@@ -613,7 +613,7 @@ function removeImage(){
                                             <p class="close_image_name">{{ image_name }}</p>
                                         </div>
                                     </div>
-                                    <div v-else class="file-inputs mt-3 relative">
+                                    <div v-else class="file-inputs mt-3 relative ">
                                         <div class="dotted-bg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                                                 viewBox="0 0 80 80" fill="none">

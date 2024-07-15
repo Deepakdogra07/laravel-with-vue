@@ -54,7 +54,7 @@
             aria-label="submenu"
           >
             <li class="relative px-6 py-3">
-              <NavLink
+              <Link
                 class="text-white"
                 :href="route('edit-home-page')"
                 :active="route().current('edit-home-page')"
@@ -63,10 +63,10 @@
                   <i class="fa-solid fa-slider"></i>
                 </template>
                 <span class="text-white">Slider</span>
-              </NavLink>
+              </Link>
             </li>
              <li class="relative px-6 py-3">
-              <NavLink
+              <Link
                 class="text-white"
                 :href="route('category.index')"
                 :active="route().current('category.index') "
@@ -75,10 +75,10 @@
                   <i class="fa-solid fa-slider"></i>
                 </template>
                 <span class="text-white">Industries</span>
-              </NavLink>
+              </Link>
             </li>
              <li class="relative px-6 py-3">
-              <NavLink
+              <Link
                 class="text-white"
                 :href="route('other_data')"
                 :active="route().current('other_data')"
@@ -87,7 +87,7 @@
                   <i class="fa-solid fa-slider"></i>
                 </template>
                 <span class="text-white">Other Data</span>
-              </NavLink>
+              </Link>
             </li>
             <!-- Add more <li> elements for additional submenu items -->
           </ul>
@@ -138,25 +138,25 @@
           class="relative px-6 py-3 list_txt"
           v-if="$page.props.auth.user.user_type == 1"
         >
-          <NavLink
+          <Link
             :href="route('jobs.index')"
             :active="route().current('jobs.index')"
           >
             <i class="fa-solid fa-tasks"></i>
             <span class="ml-4 job_space">Jobs</span>
-          </NavLink>
+          </Link>
         </li>
         <li
         class="relative px-6 py-3 list_txt"
           v-if="$page.props.auth.user.user_type == 1"
         >
-          <NavLink
+          <Link
             :href="route('contactus.listing')"
             :active="route().current('contactus.listing')"
           >
             <i class="fa-solid fa-user-plus"></i>
             <span class="ml-4">Enquiries</span>
-          </NavLink>
+          </Link>
         </li>
           
        
