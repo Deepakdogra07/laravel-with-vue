@@ -42,9 +42,9 @@ class TestimonialsController extends Controller
             'video' => 'required',
             'description' => ["required ", new MaxWords(250)],
         ], [
-            'name.required' => 'Name is must.',
+            'name.required' => 'The name field is required.',
             // 'image.required' => 'Image is must.',
-            'content.required' => 'Content is must.',
+            'content.required' => 'The content field is required.',
         ]);
 
         if ($validate->fails()) {
@@ -105,8 +105,8 @@ class TestimonialsController extends Controller
             'content' => 'required',
             'description' => ['required', new MaxWords(250)],
         ], [
-            'name.required' => 'Name is must.',
-            'content.required' => 'Content is must.',
+            'name.required' => 'The name field is required.',
+            'content.required' => 'The content field is required.',
         ]);
         if ($validate->fails()) {
             return back()->withErrors($validate->errors())->withInput();

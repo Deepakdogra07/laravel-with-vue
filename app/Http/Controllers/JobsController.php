@@ -78,25 +78,25 @@ class JobsController extends Controller
       ];
 
       $messages = [
-         'position_id.required' => 'Position type is required.',
-         'seniority_id.required' => 'Seniority  is required.',
-         'discipline_id.required' => 'Discipline  is required.',
-         'work_experience_id.required' => 'Overall work experience  is required.',
-         'skills_id.required' => 'Skills  are required.',
-         'language_id.required' => 'Language  is required.',
-         'industry_id.required' => 'Industry  is required.',
-         'job_country.required' => 'Country  is required.',
-         'posting_summary.required' => 'Job posting summary  is required.',
-         'job_description.required' => 'Details of the job  is required.',
-         'pin_code.required' => 'Zip Code  is required.',
-         'job_image.required' => 'Job Image  is required.',
-         'positions.required' => 'Positions  is required.',
-         'segment.required' => 'Segment  is required.',
-         'job_title.required' => 'Job title  is required.',
-         'conditions.required' => 'Conditions  is required.',
-         'requirements.required' => 'Requirements  is required.',
-         'job_image.max' => 'Job Image should be less than 20MB.',
-         'job_start_date.required' => 'Job start date  is required.',
+         'position_id.required' => 'The position type field is required.',
+         'seniority_id.required' => 'The seniority  field is required.',
+         'discipline_id.required' => 'The discipline  field is required.',
+         'work_experience_id.required' => 'The overall work experience  field is required.',
+         'skills_id.required' => 'The skills  field are required.',
+         'language_id.required' => 'The language  field is required.',
+         'industry_id.required' => 'The industry  field is required.',
+         'job_country.required' => 'The country  field is required.',
+         'posting_summary.required' => 'The job posting summary  field is required.',
+         'job_description.required' => 'The details of the job field is required.',
+         'pin_code.required' => 'The zip Code field is required.',
+         'job_image.required' => 'The job Image field is required.',
+         'positions.required' => 'The positions field is required.',
+         'segment.required' => 'The segment field is required.',
+         'job_title.required' => 'The job title field is required.',
+         'conditions.required' => 'The conditions field is required.',
+         'requirements.required' => 'The requirements field is required.',
+         'job_image.max' => 'The job Image should be less than 20MB.',
+         'job_start_date.required' => 'The job start date field is required.',
          'recommended_skills.required' => 'Please select atleast one recommended skill.'
 
      ];
@@ -107,13 +107,13 @@ class JobsController extends Controller
           'currency_id' => 'required',
       ];
       $messages = [
-          'min_pay_range.required' => 'Minimum salary is required.',
-          'min_pay_range.numeric' => 'Minimum salary must be number.',
-          'max_pay_range.numeric' => 'Maximum salary must be number.',
-          'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
-          'max_pay_range.required' => 'Maximum salary is required.',
-          'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
-          'currency_id.required' => 'Currency is required.',
+          'min_pay_range.required' => 'The minimum salary field is required.',
+          'min_pay_range.numeric' => 'The minimum salary must be number.',
+          'max_pay_range.numeric' => 'The maximum salary must be number.',
+          'min_pay_range.gt' => 'The minimum salary must be greater than 0.',
+          'max_pay_range.required' => 'The maximum salary field is required.',
+          'max_pay_range.gt' => 'The maximum salary must be greater than the minimum salary.',
+          'currency_id.required' => 'The currency field is required.',
       ];
    }
       $validate = Validator::make($request->all(), $rules, $messages);

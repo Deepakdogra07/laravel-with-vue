@@ -27,9 +27,9 @@ class CategoriesController extends Controller
                   'category_heading' => 'required',
                   'thumbnail' => 'required|image',
             ], [
-                  'category_image.required' => 'Industry image is required.',
-                  'category_heading.required' => 'Industry heading is required.',
-                  'thumbnail.required' => 'Industry thumbnail is required.',
+                  'category_image.required' => 'The industry image is required.',
+                  'category_heading.required' => 'The industry heading is required.',
+                  'thumbnail.required' => 'The industry thumbnail is required.',
 
             ]);
             if ($validator->fails()) {
@@ -66,12 +66,11 @@ class CategoriesController extends Controller
                   'category_heading' => 'required',
                   'thumbnail' => 'required',
             ], [
-                  'category_image.required' => 'Industry image is required.',
-                  'category_heading.required' => 'Industry heading is required.',
-                  'thumbnail.required' => 'Industry thumbnail is required.',
+                  'category_heading.required' => 'The industry heading is required.',
+                  'thumbnail.required' => 'The industry thumbnail is required.',
 
             ]);
-            if ($validator->fails()) {
+            if ($validator->fails()) {    
                   return redirect()->back()->withErrors($validator)->withInput();
             }
             $category = Category::findOrFail($id);

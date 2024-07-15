@@ -82,7 +82,7 @@ const prevSection = (customerId, jobId) => {
             <p class="text-margin">*Formal training is a training that is accredited by the authorised governing body in
                 the country where the qualification was undertaken. It must be in your nominated occupation or an
                 occupation directly related to your nominated occupation.</p>
-            <div class="flex items-center gap-2 justify-end mt-4 login-btn-main">
+            <div class="flex items-center gap-2 justify-between mt-4 login-btn-main">
                 <PrimaryButton class="forms-btn-transparent step-form-back"
                     @click="prevSection(props.customer_id, props.job_id)">
                     <span> <i class="bi bi-arrow-left"></i></span> Back
