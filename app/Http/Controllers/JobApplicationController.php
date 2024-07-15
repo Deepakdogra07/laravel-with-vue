@@ -39,28 +39,26 @@ class JobApplicationController extends Controller
     }
     public function travel_details($job_id)
     {
+        // dd(session());
+        // if((!Auth::user())){
+        //     Session::forget('customer_id');
+        // }
         $user_id;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
+            $already_customer = Customer::where('id',$user_id)->with('travel_details')->first();
         }
         else{
             $user_id = Auth::user()->id ?? '';
+            $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
         }
-        
+        // dd($user_id);
        
-        $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
         
         return Inertia::render('Frontend/CustomerSection/Travel/TravelDetail', compact('job_id','already_customer'));
     }
 
-    public function get_travel_details($customer_id){
-        $data = CustomerTravelDetails::where('customer_id',$customer_id)->first();
-        if($data){
-            return Response()->json([
-                'travel_details' => $data
-            ]);
-        }
-    }
+   
     public function personal_details(Request $request,$job_id)
     {
        
@@ -87,7 +85,7 @@ class JobApplicationController extends Controller
             return back()->withErrors($validator->errors());
         }
         $variable = ($request->all());
-        $user_id ;
+       
         $user_id;
         if(Session::get('customer_id')){
             $user_id = Session::get('customer_id');
@@ -97,7 +95,7 @@ class JobApplicationController extends Controller
         }
        
         $user_email = Auth::user()->email ?? null;
-        $already_customer = Customer::where('user_id',$user_id)->with('travel_details')->first();
+        $already_customer = Customer::where('id',$user_id)->with('travel_details')->first();
         return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('variable','already_customer','user_email'));
     }
     public function submit_personal_details(Request $request,$job_id)
@@ -106,7 +104,9 @@ class JobApplicationController extends Controller
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
-        $user = Auth::user();
+        $check_user = Customer::where('email',$request->email)->first();
+        if(!$check_user){
+            $user = Auth::user();
         $rule = [
             "purpose_of_stay" => 'required',
             "type_of_visa" => 'required',
@@ -115,7 +115,7 @@ class JobApplicationController extends Controller
             "port_of_arrival" => 'required',
             "first_name" => 'required',
             "last_name" => 'required',
-            "email" =>'required|email|unique:users|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
+            "email" =>'required|email|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/',
             "confirm_email" => 'required|regex:/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/|same:email',
             "date_of_birth" => 'required',
             "country_of_birth" => 'required',
@@ -237,15 +237,76 @@ class JobApplicationController extends Controller
         $status->job_id = $customer_personal_details->job_id;
         $status->customer_id = $customer_personal_details->id;
         $status->status = 0;
+        // dd($customer_personal_details->id);
+        // dd(Session::all());
         $status->save();
+        Session::forget('customer_id');
         Session::put('customer_id', $customer_personal_details->id);
+        Session::save();
+  
         return redirect()->route('job.introduction',[$request->job_id,$customer_personal_details->id]);
+        }
+        else{
+
+            $citizen = (isset($request->citizen_of_more_than_one)) ? 1 : 0;
+            Customer::where('id',Session::get('customer_id'))->update([
+                "job_id" => $request->job_id,
+                // "date_of_travel" => $request->date_of_travel,
+                // "port_of_arrival" => $request->port_of_arrival,
+                // "purpose_of_stay" => $request->purpose_of_stay,
+                // "type_of_visa" => $request->type_of_visa,
+                "migrate_country" => $request->migrate_country,
+                "customer_image" => $request->customer_image,
+                "first_name" => $request->first_name,
+                "last_name" => $request->last_name,
+                "email" => $request->email,
+                "confirm_email" => $request->confirm_email,
+                "date_of_birth" => $request->date_of_birth,
+                "country_of_birth" => $request->country_of_birth,
+                "city_of_birth" => $request->first_name,
+                "gender" => $request->gender,
+                "martial_status" => $request->martial_status,
+                "passport_number" => $request->passport_number,
+                "passport_image" => $request->passport_image,
+                "issuing_authority" => $request->issuing_authority,
+                "date_of_expiry" => $request->date_of_expiry,
+                "citizen_of_more_than_one_country" => $citizen,
+                "visa_available" => $request->visa_available,
+                // "passenger_nationality" => $request->passenger_nationality,
+            ]);
+
+            // travel details update
+
+            CustomerTravelDetails::where('id',Session::get('customer_id'))->update([
+                "job_id" => $request->job_id,
+                "customer_id" => Session::get('customer_id'),
+                "date_of_travel" => $request->date_of_travel,
+                "port_of_arrival" => $request->port_of_arrival,
+                "purpose_of_stay" => $request->purpose_of_stay,
+                "type_of_visa" => $request->type_of_visa,
+                "passenger_nationality" => $request->passenger_nationality,
+            ]);
+
+            
+            return redirect()->route('job.introduction',[$request->job_id,Session::get('customer_id')]);
+        }
 
         
         
     }
     public function employment_details($job_id,$customer_id = null){
-            return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id'));
+        // dd($customer_id);
+        $user_id;
+        if(Session::get('customer_id')){
+            $user_id = Session::get('customer_id');
+        }
+        else{
+            $user_id = Auth::user()->id ?? '';
+        }
+            $already_customer = CustomerTraining::where('customer_id',$user_id)->first();
+            // dd($already_customer);
+            
+            return Inertia::render('Frontend/CustomerSection/Employment/Index',compact('job_id','customer_id','already_customer'));
     }
     public function validate_emp_details(Request $request){
         if(isset($request->step) && $request->step == 1){
@@ -375,7 +436,16 @@ class JobApplicationController extends Controller
         return redirect()->route('document.details',[$job_id,$customer_id]);
     }
     public function document_details($job_id , $customer_id){
-        return Inertia::render('Frontend/CustomerSection/Documents/Index',compact('job_id','customer_id'));
+        $user_id;
+        if(Session::get('customer_id')){
+            $user_id = Session::get('customer_id');
+        }
+        else{
+            $user_id = Auth::user()->id ?? '';
+        }
+            $already_customer = CustomerTraining::where('customer_id',$user_id)->first();
+            // dd($already_customer);
+        return Inertia::render('Frontend/CustomerSection/Documents/Index',compact('job_id','customer_id','already_customer'));
     }
 
 public function validate_customer_documents(Request $request){
@@ -661,4 +731,8 @@ public function validate_customer_documents(Request $request){
 
     
 }
+
+
+
+
 }

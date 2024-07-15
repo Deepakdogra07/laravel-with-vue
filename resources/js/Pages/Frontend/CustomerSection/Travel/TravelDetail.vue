@@ -38,19 +38,7 @@ const props = defineProps({
 
 
 
-let sessionTravelData = reactive({});
-if (sessionStorage.getItem('customer_id')) {
-    // alert(`customer_id: ${sessionStorage.getItem('customer_id')}`)
-    axios.get(`/get-travel-details/${sessionStorage.getItem('customer_id')}`)
-        .then(res => {
-            sessionTravelData = res.data.travel_details;
-            console.log(sessionTravelData);
 
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
 
 // watch(() => sessionCustomer_id.id, (newValue, oldValue) => {
 //     alert(newValue);
@@ -117,7 +105,7 @@ function handleChange(type) {
     <SubHeading :job_id="form.job_id" />
     <div class="login-bg-wrapper travel-section travel_main_wrap">
         <div class="container travel_width">
-            <h1>{{ sessionTravelData.passenger_nationality }}</h1>
+            <!-- <h1>{{ sessionTravelData.passenger_nationality }}</h1> -->
             <form @submit.prevent="submitform()">
                 <div class="travel-detail mb-5">
                     <div class="inner_travel_wrapper">
