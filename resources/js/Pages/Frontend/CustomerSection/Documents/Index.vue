@@ -217,7 +217,7 @@ async function submit_Document() {
                         </div>
 
                         <div class="col-12 p-0">
-                            <div v-if="document.employment_evidence" class="mt-3 relative">
+                            <div v-if="document.employment_evidence" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('employment_evidence')"><i class="fas fa-times"></i></p>
@@ -282,7 +282,7 @@ async function submit_Document() {
                         </div>
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.licences" class="mt-3 relative">
+                            <div v-if="document.licences" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
 
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('licences')"><i class="fas fa-times"></i></p>
@@ -618,7 +618,7 @@ async function submit_Document() {
 
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.kitchen_area" class="mt-3 relative">
+                            <div v-if="document.kitchen_area" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <!-- close_mark -->
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark"
@@ -694,7 +694,7 @@ async function submit_Document() {
 
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.ingredients" class="mt-3 relative">
+                            <div v-if="document.ingredients" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark"
                                         style="float:right; z-index:1;" @click="removeImage('ingredients')"><i
@@ -753,7 +753,7 @@ async function submit_Document() {
 
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.cooking_tech" class="mt-3 relative">
+                            <div v-if="document.cooking_tech" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark"
                                         style="float:right; z-index:1;" @click="removeImage('cooking_tech')"><i
@@ -809,7 +809,7 @@ async function submit_Document() {
 
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.dish" class="mt-3 relative">
+                            <div v-if="document.dish" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark"
                                         style="float:right; z-index:1;" @click="removeImage('dish')"><i
@@ -868,7 +868,7 @@ async function submit_Document() {
 
 
                         <div class="col-12 employ_padding">
-                            <div v-if="document.clean_up" class="mt-3 relative">
+                            <div v-if="document.clean_up" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark"
                                         style="float:right; z-index:1;" @click="removeImage('clean_up')"><i
@@ -998,7 +998,7 @@ async function submit_Document() {
                     <div class="row mt-4">
 
                         <div class="col-12 p-0">
-                            <div v-if="document.evidence_image" class="mt-3 relative">
+                            <div v-if="document.evidence_image" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('evidence_image')"><i class="fas fa-times"></i></p>
@@ -1093,7 +1093,7 @@ async function submit_Document() {
                         </div>
 
                         <div class="col-12 p-0">
-                            <div v-if="document.resume" class="mt-3 relative">
+                            <div v-if="document.resume" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('resume')"><i class="fas fa-times"></i></p>

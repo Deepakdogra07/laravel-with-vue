@@ -286,7 +286,7 @@ function removeImage(type) {
                                     manager, supervisor or human resources department representative.</p>
                             </div>
                         </div>
-                        <!-- <div v-if="document.employer_statement" class="mt-3 relative">
+                        <div v-if="document.employer_statement" class="mt-3 relative upload_file">
                             <div class="d-flex align-items-start all_image_close">
                             <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('employer_statement')">
                                 <i class="fas fa-times"></i>
@@ -392,8 +392,7 @@ function removeImage(type) {
                         </div>
 
                         <div class="col-12 p-0">
-                            <div v-if="document.financial_evidence" class="mt-3 relative">
-
+                            <div v-if="document.financial_evidence" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
                                     <img v-if="form.financial_evidence.type.startsWith('image/')" :src="document.financial_evidence" alt="" srcset="" width="250px"/>
                                     <p class="doc_txt" style="width:400px" v-else>
@@ -501,9 +500,7 @@ function removeImage(type) {
                         </div>
 
                         <div class="col-12">
-
-                            <div v-if="document.evidence_self_employment" class="mt-3 relative">
-
+                            <div v-if="document.evidence_self_employment" class="mt-3 relative upload_file">
                                     <div class="d-flex align-items-start all_image_close">
                                         <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i></p>
                                         <img v-if="form.evidence_self_employment.type.startsWith('image/')" :src="document.evidence_self_employment" alt="" srcset="" width="250px"/>
@@ -577,8 +574,7 @@ function removeImage(type) {
 
 
                             <div class="col-12 employment_next">
-
-                                <div v-if="document.evidence_self_employment_aus" class="mt-3 relative">
+                                <div v-if="document.evidence_self_employment_aus" class="mt-3 relative upload_file">
 
                                     <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('evidence_self_employment_aus')"><i class="fas fa-times"></i></p>
                                         <img v-if="form.evidence_self_employment_aus.type.startsWith('image/')" :src="document.evidence_self_employment_aus" alt="" srcset="" width="250px"/>
@@ -591,7 +587,7 @@ function removeImage(type) {
                             <p class="close_image_name">{{ image_name.evidence_self_employment_aus }}</p>
                         </div>
                         <div v-else class="col-12 employ_padding">
-                            <div class="file-inputs mt-3 relative">
+                            <div class="file-inputs mt-3 relative ">
                                 <div class="dotted-bg">
                                     <img :src="document.evidence_self_employment_aus" alt="" srcset="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
@@ -673,10 +669,7 @@ function removeImage(type) {
                         </div>
 
                         <div class="col-12 employ_padding">
-
-
-                            <div v-if="document.formal_training_evidence" class="mt-3 relative">
-
+                            <div v-if="document.formal_training_evidence" class="mt-3 relative upload_file">
                                 <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;" @click="removeImage('formal_training_evidence')"><i class="fas fa-times"></i></p>
                                     <img v-if="form.formal_training_evidence.type.startsWith('image/')" :src="document.formal_training_evidence" alt="" srcset="" width="250px"/>
                                     <p class="doc_txt" style="width:400px" v-else>
