@@ -201,6 +201,7 @@ Route::post('/submit_customer_doc', [JobApplicationController::class,'submit_cus
 
 
 Route::get('testing',[TestController::class,'index']);
+Route::get('/setSession_JobId/{job_id}',[JobApplicationController::class,'setSession_job_id']);
 
 
 // Paypal Routes
