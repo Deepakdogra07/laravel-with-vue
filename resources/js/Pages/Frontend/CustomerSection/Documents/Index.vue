@@ -247,9 +247,10 @@ async function submit_Document() {
                         </div>
                         <div class="d-flex justify-between align-items-start p-0">
                             <div class="flex align-items-start mt-4 ">
-                                <PrimaryButton class="forms-btn-transparent step-form-back">
-                                    <span> <i class="bi bi-arrow-left"></i></span> Back
-                                </PrimaryButton>
+                                <Link class=" forms-btn-transparent step-form-back"
+                                    :href="route('employment.details', [job_id, customer_id])">
+                                Back <span> <i class="bi bi-arrow-right"></i></span>
+                                </Link>
                             </div>
                             <div class="flex align-items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(1)">
@@ -314,11 +315,15 @@ async function submit_Document() {
                             <InputError class="mt-2" :message="props.errors.licences" />
 
                         </div>
-                        <div class="d-flex justify-between align-items-start p-0">
+                        <div class="d-flex justify-content-between align-items-start p-0">
+
+                            
+
                             <div class="flex items-start mt-4">
                                 <PrimaryButton class="forms-btn-transparent step-form-back" @click="previous_div(2)">
                                     <span> <i class="bi bi-arrow-left"></i></span> Back
                                 </PrimaryButton>
+
                             </div>
                             <div class="flex items-start mt-4" style="cursor:pointer;">
                                 <p class="forms-btn" @click="show_next_div(2)">
