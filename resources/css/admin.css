@@ -32,8 +32,8 @@
     font-size: 16px;
 }
 
-.padding_remove table.dataTable thead {
-    background: #e2e2e3;
+.padding_remove table.dataTable thead, .add_testimonial_page table thead {
+    background: #e2e2e3 !important;
     border: 0px !important;
 }
 .padding_remove table.dataTable a.paginate_button.current {
@@ -165,6 +165,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     font-weight: 600;
     font-size: 22px !important;
     color: #3c5b6f;
+    margin-bottom: 20px;
 }
 .edit_fiedls_sec label, .add_sliedrs label {
     color: #212529;
@@ -339,7 +340,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     margin-bottom: 0px;
 }
 
-.wrapper_other_fields input, .wrapper_other_fields textarea, .admin_job input, .admin_job select, .admin_job textarea, .admin_job .eye-icon-div, .add_sliedrs input, .add_sliedrs textarea {
+.wrapper_other_fields input, .wrapper_other_fields textarea, .admin_job input, .admin_job select, .admin_job textarea, .admin_job .eye-icon-div input, .add_sliedrs input, .add_sliedrs textarea {
     background-color: #fbfbfb !important;
 }
 
@@ -355,11 +356,25 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .admin_tabs li a.active {
     background-color: #060d1a !important;
 }
+.responsive_dashboard li.list_txt {
+	line-height: 0px !important;
+}
 
+.add_category_page button.bg-blue-500, .button_marginss button, .main-admin button.mine, .button_margins button.rounded-lg, .main-admin button{
+	background: #3c5b6f !important;
+	font-size: 15px;
+	font-weight: 700;
+	padding: .5rem 1.5rem !important;
+	line-height:24px;
+}
 
+.add_category_page button.bg-blue-500:hover, .button_marginss button:hover, .main-admin button.mine:hover, .button_margins button.rounded-lg:hover, .main-admin button:hover{
+	background-color: #060d1a !important;
+}
 
-
-
+button:focus{
+	box-shadow: unset !important;
+}
 
 
 

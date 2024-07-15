@@ -657,7 +657,7 @@ h2 {
 .admin_job select,
 .admin_job textarea::placeholder,
 .admin_job .eye-icon-div {
-	color: #a5a5ab;
+	color: #a5a5ab !important;
 }
 
 /* .admin_job .eye-icon-div{
@@ -742,7 +742,10 @@ h2 {
 .all_image_close img {
 	width: 400px;
 	height: 260px;
-	object-fit: fill;
+	object-fit: contain;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .natoinality_row .calender_input .dp--menu-wrapper,
@@ -1908,6 +1911,12 @@ input[type="file"] {
 		font-size: 15px;
 	}
 
+	.file-inputs h2 {
+		font-size: 18px !important; 
+		text-align: center;
+	
+	}
+
 }
 
 @media (max-width:1117px) {
@@ -1975,6 +1984,10 @@ input[type="file"] {
 	.create_space input.form-control,
 	.create_space select.form-select {
 		font-size: 15px;
+	}
+
+	.job-listing-cards .cards-bio {
+		margin-bottom: 78px !important;
 	}
 
 	.business_table {
@@ -2108,6 +2121,10 @@ input[type="file"] {
 
 	.welcome-section .slick-dots {
 		margin-top: 30px !important;
+	}
+
+	.back_button_wrapss {
+		margin: 0px !IMPORTANT;
 	}
 
 	.forms-btn,
@@ -2297,6 +2314,13 @@ input[type="file"] {
 		display: none;
 	}
 
+	.Pass_column_upload, .personal_column {
+		padding-right: 20px !important;
+		padding-left: 0px !important;
+	}
+
+
+
 }
 
 
@@ -2335,6 +2359,10 @@ input[type="file"] {
 
 	.file-inputs.mt-3.relative h2 {
 		font-size: 30px !important;
+	}
+
+	.travel_main_wrap {
+		padding-top: 20px;
 	}
 
 	.natoinality_row .col-md-6 {
@@ -2459,6 +2487,10 @@ input[type="file"] {
 		width: 50%;
 	}
 
+	.Pass_column_upload, .personal_column {
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
 
 
 
@@ -2656,7 +2688,7 @@ input[type="file"] {
 
 @media (max-width:767px) {
 	.col_padding {
-		padding: 0px 5px;
+		padding: 0px 5px !important;
 	}
 
 	
@@ -2728,7 +2760,7 @@ input[type="file"] {
 	}
 
 	.add_employer_hd {
-		padding-left: 5px;
+		padding-left: 5px !important;
 	}
 
 	.country-names {
@@ -2928,7 +2960,7 @@ input[type="file"] {
 		margin-top: 17px;
 	}
 
-	.travel-section .login-btn-main {
+	.travel-section.travel_main_wrap .travel_width .login-btn-main {
 		padding: 0px !important;
 		margin: 20px 0px !important;
 	}
@@ -3151,7 +3183,11 @@ input[type="file"] {
 	}
 
 	.job-listing-cards.relative .cards-bio {
-		margin-bottom: 20px;
+		margin-bottom: 20px !important;
+	}
+
+	.job-listing-cards a.forms-btn, .job-listing-cards .login-btn-main a {
+		font-size: 15px !important;
 	}
 
 	.job-listing-cards .buttons_div .login-btn-main {
@@ -3246,7 +3282,7 @@ input[type="file"] {
 
 	.add_customer_row,
 	.add_customer_hd {
-		padding: 0px !important;
+		padding: 5px 0px !important;
 	}
 
 	.update_hd {
@@ -3286,7 +3322,7 @@ input[type="file"] {
 	}
 
 	.button_marginss {
-		padding-left: 5px;
+		padding-left: 5px !important;
 	}
 
 	.contact_cn,
@@ -3460,9 +3496,9 @@ input[type="file"] {
 		padding: 20px 15px;
 	}
 
-	.form-division-left {
+	/* .form-division-left {
 		padding: 0px 10px !important;
-	}
+	} */
 
 	.close_image_wrapper {
 		margin-bottom: 10px;
@@ -3487,7 +3523,7 @@ input[type="file"] {
 		max-width: 720px !important;
 	}
 
-	.step-form-back {
+	.step-form-back, .back_button_wrapss .login-btn-main .forms-btn, .login-btn-main .forms-btn{
 		padding: 15px 20px !important;
 	}
 
@@ -3652,6 +3688,10 @@ input[type="file"] {
 		top: 55px;
 	}
 
+	.travel_main_wrap .travel_width {
+		padding-top: 0px !important;
+		margin-top: 0px;
+	}
 
 	.business_job_wrap .job-detail-content.job_details_cnt {
 		margin: 30px 3px !important;
@@ -4743,6 +4783,10 @@ input[type="file"] {
 		display: block !important;
 	}
 
+	.form-division-right .mobile_txt {
+		padding-top: 20px !important;
+	}
+
 	/*576 customer page*/
 	.pass_travel_details_wrapper h2,
 	.video_image_wrapper h2 {
@@ -5412,9 +5456,6 @@ table.dataTable.no-footer button.btn.btn-primary.btn-sm {
 	background: transparent;
 }
 
-.add_category_page button.bg-blue-500 {
-	background: #3c5b6f;
-}
 
 .bg_tablee div#DataTables_Table_0_paginate {
 	margin: 9px 9px 13px 10px;
@@ -5503,11 +5544,12 @@ button.btn.btn-primary {
 }
 
 .admin_job button[type=submit] {
-	background: #3c5b6f;
-	padding: 10px 20px !important;
-	justify-content: center !important;
-	align-items: center;
-	font-weight: 700 !important;
+    background: #3c5b6f;
+    padding: 10px 20px !important;
+    justify-content: center !important;
+    align-items: center;
+    font-weight: 700 !important;
+    font-size: 15px;
 }
 
 .add_sliedrs .text-black-900 .mb-4:nth-child(2) {
@@ -5583,9 +5625,9 @@ button.rounded-lg span i::before {
 	font-size: 20px;
 }
 
-.travel_width {
+/* .travel_width {
 	padding: 0px;
-}
+} */
 
 .mt-4 .start_input {
 	margin-top: 10px !important;
@@ -5646,7 +5688,7 @@ table#DataTables_Table_1 {
 .view_job_page .card .card-header-title h4 {
 	margin-bottom: 0px !important;
 	font-size: 16px !important;
-	line-height: 0px;
+	line-height: 23px;
 	font-family: 'Open Sans' !important;
 }
 
@@ -5971,11 +6013,14 @@ ul.job_ul li::before {
 }
 
 .all_image_close video {
-	height: 250px;
-	width: 400px;
-	-o-object-fit: cover;
-	object-fit: contain;
-	margin-bottom: 20px;
+    height: 250px;
+    width: 400px;
+    -o-object-fit: cover;
+    object-fit: contain;
+    margin-bottom: 20px;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 h2.margin_intro {
@@ -6575,8 +6620,8 @@ section#home_banner {
 	top: 24px;
 }
 
-.form-select.Selected_option {
-	color: #000;
+.form-select.Selected_option, .form-control.Selected_option {
+	color: #000 !important;
 }
 
 .form-select {
@@ -6740,8 +6785,13 @@ span.video_txt {
 }
 
 .job-listing-cards .cards-content h2 {
-	text-transform: capitalize;
-	margin-top: 10px;
+    text-transform: capitalize;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .listing_txt {
@@ -6764,13 +6814,17 @@ span.video_txt {
 .video_Section button.bg-blue-500,
 form.row.edit_customer button.rounded-lg {
 	background-color: rgb(60 91 111);
+	font-size: 15px;
+	font-weight: 700;
+	padding: .5rem 1.5rem !important;
+	line-height:24px;
 }
 
 .inner_admin .bg-blue-500:hover,
 .video_Section button.bg-blue-500:hover,
 form.row.edit_customer button.rounded-lg:hover,
 .add_sliedrs button.bg-blue-500:hover,
-.button_margins button.rounded-lg:hover {
+.button_margins button.rounded-lg:hover, .admin_job button[type=submit]:hover {
 	background-color: #060d1a;
 }
 
@@ -6879,10 +6933,6 @@ form.row.edit_customer label,
 	padding-left: 10px;
 }
 
-.button_margins button.rounded-lg {
-	background: #3c5b6f;
-}
-
 /* .category_tables a.paginate_button.current,
 .tesstimonials_bgg a.paginate_button.current {
 	padding-top: 6px;
@@ -6892,8 +6942,7 @@ form.row.edit_customer label,
 	padding: 0px 5px !important;
 }
 
-.add_customers_inner a.paginate_button,
-.update_employer button.rounded-lg {
+.add_customers_inner a.paginate_button {
 	background: #097b72 !important;
 	border: 0px !important;
 	/* padding: 7px !important; */
@@ -6947,14 +6996,6 @@ form.row.edit_customer label,
 
 .button_marginss {
 	padding-left: 10px;
-}
-
-.button_marginss button.rounded-lg {
-	background: #060d1a;
-}
-
-.button_marginss button.rounded-lg:hover {
-	background: #3c5b6f;
 }
 
 ul.job_recommenrded_skills li:hover {
@@ -7734,7 +7775,7 @@ span.job-filter_text {
 }
 
 .resume_btn p {
-	margin-right: 13px !important;
+	margin-right: 16px !important;
 }
 
 .travel-section input:focus,
@@ -8250,6 +8291,13 @@ P.status_condition {
     color: #808080;
 }
 
+.step-form-back:active {
+    background: transparent;
+}
+
+.step-form-back:focus {
+    box-shadow: unset;
+}
 
 
 

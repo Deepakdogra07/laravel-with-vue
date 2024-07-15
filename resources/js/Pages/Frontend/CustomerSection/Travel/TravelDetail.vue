@@ -115,7 +115,7 @@ function handleChange(type) {
 <template>
     <Header />
     <SubHeading :job_id="form.job_id" />
-    <div class="login-bg-wrapper travel-section ffg">
+    <div class="login-bg-wrapper travel-section travel_main_wrap">
         <div class="container travel_width">
             <h1>{{ sessionTravelData.passenger_nationality }}</h1>
             <form @submit.prevent="submitform()">

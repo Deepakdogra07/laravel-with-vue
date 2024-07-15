@@ -150,6 +150,8 @@ const select_class = ref({
     position_type: '',
     select_country: '',
     currency: '',
+    assign_employ: '',
+
 });
 function handleChange(type) {
     if (type == "discipline") {
@@ -169,6 +171,9 @@ function handleChange(type) {
     }
     if (type == "Currency") {
         select_class.value.Currency = 'Selected_option';
+    }
+    if (type == "assign_employ") {
+        select_class.value.assign_employ = 'Selected_option';
     }
 }
 // selectRecommendedSkill(skillName) {
@@ -201,7 +206,7 @@ function removeImage(){
         </template>
 
         <div class="flex items-center justify-center row_width_100">
-            <div class="login-bg-wrapper create_space create_code">
+            <div class="login-bg-wrapper create_space create_code Arrow_align">
                 <div class="about-us-bg-wrapper">
                     <div class="container">
                         <form @submit.prevent="submit" enctype="multipart/form-data">
@@ -564,13 +569,13 @@ function removeImage(){
                                     <!-- </div> -->
                                 </div>
                                 <div class="col-md-6 ">
-
                                     <div class="mt-4">
                                         <span class="label text-label">Assign Employer</span>
                                         <div class="eye-icon-div">
-                                            <select v-model="form.employer" class="form-control mt-2">
-                                                <!-- <option>Select</option> -->
-                                                <option value="" selected>Select</option>
+                                            <select class="form-select form-control mt-2 select_options" :class="select_class?.assign_employ"
+                                                @change="handleChange('assign_employ')"
+                                                aria-label="Default select example" v-model="form.employer" >
+                                                <option selected :value="null">Select</option>
                                                 <option v-for="(employer) in employers" :value="employer.id"> {{
                                                     employer.name
                                                     }} </option>

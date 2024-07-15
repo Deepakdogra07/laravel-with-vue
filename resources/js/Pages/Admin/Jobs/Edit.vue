@@ -168,6 +168,7 @@ const select_class = ref({
     position_type: '',
     select_country: '',
     currency: '',
+    assign_employ: '',
 });
 function handleChange(type) {
     if (type == "discipline") {
@@ -187,6 +188,9 @@ function handleChange(type) {
     }
     if (type == "Currency") {
         select_class.value.currency = 'Selected_option';
+    }
+    if (type == "assign_employ") {
+        select_class.value.assign_employ = 'Selected_option';
     }
 }
 function select_skill(skill) {
@@ -568,20 +572,19 @@ function removeImage(){
                                     <!-- </div> -->
                                 </div>
                                 <div class="col-md-6 ">
-
                                     <div class="mt-4   ">
-                                <span class="label text-label">Assign Employer</span>
-                                <div class="eye-icon-div">
-                                    <select v-model="form.employer" class="form-control mt-2">
-                                        <option selected :value="null">Select Type</option>
-                                        <!-- <option value="" selected>Select</option> -->
-                                        <option v-for="(employer) in employers" 
-                                            :value="employer.id"> {{ employer.name }} </option>
-                                    </select>
-                                </div>
-                            </div>
-
-
+                                        <span class="label text-label">Assign Employer</span>
+                                        <div class="eye-icon-div">
+                                            <select class="form-select form-control mt-2 select_options" :class="select_class?.assign_employ"
+                                                        @change="handleChange('assign_employ')"
+                                                        aria-label="Default select example" v-model="form.employer">
+                                                <option selected :value="null">Select Type</option>
+                                                <!-- <option value="" selected>Select</option> -->
+                                                <option v-for="(employer) in employers" 
+                                                    :value="employer.id"> {{ employer.name }} </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6 country_input ">
@@ -591,7 +594,7 @@ function removeImage(){
                                             <select class="form-select  mt-2 Selected_option"
                                                 :class="select_class?.select_country"
                                                 @change="handleChange('select_country')"
-                                                aria-label="Default select example " v-model="form.job_country">
+                                                aria-label="Default select example" v-model="form.job_country">
                                                 <option selected :value="null">Select Country</option>
                                                 <option v-for="country in countries" :key="country.id"
                                                     :value="country.name">{{
@@ -628,10 +631,13 @@ function removeImage(){
                                     <InputError class="mt-2" :message="form.errors.job_image" />
                                 </div>
                                 <div class="col-12 ">
-                                    <div class="flex items-center justify-center mt-4 login-btn-main">
+                                    <div class="flex items-center justify-center mt-4 login-btn-main main-admin mine_justify">
 
-                                        <PrimaryButton type="submit" class="forms-btn" :disabled="form.processing">
-                                            Update Job <span> <i class="bi bi-arrow-right"></i></span>
+                                        <PrimaryButton type="submit" class="forms-btn mine" :disabled="form.processing">
+                                            Update Job
+                                            <!-- <span> 
+                                                <i class="bi bi-arrow-right"></i>
+                                            </span> -->
                                         </PrimaryButton>
                                     </div>
                                 </div>

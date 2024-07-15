@@ -110,8 +110,8 @@ function update_all_data(type, event) {
               </div> -->
             </div>
 
-            <div class="mt-4 col-md-12">
-              <button type="submit" class="btn btn-primary">Update</button>
+            <div class="mt-4 col-md-12 main-admin">
+              <button type="submit" class="btn btn-primary mine">Update</button>
             </div>
             <div></div><br>
           </div>

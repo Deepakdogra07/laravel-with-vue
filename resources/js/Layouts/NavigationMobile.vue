@@ -21,7 +21,7 @@
           <img src="/images/web-logo.png" alt="">
       </Link>
         <ul class="mt-2 responsive_dashboard">
-          <li class="relative px-6 py-3">
+          <li class="relative px-6 py-3 list_txt">
             <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
               <template #icon>
                 <!-- <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -35,7 +35,7 @@
             </ResponsiveNavLink>
           </li>
 
-          <li class="relative spacing_left" v-if="$page.props.auth.user.user_type == 1" @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2">
+          <li class="relative spacing_left list_txt" v-if="$page.props.auth.user.user_type == 1" @click="showingTwoLevelMenu_2 = !showingTwoLevelMenu_2">
           <button
             
             class="pr-4 pl-1 py-3 inline-flex items-center justify-between w-full dashboard_btn text-sm font-semibold transition-colors duration-150 hover:text-black-800"
@@ -107,7 +107,7 @@
           </li> -->
 
 
-          <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+          <li class="relative px-6 py-3 list_txt" v-if="$page.props.auth.user.user_type == 1">
             <ResponsiveNavLink :href="route('testimonial.index')" :active="route().current('dashboard')">
               <template #icon>
                 <i class="fas fa-comments"></i>
@@ -116,7 +116,7 @@
             </ResponsiveNavLink>
           </li>
 
-          <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+          <li class="relative px-6 py-3 list_txt" v-if="$page.props.auth.user.user_type == 1">
             <ResponsiveNavLink  :href="route('customers')" :active="route().current('customers')">
               <template #icon>
                 <i class="fa-solid fa-users"></i>
@@ -124,8 +124,8 @@
               Customers
             </ResponsiveNavLink>
           </li>
-
-          <li class="relative px-6 py-3" v-if="$page.props.auth.user.user_type == 1">
+ 
+          <li class="relative px-6 py-3 list_txt" v-if="$page.props.auth.user.user_type == 1">
             <ResponsiveNavLink  :href="route('business-listing.index')" :active="route().current('business-listing.index')">
               <template #icon>
                 <i class="fa-solid fa-user-plus"></i>
@@ -135,7 +135,7 @@
           </li>
 
           <li
-          class="relative px-6 py-2"
+          class="relative px-6 py-3 list_txt"
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
@@ -147,7 +147,7 @@
           </NavLink>
         </li>
         <li
-        class="relative px-6 py-3"
+        class="relative px-6 py-3 list_txt"
           v-if="$page.props.auth.user.user_type == 1"
         >
           <NavLink
@@ -208,7 +208,7 @@
 
         <li
           v-if="$page.props.auth.user.user_type == 1"
-          class="relative spacing_left color-white"
+          class="relative spacing_left color-white list_txt" 
         >
           <button
             @click="showingTwoLevelMenu_6 = !showingTwoLevelMenu_6"

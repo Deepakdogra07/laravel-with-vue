@@ -89,7 +89,7 @@ const submit = () => {
                             <InputError class="mt-2" :message="form.errors.status" />
                         </div>
                     </div>
-                    <div class="mt-4 buttons_margin">
+                    <div class="mt-4 buttons_margin main-admin">
                         <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                             type="submit">
                             Submit
