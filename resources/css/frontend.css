@@ -2691,7 +2691,9 @@ input[type="file"] {
 		padding: 0px 5px !important;
 	}
 
-	
+	.container{
+		max-width: 720px;
+	}
 
 	.buttons_mine .forms-btn,
 	.employ_padding .forms-btn {
@@ -8306,6 +8308,9 @@ P.status_condition {
 
 
 
+.admin_dash {
+    padding: 0px 3px;
+}
 
 
 

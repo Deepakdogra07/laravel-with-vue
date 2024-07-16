@@ -287,7 +287,7 @@ function removeImage(type) {
                                     manager, supervisor or human resources department representative.</p>
                             </div>
                         </div>
-                        <!--<div v-if="document.employer_statement" class="mt-3 relative upload_file">
+                        <!-----<div v-if="document.employer_statement" class="mt-3 relative upload_file">
                             <div class="d-flex align-items-start all_image_close">
                                 <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                     @click="removeImage('employer_statement')">
@@ -310,7 +310,7 @@ function removeImage(type) {
                             </div>
                             <p class="close_image_name">{{ image_name.employer_statement }}</p>
                         </div> -->
-                        <div v-if="document.employer_statement" class="mt-3 relative">
+                        <div v-if="document.employer_statement" class="mt-3 relative upload_image">
                             <div class="d-flex align-items-start all_image_close">
                                 <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                     @click="removeImage('employer_statement')"><i class="fas fa-times"></i></p>
