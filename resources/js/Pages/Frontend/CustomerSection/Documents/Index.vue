@@ -102,7 +102,12 @@ function show_next_div(div_number) {
 }
 
 function previous_div(div_number) {
-    div_numbers.value = `step-form-${div_number - 1}`
+   
+    if(div_number == 5){
+        div_numbers.value = `step-form-${div_number - 2}`
+    }else{
+        div_numbers.value = `step-form-${div_number - 1}`
+    }
 }
 
 // function show_document(type, event) {
@@ -355,7 +360,7 @@ async function submit_Document() {
                         <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
                                 <i class="fa-solid fa-circle-check green-text"></i>
-                                <p class="light-text">include a description of what you are doingand why
+                                <p class="light-text">include a description of what you are doing and why
 
                                 </p>
                             </div>

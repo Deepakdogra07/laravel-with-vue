@@ -87,6 +87,9 @@ onMounted(() => {
     </div>
 
     <section class="view_customer_wrapper back_button_wrap">
+
+
+
         <div class="container py-12 view_customer_inner">
             <!-- <div v-if="user_type == 3 ">
                 <p class="mb-0" style="display: inline-block;">
@@ -287,9 +290,9 @@ onMounted(() => {
                     <h2>Image</h2>
                     <div class="row">
                         <a href="javascript:void(0)"
-                            @click="openModal(customer.employments.evidence_self_employment_aus)">
+                            @click="openModal(customer.employments.evidence_self_employment_aus)" style="padding-left:0px;">
                             <div class="col column_width">
-                                <div class="img_inner_wrapper">
+                                <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#image_modal">
                                     <img :src="customer?.employments?.evidence_self_employment_aus">
                                     <Modal :imagesrc="customer?.employments?.evidence_self_employment_aus"></Modal>
                                     <div class="wrapper_name">
@@ -299,6 +302,21 @@ onMounted(() => {
                                                 v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)">
                                             </p>
                                         </a>
+                                    </div>
+                                </div>
+                                <div class="modal fade modal_main" id="image_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal_inner">
+                                        <div class="modal-content">
+                                            <div class="modal-header" style="border:0px; padding-bottom: 0px;">
+                                                <button type="button" class="btn-close modal_btn_mine" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+</svg>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img :src="customer?.employments?.evidence_self_employment_aus">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -469,36 +487,8 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
-
-
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#image_modal">
-        Modal
-    </button>
-
-    <div class="modal fade modal_main" id="image_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal_inner">
-           <div class="modal-content">
-               <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Modal Title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Modal Body </h1> 
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
         </div>
     </section>
-
-
-
-   
-
-
 
 
     <Footer />
