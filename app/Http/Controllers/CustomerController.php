@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Mail\VerifyUser;
 use App\Models\Customer;
 use App\Models\JobStatus;
+use App\Models\Industries;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\BusinessModal;
@@ -181,7 +182,9 @@ class CustomerController extends Controller
     public function view_customer($customer_id){
         $user_type = Auth::user()->user_type;
         $customer = Customer::where('id',$customer_id)->with('travel_details','status','documents','employments','transactions','jobs','jobs.business')->first();
-        return Inertia::render('Business/ViewCustomer',compact('customer','user_type'));
+        $industry_id = json_decode($customer->jobs->industry_id);
+        $industries = Industries::WhereIn('id',$industry_id)->pluck('category_heading')->toArray();
+        return Inertia::render('Business/ViewCustomer',compact('customer','user_type','industries'));
     }
     
 }
