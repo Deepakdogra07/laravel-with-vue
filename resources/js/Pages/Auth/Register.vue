@@ -55,7 +55,13 @@ const submit = () => {
 };
 function select_country(event){
     // console.log(event,'1234566')
+    
     states.value = countryStateCity.State.getStatesOfCountry(event.target.value);
+    // console.log(states.value.length);/
+    if(states.value.length ==0){
+        states.value.push(countryStateCity.Country.getCountryByCode(event.target.value));
+        // console.log()
+    }
 }
 
 const showPassword = ref(false);

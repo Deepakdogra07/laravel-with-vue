@@ -204,9 +204,14 @@ class JobApplicationController extends Controller
                     $status = CustomerStatus::where('customer_id', $customer_personal_details->id)->first();
                 }
             } else {
-                $customer_personal_details = new Customer();
-                $customer_travel_details = new CustomerTravelDetails();
-                $status = new CustomerStatus();
+                $customer_personal_details = Customer::where(['email' => $request->email, 'submitted' => 1, 'job_id' => $request->job_id])->first();
+                if (!$customer_personal_details) {
+                    $customer_personal_details = new Customer();
+                    $customer_travel_details = new CustomerTravelDetails();
+                    $status = new CustomerStatus();
+                } else {
+                    return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('errors', 'variable'));
+                }
             }
             // Personal Details Code
             $customer_personal_details->fill($customer_personal_detail);
