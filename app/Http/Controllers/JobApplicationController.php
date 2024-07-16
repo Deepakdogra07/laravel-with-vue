@@ -395,6 +395,7 @@ class JobApplicationController extends Controller
         $customer_employments = CustomerTraining::where(['job_id' => $request->job_id, 'customer_id' => $request->customer_id])->first();
         if (!$customer_employments) {
             $customer_employments = new CustomerTraining();
+            $customer_employments->updated_at = null;
         }
         $customer_employments->fill($request->all());
         if (isset($request->employer_statement) && $request->file('employer_statement')) {
@@ -422,7 +423,7 @@ class JobApplicationController extends Controller
             $imageName = insertData($image, 'customer/employments/');
             $customer_employments->formal_training_evidence = '/storage/' . $imageName;
         }
-        $customer_employments->updated_at = null;
+        
         $customer_employments->save();
         $job_id = $request->job_id;
         $customer_id = $customer_employments->customer_id;
@@ -623,8 +624,8 @@ class JobApplicationController extends Controller
 
     public function submit_customers_data(Request $request)
     {
-
-
+        
+        // dd($request->all());
         $customer_employments = CustomerTraining::where(['job_id' => $request->job_id, 'customer_id' => $request->customer_id])->first();
         if (!$customer_employments) {
             $customer_employments = new CustomerTraining();
@@ -635,7 +636,6 @@ class JobApplicationController extends Controller
             $imageName = insertData($image, 'customer/employments/');
             $customer_employments->employer_statement = '/storage/' . $imageName;
         }
-
 
         if (isset($request->financial_evidence) && $request->file('financial_evidence')) {
             $image = $request->file('financial_evidence');
@@ -649,11 +649,22 @@ class JobApplicationController extends Controller
             $imageName = insertData($image, 'customer/employments/');
             $customer_employments->evidence_self_employment = '/storage/' . $imageName;
         }
-
+        if (isset($request->evidence_self_employment_aus) && $request->file('evidence_self_employment_aus')) {
+            $image = $request->file('evidence_self_employment_aus');
+            // dd($image);
+            $imageName = insertData($image, 'customer/employments/');
+            $customer_employments->evidence_self_employment_aus = '/storage/' . $imageName;
+            // dd($customer_employments);
+        }
         if (isset($request->employer_statement) && $request->file('employer_statement')) {
             $image = $request->file('employer_statement');
             $imageName = insertData($image, 'customer/employments/');
             $customer_employments->employer_statement = '/storage/' . $imageName;
+        }
+        if (isset($request->formal_training_evidence) && $request->file('formal_training_evidence')) {
+            $image = $request->file('formal_training_evidence');
+            $imageName = insertData($image, 'customer/employments/');
+            $customer_employments->formal_training_evidence = '/storage/' . $imageName;
         }
         $customer_employments->save();
         return response()->json(['success' => true]);
@@ -669,6 +680,7 @@ class JobApplicationController extends Controller
             $customer = new CustomerDocuments();
         }
         $customer->job_id = $request->job_id;
+        // dd($request->all());
         $customer->customer_id = $request->customer_id;
         if (isset($request->employment_evidence) && $request->file('employment_evidence')) {
             $image = $request->file('employment_evidence');
@@ -707,6 +719,7 @@ class JobApplicationController extends Controller
         }
         if (isset($request->evidence_image) && $request->file('evidence_image')) {
             $image = $request->file('evidence_image');
+            // dd('here',$image);
             $imageName = insertData($image, 'customer/documents/');
             $customer->evidence_image = '/storage/' . $imageName;
         }
@@ -723,7 +736,7 @@ class JobApplicationController extends Controller
         }
         $customer->save();
 
-        return back()->with(['success' => true, 'customer_id' => $customer_personal_details?->id]);
+        return response()->json(['success' => true]);
 
 
     }

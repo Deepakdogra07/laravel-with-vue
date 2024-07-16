@@ -143,7 +143,7 @@ function show_document(stype, event, type, size) {
         'image/png',
         'application/pdf'
     ];
-    if ((type === 'image') && !file.type.startsWith('image/')) {
+    if ((type === 'image') && !file) {
         toast.error('Please upload an image file.');
     } else if ((type === 'doc') && !allowedFormats.includes(file.type)) {
         toast.error('Please upload a file of type: .doc, .docx, .jpg, .jpeg, .png, or .pdf.');
@@ -293,7 +293,7 @@ function removeImage(type) {
                                     @click="removeImage('employer_statement')">
                                     <i class="fas fa-times"></i>
                                 </p>
-                                <img v-if="form.employer_statement.type.startsWith('image/')"
+                                <img v-if="form.employer_statement"
                                     :src="document.employer_statement" alt="" srcset="" width="250px" />
                                 <p class="doc_txt" style="width:400px" v-else>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
@@ -406,7 +406,7 @@ function removeImage(type) {
                                 <div class="d-flex align-items-start all_image_close">
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('financial_evidence')"><i class="fas fa-times"></i></p>
-                                    <img v-if="form.financial_evidence.type.startsWith('image/')"
+                                    <img v-if="form.financial_evidence"
                                         :src="document.financial_evidence" alt="" srcset="" width="250px" />
                                     <p class="doc_txt" style="width:400px" v-else>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -526,7 +526,7 @@ function removeImage(type) {
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('evidence_self_employment')"><i class="fas fa-times"></i>
                                     </p>
-                                    <img v-if="form.evidence_self_employment.type.startsWith('image/')"
+                                    <img v-if="form.evidence_self_employment"
                                         :src="document.evidence_self_employment" alt="" srcset="" width="250px" />
                                     <p class="doc_txt" style="width:400px" v-else>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -612,7 +612,7 @@ function removeImage(type) {
                                         <p class="btn btn-sm btn-danger justify-content-end close_mark"
                                             style="float:right;" @click="removeImage('evidence_self_employment_aus')"><i
                                                 class="fas fa-times"></i></p>
-                                        <img v-if="form.evidence_self_employment_aus.type.startsWith('image/')"
+                                        <img v-if="form.evidence_self_employment_aus"
                                             :src="document.evidence_self_employment_aus" alt="" srcset=""
                                             width="250px" />
                                         <p class="doc_txt" style="width:400px" v-else>
@@ -720,7 +720,7 @@ function removeImage(type) {
                                     <p class="btn btn-sm btn-danger justify-content-end close_mark" style="float:right;"
                                         @click="removeImage('formal_training_evidence')"><i class="fas fa-times"></i>
                                     </p>
-                                    <img v-if="form.formal_training_evidence.type.startsWith('image/')"
+                                    <img v-if="form.formal_training_evidence"
                                         :src="document.formal_training_evidence" alt="" srcset="" width="250px" />
                                     <p class="doc_txt" style="width:400px" v-else>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"

@@ -10,6 +10,6 @@ use Illuminate\Http\Request;
 class TestController extends Controller
 {
     public function index(){
-        Mail::to('alkavisionvivante@gmail.com')->send(new Transaction('2' , 'alka', 'alkavisionvivante@gmail.com','tdgdfgfgdf','1','0','SUCCED'));
+        Mail::to('business@yopmail.com')->send(new Transaction('2' , 'alka', 'alkavisionvivante@gmail.com','tdgdfgfgdf','1','0','SUCCED'));
     }
 }
