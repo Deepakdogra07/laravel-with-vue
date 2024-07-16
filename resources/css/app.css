@@ -7,6 +7,7 @@
 @import "vue3-loading-overlay/dist/vue3-loading-overlay.css";
 @import "./core.css";
 @import "./frontend.css";
+@import "./modal.css";
 @import "./admin.css";
 
 @tailwind base;

@@ -1891,6 +1891,12 @@ input[type="file"] {
 	}
 }
 
+@media (max-width: 1024px) {
+	.abt_cards_one {
+		height: 630px !important;
+	}
+}
+
 @media (max-width: 1023px) {
 	.contactUs-section .col-md-8 {
 		padding-left: 20px !important;
@@ -2604,6 +2610,10 @@ input[type="file"] {
 }
 
 @media (max-width:767px) {
+	.add_customers_inner a.paginate_button {
+		margin-bottom: 12px;
+	}
+
 	.admin_padding {
 		border-radius: 8px !IMPORTANT;
 	}
@@ -3517,7 +3527,7 @@ input[type="file"] {
 
 	.testimonials_width,
 	.about-width,
-	.all-testimonial_width {
+	.all-testimonial_width, .bottom-footer .about-width{
 		padding: 0px 15px !important;
 	}
 
@@ -4143,7 +4153,8 @@ input[type="file"] {
 	}
 
 	.sub-heading-section {
-		padding-bottom: 25px !important;
+		padding-bottom: 35px !important;
+		padding-top: 42px;
 	}
 
 	.sub-heading-section h1 {
@@ -6679,9 +6690,9 @@ form.row.edit_customer label,
 }
 
 .add_customers_inner a.paginate_button {
-	background: #097b72 !important;
-	border: 0px !important;
-	border-radius: 5px !important;
+    background: #097b72 !important;
+    border: 0px !important;
+    border-radius: 5px !important;
 }
 
 .aboutcard_align .about-us-cards {
@@ -7473,6 +7484,10 @@ span.job-filter_text {
 .job_posting_page input:focus {
 	border: 1px solid #ddd !important;
 	box-shadow: unset !important;
+}
+
+.csustomer_view {
+    padding-left: 0px !important;
 }
 
 .travel-section .dp__main .dp__pointer.dp__input_readonly:focus {
