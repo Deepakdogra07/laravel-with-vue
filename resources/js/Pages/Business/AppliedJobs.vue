@@ -41,7 +41,7 @@ const props = defineProps({
                 <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner table-responsive">
                     <DataTable
                         class="display applied_job business_table business_dash_table business_table_dashboard job-data-table"
-                        :key="refreshDataTable">
+                        >
                         <thead>
                             <tr>
                                <th>Title of Job</th>
@@ -55,41 +55,34 @@ const props = defineProps({
                             </tr>
                         </thead>
                         <tbody>
-                            <div class="overlap_hidden_white"><tr v-for="customer in applied_jobs">
-                                <td v-html="customer?.jobs?.job_title"></td>
-                                <td v-html="customer?.customers?.first_name + ' ' + customer?.customers?.last_name">
+                            <!-- <div class="overlap_hidden_white"> -->
+                                <tr v-for="job_status of applied_jobs">
+                                <td v-html="job_status?.jobs?.job_title"></td>
+                                <td v-html="job_status?.customers?.first_name + ' ' + job_status?.customers?.last_name">
                                 </td>
-                                <td v-html="customer?.customers?.email"></td>
-                                <td v-html="customer?.customers?.migrate_country"></td>
-                                <td v-html="customer?.jobs?.business?.company_name"></td>
-                                <td v-html="customer?.jobs?.business?.contact_number"></td>
+                                <td v-html="job_status?.customers?.email"></td>
+                                <td v-html="job_status?.customers?.migrate_country"></td>
+                                <td v-html="job_status?.jobs?.business?.company_name"></td>
+                                <td v-html="job_status?.jobs?.business?.contact_number"></td>
 
                                 <td class="status_business">
-                                    <div v-if="customer?.status == 0" style="background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000; text-align:center;">Active </div>
+                                    <div v-if="job_status?.status == 0" style="background-color:#d6fdd6; color:#008000; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600!important; font-size: 13px; border:1px solid #008000; text-align:center;">Active </div>
 
-                                    <div v-if="customer?.status == 1" style="background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500; text-align:center;">Awaiting Review </div>
+                                    <div v-if="job_status?.status == 1" style="background-color:#fff4e1; color:#ffa500; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #ffa500; text-align:center;">Awaiting Review </div>
 
-                                    <div v-if="customer?.status == 2" style="background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63; text-align:center;">Reviewed </div>
+                                    <div v-if="job_status?.status == 2" style="background-color:#bddcff; color:#002f63; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #002f63; text-align:center;">Reviewed </div>
 
-                                    <div v-if="customer?.status == 3" style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154; text-align:center;">Contacted </div>
+                                    <div v-if="job_status?.status == 3" style="background-color:#e7e7ff; color:#111154; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #111154; text-align:center;">Contacted </div>
 
-                                    <div v-if="customer?.status == 4" style="background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754; text-align:center;">Hired </div>
+                                    <div v-if="job_status?.status == 4" style="background-color:#deffef; color:#198754; padding:3px 13px; border-radius:8px; margin-bottom:8px; font-weight: 600 !important; font-size: 13px; border:1px solid #198754; text-align:center;">Hired </div>
 
-                                    <div v-if="customer?.status == 5" style="background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000; text-align:center;">Rejected </div>
+                                    <div v-if="job_status?.status == 5" style="background-color:#ffebeb; color:#FF0000; padding:3px 13px; border-radius:8px; font-weight: 600 !important; font-size: 13px; margin-bottom:8px; border:1px solid #FF0000; text-align:center;">Rejected </div>
                                 </td>
-
-                                <!-- <td>
-                                    <div v-if="customer?.status == 0" style="color:green">Active </div>
-                                    <div v-if="customer?.status == 1" style="color:green">Awaiting Review </div>
-                                    <div v-if="customer?.status == 2" style="color:green">Reviewed </div>
-                                    <div v-if="customer?.status == 3" style="color:green">Contacted </div>
-                                    <div v-if="customer?.status == 4" style="color:green">Hired </div>
-                                    <div v-if="customer?.status == 5" style="color:red">Rejected </div>
-                                </td> -->
                                 <td>
-                                    <Link class="btn btn-sm btn-success" :href="route('view_customer',customer.customer_id)"><i class="fas fa-eye"></i></Link>
+                                    <Link class="btn btn-sm btn-success" :href="route('view_customer',job_status.customer_id)"><i class="fas fa-eye"></i></Link>
                                 </td>
-                            </tr></div>
+                            </tr>
+                        <!-- </div> -->
                         </tbody>
                     </DataTable>
                 </div>
