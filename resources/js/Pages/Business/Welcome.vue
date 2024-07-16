@@ -160,8 +160,8 @@ export default {
     
     
     <div class="main-outer-section">
-        <div class="job-list-search srch_responsive business_srccc">
-            <div class="container aboutt-width ">
+        <div class="job-list-search srch_responsive business_srccc ">
+            <div class="container aboutt-width manage_business">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative src_bar">
                     <!-- <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                                             <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
@@ -225,8 +225,8 @@ export default {
                                             <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
                                         </div> -->
                 </div>
-                <div class="main-job-filter mt-4">
-                    <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper ">
+                <div class="main-job-filter ">
+                    <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper employee_wrap">
                         <!-- <li>
                                   <span>Yes (2)</span>
                                 </li>
@@ -268,7 +268,7 @@ export default {
                     </ul>
                 </div>
     
-                <div class="main-job-filter mt-5 spacing_nine business_tablesss_inner table-responsive applied_main-wrap">
+                <div class="main-job-filter mt-2 spacing_nine business_tablesss_inner table-responsive applied_main-wrap">
                     <DataTable class="display business_dash_tables_wrapper applied_frontend_table" :key="refreshDataTable">
                         <thead>
                             <tr>

@@ -223,7 +223,7 @@ function removeImage(){
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Update Job</h2>
         </template>
 
-        <div class="flex items-center justify-center row_width_100">
+        <div class="flex items-center justify-center row_width_100 update_job">
             <div class="login-bg-wrapper create_space create_code update_wrapper Arrow_align ">
                 <div class="about-us-bg-wrapper">
                     <div class="container">
@@ -381,7 +381,7 @@ function removeImage(){
                                             <InputError class="mt-2" :message="form.errors.pin_code" />
                                         </div>
                                     </div>
-                                    <div class="mt-4 Remote Work_label">
+                                    <div class="mt-4 Remote Work_label admin_work">
                                         <label class="flex items-center">
                                             <!-- <Checkbox class="remember-me-check" name="remember" /> -->
                                             <span class="label text-label">Work Type</span>

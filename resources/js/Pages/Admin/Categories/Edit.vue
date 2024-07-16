@@ -61,7 +61,7 @@ function updateThumbnailName(type, event) {
     </template>
     <div class="py-12 update_category_inner_wrapper">
       <div class="max-w-7xl mx-auto px-2 update_inner">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up border_mine" style="border: 1px solid #ddd;">
           <div class="p-6 text-black-900 inner_admin">
             <div class="container">
               <form @submit.prevent="submitForm">

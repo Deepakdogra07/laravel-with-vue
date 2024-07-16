@@ -342,11 +342,11 @@ function removeImage(type) {
                             <div class="flex items-start">
                                 <Link class=" forms-btn-transparent step-form-back"
                                     :href="route('job.introduction', [job_id, customer_id])">
-                                Back <span> <i class="bi bi-arrow-right"></i></span>
+                                 <span> <i class="bi bi-arrow-left"></i></span>Back
                                 </Link>
                             </div>
                             <div class="flex items-start" style="cursor:pointer;">
-                                <p class="forms-btn" id="1" @click="show_next_div(1)">
+                                <p class="forms-btn next-button" id="1" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
@@ -463,7 +463,7 @@ function removeImage(type) {
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start mt-4" style="cursor:pointer">
-                                <p class="forms-btn" id="2" @click="show_next_div(2)">
+                                <p class="forms-btn next-button" id="2" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
@@ -486,7 +486,7 @@ function removeImage(type) {
                     <h2 class="mb-3">3 Evidence of self-employment</h2>
                     <p class="light-text">If you are, or have been, self-employed, you must provide the following
                         evidence for each year of self-employment claimed:</p>
-                    <h3>3.1 Evidence of self-employment not undertaken in Australia:</h3>
+                    <h3 class="mt-5 evi_top">3.1 Evidence of self-employment not undertaken in Australia:</h3>
                     <div class="row mt-4">
                         <div class="col-md-6 col-12 employ_padding">
                             <div class="d-flex gap-3">
@@ -661,7 +661,7 @@ function removeImage(type) {
                                         </PrimaryButton>
                                     </div>
                                     <div class="flex align-items-start mt-4 login-btn-main" style="cursor:pointer">
-                                        <p class="forms-btn" id="3" @click="show_next_div(3)">
+                                        <p class="forms-btn next-button" id="3" @click="show_next_div(3)">
                                             Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                         </p>
                                     </div>
@@ -793,7 +793,7 @@ function removeImage(type) {
                                     Submitting....
                                     <img src="/images/loader.gif" style="width:20px; height:20px;">
                                 </PrimaryButton>
-                                <PrimaryButton class="forms-btn" id="4" type="submit" v-else>
+                                <PrimaryButton class="forms-btn next-button" id="4" type="submit" v-else>
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </PrimaryButton>
                             </div>

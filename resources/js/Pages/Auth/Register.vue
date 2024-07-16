@@ -150,7 +150,7 @@ const togglePasswordVisibility = () => {
                         
                     </div>
                     <div class="col-md-6 col-12 craete_account_cols">
-                        <div class="mt-3">
+                        <div class="mt-3 email_space">
                             <span class="label text-label">E-mail<span style="color:red"> *</span></span>
                             <TextInput id="email" type="text" placeholder="Enter e-mail" class="form-control mt-2"
                                 v-model="form.email" autocomplete="username" />

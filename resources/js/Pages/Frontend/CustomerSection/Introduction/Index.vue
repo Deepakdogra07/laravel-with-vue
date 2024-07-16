@@ -87,7 +87,7 @@ const prevSection = (customerId, jobId) => {
                     @click="prevSection(props.customer_id, props.job_id)">
                     <span> <i class="bi bi-arrow-left"></i></span> Back
                 </PrimaryButton>
-                <Link class="forms-btn" :href="route('employment.details', [job_id, customer_id])">
+                <Link class="forms-btn next-button" :href="route('employment.details', [job_id, customer_id])">
                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                 </Link>
             </div>

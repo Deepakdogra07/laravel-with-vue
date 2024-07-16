@@ -115,14 +115,14 @@ function filterData(type, event) {
 <template>
     <Header :logo_image="footer_data.logo_image" />
     <div class="main-outer-section">
-        <div class="job-list-search srch_responsive business_srccc add_job_srchhs">
-            <div class="container aboutt-width">
+        <div class="job-list-search srch_responsive business_srccc add_job_srchhs ">
+            <div class="container aboutt-width manage_business">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative srch_responsives" style="justify-content:space-between;">
                     <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
                         <Link class="btn btn-sm btn-success text-white business_btn_adds"
                             :href="route('business-jobs.create')">Add job</Link>
                     </div>
-                    <div class="d-flex gap-5 align-items-center srch_navbar admin_dash">
+                    <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link class='active-nav'>Jobs</Link>
                         <Link :href="route('dashboard')">Employee</Link>
                         <Link :href="route('applied-business-jobs')">Applied Jobs</Link>

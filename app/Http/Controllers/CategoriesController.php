@@ -27,9 +27,9 @@ class CategoriesController extends Controller
                   'category_heading' => 'required',
                   'thumbnail' => 'required|image',
             ], [
-                  'category_image.required' => 'The industry image is required.',
-                  'category_heading.required' => 'The industry heading is required.',
-                  'thumbnail.required' => 'The industry thumbnail is required.',
+                  'category_image.required' => 'The industry image field is required.',
+                  'category_heading.required' => 'The industry heading field is required.',
+                  'thumbnail.required' => 'The industry thumbnail field is required.',
 
             ]);
             if ($validator->fails()) {
@@ -66,8 +66,8 @@ class CategoriesController extends Controller
                   'category_heading' => 'required',
                   'thumbnail' => 'required',
             ], [
-                  'category_heading.required' => 'The industry heading is required.',
-                  'thumbnail.required' => 'The industry thumbnail is required.',
+                  'category_heading.required' => 'The industry heading field is required.',
+                  'thumbnail.required' => 'The industry thumbnail field is required.',
 
             ]);
             if ($validator->fails()) {    
