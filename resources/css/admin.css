@@ -4,6 +4,10 @@
 /* open sans fonts */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
+input:focus, textarea:focus {
+    box-shadow: 0px 0px 2px 0px #d3d3d3 !important;
+}
+
 .add__slider .datatable .dataTables_info,
 .padding_remove .dataTables_info {
 	text-align: center;
@@ -149,35 +153,44 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 	padding-left: 8px;
 	height: 31px;
 }
+
 .form-control:focus {
     border-color: #3c5b6f2b !important;
     box-shadow: 0 0 0 .25rem rgb(60 91 111 / 8%) !important;
 }
+
 .inner_admin input, .inner_admin textarea {
     background: #fbfbfb;
+	padding: 10px 12px !important;
 }
+
 .pages-heading .btn:first-child:active {
     background: #141E46;
     color: #fff !important;
     border-color: #141E46 !important;
 }
+
 .edit_fiedls_sec h2, .other_data_fields h2 {
     font-weight: 600;
     font-size: 22px !important;
     color: #3c5b6f;
     margin-bottom: 20px;
 }
+
 .edit_fiedls_sec label, .add_sliedrs label {
     color: #212529;
     font-size: 16px;
 	margin-top: 17px;
 }
+
 .add_customers .padding_remove .dataTables_paginate .paginate_button {
 	color: #fff !important;
 }
+
 .other_data_fields input, .other_data_fields textarea {
     padding: 10px 14px !important;
 }
+
 .border_index div#DataTables_Table_0_paginate a.paginate_button.current {
 	font-size: 15px !important;
 }
@@ -227,7 +240,6 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 .view_link_tab:hover {
     background: #060d1a !important;
     border-color: #060d1a !important;
-    /* font-weight: 700; */
 }
 .view_link_tab.active {
     background: #060d1a;
@@ -254,6 +266,7 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
 }
 .admin_appy_table select {
     line-height: 20px;
+    padding: 5px 10px!IMPORTANT;
 }
 .Admin_view_employ  .card-image img{
 	border-radius: 50%;
@@ -303,17 +316,11 @@ table.dataTable th.sorting::before,table.dataTable th.sorting::after{
     margin-right: 12px;
 	width: 100%;
 }
-/* .all_subhadings_wrap div.pages-heading:not(:has(*)) {
-    display: none !important;
-} */
 .categories_wrapper,.add_customers, .categories_page, .jobs_Admin_wrap {
     padding-top: 43px;
 }
 .testimonails_hd {
     margin-top: -32px;
-}
-.admin_appy_table .icon_eye{
-    padding: 9px 13px;
 }
 .admin_job .multiselect__tags {
     padding-bottom: 9px !important;
@@ -376,10 +383,22 @@ button:focus{
 	box-shadow: unset !important;
 }
 
+.pages-heading button {
+    background: #01796f;
+    color: #fff;
+    padding: 8px 20px;
+    border-color: #01796f;
+}
 
+.inner_admin img {
+    object-fit: contain;
+}
 
-
-
+.inner_admin label, .admin_job .text-label, .admin_job label, .update_wrapper label, .update_wrapper .text-label{
+	color: #212529 !important;
+	font-size: 16px;
+	font-weight: 700;
+}
 
 @media (max-width:1238px) {
 	.add_testimonial_page {
@@ -416,23 +435,31 @@ button:focus{
 	.View_Detailed_Enquiry_box {
 		width: 70% !important;
 	}
+
 	.Admin_view_employ .column_mine_width {
 		width: 23% !important;
 		flex: 1 23% !important;
 		max-width: 23% !important;
 		margin-bottom: 15px;
 	}
+
 	.Admin_view_employ .video_image_wrapper {
 		padding: 20px 13px!important; 
 	}
+
 	.Admin_view_employ  .card-image img {
 		height: 150px;
 		width: 150px;
 	}
+
 	.admin_box {
-		height: auto;
+		height: auto !important;
 		margin-bottom: 20px;
 	} 
+
+	.admin_work .remote_work label {
+		font-size: 12px !important;
+	}
 }
 
 @media (max-width:992px) {
@@ -445,6 +472,9 @@ button:focus{
 	}
 	.employ_table .dataTables_filter {
 		margin-top: 12px !important;
+	}
+	.admin_work label {
+		font-size: 14px !important;
 	}
 }
 
@@ -459,22 +489,6 @@ button:focus{
     .dataTables_wrapper .dataTables_filter, .padding_remove .dataTables_length{
         float: left;
     }
-    /* .dataTables_wrapper .dataTables_length{
-        width:100%;
-        margin-bottom: 0px;
-    }   
-    .dataTables_wrapper .dataTables_filter {
-        display: flex;
-        flex-wrap: wrap;
-        width: 93%;
-    }
-    .dataTables_wrapper .dataTables_filter label, .dataTables_wrapper .dataTables_filter label input{
-        width:100%;
-    }
-    .dataTables_wrapper .dataTables_filter label{
-        display: flex;
-        align-items: center;
-    } */
     .dataTables_wrapper .dataTables_filter {
         margin-left: 0px;
         float: right;
@@ -505,15 +519,19 @@ button:focus{
 	.side-navbar.mobile_sidebar .mobile_sidebar_inner_wrapper {
 		padding-top: 0px !important;
 	}
+
 	.wrapper_other_fields {
 		max-width: 1120px;
 	}
+
 	.View_Detailed_Enquiry_box {
 		width: 100% !important;
 	}
+
 	.job_posting_page {
 		padding: 0px 5px;
 	}
+
 	.other_data_fields .container {
 		padding: 0px 5px;
 		max-width: 100%;
@@ -521,6 +539,7 @@ button:focus{
 	.certifiacte-wrapper-col {
 		padding: 0px;
 	}
+
 	.all_subhadings_wrap .pages-heading, .add_customers .add_customers_inner, .add_customers .add_customers_inner, .categories_page .categories_inner, .View_enquires_wrapper .View_enquiresinner_wrapper, .View_Detailed_Enquiry_box .view_padding, .border_index.job_admin_all, .all_subhadings_wrap .view_job_page {
 		padding-left: 3px !important;
 		padding-right: 3px !important;
@@ -529,41 +548,58 @@ button:focus{
 	.add_customer_page .configure-switch, .edit_customer_page .configure-switch, .col_update .configure-switch {
 		margin-top: 20px;
 	}
+
 	.view_employee_tabs_wrapper .container_full {
 		max-width: 100%;
 		padding: 0px 5px;
 	}
+
 	.view_job_page .bg_mine {
 		padding-left: 0px;
 		padding-right: 0px;
 	}
+
 	.View_applies_wrapper {
 		margin-top: 20px;
 	}
 	.employesss_tabs_dd {
 		padding: 0px 5px;
 	}
+
 	.view_employ_table th{
 		white-space: nowrap;
 	}
+
 	.admin_profile .remove_paddingss {
 		padding: 0px 5px;
 	}
 	.Admin_view_employ .video_image_wrapper,.Admin_view_employ .customer_card, .Admin_view_employ .video_image_wrapper {
 		padding: 20px 0px !important;
 	}
+
 	.Admin_view_employ, .Admin_view_employ .pass_travel_details_wrapper {
 		padding: 0px !important;
 		margin: 0px !important;
 	}
+
 	.width_contents{
 		max-width: 740px !important;
 	}
+
 	.Travel_details {
 		margin-top: 20px;
 	}
+
 	.view_job_wrapper {
 		padding: 0px 3px !important;
+	}
+
+	.mobile_space {
+		padding: 0px 5px!important;
+	}
+
+	.employment-first-form .evi_top {
+		margin-top: 20px !important;
 	}
 }
 
@@ -603,10 +639,6 @@ button:focus{
         margin-left: 10px;
         text-align: left;
     }
-    /* .dataTables_wrapper .dataTables_info,
-	.dataTables_wrapper .dataTables_paginate {
-		float: right;
-	} */
     .padding_remove {
 		padding: 0px !important;
 	}
@@ -677,6 +709,14 @@ button:focus{
 
 	.testimonails_hd {
 		margin-top: -19px;
+	}
+
+	.inner_admin label {
+		font-size: 15px;
+	}
+
+	.admin_work .remote_work label {
+		font-size: 14px !important;
 	}
 
 }

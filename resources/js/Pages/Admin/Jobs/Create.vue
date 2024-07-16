@@ -198,6 +198,7 @@ function removeImage(){
     image_name.value ='';
     image.value ='';
 }
+
 </script>
 <template>
     <AuthenticatedLayout>
@@ -355,7 +356,7 @@ function removeImage(){
                                             <InputError class="mt-2" :message="form.errors.pin_code" />
                                         </div>
                                     </div>
-                                    <div class="mt-4 Remote Work_label">
+                                    <div class="mt-4 Remote Work_label admin_work">
                                         <label class="flex items-center">
                                             <!-- <Checkbox class="remember-me-check" name="remember" /> -->
                                             <span class="label text-label">Work Type</span>
@@ -585,8 +586,14 @@ function removeImage(){
 
                                 </div>
 
+                                
                                 <div class="col-12 mt-4 file_upload">
-                                    <div class="file-inputs mt-3 relative">
+                                    <div v-if="image_name" width="250px" class="close_image_wrapper">
+                                        <div class="d-flex align-items-start all_image_close"><p class="btn btn-sm btn-danger justify-content-end close_mark"  @click="removeImage()"><i class="fas fa-times"></i></p>
+                                        <img :src="image_src1" alt="" srcset=""width="200px" height="200px" ></div>
+                                        <p class="mt-2 close_image_name">{{ image_name }}</p>
+                                    </div>
+                                    <div v-else class="file-inputs mt-3 relative">
                                         <div class="dotted-bg">
                                             <img :src="image" alt="" srcset="">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"
@@ -599,11 +606,12 @@ function removeImage(){
                                             <p class="file-type">Max size 20MB</p>
                                             <input class="upload" type="file" id="banner"
                                                 @change="selectFile('job_image', $event, 'image', 20)" />
-                                            <p>{{ image_name }}</p>
+                                            <!-- <p>{{ image_name }}</p> -->
                                         </div>
                                     </div>
                                     <InputError class="mt-2" :message="form.errors.job_image" />
                                 </div>
+                                
                                 <div class="col-12 ">
                                     <div class="flex items-center justify-center mt-4 login-btn-main">
 

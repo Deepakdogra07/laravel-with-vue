@@ -212,9 +212,7 @@ function removeImage1(){
                             </svg>
                             <h2 class="choose-para">Upload Passport and Prefill information </h2>
                             <p class="file-type ">Max size 20MB</p>
-                            <input class="upload" type="file" @change="upload_image1($event)"id="banner" accept="image/*" >
-                            
-                            
+                            <input class="upload" type="file" @change="upload_image1($event)"id="banner" accept="image/*" >   
                         </div>
                     </div>
                     <InputError  class="mt-2" v-if="form.errors.passport_image" :message="form.errors.passport_image[0]"/>
@@ -415,7 +413,7 @@ function removeImage1(){
                     Submitting....
                     <img src="/images/loader.gif" style="width:20px; height:20px;">
                 </PrimaryButton>
-                <PrimaryButton class="forms-btn"type="submit" v-else>
+                <PrimaryButton class="forms-btn next-button"type="submit" v-else>
                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                 </PrimaryButton>
                 </div>

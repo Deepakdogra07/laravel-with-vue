@@ -42,42 +42,42 @@ const submit = () => {
 
         <form @submit.prevent="submit">
           <div class="row add_customer_page">
-            <div class="col-md-6 add_customer_row">
+            <div class="col-md-6 add_customer_row mb-1">
               <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
-              <TextInput id="name" type="text" placeholder="Enter Customer Name" class="form-control"
+              <TextInput id="name" type="text" placeholder="Enter Customer Name" class="form-control mt-2"
                 v-model="form.name" autocomplete="name" />
               <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="col-md-6 add_customer_row">
+            <div class="col-md-6 add_customer_row mb-1">
               <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
-              <TextInput id="email" type="email" placeholder="Enter Email" class="form-control" v-model="form.email"
+              <TextInput id="email" type="email" placeholder="Enter Email" class="form-control mt-2" v-model="form.email"
                 autocomplete="email" />
               <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="mt-2 col-md-6 add_customer_row">
+            <div class="mt-2 col-md-6 add_customer_row mb-1">
               <InputLabel for="password" value="Password" style="display: inline-block;" /><strong
                 class="required-asterisk"> * </strong>
-              <TextInput id="password" type="password" placeholder="Enter Password" class="form-control"
+              <TextInput id="password" type="password" placeholder="Enter Password" class="form-control mt-2"
                 v-model="form.password" />
               <InputError class="mt-2" :message="form.errors.password" />
 
             </div>
-            <div class="mt-2 col-md-6 add_customer_row">
+            <div class="mt-2 col-md-6 add_customer_row mb-1">
               <InputLabel for="password_confirmation" value="Confirm Password" style="display: inline-block;" /><strong
                 class="required-asterisk"> * </strong>
               <TextInput id="password_confirmation" type="password" placeholder="Enter Confirm Password"
-                class="form-control" v-model="form.password_confirmation" autocomplete="new-password" />
+                class="form-control mt-2" v-model="form.password_confirmation" autocomplete="new-password" />
               <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
-            <div class="mt-2 col-md-6 add_customer_row">
+            <div class="mt-2 col-md-6 add_customer_row mb-1">
               <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
               </strong>
-              <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control"
+              <TextInput id="phone" type="text" placeholder="Enter Phone Number" class="form-control mt-2"
                 v-model="form.phone" autocomplete="phone" />
               <InputError class="mt-2" :message="form.errors.phone" />
             </div>
@@ -86,7 +86,7 @@ const submit = () => {
                   <TextInput id="address" type="text" placeholder="Enter Address" class="form-control" v-model="form.address" autocomplete="address" />
                   <InputError class="mt-2" :message="form.errors.address" />
               </div> -->
-            <div class="mt-2 col-md-6 add_customer_row">
+            <div class="mt-2 col-md-6 add_customer_row mb-1">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex align-items-center">

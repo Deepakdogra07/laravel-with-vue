@@ -254,11 +254,11 @@ async function submit_Document() {
                             <div class="flex align-items-start mt-4 ">
                                 <Link class=" forms-btn-transparent step-form-back"
                                     :href="route('employment.details', [job_id, customer_id])">
-                                Back <span> <i class="bi bi-arrow-right"></i></span>
+                              <span> <i class="bi bi-arrow-left"></i></span>Back 
                                 </Link>
                             </div>
                             <div class="flex align-items-start mt-4" style="cursor:pointer;">
-                                <p class="forms-btn" @click="show_next_div(1)">
+                                <p class="forms-btn next-button" @click="show_next_div(1)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
@@ -331,7 +331,7 @@ async function submit_Document() {
 
                             </div>
                             <div class="flex items-start mt-4" style="cursor:pointer;">
-                                <p class="forms-btn" @click="show_next_div(2)">
+                                <p class="forms-btn next-button" @click="show_next_div(2)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
@@ -506,7 +506,7 @@ async function submit_Document() {
                             </PrimaryButton>
                         </div>
                         <div class="flex items-start mt-4" style="cursor:pointer;">
-                            <p class="forms-btn" @click="show_next_div(4)">
+                            <p class="forms-btn next-button" @click="show_next_div(4)">
                                 Next Step <span> <i class="bi bi-arrow-right"></i></span>
                             </p>
                         </div>
@@ -530,7 +530,7 @@ async function submit_Document() {
                                         </PrimaryButton>
                                     </div>
                                     <div class="flex items-start mt-4" style="cursor:pointer">
-                                        <p class="forms-btn" @click="show_next_div(4)">
+                                        <p class="forms-btn next-button"  @click="show_next_div(4)">
                                             Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                         </p>
 
@@ -549,7 +549,7 @@ async function submit_Document() {
             <div class="container">
                 <div class="employment-first-form intro_steps intro_top">
                     <div class="intro_inner">
-                        <h2>Introduction</h2>
+                        <h2 class="mb-3">Introduction</h2>
                         <p class="light-text">When you provide evidence of your workplace skills for the Stage 1
                             Documentary Evidence Assessment, you must also provide Video and Photo evidence.</p>
                         <p class="light-text">This Guideline provides instructions about what types of skills to capture
@@ -907,7 +907,7 @@ async function submit_Document() {
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-center mt-4" style="cursor:pointer;">
-                                <p class="forms-btn" @click="show_next_div(5)">
+                                <p class="forms-btn next-button" @click="show_next_div(5)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
@@ -1051,7 +1051,7 @@ async function submit_Document() {
                                 </PrimaryButton>
                             </div>
                             <div class="flex items-start mt-4" style="cursor:pointer;">
-                                <p class="forms-btn" @click="show_next_div(6)">
+                                <p class="forms-btn next-button" @click="show_next_div(6)">
                                     Next Step <span> <i class="bi bi-arrow-right"></i></span>
                                 </p>
                             </div>
