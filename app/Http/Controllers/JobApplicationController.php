@@ -103,9 +103,9 @@ class JobApplicationController extends Controller
         if ($request->isMethod('get')) {
             return to_route('travel.details', $job_id);
         }
-        $check_user = Customer::where(['email'=> $request->email,'submitted'=>0])->first();
+        // $check_user = Customer::where(['email'=> $request->email,'submitted'=>0])->first();
 
-        if (!$check_user) {
+        // if (!$check_user) {
             
             $rule = [
                 "purpose_of_stay" => 'required',
@@ -236,52 +236,51 @@ class JobApplicationController extends Controller
             $status->job_id = $customer_personal_details->job_id;
             $status->customer_id = $customer_personal_details->id;
             $status->status = 0;
-            // dd($customer_personal_details->id);
-            // dd(Session::all());
             $status->save();
+            // Session Customer
             Session::forget('customer_id');
             Session::put('customer_id', $customer_personal_details->id);
             Session::save();
             return redirect()->route('job.introduction', [$request->job_id, $customer_personal_details->id]);
-        } else {
-            $citizen = (isset($request->citizen_of_more_than_one)) ? 1 : 0;
-            $visa_available = (isset($request->visa_available)) ? 1 : 0;
-            // dd($request->all());
-            Customer::where('id', $check_user->id)->update([
-                "job_id" => $request->job_id,
-                'visa_available'=>$visa_available,
-                "migrate_country" => $request->migrate_country,
-                "customer_image" => $request->customer_image,
-                "first_name" => $request->first_name,
-                "last_name" => $request->last_name,
-                "email" => $request->email,
-                "confirm_email" => $request->confirm_email,
-                "date_of_birth" => $request->date_of_birth,
-                "country_of_birth" => $request->country_of_birth,
-                "city_of_birth" => $request->first_name,
-                "gender" => $request->gender,
-                "martial_status" => $request->martial_status,
-                "passport_number" => $request->passport_number,
-                "passport_image" => $request->passport_image,
-                "issuing_authority" => $request->issuing_authority,
-                "date_of_expiry" => $request->date_of_expiry,
-                "citizen_of_more_than_one_country" => $citizen,
-            ]);
-            // travel details update
-            CustomerTravelDetails::where('id',$check_user->id)->update([
-                "job_id" => $request->job_id,
-                "customer_id" => Session::get('customer_id'),
-                "date_of_travel" => $request->date_of_travel,
-                "port_of_arrival" => $request->port_of_arrival,
-                "purpose_of_stay" => $request->purpose_of_stay,
-                "type_of_visa" => $request->type_of_visa,
-                "passenger_nationality" => $request->passenger_nationality,
-            ]);
-            Session::forget('customer_id');
-            Session::put('customer_id', $check_user->id);
-            Session::save();
-            return redirect()->route('job.introduction', [$request->job_id, Session::get('customer_id')]);
-        }
+        // } else {
+        //     $citizen = (isset($request->citizen_of_more_than_one)) ? 1 : 0;
+        //     $visa_available = (isset($request->visa_available)) ? 1 : 0;
+        //     // dd($request->all());
+        //     Customer::where('id', $check_user->id)->update([
+        //         "job_id" => $request->job_id,
+        //         'visa_available'=>$visa_available,
+        //         "migrate_country" => $request->migrate_country,
+        //         "customer_image" => $request->customer_image,
+        //         "first_name" => $request->first_name,
+        //         "last_name" => $request->last_name,
+        //         "email" => $request->email,
+        //         "confirm_email" => $request->confirm_email,
+        //         "date_of_birth" => $request->date_of_birth,
+        //         "country_of_birth" => $request->country_of_birth,
+        //         "city_of_birth" => $request->first_name,
+        //         "gender" => $request->gender,
+        //         "martial_status" => $request->martial_status,
+        //         "passport_number" => $request->passport_number,
+        //         "passport_image" => $request->passport_image,
+        //         "issuing_authority" => $request->issuing_authority,
+        //         "date_of_expiry" => $request->date_of_expiry,
+        //         "citizen_of_more_than_one_country" => $citizen,
+        //     ]);
+        //     // travel details update
+        //     CustomerTravelDetails::where('id',$check_user->id)->update([
+        //         "job_id" => $request->job_id,
+        //         "customer_id" => Session::get('customer_id'),
+        //         "date_of_travel" => $request->date_of_travel,
+        //         "port_of_arrival" => $request->port_of_arrival,
+        //         "purpose_of_stay" => $request->purpose_of_stay,
+        //         "type_of_visa" => $request->type_of_visa,
+        //         "passenger_nationality" => $request->passenger_nationality,
+        //     ]);
+        //     Session::forget('customer_id');
+        //     Session::put('customer_id', $check_user->id);
+        //     Session::save();
+        //     return redirect()->route('job.introduction', [$request->job_id, Session::get('customer_id')]);
+        // }
 
 
 

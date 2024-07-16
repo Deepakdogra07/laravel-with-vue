@@ -164,8 +164,8 @@ export default {
             <div class="container aboutt-width ">
                 <div class="d-flex justify-between align-items-center flex-wrap gap-3 relative src_bar">
                     <!-- <div class="login-section-mob absolute top-0 right-0 button_bs_ryt">
-                                        <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
-                                    </div> -->
+                                            <Link class="btn btn-sm btn-success text-white" :href="route('business-jobs.create')">Add job</Link>
+                                        </div> -->
                     <div class="d-flex gap-5 align-items-center srch_navbar">
                         <Link :href="route('business-jobs.index')">Jobs</Link>
                         <Link class='active-nav'>Employee</Link>
@@ -188,31 +188,31 @@ export default {
                             <ul class="d-flex align-items-center flex-wrap pl-0 business_links" :key="navbar_key">
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 0 }" @click="setActiveSpan(0)">{{ status.all }}
-                                    All</span>
+                                        All</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 1 }" @click="setActiveSpan(1)">{{ status.active }}
-                                    Active</span>
+                                        Active</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 2 }" @click="setActiveSpan(2)">{{ status.awaited }}
-                                    Awaited Review</span>
+                                        Awaited Review</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 3 }" @click="setActiveSpan(3)">{{ status.reviewed }}
-                                    Reviewed</span>
+                                        Reviewed</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 4 }" @click="setActiveSpan(4)">{{ status.contacted }}
-                                    Contacted</span>
+                                        Contacted</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 5 }" @click="setActiveSpan(5)">{{ status.hired }}
-                                    Hired</span>
+                                        Hired</span>
                                 </li>
                                 <li>
                                     <span :class="{ 'active-filter': activeSpan === 6 }" @click="setActiveSpan(6)">{{ status.rejected }}
-                                    Rejected</span>
+                                        Rejected</span>
                                 </li>
     
                             </ul>
@@ -222,47 +222,47 @@ export default {
     
     
                     <!-- <div class="col-md-1 login-section-desk text-end width_mobileS">
-                                        <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
-                                    </div> -->
+                                            <Link class="btn btn-sm btn-success" :href="route('business-jobs.create')">Add job</Link>
+                                        </div> -->
                 </div>
                 <div class="main-job-filter mt-4">
                     <ul class="d-flex align-items-center flex-wrap pl-0 business_dash_navbar_wrapper ">
                         <!-- <li>
-                              <span>Yes (2)</span>
-                            </li>
-                            <li>
-                              <span>Maybe (2)</span>
-                            </li> -->
+                                  <span>Yes (2)</span>
+                                </li>
+                                <li>
+                                  <span>Maybe (2)</span>
+                                </li> -->
                         <li>
                             <span>Job:
-                                <select class="job-filter_text any_select_box" @change="filterData('job_title', $event)">
-                                  <option value=""> Any</option>
-                                  <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
-                                </select>
-                              </span>
+                                    <select class="job-filter_text any_select_box" @change="filterData('job_title', $event)">
+                                      <option value=""> Any</option>
+                                      <option v-for="job in jobs" :value="job.id"> {{ job.job_title }}</option>
+                                    </select>
+                                  </span>
                         </li>
                         <!-- <li>
-                              <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
-                            </li> -->
+                                  <span>Assessment: <span class="job-filter_text">Any</span> <i class="bi bi-chevron-down pl-3"></i></span>
+                                </li> -->
                         <li class="business_location_list my-3">
                             <span>
-                                Location:
-                                <select @change="filterData('location', $event)" class="job-filter_text">
-                                  <option value="" class="any_option">Any</option>
-                                  <option v-for="country in countries" :value="country.name">{{
-                                    country.name }}</option>
-                                </select>
-                              </span>
+                                    Location:
+                                    <select @change="filterData('location', $event)" class="job-filter_text">
+                                      <option value="" class="any_option">Any</option>
+                                      <option v-for="country in countries" :value="country.name">{{
+                                        country.name }}</option>
+                                    </select>
+                                  </span>
                         </li>
                         <li>
                             <span class="sort_nav">Sort:
-                                <span class="job-filter_textss">
-                                  <select class="job-filter_text" @change="filterData('applied_date', $event)">
-                                    <option value="">Any</option>
-                                    <option value="desc">Apply Date(newest)</option>
-                                    <option value="asc">Apply Date(oldest)</option>
-                                  </select>
-                                </span>
+                                    <span class="job-filter_textss">
+                                      <select class="job-filter_text" @change="filterData('applied_date', $event)">
+                                        <option value="">Any</option>
+                                        <option value="desc">Apply Date(newest)</option>
+                                        <option value="asc">Apply Date(oldest)</option>
+                                      </select>
+                                    </span>
                             </span>
                         </li>
                     </ul>
@@ -317,14 +317,14 @@ export default {
                                 <td v-html="customer?.customers?.country_of_birth"></td>
                                 <td class="status">
                                     <select class="form-control select_status_wra" style="width:172px;" v-model="customer.status" @change="changeStatus(customer?.customers?.id, customer?.jobs?.id, $event)">
-                
-                                                <option value="0"> Active</option>
-                                                <option value="1"> Awaiting Review</option>
-                                                <option value="2"> Reviewed</option>
-                                                <option value="3"> Contacted</option>
-                                                <option value="4"> Hired</option>
-                                                <option value="5"> Rejected</option>
-                                            </select>
+                    
+                                                    <option value="0"> Active</option>
+                                                    <option value="1"> Awaiting Review</option>
+                                                    <option value="2"> Reviewed</option>
+                                                    <option value="3"> Contacted</option>
+                                                    <option value="4"> Hired</option>
+                                                    <option value="5"> Rejected</option>
+                                                </select>
                                 </td>
                                 <td class="view">
                                     <Link class="btn btn-sm btn-success icon_eye" :href="route('view_customer', customer.customer_id)"><i class="fas fa-eye"></i> </Link>
