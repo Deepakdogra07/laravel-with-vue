@@ -62,15 +62,15 @@ function handleFileInput1(event) {
     </template>
     <div class="py-12 add_category_page">
       <div class="max-w-7xl mx-auto px-1">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up" style="border: 1px solid #ddd;">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up border_mine" style="border: 1px solid #ddd;">
           <div class="p-6 text-black-900 inner_admin">
-            <div class="container">
+            <div class="container add_admin_industry">
               <form @submit.prevent="submitForm">
                 <div class="mb-4 margin_btm">
                   <label for="categoryHeading" class="block text-gray-700 text-sm font-bold mb-2">Industry
                     Heading <span style="color: red;"> *</span></label>
                   <input type="text" id="categoryHeading" v-model="form.category_heading"
-                    class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
+                    class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full" placeholder="Enter industry Heading">
                   <span v-if="props.errors.category_heading" class="error-message">{{ props.errors.category_heading
                     }}</span>
                 </div>

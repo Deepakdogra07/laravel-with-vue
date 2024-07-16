@@ -71,18 +71,20 @@ function submitForm() {
                 <div class="max-w-7xl mx-auto px-2 inner_update">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg shift-up admin_padding" style="border: 1px solid #ddd;">
                     <div class="p-6 text-black-900 inner_admin">
-                    <div class="container">
+                    <div class="container width_content">
                         <form @submit.prevent="submitForm">
                           <div class="mb-4">
                             <input type="hidden" id="sliderId" v-model="slider.id">
-                            <label for="sliderHeading" class="block text-gray-700 text-sm font-bold mb-2">Slider Heading <span style="color: red;"> *</span></label>
-                            <input type="text" id="sliderHeading" v-model="slider.slider_heading" @input="updateSliderName('heading',$event)"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full">
-                            <span v-if="!form.sliderHeading" class="error-message">The Slider Heading is required</span>
+                            <label for="sliderHeading" class="block text-gray-700 text-sm font-bold     mb-2">Slider Heading <span style="color: red;"> *</span>
+                            </label>
+
+                            <input type="text" id="sliderHeading" v-model="slider.slider_heading" @input="updateSliderName('heading',$event)"  class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 block w-full">
+                            <span v-if="!form.sliderHeading" class="error-message">The slider heading field is required</span>
                         </div>
                         <div class="mb-4">
-                            <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">The Slider Description (less than 100 words) <span style="color: red;"> *</span></label>
-                            <textarea id="sliderDescription" v-model="slider.slider_description" @input="updateSliderName('description',$event)" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full"></textarea>
-                            <span v-if="!form.sliderDescription" class="error-message">The Slider Description is required</span>
+                            <label for="sliderDescription" class="block text-gray-700 text-sm font-bold mb-2">The slider description (less than 100 words) <span style="color: red;"> *</span></label>
+                            <textarea id="sliderDescription" v-model="slider.slider_description" @input="updateSliderName('description',$event)" class="bg-gray-200 focus:outline-none focus:bg-white border border-gray-300 rounded-lg py-2 block w-full"></textarea>
+                            <span v-if="!form.sliderDescription" class="error-message">The slider description field is required</span>
                             <!-- <span v-if="errors.sliderDescription" class="error-message">{{ errors.sliderDescription }}</span> -->
                         </div>
                         <div class="mb-4">
@@ -92,7 +94,7 @@ function submitForm() {
                                 {{ slider.slider_image ? 'Change File' : 'Upload File' }}
                               </label> -->
                               <input type="file" id="sliderImage" @change="updateSliderName('image', $event)" accept="image/*" class="form-control mt-2 cursor-pointer">
-                            <span v-if="!form.sliderImage" class="error-message">The Slider Image is required</span>
+                            <span v-if="!form.sliderImage" class="error-message">The slider image field is required</span>
                         </div>
                         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                         </form>

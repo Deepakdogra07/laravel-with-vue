@@ -54,7 +54,7 @@ function update_all_data(type, event) {
           <div class="row">
             <div class="mt-4 col-md-6 column_spacing">
               <label for="name">Name<span class="text-danger"> *</span></label>
-              <input id="name" v-model="form.name" placeholder="Enter Name" class="form-control" autocomplete="name" />
+              <input id="name" v-model="form.name" placeholder="Enter Name" class="form-control mt-2" autocomplete="name" />
               <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
             </div>
 
@@ -66,13 +66,13 @@ function update_all_data(type, event) {
             <div class="mt-4 col-md-6 column_spacing">
               <label for="description">Description<span class="text-danger"> *</span></label>
               <textarea id="description" v-model="form.description" placeholder="Enter description"
-                class="form-control"></textarea>
+                class="form-control mt-2"></textarea>
               <div v-if="errors.description" class="text-danger">{{ errors.description }}</div>
             </div>
 
             <div class="mt-4 col-md-6 column_spacing">
               <label for="content">Content<span class="text-danger"> *</span></label>
-              <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control"></textarea>
+              <textarea id="content" v-model="form.content" placeholder="Enter Content" class="form-control mt-2"></textarea>
               <div v-if="errors.content" class="text-danger">{{ errors.content }}</div>
             </div>
             <!-- <div class="mt-4 col-md-6">
@@ -85,18 +85,18 @@ function update_all_data(type, event) {
                 class="hidden">
             </div> -->
             <div class="mt-4 col-md-6 column_spacing">
-              <label for="video" class="block text-gray-700 text-sm font-bold mb-2">Video</label>
-              <video :src="form.video" alt="" controls></video>
+              <label for="video" class="lock">Video<span class="text-danger"> *</span></label>
+              <video :src="form.video" alt="" class="mt-2" controls ></video>
               <!-- <label for="video" class="form-control mt-2 cursor-pointer">
                 {{ form.video ? 'Change File' : 'Upload File' }}
               </label> -->
-              <input type="file" id="video" @change="update_all_data('video', $event)" accept="video/*" class="form-control mt-2 cursor-pointer">
+              <input type="file" id="video" @change="update_all_data('video', $event)" accept="video/*" class="form-control mt-2 cursor-pointer mt-2">
             </div>
             <div class="mt-5 col-md-6 column_spacing">
 
               <div class="configure-switch d-flex align-items-center gap-3">
                 <div class="d-flex">
-                  <input type="checkbox" id="status" v-model="form.status" :true-value="1" :false-value="0" name="status" />
+                  <input type="checkbox" id="status" class="mt-2" v-model="form.status" :true-value="1" :false-value="0" name="status" />
                   <label for="status"></label>
                 </div>
                 <p class="mb-0 semibold">Status</p>
@@ -110,7 +110,7 @@ function update_all_data(type, event) {
               </div> -->
             </div>
 
-            <div class="mt-4 col-md-12 main-admin">
+            <div class="mt-2 col-md-12 main-admin mobile_space">
               <button type="submit" class="btn btn-primary mine">Update</button>
             </div>
             <div></div><br>

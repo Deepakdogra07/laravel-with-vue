@@ -55,7 +55,7 @@ const submit = () => {
           <div class="col-md-6 spacing_x">
             <InputLabel for="name" value="Name" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="name" type="text" placeholder="Enter name" class="form-control" :value="form.name"
+            <TextInput id="name" type="text" placeholder="Enter name" class="form-control mt-2" :value="form.name"
               v-model="form.name" autocomplete="name" />
             <InputError class="mt-2" :message="errors.name" />
           </div>
@@ -63,7 +63,7 @@ const submit = () => {
           <div class="col-md-6 spacing_edit">
             <InputLabel for="email" value="Email" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="email" type="email" placeholder="Enter email" class="form-control" :value="form.email"
+            <TextInput id="email" type="email" placeholder="Enter email" class="form-control mt-2" :value="form.email"
               v-model="form.email" autocomplete="email"  />
             <InputError class="mt-2" :message="errors.email" />
           </div>
@@ -71,7 +71,7 @@ const submit = () => {
           <div class="mt-4 col-md-6 spacing_mobile">
             <InputLabel for="phone" value="Phone" style="display: inline-block;" /><strong class="required-asterisk"> *
             </strong>
-            <TextInput id="phone" type="text" placeholder="Enter phone number" class="form-control" v-model="form.phone"
+            <TextInput id="phone" type="text" placeholder="Enter phone number" class="form-control mt-2" v-model="form.phone"
               autocomplete="phone" />
             <InputError class="mt-2" :message="errors.phone" />
           </div>
