@@ -87,9 +87,6 @@ onMounted(() => {
     </div>
 
     <section class="view_customer_wrapper back_button_wrap">
-
-
-
         <div class="container py-12 view_customer_inner">
             <!-- <div v-if="user_type == 3 ">
                 <p class="mb-0" style="display: inline-block;">
@@ -472,8 +469,37 @@ onMounted(() => {
                     </div>
                 </div>
             </div>
+
+
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#image_modal">
+        Modal
+    </button>
+
+    <div class="modal fade modal_main" id="image_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal_inner">
+           <div class="modal-content">
+               <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Modal Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <h1>Modal Body </h1> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
         </div>
     </section>
+
+
+
+   
+
+
+
 
     <Footer />
 </template>

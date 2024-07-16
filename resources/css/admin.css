@@ -549,6 +549,10 @@ button:focus{
 		margin-top: 20px;
 	}
 
+	.admin_job .close_mark {
+		z-index: unset;
+	}
+
 	.view_employee_tabs_wrapper .container_full {
 		max-width: 100%;
 		padding: 0px 5px;
