@@ -106,7 +106,7 @@ class JobApplicationController extends Controller
         $check_user = Customer::where(['email'=> $request->email,'submitted'=>0])->first();
 
         if (!$check_user) {
-            $user = Auth::user();
+            
             $rule = [
                 "purpose_of_stay" => 'required',
                 "type_of_visa" => 'required',
@@ -172,9 +172,9 @@ class JobApplicationController extends Controller
                 $errors = $validator->errors();
                 return Inertia::render('Frontend/CustomerSection/Travel/PersonalDetail', compact('errors', 'variable'));
             }
-            $user = User::where('email', $request->email)->first();
+            $user = Auth::user();
             if (!$user) {
-                $user = Auth::user();
+                $user = User::where('email', $request->email)->first();
             }
             if ($user) {
                 $create_customer = $user;

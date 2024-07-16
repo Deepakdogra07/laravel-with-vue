@@ -345,7 +345,7 @@ class BusinessController extends Controller
     {
         $applied_customers = JobStatus::whereIn('job_id',$job_id)->whereHas('customers', function ($query) {
             $query->where('submitted',1); 
-        })->with('customers')->get();
+        })->with('customers','customers.travel_details')->get();
         $active = CustomerStatus::where('job_id', $job_id)->where('status', 0)->whereHas('customers', function ($query) {
             $query->where('submitted',1); 
         })->count();
@@ -380,7 +380,7 @@ class BusinessController extends Controller
         $job_id = Jobs::where('user_id',$user_id)->pluck('id')->toArray();
         $applied_customers = JobStatus::where('status',$status)->whereIn('job_id',$job_id)->whereHas('customers',function($query){
             $query->where('submitted',1);
-        })->with('customers','jobs')->get();
+        })->with('customers','jobs','customers.travel_details')->get();
         return response()->json(['applied_customers' => $applied_customers]);
     }
     public function customer_search($string)
@@ -394,7 +394,7 @@ class BusinessController extends Controller
         })
         ->orwhereHas('jobs', function ($query) use ($string) {
             $query->where('job_title', 'like', "%{$string}%");
-        })->with('customers','jobs')->get();
+        })->with('customers','jobs','customers.travel_details')->get();
         return response()->json(['applied_customers' => $applied_customers]);
     }
     public function jobs_search($string){
