@@ -58,7 +58,7 @@ const props = defineProps({
 
 
     <div class="sm:px-6 md:px-0 lg:px-0 space-y-6 profile_update_page">
-      <div class="container">
+      <div class="container Profile_cnt">
         <div class="row">
           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 profile_col">
             <div class="p-4 sm:p-8 bg-white shadows sm:rounded-lg admins_boxx">
@@ -70,7 +70,7 @@ const props = defineProps({
               <UpdatePasswordForm class="max-w-xl" />
             </div>
           </div>
-          <div v-if="auth_type == 2"class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5">
+          <div v-if="auth_type == 2"class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-5 business_boxx">
             <div class="p-4 sm:p-8 bg-white shadows sm:rounded-lg admins_boxx">
               <UpdateBusiness :business="business" class="max-w-xl" />
             </div>

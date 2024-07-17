@@ -182,15 +182,14 @@ class JobsController extends Controller
    }
    public function update($id, Request $request)
    {
-     
+   //   dd($request->all());s
       $rules = [
          "job_title" => 'required',
          "job_image" => 'required|max:20480',
          "job_description" => 'required',
-         "posting_summary" => 'required|string|max:2000',
-         // "detail" => ['required', new MaxWords(30)],
-         "conditions" => 'required|string|max:2000',
-         "requirements" => 'required|string|max:2000',
+         "posting_summary" => ['required', new MaxWords(30)],
+         "conditions" => ['required', new MaxWords(30)],
+         "requirements" => ['required', new MaxWords(30)],
          "language_id" => 'required',
          "position_id" => 'required',
          "seniority_id" => 'required',
@@ -204,51 +203,51 @@ class JobsController extends Controller
          "segment" => 'required',
          "job_country" => 'required',
          "job_start_date" => 'required',
-         'recommended_skills'=>'required',
+         'recommended_skills'=>'required'
 
       ];
 
       $messages = [
-         'position_id.required' => 'Position type is required.',
-         'seniority_id.required' => 'Seniority  is required.',
-         'discipline_id.required' => 'Discipline  is required.',
-         'work_experience_id.required' => 'Overall work experience  is required.',
-         'skills_id.required' => 'Skills  are required.',
-         'language_id.required' => 'Language  is required.',
-         'industry_id.required' => 'Industry  is required.',
-         'job_country.required' => 'Country  is required.',
-         'posting_summary.required' => 'Job posting summary  is required.',
-         'job_description.required' => 'Details of the job  is required.',
-         'pin_code.required' => 'Zip Code  is required.',
-         'job_image.required' => 'Job Image  is required.',
-         'positions.required' => 'Position  is required.',
-         'segment.required' => 'Segment  is required.',
-         'job_title.required' => 'Job title  is required.',
-         'conditions.required' => 'Conditions  is required.',
-         'requirements.required' => 'Requirements  is required.',
-         'job_image.max' => 'Job Image should be less than 20MB.',
-         'job_start_date.required' => 'Job start date  is required.',
+         'position_id.required' => 'The position type field is required.',
+         'seniority_id.required' => 'The seniority  field is required.',
+         'discipline_id.required' => 'The discipline  field is required.',
+         'work_experience_id.required' => 'The overall work experience  field is required.',
+         'skills_id.required' => 'The skills  field are required.',
+         'language_id.required' => 'The language  field is required.',
+         'industry_id.required' => 'The industry  field is required.',
+         'job_country.required' => 'The country  field is required.',
+         'posting_summary.required' => 'The job posting summary  field is required.',
+         'job_description.required' => 'The details of the job field is required.',
+         'pin_code.required' => 'The zip Code field is required.',
+         'job_image.required' => 'The job Image field is required.',
+         'positions.required' => 'The positions field is required.',
+         'segment.required' => 'The segment field is required.',
+         'job_title.required' => 'The job title field is required.',
+         'conditions.required' => 'The conditions field is required.',
+         'requirements.required' => 'The requirements field is required.',
+         'job_image.max' => 'The job Image should be less than 20MB.',
+         'job_start_date.required' => 'The job start date field is required.',
          'recommended_skills.required' => 'Please select atleast one recommended skill.'
+
      ];
      if (isset($request->min_pay_range)  || isset($request->max_pay_range) || isset($request->currency_id)) {
-      $rules = [
-          'min_pay_range' => 'required|numeric|gt:0',
-          'max_pay_range' => 'required|numeric|gt:' . $request->min_pay_range,
-          'currency_id' => 'required',
-      ];
+      $rules['min_pay_range'] =  'required|numeric|gt:0';
+      $rules['max_pay_range'] =     'required|numeric|gt:' . $request->min_pay_range;
+          $rules['currency_id']  = 'required';
+      ;
       $messages = [
-          'min_pay_range.required' => 'Minimum salary is required.',
-          'min_pay_range.numeric' => 'Minimum salary must be number.',
-          'max_pay_range.numeric' => 'Maximum salary must be number.',
-          'min_pay_range.gt' => 'Minimum salary must be greater than 0.',
-          'max_pay_range.required' => 'Maximum salary is required.',
-          'max_pay_range.gt' => 'Maximum salary must be greater than the minimum salary.',
-          'currency_id.required' => 'Currency is required.',
+          'min_pay_range.required' => 'The minimum salary field is required.',
+          'min_pay_range.numeric' => 'The minimum salary must be number.',
+          'max_pay_range.numeric' => 'The maximum salary must be number.',
+          'min_pay_range.gt' => 'The minimum salary must be greater than 0.',
+          'max_pay_range.required' => 'The maximum salary field is required.',
+          'max_pay_range.gt' => 'The maximum salary must be greater than the minimum salary.',
+          'currency_id.required' => 'The currency field is required.',
       ];
    }
-      $validate = Validator::make($request->all(), $rules, $messages);
-      if ($validate->fails()) {
-         return back()->withErrors($validate->errors())->withInput();
+      $validator = Validator::make($request->all(), $rules, $messages);
+      if ($validator->fails()) {
+         return back()->withErrors($validator->errors())->withInput();
       }
       //   dd($request->all());
       try {

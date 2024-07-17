@@ -87,16 +87,13 @@ const openFs = (url) => {
     </div>
 
     <section class="view_customer_wrapper back_button_wrap">
-
-
-
         <div class="container py-12 view_customer_inner">
             <!-- <div v-if="user_type == 3 ">
                 <p class="mb-0" style="display: inline-block;">
                     <Link :href="route('customer-dash')" class="step-form-back forms-btn-transparent mb-4 btn_customer"><i class="bi bi-arrow-left"></i>Back</Link>
                 </p>
             </div> -->
-            <div class="inner_spacing_wrapper">
+            <div class="inner_spacing_wrapper frontend_inner">
                 <div class="customer_card pb-4">
                     <div class="card-image">
                         <img :src="customer.customer_image" alt="" width="450px" @click="openFs(customer.customer_image)">
@@ -196,7 +193,7 @@ const openFs = (url) => {
                         <a :href="route('downloadZip', customer.id)" class="theme_button green_bg mb-4"> Download all
                             Media</a>
                     </div>
-                    <div class="row">
+                    <div class="row justify_row">
                         <div class="col column_width">
                             <div class="img_inner_wrapper ">
                                 <div class="img_overlay relative">
@@ -286,10 +283,11 @@ const openFs = (url) => {
                         </div>
                     </div>
                 </div>
+
                 <div class="video_image_wrapper ">
                     <h2>Image</h2>
-                    <div class="row">
-                        <a >
+                    <div class="row justify_row">
+                        <a class="customer_link">
                             <div class="col column_width">
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#image_modal">
                                     <img :src="customer?.employments?.evidence_self_employment_aus" @click="openFs(customer?.employments?.evidence_self_employment_aus)">
@@ -311,7 +309,7 @@ const openFs = (url) => {
                     </div>
                 </div>
                 <div class="video_image_wrapper text_over_flow">
-                    <div class="row">
+                    <div class="row justify_row">
                         <div class="col column_width column_mine_width">
                             <H2>Passport</H2>
                             <div class="img_inner_wrapper">
@@ -394,7 +392,7 @@ const openFs = (url) => {
                     </div>
                 </div>
                 <div class="video_image_wrapper text_over_flow">
-                    <div class="row">
+                    <div class="row justify_row">
                         <div class="col column_width">
                             <h2>Formal Training</h2>
                             <div class="img_inner_wrapper">
@@ -446,7 +444,7 @@ const openFs = (url) => {
                 <Modal :pageviewValue="pageviewValue"  :key="2" :page="pageValue" :loanId="selectLoanId" :show="loanStatus" :initialStatus="selectedStatus" :loanData="loanData" :modal="3" @close="closebtn" :userType="user_type">
                 </Modal>
                 <div class="video_image_wrapper bg-white resume_div text_over_flow">
-                    <div class="row">
+                    <div class="row justify_row">
                         <div class="col column_width">
                             <h2>Resume </h2>
                             <div class="img_inner_wrapper">

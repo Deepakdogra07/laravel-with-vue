@@ -131,9 +131,11 @@ const openFs = (url) => {
                         </div>
                     </div>
                     <div class="video_image_wrapper pt-5 mbile_padding">
-                        <h2 class="px-1">Videos</h2>
-                        <a :href="route('downloadZip', customer.id)" class="theme_button green_bg mb-4"> Download all
+                        <div class="row justify-content-between multiple_download">
+                            <h2 class="px-1">Videos</h2>
+                            <a :href="route('downloadZip', customer.id)" class="theme_button green_bg mb-4"> Download all
                             Media</a>
+                        </div>
                             <div class="">
                                 <div class="row justify-content-between row_start_content">
                                 <div class="col column_width column_mine_width">
@@ -248,6 +250,9 @@ const openFs = (url) => {
                                  <img :src="customer.passport_image" alt=" Passport" @click="openFs(customer.passport_image)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center">{{ customer.passport_image }}</p>
+                                    <a :href="customer?.passport_image" target="_blank" download="passport">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +262,11 @@ const openFs = (url) => {
                                     <img :src="customer?.employments?.employer_statement" @click="openFs(customer?.employments?.employer_statement)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                             v-html="getLast_name(customer?.employments?.employer_statement)"></p>
+                                        v-html="getLast_name(customer?.employments?.employer_statement)"></p>
+                                        <a :href="customer?.employments?.employer_statement" target="_blank"
+                                        download="EmployerStatement">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -267,7 +276,11 @@ const openFs = (url) => {
                                     <img :src="customer?.employments?.financial_evidence"  @click="openFs(customer?.employments?.financial_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
+                                        v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
+                                        <a :href="customer?.employments?.financial_evidence" target="_blank"
+                                        download="FinancialEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +290,11 @@ const openFs = (url) => {
                                     <img :src="customer?.employments?.formal_training_evidence" @click="openFs(customer?.employments?.formal_training_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
+                                        v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
+                                        <a :href="customer?.employments?.formal_training_evidence" target="_blank"
+                                        download="TrainingEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +305,11 @@ const openFs = (url) => {
                                     @click="openFs(customer?.employments?.evidence_self_employment)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                        v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                        <a :href="customer?.employments?.evidence_self_employment" target="_blank"
+                                        download="SelfEmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -304,6 +325,9 @@ const openFs = (url) => {
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
                                             v-html="getLast_name(customer?.documents?.evidence_image)"></p>
+                                            <a :href="customer?.documents?.evidence_image" target="_blank" download="Evidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -313,7 +337,11 @@ const openFs = (url) => {
                                     <img :src="customer?.documents?.employment_evidence" @click="openFs(customer?.documents?.employment_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                        v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                        <a :href="customer?.documents?.employment_evidence" target="_blank"
+                                        download="EmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +351,10 @@ const openFs = (url) => {
                                     <img :src="customer?.documents?.licences" @click="openFs(customer?.documents?.licences)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.licences)"></p>
+                                        v-html="getLast_name(customer?.documents?.licences)"></p>
+                                        <a :href="customer?.documents?.licences" target="_blank" download="Licence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                                
@@ -340,9 +371,10 @@ const openFs = (url) => {
                                 <h2>Resume </h2>
                                 <div class="img_inner_wrapper">
                                     <div class="wrapper_name resume_btn">
-
-                                        <p class="mb-0 text-white text-center"><a :href="customer?.documents?.resume"
-                                                target="_blank" download="resume">Download Resume</a></p>
+                                        <p class="mb-0 text-white text-center">Download Resume </p>
+                                        <a :href="customer?.documents?.resume" target="_blank" download="resume">
+                                            <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -379,5 +411,29 @@ const openFs = (url) => {
 
 .text-danger {
     color: red;
+}
+.download-icon {
+    height: 29px;
+    background: transparent;
+    -o-object-fit: fill;
+    object-fit: fill;
+    width: 24px;
+    max-width: 23px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.download-icon:hover {
+    top: 25px;
+    transition: all .30s;
+}
+
+.resume_btn .download-icon {
+    width: 20px;
+}
+img:hover{
+    cursor: pointer;
 }
 </style>
