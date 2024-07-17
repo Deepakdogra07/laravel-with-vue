@@ -206,25 +206,12 @@ function getLast_name(name) {
                         <h2 class="px-1">Image</h2>
                         <div class="row justify-content-between row_start_content">
                             <div class="col column_width column_mine_width">
-                                <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#image_modal">
+                                <div class="img_inner_wrapper">
                                     <img :src="customer?.employments?.evidence_self_employment_aus">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
                                             v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)">
                                         </p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="image_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Image</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.evidence_self_employment_aus">
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

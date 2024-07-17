@@ -40,7 +40,7 @@ const props = defineProps({
                     Jobs:</h3>
                 <div class="main-job-filter mt-4  spacing_nine business_tablesss_inner table-responsive">
                     <DataTable
-                        class="display applied_job business_table business_dash_table business_table_dashboard job-data-table"
+                        class="display applied_job business_table business_dash_table business_table_dashboard job-data-table fixed_table"
                         >
                         <thead>
                             <tr>

@@ -454,10 +454,27 @@ h2 {
 }
 
 .main-job-filter .display.applied_frontend_table thead th:last-child,
-.main-job-filter .display.applied_frontend_table tbody td.view {
+.main-job-filter .display.applied_frontend_table tbody td.view{
 	position: sticky !important;
 	right: -1px;
+}
+
+.customer_applied th:nth-child(8), .customer_applied tbody tr td:last-child{
+	position: sticky !important;
+	right: 0px;
+}
+
+.customer_applied thead th{
 	background-color: #e2e2e4;
+}
+
+.customer_applied tbody tr td {
+	background-color: #fff;
+}
+
+.customer_applied  thead th:nth-child(7), .customer_applied tbody tr .status_business {
+    position: sticky !important;
+    right: 65px;
 }
 
 .applied_frontend_table thead th[aria-label="Profile: activate to sort column ascending"],
@@ -468,10 +485,9 @@ h2 {
 
 
 .main-job-filter .display.applied_frontend_table tbody td.status,
-.main-job-filter .display.applied_frontend_table thead th:nth-child(9) {
+.main-job-filter .display.applied_frontend_table thead th:nth-child(9){
 	position: sticky !important;
 	right: 67px;
-	background-color: #e2e2e4;
 }
 
 .main-job-filter .display.applied_frontend_table thead th[aria-label="Actions: activate to sort column ascending"],
@@ -490,6 +506,10 @@ h2 {
 
 .pass_travel_details_wrapper .Travel_details.passport_details p b {
 	margin-bottom: 10px !important;
+}
+
+.applied_job.fixed_table thead th, .applied_job.fixed_table tbody td{
+	padding: 25px 10px !important;
 }
 
 .status_business div:nth-child(1) {
@@ -7383,6 +7403,7 @@ span.job-filter_text {
 	padding: 10px;
 	border-radius: 0px 0px 5px 5px;
 	cursor: default;
+	height: 46px;
 }
 
 .text_over_flow .wrapper_name {
@@ -7437,9 +7458,9 @@ span.job-filter_text {
 	padding: 20px 0px;
 }
 
-.icon_eye {
+/* .icon_eye {
 	padding: 8px 12px;
-}
+} */
 
 .view_customer_wrapper .column_width,
 .view_customer_wrapper .col-four {
