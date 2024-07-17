@@ -455,7 +455,7 @@ h2 {
 
 .main-job-filter .display.applied_frontend_table tbody td.view{
 	position: sticky !important;
-	right: 0px;
+	right: -1px;
 }
 
 .main-job-filter .display.applied_frontend_table thead th:last-child{
@@ -516,7 +516,7 @@ h2 {
 	margin-bottom: 10px !important;
 }
 
-.applied_job.fixed_table thead th, .applied_job.fixed_table tbody td{
+.Applied_job_wrapper .applied_job.fixed_table thead th, .Applied_job_wrapper .applied_job.fixed_table tbody td{
 	padding: 25px 10px !important;
 }
 
@@ -7548,9 +7548,9 @@ span.job-filter_text {
 	justify-content: space-between;
 }
 
-.resume_btn p {
+/* .resume_btn p {
 	margin-right: 16px !important;
-}
+} */
 
 .travel-section input:focus,
 .job_posting_page input:focus {

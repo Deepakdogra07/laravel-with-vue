@@ -54,13 +54,13 @@ function show_next_div(div_number) {
     if ((div_number === 1) && !form.employment_evidence) {
         props.errors['employment_evidence'] = 'Supporting employment evidence is required!'
     } else if ((div_number === 2) && !form.licences) {
-        props.errors['licences'] = 'licences is required!'
+        props.errors['licences'] = 'licence is required!'
     } else if ((div_number === 5) && (!form.kitchen_area || !form.ingredients || !form.cooking_tech || !form.dish || !form.clean_up)) {
-        props.errors['kitchen_area'] = !form.kitchen_area ? 'Kitchen area is required!' : null;
-        props.errors['ingredients'] = !form.ingredients ? 'Ingredients is required!' : null;
-        props.errors['cooking_tech'] = !form.cooking_tech ? 'Cooking tech employment aus is required!' : null;
-        props.errors['dish'] = !form.dish ? 'Dish is required!' : null;
-        props.errors['clean_up'] = !form.clean_up ? 'clean up is required!' : null;
+        props.errors['kitchen_area'] = !form.kitchen_area ? 'Prepare kitchen area video is required!' : null;
+        props.errors['ingredients'] = !form.ingredients ? 'Prepare ingredient video is required!' : null;
+        props.errors['cooking_tech'] = !form.cooking_tech ? 'Demonstrate cooking technique video is required!' : null;
+        props.errors['dish'] = !form.dish ? 'Present dish video is required!' : null;
+        props.errors['clean_up'] = !form.clean_up ? 'Clean up video is required!' : null;
     } else if ((div_number === 6) && !form.evidence_image) {
         props.errors['evidence_image'] = 'Evidence image is required!'
     } else {
