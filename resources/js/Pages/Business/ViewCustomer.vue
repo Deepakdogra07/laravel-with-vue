@@ -7,6 +7,7 @@ import { Link } from '@inertiajs/vue3';
 import { onMounted, reactive, ref } from 'vue';
 import moment from 'moment';
 import Modal from '@/Components/Modal.vue';
+import fslightbox from 'fslightbox-vue/v3';
 
 const props = defineProps({
     customer: {
@@ -19,12 +20,6 @@ const props = defineProps({
     industries: {
         type: Array,
         default: null
-    },
-    methods: {
-        openModal(imageSrc) {
-            this.currentImage = imageSrc;
-            this.showModal = true;
-        }
     }
 });
 
@@ -43,16 +38,6 @@ function getLast_name(name) {
 }
 
 
-const lightbox = reactive({
-    toggler: false,
-    sources: []
-});
-
-function toggler(type, source) {
-    lightbox.toggler = type;
-    lightbox.sources = [source];
-}
-
 function formatDateTime(date) {
     return moment(date).format('MMMM-DD-YYYY');
 }
@@ -63,11 +48,26 @@ onMounted(() => {
     }
 });
 
+const picUrl = ref([])
+const toggler = ref(0)
+
+const openFs = (url) => {
+     picUrl.value.pop();
+    picUrl.value.push(url);
+    toggler.value++;
+}
+
+
 
 </script>
 
 <template>
     <Header />
+
+    <fslightbox
+              :toggler="toggler"
+              :sources="picUrl"
+            />
     <div v-if="user_type < 3 && (user_type != 0)">
         <div class="job-list-search srch_responsive business_srccc view_customer_listings">
             <div class="container about-width">
@@ -99,7 +99,7 @@ onMounted(() => {
             <div class="inner_spacing_wrapper">
                 <div class="customer_card pb-4">
                     <div class="card-image">
-                        <img :src="customer.customer_image" alt="" width="450px">
+                        <img :src="customer.customer_image" alt="" width="450px" @click="openFs(customer.customer_image)">
                     </div>
                     <div class="inner_card_wrapper">
                         <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
@@ -289,12 +289,10 @@ onMounted(() => {
                 <div class="video_image_wrapper ">
                     <h2>Image</h2>
                     <div class="row">
-                        <a href="javascript:void(0)"
-                            @click="openModal(customer.employments.evidence_self_employment_aus)" style="padding-left:0px;">
+                        <a >
                             <div class="col column_width">
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#image_modal">
-                                    <img :src="customer?.employments?.evidence_self_employment_aus">
-                                    <Modal :imagesrc="customer?.employments?.evidence_self_employment_aus"></Modal>
+                                    <img :src="customer?.employments?.evidence_self_employment_aus" @click="openFs(customer?.employments?.evidence_self_employment_aus)">
                                     <div class="wrapper_name">
                                         <a :href="customer?.documents?.evidence_self_employment_aus" target="_blank"
                                             download="ausSelf">
@@ -304,28 +302,12 @@ onMounted(() => {
                                         </a>
                                     </div>
                                 </div>
-                                <div class="modal fade modal_main" id="image_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="border:0px; padding-bottom: 0px;">
-                                                <button type="button" class="btn-close modal_btn_mine" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-</svg>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.evidence_self_employment_aus">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </a>
                         <div class="col column_width">
                         </div>
                         <div class="col column_width">
                         </div>
-                        <!-- <Modal :show="showModal" :imageSrc="currentImage" @close="showModal = false" /> -->
                     </div>
                 </div>
                 <div class="video_image_wrapper text_over_flow">
@@ -333,7 +315,7 @@ onMounted(() => {
                         <div class="col column_width column_mine_width">
                             <H2>Passport</H2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.passport_image">
+                                <img :src="customer?.passport_image" @click="openFs(customer?.passport_image)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.passport_image)"></p>
@@ -356,7 +338,7 @@ onMounted(() => {
                             <h2>Employer statement</h2>
                             <div class="img_inner_wrapper">
                                 <img :src="customer?.employments?.employer_statement"
-                                    @click="toggler('employer_statement', customer?.employments?.employer_statement)">
+                                     @click="openFs(customer?.employments?.employer_statement)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.employments?.employer_statement)"></p>
@@ -370,7 +352,7 @@ onMounted(() => {
                         <div class="col col-three">
                             <h2>Financial evidence</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.financial_evidence">
+                                <img :src="customer?.employments?.financial_evidence"  @click="openFs(customer?.employments?.financial_evidence)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
@@ -384,7 +366,7 @@ onMounted(() => {
                         <div class="col col-four text-full-block">
                             <h2>Evidence of self-employment</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.formal_training_evidence">
+                                <img :src="customer?.employments?.formal_training_evidence" @click="openFs(customer?.employments?.formal_training_evidence)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
@@ -398,7 +380,7 @@ onMounted(() => {
                         <div class="col column_width col-five">
                             <h2 style="visibility: hidden;" class="mobile_none">Evidence of self-employment</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.employments?.evidence_self_employment">
+                                <img :src="customer?.employments?.evidence_self_employment" @click="openFs(customer?.employments?.evidence_self_employment)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
@@ -416,7 +398,7 @@ onMounted(() => {
                         <div class="col column_width">
                             <h2>Formal Training</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.documents?.evidence_image">
+                                <img :src="customer?.documents?.evidence_image" @click="openFs(customer?.documents?.evidence_image)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.documents?.evidence_image)"></p>
@@ -429,7 +411,7 @@ onMounted(() => {
                         <div class="col column_width">
                             <h2>Supporting employee</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.documents?.employment_evidence">
+                                <img :src="customer?.documents?.employment_evidence" @click="openFs(customer?.documents?.employment_evidence)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
@@ -444,7 +426,7 @@ onMounted(() => {
                         <div class="col column_width">
                             <h2>Licences</h2>
                             <div class="img_inner_wrapper">
-                                <img :src="customer?.documents?.licences">
+                                <img :src="customer?.documents?.licences" @click="openFs(customer?.documents?.employment_evidence)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center"
                                         v-html="getLast_name(customer?.documents?.licences)"></p>
@@ -461,7 +443,8 @@ onMounted(() => {
                     </div>
                 </div>
 
-
+                <Modal :pageviewValue="pageviewValue"  :key="2" :page="pageValue" :loanId="selectLoanId" :show="loanStatus" :initialStatus="selectedStatus" :loanData="loanData" :modal="3" @close="closebtn" :userType="user_type">
+                </Modal>
                 <div class="video_image_wrapper bg-white resume_div text_over_flow">
                     <div class="row">
                         <div class="col column_width">
@@ -534,4 +517,8 @@ onMounted(() => {
 .resume_btn .download-icon {
     width: 20px;
 }
+img:hover{
+    cursor: pointer;
+}
+
 </style>
