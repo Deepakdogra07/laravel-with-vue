@@ -7,6 +7,8 @@ import * as countryStateCity from 'country-state-city';
 import moment from 'moment';
 import axios from 'axios';
 import { toast } from 'vue3-toastify';
+import Modal from '@/Components/Modal.vue';
+import fslightbox from 'fslightbox-vue/v3';
 
 
 const props = defineProps({
@@ -29,6 +31,15 @@ function getLast_name(name) {
     }
     return filename;
 }
+
+const picUrl = ref([])
+const toggler = ref(0)
+
+const openFs = (url) => {
+     picUrl.value.pop();
+    picUrl.value.push(url);
+    toggler.value++;
+}
 </script>
 
 <template>
@@ -37,8 +48,14 @@ function getLast_name(name) {
             <h2 class="font-semibold text-xl text-black-800 leading-tight">View Customer</h2>
             <div class="button-container">
             </div>
-
+            
         </template>
+        <fslightbox
+          :toggler="toggler"
+          :sources="picUrl"
+        />
+        <Modal :pageviewValue="pageviewValue"  :key="2" :page="pageValue" :loanId="selectLoanId" :show="loanStatus" :initialStatus="selectedStatus" :loanData="loanData" :modal="3" @close="closebtn" :userType="user_type">
+        </Modal>
         <div class="nav-container">
             <div class="form-navigation1 view_employee_tabs_wrapper">
                 <div class="container container_full">
@@ -66,7 +83,7 @@ function getLast_name(name) {
                 <div class="inner_spacing_wrappers">
                     <div class="customer_card pb-5">
                         <div class="card-image">
-                            <img :src="customer.customer_image" alt="" width="150px;">
+                            <img :src="customer.customer_image" alt="" width="150px;" @click="openFs(customer.customer_image)">
                         </div>
                         <div class="inner_card_wrapper">
                             <h1>{{ customer.first_name }} {{ customer.last_name }}</h1>
@@ -114,7 +131,11 @@ function getLast_name(name) {
                         </div>
                     </div>
                     <div class="video_image_wrapper pt-5 mbile_padding">
-                        <h2 class="px-1">Videos</h2>
+                        <div class="row justify-content-between multiple_download">
+                            <h2 class="px-1">Videos</h2>
+                            <a :href="route('downloadZip', customer.id)" class="theme_button green_bg mb-4"> Download all
+                            Media</a>
+                        </div>
                             <div class="">
                                 <div class="row justify-content-between row_start_content">
                                 <div class="col column_width column_mine_width">
@@ -206,8 +227,8 @@ function getLast_name(name) {
                         <h2 class="px-1">Image</h2>
                         <div class="row justify-content-between row_start_content">
                             <div class="col column_width column_mine_width">
-                                <div class="img_inner_wrapper">
-                                    <img :src="customer?.employments?.evidence_self_employment_aus">
+                                <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#image_modal">
+                                    <img :src="customer?.employments?.evidence_self_employment_aus" @click="openFs(customer?.employments?.evidence_self_employment_aus)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
                                             v-html="getLast_name(customer?.employments?.evidence_self_employment_aus)">
@@ -226,102 +247,69 @@ function getLast_name(name) {
                             <div class="col col-one">
                             <h2>Passport</h2>
                             <div class="img_inner_wrapper">
-                                 <img :src="customer.passport_image" alt=" No image">
+                                 <img :src="customer.passport_image" alt=" Passport" @click="openFs(customer.passport_image)">
                                 <div class="wrapper_name">
                                     <p class="mb-0 text-white text-center">{{ customer.passport_image }}</p>
+                                    <a :href="customer?.passport_image" target="_blank" download="passport">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                 </div>
                             </div>
                         </div>
                             <div class="col col-two column_mine_width">
                                 <h2>Employer statement</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#business_apply_modal">
-                                    <img :src="customer?.employments?.employer_statement">
+                                    <img :src="customer?.employments?.employer_statement" @click="openFs(customer?.employments?.employer_statement)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                             v-html="getLast_name(customer?.employments?.employer_statement)"></p>
-                                    </div>
-                                </div>
-
-                                <div class="modal fade modal_main" id="business_apply_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Employer statement</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.employer_statement">
-                                            </div>
-                                        </div>
+                                        v-html="getLast_name(customer?.employments?.employer_statement)"></p>
+                                        <a :href="customer?.employments?.employer_statement" target="_blank"
+                                        download="EmployerStatement">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col col-three column_mine_width">
                                 <h2>Financial evidence</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#financial_evidences">
-                                    <img :src="customer?.employments?.financial_evidence">
+                                    <img :src="customer?.employments?.financial_evidence"  @click="openFs(customer?.employments?.financial_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="financial_evidences" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Financial evidence</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.financial_evidence">
-                                            </div>
-                                        </div>
+                                        v-html="getLast_name(customer?.employments?.financial_evidence)"></p>
+                                        <a :href="customer?.employments?.financial_evidence" target="_blank"
+                                        download="FinancialEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col col-four text-full-block column_mine_width">
                                 <h2>Evidence of self-employment</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#evidence_selfemployment">
-                                    <img :src="customer?.employments?.formal_training_evidence">
+                                    <img :src="customer?.employments?.formal_training_evidence" @click="openFs(customer?.employments?.formal_training_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="evidence_selfemployment" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Evidence of self-employment</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.formal_training_evidence">
-                                            </div>
-                                        </div>
+                                        v-html="getLast_name(customer?.employments?.formal_training_evidence)"></p>
+                                        <a :href="customer?.employments?.formal_training_evidence" target="_blank"
+                                        download="TrainingEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col column_width col-five column_mine_width col_hd_blnk">
                                 <h2 style="visibility: hidden;" class="mobile_none">Evidence of self-employment</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#business_apply_modals">
-                                    <img :src="customer?.employments?.evidence_self_employment">
+                                    <img :src="customer?.employments?.evidence_self_employment"
+                                    @click="openFs(customer?.employments?.evidence_self_employment)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="business_apply_modals" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Evidence of self-employment</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.employments?.evidence_self_employment">
-                                            </div>
-                                        </div>
+                                        v-html="getLast_name(customer?.employments?.evidence_self_employment)"></p>
+                                        <a :href="customer?.employments?.evidence_self_employment" target="_blank"
+                                        download="SelfEmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -333,71 +321,43 @@ function getLast_name(name) {
                             <div class="col column_width column_mine_width">
                                 <h2>Formal Training</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#formal_training">
-                                    <img :src="customer?.documents?.evidence_image">
+                                    <img :src="customer?.documents?.evidence_image" @click="openFs(customer?.documents?.evidence_image)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
                                             v-html="getLast_name(customer?.documents?.evidence_image)"></p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="formal_training" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Formal Training</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.documents?.evidence_image">
-                                            </div>
-                                        </div>
+                                            <a :href="customer?.documents?.evidence_image" target="_blank" download="Evidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col column_width column_mine_width">
                                 <h2>Supporting employee</h2>
                                 <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#supporting_employee_modal">
-                                    <img :src="customer?.documents?.employment_evidence">
+                                    <img :src="customer?.documents?.employment_evidence" @click="openFs(customer?.documents?.employment_evidence)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
-                                    </div>
-                                </div>
-                                <div class="modal fade modal_main" id="supporting_employee_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Supporting employee</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.documents?.employment_evidence">
-                                            </div>
-                                        </div>
+                                        v-html="getLast_name(customer?.documents?.employment_evidence)"></p>
+                                        <a :href="customer?.documents?.employment_evidence" target="_blank"
+                                        download="EmploymentEvidence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="col column_width column_mine_width">
                                 <h2>Licences</h2>
-                                <div class="img_inner_wrapper" data-bs-toggle="modal" data-bs-target="#licence_modal">
-                                    <img :src="customer?.documents?.licences">
+                                <div class="img_inner_wrapper" >
+                                    <img :src="customer?.documents?.licences" @click="openFs(customer?.documents?.licences)">
                                     <div class="wrapper_name">
                                         <p class="mb-0 text-white text-center"
-                                            v-html="getLast_name(customer?.documents?.licences)"></p>
+                                        v-html="getLast_name(customer?.documents?.licences)"></p>
+                                        <a :href="customer?.documents?.licences" target="_blank" download="Licence">
+                                        <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                    </a>
                                     </div>
                                 </div>
-                                <div class="modal fade modal_main" id="licence_modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal_inner">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="ModalLabel">Licences</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <img :src="customer?.documents?.licences">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <div class="col column_width column_mine_width">
                             </div>
@@ -411,9 +371,10 @@ function getLast_name(name) {
                                 <h2>Resume </h2>
                                 <div class="img_inner_wrapper">
                                     <div class="wrapper_name resume_btn">
-
-                                        <p class="mb-0 text-white text-center"><a :href="customer?.documents?.resume"
-                                                target="_blank" download="resume">Download Resume</a></p>
+                                        <p class="mb-0 text-white text-center">Download Resume </p>
+                                        <a :href="customer?.documents?.resume" target="_blank" download="resume">
+                                            <img src="/images/download-icon.svg" alt="download" class="download-icon">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -450,5 +411,29 @@ function getLast_name(name) {
 
 .text-danger {
     color: red;
+}
+.download-icon {
+    height: 29px;
+    background: transparent;
+    -o-object-fit: fill;
+    object-fit: fill;
+    width: 24px;
+    max-width: 23px;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.download-icon:hover {
+    top: 25px;
+    transition: all .30s;
+}
+
+.resume_btn .download-icon {
+    width: 20px;
+}
+img:hover{
+    cursor: pointer;
 }
 </style>

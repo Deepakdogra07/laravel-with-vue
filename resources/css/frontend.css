@@ -453,10 +453,18 @@ h2 {
     margin-bottom: 0px;
 }
 
-.main-job-filter .display.applied_frontend_table thead th:last-child,
 .main-job-filter .display.applied_frontend_table tbody td.view{
 	position: sticky !important;
-	right: -1px;
+	right: 0px;
+}
+
+.main-job-filter .display.applied_frontend_table thead th:last-child{
+	position: sticky !important;
+	right: 0px;
+}
+
+.customer_link .column_width {
+    padding-right: 20px;
 }
 
 .customer_applied th:nth-child(8), .customer_applied tbody tr td:last-child{
@@ -1834,11 +1842,11 @@ input[type="file"] {
 		font-size: 14px;
 	}
 
-	.view_customer_wrapper .col {
+	.view_customer_wrapper .col, .customer_link .col.column_width{
 		width: 25% !important;
 		max-width: 25% !important;
 		flex: 1 25% !important;
-		padding: 10px !important;
+		padding: 0px 20px 20px 0px;
 	}
 
 	.view_customer_wrapper .card-image img {
@@ -1879,6 +1887,10 @@ input[type="file"] {
 		font-size: 18px !important; 
 		text-align: center;
 	
+	}
+
+	.video_image_wrapper .text-full-block h2 {
+		overflow: hidden !important;
 	}
 
 }
@@ -2400,6 +2412,9 @@ input[type="file"] {
 		padding: 6px 13px !important;
 	}
 
+	.video_image_wrapper .text-full-block h2 {
+		overflow: unset !important;
+	}
 
 	.footer-two,
 	.footer-three {
@@ -2440,19 +2455,14 @@ input[type="file"] {
 	}
 
 	/*customer detail page*/
-	.view_customer_wrapper .col {
+	.view_customer_wrapper .col, .customer_link .col.column_width {
 		width: 33.3% !important;
 		max-width: 33.3% !important;
 		flex: 1 33.3% !important;
-		padding: 10px !important;
 	}
 
 	.customer_card .inner_card_wrapper h1 {
 		font-size: 25px !important;
-	}
-
-	.video_image_wrapper .text-full-block h2 {
-		overflow: hidden !important;
 	}
 
 	.video_image_wrapper {
@@ -2647,12 +2657,26 @@ input[type="file"] {
 		margin-bottom: 0px;
 	}
 
+	.Travel_details .card-body b,
+	.Travel_details .card-body .travel_inner {
+		width: 50%;
+	}
+
+	.Travel_details .card-body b{
+		padding-right: 20px;
+	}
+
 	.personal_column {
 		margin-bottom: 10px !important;
 	}
 
 	.edit_job .edit_space {
 		margin-top: 10px !important;
+	}
+
+	.Profile_cnt{
+		max-width: 720px !important;
+		padding: 0px !important;
 	}
 
 	.testimonials_width,
@@ -3280,6 +3304,11 @@ input[type="file"] {
 		padding: 0px 10px !important;
 	}
 
+	.video_image_wrapper .text-full-block h2, .video_image_wrapper h2 {
+		overflow: hidden !important;
+		width:260px !important;
+	}
+
 	.countries-section {
 		margin: 0px !important;
 	}
@@ -3382,12 +3411,11 @@ input[type="file"] {
 		padding: 50px 20px !important;
 	}
 
-	.video_image_wrapper .col {
+	/* .video_image_wrapper .col,  {
 		width: 50% !important;
 		max-width: 50% !important;
 		flex: 1 50% !important;
-		padding: 10px !important;
-	}
+	} */
 
 	.passport_details {
 		margin-top: 20px;
@@ -3635,6 +3663,10 @@ input[type="file"] {
 		margin: 30px 3px !important;
 	}
 
+	.frontend_inner {
+		padding: 20px !important;
+	}
+
 	.business_wrap_cnt {
 		max-width: 720px;
 	}
@@ -3755,7 +3787,7 @@ input[type="file"] {
 	}
 
 	.profile_col,
-	.update_pass_col {
+	.update_pass_col, .business_boxx {
 		padding: 0px 5px !important;
 	}
 
@@ -3898,6 +3930,10 @@ input[type="file"] {
 
 	.viewAll-testimonial {
 		padding: 0px 0;
+	}
+
+	.Profile_cnt{
+		padding: 10px !important;
 	}
 
 	.testimonial {
@@ -4666,7 +4702,7 @@ input[type="file"] {
 		padding: 0px 15px;
 	}
 
-	.main-job-filter .display.applied_frontend_table tbody td.status, .main-job-filter .display.applied_frontend_table thead th:nth-child(9), .main-job-filter .display.applied_frontend_table thead th:last-child, .main-job-filter .display.applied_frontend_table tbody td.view{
+	.main-job-filter .display.applied_frontend_table tbody td.status, .main-job-filter .display.applied_frontend_table thead th:nth-child(9), .main-job-filter .display.applied_frontend_table thead th:last-child, .main-job-filter .display.applied_frontend_table tbody td.view, .main-job-filter .display.applied_frontend_table thead th:last-child, .customer_applied  thead th:nth-child(7), .customer_applied tbody tr .status_business, .customer_applied th:nth-child(8), .customer_applied tbody tr td:last-child{
 		position: unset !important;
 	}
 
@@ -4684,6 +4720,16 @@ input[type="file"] {
 
 	.form-division-right .mobile_txt {
 		padding-top: 20px !important;
+	}
+
+	.view_customer_wrapper .col, .customer_link .col.column_width {
+		width: 50% !important;
+		max-width: 50% !important;
+		flex: 50% !important;
+	}
+
+	.video_image_wrapper .text-full-block h2, .video_image_wrapper h2 {
+		width: 160px !important;
 	}
 
 	/*576 customer page*/
@@ -4814,11 +4860,6 @@ input[type="file"] {
 		word-break: break-all;
 	}
 
-	.Travel_details .card-body b,
-	.Travel_details .card-body .travel_inner {
-		width: 50%;
-	}
-
 	.Travel_details .card-body .travel_inner {
 		padding-left: 10px;
 	}
@@ -4903,12 +4944,20 @@ input[type="file"] {
 		margin-top: 45px !important;
 	}
 
-	.video_image_wrapper .column_width,
-	.video_image_wrapper .col {
-		width: 100% !important;
-		max-width: 100% !important;
-		flex: 1 100% !important;
+	.view_customer_wrapper .video_image_wrapper .column_width,
+	.view_customer_wrapper .video_image_wrapper .col {
+		width: 47% !important;
+		max-width: 47% !important;
+		flex: 1 47% !important;
 		padding: 0px 0px 20px 0px !important;
+	}
+
+	.justify_row {
+		justify-content: space-between;
+	}
+
+	.inner_card_wrapper p b, .inner_card_wrapper p span {
+		font-size: 15px !important;
 	}
 
 	.inner_spacing_wrapper {
@@ -5122,7 +5171,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .antialiased .side-navbar ul li:hover,
 .dashboard_btn:hover {
-	background: #3c5b6f;
+	background-color: #3c5b6f;
 	transition: all .30s;
 }
 
@@ -5973,7 +6022,7 @@ li.last_border {
 
 .edits_fields .bg-white input,
 .edits_fields .bg-white textarea, .create_testimonial_form form textarea, .create_news_wrapper_inner input, .create_news_wrapper_inner textarea, .add_customer_row input, .add_customer_row textarea, .edit_customer_page input, .edit_customer_page textarea, input.form-control, textarea, .create_testimonial_form form input, .admin_job select{
-	background: #fbfbfb !important;
+	background-color: #fbfbfb !important;
 	padding: 8px 12px !important;
 }
 
@@ -5987,7 +6036,7 @@ li.last_border {
 }
 
 .job-listing-cards .login-btn-main a.forms-btn:hover {
-	background: #01cdac;
+	background-color: #01cdac;
 	border-color: #01cdac;
 	transition: all .40s;
 }
@@ -6003,7 +6052,7 @@ li.last_border {
 
 .view-job-btn .forms-btn:hover,
 .theme_button:hover {
-	background: #0ab1a3;
+	background-color: #0ab1a3;
 	transition: all .30s;
 	border-color: #0ab1a3;
 }
@@ -6121,7 +6170,7 @@ li.last_border {
 }
 
 .login-bg-wrapper.\34 03_error_main {
-	background: #f7f7f7;
+	background-color: #f7f7f7;
 	background-image: url("../")
 }
 
@@ -6342,7 +6391,7 @@ ul.details_lists {
 }
 
 .job_posting_page .multiselect__tags {
-	background: #fbfbfb;
+	background-color: #fbfbfb;
 	border: 1px solid #d2d2d5;
 	position: relative;
 }
@@ -6362,7 +6411,7 @@ ul.job_recommenrded_skills li {
 
 .contactUs-section a.forms-btn:hover,
 .login-btn-main .forms-btn:hover {
-	background: #09332b;
+	background-color: #09332b;
 }
 
 .new-job-description .ql-container.ql-snow {
@@ -6455,7 +6504,7 @@ span.video_txt {
 }
 
 .google_ratings {
-	background: #fff;
+	background-color: #fff;
 	border-radius: 10px;
 	border-top: 8px solid #34A853;
 	display: flex;
@@ -6499,7 +6548,7 @@ span.video_txt {
 
 .job_posting_page input.dp__pointer.dp__input_readonly.dp__input.dp__input_icon_pad.dp__input_reg {
 	border: 0px !important;
-	background: transparent;
+	background-color: transparent;
 	padding: 0px 0px 0px 0px;
 }
 
@@ -6612,7 +6661,7 @@ form.row.edit_customer label,
 
 .profile_info a.btn.btn-primary,
 .update_pass button.rounded-lg {
-	background: #01796f;
+	background-color: #01796f;
 	border: 0px !important;
 	padding: 12px 30px !important;
 	line-height: 23px;
@@ -6621,18 +6670,18 @@ form.row.edit_customer label,
 
 .admin_profile .profile_info a.btn.btn-primary,
 .admin_profile .update_pass button.rounded-lg {
-	background: #3c5b6f;
+	background-color: #3c5b6f;
 }
 
 .admin_profile .profile_info a.btn.btn-primary:hover,
 .admin_profile .update_pass button.rounded-lg:hover {
-	background: #060d1a;
+	background-color: #060d1a;
 }
 
 .profile_info a.btn.btn-primary:hover,
 .update_pass button.rounded-lg:hover,
 .admins_boxx button:hover {
-	background: #09332b;
+	background-color: #09332b;
 	border-color: #09332b !important;
 }
 
@@ -6694,7 +6743,7 @@ form.row.edit_customer label,
 
 .view_detailed_header {
 	padding: 30px !important;
-	background: #3c5b6f !important;
+	background-color: #3c5b6f !important;
 }
 
 .configure-switch label {
@@ -6710,7 +6759,7 @@ form.row.edit_customer label,
 }
 
 .add_customers_inner a.paginate_button {
-    background: #097b72 !important;
+    background-color: #097b72 !important;
     border: 0px !important;
     border-radius: 5px !important;
 }
@@ -6755,7 +6804,7 @@ form.row.edit_customer label,
 }
 
 ul.job_recommenrded_skills li:hover {
-	background: #09332b;
+	background-color: #09332b;
 	color: #fff;
 }
 
@@ -6834,7 +6883,7 @@ label.label_checkbox {
 }
 
 .mobile_amdin_dropdown button {
-	background: #fff !important;
+	background-color: #fff !important;
 	color: #000 !important;
 	text-transform: capitalize;
 	padding: 10px 15px;
@@ -6866,7 +6915,7 @@ label.label_checkbox {
 }
 
 .recommended_checkbox input.recommended_checkbox:hover {
-	background: #09332b;
+	background-color: #09332b;
 }
 
 .recommended_checkbox:hover label {
@@ -6891,7 +6940,7 @@ label.label_checkbox {
 }
 
 .recommended_checkbox input.form-control {
-	background: #fbfbfb !important;
+	background-color: #fbfbfb !important;
 	border: 1px solid #d2d2d5;
 	height: 42px;
 }
@@ -6919,7 +6968,7 @@ label.label_checkbox {
 }
 
 .active-checkbox label {
-	background: #01796F;
+	background-color: #01796F;
 	border-radius: 5px;
 }
 
@@ -6944,7 +6993,7 @@ label.label_checkbox {
 }
 
 .mobile_amdin_dropdown a.dropdown-item:active {
-	background: #01796f;
+	background-color: #01796f;
 }
 
 .mobile_amdin_dropdown ul {
@@ -6981,7 +7030,7 @@ label.label_checkbox {
 
 .previous_btn,
 .next_btn:hover {
-	background: #09332b;
+	background-color: #09332b;
 }
 
 .previous_btn i {
@@ -6991,7 +7040,7 @@ label.label_checkbox {
 
 .next_btn,
 .previous_btn:hover {
-	background: #01796f;
+	background-color: #01796f;
 }
 
 .next_btn i {
@@ -7000,7 +7049,7 @@ label.label_checkbox {
 }
 
 .cross_testimonials i {
-	background: #09332b;
+	background-color: #09332b;
 	padding: 7px 2px 0px 3px;
 }
 
@@ -7022,7 +7071,7 @@ label.label_checkbox {
 }
 
 .swal2-actions .swal2-styled {
-	background: #01796f;
+	background-color: #01796f;
 	padding: 8px 40px;
 }
 
@@ -7062,7 +7111,7 @@ label.label_checkbox {
 
 .active_menu::before {
 	content: "";
-	background: #1A9882;
+	background-color: #1A9882;
 	width: 100%;
 	position: absolute;
 	height: 3px;
@@ -7085,7 +7134,7 @@ span.job-filter_text {
 }
 
 .business_table_dashboard thead {
-	background: #D2D2D580;
+	background-color: #D2D2D580;
 }
 
 .business_table_dashboard thead th {
@@ -7141,12 +7190,12 @@ span.job-filter_text {
 }
 
 .business_btn_adds {
-	background: #01796f !important;
+	background-color: #01796f !important;
 	padding: 8px 24px !important;
 }
 
 .business_btn_adds:hover {
-	background: #09332b !important;
+	background-color: #09332b !important;
 	border-color: #09332b !important;
 }
 
@@ -7289,7 +7338,7 @@ span.job-filter_text {
 
 /*Applied JObs*/
 .Applied_job_wrapper {
-	background: #f2f2f2;
+	background-color: #f2f2f2;
 	padding: 50px 0px;
 }
 
@@ -7371,7 +7420,7 @@ span.job-filter_text {
 }
 
 .view_customer_wrapper {
-	background: #f2f2f2;
+	background-color: #f2f2f2;
 }
 
 .pass_travel_details_wrapper h2,
@@ -7383,10 +7432,11 @@ span.job-filter_text {
 	white-space: nowrap;
 	width: 180px;
 	margin-bottom: 10px;
+	padding: 0px;
 }
 
 .img_inner_wrapper img {
-	background: #f9f9f9;
+	background-color: #f9f9f9;
 	width: 100%;
 	height: 165px;
 	-o-object-fit: cover;
@@ -7399,11 +7449,12 @@ span.job-filter_text {
 }
 
 .wrapper_name {
-	background: #01796F;
+	background-color: #01796F;
 	padding: 10px;
 	border-radius: 0px 0px 5px 5px;
 	cursor: default;
 	height: 46px;
+	position: relative;
 }
 
 .text_over_flow .wrapper_name {
@@ -7434,7 +7485,7 @@ span.job-filter_text {
 
 .inner_spacing_wrapper {
 	padding: 30px 40px 40px 40px;
-	background: #fff;
+	background-color: #fff;
 	border-radius: 8px;
 }
 
@@ -7618,7 +7669,7 @@ span.job-filter_text {
 
 .travel-section .dp__main .dp__pointer.dp__input_readonly {
 	border: 0px;
-	background: #fbfbfb;
+	background-color: #fbfbfb;
 	padding: 0px 0px 0px 0px;
 }
 
@@ -7637,7 +7688,7 @@ span.job-filter_text {
 	right: 0px !important;
 	position: absolute;
 	color: #383e44;
-	background: #fbfbfb;
+	background-color: #fbfbfb;
 	margin-left: auto;
 	padding: 0px;
 }
@@ -7677,7 +7728,7 @@ span.job-filter_text {
 	color: #161721;
 	font-weight: 700;
 	font-size: 14px;
-	background: #f7f7f7;
+	background-color: #f7f7f7;
 }
 
 .job_listing_button .prevoius_left,
@@ -7700,7 +7751,11 @@ span.job-filter_text {
 }
 
 .job-listing-cards .login-btn-main {
-	padding: 0px 8px !important;
+	padding: 0px 10px !important;
+}
+
+.any_select_box option:empty {
+    display: none;
 }
 
 .Arrow_align .multiselect__select,
@@ -7740,7 +7795,7 @@ span.job-filter_text {
 	right: 10px;
 	z-index: 1;
 	line-height: 0px;
-	background: #fff;
+	background-color: #fff;
 	transform: translatey(-50%);
 	opacity: 0.9;
 }
@@ -7813,12 +7868,16 @@ span.job-filter_text {
 }
 
 .customer_login #email {
-	background: #e3e3e3;
+	background-color: #e3e3e3;
 }
 
 /*View Customer*/
 .view_customer_listings {
 	padding: 32px 0px;
+}
+
+.customer_link {
+    padding: 0px !important;
 }
 
 .view_customer_listings .srch_navbar {
@@ -7835,7 +7894,7 @@ span.job-filter_text {
 }
 
 .admins_boxx button {
-	background: #01796f;
+	background-color: #01796f;
 	border: 0px !important;
 	padding: 12px 30px !important;
 	line-height: 23px;
@@ -7879,6 +7938,7 @@ span.job-filter_text {
 .business_job_wrap .job_details_cnt {
 	margin: 30px 13px !important;
 }
+
 
 /*header*/
 .mobile_amdin_dropdown ul.dropdown-menu {
@@ -7940,7 +8000,7 @@ table.display::-webkit-scrollbar-track {
 }
 
 table.display::-webkit-scrollbar-thumb {
-	background: #c1c1c1;
+	background-color: #c1c1c1;
 	-webkit-box-shadow: inset 0 0 6px #c1c1c1;
 }
 
@@ -7962,7 +8022,7 @@ P.status_condition {
 .doc_txt {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    background: #f5f5f5;
+    background-color: #f5f5f5;
     padding: 20px 20px 20px 10px;
     align-items: center;
     border-radius: 10px;
@@ -8004,4 +8064,9 @@ P.status_condition {
 
 .next-button {
     padding: 15px 20px !important;
+}
+
+.search_bar::-webkit-search-cancel-button{
+	position: relative;
+	background-image: url("images/cross.png");
 }
