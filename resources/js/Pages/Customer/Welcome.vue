@@ -71,7 +71,7 @@ const props = defineProps({
                                 <td>
                                     <Link class="btn btn-sm btn-success" :href="route('view_customer_data',customer.customer_id)"><i class="fas fa-eye"></i></Link>
                                 </td>
-                            </tr>
+                </tr>
               </tbody>
             </DataTable>
             </div>

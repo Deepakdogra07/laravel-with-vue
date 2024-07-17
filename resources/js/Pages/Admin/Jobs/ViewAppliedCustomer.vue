@@ -430,9 +430,9 @@ const openFs = (url) => {
     transition: all .30s;
 }
 
-.resume_btn .download-icon {
+/* .resume_btn .download-icon {
     width: 20px;
-}
+} */
 img:hover{
     cursor: pointer;
 }
