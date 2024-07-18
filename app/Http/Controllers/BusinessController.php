@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobStatus;
+use DB;
 use DateTime;
 use App\Models\Jobs;
 use Inertia\Inertia;
